@@ -1,8 +1,8 @@
 .git/
 mariadb_data/
 mariadb_data/*
-themes/base-theme-slug/node_modules/
+themes/ethos-theme/node_modules/
 *.sql*
-themes/base-theme-slug/dist/app.js
-themes/base-theme-slug/dist/app.css
+themes/ethos-theme/dist/app.js
+themes/ethos-theme/dist/app.css
 

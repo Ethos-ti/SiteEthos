@@ -1,0 +1,4 @@
+node_modules
+plugins/*
+zips/*
+themes/ethos-theme/node_modules
