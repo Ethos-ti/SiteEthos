@@ -123,11 +123,32 @@
             "customFontSize": false,
             "customLineHeight": false,
             "dropCap": false,
+            "fluid": false,
             "fontSizes": [
                 {
-                    "name": "Muito pequena",
-                    "slug": "xxxs",
-                    "size": "0.75rem"
+                    "name": "Enorme",
+                    "slug": "hero",
+                    "size": "4rem"
+                },
+                {
+                    "name": "Extra grande",
+                    "slug": "xx-large",
+                    "size": "2rem"
+                },
+                {
+                    "name": "Muito grande",
+                    "slug": "x-large",
+                    "size": "1.5rem"
+                },
+                {
+                    "name": "Grande",
+                    "slug": "large",
+                    "size": "1.25rem"
+                },
+                {
+                    "name": "Média",
+                    "slug": "medium",
+                    "size": "1rem"
                 },
                 {
                     "name": "Pequena",
@@ -135,29 +156,26 @@
                     "size": "0.875rem"
                 },
                 {
-                    "name": "Padrão",
-                    "slug": "default",
-                    "size": "1rem"
+                    "name": "Muito pequena",
+                    "slug": "x-small",
+                    "size": "0.75rem"
+                }
+            ],
+            "fontFamilies": [
+                {
+                    "name": "Primária",
+                    "slug": "primary",
+                    "fontFamily": "'Open Sans', sans-serif"
                 },
                 {
-                    "name": "Padrão intermediário",
-                    "slug": "intermediate-standard",
-                    "size": "1.125rem"
+                    "name": "Sistema",
+                    "slug": "secondary",
+                    "fontFamily": "system-ui, sans-serif"
                 },
                 {
-                    "name": "Média",
-                    "slug": "medium",
-                    "size": "1.5rem"
-                },
-                {
-                    "name": "Grande",
-                    "slug": "large",
-                    "size": "2rem"
-                },
-                {
-                    "name": "Muito grande",
-                    "slug": "really-large",
-                    "size": "3rem"
+                    "name": "Título",
+                    "slug": "heading",
+                    "fontFamily": "'Montserrat', sans-serif"
                 }
             ]
         },
