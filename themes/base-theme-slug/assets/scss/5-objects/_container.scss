@@ -1,0 +1,13 @@
+.container {
+	margin-inline: auto;
+	max-width: $grid--normal;
+	width: 100%;
+
+	&--wide {
+		max-width: $grid--wide;
+	}
+
+	&--narrow {
+		max-width: $grid--narrow;
+	}
+}

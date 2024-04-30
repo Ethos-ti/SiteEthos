@@ -1,0 +1,5 @@
+//Function to convert px value into rem
+//You can replace rem with any other value you want (rem is most preferred value for web)
+@function size($target, $context: 16) {
+		@return math.div($target, $context) * 1rem;
+}

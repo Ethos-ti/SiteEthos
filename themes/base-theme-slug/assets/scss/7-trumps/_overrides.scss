@@ -1,0 +1,23 @@
+.-block {
+	display: block !important;
+}
+
+.-bold {
+	font-weight: $font-weight--bold !important;
+}
+
+.-hidden {
+	display: none !important;
+}
+
+.-italic {
+	font-style: italic !important;
+}
+
+.-text-center {
+	text-align: center !important;
+}
+
+.-debug {
+	margin: 2px solid red !important;
+}

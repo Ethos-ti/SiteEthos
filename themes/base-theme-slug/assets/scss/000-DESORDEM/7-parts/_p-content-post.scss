@@ -1,7 +1,4 @@
-@use "./../1-settings/-2-variables" as variables;
-@use "./../2-atoms/a-mixins" as mixins;
-
-.post {
+.index-wrapper .post {
     transition: all .2s;
 
     &:hover {
@@ -14,7 +11,7 @@
         left: 376px;
         top: 409px;
 
-        @include mixins.mobile {
+        @include mobile {
             border-bottom: 1px solid #CCC;
             display: block;
             margin-bottom: 2.25em;
@@ -31,7 +28,7 @@
             padding-right: 30px;
             width: 50%;
 
-            @media(max-width: variables.$break--tablet) {
+            @media(max-width: $break--tablet) {
                 width: 100%;
                 margin-bottom: 15px;
                 padding-right: 0;
@@ -63,7 +60,7 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
 
-                    @media(max-width: variables.$break--tablet){
+                    @media(max-width: $break--tablet){
                         min-width: 100%;
                     }
                 }
@@ -81,7 +78,7 @@
 
                 li {
                     a {
-                        font-size: mixins.size(16);
+                        font-size: size(16);
                         font-weight: 700;
                     }
                 }

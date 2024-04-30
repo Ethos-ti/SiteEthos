@@ -1,56 +1,55 @@
 @use "sass:math";
-@use "./../1-settings/-2-variables" as variables;
 
 @mixin small {
-  @media (max-width: variables.$break--small) {
+  @media (max-width: $break--small) {
     @content;
   }
 }
 
 @mixin small-up {
-  @media (min-width: #{variables.$break--small + 1px}) {
+  @media (min-width: #{$break--small + 1px}) {
     @content;
   }
 }
 
 @mixin mobile {
-    @media (max-width: variables.$break--tablet) {
+    @media (max-width: $break--tablet) {
         @content;
     }
 }
 
 @mixin mobile-up {
-  @media (min-width: #{variables.$break--tablet + 1px}) {
+  @media (min-width: #{$break--tablet + 1px}) {
       @content;
   }
 }
 
 @mixin tablet {
-    @media (max-width: variables.$break--desktop) {
+    @media (max-width: $break--desktop) {
         @content;
     }
 }
 
 @mixin tablet-only {
-    @media (min-width: variables.$break--tablet) and (max-width: variables.$break--desktop) {
+    @media (min-width: $break--tablet) and (max-width: $break--desktop) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: variables.$break--desktop) {
+    @media (min-width: $break--desktop) {
         @content;
     }
 }
 
 @mixin desktop-large {
-  @media (min-width: variables.$break--desktop-large) {
+  @media (min-width: $break--desktop-large) {
       @content;
   }
 }
 
 @mixin desktop-xlarge {
-  @media (min-width: variables.$break--desktop-x-large) {
+  @media (min-width: $break--desktop-x-large) {
       @content;
   }
 }
@@ -109,10 +108,3 @@
   }
 }
 
-$base-size: 16;
-
-//Function to convert px value into rem
-//You can replace rem with any other value you want (rem is most preferred value for web)
-@function size($target, $context: $base-size) {
-		@return math.div($target, $context) * 1rem;
-}

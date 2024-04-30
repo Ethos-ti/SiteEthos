@@ -1,0 +1,50 @@
+html, body {
+    font-size: $font-size--medium;
+	@include mobile {
+        font-size: $font-size-mobile--medium;
+    }
+}
+
+h1 {
+    font-size: $font-size--hero;
+
+    @include mobile {
+        font-size: $font-size-mobile--hero;
+    }
+}
+
+h2 {
+    font-size: $font-size--xx-large;
+
+    @include mobile {
+        font-size: $font-size-mobile--xx-large;
+    }
+}
+
+h3 {
+    font-size: $font-size--x-large;
+
+    @include mobile {
+        font-size: $font-size-mobile--x-large;
+    }
+}
+
+h4 {
+    /*font-size: 1rem;*/
+    font-size: $font-size--large;
+
+    @include mobile {
+        font-size: $font-size-mobile--large;
+    }
+}
+
+p {
+    font-size: $font-size--medium;
+    line-height: $line-height--normal;
+}
+
+// @todo: terminar estilização do link
+a {
+	color: inherit;
+	text-decoration: none;
+}
