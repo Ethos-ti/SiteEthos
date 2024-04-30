@@ -49,23 +49,23 @@ class Assets {
 
     public function add_rel_preload($html, $handle, $href, $media) {
         if (!WP_DEBUG && (is_admin() || is_user_logged_in())) return $html;
-        
+
         $html = "<link rel='stylesheet' onload=\"this.onload=null;this.media='all'\" id='$handle' href='$href' type='text/css' media='print' />";
         return $html;
     }
-    
+
     public function enqueue_inline_styles() {
         $preloading_styles_enabled = false;
         $css_uri = get_stylesheet_directory() . '/dist/css/';
 
 		$css_files = $this->get_css_files();
 		foreach ( $css_files as $handle => $data ) {
-            $src = $css_uri . $data['file'];            
+            $src = $css_uri . $data['file'];
             $content = file_get_contents($src);
 
 			if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) && isset($data['inline']) && $data['inline'] ) {
                 echo "<style id='$handle-css'>" . $content . "</style>";
-			} 
+			}
 		}
     }
 
@@ -91,10 +91,10 @@ class Assets {
 
             $src = $css_uri . $data['file'];
             $version = (string) filemtime( $css_dir . $data['file'] );
-            
+
             /**
              * Depends
-             * 
+             *
              * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
              */
             $deps = [];
@@ -147,7 +147,7 @@ class Assets {
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );			
+        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );
         // wp_enqueue_script(
         //     'buddyx-admin-script',
         //     get_theme_file_uri( '/assets/js/buddyx-admin.min.js' ),
@@ -159,7 +159,7 @@ class Assets {
 
 	/**
 	 * Enqueue custom assets on admin after default asstes blocks
-	 * 
+	 *
 	 * @link https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
 	 */
 	public function enqueue_block_editor_assets() {
@@ -286,95 +286,22 @@ class Assets {
 		}
 
 		$css_files = [
-			'critical'     => [
-                'file' => 'critical.css',
+			'app' => [
+				'file' => 'app.css',
 				'global' => true,
-                'inline' => true,
-			],
-	
-            'home' => [
-				'file' => '_p-home.css',
-                'preload_callback' => function() {
-					return is_front_page();
-				},
+				'inline' => false,
 			],
 
+			/*
             'page' => [
-                'file' => '_p-page.css',
+                'file' => 'p-page.css',
                 'preload_callback' => function() {
 					return !is_front_page() && is_page();
 				},
             ],
-
-            'single' => [
-                'file' => '_p-single.css',
-                'preload_callback' => function() {
-					return is_single();
-				},
-            ],
-
-            '404' => [
-                'file' => '_p-404.css',
-                'preload_callback' => function() {
-					return is_404();
-				},
-            ],
-
-            'archive' => [
-                'file' => '_p-archive.css',
-                'preload_callback' => function() {
-					return ( is_archive() || is_home() ) ? true : false;
-				},
-            ],
-
-			'archive-editais' => [
-				'file' => '_p-archive-editais.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'editais' ) || is_singular( 'editais' ) ) ? true : false;
-				},
-			],
-
-			'archive-perguntas-frequentes' => [
-				'file' => '_p-archive-perguntas-frequentes.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
-				},
-			],
-
-            'search' => [
-                'file' => '_p-search.css',
-                'preload_callback' => function() {
-					return is_search();
-				},
-            ],
-			'author' => [
-				'file' => '_p-author.css',
-				'preload_callback' => function () {
-					return is_author();
-				},
-			],
-			'projects' => [
-                'file' => '_p-projects.css',
-                'preload_callback' => function() {
-					return !is_front_page() && is_page();
-				},
-            ],
-			'anchor' => [
-				'file' => '_p-page-anchor.css',
-				'preload_callback' => function() {
-					return is_page_template( 'page-anchor.php' );
-				},
-            ],
-
-			// Tutor
-			'tutorstarter' => [
-				'file' => '_p-tutorstarter.css',
-				'preload_callback' => function() {
-					return is_plugin_active( 'tutor/tutor.php' );
-				},
-			]
+			*/
 		];
-		
+
 		/**
 		 * Filters default CSS files.
 		 *
@@ -449,7 +376,7 @@ class Assets {
 					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
 				}
 			],
-			
+
 			'copy-url' => [
                 'file' => 'copy-url.js',
                 'global' => true,
@@ -461,9 +388,9 @@ class Assets {
 					return is_page_template( 'page-anchor.php' );
 				}
 			],
-			
+
  		];
-		
+
 		$js_files = apply_filters('js_files_before_output', $js_files);
 
 		$this->js_files = [];
@@ -573,7 +500,7 @@ class Assets {
                 wp_enqueue_script( 'tiny-slider', get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js', [], false, true );
 		        wp_enqueue_script( 'news-slider', get_stylesheet_directory_uri() . '/dist/js/functionalities/featured-slider.js', ['tiny-slider'], false, true );
             },
-            
+
 			'jaci/embed-template' => function() {
 				wp_enqueue_style(
 					'embed-template',

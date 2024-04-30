@@ -26,26 +26,7 @@ const root_dir = './';
 const assets_dir = root_dir + '/assets';
 const dist_dir = root_dir + '/dist';
 
-// Generate critical CSS
-mix.sass(assets_dir + '/scss/critical-app.scss','./css/critical.css');
-
-
-// Compile all blocks files into individual CSSs
-const blocksCSSPath = assets_dir + '/scss/5-blocks/';
-getDirFiles(blocksCSSPath).forEach((filepath) => {
-    mix.sass(blocksCSSPath + filepath , './css/');
-})
-// Compile all page files into individual CSSs
-const pagesPath = assets_dir + '/scss/6-pages/';
-getDirFiles(pagesPath).forEach((filepath) => {
-    mix.sass(pagesPath + filepath , './css/');
-})
-
-// Compile all optional files into individual CSSs
-const optionalPath = assets_dir + '/scss/8-optional/';
-getDirFiles(optionalPath).forEach((filepath) => {
-    mix.sass(optionalPath + filepath , './css/');
-})
+mix.sass(assets_dir + '/scss/app.scss','./css/app.css');
 
 // Compile all JS functionalitis into individual files
 const functionalitiesPath = assets_dir + '/javascript/functionalities/';

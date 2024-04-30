@@ -10,7 +10,6 @@ $grid--wide: 75rem;
 $grid--normal: 48rem;
 $grid--narrow: 37.5rem;
 
-
 // Fontes para dispositivos móveis
 $font-size-mobile--hero:     var(--wp--preset--font-size--hero);
 $font-size-mobile--xx-large: var(--wp--preset--font-size--xx-large);
@@ -37,30 +36,39 @@ $padding--small: 0.5rem;
 $padding--medium: 1rem;
 $padding--large: 2rem;
 
+// Gaps
 $gap--small: 0.5rem;
 $gap--medium: 1rem;
 $gap--large: 2rem;
 
-// bordas
+// Border radius
 $border-radius--round: 50%;
 $border-radius--small: 3px;
 $border-radius--medium: 6px;
 $border-radius--large: 9px;
 
+// Bordas
 $border-width--small: 1px;
 $border-width--medium: 2px;
 $border-width--large: 4px;
 
+// Cores de borda
 $border-color--light: $color--high-light;
 $border-color--dark: $color--primary-dark;
 
+// Box shadows
 $box-shadow--default: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
 
+// Paths
+$path--theme: '/wp-content/themes/base-theme-slig';
+$path--assets: $path--theme + '/assets';
+
+
+// DAQUI PARA BAIXO APAGAR ========================
 // Paths
 $p_theme: '/wp-content/themes/base-theme-slug';
 $p_theme_assets: $p_theme + '/assets';
 
-// DAQUI PARA BAIXO APAGAR ========================
 // Sizes
 // Typo sizes
 $s_html: 16px;
@@ -111,51 +119,3 @@ $s_meta: .875rem; //equivalente 14px
 // Spacings
 $s_small: 20px;
 $s_large: 40px;
-
-:root {
-    // Sizes
-    // Typo sizes
-    $s_span: $s_p;
-    --s-html: #{$s_html};
-    --s-p: #{$s_p};
-
-    --s-h1: #{$s_h1};
-    --s-h2: #{$s_h2};
-    --s-h3: #{$s_h3};
-    --s-h4: #{$s_h4};
-    --s-h5: #{$s_h5};
-    --s-h6: #{$s_h6};
-
-    --s-meta: #{$s_meta};
-
-    // Spacing sizes
-    --s-h1-mt: #{$s_h1_mt};
-    --s-h1-mb: #{$s_h1_mb};
-
-    --s-h2-mt: #{$s_h2_mt};
-    --s-h2-mb: #{$s_h2_mb};
-
-    --s-h3-mt: #{$s_h3_mt};
-    --s-h3-mb: #{$s_h3_mb};
-
-    --s-h4-mt: #{$s_h4_mt};
-    --s-h4-mb: #{$s_h4_mb};
-
-    // Colors
-    --c-primary: #{$c_blue_primary};
-    --c-secondary: #{$c_blue_secondary};
-    --c-gray--darker: #{$c_gray_darker};
-    --c-yellow-primary: #{$c_yellow_primary};
-
-    // Paths
-    --p-theme: #{$p_theme};
-    --p-theme-assets: #{$p_theme + '/assets'};
-
-    // Fonts
-    --f-body: #{$f_body};
-    --f-title: #{$f_title};
-
-    // Spacings
-    --s-small: #{$s_small};
-    --s-large: #{$s_large};
-}
