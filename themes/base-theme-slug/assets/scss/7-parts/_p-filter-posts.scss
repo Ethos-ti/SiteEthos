@@ -1,4 +1,4 @@
-@use "./../1-settings/variables" as variables;
+@use "./../1-settings/-2-variables" as variables;
 @use "./../2-atoms/a-mixins" as mixins;
 
 .filter-posts {

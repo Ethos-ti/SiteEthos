@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "./../1-settings/variables" as variables;
+@use "./../1-settings/-2-variables" as variables;
 
 @mixin small {
   @media (max-width: variables.$break--small) {
