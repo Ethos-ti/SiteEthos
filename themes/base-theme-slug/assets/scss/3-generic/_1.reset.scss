@@ -11,10 +11,17 @@
 * {
 	margin: 0;
 }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
 	line-height: $line-height-normal;
 	-webkit-font-smoothing: antialiased;
+	overflow-x:  hidden;
+	@include mobile {
+		margin-top: 0;
+	}
 }
 
 img, picture, video, canvas, svg {

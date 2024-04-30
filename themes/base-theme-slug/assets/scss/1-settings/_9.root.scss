@@ -1,19 +1,16 @@
 @import './s-variables';
 
 :root {
-    // Font sizes
-    --hl--font-size--hero:      #{$font-size--hero};
-    --hl--font-size--xx-large:  #{$font-size--xx-large};
-    --hl--font-size--x-large:   #{$font-size--x-large};
-    --hl--font-size--large:     #{$font-size--large};
-    --hl--font-size--medium:    #{$font-size--medium};
-    --hl--font-size--small:     #{$font-size--small};
-    --hl--font-size--x-small:   #{$font-size--x-small};
+    --hl--break--small:          #{$break--small};
+    --hl--break--tablet:         #{$break--tablet};
+    --hl--break--desktop:        #{$break--desktop};
+    --hl--break--desktop-large:  #{$break--desktop-large};
+    --hl--break--desktop-xlarge: #{$break--desktop-xlarge};
 
-    // Font families
-    --hl--font-family--primary:     #{$font-family--primary};
-    --hl--font-family--secondary:   #{$font-family--secondary};
-    --hl--font-family--heading:     #{$font-family--heading};
+    // Grid
+    --hl--grid--wide:   #{$grid--wide};
+    --hl--grid--normal: #{$grid--normal};
+    --hl--grid--narrow: #{$grid--narrow};
 
     // Font weights
     --hl--font-weight--bold:    #{$font-weight--bold};
@@ -51,4 +48,14 @@
 
     // box shadows
     --hl--box-shadow--default:  #{$box-shadow--default};
+    
+    @include mobile {
+        --wp--preset--font-size--hero:      #{$font-size-mobile--hero};
+        --wp--preset--font-size--xx-large:  #{$font-size-mobile--xx-large};
+        --wp--preset--font-size--x-large:   #{$font-size-mobile--x-large};
+        --wp--preset--font-size--large:     #{$font-size-mobile--large};
+        --wp--preset--font-size--medium:    #{$font-size-mobile--medium};
+        --wp--preset--font-size--small:     #{$font-size-mobile--small};
+        --wp--preset--font-size--x-small:   #{$font-size-mobile--x-small};
+    }
 }
