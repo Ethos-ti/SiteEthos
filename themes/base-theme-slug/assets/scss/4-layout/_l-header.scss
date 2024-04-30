@@ -1,4 +1,4 @@
-@import "./../1-settings/_s-variables";
+@import "./../1-settings/2-variables";
 @import "./../2-atoms/a-mixins";
 
 header{
@@ -64,7 +64,7 @@ header{
             height: 32px;
             display: none;
 
-            @media (max-width: $desktop-width) {
+            @media (max-width: $break--desktop) {
                 display: block;
             }
 
@@ -107,7 +107,7 @@ header{
             display: flex;
             margin-top: 6px;
 
-            @media (max-width: $desktop-width) {
+            @media (max-width: $break--desktop) {
                 display: none;
             }
             i.fa-angle-down, i.fa-angle-up {
@@ -143,7 +143,7 @@ header{
                     width: auto;
                 }
 
-                @media (max-width: $desktop-width) {
+                @media (max-width: $break--desktop) {
                     margin-right: 0;
                 }
                 ul.menu {
@@ -161,7 +161,7 @@ header{
                         }
 
                         &:not(.menu-item-has-children) {
-                            @media (max-width: $desktop-width) {
+                            @media (max-width: $break--desktop) {
                                 margin-bottom: 10px;
                             }
                         }
@@ -174,7 +174,7 @@ header{
                             }
 
                             &:after {
-                                @media (max-width: $desktop-width) {
+                                @media (max-width: $break--desktop) {
                                     display: none;
                                 }
                             }
@@ -185,12 +185,12 @@ header{
                             box-shadow: 0px 3px 5px 0px rgba(#000000, 0.3);
                             z-index: 5;
 
-                            @media (max-width: $desktop-width) {
+                            @media (max-width: $break--desktop) {
                                 margin-top: 15px;
                                 padding-top: 0;
                             }
 
-                            @media (max-width: $desktop-width) {
+                            @media (max-width: $break--desktop) {
                                 box-shadow: none;
                             }
 
@@ -200,7 +200,7 @@ header{
                                 margin-right: 0;
                                 font-size: 80%;
 
-                                @media (max-width: $desktop-width) {
+                                @media (max-width: $break--desktop) {
                                     background-color: transparent;
                                     border-left: 2px solid #035299;
                                 }
@@ -252,7 +252,7 @@ header{
                             font-size: 24px;
                             line-height: 2;
 
-                            @media (max-width: $desktop-width) {
+                            @media (max-width: $break--desktop) {
                                 font-size: 16px;
                                 line-height: 1.5;
                             }

@@ -1,11 +1,12 @@
-@import './s-variables';
+@import './2-variables';
+@import '../2-atoms/a-mixins';
 
 :root {
-    --hl--break--small:          #{$break--small};
-    --hl--break--tablet:         #{$break--tablet};
-    --hl--break--desktop:        #{$break--desktop};
-    --hl--break--desktop-large:  #{$break--desktop-large};
-    --hl--break--desktop-xlarge: #{$break--desktop-xlarge};
+    --hl--break--small:          	#{$break--small};
+    --hl--break--tablet:         	#{$break--tablet};
+    --hl--break--desktop:        	#{$break--desktop};
+    --hl--break--desktop-large:  	#{$break--desktop-large};
+    --hl--break--desktop-x-large: 	#{$break--desktop-x-large};
 
     // Grid
     --hl--grid--wide:   #{$grid--wide};
@@ -48,7 +49,7 @@
 
     // box shadows
     --hl--box-shadow--default:  #{$box-shadow--default};
-    
+
     @include mobile {
         --wp--preset--font-size--hero:      #{$font-size-mobile--hero};
         --wp--preset--font-size--xx-large:  #{$font-size-mobile--xx-large};

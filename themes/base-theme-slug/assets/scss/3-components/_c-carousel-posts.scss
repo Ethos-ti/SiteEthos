@@ -9,7 +9,7 @@
         position: relative;
         width: 50%;
 
-        @media (max-width: $tablet-width) {
+        @media (max-width: $break--tablet) {
             padding-top: 66.667vw;
             width: 100%;
         }

@@ -1,4 +1,4 @@
-@import "./../1-settings/s-variables";
+@import "./../1-settings/2-variables";
 @import "./../2-atoms/a-mixins";
 
 .home {
@@ -7,7 +7,7 @@
     .ultp-block-image>a {
         height: 320px;
     }
-    
+
     .box-menor .ultp-block-image>a {
         height: 203px;
     }
@@ -72,7 +72,7 @@
 
                     .wp-block-column {
                         margin: 0;
-                        
+
                         figure {
                             margin: 0;
                         }
@@ -93,7 +93,7 @@
                                 }
                             }
                         }
-    
+
                         &:nth-child(2) {
                             margin-left: 21px;
                             position: relative;
@@ -245,7 +245,7 @@
                 color: #22271B;
                 font-weight: normal;
             }
-            
+
             .eye{
                 position: absolute;
                 top: 35px;
@@ -270,7 +270,7 @@
             form {
                 max-width: 370px;
                 margin: 0 auto;
-               
+
                 input[type='email']{
                     background-color: transparent;
                     border: none;
@@ -281,8 +281,8 @@
                 }
 
                 input[type='email']:-webkit-autofill,
-                input[type='email']:-webkit-autofill:hover, 
-                input[type='email']:-webkit-autofill:focus, 
+                input[type='email']:-webkit-autofill:hover,
+                input[type='email']:-webkit-autofill:focus,
                 input[type='email']:-webkit-autofill:active
                 {
                 -webkit-box-shadow: 0 0 0 30px #fff087 inset !important;
@@ -308,11 +308,11 @@
                         width: 20px;
                         margin: 0 20px;
                     }
-                    
+
                     input:autofill{
                         background-color:  transparent;
                     }
-                    
+
                     input[type='checkbox']:after {
                         -moz-appearance:initial;
                         width: 26px;
@@ -383,7 +383,7 @@
             font-weight: bold;
         }
 
-        @media(max-width: $tablet-width){
+        @media(max-width: $break--tablet){
             .menu-item-882 {
                 text-align: center;
                 line-height: 25px;

@@ -1,6 +1,6 @@
 $p_theme_assets: "/wp-content/themes/base-theme-slug/assets";
 
-@import "./../1-settings/s-variables";
+@import "./../1-settings/2-variables";
 @import "./../2-atoms/a-mixins";
 
 .timeline-container {
@@ -23,7 +23,7 @@ $p_theme_assets: "/wp-content/themes/base-theme-slug/assets";
         position: absolute;
         z-index: 1;
 
-        @media (max-width: $tablet-width) {
+        @media (max-width: $break--tablet) {
             margin-top: 134px;
         }
     }
@@ -33,15 +33,15 @@ $p_theme_assets: "/wp-content/themes/base-theme-slug/assets";
         margin: 0 auto 40px;
         overflow: hidden;
 
-        @media (max-width: $desktop-xlarge-width) {
+        @media (max-width: $break--desktop-x-large) {
             max-width: 1140px;
         }
 
-        @media (max-width: $desktop-large-width) {
+        @media (max-width: $break--desktop-large) {
             max-width: 940px;
         }
 
-        @media (max-width: $desktop-width) {
+        @media (max-width: $break--desktop) {
             max-width: 750px;
             padding-left: 15px;
             padding-right: 15px;
@@ -50,7 +50,7 @@ $p_theme_assets: "/wp-content/themes/base-theme-slug/assets";
         h2.title-with-graphics {
             font-size: 40px;
 
-            @media (max-width: $tablet-width) {
+            @media (max-width: $break--tablet) {
                 font-size: 30px;
             }
         }

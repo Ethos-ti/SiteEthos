@@ -1,4 +1,4 @@
-@use "./../1-settings/s-variables" as variables;
+@use "./../1-settings/2-variables" as variables;
 @use "./../2-atoms/a-mixins" as mixins;
 
 .post {
@@ -31,7 +31,7 @@
             padding-right: 30px;
             width: 50%;
 
-            @media(max-width: variables.$tablet-width) {
+            @media(max-width: variables.$break--tablet) {
                 width: 100%;
                 margin-bottom: 15px;
                 padding-right: 0;
@@ -63,7 +63,7 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
 
-                    @media(max-width: variables.$tablet-width){
+                    @media(max-width: variables.$break--tablet){
                         min-width: 100%;
                     }
                 }

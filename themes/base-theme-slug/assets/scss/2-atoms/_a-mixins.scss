@@ -1,56 +1,56 @@
 @use "sass:math";
-@use "./../1-settings/s-variables" as variables;
+@use "./../1-settings/2-variables" as variables;
 
 @mixin small {
-  @media (max-width: variables.$small-width) {
+  @media (max-width: variables.$break--small) {
     @content;
   }
 }
 
 @mixin small-up {
-  @media (min-width: #{variables.$small-width + 1px}) {
+  @media (min-width: #{variables.$break--small + 1px}) {
     @content;
   }
 }
 
 @mixin mobile {
-    @media (max-width: variables.$tablet-width) {
+    @media (max-width: variables.$break--tablet) {
         @content;
     }
 }
 
 @mixin mobile-up {
-  @media (min-width: #{variables.$tablet-width + 1px}) {
+  @media (min-width: #{variables.$break--tablet + 1px}) {
       @content;
   }
 }
 
 @mixin tablet {
-    @media (max-width: variables.$desktop-width) {
+    @media (max-width: variables.$break--desktop) {
         @content;
     }
 }
 
 @mixin tablet-only {
-    @media (min-width: variables.$tablet-width) and (max-width: variables.$desktop-width) {
+    @media (min-width: variables.$break--tablet) and (max-width: variables.$break--desktop) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: variables.$desktop-width) {
+    @media (min-width: variables.$break--desktop) {
         @content;
     }
 }
 
 @mixin desktop-large {
-  @media (min-width: variables.$desktop-large-width) {
+  @media (min-width: variables.$break--desktop-large) {
       @content;
   }
 }
 
 @mixin desktop-xlarge {
-  @media (min-width: variables.$desktop-xlarge-width) {
+  @media (min-width: variables.$break--desktop-x-large) {
       @content;
   }
 }

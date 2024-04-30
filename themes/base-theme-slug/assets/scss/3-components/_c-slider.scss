@@ -185,7 +185,7 @@ $p_theme_assets: '/wp-content/themes/base-theme-slug/assets';
                     }
                 }
 
-                @media (min-width:$desktop-width) {
+                @media (min-width:$break--desktop) {
                     h3 {
                         a{
                             font-size: 40px;
@@ -339,7 +339,7 @@ ul.slick-dots {
 }
 
 
-@media (max-width: $desktop-width) {
+@media (max-width: $break--desktop) {
 
     #main-slider {
 

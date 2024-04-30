@@ -1,4 +1,4 @@
-@import '../1-settings/s-variables';
+@import '../1-settings/2-variables';
 @import '../2-atoms/a-mixins';
 
 /** Bloco - Downloads **/
@@ -64,7 +64,7 @@
     justify-content: space-between;
     margin-top: 80px;
 
-    @media (max-width:$tablet-width){
+    @media (max-width:$break--tablet){
         display: block;
     }
 
@@ -196,7 +196,7 @@
                             margin: 0 26px;
                         }
 
-                        @media (max-width: $tablet-width) {
+                        @media (max-width: $break--tablet) {
                             .hide-for-large {
                                 display: unset;
                             }
@@ -205,7 +205,7 @@
                             }
                         }
 
-                        @media (min-width:$tablet-width) {
+                        @media (min-width:$break--tablet) {
                             .hide-for-large {
                                 display: none;
                             }
@@ -347,11 +347,11 @@
         max-width: 300px;
         width: 100%;
 
-        @media (max-width: $desktop-width) {
+        @media (max-width: $break--desktop) {
             max-width: 250px;
         }
 
-        @media (max-width: $tablet-width) {
+        @media (max-width: $break--tablet) {
             max-width: none;
         }
 

@@ -1,10 +1,11 @@
-@import "./s-constants";
+@import "./1-constants";
+
 // Breakpoints
 $break--small: 36rem; // 576px
 $break--tablet: 48rem; // 768px
 $break--desktop: 62rem; // 992px
 $break--desktop-large: 75rem; // 1200px
-$break--desktop-xlarge: 87.5rem; // 1400px
+$break--desktop-x-large: 87.5rem; // 1400px
 
 // Grid
 $grid--wide: 75rem;

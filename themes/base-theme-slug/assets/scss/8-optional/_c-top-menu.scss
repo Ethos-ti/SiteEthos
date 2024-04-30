@@ -1,4 +1,4 @@
-@import "./../1-settings/_s-variables";
+@import "./../1-settings/2-variables";
 @import "./../2-atoms/a-mixins";
 
 header.top-header {
@@ -109,7 +109,7 @@ header.top-header {
                                 display: block;
                             }
                         }
-    
+
                         &::before {
                             opacity: .75;
                         }
@@ -124,7 +124,7 @@ header.top-header {
                     padding: 10px 0px 10px 0px;
                     position: absolute;
                     z-index: 5;
-    
+
                     @include desktop {
                         display: none;
                     }
