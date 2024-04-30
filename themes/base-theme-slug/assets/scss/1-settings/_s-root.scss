@@ -1,0 +1,54 @@
+@import './s-variables';
+
+:root {
+    // Font sizes
+    --hl--font-size--hero:      #{$font-size--hero};
+    --hl--font-size--xx-large:  #{$font-size--xx-large};
+    --hl--font-size--x-large:   #{$font-size--x-large};
+    --hl--font-size--large:     #{$font-size--large};
+    --hl--font-size--medium:    #{$font-size--medium};
+    --hl--font-size--small:     #{$font-size--small};
+    --hl--font-size--x-small:   #{$font-size--x-small};
+
+    // Font families
+    --hl--font-family--primary:     #{$font-family--primary};
+    --hl--font-family--secondary:   #{$font-family--secondary};
+    --hl--font-family--heading:     #{$font-family--heading};
+
+    // Font weights
+    --hl--font-weight--bold:    #{$font-weight--bold};
+    --hl--font-weight--medium:  #{$font-weight--medium};
+    --hl--font-weight--regular: #{$font-weight--regular};
+    --hl--font-weight--light:   #{$font-weight--light};
+
+    // Line heights
+    --hl--line-height--loose:   #{$line-height--loose};
+    --hl--line-height--normal:  #{$line-height--normal};
+    --hl--line-height--tight:   #{$line-height--tight};
+    --hl--line-height--none:    #{$line-height--none};
+
+    // Espaçamentos
+    --hl--padding--small:   #{$padding--small};
+    --hl--padding--medium:  #{$padding--medium};
+    --hl--padding--large:   #{$padding--large};
+
+    --hl--gap--small:   #{$gap--small};
+    --hl--gap--medium:  #{$gap--medium};
+    --hl--gap--large:   #{$gap--large};
+
+    // bordas
+    --hl--border-radius--round:  #{$border-radius--round};
+    --hl--border-radius--small:  #{$border-radius--small};
+    --hl--border-radius--medium: #{$border-radius--medium};
+    --hl--border-radius--large:  #{$border-radius--large};
+
+    --hl--border-width--small:  #{$border-width--small};
+    --hl--border-width--medium: #{$border-width--medium};
+    --hl--border-width--large:  #{$border-width--large};
+
+    --hl--border-color--light:  #{$border-color--light};
+    --hl--border-color--dark:   #{$border-color--dark};
+
+    // box shadows
+    --hl--box-shadow--default:  #{$box-shadow--default};
+}
