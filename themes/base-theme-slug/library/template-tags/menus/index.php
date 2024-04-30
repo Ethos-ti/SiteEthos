@@ -18,13 +18,13 @@ function the_social_networks_menu( $color = true ) {
 
             if ( $color ) {
 				if ( ! file_exists( $icons_directory . $network_slug . '-color.svg' ) ) {
-					break;
+					continue;
 				}
 
 				$html = file_get_contents( $icons_directory . $network_slug . '-color.svg' );
             } else {
 				if ( ! file_exists( $icons_directory . $network_slug . '.svg' ) ) {
-					break;
+					continue;
 				}
 
 				$html = file_get_contents( $icons_directory . $network_slug . '.svg' );
