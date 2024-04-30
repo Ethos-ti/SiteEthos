@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function footer_custom_options($wp_customize) {
     $prefix = 'footer';
@@ -58,12 +58,12 @@ function footer_custom_options($wp_customize) {
 			'default' => '#035299',
 			'sanitize_callback' => 'sanitize_hex_color',
 		)
-	);	
+	);
 
-	$wp_customize->add_control( 
-		new WP_Customize_Color_Control( 
-			$wp_customize, 
-			$prefix . '_background_color', 
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . '_background_color',
 			array(
 				'label' => __( 'Footer background', 'base-textdomain' ),
 				'section' => $section,
@@ -82,10 +82,10 @@ function footer_custom_options($wp_customize) {
 		)
 	);
 
-	$wp_customize->add_control( 
-		new WP_Customize_Color_Control( 
-			$wp_customize, 
-			$prefix . '_text_color', 
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control(
+			$wp_customize,
+			$prefix . '_text_color',
 			array(
 				'label' => __( 'Footer text color', 'base-textdomain' ),
 				'section' => $section,
@@ -103,25 +103,15 @@ add_action('customize_register', 'footer_custom_options', 99);
 // Aplica as cores selecionadas
 
 function footer_colors(){
-	
-    $footer_bgcolor = get_theme_mod( 'footer_background_color' );
-	$footer_txtcolor = get_theme_mod( 'footer_text_color' );
-    ?>
+    $footer_bgcolor = get_theme_mod( 'footer_background_color', 'var(--wp--preset--color--high-pure)' );
+	$footer_txtcolor = get_theme_mod( 'footer_text_color', 'var(--wp--preset--color--low-pure)' );
 
-    <style type="text/css" id="footer_colors">
-		.main-footer {
-			background-color: <?php echo $footer_bgcolor; ?> !important;
-			color: <?php echo $footer_txtcolor; ?> !important;
-		}   		
-		.footer-menu, .footer-menu a, .footer-menu p,
-		.social-networks, .social-networks a, .social-networks p,
-		.copyright-area, .copyright-area a, .copyright-area p { 
-			color: <?php echo $footer_txtcolor; ?> !important; 
-		}  
+	$footer_vars = ":root {
+		--hl--color--footer-background: $footer_bgcolor;
+		--hl--color--footer-text: $footer_txtcolor;
+	}";
 
-    </style>    
- 
-    <?php   
+	wp_add_inline_style( 'wp-block-library', $footer_vars );
 }
- 
-add_action( 'wp_head', 'footer_colors' );
+
+add_action( 'wp_enqueue_scripts', 'footer_colors' );
