@@ -1,4 +1,4 @@
-@import './2-variables';
+@import '../1-settings/variables';
 
 /*
   Josh's Custom CSS Reset
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-	line-height: $line-height-normal;
+	line-height: $line-height--normal;
 	-webkit-font-smoothing: antialiased;
 	overflow-x:  hidden;
 	@include mobile {
