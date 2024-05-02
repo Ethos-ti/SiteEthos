@@ -5,7 +5,7 @@ html, body {
     }
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
 	font-family: $font-family--heading;
 	line-height: $line-height--tight;
 }
@@ -42,9 +42,30 @@ h4 {
     }
 }
 
+h5 {
+    font-size: $font-size--medium;
+
+    @include mobile {
+        font-size: $font-size-mobile--medium;
+    }
+}
+
+h6 {
+    font-size: $font-size--small;
+
+    @include mobile {
+        font-size: $font-size-mobile--small;
+    }
+}
+
 p {
     font-size: $font-size--medium;
     line-height: $line-height--normal;
+}
+
+hr {
+	border: $border-width--small solid $border-color--dark;
+	margin-block: $gap--medium;
 }
 
 // @todo: terminar estilização do link
