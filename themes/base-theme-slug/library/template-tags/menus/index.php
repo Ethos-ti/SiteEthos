@@ -31,7 +31,7 @@ function the_social_networks_menu( $color = true ) {
             }
 
 			if ( $html ) {
-				echo '<div class="social-icon icon-' . $network_slug . '">';
+				echo '<div class="social-menu__icon icon-' . $network_slug . '">';
 				echo '<a href="' . $item->url . '" title="' . $network_name .'" target="_blank">' . $html . '</a>';
 				echo '</div>';
 			}
