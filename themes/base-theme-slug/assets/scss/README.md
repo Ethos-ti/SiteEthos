@@ -162,7 +162,12 @@ Exemplo:
 }
 ```
 
-Os objetos **não** devem ter margem; quem define a margem do objeto é componente que utiliza o objeto, através de um padding ou gap, por exemplo.
+Os objetos **não** devem ter margem; quem define a margem do objeto é componente que utiliza o objeto, através de um padding ou gap, por exemplo:
+
+```html
+<div class="container -gap-large">
+    <div class="card card--cover -margin-medium">
+```
 
 ### Components
 
