@@ -14,9 +14,11 @@ html {
 }
 
 body {
+    font-family: $font-family--primary;
     line-height: $line-height--normal;
     -webkit-font-smoothing: antialiased;
     overflow-x:  hidden;
+
     @include mobile {
         margin-top: 0;
     }

@@ -141,6 +141,34 @@ get_header();
         <span class="form-field__label">Radio</span>
         <input class="radio radio--error" type="radio">
     </label>
+
+    <hr/>
+
+    <svg class="hamburger" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <title>Exibir menu</title>
+        <rect width="16" height="2" x="0" y="2"/>
+        <rect width="16" height="2" x="0" y="7"/>
+        <rect width="16" height="2" x="0" y="12"/>
+    </svg>
+
+    <svg class="hamburger hamburger--open" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <title>Ocultar menu</title>
+        <rect width="16" height="2" x="0" y="2"/>
+        <rect width="16" height="2" x="0" y="7"/>
+        <rect width="16" height="2" x="0" y="12"/>
+    </svg>
+
+    <svg id="hamburger-animation" class="hamburger" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <rect width="16" height="2" x="0" y="2"/>
+        <rect width="16" height="2" x="0" y="7"/>
+        <rect width="16" height="2" x="0" y="12"/>
+    </svg>
+
+    <script>
+        window.setInterval(() => {
+            document.querySelector('#hamburger-animation')?.classList.toggle('hamburger--open')
+        }, 3000)
+    </script>
 </div>
 
 <?php get_footer(); ?>

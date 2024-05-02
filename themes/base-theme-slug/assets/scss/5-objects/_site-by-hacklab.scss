@@ -2,6 +2,10 @@
     background-color: $color--low-pure;
     color: $color--high-pure;
 
+    strong {
+        font-family: serif;
+    }
+
     a {
         display: block;
         width: 100%;
