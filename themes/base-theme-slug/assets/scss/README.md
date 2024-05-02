@@ -2,6 +2,12 @@
 
 Este documento descreve os padrões de organização e nomenclatura CSS adotados neste projeto, seguindo os princípios do ITCSS (Inverted Triangle CSS) e do BEM (Block Element Modifier), garantindo consistência e facilidade de manutenção. 
 
+## Orientações básicas
+- SEMPRE usar variáveis SASS para definir cores, tamanhos, espaçámentos, fontes etc;
+- Na implementação de um novo componente, verifique se os elementos deste já foram estilizados como objetos na pasta `5.objects` ou como componentes na pasta `6.components`;
+- Na implementação de um novo componente, avalie se os elementos que ainda não foram implementados são utilizados em outros componentes do site e, neste caso, implemente-os na pasta `5.objects` ou `6.components`, caso este seja respectivamente um objeto ou um componente, para em seguida utilizá-lo no componente que está sendo criado;
+
+- se estiver com dúvidas em como seguir o padrão, consulte alguém com mais experiência
 
 ## BEM (Block Element Modifier)
 O BEM é uma convenção de nomenclatura para classes CSS que visa tornar o código mais legível e fácil de entender, dividindo-o em blocos, elementos e modificadores.
@@ -33,7 +39,7 @@ O modificador é uma entidade que representa o estado ou a variação de um bloc
 Exemplo:
 
 ```html
-<div class="card card--primary"></div>
+<div class="card card--cover"></div>
 ```
 
 
@@ -184,3 +190,6 @@ Exemplo:
 
 
 ## OVERRIDES
+Como trabalharemos com vários componentes (blocos) de terceiros, sempre que precisemos estilizar estes componentes, devemos criar um arquivo separado para estilizar este elemento na pasta `9.overrides`. 
+
+Apesar de que os estilos desta pasta não necessariamente seguem o padrão BEM para nomenclatura, devemos SEMPRE utilizar as variáveis definidas em `1.constants.scss` ou `2.variables.scss` para fazer a estilização.
