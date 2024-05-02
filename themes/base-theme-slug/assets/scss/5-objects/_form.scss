@@ -18,6 +18,7 @@
 .text-input, .select {
     background-color: $color--high-pure;
     border: $border-width--small solid $color--high-dark;
+    color: $color--low-pure;
     border-radius: $border-radius--medium;
     line-height: $line-height--none;
     padding: $padding--small $padding--medium;

@@ -139,7 +139,7 @@ get_header();
 
     <label class="form-field form-field--error">
         <span class="form-field__label">Radio</span>
-        <input class="radio radio--disabled" type="radio">
+        <input class="radio radio--error" type="radio">
     </label>
 </div>
 
