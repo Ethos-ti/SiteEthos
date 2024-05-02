@@ -1,0 +1,15 @@
+.site-by-hacklab {
+    background-color: $color--low-pure;
+    color: $color--high-pure;
+
+    a {
+        display: block;
+        width: 100%;
+        text-align: end;
+        text-decoration: none;
+
+        span {
+            color: #CA0C25;
+        }
+    }
+}

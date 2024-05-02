@@ -15,6 +15,7 @@ get_header();
     <p>&lt;p&gt; Parágrafo</p>
 
     <hr/>
+
     <button type="button" class="button">Default</button>
     <button type="button" class="button button--solid">Solid</button>
     <button type="button" class="button button--outline">Outline</button>
@@ -25,6 +26,14 @@ get_header();
     <button type="button" class="button button--solid button--highlight">Highlight</button>
     <button type="button" class="button button--outline button--warning">Warning</button>
     <button type="button" class="button button--solid button--helper">Helper</button>
+
+    <hr/>
+
+    <div class="site-by-hacklab">
+        <div class="container">
+            <a href="https://hacklab.com.br">site por <strong>hacklab<span>/</span></strong></a>
+        </div>
+    </div>
 </div>
 
 <?php get_footer(); ?>

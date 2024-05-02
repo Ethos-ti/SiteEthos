@@ -64,7 +64,8 @@ p {
 }
 
 hr {
-	border: $border-width--small solid $border-color--dark;
+    border: 0;
+	border-top: $border-width--small solid $border-color--light;
 	margin-block: $gap--medium;
 }
 
