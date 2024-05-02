@@ -190,13 +190,13 @@ Os componentes, assim como os objetos, **NÃO** devem ter margem; quem define a 
 
 ### Trumps
 
-Camada destinada a estilos de alto nível que substituem ou anulam estilos definidos em camadas anteriores, como hacks e overrides.
+Camada destinada a estilos de alto nível que substituem ou anulam estilos definidos em camadas anteriores.
 
 Exemplo:
 
 ```scss
-.button--large {
-  font-size: 1.5rem;
+.-text-center {
+    text-align: center !important;
 }
 ```
 
