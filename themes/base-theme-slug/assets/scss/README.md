@@ -1,18 +1,20 @@
 # Padrões de CSS: ITCSS e BEM + overrides
 
-Este documento descreve os padrões de organização e nomenclatura CSS adotados neste projeto, seguindo os princípios do ITCSS (Inverted Triangle CSS) e do BEM (Block Element Modifier), garantindo consistência e facilidade de manutenção. 
+Este documento descreve os padrões de organização e nomenclatura CSS adotados neste projeto, seguindo os princípios do ITCSS (Inverted Triangle CSS) e do [BEM](https://getbem.com/) (Block Element Modifier), garantindo consistência e facilidade de manutenção.
 
 ## Orientações básicas
-- SEMPRE usar variáveis SASS para definir cores, tamanhos, espaçámentos, fontes etc;
+
+- **SEMPRE** usar variáveis Sass para definir cores, tamanhos, espaçámentos, fontes, etc.;
 - Na implementação de um novo componente, verifique se os elementos deste já foram estilizados como objetos na pasta `5.objects` ou como componentes na pasta `6.components`;
 - Na implementação de um novo componente, avalie se os elementos que ainda não foram implementados são utilizados em outros componentes do site e, neste caso, implemente-os na pasta `5.objects` ou `6.components`, caso este seja respectivamente um objeto ou um componente, para em seguida utilizá-lo no componente que está sendo criado;
-
-- se estiver com dúvidas em como seguir o padrão, consulte alguém com mais experiência
+- Se estiver com dúvidas em como seguir o padrão, consulte alguém com mais experiência.
 
 ## BEM (Block Element Modifier)
+
 O BEM é uma convenção de nomenclatura para classes CSS que visa tornar o código mais legível e fácil de entender, dividindo-o em blocos, elementos e modificadores.
 
 ### Block
+
 O bloco é uma entidade independente e significativa que é responsável por sua aparência e comportamento. Ele é a parte principal e de nível superior de um componente.
 
 Exemplo:
@@ -22,6 +24,7 @@ Exemplo:
 ```
 
 ### Element
+
 O elemento é uma parte de um bloco que tem significado semântico apenas em relação a esse bloco. Ele não deve ser usado sozinho.
 
 Exemplo:
@@ -34,6 +37,7 @@ Exemplo:
 ```
 
 ### Modifier
+
 O modificador é uma entidade que representa o estado ou a variação de um bloco ou elemento.
 
 Exemplo:
@@ -42,22 +46,23 @@ Exemplo:
 <div class="card card--cover"></div>
 ```
 
-
 ## ITCSS (Inverted Triangle CSS)
+
 O ITCSS é uma metodologia de organização de arquivos CSS em camadas, distribuídas em um triângulo invertido. Cada camada tem uma responsabilidade específica na estilização de um projeto. As camadas são organizadas da seguinte forma, da mais genérica para a mais específica:
 
-```
+```text
 ______________
 \____________/ -------> 1.SETTINGS
  \__________/ --------> 2.TOOLS
   \________/ ---------> 3.GENERIC
    \______/ ----------> 4.ELEMENTS
     \____/ -----------> 5.OBJECTS
-	 \__/ ------------> 6.COMPONENTS
-	  \/ -------------> 7.TRUMPS
+     \__/ ------------> 6.COMPONENTS
+      \/ -------------> 7.TRUMPS
 ```
 
 ### Settings
+
 Nesta camada, definimos as variáveis globais como cores, tipografia e espaçamentos.
 
 Exemplos:
@@ -79,6 +84,7 @@ $grid--narrow: 37.5rem;
 ```
 
 ### Tools
+
 Camada responsável por definir funções e utilitários que serão utilizados ao longo do projeto, como mixins de media queries e funções de cálculo.
 
 Exemplo:
@@ -92,18 +98,20 @@ Exemplo:
 ```
 
 ### Generic
+
 Nesta camada, aplicamos estilos muito genéricos que afetam todo o projeto, como resets e estilos para tags HTML.
 
 Exemplo:
 
 ```scss
 *, *::before, *::after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-	margin: 0;
+    margin: 0;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -111,14 +119,15 @@ html {
 ```
 
 ### Elements
+
 Aqui definimos estilos para elementos HTML básicos, como headings, listas e links.
 
 Exemplo:
 
 ```scss
 h1, h2, h3, h4 {
-	font-family: $font-family--heading;
-	line-height: $line-height--tight;
+    font-family: $font-family--heading;
+    line-height: $line-height--tight;
 }
 
 h1 {
@@ -131,7 +140,8 @@ h1 {
 ```
 
 ### Objects
-Camada destinada à estilização de objetos, como containers e grids, botões, inputs etc
+
+Camada destinada à estilização de objetos, como containers e grids, botões, inputs etc.
 
 Exemplo:
 
@@ -152,32 +162,34 @@ Exemplo:
 }
 ```
 
-Os objetos NÃO devem ter margem, quem define a margem do objeto é componente que utiliza o objeto, por forma de um padding ou gap, por exemplo.
+Os objetos **não** devem ter margem; quem define a margem do objeto é componente que utiliza o objeto, através de um padding ou gap, por exemplo.
 
 ### Components
+
 Nesta camada, definimos estilos para componentes reutilizáveis do projeto, como botões, cards e formulários.
 
 Exemplo:
 
 ```scss
 .social-menu {
-	align-items: center;
-	display: flex;
-	gap: $gap--small;
+    align-items: center;
+    display: flex;
+    gap: $gap--small;
 
-	.social-menu__icon {
+    &__icon {
 
-		svg {
-			height: 1em;
-			width: 1em;
-		}
-	}
+        svg {
+            height: 1em;
+            width: 1em;
+        }
+    }
 }
 ```
 
-Os componente, assim como os objetos, NÃO devem ter margem, quem define a margem é o compoente, container ou wrapper utiliza este componente.
+Os componentes, assim como os objetos, **NÃO** devem ter margem; quem define a margem é o componsente, container ou wrapper que utiliza este componente.
 
 ### Trumps
+
 Camada destinada a estilos de alto nível que substituem ou anulam estilos definidos em camadas anteriores, como hacks e overrides.
 
 Exemplo:
@@ -188,8 +200,8 @@ Exemplo:
 }
 ```
 
+## Overrides
 
-## OVERRIDES
-Como trabalharemos com vários componentes (blocos) de terceiros, sempre que precisemos estilizar estes componentes, devemos criar um arquivo separado para estilizar este elemento na pasta `9.overrides`. 
+Como trabalharemos com vários componentes (blocos) de terceiros, sempre que precisemos estilizar estes componentes, devemos criar um arquivo separado para estilizar este elemento na pasta `9.overrides`.
 
-Apesar de que os estilos desta pasta não necessariamente seguem o padrão BEM para nomenclatura, devemos SEMPRE utilizar as variáveis definidas em `1.constants.scss` ou `2.variables.scss` para fazer a estilização.
+Apesar de que os estilos desta pasta não necessariamente seguem o padrão BEM para nomenclatura, devemos **SEMPRE** utilizar as variáveis definidas em `1.constants.scss` ou `2.variables.scss` para fazer a estilização.

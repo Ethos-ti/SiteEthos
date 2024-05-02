@@ -3,7 +3,7 @@
     display: flex;
     gap: $gap--small;
 
-    .social-menu__icon {
+    &__icon {
 
         svg {
             height: 1em;
