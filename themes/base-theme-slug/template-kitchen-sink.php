@@ -22,7 +22,7 @@ get_header();
     <button type="button" class="button button--solid button--small">Small</button>
     <button type="button" class="button button--solid button--primary">Primary</button>
     <button type="button" class="button button--solid button--secondary">Secondary</button>
-    <button type="button" class="button button--solid button--highlight">Secondary</button>
+    <button type="button" class="button button--solid button--highlight">Highlight</button>
     <button type="button" class="button button--outline button--warning">Warning</button>
     <button type="button" class="button button--solid button--helper">Helper</button>
 </div>
