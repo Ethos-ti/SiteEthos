@@ -7,7 +7,7 @@
 }
 
 @mixin small-up {
-    @media (min-width: #{$break--small + 1px}) {
+    @media (min-width: calc(#{$break--small} + 1px)) {
         @content;
     }
 }
@@ -19,7 +19,7 @@
 }
 
 @mixin mobile-up {
-    @media (min-width: #{$break--tablet + 1px}) {
+    @media (min-width: calc(#{$break--tablet} + 1px)) {
         @content;
     }
 }
@@ -54,20 +54,14 @@
     }
 }
 
-@mixin retina {
-
-    @media only screen and (-webkit-min-device-pixel-ratio: 2),
-    only screen and (min--moz-device-pixel-ratio: 2),
-    only screen and (-o-min-device-pixel-ratio: 2/1),
-    only screen and (min-device-pixel-ratio: 2),
-    only screen and (min-resolution: 192dpi),
-    only screen and (min-resolution: 2dppx) {
+@mixin print {
+    @media print {
         @content;
     }
 }
 
-@mixin print {
-    @media print {
+@mixin dark-mode {
+    @media (prefers-color-scheme: dark) {
         @content;
     }
 }
