@@ -23,8 +23,11 @@
     line-height: $line-height--none;
     padding: $padding--small $padding--medium;
 
-    &--disabled {
+    &--disabled, &--readonly {
         background-color: $color--high-light;
+    }
+
+    &--disabled {
         cursor: not-allowed;
     }
 
@@ -38,8 +41,11 @@
     accent-color: $color--primary-pure;
     transform: scale(1.125);
 
-    &--disabled {
+    &--disabled, &--readonly {
         accent-color: $color--high-dark;
+    }
+
+    &--disabled {
         cursor: not-allowed;
     }
 

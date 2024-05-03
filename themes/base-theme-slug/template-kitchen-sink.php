@@ -96,7 +96,12 @@ get_header();
 
     <div class="form-field form-field--disabled">
         <label for="input-2" class="form-field__label">Texto</label>
-        <input id="input-2" class="text-input text-input--disabled" type="text" disabled>
+        <input id="input-2" class="text-input text-input--disabled" value="Desabilitado" type="text" disabled>
+    </div>
+
+    <div class="form-field form-field--readonly">
+        <label for="input-2" class="form-field__label">Texto</label>
+        <input id="input-2" class="text-input text-input--readonly" value="Somente leitura" type="text" readonly>
     </div>
 
     <div class="form-field form-field--disabled">
@@ -120,8 +125,8 @@ get_header();
     <hr/>
 
     <div class="form-field form-field--error">
-        <label for="input-3" class="form-field__label">Texto</label>
-        <input id="input-3" class="text-input text-input--error" type="text">
+        <label for="input-4" class="form-field__label">Texto</label>
+        <input id="input-4" class="text-input text-input--error" type="text">
     </div>
 
     <div class="form-field form-field--error">
