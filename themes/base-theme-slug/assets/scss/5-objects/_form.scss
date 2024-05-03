@@ -36,6 +36,7 @@
 
 .checkbox, .radio {
     accent-color: $color--primary-pure;
+    transform: scale(1.125);
 
     &--disabled {
         accent-color: $color--high-dark;
