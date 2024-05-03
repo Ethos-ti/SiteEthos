@@ -5,6 +5,7 @@ Este documento descreve os padrões de organização e nomenclatura CSS adotados
 ## Orientações básicas
 
 - **SEMPRE** usar variáveis Sass para definir cores, tamanhos, espaçámentos, fontes, etc.;
+- **EVITE** estilizar elementos html diretamente, sempre que possível utilizar classes. Caso não seja possível, seja bem específico no seletor, por exemplo: `.myblock>.content>p` e não `.myblock p`;
 - Na implementação de um novo componente, verifique se os elementos deste já foram estilizados como objetos na pasta `5.objects` ou como componentes na pasta `6.components`;
 - Na implementação de um novo componente, avalie se os elementos que ainda não foram implementados são utilizados em outros componentes do site e, neste caso, implemente-os na pasta `5.objects` ou `6.components`, caso este seja respectivamente um objeto ou um componente, para em seguida utilizá-lo no componente que está sendo criado;
 - Se estiver com dúvidas em como seguir o padrão, consulte alguém com mais experiência.
