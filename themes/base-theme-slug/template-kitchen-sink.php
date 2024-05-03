@@ -59,88 +59,93 @@ get_header();
 
     <hr/>
 
-    <label class="form-field">
-        <span class="form-field__label">Texto</span>
-        <input class="text-input" type="text">
-    </label>
+    <div class="form-field">
+        <label for="input-1" class="form-field__label">Texto</label>
+        <input id="input-1" class="text-input" type="text">
+    </div>
 
-    <label class="form-field">
-        <span class="form-field__label">Select</span>
-        <select class="select">
+    <div class="form-field">
+        <label for="select-1" class="form-field__label">Select</label>
+        <select id="select-1" class="select">
             <option>Opção 1</option>
             <option>Opção 2</option>
         </select>
-    </label>
+    </div>
 
-    <label class="form-field">
-        <span class="form-field__label">Checkbox 1</span>
-        <input class="checkbox" type="checkbox">
-    </label>
+    <div class="form-field">
+        <label for="checkbox-1" class="form-field__label">Checkbox 1</label>
+        <input id="checkbox-1" class="checkbox" type="checkbox">
+    </div>
 
-    <label class="form-field">
-        <input class="checkbox" type="checkbox">
-        <span class="form-field__label">Checkbox 2</span>
-    </label>
+    <div class="form-field">
+        <input id="checkbox-2" class="checkbox" type="checkbox">
+        <label for="checkbox-2" class="form-field__label">Checkbox 2</label>
+    </div>
 
-    <label class="form-field">
-        <span class="form-field__label">Radio 1</span>
-        <input class="radio" type="radio">
-    </label>
+    <div class="form-field">
+        <label for="radio-1" class="form-field__label">Radio 1</label>
+        <input id="radio-1" class="radio" type="radio">
+    </div>
 
-    <label class="form-field">
-        <input class="radio" type="radio">
-        <span class="form-field__label">Radio 2</span>
-    </label>
+    <div class="form-field">
+        <input id="radio-2" class="radio" type="radio">
+        <label for="radio-2" class="form-field__label">Radio 2</label>
+    </div>
 
     <hr/>
 
-    <label class="form-field form-field--disabled">
-        <span class="form-field__label">Texto</span>
-        <input class="text-input text-input--disabled" type="text" disabled>
-    </label>
+    <div class="form-field form-field--disabled">
+        <label for="input-2" class="form-field__label">Texto</label>
+        <input id="input-2" class="text-input text-input--disabled" value="Desabilitado" type="text" disabled>
+    </div>
 
-    <label class="form-field form-field--disabled">
-        <span class="form-field__label">Select</span>
-        <select class="select select--disabled" disabled>
+    <div class="form-field form-field--readonly">
+        <label for="input-2" class="form-field__label">Texto</label>
+        <input id="input-2" class="text-input text-input--readonly" value="Somente leitura" type="text" readonly>
+    </div>
+
+    <div class="form-field form-field--disabled">
+        <label for="select-2" class="form-field__label">Select</label>
+        <select id="select-2" class="select select--disabled" disabled>
             <option>Opção 1</option>
             <option>Opção 2</option>
         </select>
-    </label>
+    </div>
 
-    <label class="form-field form-field--disabled">
-        <span class="form-field__label">Checkbox</span>
-        <input class="checkbox checkbox--disabled" type="checkbox" disabled>
-    </label>
+    <div class="form-field form-field--disabled">
+        <label for="checkbox-3" class="form-field__label">Checkbox</label>
+        <input id="checkbox-3" class="checkbox checkbox--disabled" type="checkbox" disabled>
+    </div>
 
-    <label class="form-field form-field--disabled">
-        <span class="form-field__label">Radio</span>
-        <input class="radio radio--disabled" type="radio" disabled>
-    </label>
+    <div class="form-field form-field--disabled">
+        <label for="radio-3" class="form-field__label">Radio</label>
+        <input id="radio-3" class="radio radio--disabled" type="radio" disabled>
+    </div>
 
     <hr/>
 
-    <label class="form-field form-field--error">
-        <span class="form-field__label">Texto</span>
-        <input class="text-input text-input--error" type="text">
-    </label>
+    <div class="form-field form-field--error">
+        <label for="input-4" class="form-field__label">Texto</label>
+        <input id="input-4" class="text-input text-input--error" type="text">
+    </div>
 
-    <label class="form-field form-field--error">
-        <span class="form-field__label">Select</span>
-        <select class="select select--error">
+    <div class="form-field form-field--error">
+        <label for="select-3" class="form-field__label">Select</label>
+        <select id="select-3" class="select select--error">
             <option>Opção 1</option>
             <option>Opção 2</option>
         </select>
-    </label>
+    </div>
 
-    <label class="form-field form-field--error">
-        <span class="form-field__label">Checkbox</span>
-        <input class="checkbox checkbox--error" type="checkbox">
-    </label>
+    <div class="form-field form-field--error">
+        <label for="checkbox-4" class="form-field__label">Checkbox</label>
+        <input id="checkbox-4" class="checkbox checkbox--error" type="checkbox">
+    </div>
 
-    <label class="form-field form-field--error">
-        <span class="form-field__label">Radio</span>
-        <input class="radio radio--error" type="radio">
-    </label>
+    <div class="form-field form-field--error">
+        <label for="radio-4" class="form-field__label">Radio</label>
+        <input id="radio-4" class="radio radio--error" type="radio">
+    </div>
 
     <hr/>
 

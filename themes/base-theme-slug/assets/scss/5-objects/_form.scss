@@ -23,8 +23,11 @@
     line-height: $line-height--none;
     padding: $padding--small $padding--medium;
 
-    &--disabled {
+    &--disabled, &--readonly {
         background-color: $color--high-light;
+    }
+
+    &--disabled {
         cursor: not-allowed;
     }
 
@@ -36,9 +39,13 @@
 
 .checkbox, .radio {
     accent-color: $color--primary-pure;
+    transform: scale(1.125);
+
+    &--disabled, &--readonly {
+        accent-color: $color--high-dark;
+    }
 
     &--disabled {
-        accent-color: $color--high-dark;
         cursor: not-allowed;
     }
 

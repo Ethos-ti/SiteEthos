@@ -54,8 +54,14 @@ class Assets {
         return $html;
     }
 
+    public function should_preload_asset ($asset) {
+        if ($asset['global']) {
+            return true;
+        }
+        return is_callable( $asset['preload_callback'] ) && call_user_func( $asset['preload_callback'] );
+    }
+
     public function enqueue_inline_styles() {
-        $preloading_styles_enabled = false;
         $css_uri = get_stylesheet_directory() . '/dist/css/';
 
 		$css_files = $this->get_css_files();
@@ -63,7 +69,7 @@ class Assets {
             $src = $css_uri . $data['file'];
             $content = file_get_contents($src);
 
-			if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) && isset($data['inline']) && $data['inline'] ) {
+			if ( $data['inline'] && self::should_preload_asset( $data ) ) {
                 echo "<style id='$handle-css'>" . $content . "</style>";
 			}
 		}
@@ -79,13 +85,12 @@ class Assets {
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
-
         $css_files = $this->get_css_files();
         foreach ( $css_files as $handle => $data ) {
-            // Skip inline styles
-            if(isset($data['inline']) && $data['inline']) {
+            /**
+             * Skip inline styles
+             */
+            if ($data['inline']) {
                 continue;
             }
 
@@ -93,7 +98,7 @@ class Assets {
             $version = (string) filemtime( $css_dir . $data['file'] );
 
             /**
-             * Depends
+             * Dependencies
              *
              * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
              */
@@ -104,10 +109,8 @@ class Assets {
 
             /*
             * Enqueue global stylesheets immediately and register the other ones for later use
-            * (unless preloading stylesheets is disabled, in which case stylesheets should be immediately
-            * enqueued based on whether they are necessary for the page content).
             */
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+            if ( self::should_preload_asset( $data ) ) {
                 wp_enqueue_style( $handle, $src, $deps, $version, $data['media'] );
             } else {
                 wp_register_style( $handle, $src, $deps, $version, $data['media'] );
@@ -121,9 +124,6 @@ class Assets {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
         $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
 
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
-
         $js_files = $this->get_js_files();
         foreach ( $js_files as $handle => $data ) {
             $src = $js_uri . $data['file'];
@@ -134,7 +134,7 @@ class Assets {
                 $deps = $data['deps'];
             }
 
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+            if ( self::should_preload_asset( $data ) ) {
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
             }
         }
@@ -177,7 +177,6 @@ class Assets {
 
 	/**
 	 * Preloads in-body stylesheets depending on what templates are being used.
-	 *
 	 *
 	 * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content
 	 */
