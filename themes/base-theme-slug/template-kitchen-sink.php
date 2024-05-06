@@ -169,6 +169,8 @@ get_header();
         <rect width="16" height="2" x="0" y="12"/>
     </svg>
 
+    <?php get_template_part( 'template-parts/post-card' ); ?>
+
     <script>
         window.setInterval(() => {
             document.querySelector('#hamburger-animation')?.classList.toggle('hamburger--open')
