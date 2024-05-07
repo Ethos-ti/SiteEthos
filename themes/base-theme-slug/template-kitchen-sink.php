@@ -169,7 +169,17 @@ get_header();
         <rect width="16" height="2" x="0" y="12"/>
     </svg>
 
+    <code>card default</code>
     <?php get_template_part( 'template-parts/post-card' ); ?>
+
+    <code>card vertical</code>
+    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
+
+    <code>card horizontal</code>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
+
+    <code>card cover</code>
+    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
 
     <script>
         window.setInterval(() => {

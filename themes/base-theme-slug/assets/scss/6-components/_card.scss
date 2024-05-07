@@ -1,0 +1,93 @@
+.card {
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        border-radius: $border-radius--large; //9px
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card__content {
+        border-radius: $border-radius--large; //9px
+
+        .card__title {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: $font-weight--bold; //700
+            line-height: $line-height--normal; //1.5
+        }
+
+        .card__excerpt p {
+            color: #222;
+            font-family: "Open Sans";
+
+        }
+    }
+
+    &--cover {
+        position: relative;
+
+        img {
+
+        }
+
+        .card__content {
+            position: absolute;
+            bottom: 0;
+            padding: $padding--medium; //1 rem
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 50.12%, #000 100%);
+            width: 100%;
+
+
+            .card__title {
+                color: #FFF;
+                font-size: $s_h4; //equivalente a 32px
+            }
+
+            .card__meta,
+            .card__excerpt {
+                display: none;
+            }
+
+        }
+
+
+    }
+
+    &--vertical {
+        max-width: 370px;
+
+        img {
+            max-height: 208px;
+        }
+
+        .card__content {
+            display: grid;
+            gap: $gap--small;
+
+            .card__title {
+                margin-top: $margin--large;
+                font-size: $s_h5;
+            }
+        }
+    }
+
+    &--horizontal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        img {
+            border-radius: 0;
+            height: 100%;
+        }
+
+        .card__content {
+            padding: 68px;
+            display: grid;
+            gap: $gap--medium;
+        }
+    }
+
+}
