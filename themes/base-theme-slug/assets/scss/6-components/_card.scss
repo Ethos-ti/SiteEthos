@@ -6,11 +6,14 @@
     img {
         border-radius: $border-radius--large; //9px
         width: 100%;
+        height: 100%;
         object-fit: cover;
     }
 
     .card__content {
         border-radius: $border-radius--large; //9px
+        display: grid;
+        gap: $gap--small;
 
         .card__title {
             font-family: "Montserrat";
@@ -22,16 +25,11 @@
         .card__excerpt p {
             color: #222;
             font-family: "Open Sans";
-
         }
     }
 
     &--cover {
         position: relative;
-
-        img {
-
-        }
 
         .card__content {
             position: absolute;
@@ -50,10 +48,7 @@
             .card__excerpt {
                 display: none;
             }
-
         }
-
-
     }
 
     &--vertical {
@@ -64,9 +59,6 @@
         }
 
         .card__content {
-            display: grid;
-            gap: $gap--small;
-
             .card__title {
                 margin-top: $margin--large;
                 font-size: $s_h5;
@@ -80,12 +72,10 @@
 
         img {
             border-radius: 0;
-            height: 100%;
         }
 
         .card__content {
             padding: 68px;
-            display: grid;
             gap: $gap--medium;
         }
     }
