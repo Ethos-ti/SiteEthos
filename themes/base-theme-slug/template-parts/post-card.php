@@ -2,10 +2,12 @@
 global $post;
 $original_post = $post;
 $post = $args['post'] ?? $post;
+$image_size = $args['image_size'] ?? 'card-large';
 
 $modifiers = (array) $args['modifiers'] ?? [];
 $modifiers = array_map(function ($modifier) { return "card--{$modifier}"; }, $modifiers);
 $modifiers = implode(' ', $modifiers); ?>
+
 
 <article class="card <?=$modifiers?>">
     <header class="card__image">
@@ -13,6 +15,10 @@ $modifiers = implode(' ', $modifiers); ?>
     </header>
 
     <main class="card__content">
+        <div class="card__category">
+            <?php the_category();?>
+        </div>
+
         <h3 class="card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
         </h3>

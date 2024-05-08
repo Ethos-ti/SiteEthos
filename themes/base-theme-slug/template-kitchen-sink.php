@@ -174,22 +174,22 @@ get_header();
     <hr/>
 
     <code>card default</code>
-    <?php get_template_part( 'template-parts/post-card' ); ?>
+    <?php get_template_part( 'template-parts/post-card', null, ['post'=>'1'] ); ?>
 
     <hr/>
 
     <code>card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post'=>'1'] ); ?>
 
     <hr/>
 
     <code>card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post'] ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post'=>'1'] ); ?>
 
     <hr/>
 
     <code>card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover', ['post'=>'1'] ); ?>
 
     <hr/>
 
