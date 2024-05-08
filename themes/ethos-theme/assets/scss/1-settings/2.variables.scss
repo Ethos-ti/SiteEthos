@@ -1,0 +1,67 @@
+// Breakpoints
+$break--small: 36rem; // 576px
+$break--tablet: 48rem; // 768px
+$break--desktop: 62rem; // 992px
+$break--desktop-large: 75rem; // 1200px
+$break--desktop-x-large: 87.5rem; // 1400px
+
+// Grid
+$grid--wide: 75rem;
+$grid--normal: 48rem;
+$grid--narrow: 37.5rem;
+
+// Fontes para dispositivos móveis
+$font-size-mobile--hero:     var(--wp--preset--font-size--hero);
+$font-size-mobile--xx-large: var(--wp--preset--font-size--xx-large);
+$font-size-mobile--x-large:  var(--wp--preset--font-size--x-large);
+$font-size-mobile--large:    var(--wp--preset--font-size--large);
+$font-size-mobile--medium:   var(--wp--preset--font-size--medium);
+$font-size-mobile--small:    var(--wp--preset--font-size--small);
+$font-size-mobile--x-small:  var(--wp--preset--font-size--x-small);
+
+// Font weights
+$font-weight--bold: 700;
+$font-weight--medium: 500;
+$font-weight--regular: 400;
+$font-weight--light: 300;
+
+// Line heights
+$line-height--loose: 1.75;
+$line-height--normal: 1.5;
+$line-height--tight: 1.25;
+$line-height--none: 1;
+
+// Espaçamentos
+$margin--small: 0.5rem;
+$margin--medium: 1rem;
+$margin--large: 2rem;
+
+$padding--small: 0.5rem;
+$padding--medium: 1rem;
+$padding--large: 2rem;
+
+$gap--small: 0.5rem;
+$gap--medium: 1rem;
+$gap--large: 2rem;
+
+// Border radius
+$border-radius--round: 50%;
+$border-radius--small: 3px;
+$border-radius--medium: 6px;
+$border-radius--large: 9px;
+
+// Bordas
+$border-width--small: 1px;
+$border-width--medium: 2px;
+$border-width--large: 4px;
+
+// Cores de borda
+$border-color--light: $color--high-light;
+$border-color--dark: $color--primary-dark;
+
+// Box shadows
+$box-shadow--default: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
+
+// Paths
+$path--theme: '/wp-content/themes/base-theme-slig';
+$path--assets: $path--theme + '/assets';

@@ -1,0 +1,13 @@
+.social-menu {
+    align-items: center;
+    display: flex;
+    gap: $gap--small;
+
+    &__icon {
+
+        svg {
+            height: 1em;
+            width: 1em;
+        }
+    }
+}

@@ -49,23 +49,29 @@ class Assets {
 
     public function add_rel_preload($html, $handle, $href, $media) {
         if (!WP_DEBUG && (is_admin() || is_user_logged_in())) return $html;
-        
+
         $html = "<link rel='stylesheet' onload=\"this.onload=null;this.media='all'\" id='$handle' href='$href' type='text/css' media='print' />";
         return $html;
     }
-    
+
+    public function should_preload_asset ($asset) {
+        if ($asset['global']) {
+            return true;
+        }
+        return is_callable( $asset['preload_callback'] ) && call_user_func( $asset['preload_callback'] );
+    }
+
     public function enqueue_inline_styles() {
-        $preloading_styles_enabled = false;
         $css_uri = get_stylesheet_directory() . '/dist/css/';
 
 		$css_files = $this->get_css_files();
 		foreach ( $css_files as $handle => $data ) {
-            $src = $css_uri . $data['file'];            
+            $src = $css_uri . $data['file'];
             $content = file_get_contents($src);
 
-			if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) && isset($data['inline']) && $data['inline'] ) {
+			if ( $data['inline'] && self::should_preload_asset( $data ) ) {
                 echo "<style id='$handle-css'>" . $content . "</style>";
-			} 
+			}
 		}
     }
 
@@ -79,22 +85,21 @@ class Assets {
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
-
         $css_files = $this->get_css_files();
         foreach ( $css_files as $handle => $data ) {
-            // Skip inline styles
-            if(isset($data['inline']) && $data['inline']) {
+            /**
+             * Skip inline styles
+             */
+            if ($data['inline']) {
                 continue;
             }
 
             $src = $css_uri . $data['file'];
             $version = (string) filemtime( $css_dir . $data['file'] );
-            
+
             /**
-             * Depends
-             * 
+             * Dependencies
+             *
              * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
              */
             $deps = [];
@@ -104,10 +109,8 @@ class Assets {
 
             /*
             * Enqueue global stylesheets immediately and register the other ones for later use
-            * (unless preloading stylesheets is disabled, in which case stylesheets should be immediately
-            * enqueued based on whether they are necessary for the page content).
             */
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+            if ( self::should_preload_asset( $data ) ) {
                 wp_enqueue_style( $handle, $src, $deps, $version, $data['media'] );
             } else {
                 wp_register_style( $handle, $src, $deps, $version, $data['media'] );
@@ -121,9 +124,6 @@ class Assets {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
         $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
 
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
-
         $js_files = $this->get_js_files();
         foreach ( $js_files as $handle => $data ) {
             $src = $js_uri . $data['file'];
@@ -134,7 +134,7 @@ class Assets {
                 $deps = $data['deps'];
             }
 
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+            if ( self::should_preload_asset( $data ) ) {
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
             }
         }
@@ -147,7 +147,7 @@ class Assets {
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );			
+        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );
         // wp_enqueue_script(
         //     'buddyx-admin-script',
         //     get_theme_file_uri( '/assets/js/buddyx-admin.min.js' ),
@@ -159,7 +159,7 @@ class Assets {
 
 	/**
 	 * Enqueue custom assets on admin after default asstes blocks
-	 * 
+	 *
 	 * @link https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
 	 */
 	public function enqueue_block_editor_assets() {
@@ -177,7 +177,6 @@ class Assets {
 
 	/**
 	 * Preloads in-body stylesheets depending on what templates are being used.
-	 *
 	 *
 	 * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content
 	 */
@@ -286,95 +285,22 @@ class Assets {
 		}
 
 		$css_files = [
-			'critical'     => [
-                'file' => 'critical.css',
+			'app' => [
+				'file' => 'app.css',
 				'global' => true,
-                'inline' => true,
-			],
-	
-            'home' => [
-				'file' => '_p-home.css',
-                'preload_callback' => function() {
-					return is_front_page();
-				},
+				'inline' => false,
 			],
 
+			/*
             'page' => [
-                'file' => '_p-page.css',
+                'file' => 'p-page.css',
                 'preload_callback' => function() {
 					return !is_front_page() && is_page();
 				},
             ],
-
-            'single' => [
-                'file' => '_p-single.css',
-                'preload_callback' => function() {
-					return is_single();
-				},
-            ],
-
-            '404' => [
-                'file' => '_p-404.css',
-                'preload_callback' => function() {
-					return is_404();
-				},
-            ],
-
-            'archive' => [
-                'file' => '_p-archive.css',
-                'preload_callback' => function() {
-					return ( is_archive() || is_home() ) ? true : false;
-				},
-            ],
-
-			'archive-editais' => [
-				'file' => '_p-archive-editais.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'editais' ) || is_singular( 'editais' ) ) ? true : false;
-				},
-			],
-
-			'archive-perguntas-frequentes' => [
-				'file' => '_p-archive-perguntas-frequentes.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
-				},
-			],
-
-            'search' => [
-                'file' => '_p-search.css',
-                'preload_callback' => function() {
-					return is_search();
-				},
-            ],
-			'author' => [
-				'file' => '_p-author.css',
-				'preload_callback' => function () {
-					return is_author();
-				},
-			],
-			'projects' => [
-                'file' => '_p-projects.css',
-                'preload_callback' => function() {
-					return !is_front_page() && is_page();
-				},
-            ],
-			'anchor' => [
-				'file' => '_p-page-anchor.css',
-				'preload_callback' => function() {
-					return is_page_template( 'page-anchor.php' );
-				},
-            ],
-
-			// Tutor
-			'tutorstarter' => [
-				'file' => '_p-tutorstarter.css',
-				'preload_callback' => function() {
-					return is_plugin_active( 'tutor/tutor.php' );
-				},
-			]
+			*/
 		];
-		
+
 		/**
 		 * Filters default CSS files.
 		 *
@@ -449,7 +375,7 @@ class Assets {
 					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
 				}
 			],
-			
+
 			'copy-url' => [
                 'file' => 'copy-url.js',
                 'global' => true,
@@ -461,9 +387,9 @@ class Assets {
 					return is_page_template( 'page-anchor.php' );
 				}
 			],
-			
+
  		];
-		
+
 		$js_files = apply_filters('js_files_before_output', $js_files);
 
 		$this->js_files = [];
@@ -573,7 +499,7 @@ class Assets {
                 wp_enqueue_script( 'tiny-slider', get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js', [], false, true );
 		        wp_enqueue_script( 'news-slider', get_stylesheet_directory_uri() . '/dist/js/functionalities/featured-slider.js', ['tiny-slider'], false, true );
             },
-            
+
 			'jaci/embed-template' => function() {
 				wp_enqueue_style(
 					'embed-template',
@@ -603,49 +529,7 @@ class Assets {
                     filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
                     'all'
                 );
-            },
-            'core/image' => function() {
-                wp_enqueue_style(
-                    'core-image',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-image.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-image.css'),
-                    'all'
-                );
-            },
-
-			'core/query' => function() {
-				wp_enqueue_style(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/assets/vendor/tiny-slider/tiny-slider.css'),
-					'all'
-				);
-
-				wp_enqueue_style(
-					'core-query',
-					get_stylesheet_directory_uri() . '/dist/css/_b-query.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-query.css'),
-					'all'
-				);
-
-				wp_enqueue_script(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js',
-					[], '2.9.3',
-					true
-				);
-
-				wp_enqueue_script(
-					'query-slider',
-					get_stylesheet_directory_uri() . '/dist/js/functionalities/query-slider.js',
-					['tiny-slider'],
-					filemtime(get_stylesheet_directory() . '/dist/js/functionalities/query-slider.js'),
-					true
-				);
-			}
+            }
 		];
 
         // Enqueue only used blocks

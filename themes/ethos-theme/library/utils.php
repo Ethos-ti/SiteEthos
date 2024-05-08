@@ -2,7 +2,7 @@
 /**
  *
  * Remove recaptcha from tainacan
- *  
+ *
  */
 add_action( 'init', function() {
     wp_dequeue_script( 'tainacan-google-recaptcha-script' );
@@ -194,46 +194,6 @@ function get_terms_by_post_type( $taxonomy, $post_type ) {
     return $terms;
 
 }
-
-/**
- * Returns total post views
- *
- * @link https://developer.wordpress.org/reference/functions/get_post_meta/
- * @link https://developer.wordpress.org/reference/functions/get_the_ID/
- */
-function gt_get_post_view() {
-    $count = get_post_meta( get_the_ID(), 'post_views_count', true );
-    $count = ($count == 1 ? $count." Visualização" : $count." Visualizações" );
-    return "$count";
-}
-
-/**
- * Defines total post views
- *
- * @link https://developer.wordpress.org/reference/functions/get_post_meta/
- * @link https://developer.wordpress.org/reference/functions/get_the_ID/
- * * @link https://developer.wordpress.org/reference/functions/update_post_meta/
- */
-function gt_set_post_view() {
-    $key = 'post_views_count';
-    $post_id = get_the_ID();
-    $count = (int) get_post_meta( $post_id, $key, true );
-    $count++;
-    update_post_meta( $post_id, $key, $count );
-}
-
-function gt_posts_column_views( $columns ) {
-    $columns['post_views'] = 'Views';
-    return $columns;
-}
-
-function gt_posts_custom_column_views( $column ) {
-    if ( $column === 'post_views') {
-        echo gt_get_post_view();
-    }
-}
-add_filter( 'manage_posts_columns', 'gt_posts_column_views' );
-add_action( 'manage_posts_custom_column', 'gt_posts_custom_column_views' );
 
 //Page Slug Body Class
 function add_slug_body_class( $classes ) {

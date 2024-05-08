@@ -1,0 +1,18 @@
+.main-header {
+    background-color: var(--hl--color--header-background);
+    color: var(--hl--color--header-text);
+    left: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    transition: all 0.3s;
+
+    &__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        min-height: size(80);
+        padding-inline: $padding--medium;
+    }
+}
