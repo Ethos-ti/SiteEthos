@@ -80,6 +80,7 @@ docker-compose up
 ## Substituir strings e renomear arquivos/pastas:
 - **base-theme-slug** pela slug nova (exemplo ipsum-theme)
 - **base-theme-name** pelo nome (exemplo Ipsum theme )
+- **base-textdomain** pelo textdomain (exemplo ipsum-textdomain)
 - **BaseThemeName** pelo namespace (exemplo Ipsum)
 - alterar nome da pasta para corresponder ao slug (exemplo ipsum-theme)
 - alterar nome do arquivo /languages/*.pot
