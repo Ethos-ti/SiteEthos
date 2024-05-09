@@ -148,7 +148,7 @@ get_header();
     </div>
 
     <hr/>
-
+    <code>object: hamburger, open, toggle</code>
     <svg class="hamburger" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <title>Exibir menu</title>
         <rect width="16" height="2" x="0" y="2"/>
@@ -169,35 +169,35 @@ get_header();
         <rect width="16" height="2" x="0" y="12"/>
     </svg>
 
-    <br/>
-
-    <hr/>
-
-    <code>card default</code>
-    <?php get_template_part( 'template-parts/post-card', null, ['post'=>'1'] ); ?>
-
-    <hr/>
-
-    <code>card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post'=>'1'] ); ?>
-
-    <hr/>
-
-    <code>card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post'=>'1'] ); ?>
-
-    <hr/>
-
-    <code>card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover', ['post'=>'1'] ); ?>
-
-    <hr/>
-
     <script>
         window.setInterval(() => {
             document.querySelector('#hamburger-animation')?.classList.toggle('hamburger--open')
         }, 3000)
     </script>
+
+    <br/>
+
+    <hr/>
+
+    <code>componente: card default</code>
+    <?php get_template_part( 'template-parts/post-card'); ?>
+
+    <hr/>
+
+    <code>componente: card vertical</code>
+    <?php get_template_part( 'template-parts/post-card', 'vertical'); ?>
+
+    <hr/>
+
+    <code>componente: card horizontal</code>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
+
+    <hr/>
+
+    <code>componente: card cover</code>
+    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
+
+    <hr/>
 </div>
 
 <?php get_footer(); ?>
