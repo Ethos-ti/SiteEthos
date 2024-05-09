@@ -5,5 +5,10 @@
 
     &__widgets{
         max-width: $grid--wide;
+
+        .wp-block-heading{
+            margin-top: $margin--small;
+            margin-bottom: $margin--small;
+        }
     }
 }
