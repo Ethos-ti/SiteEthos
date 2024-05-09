@@ -4,7 +4,7 @@ Este documento descreve os padrões de organização e nomenclatura CSS adotados
 
 ## Orientações básicas
 
-- **SEMPRE** usar variáveis Sass para definir cores, tamanhos, espaçámentos, fontes, etc.;
+- **SEMPRE** usar variáveis Sass para definir cores, tamanhos, espaçamentos, fontes, etc.;
 - **EVITE** estilizar elementos html diretamente, sempre que possível utilizar classes. Caso não seja possível, seja bem específico no seletor, por exemplo: `.myblock>.content>p` e não `.myblock p`;
 - Na implementação de um novo componente, verifique se os elementos deste já foram estilizados como objetos na pasta `5.objects` ou como componentes na pasta `6.components`;
 - Na implementação de um novo componente, avalie se os elementos que ainda não foram implementados são utilizados em outros componentes do site e, neste caso, implemente-os na pasta `5.objects` ou `6.components`, caso este seja respectivamente um objeto ou um componente, para em seguida utilizá-lo no componente que está sendo criado;
@@ -163,11 +163,13 @@ Exemplo:
 }
 ```
 
-Os objetos **não** devem ter margem; quem define a margem do objeto é componente que utiliza o objeto, através de um padding ou gap, por exemplo:
+Os objetos **NÃO** devem implementar qualquer estilização externa, como margens, position, width ou max-width; quem define é componente que utiliza o objeto, como no exemplo abaixo onde é colocado uma _margem medium_ no primeiro botão e um _gap large_ entre os botões
 
 ```html
 <div class="container -gap-large">
-    <div class="card card--cover -margin-medium">
+    <button class="button -margin-medium">Botão 1</button>
+    <button class="button button--large">Botão 2</button>
+
 ```
 
 ### Components
@@ -192,7 +194,7 @@ Exemplo:
 }
 ```
 
-Os componentes, assim como os objetos, **NÃO** devem ter margem; quem define a margem é o componsente, container ou wrapper que utiliza este componente.
+Os componentes, assim como os objetos, **NÃO** devem implementar qualquer estilização externa, como margens, position, width ou max-width;
 
 ### Trumps
 
