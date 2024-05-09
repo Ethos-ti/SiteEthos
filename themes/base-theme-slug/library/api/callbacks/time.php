@@ -1,5 +1,5 @@
-<?php 
-namespace jaci;
+<?php
+namespace BaseThemeName;
 
 class ServeTime {
     static public function get_time() {

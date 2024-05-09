@@ -1,6 +1,6 @@
 <?php
 
-namespace jaci;
+namespace BaseThemeName;
 
 if (class_exists('hl\\mssync\\Rule')) {
 

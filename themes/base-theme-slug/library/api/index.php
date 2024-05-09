@@ -1,6 +1,6 @@
 <?php
 
-namespace jaci;
+namespace BaseThemeName;
 
 class API {
     /**
@@ -21,7 +21,7 @@ class API {
         add_action( 'rest_api_init', function () {
             register_rest_route( 'api', '/time', array(
                 'methods' => 'GET',
-                'callback' => 'jaci\API::get_time',
+                'callback' => 'BaseThemeName\API::get_time',
                 'permission_callback' => function() {
                     return true;
                 },

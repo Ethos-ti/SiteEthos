@@ -1,7 +1,7 @@
 <?php
 global $post;
-if ($post = jaci\get_sidebar_page()) {
+if ($post = BaseThemeName\get_sidebar_page()) {
     setup_postdata($post);
-    the_content(); 
+    the_content();
 }
 wp_reset_postdata();

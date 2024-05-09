@@ -1,6 +1,6 @@
 <?php
 
-namespace jaci;
+namespace BaseThemeName;
 
 class Assets {
     private static $instances = [];
@@ -79,7 +79,7 @@ class Assets {
         // Enqueue Google Fonts.
         $google_fonts_url = $this->get_google_fonts_url();
         if ( ! empty( $google_fonts_url ) ) {
-            wp_enqueue_style( 'jaci-fonts', $google_fonts_url, [], null );
+            wp_enqueue_style( 'base-theme-slug-fonts', $google_fonts_url, [], null );
         }
 
         $css_uri = get_theme_file_uri( '/dist/css/' );
@@ -479,7 +479,7 @@ class Assets {
 		$id = get_the_ID();
 
         $block_list = [
-            'jaci/featured-slider' => function() {
+            'BaseThemeName/featured-slider' => function() {
                 wp_enqueue_style(
                     'tiny-slider',
                     get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
@@ -500,7 +500,7 @@ class Assets {
 		        wp_enqueue_script( 'news-slider', get_stylesheet_directory_uri() . '/dist/js/functionalities/featured-slider.js', ['tiny-slider'], false, true );
             },
 
-			'jaci/embed-template' => function() {
+			'BaseThemeName/embed-template' => function() {
 				wp_enqueue_style(
 					'embed-template',
 					get_stylesheet_directory_uri() . '/dist/css/_b-embed-template.css',
@@ -510,7 +510,7 @@ class Assets {
 				);
 				wp_enqueue_script( 'embed-template', get_stylesheet_directory_uri() . '/dist/js/blocks/embed-template.js', [], false, true );
 			},
-			'jaci/video-gallery' => function() {
+			'BaseThemeName/video-gallery' => function() {
 				wp_enqueue_style(
 					'video-gallery',
 					get_stylesheet_directory_uri() . '/dist/css/_b-video-gallery.css',

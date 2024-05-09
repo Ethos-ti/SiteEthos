@@ -1,5 +1,5 @@
 <?php
-namespace hacklabTema;
+namespace BaseThemeName;
 
 function join_meta_table( $join ) {
     global $wpdb;
