@@ -353,12 +353,6 @@ class Assets {
 				'global' => true,
 			],
 
-			// Tutor
-			'tutorstarter'     => [
-                'file' => 'tutorstarter.js',
-				'global' => true,
-			],
-
             'scroll-behavior'     => [
                 'file' => 'anchor-behavior.js',
 				'global' => true,
