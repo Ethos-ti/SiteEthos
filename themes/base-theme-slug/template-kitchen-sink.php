@@ -180,24 +180,32 @@ get_header();
     <hr/>
 
     <code>componente: card default</code>
-    <?php get_template_part( 'template-parts/post-card'); ?>
+    <?php get_template_part( 'template-parts/post-card', null, ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical'); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover', ['post' => '1'] ); ?>
 
     <hr/>
+
+    <details class="accordeon">
+        <summary class="accordeon__header">Accordeon</summary>
+        <div class="accordeon__content">Content</div>
+    </details>
+
+
+
 </div>
 
 <?php get_footer(); ?>
