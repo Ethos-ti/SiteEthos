@@ -32,9 +32,9 @@ function widgets_areas() {
 	register_sidebar(array(
 		'name'          => 'Footer Widgets',
 		'id'            => 'footer_widgets',
-		'before_widget' => '<div class="footer-widgets">',
+		'before_widget' => '<div class="main-footer__widget">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">',
+		'before_title'  => '<h2 class="main-footer__widget-title">',
 		'after_title'   => '</h2>',
 	));
 
