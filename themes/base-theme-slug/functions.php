@@ -2,14 +2,6 @@
 
 namespace BaseThemeName;
 
-function add_image_credits($content,$attributes, $post){
-    if($attributes['showImageCredit'] == true){
-        $content .= '<p class="post-image-credit">Foto: '.$post['image_credit'].'</p>';
-    }
-    $content .= '<p class="post-authors">'.$post['meta_authors'].'</p>';
-    return $content;
-}
-
 if ( ! function_exists( 'is_plugin_active' ) ) {
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
