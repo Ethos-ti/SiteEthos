@@ -3,8 +3,17 @@
     padding-bottom: $padding--large;
     padding-top: $padding--xx-large;
 
+    @include mobile{
+        padding-top: $padding--x-large;
+    }
+
     &__widgets{
         max-width: $grid--wide;
+
+        @include mobile{
+            padding-left: $padding--x-large;
+            padding-right: $padding--x-large;
+        }
 
         .wp-block-heading{
             margin-top: $margin--small;
