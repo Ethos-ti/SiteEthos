@@ -1,5 +1,9 @@
-footer.main-footer{
-    p{
-        line-height: 170%;
+.main-footer{
+    background-color: $color--primary-dark;
+    padding-bottom: $padding--large;
+    padding-top: $padding--xx-large;
+
+    &__widgets{
+        max-width: $grid--wide;
     }
 }
