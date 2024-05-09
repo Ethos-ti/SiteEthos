@@ -59,6 +59,40 @@ function get_html_terms( int $post_id, string $tax, bool $use_link = false ) {
 }
 
 /**
+ * Print the excerpt with limit words
+ */
+function get_custom_excerpt( $post_id = '', $limit = 30 ) {
+
+    if ( empty( $post_id ) ) {
+        $post_id = get_the_ID();
+    }
+
+    // If exists excerpt metadata
+    $excerpt = get_post_meta( $post_id, 'excerpt', true );
+
+    if ( empty( $excerpt ) ) {
+        $excerpt = get_the_excerpt( $post_id );
+    }
+
+    if ( empty( $excerpt ) ) {
+        $excerpt = wp_trim_excerpt( '', $post_id );
+    }
+
+    $excerpt = wp_strip_all_tags( $excerpt );
+    $excerpt = explode( ' ', $excerpt, $limit );
+
+    if ( count( $excerpt ) >= $limit ) {
+        array_pop( $excerpt );
+        $excerpt = implode( ' ', $excerpt ) . ' ...';
+    } else {
+        $excerpt = implode( ' ', $excerpt );
+    }
+
+    return $excerpt;
+
+}
+
+/**
  * Rename the defaults taxonomies
  */
 function rename_taxonomies() {

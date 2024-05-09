@@ -1,12 +1,14 @@
 <?php
 
+namespace BaseThemeName;
+
 /**
- * 
+ *
  * Adds theme supports
- * 
+ *
  * As of version 5.8, supports for blocks must be inserted from the theme.json file in the root of the theme
  * @link https://github.com/WordPress/gutenberg/blob/trunk/docs/how-to-guides/themes/theme-json.md
- * 
+ *
  */
 function theme_supports() {
     add_theme_support( 'align-wide' );
@@ -28,7 +30,8 @@ function theme_supports() {
         add_theme_support( 'editor-font-sizes' );
     }
 }
-add_action( 'after_setup_theme', 'theme_supports' );
+
+add_action( 'after_setup_theme', 'BaseThemeName\\theme_supports' );
 
 /**
  * Load the theme textdomain
@@ -36,29 +39,7 @@ add_action( 'after_setup_theme', 'theme_supports' );
 function theme_setup() {
     load_theme_textdomain( 'base-textdomain', get_stylesheet_directory() . '/languages' );
 }
-add_action( 'after_setup_theme', 'theme_setup' );
-
-/**
- * Print the excerpt with limited words
- * 
- * @todo move to utils.php file
- */
-function custom_excerpt( $limit ) {
-
-    $excerpt = explode( ' ', get_the_excerpt(), $limit );
-
-    if ( count( $excerpt ) >= $limit ) {
-      array_pop( $excerpt );
-      $excerpt = implode( ' ', $excerpt ) . ' ...';
-    } else {
-        $excerpt = implode( ' ', $excerpt );
-    }
-
-    $excerpt = preg_replace( '`[[^]]*]`', '', $excerpt );
-
-    return $excerpt;
-
-}
+add_action( 'after_setup_theme', 'BaseThemeName\\theme_setup' );
 
 /**
  * Add support to load blocks scripts only if needed
