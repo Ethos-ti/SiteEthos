@@ -2,13 +2,14 @@
 global $post;
 $original_post = $post;
 $post = $args['post'] ?? $post;
+
 $image_size = $args['image_size'] ?? 'card-large';
 
-$modifiers = (array) $args['modifiers'] ?? [];
-$modifiers = array_map(function ($modifier) { return "card--{$modifier}"; }, $modifiers);
-$modifiers = implode(' ', $modifiers); ?>
+$modifiers = (array) ($args['modifiers'] ?? []);
+$modifiers = array_map(fn ($modifier) => "card--{$modifier}", $modifiers);
+$modifiers = implode(' ', $modifiers);
 
-
+?>
 <article class="card <?=$modifiers?>">
     <header class="card__image">
         <a href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a>
@@ -34,10 +35,10 @@ $modifiers = implode(' ', $modifiers); ?>
         </div>
 
         <div class="card__excerpt">
-            <?php the_excerpt(); ?>
+            <?= get_the_excerpt(); ?>
         </div>
     </main>
 </article>
 
 <?php
-$post = $original_post; ?>
+$post = $original_post;
