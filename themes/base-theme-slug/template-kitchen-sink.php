@@ -204,6 +204,13 @@ get_header();
         <div class="accordeon__content">Content</div>
     </details>
 
+    <h2>Tags</h2>
+    <a class="tag" href="#">Teste</a>
+    <a class="tag tag--highlight" href='#'>Teste</a>
+    <a class="tag tag--primary tag--solid" href="/category/saude">Teste</a>
+    <span class="tag tag--secondary">Teste</span>
+    <span class="tag tag--helper">Teste</span>
+    <a class="tag tag--warning tag--outline" href="/category/saude">Teste</a>
 
 
 </div>

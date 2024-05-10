@@ -1,0 +1,63 @@
+.tag{
+    border: $border-width--medium solid $color--low-pure;
+    border-radius: $border-radius--medium;
+    cursor: pointer;
+    line-height: $line-height--normal;
+    padding: $padding--x-small $padding--small;
+    text-decoration: none;
+    font-size: $font-size--x-small;
+    font-weight: $font-weight--bold;
+
+    // Styles
+
+    &--solid {
+        background-color: var(--hl-button-color, $color--low-pure);
+        color: $color--high-pure;
+
+        &:active, &:hover {
+            background-color: var(--hl-button-hover-color, $color--low-pure);
+        }
+    }
+
+    &--outline {
+        background-color: $color--high-pure;
+        border-color: var(--hl-button-color);
+        color: var(--hl-button-color, $color--low-pure);
+
+        &:active, &:hover {
+            background-color: $color--high-light;
+        }
+    }
+
+    // Colors
+
+    &--highlight {
+        border: $border-width--medium solid $color--highlight-dark;
+        background-color: $color--highlight-pure;
+        color: $color--highlight-light;
+    }
+
+    &--primary {
+        border: $border-width--medium solid $color--primary-pure;
+        background-color: $color--primary-dark;
+        color: $color--primary-light;
+    }
+
+    &--secondary {
+        border: $border-width--medium solid $color--secondary-pure;
+        background-color: $color--secondary-dark;
+        color: $color--secondary-light;
+    }
+
+    &--helper {
+        border: $border-width--medium solid $color--helper-pure;
+        background-color: $color--helper-dark;
+        color: $color--helper-light;
+    }
+
+    &--warning {
+        border: $border-width--medium solid $color--warning-pure;
+        background-color: $color--warning-dark;
+        color: $color--warning-light;
+    }
+}
