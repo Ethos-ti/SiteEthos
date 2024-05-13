@@ -1,7 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../plugins/hacklab-blocks
-docker run -it -v `pwd`:/compilar node:12 bash -c "cd compilar && npm install && npm run production"
+docker run -it -v `pwd`:/compilar node:20 bash -c "cd compilar && npm install && npm run production"
 ls
 pwd
 cd $DIR/../plugins/
