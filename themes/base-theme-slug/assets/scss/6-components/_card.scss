@@ -2,48 +2,42 @@
     .card__image {
         .wp-post-image,
         img {
-            border-radius: $border-radius--large; //9px
-            width: 100%;
+            border-radius: $border-radius--large;
             height: 100%;
             object-fit: cover;
+            width: 100%;
         }
     }
 
     .card__content {
-        border-radius: $border-radius--large; //9px
-        display: grid;
+        border-radius: $border-radius--large;
+        display: flex;
+        flex-direction: column;
         gap: $gap--small;
+        justify-content: center;
+        margin-top: $margin--medium;
 
         & a {
             text-decoration: none;
         }
 
         .card__category {
+
             .post-categories {
-                list-style: none;
                 display: flex;
                 flex-wrap: wrap;
                 gap: calc($gap--small * .5);
+                list-style: none;
                 padding: calc($padding--small * .5) 0;
-
-                > li {
-                    padding: calc($padding--small * .5) $padding--small;
-                    font-size: $font-size--small;
-                    font-family: $font-family--heading;
-                    font-weight: $font-weight--bold;
-                    text-transform: uppercase;
-                    border-radius: $border-radius--small;
-                    border: solid $border-width--medium $color--low-pure;
-                }
             }
         }
 
         .card__title {
             font-family: $font-family--heading;
             font-style: normal;
-            font-size: $font-size--large; // 1.5rem
-            font-weight: $font-weight--bold; //700
-            line-height: $line-height--normal; //1.5
+            font-size: $font-size--large;
+            font-weight: $font-weight--bold;
+            line-height: $line-height--normal;
         }
 
         .card__excerpt p {
@@ -55,11 +49,16 @@
     &--cover {
         position: relative;
 
+        .card__image {
+            height: auto;
+        }
+
         .card__content {
-            position: absolute;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
             bottom: 0;
-            padding: $padding--medium; //1 rem
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 50.12%, #000 100%);
+            color: $color--high-pure;
+            padding: $padding--medium;
+            position: absolute;
             width: 100%;
 
             .card__category {
@@ -70,13 +69,7 @@
             }
 
             .card__title {
-                color: $color--high-pure;
-                font-size: $font-size--xx-large; //equivalente a 32px
-            }
-
-            .card__meta,
-            .card__excerpt {
-                display: none;
+                font-size: $font-size--xx-large;
             }
         }
     }

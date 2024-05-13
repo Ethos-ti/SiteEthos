@@ -9,16 +9,21 @@ $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
 
+$category = get_the_category();
 ?>
 <article class="card <?=$modifiers?>">
     <header class="card__image">
-        <a href="<?php the_permalink();?>"><?php the_post_thumbnail();?></a>
+        <a href="<?php the_permalink();?>"><?php the_post_thumbnail($image_size); ?></a>
     </header>
 
     <main class="card__content">
-        <div class="card__category">
-            <?php the_category();?>
-        </div>
+        <?php if (!empty($category)): ?>
+            <div class="card__category">
+                <a class="tag tag--solid" href="<?= get_term_link($category[0], 'category') ?>">
+                    <?= $category[0]->name ?>
+                </a>
+            </div>
+        <?php endif; ?>
 
         <h3 class="card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
