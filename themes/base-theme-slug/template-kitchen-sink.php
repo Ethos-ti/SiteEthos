@@ -185,17 +185,17 @@ get_header();
     <hr/>
 
     <code>componente: card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical'  ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
 
     <hr/>
 
     <code>componente: card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal'  ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
 
     <hr/>
 
     <code>componente: card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover'  ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
 
     <hr/>
 
