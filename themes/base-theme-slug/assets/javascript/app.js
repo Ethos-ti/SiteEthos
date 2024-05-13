@@ -1,9 +1,3 @@
-import Vue from 'vue';
-
-const app = new Vue({
-    el: '#app',
-})
-
 jQuery(document).ready(function(){
     scrolledMenu();
 
