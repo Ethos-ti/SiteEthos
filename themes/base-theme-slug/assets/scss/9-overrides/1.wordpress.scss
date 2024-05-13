@@ -1,0 +1,17 @@
+.pagination > .nav-links {
+    & > .prev {
+        @extend .pagination__previous;
+    }
+    & > .next {
+        @extend .pagination__next;
+    }
+    & > .dots {
+        @extend .pagination__dots;
+    }
+    & > .page-numbers:is(a, span) {
+        @extend .pagination__number;
+    }
+    & > .current {
+        @extend .pagination__current;
+    }
+}

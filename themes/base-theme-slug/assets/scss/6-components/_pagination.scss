@@ -1,0 +1,10 @@
+.pagination {
+    &__previous {}
+    &__next {}
+
+    &__dots {}
+
+    &__number {
+        &--current {}
+    }
+}
