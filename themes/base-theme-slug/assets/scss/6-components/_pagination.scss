@@ -1,6 +1,6 @@
 .pagination {
-    width: fit-content;
     margin: auto;
+    width: fit-content;
 
     &__nav-links {
         display: flex;
@@ -14,16 +14,18 @@
         }
 
         &__number {
+            align-items: center;
+            display: flex;
+            height: $font-size--xx-large;
+            justify-content: center;
+            padding: $padding--small;
+            min-width: $font-size--xx-large;
             text-decoration: none;
-            padding: 3px 10px;
-
 
             &--current {
                 background: $color--primary-pure;
-                border-radius: 50%;
+                border-radius: $border-radius--round;
             }
         }
     }
-
-
 }
