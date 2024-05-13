@@ -180,22 +180,22 @@ get_header();
     <hr/>
 
     <code>componente: card default</code>
-    <?php get_template_part( 'template-parts/post-card', null ); ?>
+    <?php get_template_part( 'template-parts/post-card', null, ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover', ['post' => '1'] ); ?>
 
     <hr/>
 
@@ -213,6 +213,30 @@ get_header();
     <span class="tag tag--solid tag--secondary">Teste</span>
     <span class="tag tag--solid tag--helper">Teste</span>
     <a class="tag tag--outline tag--warning" href="/category/saude">Teste</a>
+
+    <hr/>
+
+    <code>Navegação</code>
+    <nav class="navigation pagination" aria-label="Posts">
+        <h2 class="screen-reader-text">Navegação por posts</h2>
+        <div class="nav-links">
+            <a class="prev page-numbers" href="#/3/">
+                <
+            </a>
+            <a class="page-numbers" href="https://midia.ninja/noticias/">1</a>
+            <a class="page-numbers" href="#/2/">2</a>
+            <a class="page-numbers" href="#/3/">3</a>
+            <span aria-current="page" class="page-numbers current">4</span>
+            <a class="page-numbers" href="#/5/">5</a>
+            <a class="page-numbers" href="#/6/">6</a>
+            <span class="page-numbers dots">…</span>
+            <a class="page-numbers" href="#/1274/">1.274</a>
+            <a class="next page-numbers" href="#/5/">
+                >
+            </a>
+        </div>
+    </nav>
+
 
 </div>
 

@@ -1,10 +1,29 @@
 .pagination {
-    &__previous {}
-    &__next {}
+    width: fit-content;
+    margin: auto;
 
-    &__dots {}
+    &__nav-links {
+        display: flex;
+        gap: $gap--medium;
 
-    &__number {
-        &--current {}
+        &__previous,
+        &__next {
+            color: $color--primary-pure;
+            text-decoration: none;
+            font-weight: $font-weight--bold;
+        }
+
+        &__number {
+            text-decoration: none;
+            padding: 3px 10px;
+
+
+            &--current {
+                background: $color--primary-pure;
+                border-radius: 50%;
+            }
+        }
     }
+
+
 }
