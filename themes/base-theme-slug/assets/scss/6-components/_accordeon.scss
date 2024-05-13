@@ -18,7 +18,7 @@
             content: '';
             position: absolute;
             right: $padding--medium;
-            top: 1.5rem;
+            top: calc(1em + #{2 * $border-width--medium});
             transition: $transition--default;
             @include arrow('down', $border-width--medium, $color--primary-pure);
         }
