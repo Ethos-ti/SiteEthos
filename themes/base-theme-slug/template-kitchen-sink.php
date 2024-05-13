@@ -237,6 +237,37 @@ get_header();
         </div>
     </nav>
 
+    <hr/>
+
+    <code>Tabelas</code>
+    <table class="table">
+        <thead class="table__head">
+            <tr>
+                <th class="table__head__item">Lorem ipsum</th>
+                <th class="table__head__item">consectetur</th>
+                <th class="table__head__item">adipiscing</th>
+            </tr>
+        </thead>
+
+        <tbody class="table__body">
+            <tr class="table__row">
+                <td class="table__row__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td class="table__row__item">magna</td>
+                <td class="table__row__item">aliqua</td>
+            </tr>
+            <tr class="table__row">
+                <td class="table__row__item">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__row__item">aliqua</td>
+                <td class="table__row__item">magna</td>
+            </tr>
+            <tr class="table__row">
+                <td class="table__row__item">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__row__item">aliqua</td>
+                <td class="table__row__item">magna</td>
+            </tr>
+        </tbody>
+    </table>
+
 
 </div>
 
