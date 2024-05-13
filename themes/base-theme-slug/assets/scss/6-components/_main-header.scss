@@ -4,9 +4,9 @@
     left: 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    transition: $transition--default;
     width: 100%;
-    transition: all 0.3s;
+    z-index: 100;
 
     &__content {
         align-items: center;

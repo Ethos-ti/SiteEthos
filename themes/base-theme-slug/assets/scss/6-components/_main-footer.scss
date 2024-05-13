@@ -11,13 +11,11 @@
         max-width: $grid--wide;
 
         @include mobile{
-            padding-left: $padding--x-large;
-            padding-right: $padding--x-large;
+            padding-inline: $padding--x-large;
         }
 
         .wp-block-heading{
-            margin-top: $margin--small;
-            margin-bottom: $margin--small;
+            margin-block: $margin--small;
         }
     }
 }

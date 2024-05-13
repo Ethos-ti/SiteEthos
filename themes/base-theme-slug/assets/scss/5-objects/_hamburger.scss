@@ -7,7 +7,7 @@
 
     rect {
         transform-origin: 50% 50%;
-        transition: all 0.3s ease-in-out;
+        transition: $transition--default;
     }
 
     &--open {

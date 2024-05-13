@@ -1,63 +1,65 @@
 .tag{
     border: $border-width--medium solid $color--low-pure;
     border-radius: $border-radius--medium;
-    cursor: pointer;
     line-height: $line-height--normal;
     padding: $padding--x-small $padding--small;
     text-decoration: none;
     font-size: $font-size--x-small;
     font-weight: $font-weight--bold;
 
+    &:is(a) {
+        cursor: pointer;
+    }
+
     // Styles
 
     &--solid {
-        background-color: var(--hl-button-color, $color--low-pure);
+        background-color: var(--hl-tag-color, $color--low-pure);
+        border-color: var(--hl-tag-color, $color--low-pure);
         color: $color--high-pure;
 
-        &:active, &:hover {
-            background-color: var(--hl-button-hover-color, $color--low-pure);
+        &:is(a) {
+
+            &:active, &:hover {
+                background-color: $color--high-pure;
+                color: var(--hl-tag-color, $color--low-pure);
+            }
         }
     }
 
     &--outline {
         background-color: $color--high-pure;
-        border-color: var(--hl-button-color);
-        color: var(--hl-button-color, $color--low-pure);
+        border-color: var(--hl-tag-color, $color--low-pure);
+        color: var(--hl-tag-color, $color--low-pure);
 
-        &:active, &:hover {
-            background-color: $color--high-light;
+        &:is(a) {
+
+            &:active, &:hover {
+                background-color: var(--hl-tag-color, $color--low-pure);
+                color: $color--high-pure;
+            }
         }
     }
 
     // Colors
 
     &--highlight {
-        border: $border-width--medium solid $color--highlight-dark;
-        background-color: $color--highlight-pure;
-        color: $color--highlight-light;
+        --hl-tag-color: #{$color--highlight-pure};
     }
 
     &--primary {
-        border: $border-width--medium solid $color--primary-pure;
-        background-color: $color--primary-dark;
-        color: $color--primary-light;
+        --hl-tag-color: #{$color--primary-pure};
     }
 
     &--secondary {
-        border: $border-width--medium solid $color--secondary-pure;
-        background-color: $color--secondary-dark;
-        color: $color--secondary-light;
+        --hl-tag-color: #{$color--secondary-pure};
     }
 
     &--helper {
-        border: $border-width--medium solid $color--helper-pure;
-        background-color: $color--helper-dark;
-        color: $color--helper-light;
+        --hl-tag-color: #{$color--helper-pure};
     }
 
     &--warning {
-        border: $border-width--medium solid $color--warning-pure;
-        background-color: $color--warning-dark;
-        color: $color--warning-light;
+        --hl-tag-color: #{$color--warning-pure};
     }
 }

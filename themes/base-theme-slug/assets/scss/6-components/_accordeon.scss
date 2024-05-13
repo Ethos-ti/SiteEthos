@@ -4,23 +4,22 @@
     border: $border-width--small solid $color--primary-pure;
 
     &__header {
-        padding: $padding--medium;
-        position: relative;
         color: $color--low-pure;
         font-family: $font-family--primary;
         font-size: $font-size--large;
-        letter-spacing: -0.6px;
+        padding: $padding--medium;
+        position: relative;
 
         &::marker {
             content: "";
         }
 
         &::before {
-            content: "";
-            transition: transform 0.2s ease;
+            content: '';
             position: absolute;
             right: $padding--medium;
             top: 1.5rem;
+            transition: $transition--default;
             @include arrow('down', $border-width--medium, $color--primary-pure);
         }
     }
@@ -31,7 +30,6 @@
 
     &__content {
         background-color: $color--high-light;
-        padding: $padding--medium calc($padding--small * 3);
+        padding: $padding--medium;
     }
-
 }

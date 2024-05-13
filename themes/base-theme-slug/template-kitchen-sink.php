@@ -180,22 +180,22 @@ get_header();
     <hr/>
 
     <code>componente: card default</code>
-    <?php get_template_part( 'template-parts/post-card', null, ['post' => '1'] ); ?>
+    <?php get_template_part( 'template-parts/post-card', null ); ?>
 
     <hr/>
 
     <code>componente: card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post' => '1'] ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
 
     <hr/>
 
     <code>componente: card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post' => '1'] ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
 
     <hr/>
 
     <code>componente: card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover', ['post' => '1'] ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
 
     <hr/>
 
@@ -204,14 +204,15 @@ get_header();
         <div class="accordeon__content">Content</div>
     </details>
 
-    <h2>Tags</h2>
-    <a class="tag" href="#">Teste</a>
-    <a class="tag tag--highlight" href='#'>Teste</a>
-    <a class="tag tag--primary tag--solid" href="/category/saude">Teste</a>
-    <span class="tag tag--secondary">Teste</span>
-    <span class="tag tag--helper">Teste</span>
-    <a class="tag tag--warning tag--outline" href="/category/saude">Teste</a>
+    <hr/>
 
+    <h2>Tags</h2>
+    <a class="tag tag--solid" href="#">Teste</a>
+    <a class="tag tag--solid tag--primary" href="/category/saude">Teste</a>
+    <a class="tag tag--outline tag--highlight" href="#">Teste</a>
+    <span class="tag tag--solid tag--secondary">Teste</span>
+    <span class="tag tag--solid tag--helper">Teste</span>
+    <a class="tag tag--outline tag--warning" href="/category/saude">Teste</a>
 
 </div>
 

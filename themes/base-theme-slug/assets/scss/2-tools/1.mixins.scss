@@ -72,7 +72,6 @@
     width: 0;
     height: 0;
     border-style: solid;
-    -moz-transform: scale(.9999);
 
     @if $direction ==top {
         border-width: 0 $sizeV $sizeH $sizeV;
@@ -123,15 +122,11 @@
 
     @if $direction == 'up' {
         transform: rotate(-135deg);
-        -webkit-transform: rotate(-135deg);
     } @else if $direction == 'down' {
         transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
     } @else if $direction == 'left' {
         transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
     } @else if $direction == 'right' {
         transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
     }
 }
