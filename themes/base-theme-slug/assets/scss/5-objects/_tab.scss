@@ -1,0 +1,16 @@
+.tab{
+    border: none;
+    background-color: transparent;
+    font-size: $font-size--x-large;
+    font-weight: $font-weight--bold;
+    color: $color--primary-pure;
+    line-height: $line-height--normal;
+
+    &--active{
+        border-bottom: 0.45rem solid $color--primary-pure;
+    }
+
+    &--disabled{
+       //display: none;
+    }
+}
