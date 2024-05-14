@@ -1,24 +1,27 @@
 .table {
+    $border-radius: $border-radius--large;
+    $padding: $padding--medium;
+
     background-color: $color--high-light;
-    border-radius: $border-radius--large $border-radius--large 0 0;
+    border-radius: $border-radius $border-radius 0 0;
     font-size: $font-size--small;
 
     &__header-cell {
         background-color: $color--high-dark;
-        padding: $padding--medium;
+        padding: $padding;
 
         &:first-child {
-            border-top-left-radius: $border-radius--large;
+            border-top-left-radius: $border-radius;
         }
 
         &:last-child {
-            border-top-right-radius: $border-radius--large;
+            border-top-right-radius: $border-radius;
         }
     }
 
     &__cell {
         border-bottom: $border-width--small solid $color--primary-pure;
-        padding: $padding--medium;
+        padding: $padding;
     }
 
     &__row {
