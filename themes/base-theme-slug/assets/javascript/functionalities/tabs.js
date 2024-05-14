@@ -43,10 +43,16 @@ window.addEventListener("DOMContentLoaded", () => {
     // Remove all current selected tabs
     parent
       .querySelectorAll('[aria-selected="true"]')
-      .forEach((t) => t.setAttribute("aria-selected", false));
+      .forEach((t) => {
+        t.setAttribute("aria-selected", false);
+        t.setAttribute("tabindex", "-1");
+        t.classList.remove("tab--active");
+      });
 
     // Set this tab as selected
     target.setAttribute("aria-selected", true);
+    target.setAttribute("tabindex", "0");
+    target.classList.add("tab--active");
 
     // Hide all tab panels
     grandparent
@@ -58,3 +64,5 @@ window.addEventListener("DOMContentLoaded", () => {
       .querySelector(`#${target.getAttribute("aria-controls")}`)
       .removeAttribute("hidden");
   }
+
+

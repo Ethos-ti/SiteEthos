@@ -1,12 +1,18 @@
 .tab {
     background-color: transparent;
-    border: none;
+    border-bottom: $border-width--large solid transparent;
     color: $color--primary-pure;
+    cursor: pointer;
     font-size: $font-size--x-large;
     font-weight: $font-weight--bold;
     line-height: $line-height--normal;
 
     &--active {
-        border-bottom: $border-width--large solid $color--primary-pure;
+        border-bottom-color: $color--primary-pure;
+    }
+
+    &--disabled{
+        color: $color--low-light;
+        cursor: not-allowed;
     }
 }
