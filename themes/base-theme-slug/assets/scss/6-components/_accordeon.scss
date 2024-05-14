@@ -1,40 +1,42 @@
-.accordeon__item {
-    border: $border-width--small solid $color--primary-pure;
-    border-bottom: none;
-    pointer-events: visible;
-
-    &:last-child {
+.accordeon {
+    &__item {
         border: $border-width--small solid $color--primary-pure;
-    }
+        border-bottom: none;
+        pointer-events: visible;
 
-    .accordeon__header {
-        color: $color--low-pure;
-        font-family: $font-family--primary;
-        font-size: $font-size--large;
-        padding: $padding--medium;
-        position: relative;
-        cursor: pointer;
-
-        &::marker {
-            content: "";
+        &:last-child {
+            border: $border-width--small solid $color--primary-pure;
         }
 
-        &::before {
-            content: '';
-            position: absolute;
-            right: $padding--medium;
-            top: calc(1em + #{2 * $border-width--medium});
-            transition: $transition--default;
-            @include arrow('down', $border-width--medium, $color--primary-pure);
+        &__header {
+            color: $color--low-pure;
+            font-family: $font-family--primary;
+            font-size: $font-size--large;
+            padding: $padding--medium;
+            position: relative;
+            cursor: pointer;
+
+            &::marker {
+                content: "";
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                right: $padding--medium;
+                top: calc(1em + #{2 * $border-width--medium});
+                transition: $transition--default;
+                @include arrow('down', $border-width--medium, $color--primary-pure);
+            }
         }
-    }
 
-    &[open] .accordeon__header::before {
-        transform: rotate(-135deg);
-    }
+        &[open] &__header::before {
+            transform: rotate(-135deg);
+        }
 
-    .accordeon__content {
-        background-color: $color--high-light;
-        padding: $padding--medium;
+        &__content {
+            background-color: $color--high-light;
+            padding: $padding--medium;
+        }
     }
 }
