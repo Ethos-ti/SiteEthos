@@ -268,6 +268,34 @@ get_header();
         </tbody>
     </table>
 
+    <hr/>
+
+    <code>Tabs</code>
+    <div class="tabs" id="tabs-{id}>">
+        <div class="tabs__header" role="tablist">
+            <button id="tab-button-{id}-1" class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-panel-{id}-1" tabindex="0">
+                Aba 1 (selecionada)
+            </button>
+            <button id="tab-button-{id}-2" class="tab tab--disabled" role="tab" aria-disabled="true" aria-selected="false" aria-controls="tab-panel-{id}-2" tabindex="-1">
+                <img class="tab__icon-before" aria-hidden="true"> Aba 2 (desabilitada)
+            </button>
+            <button id="tab-button-{id}-3" class="tab" role="tab" aria-selected="false" aria-controls="tab-panel-{id}-3" tabindex="-1">
+                Aba 3 <img class="tab__icon-after" aria-hidden="true">
+            </button>
+        </div>
+        <div class="tabs__panels">
+            <div class="tabs__panel" id="tab-panel-{id}-1" role="tabpanel" tabindex="0" aria-labelledby="tab-button-{id}-1">
+                Conteúdo da aba 1 (selecionada)
+            </div>
+            <div class="tabs__panel" id="tab-panel-{id}-2" role="tabpanel" tabindex="0" aria-labelledby="tab-button-{id}-2" hidden>
+                Conteúdo da aba 2 (desabilitada)
+            </div>
+            <div class="tabs__panel" id="tab-panel-{id}-3" role="tabpanel" tabindex="0" aria-labelledby="tab-button-{id}-3" hidden>
+                Conteúdo da aba 3
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
