@@ -180,29 +180,40 @@ get_header();
     <hr/>
 
     <code>componente: card default</code>
-    <?php get_template_part( 'template-parts/post-card', null ); ?>
+    <?php get_template_part( 'template-parts/post-card', null, ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card vertical</code>
-    <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'vertical', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card horizontal</code>
-    <?php get_template_part( 'template-parts/post-card', 'horizontal' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'horizontal', ['post' => '1'] ); ?>
 
     <hr/>
 
     <code>componente: card cover</code>
-    <?php get_template_part( 'template-parts/post-card', 'cover' ); ?>
+    <?php get_template_part( 'template-parts/post-card', 'cover', ['post' => '1'] ); ?>
 
     <hr/>
 
-    <details class="accordeon">
-        <summary class="accordeon__header">Accordeon</summary>
-        <div class="accordeon__content">Content</div>
-    </details>
+    <div class="accordeon">
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+    </div>
+
 
     <hr/>
 
@@ -213,6 +224,90 @@ get_header();
     <span class="tag tag--solid tag--secondary">Teste</span>
     <span class="tag tag--solid tag--helper">Teste</span>
     <a class="tag tag--outline tag--warning" href="/category/saude">Teste</a>
+
+    <hr/>
+
+    <code>Navegação</code>
+    <nav class="navigation pagination" aria-label="Posts">
+        <h2 class="screen-reader-text">Navegação por posts</h2>
+        <div class="nav-links">
+            <a class="prev page-numbers" href="#/3/">
+                <
+            </a>
+            <a class="page-numbers" href="https://midia.ninja/noticias/">1</a>
+            <a class="page-numbers" href="#/2/">2</a>
+            <a class="page-numbers" href="#/3/">3</a>
+            <span aria-current="page" class="page-numbers current">4</span>
+            <a class="page-numbers" href="#/5/">5</a>
+            <a class="page-numbers" href="#/6/">6</a>
+            <span class="page-numbers dots">…</span>
+            <a class="page-numbers" href="#/1274/">1.274</a>
+            <a class="next page-numbers" href="#/5/">
+                >
+            </a>
+        </div>
+    </nav>
+
+    <hr/>
+
+    <code>Tabelas</code>
+    <table class="table">
+        <thead class="table__header">
+            <tr class="table__header-row">
+                <th class="table__header-cell">Lorem ipsum</th>
+                <th class="table__header-cell">consectetur</th>
+                <th class="table__header-cell">adipiscing</th>
+            </tr>
+        </thead>
+
+        <tbody class="table__body">
+            <tr class="table__row">
+                <td class="table__cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td class="table__cell">magna</td>
+                <td class="table__cell">aliqua</td>
+            </tr>
+            <tr class="table__row">
+                <td class="table__cell">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__cell">aliqua</td>
+                <td class="table__cell">magna</td>
+            </tr>
+            <tr class="table__row">
+                <td class="table__cell">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__cell">aliqua</td>
+                <td class="table__cell">magna</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <code>Tabs</code>
+    <?php $dynamic_id = uniqid(); ?>
+    <div class="tabs" id="tabs-<?= $dynamic_id ?>">
+        <div class="tabs__header" role="tablist">
+            <button id="tab-button-<?= $dynamic_id ?>-1" class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-panel-<?= $dynamic_id ?>-1" tabindex="0">
+                Aba 1 (selecionada)
+            </button>
+            <button id="tab-button-<?= $dynamic_id ?>-2" class="tab tab--disabled" disabled role="tab" aria-disabled="true" aria-selected="false" aria-controls="tab-panel-<?= $dynamic_id ?>-2" tabindex="-1">
+                <img class="tab__icon-before" aria-hidden="true"> Aba 2 (desabilitada)
+            </button>
+            <button id="tab-button-<?= $dynamic_id ?>-3" class="tab" role="tab" aria-selected="false" aria-controls="tab-panel-<?= $dynamic_id ?>-3" tabindex="-1">
+                Aba 3 <img class="tab__icon-after" aria-hidden="true">
+            </button>
+        </div>
+        <div class="tabs__panels">
+            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-1" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-1">
+                Conteúdo da aba 1 (selecionada)
+            </div>
+            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-2" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-2" hidden>
+                Conteúdo da aba 2 (desabilitada)
+            </div>
+            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-3" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-3" hidden>
+                Conteúdo da aba 3
+            </div>
+        </div>
+    </div>
+
 
 </div>
 

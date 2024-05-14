@@ -382,6 +382,10 @@ class Assets {
 				}
 			],
 
+            'tabs' => [
+                'file' => 'tabs.js',
+                'global' => true,
+			],
  		];
 
 		$js_files = apply_filters('js_files_before_output', $js_files);

@@ -1,7 +1,8 @@
+const fs = require('node:fs');
+const path = require('node:path');
+
 const mix = require('laravel-mix');
-const fs = require('fs');
-const path = require( 'path' );
-const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config' );
+const DependencyExtraction = require('@wordpress/dependency-extraction-webpack-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -35,10 +36,6 @@ getDirFiles(functionalitiesPath).forEach((filepath) => {
 })
 
 mix.webpackConfig({
-	...defaultConfig,
-	entry: {
-    },
-
     output: {
         chunkFilename: dist_dir + '/[name].js',
         path: path.resolve( __dirname, './dist/' ),
@@ -46,9 +43,12 @@ mix.webpackConfig({
         filename: '[name].js',
     },
 
-    module: {
+    plugins: [
+        new DependencyExtraction({
+            combineAssets: true,
+            injectPolyfill: false,
+        }),
+    ],
 
-    },
-
-	devtool: "inline-source-map"
+	devtool: 'inline-source-map',
 });
