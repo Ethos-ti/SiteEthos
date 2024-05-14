@@ -1,11 +1,11 @@
 .pagination {
-    margin: auto;
+    margin-block: auto;
     width: fit-content;
 
     &__nav-links {
         display: flex;
         flex-wrap: wrap;
-        gap: $gap--small;
+        gap: $gap--medium;
 
         &__previous,
         &__next {
@@ -19,12 +19,12 @@
             display: flex;
             height: $font-size--xx-large;
             justify-content: center;
-            padding: $padding--small;
             min-width: $font-size--xx-large;
+            padding: $padding--small;
             text-decoration: none;
 
             &--current {
-                background: $color--primary-pure;
+                background-color: $color--primary-pure;
                 border-radius: $border-radius--round;
             }
         }

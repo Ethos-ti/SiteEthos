@@ -241,29 +241,29 @@ get_header();
 
     <code>Tabelas</code>
     <table class="table">
-        <thead class="table__head">
-            <tr>
-                <th class="table__head__item">Lorem ipsum</th>
-                <th class="table__head__item">consectetur</th>
-                <th class="table__head__item">adipiscing</th>
+        <thead class="table__header">
+            <tr class="table__header-row">
+                <th class="table__header-cell">Lorem ipsum</th>
+                <th class="table__header-cell">consectetur</th>
+                <th class="table__header-cell">adipiscing</th>
             </tr>
         </thead>
 
         <tbody class="table__body">
             <tr class="table__row">
-                <td class="table__row__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                <td class="table__row__item">magna</td>
-                <td class="table__row__item">aliqua</td>
+                <td class="table__cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                <td class="table__cell">magna</td>
+                <td class="table__cell">aliqua</td>
             </tr>
             <tr class="table__row">
-                <td class="table__row__item">Lorem ipsum dolor sit amet, adipiscing elit</td>
-                <td class="table__row__item">aliqua</td>
-                <td class="table__row__item">magna</td>
+                <td class="table__cell">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__cell">aliqua</td>
+                <td class="table__cell">magna</td>
             </tr>
             <tr class="table__row">
-                <td class="table__row__item">Lorem ipsum dolor sit amet, adipiscing elit</td>
-                <td class="table__row__item">aliqua</td>
-                <td class="table__row__item">magna</td>
+                <td class="table__cell">Lorem ipsum dolor sit amet, adipiscing elit</td>
+                <td class="table__cell">aliqua</td>
+                <td class="table__cell">magna</td>
             </tr>
         </tbody>
     </table>

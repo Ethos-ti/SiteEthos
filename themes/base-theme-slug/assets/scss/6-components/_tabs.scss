@@ -1,10 +1,11 @@
-.tabs{
-    &__header{
+.tabs {
+
+    &__header {
         display: flex;
         gap: $gap--large;
     }
 
-    &__panels{
+    &__panels {
         padding-top: $padding--x-large;
     }
 }
