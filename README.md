@@ -1,12 +1,4 @@
-# hacklabr
-
-Este repositório contém os arquivos iniciais para se ter um projeto WordPress
-nos moldes do Hacklab. Isso significa que as ferramentas de desenvolvimento
-e deploy estão protegidas por um padrão.
-
-A ideia é que seja feito um fork deste repositório para começar um novo projeto
-WordPress. Os arquivos deverão ser modificados conforme as peculiaridades do
-projeto.
+# Site Ethos
 
 # Desenvolvimento
 
@@ -77,14 +69,6 @@ docker-compose down -v # o parametro -v apaga os dados do mariadb
 docker-compose up 
 ```
 
-## Substituir strings e renomear arquivos/pastas:
-- **hacklab-theme** pelo slug nova (exemplo ipsum-theme)
-- **hacklabr** pelo slug, mas com underscore (exemplo ipsum_theme)
-- **hacklabr** pelo nome (exemplo Ipsum theme )
-- **hacklabr** pelo textdomain (exemplo ipsum-textdomain)
-- **hacklabr** pelo namespace (exemplo Ipsum)
-- alterar nome da pasta para corresponder ao slug (exemplo ipsum-theme)
-- alterar nome do arquivo /languages/*.pot
 
 
 ## Variaveis de ambiente
