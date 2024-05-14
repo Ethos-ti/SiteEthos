@@ -1,15 +1,15 @@
-# Copyright (C) 2022 Hacklab
+# Copyright (C) 2024 Hacklab
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: base-theme-name 1.0\n"
+"Project-Id-Version: base-theme-name 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/base-theme-slug\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-23T17:26:14+00:00\n"
+"POT-Creation-Date: 2024-05-14T14:56:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: base-textdomain\n"
@@ -73,73 +73,33 @@ msgstr ""
 msgid "Os comentários estão desabilitados."
 msgstr ""
 
-#: header.php:30
+#: header.php:37
 msgid "Toggle menu visibility"
-msgstr ""
-
-#: library/customizer/footer/index.php:11
-msgid "Footer"
-msgstr ""
-
-#: library/customizer/footer/index.php:27
-msgid "Footer copyright text"
-msgstr ""
-
-#: library/customizer/footer/index.php:28
-msgid "Leave it empty to hide all copyright info."
-msgstr ""
-
-#: library/customizer/footer/index.php:50
-msgid "Display year and site name aside copyright info?"
-msgstr ""
-
-#: library/customizer/footer/index.php:68
-msgid "Footer background"
-msgstr ""
-
-#: library/customizer/footer/index.php:90
-msgid "Footer text color"
-msgstr ""
-
-#: library/customizer/header/index.php:10
-msgid "Header"
 msgstr ""
 
 #: library/menus.php:6
 msgid "Menu Principal"
 msgstr ""
 
-#: library/menus.php:9
+#: library/menus.php:7
 msgid "Redes Sociais"
 msgstr ""
 
-#: library/menus.php:10
-msgid "Menu de Rodapé 1"
+#. Template Name of the theme
+msgid "Página com âncoras"
 msgstr ""
 
-#: library/menus.php:11
-msgid "Menu de Rodapé 2"
+#: page-anchor.php:12
+msgid "Sections"
 msgstr ""
 
-#: library/menus.php:12
-msgid "Menu de Rodapé 3"
-msgstr ""
-
-#: library/menus.php:13
-msgid "Menu de Rodapé 4"
-msgstr ""
-
-#: library/settings.php:14
-msgid "Endereço"
-msgstr ""
-
-#: library/settings.php:17
-msgid "Número de palavras do resumo automático (excerpt)"
-msgstr ""
-
-#: single.php:50
+#: single.php:47
 #: template-parts/share-links.php:2
 msgid "Share"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Inventário de componentes"
 msgstr ""
 
 #. Template Name of the theme
@@ -150,57 +110,32 @@ msgstr ""
 msgid "resultados encontrados"
 msgstr ""
 
-#: template-parts/authors-list.php:7
-msgid "Autores"
-msgstr ""
-
-#: template-parts/authors-list.php:7
-msgid "Autor"
-msgstr ""
-
-#: template-parts/card.php:37
-msgid "Por:"
-msgstr ""
-
-#: template-parts/card.php:43
-msgid "publicado em"
-msgstr ""
-
-#: template-parts/content/search-overlay.php:3
-msgid "What are you looking for?"
-msgstr ""
-
-#: template-parts/related-posts.php:10
-msgid "Leia Também"
-msgstr ""
-
 #: template-parts/site-by-hacklab.php:2
 msgid "site por"
 msgstr ""
 
-#: assets/javascript/blocks/featuredSlider/index.js:16
-#: dist/js/blocks/featured-slider.js:220
-msgid "Type the title here"
-msgstr ""
-
-#: assets/javascript/blocks/featuredSlider/index.js:26
-#: dist/js/blocks/featured-slider.js:228
-msgid "Type here your description"
-msgstr ""
-
-#: assets/javascript/blocks/featuredSlider/index.js:36
-#: dist/js/blocks/featured-slider.js:236
-msgid "Type button text"
-msgstr ""
-
-#: assets/javascript/blocks/featuredSlider/index.js:117
-#: dist/js/blocks/featured-slider.js:321
-msgid "Featured Slider"
+#: template-parts/title/author.php:6
+msgid "Author: %s"
 msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
-msgid "Pequena"
+msgid "Enorme"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra grande"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Muito grande"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Grande"
 msgstr ""
 
 #: theme.json
@@ -210,50 +145,130 @@ msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
-msgid "Grande"
+msgid "Pequena"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Muito pequena"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Primária"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Sistema"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Título"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Branco"
+msgid "Primary pure"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Azul"
+msgid "Primary light"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Azul claro"
+msgid "Primary dark"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Bege"
+msgid "Secondary pure"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Amarelo"
+msgid "Secondary light"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Amarelo claro"
+msgid "Secondary dark"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Verde"
+msgid "Highlight pure"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Verde claro"
+msgid "Highlight light"
 msgstr ""
 
 #: theme.json
 msgctxt "Color name"
-msgid "Cinza escuro"
+msgid "Highlight dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low Pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper dark"
 msgstr ""
