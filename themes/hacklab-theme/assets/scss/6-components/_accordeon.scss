@@ -30,7 +30,7 @@
             }
         }
 
-        &[open] &__header::before {
+        &[open] .accordeon__header::before {
             transform: rotate(-135deg);
         }
 
