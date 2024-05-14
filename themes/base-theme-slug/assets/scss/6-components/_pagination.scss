@@ -1,32 +1,29 @@
 .pagination {
-    margin: auto;
     width: fit-content;
+    margin: auto;
 
     &__nav-links {
         display: flex;
-        flex-wrap: wrap;
-        gap: $gap--small;
+        gap: $gap--medium;
 
         &__previous,
         &__next {
             color: $color--primary-pure;
-            font-weight: $font-weight--bold;
             text-decoration: none;
+            font-weight: $font-weight--bold;
         }
 
         &__number {
-            align-items: center;
-            display: flex;
-            height: $font-size--xx-large;
-            justify-content: center;
-            padding: $padding--small;
-            min-width: $font-size--xx-large;
             text-decoration: none;
+            padding: 3px 10px;
+
 
             &--current {
                 background: $color--primary-pure;
-                border-radius: $border-radius--round;
+                border-radius: 50%;
             }
         }
     }
+
+
 }
