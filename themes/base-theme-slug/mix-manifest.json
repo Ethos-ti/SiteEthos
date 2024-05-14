@@ -8,6 +8,5 @@
     "/js/functionalities/page.js": "/js/functionalities/page.js",
     "/js/functionalities/perguntas-frequentes.js": "/js/functionalities/perguntas-frequentes.js",
     "/js/functionalities/query-slider.js": "/js/functionalities/query-slider.js",
-    "/js/functionalities/search.js": "/js/functionalities/search.js",
-    "/js/functionalities/video-gallery.js": "/js/functionalities/video-gallery.js"
+    "/js/functionalities/search.js": "/js/functionalities/search.js"
 }
