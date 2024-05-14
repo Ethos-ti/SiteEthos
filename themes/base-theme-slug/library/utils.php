@@ -109,7 +109,7 @@ function rename_taxonomies() {
     $category_args->labels->item_link_description = 'Um link para o Projeto';
     $category_args->labels->menu_name = 'Projetos';
 
-    $object_type = array_merge( $category_args->object_type, ['page', 'perguntas_frequentes'] );
+    $object_type = array_merge( $category_args->object_type, ['page'] );
     $object_type = array_unique( $object_type );
 
     register_taxonomy( 'category', $object_type, (array) $category_args );

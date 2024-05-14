@@ -363,13 +363,6 @@ class Assets {
 				'global' => true,
 			],
 
-			'filter' => [
-				'file'   => 'perguntas-frequentes.js',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
-				}
-			],
-
 			'copy-url' => [
                 'file' => 'copy-url.js',
                 'global' => true,
