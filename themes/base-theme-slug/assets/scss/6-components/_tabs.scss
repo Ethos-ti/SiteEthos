@@ -1,0 +1,11 @@
+.tabs {
+
+    &__header {
+        display: flex;
+        gap: $gap--large;
+    }
+
+    &__panels {
+        padding-top: $padding--x-large;
+    }
+}
