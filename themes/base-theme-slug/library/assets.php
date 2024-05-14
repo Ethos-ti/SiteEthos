@@ -348,6 +348,11 @@ class Assets {
 		}
 
 		$js_files = [
+            'app' => [
+                'file' => 'app.js',
+                'global' => true,
+            ],
+
 			'menu'     => [
                 'file' => 'menu.js',
 				'global' => true,
