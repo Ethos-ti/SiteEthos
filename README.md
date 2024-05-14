@@ -1,4 +1,4 @@
-# base-theme-name
+# hacklabr
 
 Este repositório contém os arquivos iniciais para se ter um projeto WordPress
 nos moldes do Hacklab. Isso significa que as ferramentas de desenvolvimento
@@ -43,7 +43,7 @@ $ git submodule add -f git@gitlab.hacklab.com.br:open-source/hacklab-blocks.git 
 ```
 
 ## Compilando os assets do tema
-Abra um terminar, vá até a a pasta `themes/base-theme-slug/` e execute os comandos abaixo:
+Abra um terminar, vá até a a pasta `themes/hacklab-theme/` e execute os comandos abaixo:
 
 ```
 $ npm install
@@ -78,11 +78,11 @@ docker-compose up
 ```
 
 ## Substituir strings e renomear arquivos/pastas:
-- **base-theme-slug** pelo slug nova (exemplo ipsum-theme)
-- **base_theme_slug** pelo slug, mas com underscore (exemplo ipsum_theme)
-- **base-theme-name** pelo nome (exemplo Ipsum theme )
-- **base-textdomain** pelo textdomain (exemplo ipsum-textdomain)
-- **BaseThemeName** pelo namespace (exemplo Ipsum)
+- **hacklab-theme** pelo slug nova (exemplo ipsum-theme)
+- **hacklabr** pelo slug, mas com underscore (exemplo ipsum_theme)
+- **hacklabr** pelo nome (exemplo Ipsum theme )
+- **hacklabr** pelo textdomain (exemplo ipsum-textdomain)
+- **hacklabr** pelo namespace (exemplo Ipsum)
 - alterar nome da pasta para corresponder ao slug (exemplo ipsum-theme)
 - alterar nome do arquivo /languages/*.pot
 

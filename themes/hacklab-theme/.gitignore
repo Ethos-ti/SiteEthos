@@ -1,0 +1,4 @@
+node_modules
+plugins/*
+zips/*
+themes/hacklab-theme/node_modules
