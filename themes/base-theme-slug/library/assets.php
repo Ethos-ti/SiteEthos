@@ -493,17 +493,6 @@ class Assets {
                 wp_enqueue_script( 'tiny-slider', get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js', [], false, true );
 		        wp_enqueue_script( 'news-slider', get_stylesheet_directory_uri() . '/dist/js/functionalities/featured-slider.js', ['tiny-slider'], false, true );
             },
-
-			'BaseThemeName/embed-template' => function() {
-				wp_enqueue_style(
-					'embed-template',
-					get_stylesheet_directory_uri() . '/dist/css/_b-embed-template.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-embed-template.css'),
-					'all'
-				);
-				wp_enqueue_script( 'embed-template', get_stylesheet_directory_uri() . '/dist/js/blocks/embed-template.js', [], false, true );
-            },
             'core/cover' => function() {
                 wp_enqueue_style(
                     'core-cover',
