@@ -1,0 +1,12 @@
+.single{
+
+  .tags{
+    display: flex;
+    justify-content: center;
+  }
+
+  &--title{
+    color: $color--primary-dark;
+    text-align: center;
+  }
+}

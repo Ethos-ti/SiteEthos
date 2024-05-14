@@ -1,11 +1,11 @@
 .tag{
     border: $border-width--medium solid $color--low-pure;
     border-radius: $border-radius--medium;
+    font-size: $font-size--x-small;
+    font-weight: $font-weight--bold;
     line-height: $line-height--normal;
     padding: $padding--x-small $padding--small;
     text-decoration: none;
-    font-size: $font-size--x-small;
-    font-weight: $font-weight--bold;
 
     &:is(a) {
         cursor: pointer;
