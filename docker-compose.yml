@@ -30,14 +30,14 @@ services:
       dockerfile: ./compose/local/watcher/Dockerfile
     volumes:
       - ./themes/base-theme-slug:/app
-  
+
   watcher-plugin:
     build:
       context: .
-      dockerfile: ./compose/local/watcher/Dockerfile
+      dockerfile: ./compose/local/watcher/Dockerfile-node14
     volumes:
       - ./plugins/hacklab-blocks:/app
-      
+
   mariadb:
     image: mariadb:10.4
     volumes:
