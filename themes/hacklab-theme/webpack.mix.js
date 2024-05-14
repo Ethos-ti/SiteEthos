@@ -35,6 +35,8 @@ getDirFiles(functionalitiesPath).forEach((filepath) => {
     mix.js(functionalitiesPath + filepath , './js/functionalities');
 })
 
+mix.sourceMaps(true, 'eval-source-map', 'source-map');
+
 mix.webpackConfig({
     output: {
         chunkFilename: dist_dir + '/[name].js',
@@ -49,6 +51,4 @@ mix.webpackConfig({
             injectPolyfill: false,
         }),
     ],
-
-	devtool: 'inline-source-map',
 });
