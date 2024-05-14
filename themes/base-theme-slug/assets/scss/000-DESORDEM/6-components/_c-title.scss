@@ -33,22 +33,6 @@
             background-repeat: no-repeat;
             background-size: cover;
             margin-right: 20px;
-
-            &--partners {
-                background-image: url($p_theme_assets+"/images/logo-slider-footer.png");
-                width: 51px;
-                height: 43px;
-            }
-            &--channel {
-                background-image: url($p_theme_assets+"/images/logo-slider-footer.png");
-                width: 51px;
-                height: 43px;
-            }
-            &--projects {
-                background-image: url($p_theme_assets+"/images/logo-slider-footer.png");
-                width: 51px;
-                height: 43px;
-            }
         }
 
         &.line {
@@ -102,10 +86,5 @@ header.c-title {
         padding-top: 30px;
         position: relative;
         z-index: 2;
-    }
-
-    // Blog
-    .blog & {
-        background-image: url($p_theme_assets+"/images/header-posts.png");
     }
 }

@@ -82,7 +82,6 @@ $p_theme_assets: '/wp-content/themes/base-theme-slug/assets';
         }
 
         &-content {
-            background-image: url($p_theme_assets + '/images/folhas.svg');
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
