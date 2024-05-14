@@ -199,10 +199,21 @@ get_header();
 
     <hr/>
 
-    <details class="accordeon">
-        <summary class="accordeon__header">Accordeon</summary>
-        <div class="accordeon__content">Content</div>
-    </details>
+    <div class="accordeon">
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+        <details class="accordeon__item">
+            <summary class="accordeon__header">Accordeon Title</summary>
+            <div class="accordeon__content">Content</div>
+        </details>
+    </div>
+
 
     <hr/>
 
