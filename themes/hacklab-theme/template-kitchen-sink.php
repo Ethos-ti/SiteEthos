@@ -308,26 +308,26 @@ get_header();
     <hr/>
 
     <code>Tabs</code>
-    <div class="tabs" x-data="{ currentTab: 1 }" x-bind="Tabs()">
+    <div class="tabs" x-data="{ currentTab: 1 }" x-bind="Tabs($data)">
         <div class="tabs__header" role="tablist">
-            <button class="tab" x-bind="TabButton(1)">
+            <button class="tab" x-bind="TabButton(1, $data)">
                 Aba 1 (selecionada)
             </button>
-            <button class="tab tab--disabled" disabled aria-disabled="true" x-bind="TabButton(2)">
+            <button class="tab tab--disabled" disabled aria-disabled="true" x-bind="TabButton(2, $data)">
                 Aba 2 (desabilitada)
             </button>
-            <button class="tab" x-bind="TabButton(3)">
+            <button class="tab" x-bind="TabButton(3, $data)">
                 Aba 3
             </button>
         </div>
         <div class="tabs__panels">
-            <div class="tabs__panel" x-bind="TabPanel(1)">
+            <div class="tabs__panel" x-bind="TabPanel(1, $data)">
                 Conteúdo da aba 1 (selecionada)
             </div>
-            <div class="tabs__panel" x-bind="TabPanel(2)">
+            <div class="tabs__panel" x-bind="TabPanel(2, $data)">
                 Conteúdo da aba 2 (desabilitada)
             </div>
-            <div class="tabs__panel" x-bind="TabPanel(3)">
+            <div class="tabs__panel" x-bind="TabPanel(3, $data)">
                 Conteúdo da aba 3
             </div>
         </div>

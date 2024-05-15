@@ -1,49 +1,31 @@
 document.addEventListener('alpine:init', () => {
 
-    Alpine.bind('Tabs', () => ({
-        'x-id' () {
-            return ['tabs'];
-        },
-        ':id' () {
-            return this.$id('tabs');
-        },
+    const isCurrentTab = ({ currentTab }, tab) => currentTab === tab;
+
+    Alpine.bind('Tabs', ($data) => ({
+        'x-id': () => ['tabs'],
+        ':id': () => $data.$id('tabs'),
     }));
 
-    Alpine.bind('TabButton', (tab) => ({
+    Alpine.bind('TabButton', (tab, $data) => ({
         'role': 'tab',
-        ':aria-controls' () {
-            return this.$id('tabs', `panel-${tab}`);
-        },
-        ':aria-selected' () {
-            return this.currentTab === tab;
-        },
-        ':class' () {
-            return {
-                'tab--active': this.currentTab === tab,
-            };
-        },
-        ':id' () {
-            return this.$id('tabs', `button-${tab}`);
-        },
-        ':tabindex' () {
-            return this.currentTab === tab ? 0 : -1;
-        },
-        '@click' () {
-            this.currentTab = tab;
+        ':aria-controls': () => $data.$id('tabs', `panel-${tab}`),
+        ':aria-selected': () => isCurrentTab($data, tab),
+        ':class': () => ({
+            'tab--active': isCurrentTab($data, tab),
+        }),
+        ':id': () => $data.$id('tabs', `button-${tab}`),
+        ':tabindex': () => isCurrentTab($data, tab) ? 0 : -1,
+        '@click': () => {
+            $data.currentTab = tab;
         },
     }));
 
-    Alpine.bind('TabPanel', (tab) => ({
+    Alpine.bind('TabPanel', (tab, $data) => ({
         'role': 'tabpanel',
         'tabindex': 0,
-        ':aria-labeledby' () {
-            return this.$id('tabs', `button-${tab}`);
-        },
-        ':hidden' () {
-            return this.currentTab !== tab;
-        },
-        ':id' () {
-            return this.$id('tabs', `panel-${tab}`);
-        },
+        ':aria-labeledby': () => $data.$id('tabs', `button-${tab}`),
+        ':hidden': () => !isCurrentTab($data, tab),
+        ':id': () => $data.$id('tabs', `panel-${tab}`),
     }));
 });
