@@ -1,9 +1,9 @@
-.accordeon>.accordeon__item {
-    &>.accordeon__header {
-        @extend .accordeon__item__header;
+.accordeon > .accordeon__item {
+    & > .accordeon__header {
+        @extend .accordeon__header;
     }
 
-    &>.accordeon__content {
-        @extend .accordeon__item__content;
+    & > .accordeon__content {
+        @extend .accordeon__content;
     }
 }

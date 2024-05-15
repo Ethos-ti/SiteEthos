@@ -1,19 +1,19 @@
-.pagination>.nav-links {
+.pagination > .nav-links {
     @extend .pagination__nav-links;
 
-    &>.prev {
-        @extend .pagination__nav-links__previous;
+    & > .prev {
+        @extend .pagination__previous;
     }
 
-    &>.next {
-        @extend .pagination__nav-links__next;
+    & > .next {
+        @extend .pagination__next;
     }
 
-    &>.page-numbers:is(a, span) {
-        @extend .pagination__nav-links__number;
+    & > .page-numbers:is(a, span) {
+        @extend .pagination__number;
     }
 
-    &>.current {
-        @extend .pagination__nav-links__number--current;
+    & > .current {
+        @extend .pagination__number--current;
     }
 }
