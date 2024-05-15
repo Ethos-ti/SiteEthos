@@ -1,2 +1,10 @@
 .share-links{
+    display: flex;
+    gap: $gap--small;
+    font-size: $font-size--small;
+
+   &__icons{
+    display: flex;
+    gap: $gap--medium;
+   }
 }
