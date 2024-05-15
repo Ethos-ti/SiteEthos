@@ -11,7 +11,7 @@ $modifiers = implode(' ', $modifiers);
 
 $categories = get_the_category();
 ?>
-<article class="card <?=$modifiers?>">
+<article id="post-ID-<?php the_ID(); ?>" class="card <?=$modifiers?>">
     <header class="card__image">
         <a href="<?php the_permalink();?>"><?php the_post_thumbnail($image_size); ?></a>
     </header>
