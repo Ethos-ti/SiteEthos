@@ -34,6 +34,13 @@ $category = get_the_category();
 
     </div>
 
+
+
+</div>
+
+<h2 class="related-posts__title">Notícias Relacionadas</h2>
+<div class="related-posts_content">
+
 </div>
 
 <?php get_footer();
