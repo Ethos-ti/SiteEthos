@@ -25,11 +25,14 @@
         }
     }
 
-    &__menu-desktop {
+    &__desktop-content {
 
         @include tablet {
             display: none;
         }
+    }
+
+    &__menu-desktop {
 
         ul, li {
             margin: 0;
@@ -66,6 +69,14 @@
             &:hover .sub-menu {
                 display: block;
             }
+        }
+    }
+
+    &__mobile-content {
+        display: none;
+
+        @include tablet {
+            display: block;
         }
     }
 }
