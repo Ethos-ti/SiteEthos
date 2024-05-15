@@ -4,4 +4,6 @@ import 'iconify-icon';
 
 window.Alpine = Alpine;
 
-Alpine.start();
+window.addEventListener('DOMContentLoaded', () => {
+    Alpine.start();
+});

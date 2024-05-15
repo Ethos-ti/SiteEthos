@@ -196,7 +196,7 @@ get_header();
 
     <hr/>
 
-    <div class="accordeon">
+    <!-- <div class="accordeon">
         <details class="accordeon__item">
             <summary class="accordeon__header">Accordeon Title</summary>
             <div class="accordeon__content">Content</div>
@@ -209,6 +209,33 @@ get_header();
             <summary class="accordeon__header">Accordeon Title</summary>
             <div class="accordeon__content">Content</div>
         </details>
+    </div> -->
+
+    <div class="wp-block-coblocks-accordion">
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
     </div>
 
 
@@ -279,27 +306,26 @@ get_header();
     <hr/>
 
     <code>Tabs</code>
-    <?php $dynamic_id = uniqid(); ?>
-    <div class="tabs" id="tabs-<?= $dynamic_id ?>">
+    <div class="tabs" x-data="{ currentTab: 1 }" x-bind="Tabs()">
         <div class="tabs__header" role="tablist">
-            <button id="tab-button-<?= $dynamic_id ?>-1" class="tab tab--active" role="tab" aria-selected="true" aria-controls="tab-panel-<?= $dynamic_id ?>-1" tabindex="0">
+            <button class="tab" x-bind="TabButton(1)">
                 Aba 1 (selecionada)
             </button>
-            <button id="tab-button-<?= $dynamic_id ?>-2" class="tab tab--disabled" disabled role="tab" aria-disabled="true" aria-selected="false" aria-controls="tab-panel-<?= $dynamic_id ?>-2" tabindex="-1">
-                <img class="tab__icon-before" aria-hidden="true"> Aba 2 (desabilitada)
+            <button class="tab tab--disabled" disabled aria-disabled="true" x-bind="TabButton(2)">
+                Aba 2 (desabilitada)
             </button>
-            <button id="tab-button-<?= $dynamic_id ?>-3" class="tab" role="tab" aria-selected="false" aria-controls="tab-panel-<?= $dynamic_id ?>-3" tabindex="-1">
-                Aba 3 <img class="tab__icon-after" aria-hidden="true">
+            <button class="tab" x-bind="TabButton(3)">
+                Aba 3
             </button>
         </div>
         <div class="tabs__panels">
-            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-1" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-1">
+            <div class="tabs__panel" x-bind="TabPanel(1)">
                 Conteúdo da aba 1 (selecionada)
             </div>
-            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-2" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-2" hidden>
+            <div class="tabs__panel" x-bind="TabPanel(2)">
                 Conteúdo da aba 2 (desabilitada)
             </div>
-            <div class="tabs__panel" id="tab-panel-<?= $dynamic_id ?>-3" role="tabpanel" tabindex="0" aria-labelledby="tab-button-<?= $dynamic_id ?>-3" hidden>
+            <div class="tabs__panel" x-bind="TabPanel(3)">
                 Conteúdo da aba 3
             </div>
         </div>
