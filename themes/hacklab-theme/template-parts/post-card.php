@@ -9,7 +9,7 @@ $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
 
-$category = get_the_category();
+$categories = get_the_category();
 ?>
 <article class="card <?=$modifiers?>">
     <header class="card__image">
@@ -17,11 +17,13 @@ $category = get_the_category();
     </header>
 
     <main class="card__content">
-        <?php if (!empty($category)): ?>
+        <?php if (!empty($categories)): ?>
             <div class="card__category">
-                <a class="tag tag--solid" href="<?= get_term_link($category[0], 'category') ?>">
-                    <?= $category[0]->name ?>
-                </a>
+                <?php foreach ($categories as $category): ?>
+                    <a class="tag tag--solid tag--category-<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
+                        <?= $category->name ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
         <?php endif; ?>
 
