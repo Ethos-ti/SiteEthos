@@ -196,7 +196,7 @@ get_header();
 
     <hr/>
 
-    <div class="accordeon">
+    <!-- <div class="accordeon">
         <details class="accordeon__item">
             <summary class="accordeon__header">Accordeon Title</summary>
             <div class="accordeon__content">Content</div>
@@ -209,6 +209,33 @@ get_header();
             <summary class="accordeon__header">Accordeon Title</summary>
             <div class="accordeon__content">Content</div>
         </details>
+    </div> -->
+
+    <div class="wp-block-coblocks-accordion">
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
+        <div class="wp-block-coblocks-accordion-item">
+            <details>
+                <summary class="wp-block-coblocks-accordion-item__title">Accordeon Title</summary>
+                <div class="wp-block-coblocks-accordion-item__content">
+                    <p>Conteudo</p>
+                </div>
+            </details>
+        </div>
     </div>
 
 
