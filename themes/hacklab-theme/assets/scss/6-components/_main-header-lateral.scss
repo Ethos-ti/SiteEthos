@@ -74,9 +74,5 @@
 
     &__mobile-content {
         display: none;
-
-        @include tablet {
-            display: block;
-        }
     }
 }

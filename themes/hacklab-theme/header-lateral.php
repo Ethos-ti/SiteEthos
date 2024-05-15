@@ -44,7 +44,7 @@
 			</div>
         </div>
 
-        <div class="main-header__mobile-content">
+        <div class="main-header-lateral__mobile-content">
             <?= wp_nav_menu(['theme_location' => 'main-menu', 'container' => 'nav', 'menu_class' => 'menu', 'container_class' => 'main-header-lateral__menu-mobile']) ?>
         </div>
 	</header>
