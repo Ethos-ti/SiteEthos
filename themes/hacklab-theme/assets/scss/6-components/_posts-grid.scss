@@ -1,8 +1,16 @@
 .archive {
     &__content {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: $gap--large;
+
+        @media (min-width: $break--small) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (min-width: $break--desktop) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 
     .card {
