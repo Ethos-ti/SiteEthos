@@ -1,0 +1,15 @@
+.archive {
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: $gap--large;
+    }
+
+    .card {
+
+        &__meta,
+        &__excerpt {
+            display: none;
+        }
+    }
+}
