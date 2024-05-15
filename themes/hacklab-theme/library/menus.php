@@ -13,7 +13,7 @@ function add_menu_arrow( $output, $item, $depth, $args ) {
     // Only add class to 'top level' items on the 'primary' menu.
     if ( $depth === 0 ) {
         if ( in_array( 'menu-item-has-children', $item->classes ) ) {
-            $output .= '<i class="arrow--down"></i>';
+            $output .= '<iconify-icon icon="fa6-solid:angle-down"></iconify-icon>';
         }
     }
     return $output;

@@ -1,0 +1,20 @@
+.archive {
+    &__header {
+        text-align: center;
+    }
+
+    &__title,
+    &__excerpt {
+        margin-bottom: $margin--large;
+    }
+
+    &__infos {
+        display: flex;
+        justify-content: space-between;
+
+        >div {
+            margin-bottom: $margin--large;
+        }
+    }
+
+}

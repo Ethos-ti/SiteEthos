@@ -14,10 +14,12 @@ get_header();
     <h6>&lt;h6&gt; Título 6</h6>
     <p>&lt;p&gt; Parágrafo</p>
 
-    <hr/>
+    <hr/>s
 
     <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
     <iconify-icon icon="skill-icons:instagram"></iconify-icon>
+    <iconify-icon icon="iconamoon:arrow-right-2-bold"></iconify-icon>
+
     <hr/>
 
     <button type="button" class="button">Default</button>

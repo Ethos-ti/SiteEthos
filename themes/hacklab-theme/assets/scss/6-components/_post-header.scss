@@ -20,23 +20,26 @@
     &__excerpt{
         font-size: $font-size--large;
         font-weight: $font-weight--regular;
+        margin-bottom: $margin--large;
         text-align: center;
+        width: $grid--narrow;
     }
 
     &__meta{
         border-bottom: $border-width--small solid $color--high-dark;
         color: $color--low-light;
         display: flex;
+        justify-content: space-between;
+    }
 
-        .post-header__date{
-            font-size: $font-size--small;
-        }
+    &__date{
+        font-size: $font-size--small;
     }
 
     &__author{
         color: $color--low-light;
 
-        &--name{
+        &-name{
             font-size: $font-size--small;
             padding-top: $padding--x-small;
         }

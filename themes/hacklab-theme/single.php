@@ -22,18 +22,22 @@ $category = get_the_category();
 
         <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
-        <p class="post-header__excerpt"><?= get_the_excerpt() ?></p>
+        <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
 
-        <div class="post-header__meta">
+        <div class="post-header__meta container container--normal">
             <p class="post-header__date"><?= _e('Publicado em: ') ?><?= get_the_date() ?></p>
+            <?php get_template_part('template-parts/share-links', null, ['link'=>get_the_permalink()]) ?>
         </div>
 
-        <div class="post-header__author">
-            <p class="post-header__author--name"><?= _e('Publicado por: ') ?><?= get_the_author() ?></p>
+        <div class="post-header__author container container--normal">
+            <p class="post-header__author-name"><?= _e('Publicado por: ') ?><?= get_the_author() ?></p>
+        </div>
+
+        <div class="post-content container container--normal">
+            <?php the_content() ?>
         </div>
 
     </div>
 
 </div>
-
 <?php get_footer();

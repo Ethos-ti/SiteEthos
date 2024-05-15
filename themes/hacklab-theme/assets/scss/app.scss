@@ -22,6 +22,7 @@
 @import '5-objects/featured-image';
 @import '5-objects/form';
 @import '5-objects/hamburger';
+@import '5-objects/post-content';
 @import '5-objects/site-by-hacklab';
 @import '5-objects/stack';
 @import '5-objects/tab';
@@ -29,14 +30,20 @@
 
 // COMPONENTS
 @import '6-components/accordeon';
+@import '6-components/archive-header';
 @import '6-components/card';
 @import '6-components/kitchen-sink';
 @import '6-components/main-footer';
 @import '6-components/main-header';
+@import '6-components/main-header-lateral';
+@import '6-components/main-footer';
 @import '6-components/pagination';
 @import '6-components/single';
 @import '6-components/social-menu';
 @import '6-components/post-header';
+@import '6-components/posts-grid';
+@import '6-components/share-links';
+@import '6-components/social-menu';
 @import '6-components/table';
 @import '6-components/tabs';
 

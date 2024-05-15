@@ -1,18 +1,26 @@
 .main-header {
-    background-color: var(--hl--color--header-background);
-    color: var(--hl--color--header-text);
+    $background-color: $color--high-light;
+    $text-color: $color--low-pure;
+
+    background-color: $background-color;
+    color: $text-color;
     left: 0;
     position: sticky;
     top: 0;
     transition: $transition--default;
     width: 100%;
-    z-index: 100;
+    z-index: 1;
 
-    &__content {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        min-height: size(80);
-        padding-inline: $padding--medium;
+    a {
+        text-decoration: none;
+    }
+
+    &__toggle-menu {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .sub-menu {
+        background-color: $background-color;
     }
 }
