@@ -39,5 +39,7 @@ $category = get_the_category();
 
     </div>
 
+    <?php get_template_part('template-parts/content/related-posts') ?>
+
 </div>
 <?php get_footer();
