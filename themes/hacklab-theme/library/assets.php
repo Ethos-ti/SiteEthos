@@ -353,11 +353,6 @@ class Assets {
                 'global' => true,
             ],
 
-			'menu'     => [
-                'file' => 'menu.js',
-				'global' => true,
-			],
-
             'scroll-behavior'     => [
                 'file' => 'anchor-behavior.js',
 				'global' => true,

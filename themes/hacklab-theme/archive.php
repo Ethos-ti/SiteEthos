@@ -1,18 +1,11 @@
 <?php
-get_header();
-
-global $wp_query;
-$totalposts = $wp_query->found_posts; ?>
+get_header(); ?>
 
     <div class="container container--wide">
 
             <?php get_template_part( 'template-parts/title/archive-header' ); ?>
 
             <div class="archive__infos">
-                <div class="found-posts">
-                    <p><?php _e('Resultados Encontrados: ', 'hacklabr');?><span><?php echo $totalposts;?></span></p>
-                </div>
-
                 <?php get_template_part( 'template-parts/filter', 'posts', ['taxonomy' => 'category'] ); ?>
             </div><!-- .infos -->
 
@@ -22,7 +15,8 @@ $totalposts = $wp_query->found_posts; ?>
                 <?php endwhile; ?>
             </main>
 
-            <?php the_posts_pagination([
+            <?php
+            the_posts_pagination([
                 'prev_text' => __( '<iconify-icon icon="iconamoon:arrow-left-2-bold"></iconify-icon>', 'hacklbr'),
                 'next_text' => __( '<iconify-icon icon="iconamoon:arrow-right-2-bold"></iconify-icon>', 'hacklbr'),
 

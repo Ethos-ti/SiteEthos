@@ -1,20 +1,17 @@
-.archive {
-    &__header {
-        text-align: center;
-    }
+.archive,
+.search {
 
     &__title,
     &__excerpt {
-        margin-bottom: $margin--large;
+        text-align: center;
     }
 
-    &__infos {
-        display: flex;
-        justify-content: space-between;
-
-        >div {
-            margin-bottom: $margin--large;
-        }
+    &__title *,
+    &__excerpt *,
+    &__infos *,
+    &__results *,
+    &__alert * {
+        margin-bottom: $margin--large;
     }
 
 }

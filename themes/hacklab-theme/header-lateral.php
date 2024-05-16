@@ -9,10 +9,10 @@
 </head>
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
-    <header class="main-header main-header-lateral" x-data="{ menuOpen: false, searchOpen: false }">
+    <header x-data="{ menuOpen: false, searchOpen: false }" class="main-header main-header-lateral" :class="{ 'main-header-lateral--menu-open': menuOpen, 'main-header-lateral--search-open': searchOpen }">
         <div class="container container--wide">
 			<div class="main-header-lateral__content">
-                <button class="main-header__toggle-menu main-header-lateral__toggle-menu" aria-label="<?= __('Toggle menu visibility', 'hacklabr') ?>" @click="menuOpen = !menuOpen">
+                <button type="button" class="main-header__toggle-menu main-header-lateral__toggle-menu" aria-label="<?= __('Toggle menu visibility', 'hacklabr') ?>" @click="menuOpen = !menuOpen">
                     <svg class="hamburger" :class="{ 'hamburger--open': menuOpen }" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <title>Exibir menu</title>
                         <rect width="16" height="2" x="0" y="2"/>
@@ -35,8 +35,11 @@
                     <?= wp_nav_menu(['theme_location' => 'main-menu', 'container' => 'nav', 'menu_class' => 'menu', 'container_class' => 'main-header-lateral__menu-desktop']) ?>
                 </div>
 
-                <div class="search-component">
+                <div class="main-header-lateral__search">
                     <?php get_search_form(); ?>
+                    <button type="button" class="main-header__toggle-search main-header-lateral__toggle-search" aria-label="<?= __( 'Toggle search form visibility', 'hacklabr' ) ?>" @click="searchOpen = !searchOpen">
+                        <iconify-icon icon="fa6-solid:magnifying-glass"></iconify-icon>
+                    </button>
                 </div>
 
                 <?php do_action( 'hacklabr/header/menus-end' ); ?>
