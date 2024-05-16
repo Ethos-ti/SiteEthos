@@ -25,6 +25,19 @@
         }
     }
 
+    &__search {
+        display: flex;
+        gap: $gap--medium;
+
+        form {
+            display: none;
+        }
+
+        input[type="submit"] {
+            @include sr-only;
+        }
+    }
+
     &__desktop-content {
 
         @include tablet {
@@ -74,5 +87,26 @@
 
     &__mobile-content {
         display: none;
+    }
+
+    &--menu-open {
+
+        .main-header-lateral__mobile-content {
+            display: block;
+        }
+    }
+
+    &--search-open {
+
+        .main-header-lateral__search form {
+            display: block;
+        }
+
+        .main-header-lateral__logo {
+
+            @include tablet {
+                display: none;
+            }
+        }
     }
 }
