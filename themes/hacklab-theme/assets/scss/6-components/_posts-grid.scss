@@ -1,4 +1,5 @@
-.archive {
+.archive,
+.search {
     &__content {
         display: grid;
         grid-template-columns: 1fr;
@@ -11,6 +12,11 @@
         @media (min-width: $break--desktop) {
             grid-template-columns: 1fr 1fr 1fr;
         }
+    }
+
+    &__content:has(.no-post) {
+        display: flex;
+        text-align: center;
     }
 
     .card {
