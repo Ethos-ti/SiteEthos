@@ -22,6 +22,23 @@ $color--warning-dark:       var(--wp--preset--color--warning-dark);
 $color--helper-pure:        var(--wp--preset--color--helper-pure);
 $color--helper-light:       var(--wp--preset--color--helper-light);
 $color--helper-dark:        var(--wp--preset--color--helper-dark);
+$color--meio-ambiente:      var(--wp--preset--color--meio-ambiente);
+$color--meio-ambiente-light:var(--wp--preset--color--meio-ambiente-light);
+$color--meio-ambiente-dark: var(--wp--preset--color--meio-ambiente-dark);
+$color--integridade:        var(--wp--preset--color--integridade);
+$color--integridade-light:  var(--wp--preset--color--integridade-light);
+$color--integridade-dark:   var(--wp--preset--color--integridade-dark);
+$color--gestao-sustentavel: var(--wp--preset--color--gestao-sustentavel);
+$color--gestao-sustentavel-light: var(--wp--preset--color--gestao-sustentavel-light);
+$color--gestao-sustentavel-dark:  var(--wp--preset--color--gestao-sustentavel-dark);
+$color--economia:           var(--wp--preset--color--economia);
+$color--economia-light:     var(--wp--preset--color--economia-light);
+$color--economia-dark:      var(--wp--preset--color--economia-dark);
+$color--direitos-humanos  : var(--wp--preset--color--direitos-humanos);
+$color--direitos-humanos-light: var(--wp--preset--color--direitos-humanos-light);
+$color--direitos-humanos-dark:  var(--wp--preset--color--direitos-humanos-dark);
+
+
 
 // Font sizes
 $font-size--hero:       var(--wp--preset--font-size--hero);
@@ -31,6 +48,10 @@ $font-size--large:      var(--wp--preset--font-size--large);
 $font-size--medium:     var(--wp--preset--font-size--medium);
 $font-size--small:      var(--wp--preset--font-size--small);
 $font-size--x-small:    var(--wp--preset--font-size--x-small);
+$font-size--xx-small:    var(--wp--preset--font-size--xx-small);
+$font-size--xxx-small:    var(--wp--preset--font-size--xxx-small);
+
+
 
 // Font families
 $font-family--primary: var(--wp--preset--font-family--primary);

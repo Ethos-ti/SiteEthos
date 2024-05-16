@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Montserrat';
+    font-display: swap;
+    font-weight: 300;
+    src: url('#{$path--assets}/fonts/Montserrat-Light.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-display: swap;
+    font-weight: 400;
+    src: url('#{$path--assets}/fonts/Montserrat-Regular.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-display: swap;
+    font-weight: 400;
+    font-style: italic;
+    src: url('#{$path--assets}/fonts/Montserrat-Italic.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-display: swap;
+    font-weight: 700;
+    src: url('#{$path--assets}/fonts/Montserrat-Bold.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+    font-weight: 300;
+    src: url('#{$path--assets}/fonts/OpenSans-Light.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+    font-weight: 400;
+    src: url('#{$path--assets}/fonts/OpenSans-Regular.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+    font-weight: 400;
+    font-style: italic;
+    src: url('#{$path--assets}/fonts/OpenSans-Italic.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+    font-weight: 600;
+    font-style: italic;
+    src: url('#{$path--assets}/fonts/OpenSans-SemiBold.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-display: swap;
+    font-weight: 700;
+    src: url('#{$path--assets}/fonts/OpenSans-Bold.ttf') format(truetype);
+}

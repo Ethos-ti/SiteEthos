@@ -21,15 +21,17 @@ $font-size-mobile--x-small:  var(--wp--preset--font-size--x-small);
 
 // Font weights
 $font-weight--bold: 700;
+$font-weight--semi-bold: 600;
 $font-weight--medium: 500;
 $font-weight--regular: 400;
 $font-weight--light: 300;
 
 // Line heights
-$line-height--loose: 1.75;
+$line-height--loose: 1.8;
 $line-height--normal: 1.5;
-$line-height--tight: 1.25;
+$line-height--tight: 1.2;
 $line-height--none: 1;
+$line-height--squeeze: 0.9;
 
 // Espaçamentos
 $margin--small: 0.5rem;

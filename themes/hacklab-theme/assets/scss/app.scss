@@ -10,6 +10,7 @@
 // GENERIC
 @import '3-generic/1.reset';
 @import '3-generic/2.globals';
+@import '3-generic/3.fonts.scss';
 
 // ELEMENTS
 @import '4-elements/1.typography';
@@ -19,7 +20,6 @@
 @import '5-objects/arrow';
 @import '5-objects/button';
 @import '5-objects/container';
-@import '5-objects/featured-image';
 @import '5-objects/form';
 @import '5-objects/hamburger';
 @import '5-objects/post-content';
@@ -36,12 +36,9 @@
 @import '6-components/main-footer';
 @import '6-components/main-header';
 @import '6-components/main-header-lateral';
-@import '6-components/main-footer';
 @import '6-components/pagination';
-@import '6-components/single';
-@import '6-components/social-menu';
-@import '6-components/post-header';
 @import '6-components/posts-grid';
+@import '6-components/post-header';
 @import '6-components/related-posts';
 @import '6-components/share-links';
 @import '6-components/social-menu';

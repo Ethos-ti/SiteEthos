@@ -10,17 +10,17 @@
                 {
                     "name": "Primary pure",
                     "slug": "primary-pure",
-                    "color": "#1DACE4"
+                    "color": "#0091d7"
                 },
                 {
                     "name": "Primary light",
                     "slug": "primary-light",
-                    "color": "#C2ECFB"
+                    "color": "#A8DFF4"
                 },
                 {
                     "name": "Primary dark",
                     "slug": "primary-dark",
-                    "color": "#007CB8"
+                    "color": "#0075AD"
                 },
                 {
                     "name": "Secondary pure",
@@ -55,17 +55,17 @@
                 {
                     "name": "Low Pure",
                     "slug": "low-pure",
-                    "color": "#000000"
+                    "color": "#222222"
                 },
                 {
                     "name": "Low light",
                     "slug": "low-light",
-                    "color": "#666666"
+                    "color": "#7D7D7D"
                 },
                 {
                     "name": "Low dark",
                     "slug": "low-dark",
-                    "color": "#333333"
+                    "color": "#363B43"
                 },
                 {
                     "name": "High pure",
@@ -75,7 +75,7 @@
                 {
                     "name": "High light",
                     "slug": "high-light",
-                    "color": "#F5F5F5"
+                    "color": "#F2F3F4"
                 },
                 {
                     "name": "High dark",
@@ -85,32 +85,107 @@
                 {
                     "name": "Warning pure",
                     "slug": "warning-pure",
-                    "color": "#FF358B"
+                    "color": "#DC052D"
                 },
                 {
                     "name": "Warning light",
                     "slug": "warning-light",
-                    "color": "#FF72BB"
+                    "color": "#FB4B6C"
                 },
                 {
                     "name": "Warning dark",
                     "slug": "warning-dark",
-                    "color": "#C6005E"
+                    "color": "#780318"
                 },
                 {
                     "name": "Helper pure",
                     "slug": "helper-pure",
-                    "color": "#29D9C2"
+                    "color": "#9ACA3C"
                 },
                 {
                     "name": "Helper light",
                     "slug": "helper-light",
-                    "color": "#70FFF5"
+                    "color": "#C3DF8B"
                 },
                 {
                     "name": "Helper dark",
                     "slug": "helper-dark",
-                    "color": "#00A792"
+                    "color": "#5E7C22"
+                },
+                {
+                    "name": "Meio Ambiente",
+                    "slug": "meio-ambiente",
+                    "color": "#B7C726"
+                },
+                {
+                    "name": "Meio Ambiente Light",
+                    "slug": "meio-ambiente-light",
+                    "color": "#EEF721"
+                },
+                {
+                    "name": "Meio Ambiente Dark",
+                    "slug": "meio-ambiente-dark",
+                    "color": "#A6AD06"
+                },
+                {
+                    "name": "Integridade",
+                    "slug": "integridade",
+                    "color": "#0083a2"
+                },
+                {
+                    "name": "Integridade Light",
+                    "slug": "integridade-ligth",
+                    "color": "#00B2EB"
+                },
+                {
+                    "name": "Integridade Dark",
+                    "slug": "integridade-dark",
+                    "color": "#006484"
+                },
+                {
+                    "name": "Gestão Sustentável",
+                    "slug": "gestao-sustentavel",
+                    "color": "#f7971c"
+                },
+                {
+                    "name": "Gestão Sustentável Light",
+                    "slug": "gestao-sustentavel-light",
+                    "color": "#FFB04D"
+                },
+                {
+                    "name": "Gestão Sustentável Dark",
+                    "slug": "gestao-sustentavel-dark",
+                    "color": "#E37F00"
+                },
+                {
+                    "name": "Economia",
+                    "slug": "economia",
+                    "color": "#07b79c"
+                },
+                {
+                    "name": "Economia Light",
+                    "slug": "economia-light",
+                    "color": "#25F3D2"
+                },
+                {
+                    "name": "Economia Dark",
+                    "slug": "economia-dark",
+                    "color": "#09A88E"
+                },
+                {
+                    "name": "Direitos Humanos",
+                    "slug": "direitos-humanos",
+                    "color": "#ed164e"
+                },
+                {
+                    "name": "Direitos Humanos Light",
+                    "slug": "direitos-humanos-light",
+                    "color": "#FF3D74"
+                },
+                {
+                    "name": "Direitos Humanos Dark",
+                    "slug": "direitos-humanos-dark",
+                    "color": "#D7003D"
                 }
             ]
         },
@@ -128,36 +203,46 @@
                 {
                     "name": "Enorme",
                     "slug": "hero",
-                    "size": "3rem"
+                    "size": "5rem"
                 },
                 {
                     "name": "Extra grande",
                     "slug": "xx-large",
-                    "size": "2rem"
+                    "size": "4rem"
                 },
                 {
                     "name": "Muito grande",
                     "slug": "x-large",
-                    "size": "1.5rem"
+                    "size": "3rem"
                 },
                 {
                     "name": "Grande",
                     "slug": "large",
-                    "size": "1.25rem"
+                    "size": "2rem"
                 },
                 {
                     "name": "Média",
                     "slug": "medium",
-                    "size": "1rem"
+                    "size": "1.5rem"
                 },
                 {
                     "name": "Pequena",
                     "slug": "small",
-                    "size": "0.875rem"
+                    "size": "1.25rem"
                 },
                 {
                     "name": "Muito pequena",
                     "slug": "x-small",
+                    "size": "1rem"
+                },
+                {
+                    "name": "Muito muito pequena",
+                    "slug": "xx-small",
+                    "size": "0.875rem"
+                },
+                {
+                    "name": "Muito muito muito pequena",
+                    "slug": "xxx-small",
                     "size": "0.75rem"
                 }
             ],
