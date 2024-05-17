@@ -9,6 +9,24 @@
 </head>
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
+    
+    <div class="pre-header">
+        <div class="container container--wide">
+            <div class="pre-header__content">
+                <div class="main-header__social-content">
+                    <?= the_social_networks_menu(); ?>
+                </div>
+                <div class="acessibilidade">
+                    <iconify-icon icon="material-symbols-light:contrast"></iconify-icon>
+                    <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
+                    <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
+                    <iconify-icon icon="bi:volume-down-fill"></iconify-icon>
+                    <iconify-icon icon="fa-solid:print"></iconify-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header x-data="{ menuOpen: false, searchOpen: false }" class="main-header main-header-lateral" :class="{ 'main-header-lateral--menu-open': menuOpen, 'main-header-lateral--search-open': searchOpen }">
         <div class="container container--wide">
 			<div class="main-header-lateral__content">
