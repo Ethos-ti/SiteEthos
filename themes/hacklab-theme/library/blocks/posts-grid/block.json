@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/posts-grid",
+    "title": "Posts grid",
+    "description": "Display post cards on a grid",
+    "category": "text",
+    "icon": "grid-view",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "cardModel": {
+            "type": "string",
+            "default": "vertical"
+        },
+        "order": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "date"
+		},
+        "postType": {
+            "type": "string",
+            "default": "post"
+        },
+        "postsPerColumn": {
+            "type": "number",
+            "default": 1
+        },
+        "postsPerRow": {
+            "type": "number",
+            "default": 1
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/posts-grid/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/posts-grid/editor.css"],
+    "style": ["file:../../../dist/blocks/posts-grid/style.css"]
+}

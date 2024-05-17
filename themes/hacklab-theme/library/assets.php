@@ -26,9 +26,7 @@ class Assets {
 	public function initialize() {
         $this->enqueue_styles();
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'gutenberg_block_enqueues' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
@@ -138,33 +136,6 @@ class Assets {
 	public function enqueue_admin_style($hook) {
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
-
-        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );
-        // wp_enqueue_script(
-        //     'buddyx-admin-script',
-        //     get_theme_file_uri( '/assets/js/buddyx-admin.min.js' ),
-        //     '',
-        //     '',
-        //     true
-        // );
-	}
-
-	/**
-	 * Enqueue custom assets on admin after default asstes blocks
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
-	 */
-	public function enqueue_block_editor_assets() {
-
-		// Cover
-		wp_enqueue_style(
-			'custom-core-cover',
-			get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-			[],
-			filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-			'all'
-		);
-
 	}
 
 	/**
@@ -370,71 +341,6 @@ class Assets {
 
 		return $this->js_files;
 	}
-
-    public function gutenberg_block_enqueues() {
-		$id = get_the_ID();
-
-        $block_list = [
-            'core/cover' => function() {
-                wp_enqueue_style(
-                    'core-cover',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-                    'all'
-                );
-            },
-            'core/image' => function() {
-                wp_enqueue_style(
-                    'core-image',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-image.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-image.css'),
-                    'all'
-                );
-            },
-
-			'core/query' => function() {
-				wp_enqueue_style(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/assets/vendor/tiny-slider/tiny-slider.css'),
-					'all'
-				);
-
-				wp_enqueue_style(
-					'core-query',
-					get_stylesheet_directory_uri() . '/dist/css/_b-query.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-query.css'),
-					'all'
-				);
-
-				wp_enqueue_script(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js',
-					[], '2.9.3',
-					true
-				);
-
-				wp_enqueue_script(
-					'query-slider',
-					get_stylesheet_directory_uri() . '/dist/js/functionalities/query-slider.js',
-					['tiny-slider'],
-					filemtime(get_stylesheet_directory() . '/dist/js/functionalities/query-slider.js'),
-					true
-				);
-			}
-		];
-
-        // Enqueue only used blocks
-		foreach($block_list as $key => $block) {
-			if(has_block($key, $id)){
-				$block();
-			}
-		}
-    }
 }
 
 

@@ -1,38 +1,29 @@
-const fs = require('node:fs');
-const path = require('node:path');
+const { resolve } = require('node:path');
 
+const { sync: glob } = require('fast-glob');
 const mix = require('laravel-mix');
 const DependencyExtraction = require('@wordpress/dependency-extraction-webpack-plugin');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for your application, as well as bundling up your JS files.
- |
- */
-
-const getDirFiles = function (dir) {
-    // get all 'files' in this directory
-    // filter directories
-    return fs.readdirSync(dir).filter(file => {
-        return fs.statSync(`${dir}/${file}`).isFile();
-    });
-};
-
 const root_dir = './';
 const assets_dir = root_dir + '/assets';
+const blocks_dir = root_dir + '/library/blocks';
 const dist_dir = root_dir + '/dist';
 
 mix.sass(assets_dir + '/scss/app.scss','./css/app.css');
 
-// Compile all JS functionalitis into individual files
-const functionalitiesPath = assets_dir + '/javascript/functionalities/';
-getDirFiles(functionalitiesPath).forEach((filepath) => {
-    mix.js(functionalitiesPath + filepath , './js/functionalities');
+// Compile all JS functionalities into separate files
+glob(assets_dir + '/javascript/functionalities/*.js').forEach((path) => {
+    mix.js(path, './js/functionalities');
+});
+
+// Compile all block assets into individual files
+glob(blocks_dir + '/*/*.js').forEach((path) => {
+    const parts = path.split('/');
+    mix.js(path, './blocks/' + parts[3]).react();
+})
+glob(blocks_dir + '/*/*.scss').forEach((path) => {
+    const parts = path.split('/');
+    mix.sass(path, './blocks/' + parts[3]);
 })
 
 mix.sourceMaps(true, 'eval-source-map', 'source-map');
@@ -40,7 +31,7 @@ mix.sourceMaps(true, 'eval-source-map', 'source-map');
 mix.webpackConfig({
     output: {
         chunkFilename: dist_dir + '/[name].js',
-        path: path.resolve( __dirname, './dist/' ),
+        path: resolve( __dirname, './dist/' ),
         publicPath: dist_dir,
         filename: '[name].js',
     },
