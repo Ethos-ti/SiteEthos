@@ -14,14 +14,31 @@
             "type": "string",
             "default": "vertical"
         },
+        "compare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "noCompare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "noPostType": {
+            "type": "string"
+        },
+        "noQueryTerms": {
+            "type": "array"
+        },
+        "noTaxonomy": {
+            "type": "string"
+        },
         "order": {
-			"type": "string",
-			"default": "desc"
-		},
-		"orderBy": {
-			"type": "string",
-			"default": "date"
-		},
+            "type": "string",
+            "default": "desc"
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "date"
+        },
         "postType": {
             "type": "string",
             "default": "post"
@@ -33,6 +50,16 @@
         "postsPerRow": {
             "type": "number",
             "default": 1
+        },
+        "queryTerms": {
+            "type": "array"
+        },
+        "showChildren": {
+            "type": "boolean",
+            "default": false
+        },
+        "taxonomy": {
+            "type": "string"
         }
     },
     "textdomain": "hacklabr",
