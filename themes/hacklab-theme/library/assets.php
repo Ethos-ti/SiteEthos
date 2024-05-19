@@ -87,11 +87,6 @@ class Assets {
             $src = $css_uri . $data['file'];
             $version = (string) filemtime( $css_dir . $data['file'] );
 
-            /**
-             * Dependencies
-             *
-             * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-             */
             $deps = [];
             if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
                 $deps = $data['deps'];
@@ -114,17 +109,31 @@ class Assets {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
         $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
 
-        $js_files = $this->get_js_files();
-        foreach ( $js_files as $handle => $data ) {
-            $src = $js_uri . $data['file'];
-            $version = (string) filemtime( $js_dir . $data['file'] );
+        $assets_meta = require __DIR__ . '/../dist/assets.php';
 
-            $deps = [];
-            if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
-                $deps = $data['deps'];
-            }
+        $js_files = $this->get_js_files();
+
+        foreach ( $js_files as $handle => $data ) {
 
             if ( self::should_preload_asset( $data ) ) {
+                $src = $js_uri . $data['file'];
+
+                $asset_meta = $assets_meta[ '/js/functionalities/' . $data['file'] ] ?: null;
+
+                if ( empty( $asset_meta ) ) {
+                    $external_deps = $asset_meta['dependencies'];
+                    $version = $asset_meta['version'];
+                } else {
+                    $external_deps = [];
+                    $version = (string) filemtime( $js_dir . $data['file'] );
+                }
+
+                if ( empty( $data['deps'] ) ) {
+                    $deps = $external_deps;
+                } else {
+                    $deps = array_unique( array_merge( $data['deps'], $external_deps ), SORT_STRING );
+                }
+
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
             }
         }
