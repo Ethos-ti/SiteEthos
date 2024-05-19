@@ -28,7 +28,7 @@ export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange })
         return value.map((token) => terms[token]?.name).filter(Boolean);
     }, [terms, value]);
 
-    const onChangeTokens = (tokens) => {
+    const onTokensChange = (tokens) => {
         if (!terms) {
             return;
         }
@@ -45,7 +45,7 @@ export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange })
             label={label}
             suggestions= {suggestions}
             value={tokens}
-            onChange={onChangeTokens}
+            onChange={onTokensChange}
             onInputChange={setDebouncedSearch}
         />
     );
