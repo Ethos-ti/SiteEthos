@@ -14,10 +14,13 @@ function getOptions (postTypes) {
         .sort(sortByString('label'));
 }
 
-export function SelectPostType ({ label = __('Post type'), value, onChange }) {
+export function SelectPostType ({ label = __('Post type'), required = false, value, onChange }) {
     const postTypes = useRestApi('hacklabr/v2/post_types');
 
-    const options = useMemo(() => getOptions(postTypes), [postTypes]);
+    const options = useMemo(() => {
+        const baseOptions = getOptions(postTypes);
+        return required ? baseOptions : [{ label: __('No post type', 'hacklabr'), value: '' }, ...baseOptions];
+    }, [postTypes]);
 
     return (
         <SelectControl

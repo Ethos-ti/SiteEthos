@@ -26,7 +26,8 @@
             "type": "string"
         },
         "noQueryTerms": {
-            "type": "array"
+            "type": "array",
+            "default": []
         },
         "noTaxonomy": {
             "type": "string"
@@ -52,7 +53,8 @@
             "default": 1
         },
         "queryTerms": {
-            "type": "array"
+            "type": "array",
+            "default": []
         },
         "showChildren": {
             "type": "boolean",

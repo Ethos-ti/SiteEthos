@@ -14,10 +14,13 @@ function getOptions (taxonomies) {
         .sort(sortByString('label'));
 }
 
-export function SelectTaxonomy ({ label = __('Taxonomy'), postType, value, onChange }) {
+export function SelectTaxonomy ({ label = __('Taxonomy'), postType, required = false, value, onChange }) {
     const taxonomies = useRestApi(`hacklabr/v2/taxonomies/${postType}`);
 
-    const options = useMemo(() => [{ label: __('No taxonomy', 'hacklabr'), value: '' }, ...getOptions(taxonomies)], [taxonomies]);
+    const options = useMemo(() => {
+        const baseOptions = getOptions(taxonomies);
+        return required ? baseOptions : [{ label: __('No taxonomy', 'hacklabr'), value: '' }, ...baseOptions];
+    }, [taxonomies]);
 
     return (
         <SelectControl

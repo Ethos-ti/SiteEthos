@@ -1,6 +1,6 @@
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
-import { PanelBody, PanelRow } from '@wordpress/components';
+import { Disabled, PanelBody, PanelRow } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 
@@ -25,7 +25,9 @@ export default function Edit ({ attributes, setAttributes }) {
         </InspectorControls>
 
         <div {...blockProps}>
-            <ServerSideRender block="hacklabr/posts-grid" attributes={attributes}/>
+            <Disabled>
+                <ServerSideRender block="hacklabr/posts-grid" attributes={attributes}/>
+            </Disabled>
         </div>
     </>;
 }
