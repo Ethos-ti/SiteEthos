@@ -2,6 +2,7 @@ import { PanelBody, PanelRow, QueryControls, ToggleControl } from '@wordpress/co
 import { __ } from '@wordpress/i18n';
 
 import { useRestApi } from './hooks';
+import { EMPTY_ARR } from './utils';
 import { SelectCompare } from './SelectCompare';
 import { SelectPostType } from './SelectPostType';
 import { SelectTaxonomy } from './SelectTaxonomy';
@@ -18,16 +19,16 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
     const onOrderChange = (order) => setAttributes({ order });
     const onOrderByChange = (orderBy) => setAttributes({ orderBy });
 
-    const onPostTypeChange = (postType) => setAttributes({ postType, taxonomy: '', queryTerms: [] });
-    const onNoPostTypeChange = (noPostType) => setAttributes({ noPostType, noTaxonomy: '', noQueryTerms: [] });
+    const onPostTypeChange = (postType) => setAttributes({ postType, taxonomy: '', queryTerms: EMPTY_ARR });
+    const onNoPostTypeChange = (noPostType) => setAttributes({ noPostType, noTaxonomy: '', noQueryTerms: EMPTY_ARR });
 
     const onShowChildrenChange = (showChildren) => setAttributes({ showChildren });
 
     const onQueryTermsChange = (queryTerms) => setAttributes({ queryTerms });
     const onNoQueryTermsChange = (noQueryTerms) => setAttributes({ noQueryTerms });
 
-    const onTaxonomyChange = (taxonomy) => setAttributes({ taxonomy, queryTerms: [] });
-    const onNoTaxonomyChange = (noTaxonomy) => setAttributes({ noTaxonomy, noQueryTerms: [] });
+    const onTaxonomyChange = (taxonomy) => setAttributes({ taxonomy, queryTerms: EMPTY_ARR });
+    const onNoTaxonomyChange = (noTaxonomy) => setAttributes({ noTaxonomy, noQueryTerms: EMPTY_ARR });
 
     return (
         <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={title}>

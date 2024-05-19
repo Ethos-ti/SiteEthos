@@ -12,7 +12,7 @@
     "attributes": {
         "cardModel": {
             "type": "string",
-            "default": "vertical"
+            "default": ""
         },
         "compare": {
             "type": "string",

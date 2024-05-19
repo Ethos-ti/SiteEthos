@@ -4,6 +4,7 @@ import { useMemo, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useRestApi } from './hooks';
+import { EMPTY_ARR } from './utils';
 
 export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange }) {
     const [search, setSearch] = useState('');
@@ -14,7 +15,7 @@ export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange })
 
     const suggestions = useMemo(() => {
         if (!searchedTerms) {
-            return [];
+            return EMPTY_ARR;
         }
 
         return Object.values(searchedTerms).map((term) => term.name);

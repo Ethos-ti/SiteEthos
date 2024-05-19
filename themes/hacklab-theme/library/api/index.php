@@ -9,6 +9,12 @@ class API {
     }
 
     static function register_routes() {
+        register_rest_route('hacklabr/v2', '/block_settings', [
+            'methods' => 'GET',
+            'callback' => 'hacklabr\API::rest_block_settings_callback',
+            'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
+        ]);
+
         register_rest_route('hacklabr/v2', '/post_types', [
             'methods' => 'GET',
             'callback' => 'hacklabr\API::rest_post_types_callback',
@@ -46,6 +52,21 @@ class API {
             ],
             'permission_callback' => '__return_true',
         ]);
+    }
+
+    static function rest_permission_to_edit_posts () {
+        return current_user_can('edit_posts');
+    }
+
+    static function rest_block_settings_callback () {
+        $response = [
+            'cardModels' => [
+                'options' => get_card_models(),
+                'default' => get_default_card_model(),
+            ],
+        ];
+
+        return new \WP_REST_Response($response, 200);
     }
 
     static function rest_post_types_callback () {

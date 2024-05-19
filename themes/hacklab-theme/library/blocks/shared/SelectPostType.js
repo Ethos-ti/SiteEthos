@@ -3,10 +3,14 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useRestApi } from './hooks';
-import { sortByString } from './utils';
+import { EMPTY_ARR, sortByString } from './utils';
 
 function getOptions (postTypes) {
-    return Object.values(postTypes ?? [])
+    if (!postTypes) {
+        return EMPTY_ARR;
+    }
+
+    return Object.values(postTypes)
         .map((postType) => ({
             label: postType.label,
             value: postType.slug,

@@ -1,6 +1,8 @@
 import { addQueryArgs } from '@wordpress/url';
 import useSWR from 'swr';
 
+import { EMPTY_OBJ } from './utils';
+
 async function fetcher (url) {
     if (!url) {
         return undefined;
@@ -12,7 +14,7 @@ async function fetcher (url) {
     return res.json();
 }
 
-export function useRestApi (baseUrl, params = {}) {
+export function useRestApi (baseUrl, params = EMPTY_OBJ) {
     const url = baseUrl && addQueryArgs(new URL(baseUrl, wpApiSettings.root).toString(), params);
     const { data } = useSWR(url, fetcher, {
         dedupingInterval: 60 * 60,

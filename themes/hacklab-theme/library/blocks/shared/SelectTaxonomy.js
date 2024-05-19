@@ -3,10 +3,14 @@ import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { useRestApi } from './hooks';
-import { sortByString } from './utils';
+import { EMPTY_ARR, sortByString } from './utils';
 
 function getOptions (taxonomies) {
-    return Object.values(taxonomies ?? [])
+    if (!taxonomies) {
+        return EMPTY_ARR;
+    }
+
+    return Object.values(taxonomies)
         .map((taxonomy) => ({
             label: taxonomy.label,
             value: taxonomy.slug,
