@@ -19,7 +19,7 @@ function getOptions (cardModels) {
 }
 
 export function SelectCardModel ({ label = __('Card model', 'hacklabr'), value, onChange }) {
-    const settings = useRestApi('hacklabr/v2/block_settings');
+    const { data: settings } = useRestApi('hacklabr/v2/block_settings');
 
     const options = useMemo(() => {
         const baseOptions = getOptions(settings?.cardModels);

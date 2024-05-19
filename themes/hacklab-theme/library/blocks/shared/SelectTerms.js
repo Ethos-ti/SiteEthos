@@ -10,8 +10,8 @@ export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange })
     const [search, setSearch] = useState('');
     const setDebouncedSearch = useDebounce(setSearch, 500);
 
-    const terms = useRestApi(`hacklabr/v2/terms/${taxonomy}`);
-    const searchedTerms = useRestApi(`hacklabr/v2/terms/${taxonomy}`, { search });
+    const { data: terms } = useRestApi(`hacklabr/v2/terms/${taxonomy}`);
+    const { data: searchedTerms } = useRestApi(`hacklabr/v2/terms/${taxonomy}`, { search });
 
     const suggestions = useMemo(() => {
         if (!searchedTerms) {

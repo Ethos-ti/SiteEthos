@@ -19,7 +19,7 @@ function getOptions (postTypes) {
 }
 
 export function SelectPostType ({ label = __('Post type'), required = false, value, onChange }) {
-    const postTypes = useRestApi('hacklabr/v2/post_types');
+    const { data: postTypes } = useRestApi('hacklabr/v2/post_types');
 
     const options = useMemo(() => {
         const baseOptions = getOptions(postTypes);

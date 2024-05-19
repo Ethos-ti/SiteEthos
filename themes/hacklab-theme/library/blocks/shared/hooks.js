@@ -1,23 +1,16 @@
+import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
 import useSWR from 'swr';
 
 import { EMPTY_OBJ } from './utils';
 
-async function fetcher (url) {
-    if (!url) {
-        return undefined;
-    }
-    const isLocalRequest = url.startsWith(wpApiSettings.root);
-    const res = await fetch(url, {
-        headers: isLocalRequest ? { 'X-WP-Nonce': wpApiSettings.nonce } : undefined,
-    });
-    return res.json();
+function swrFetcher (url) {
+    return apiFetch({ path: url });
 }
 
 export function useRestApi (baseUrl, params = EMPTY_OBJ) {
-    const url = baseUrl && addQueryArgs(new URL(baseUrl, wpApiSettings.root).toString(), params);
-    const { data } = useSWR(url, fetcher, {
-        dedupingInterval: 60 * 60,
+    const url = baseUrl && addQueryArgs(baseUrl, params);
+    return useSWR(url, swrFetcher, {
+        dedupingInterval: 5 * 60 * 1000,
     });
-    return data;
 }

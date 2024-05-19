@@ -11,7 +11,7 @@ import { SelectTerms } from './SelectTerms';
 export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'hacklabr') }) {
     const { compare, noCompare, noPostType, noQueryTerms, noTaxonomy, order, orderBy, postType, queryTerms, showChildren, taxonomy } = attributes;
 
-    const postTypes = useRestApi('hacklabr/v2/post_types');
+    const { data: postTypes } = useRestApi('hacklabr/v2/post_types');
 
     const onCompareChange = (compare) => setAttributes({ compare });
     const onNoCompareChange = (noCompare) => setAttributes({ noCompare });
