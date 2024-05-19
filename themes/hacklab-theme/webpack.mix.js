@@ -10,6 +10,7 @@ const blocks_dir = root_dir + '/library/blocks';
 const dist_dir = root_dir + '/dist';
 
 mix.sass(assets_dir + '/scss/app.scss','./css/app.css');
+mix.sass(assets_dir + '/scss/editor.scss','./css/editor.css');
 
 // Compile all JS functionalities into separate files
 glob(assets_dir + '/javascript/functionalities/*.js').forEach((path) => {
@@ -17,11 +18,11 @@ glob(assets_dir + '/javascript/functionalities/*.js').forEach((path) => {
 });
 
 // Compile all block assets into individual files
-glob(blocks_dir + '/*/*.js').forEach((path) => {
+glob(blocks_dir + '/*/*.js', { ignore: ['**/shared/**'] }).forEach((path) => {
     const parts = path.split('/');
     mix.js(path, './blocks/' + parts[3]).react();
 })
-glob(blocks_dir + '/*/*.scss').forEach((path) => {
+glob(blocks_dir + '/*/*.scss', { ignore: ['**/shared/**'] }).forEach((path) => {
     const parts = path.split('/');
     mix.sass(path, './blocks/' + parts[3]);
 })

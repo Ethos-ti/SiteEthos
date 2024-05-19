@@ -133,9 +133,10 @@ class Assets {
 	/**
 	 * Register and enqueue a custom stylesheet in the WordPress admin.
 	 */
-	public function enqueue_admin_style($hook) {
+	public function enqueue_admin_style() {
         $css_uri = get_theme_file_uri( '/dist/css/' );
-        $css_dir = get_theme_file_path( '/dist/css/' );
+
+        wp_enqueue_style('hacklabr-gutenberg', $css_uri . 'editor.css');
 	}
 
 	/**
@@ -252,10 +253,6 @@ class Assets {
 
 		$this->css_files = [];
 		foreach ( $css_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}
@@ -322,10 +319,6 @@ class Assets {
 
 		$this->js_files = [];
 		foreach ( $js_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}

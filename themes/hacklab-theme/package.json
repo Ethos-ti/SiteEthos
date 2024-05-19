@@ -22,6 +22,7 @@
     "@wordpress/server-side-render": "^4.35.0",
     "alpinejs": "^3.13.10",
     "iconify-icon": "^2.1.0",
+    "swr": "^2.2.5",
     "tiny-slider": "^2.9.4"
   },
   "devDependencies": {

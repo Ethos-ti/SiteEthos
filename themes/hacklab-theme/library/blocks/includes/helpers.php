@@ -43,8 +43,8 @@ function build_posts_query ($attributes, $posts_to_show, $post__not_in = []) {
             foreach ($no_query_terms as $no_term) {
                 $no_args['tax_query'][] = [
                     'taxonomy' => $no_taxonomy,
-                    'field' => 'term_id',
-                    'terms' => [$no_term['id']],
+                    'field' => 'slug',
+                    'terms' => [$no_term],
                 ];
             }
 
@@ -66,8 +66,8 @@ function build_posts_query ($attributes, $posts_to_show, $post__not_in = []) {
         foreach ($query_terms as $term) {
             $args['tax_query'][] = [
                 'taxonomy' => $taxonomy,
-                'field' => 'term_id',
-                'terms' => [$term['id']],
+                'field' => 'slug',
+                'terms' => [$term],
             ];
         }
     }
