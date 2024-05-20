@@ -39,7 +39,7 @@ function render_posts_grid_callback ($attributes) {
     ob_start();
     ?>
 
-    <div class="posts-grid-block" style="'--grid-columns': <?= $posts_per_row ?>">
+    <div class="posts-grid-block" style="--grid-columns: <?= $posts_per_row ?>">
         <?php foreach ($query->posts as $post):
             get_template_part('template-parts/post-card', $card_model ?: null, [ 'post' => $post ]);
         endforeach; ?>
