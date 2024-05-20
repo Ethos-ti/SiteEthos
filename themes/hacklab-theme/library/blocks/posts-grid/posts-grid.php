@@ -2,7 +2,7 @@
 
 namespace hacklabr;
 
-function get_posts_grid_render_data ($attributes, $posts_to_show): \WP_Query {
+function get_posts_grid_data ($attributes): \WP_Query {
     $cached_query = get_block_transient('hacklabr/posts', $attributes);
     if ($cached_query !== false) {
         return $cached_query;
@@ -10,7 +10,7 @@ function get_posts_grid_render_data ($attributes, $posts_to_show): \WP_Query {
 
     $post__not_in = get_used_post_ids();
 
-    $query_args = build_posts_query($attributes, $posts_to_show, $post__not_in);
+    $query_args = build_posts_query($attributes, $post__not_in);
     $query = new \WP_Query($query_args);
 
     set_block_transient('hacklabr/posts', $attributes, $query);
@@ -23,7 +23,13 @@ function render_posts_grid_callback ($attributes) {
     $posts_per_column = $attributes['postsPerColumn'] ?: 1;
     $posts_per_row = $attributes['postsPerRow'] ?: 1;
 
-    $query = get_posts_grid_render_data($attributes, $posts_per_column * $posts_per_row);
+    // Normalize attributes before calling `build_posts_query`
+    unset($attributes['cardModel']);
+    unset($attributes['postsPerColumn']);
+    unset($attributes['postsPerRow']);
+    $attributes['postsPerPage'] = $posts_per_column * $posts_per_row;
+
+    $query = get_posts_grid_data($attributes);
 
     ob_start();
     ?>

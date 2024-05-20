@@ -10,23 +10,23 @@ namespace hacklabr;
  * to the attributes, excluding the given IDs.
  *
  * @param array $attributes Block attributes.
- * @param int Number of posts to show.
  * @param array $post__not_in Optional array of post IDs to exclude.
  * @return array WP_Query args array.
  */
-function build_posts_query ($attributes, $posts_to_show, $post__not_in = []) {
-    $compare = $attributes['compare'] ?: 'OR';
+function build_posts_query ($attributes, $post__not_in = []) {
+    $posts_to_show = $attributes['postsPerPage'] ? intval($attributes['postsPerPage']) : 3;
     $post_type = $attributes['postType'] ?: 'post';
     $taxonomy = $attributes['taxonomy'] ?: '';
     $query_terms = $attributes['queryTerms'] ?: [];
+    $compare = $attributes['compare'] ?: 'OR';
     $order = $attributes['order'] ?: 'desc';
     $order_by = $attributes['orderBy'] ?: 'date';
     $show_children = $attributes['showChildren'] ?: true;
 
-    $no_compare = $attributes['noCompare'] ?: 'OR';
     $no_post_type = $attributes['noPostType'] ?: 'post';
     $no_taxonomy = $attributes['noTaxonomy'] ?: '';
     $no_query_terms = $attributes['noQueryTerms'] ?: [];
+    $no_compare = $attributes['noCompare'] ?: 'OR';
 
     $no_post__not_in = [];
 
