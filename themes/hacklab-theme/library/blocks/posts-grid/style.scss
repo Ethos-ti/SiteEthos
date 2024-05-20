@@ -5,4 +5,12 @@
     gap: $gap--medium;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     width: 100%;
+
+    @include tablet {
+        grid-template-columns: repeat(min(2, var(--grid-columns)), 1fr);
+    }
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
 }
