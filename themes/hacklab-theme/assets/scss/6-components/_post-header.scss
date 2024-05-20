@@ -2,6 +2,7 @@
     &__featured-image{
         border-radius: $border-radius--large;
         margin-bottom: $margin--large;
+        margin-top: $margin--medium;
         object-fit: cover;
         width: 100%;
     }
@@ -13,14 +14,15 @@
 
     &__title{
         color: $color--primary-dark;
-        font-size: $font-size--hero;
+        font-size: $font-size--x-large;
         text-align: center;
     }
 
     &__excerpt{
-        font-size: $font-size--large;
+        font-size: $font-size--small;
         font-weight: $font-weight--regular;
         margin-bottom: $margin--large;
+        margin-top: $margin--small;
         text-align: center;
         width: $grid--narrow;
     }
@@ -30,17 +32,19 @@
         color: $color--low-light;
         display: flex;
         justify-content: space-between;
+        padding: 0;
     }
 
     &__date{
-        font-size: $font-size--small;
+        font-size: $font-size--xx-small;
     }
 
     &__author{
         color: $color--low-light;
+        padding: 0;
 
         &-name{
-            font-size: $font-size--small;
+            font-size: $font-size--xx-small;
             padding-top: $padding--x-small;
         }
     }

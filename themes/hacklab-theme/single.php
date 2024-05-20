@@ -14,11 +14,11 @@ $category = get_the_category();
             <?= get_the_post_thumbnail(null, 'post-thumbnail',['class'=>'post-header__featured-image']); ?>
         </div>
 
-        <div class="post-header__tags">
+        <!-- <div class="post-header__tags">
             <a class="tag tag--category-<?= $category[0]->slug ?>" href="<?= get_term_link($category[0], 'category') ?>">
                 <?= $category[0]->name ?>
             </a>
-        </div>
+        </div> -->
 
         <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
@@ -39,7 +39,7 @@ $category = get_the_category();
 
     </div>
 
-    <?php get_template_part('template-parts/content/related-posts') ?>
+    <!-- <?php get_template_part('template-parts/content/related-posts') ?> -->
 
 </div>
 <?php get_footer();
