@@ -3,23 +3,12 @@
 namespace hacklabr;
 
 function get_posts_grid_render_data ($attributes, $posts_to_show): \WP_Query {
-    global $newspack_blocks_post_id;
-    global $hacklabr_blocks_post_ids;
-
-    if (!$newspack_blocks_post_id) {
-        $newspack_blocks_post_id = [];
-    }
-
-    if (!$hacklabr_blocks_post_ids) {
-        $hacklabr_blocks_post_ids = [];
-    }
-
-    $post__not_in = array_merge($newspack_blocks_post_id, $hacklabr_blocks_post_ids);
-
     $cached_query = get_block_transient('hacklabr/posts', $attributes);
     if ($cached_query !== false) {
         return $cached_query;
     }
+
+    $post__not_in = get_used_post_ids();
 
     $query_args = build_posts_query($attributes, $posts_to_show, $post__not_in);
     $query = new \WP_Query($query_args);
@@ -41,6 +30,7 @@ function render_posts_grid_callback ($attributes) {
 
     <div class="posts-grid-block" style="--grid-columns: <?= $posts_per_row ?>">
         <?php foreach ($query->posts as $post):
+            mark_post_id_as_used($post->ID);
             get_template_part('template-parts/post-card', $card_model ?: null, [ 'post' => $post ]);
         endforeach; ?>
     </div>

@@ -89,14 +89,84 @@ function compute_block_transient_key ( string $namespace, array $attributes = []
     return $namespace . '_' . md5( serialize( $attributes ) );
 }
 
+/**
+ * Deletes the transient matching the namespace and attributes.
+ *
+ * @param string $namespace The block id, or a more generic identifier.
+ * @param array $attributes A dictionary of block attributes.
+ * @return bool True if the transient was deleted, false otherwise.
+ */
 function delete_block_transient ( string $namespace, array $attributes = [] ) {
     return delete_transient( compute_block_transient_key( $namespace, $attributes ) );
 }
 
+/**
+ * Retrives the value of the transient matching the namespace and attributes.
+ *
+ * If the transient does not exist, does not have a value, or has expired, then the return value will be false.
+ *
+ * @param string $namespace The block id, or a more generic identifier.
+ * @param array $attributes A dictionary of block attributes.
+ * @return mixed Value of the transient.
+ */
 function get_block_transient ( string $namespace, array $attributes = [] ) {
     return get_transient( compute_block_transient_key( $namespace, $attributes ) );
 }
 
-function set_block_transient ( string $namespace, array $attributes, $value, $expiration = HOUR_IN_SECONDS ) {
+/**
+ * Retrives the IDs of the posts already displayed by other Gutenberg blocks.
+ *
+ * @return array The list of post IDs.
+ */
+function get_used_post_ids () {
+    global $newspack_blocks_post_id;
+    global $hacklabr_blocks_post_ids;
+
+    if ( ! $newspack_blocks_post_id ) {
+        $newspack_blocks_post_id = [];
+    }
+
+    if ( ! $hacklabr_blocks_post_ids ) {
+        $hacklabr_blocks_post_ids = [];
+    }
+
+    $post__not_in = array_merge( $hacklabr_blocks_post_ids, array_keys( $newspack_blocks_post_id ) );
+    $post__not_in = array_unique( $post__not_in, SORT_STRING );
+
+    return $post__not_in;
+}
+
+/**
+ * Mark the post ID as displayed, so the same post won't appear in other Gutenberg posts.
+ *
+ * @param int $post_id The post ID.
+ * @return void
+ */
+function mark_post_id_as_used ( int $post_id ) {
+    global $newspack_blocks_post_id;
+    global $hacklabr_blocks_post_ids;
+
+    if ( ! $newspack_blocks_post_id ) {
+        $newspack_blocks_post_id = [];
+    }
+
+    if ( ! $hacklabr_blocks_post_ids ) {
+        $hacklabr_blocks_post_ids = [];
+    }
+
+    $hacklabr_blocks_post_ids[] = $post_id;
+    $newspack_blocks_post_id[$post_id] = true;
+}
+
+/**
+ * Sets/updates the value for the transient matching the namespace and attributes.
+ *
+ * @param string $namespace The block id, or a more generic identifier.
+ * @param array $attributes A dictionary of block attributes.
+ * @param mixed $value Transient value. Must be serializable if non-scalar.
+ * @param int $expiration Time until expiration in seconds. If 0, no expiration.
+ * @return bool True if the value was set, false otherwise.
+ */
+function set_block_transient ( string $namespace, array $attributes, $value, int $expiration = HOUR_IN_SECONDS ) {
     return set_transient( compute_block_transient_key( $namespace, $attributes ), $value, $expiration );
 }
