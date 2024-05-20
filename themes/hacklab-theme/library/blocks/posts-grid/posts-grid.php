@@ -2,26 +2,15 @@
 
 namespace hacklabr;
 
-function get_posts_grid_render_data ($attributes, $posts_to_show): \WP_Query {
-    global $newspack_blocks_post_id;
-    global $hacklabr_blocks_post_ids;
-
-    if (!$newspack_blocks_post_id) {
-        $newspack_blocks_post_id = [];
-    }
-
-    if (!$hacklabr_blocks_post_ids) {
-        $hacklabr_blocks_post_ids = [];
-    }
-
-    $post__not_in = array_merge($newspack_blocks_post_id, $hacklabr_blocks_post_ids);
-
+function get_posts_grid_data ($attributes): \WP_Query {
     $cached_query = get_block_transient('hacklabr/posts', $attributes);
     if ($cached_query !== false) {
         return $cached_query;
     }
 
-    $query_args = build_posts_query($attributes, $posts_to_show, $post__not_in);
+    $post__not_in = get_used_post_ids();
+
+    $query_args = build_posts_query($attributes, $post__not_in);
     $query = new \WP_Query($query_args);
 
     set_block_transient('hacklabr/posts', $attributes, $query);
@@ -34,13 +23,20 @@ function render_posts_grid_callback ($attributes) {
     $posts_per_column = $attributes['postsPerColumn'] ?: 1;
     $posts_per_row = $attributes['postsPerRow'] ?: 1;
 
-    $query = get_posts_grid_render_data($attributes, $posts_per_column * $posts_per_row);
+    // Normalize attributes before calling `build_posts_query`
+    unset($attributes['cardModel']);
+    unset($attributes['postsPerColumn']);
+    unset($attributes['postsPerRow']);
+    $attributes['postsPerPage'] = $posts_per_column * $posts_per_row;
+
+    $query = get_posts_grid_data($attributes);
 
     ob_start();
     ?>
 
     <div class="posts-grid-block" style="--grid-columns: <?= $posts_per_row ?>">
         <?php foreach ($query->posts as $post):
+            mark_post_id_as_used($post->ID);
             get_template_part('template-parts/post-card', $card_model ?: null, [ 'post' => $post ]);
         endforeach; ?>
     </div>
