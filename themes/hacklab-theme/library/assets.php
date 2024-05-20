@@ -27,8 +27,8 @@ class Assets {
         $this->enqueue_styles();
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'add_external_dependencies' ], 11 );
-        add_action( 'admin_enqueue_scripts', [ $this, 'add_external_dependencies' ], 11 );
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
@@ -117,7 +117,7 @@ class Assets {
             if ( self::should_preload_asset( $data ) ) {
                 $src = $js_uri . $data['file'];
 
-                // Version is overriden in the `add_external_dependencies` function below
+                // Version is overriden in the `add_externalized_dependencies` function below
                 $version = false;
 
                 if ( empty( $data['deps'] ) ) {
@@ -134,7 +134,7 @@ class Assets {
     /**
      * Automatically add dependencies found by `/dist/assets.php` file
      */
-    public function add_external_dependencies () {
+    public function add_externalized_dependencies () {
         global $wp_scripts;
 
         $assets_meta = require __DIR__ . '/../dist/assets.php';
