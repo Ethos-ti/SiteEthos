@@ -16,8 +16,8 @@ export default function Edit ({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
 
     const onCardModelChange = (cardModel) => setAttributes({ cardModel });
-    const onPostsPerColumnChange = (postsPerColumn) => setAttributes({ postsPerColumn });
-    const onPostsPerRowChange = (postsPerRow) => setAttributes({ postsPerRow });
+    const onPostsPerColumnChange = (raw) => setAttributes({ postsPerColumn: parseInt(raw) });
+    const onPostsPerRowChange = (raw) => setAttributes({ postsPerRow: parseInt(raw) });
 
     return <>
         <InspectorControls>
