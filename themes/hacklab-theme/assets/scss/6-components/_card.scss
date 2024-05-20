@@ -1,8 +1,10 @@
 .card {
+    $aspect-ratio: 16 / 9;
 
     &__image {
         .wp-post-image,
         img {
+            aspect-ratio: $aspect-ratio;
             border-radius: $border-radius--large;
             height: 100%;
             object-fit: cover;
