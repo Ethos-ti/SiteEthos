@@ -17,15 +17,22 @@
 
         .wp-block-heading{
             border-top: $border-width--medium solid $color--high-pure;
+            font-family: $font-family--primary;
             font-size: $font-size--x-small;
             margin-block: $margin--small;
             padding-top: $padding--small;
-            font-family: $font-family--primary;
         }
     }
 
     .wp-block-columns>.wp-block-column>p{
         font-size: $font-size--x-small;
     }
+
+    .wp-block-columns>.wp-block-column>.wp-block-columns{
+        gap: $gap--large;
+        margin-bottom: $margin--large;
+        margin-top: $margin--large;
+    }
+
 }
 
