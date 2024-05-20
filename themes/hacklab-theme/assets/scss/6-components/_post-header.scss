@@ -5,6 +5,14 @@
         margin-top: $margin--medium;
         object-fit: cover;
         width: 100%;
+
+        @include small{
+            max-height: 192px;
+        }
+
+        @include mobile{
+            max-height: 192px;
+        }
     }
 
     &__tags{
@@ -16,6 +24,14 @@
         color: $color--primary-dark;
         font-size: $font-size--x-large;
         text-align: center;
+
+        @include small{
+            font-size: $font-size--large;
+        }
+
+        @include mobile{
+            font-size: $font-size--large;
+        }
     }
 
     &__excerpt{
@@ -24,7 +40,14 @@
         margin-bottom: $margin--large;
         margin-top: $margin--small;
         text-align: center;
-        width: $grid--narrow;
+
+        @include small{
+            font-size: $font-size--xx-small;
+        }
+
+        @include mobile{
+            font-size: $font-size--xx-small;
+        }
     }
 
     &__meta{
@@ -33,6 +56,22 @@
         display: flex;
         justify-content: space-between;
         padding: 0;
+
+        @include small{
+            flex-direction: column;
+            font-size: $font-size--x-small;
+            gap: $gap--small;
+            justify-content: inherit;
+            padding-bottom: $padding--medium;
+        }
+
+        @include mobile{
+            flex-direction: column;
+            font-size: $font-size--x-small;
+            gap: $gap--small;
+            justify-content: inherit;
+            padding-bottom: $padding--medium;
+        }
     }
 
     &__date{
@@ -42,6 +81,14 @@
     &__author{
         color: $color--low-light;
         padding: 0;
+
+        @include small{
+            padding-top: $padding--small;
+        }
+
+        @include mobile{
+            padding-top: $padding--small;
+        }
 
         &-name{
             font-size: $font-size--xx-small;
