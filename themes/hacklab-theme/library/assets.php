@@ -29,6 +29,7 @@ class Assets {
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
         add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_assets' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
@@ -160,8 +161,14 @@ class Assets {
 	public function enqueue_admin_style() {
         $css_uri = get_theme_file_uri( '/dist/css/' );
 
-        wp_enqueue_style('hacklabr-gutenberg', $css_uri . 'editor.css');
+        wp_enqueue_style('hacklabr-editor', $css_uri . 'editor.css');
 	}
+
+    public function enqueue_block_assets() {
+        $css_uri = get_theme_file_uri( '/dist/css/' );
+
+        wp_enqueue_style('app', $css_uri . 'app.css');
+    }
 
 	/**
 	 * Preloads in-body stylesheets depending on what templates are being used.
