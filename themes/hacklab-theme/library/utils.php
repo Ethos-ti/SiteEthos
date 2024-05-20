@@ -2,59 +2,43 @@
 /**
  *
  * Remove recaptcha from tainacan
- *  
+ *
  */
 add_action( 'init', function() {
     wp_dequeue_script( 'tainacan-google-recaptcha-script' );
 }, 150 );
 
 /**
- *
- * Create list of the terms by taxonomy
- *
- * @param int $post_id Post ID
- * @param string $tax Slug tax to get terms
- * @param bool $use_link Define if is use link to the terms
- *
- * @link https://developer.wordpress.org/reference/functions/get_the_terms/
- * @link https://developer.wordpress.org/reference/functions/sanitize_title/
- * @link https://developer.wordpress.org/reference/functions/esc_url/
- * @link https://developer.wordpress.org/reference/functions/get_term_link/
- *
- * @return string $html
- *
+ * Print the excerpt with limit words
  */
-function get_html_terms( int $post_id, string $tax, bool $use_link = false ) {
+function get_custom_excerpt( $post_id = '', $limit = 30 ) {
 
-    $terms = get_the_terms( $post_id, sanitize_title( $tax ) );
-
-    if ( ! $terms || is_wp_error( $terms ) ) {
-        return false;
+    if ( empty( $post_id ) ) {
+        $post_id = get_the_ID();
     }
 
-    $html = '<ul class="list-terms tax-' . sanitize_title( $tax ) . '">';
+    // If exists excerpt metadata
+    $excerpt = get_post_meta( $post_id, 'excerpt', true );
 
-    foreach ( $terms as $term ) {
-
-        $html .= '<li class="term-' . sanitize_title( $term->slug ) . '">';
-
-        if ( $use_link ) {
-            $html .= '<a href="' . esc_url( get_term_link( $term->term_id, $tax ) ) . '">';
-        }
-
-        $html .= esc_attr( $term->name );
-
-        if ( $use_link ) {
-            $html .= '</a>';
-        }
-
-        $html .= '</li>';
-
+    if ( empty( $excerpt ) ) {
+        $excerpt = get_the_excerpt( $post_id );
     }
 
-    $html .= '</ul>';
+    if ( empty( $excerpt ) ) {
+        $excerpt = wp_trim_excerpt( '', $post_id );
+    }
 
-    return $html;
+    $excerpt = wp_strip_all_tags( $excerpt );
+    $excerpt = explode( ' ', $excerpt, $limit );
+
+    if ( count( $excerpt ) >= $limit ) {
+        array_pop( $excerpt );
+        $excerpt = implode( ' ', $excerpt ) . ' ...';
+    } else {
+        $excerpt = implode( ' ', $excerpt );
+    }
+
+    return $excerpt;
 
 }
 
@@ -125,7 +109,7 @@ function rename_taxonomies() {
     $category_args->labels->item_link_description = 'Um link para o Projeto';
     $category_args->labels->menu_name = 'Projetos';
 
-    $object_type = array_merge( $category_args->object_type, ['page', 'perguntas_frequentes'] );
+    $object_type = array_merge( $category_args->object_type, ['page'] );
     $object_type = array_unique( $object_type );
 
     register_taxonomy( 'category', $object_type, (array) $category_args );
@@ -134,108 +118,7 @@ function rename_taxonomies() {
 // Descomentar para renomear as taxonomias padrão do WP
 // add_action( 'init', 'rename_taxonomies', 11 );
 
-/**
- * Return string of the terms to use on html class
- *
- * @param int $post_id Post ID
- * @param string $tax Slug tax to get terms
- * @param string $prefix Set prefix to each term
- *
- * @link https://developer.wordpress.org/reference/functions/get_the_terms/
- * @link https://developer.wordpress.org/reference/functions/sanitize_title/
- */
-function get_terms_like_class( int $post_id, string $tax, string $prefix = '' ) {
-
-    $terms = get_the_terms( $post_id, sanitize_title( $tax ) );
-    $class = '';
-
-    if ( $terms && ! is_wp_error( $terms ) ) {
-        foreach ( $terms as $term ) {
-            $class .= ( $prefix ) ? $prefix . $term->slug : $term->slug;
-            $class .= ' ';
-        }
-
-        return sanitize_title( substr( $class, 0, -1 ) );
-    }
-
-    return '';
-
-}
-
-
-/**
- * Get terms by post type
- */
-function get_terms_by_post_type( $taxonomy, $post_type ) {
-
-    // Get all terms that have posts
-    $terms = get_terms([
-        'hide_empty' => true,
-        'taxonomy'   => $taxonomy
-    ]);
-
-    // Remove terms that don't have any posts in the current post type
-    $terms = array_filter( $terms, function ( $term ) use ( $post_type, $taxonomy ) {
-        $posts = get_posts([
-            'fields'      => 'ids',
-            'numberposts' => 1,
-            'post_type'   => $post_type,
-            'tax_query'   => [
-                [
-                    'taxonomy' => $taxonomy,
-                    'terms'    => $term,
-                ]
-            ]
-        ]);
-
-        return ( count( $posts ) > 0 );
-    });
-
-    return $terms;
-
-}
-
-/**
- * Returns total post views
- *
- * @link https://developer.wordpress.org/reference/functions/get_post_meta/
- * @link https://developer.wordpress.org/reference/functions/get_the_ID/
- */
-function gt_get_post_view() {
-    $count = get_post_meta( get_the_ID(), 'post_views_count', true );
-    $count = ($count == 1 ? $count." Visualização" : $count." Visualizações" );
-    return "$count";
-}
-
-/**
- * Defines total post views
- *
- * @link https://developer.wordpress.org/reference/functions/get_post_meta/
- * @link https://developer.wordpress.org/reference/functions/get_the_ID/
- * * @link https://developer.wordpress.org/reference/functions/update_post_meta/
- */
-function gt_set_post_view() {
-    $key = 'post_views_count';
-    $post_id = get_the_ID();
-    $count = (int) get_post_meta( $post_id, $key, true );
-    $count++;
-    update_post_meta( $post_id, $key, $count );
-}
-
-function gt_posts_column_views( $columns ) {
-    $columns['post_views'] = 'Views';
-    return $columns;
-}
-
-function gt_posts_custom_column_views( $column ) {
-    if ( $column === 'post_views') {
-        echo gt_get_post_view();
-    }
-}
-add_filter( 'manage_posts_columns', 'gt_posts_column_views' );
-add_action( 'manage_posts_custom_column', 'gt_posts_custom_column_views' );
-
-//Page Slug Body Class
+// Page Slug Body Class
 function add_slug_body_class( $classes ) {
     global $post;
     if ( isset( $post ) ) {
@@ -349,21 +232,3 @@ function archive_filter_posts( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'archive_filter_posts' );
-
-/**
- * Get term by slug
- */
-function get_term_by_slug( $term_slug ) {
-    $term_object = "";
-    $taxonomies = get_taxonomies();
-    foreach ( $taxonomies as $tax_type_key => $taxonomy ) {
-        // If term object is returned, break out of loop. (Returns false if there's no object);
-        if ( $term_object = get_term_by( 'slug', $term_slug, $taxonomy ) ) {
-            break;
-        } else {
-            $term_object = false;
-        }
-    }
-
-    return $term_object;
-}

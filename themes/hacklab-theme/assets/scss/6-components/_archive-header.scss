@@ -1,0 +1,17 @@
+.archive,
+.search {
+
+    &__title,
+    &__excerpt {
+        text-align: center;
+    }
+
+    &__title *,
+    &__excerpt *,
+    &__infos *,
+    &__results *,
+    &__alert * {
+        margin-bottom: $margin--large;
+    }
+
+}

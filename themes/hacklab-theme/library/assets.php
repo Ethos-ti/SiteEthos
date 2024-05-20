@@ -1,10 +1,9 @@
 <?php
 
-namespace jaci;
+namespace hacklabr;
 
 class Assets {
     private static $instances = [];
-	protected $google_fonts;
     protected $js_files;
     protected $css_files;
 
@@ -27,11 +26,10 @@ class Assets {
 	public function initialize() {
         $this->enqueue_styles();
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'gutenberg_block_enqueues' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
-		add_filter( 'wp_resource_hints', [ $this, 'filter_resource_hints' ], 10, 2 );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
 		// add_action( 'wp_head', [ $this, 'action_preload_styles' ] );
@@ -49,54 +47,47 @@ class Assets {
 
     public function add_rel_preload($html, $handle, $href, $media) {
         if (!WP_DEBUG && (is_admin() || is_user_logged_in())) return $html;
-        
+
         $html = "<link rel='stylesheet' onload=\"this.onload=null;this.media='all'\" id='$handle' href='$href' type='text/css' media='print' />";
         return $html;
     }
-    
+
+    public function should_preload_asset ($asset) {
+        if ($asset['global']) {
+            return true;
+        }
+        return is_callable( $asset['preload_callback'] ) && call_user_func( $asset['preload_callback'] );
+    }
+
     public function enqueue_inline_styles() {
-        $preloading_styles_enabled = false;
         $css_uri = get_stylesheet_directory() . '/dist/css/';
 
 		$css_files = $this->get_css_files();
 		foreach ( $css_files as $handle => $data ) {
-            $src = $css_uri . $data['file'];            
+            $src = $css_uri . $data['file'];
             $content = file_get_contents($src);
 
-			if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) && isset($data['inline']) && $data['inline'] ) {
+			if ( $data['inline'] && self::should_preload_asset( $data ) ) {
                 echo "<style id='$handle-css'>" . $content . "</style>";
-			} 
+			}
 		}
     }
 
     public function enqueue_generic_styles() {
-        // Enqueue Google Fonts.
-        $google_fonts_url = $this->get_google_fonts_url();
-        if ( ! empty( $google_fonts_url ) ) {
-            wp_enqueue_style( 'jaci-fonts', $google_fonts_url, [], null );
-        }
-
         $css_uri = get_theme_file_uri( '/dist/css/' );
         $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
-
         $css_files = $this->get_css_files();
         foreach ( $css_files as $handle => $data ) {
-            // Skip inline styles
-            if(isset($data['inline']) && $data['inline']) {
+            /**
+             * Skip inline styles
+             */
+            if ($data['inline']) {
                 continue;
             }
 
             $src = $css_uri . $data['file'];
             $version = (string) filemtime( $css_dir . $data['file'] );
-            
-            /**
-             * Depends
-             * 
-             * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-             */
             $deps = [];
             if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
                 $deps = $data['deps'];
@@ -104,10 +95,8 @@ class Assets {
 
             /*
             * Enqueue global stylesheets immediately and register the other ones for later use
-            * (unless preloading stylesheets is disabled, in which case stylesheets should be immediately
-            * enqueued based on whether they are necessary for the page content).
             */
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+            if ( self::should_preload_asset( $data ) ) {
                 wp_enqueue_style( $handle, $src, $deps, $version, $data['media'] );
             } else {
                 wp_register_style( $handle, $src, $deps, $version, $data['media'] );
@@ -119,23 +108,47 @@ class Assets {
 
     public function enqueue_javascripts() {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
-        $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
-
-        // ToDo: Create custom preloading for each enqueue
-        $preloading_styles_enabled = false;
 
         $js_files = $this->get_js_files();
+
         foreach ( $js_files as $handle => $data ) {
-            $src = $js_uri . $data['file'];
-            $version = (string) filemtime( $js_dir . $data['file'] );
 
-            $deps = [];
-            if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
-                $deps = $data['deps'];
-            }
+            if ( self::should_preload_asset( $data ) ) {
+                $src = $js_uri . $data['file'];
 
-            if ( $data['global'] || ! $preloading_styles_enabled && is_callable( $data['preload_callback'] ) && call_user_func( $data['preload_callback'] ) ) {
+                // Version is overriden in the `add_externalized_dependencies` function below
+                $version = false;
+
+                if ( empty( $data['deps'] ) ) {
+                    $deps = [];
+                } else {
+                    $deps = $data['deps'];
+                }
+
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
+            }
+        }
+    }
+
+    /**
+     * Automatically add dependencies found by `/dist/assets.php` file
+     */
+    public function add_externalized_dependencies () {
+        global $wp_scripts;
+
+        $assets_meta = require __DIR__ . '/../dist/assets.php';
+        $dist_dir = get_theme_file_uri( '/dist/' );
+
+        foreach ( $wp_scripts->registered as $wp_script ) {
+            if ( str_starts_with( $wp_script->src, $dist_dir ) ) {
+                $asset_key = str_replace( $dist_dir, '/', $wp_script->src );
+
+                if ( ! empty( $assets_meta[ $asset_key ] ) ) {
+                    $asset_meta = $assets_meta[ $asset_key ];
+
+                    $wp_script->ver = $asset_meta['version'];
+                    $wp_script->deps = array_unique( array_merge( $wp_script->deps, $asset_meta['dependencies'] ), SORT_STRING );
+                }
             }
         }
     }
@@ -143,41 +156,14 @@ class Assets {
 	/**
 	 * Register and enqueue a custom stylesheet in the WordPress admin.
 	 */
-	public function enqueue_admin_style($hook) {
+	public function enqueue_admin_style() {
         $css_uri = get_theme_file_uri( '/dist/css/' );
-        $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );			
-        // wp_enqueue_script(
-        //     'buddyx-admin-script',
-        //     get_theme_file_uri( '/assets/js/buddyx-admin.min.js' ),
-        //     '',
-        //     '',
-        //     true
-        // );
-	}
-
-	/**
-	 * Enqueue custom assets on admin after default asstes blocks
-	 * 
-	 * @link https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
-	 */
-	public function enqueue_block_editor_assets() {
-
-		// Cover
-		wp_enqueue_style(
-			'custom-core-cover',
-			get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-			[],
-			filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-			'all'
-		);
-
+        wp_enqueue_style('hacklabr-gutenberg', $css_uri . 'editor.css');
 	}
 
 	/**
 	 * Preloads in-body stylesheets depending on what templates are being used.
-	 *
 	 *
 	 * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content
 	 */
@@ -213,33 +199,7 @@ class Assets {
 	 * Enqueues WordPress theme styles for the editor.
 	 */
 	public function action_add_editor_styles() {
-
-		// Enqueue Google Fonts.
-		$google_fonts_url = $this->get_google_fonts_url();
-		if ( ! empty( $google_fonts_url ) ) {
-			add_editor_style( $this->get_google_fonts_url() );
-		}
-
-		// Enqueue block editor stylesheet.
 		add_editor_style( 'assets/css/editor/editor-styles.min.css' );
-	}
-
-	/**
-	 * Adds preconnect resource hint for Google Fonts.
-	 *
-	 * @param array  $urls          URLs to print for resource hints.
-	 * @param string $relation_type The relation type the URLs are printed.
-	 * @return array URLs to print for resource hints.
-	 */
-	public function filter_resource_hints( array $urls, string $relation_type ) : array {
-		if ( 'preconnect' === $relation_type && wp_style_is( 'buddyx-fonts', 'queue' ) ) {
-			$urls[] = [
-				'href' => 'https://fonts.gstatic.com',
-				'crossorigin',
-			];
-		}
-
-		return $urls;
 	}
 
 	/**
@@ -286,95 +246,22 @@ class Assets {
 		}
 
 		$css_files = [
-			'critical'     => [
-                'file' => 'critical.css',
+			'app' => [
+				'file' => 'app.css',
 				'global' => true,
-                'inline' => true,
-			],
-	
-            'home' => [
-				'file' => '_p-home.css',
-                'preload_callback' => function() {
-					return is_front_page();
-				},
+				'inline' => false,
 			],
 
+			/*
             'page' => [
-                'file' => '_p-page.css',
+                'file' => 'p-page.css',
                 'preload_callback' => function() {
 					return !is_front_page() && is_page();
 				},
             ],
-
-            'single' => [
-                'file' => '_p-single.css',
-                'preload_callback' => function() {
-					return is_single();
-				},
-            ],
-
-            '404' => [
-                'file' => '_p-404.css',
-                'preload_callback' => function() {
-					return is_404();
-				},
-            ],
-
-            'archive' => [
-                'file' => '_p-archive.css',
-                'preload_callback' => function() {
-					return ( is_archive() || is_home() ) ? true : false;
-				},
-            ],
-
-			'archive-editais' => [
-				'file' => '_p-archive-editais.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'editais' ) || is_singular( 'editais' ) ) ? true : false;
-				},
-			],
-
-			'archive-perguntas-frequentes' => [
-				'file' => '_p-archive-perguntas-frequentes.css',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
-				},
-			],
-
-            'search' => [
-                'file' => '_p-search.css',
-                'preload_callback' => function() {
-					return is_search();
-				},
-            ],
-			'author' => [
-				'file' => '_p-author.css',
-				'preload_callback' => function () {
-					return is_author();
-				},
-			],
-			'projects' => [
-                'file' => '_p-projects.css',
-                'preload_callback' => function() {
-					return !is_front_page() && is_page();
-				},
-            ],
-			'anchor' => [
-				'file' => '_p-page-anchor.css',
-				'preload_callback' => function() {
-					return is_page_template( 'page-anchor.php' );
-				},
-            ],
-
-			// Tutor
-			'tutorstarter' => [
-				'file' => '_p-tutorstarter.css',
-				'preload_callback' => function() {
-					return is_plugin_active( 'tutor/tutor.php' );
-				},
-			]
+			*/
 		];
-		
+
 		/**
 		 * Filters default CSS files.
 		 *
@@ -389,10 +276,6 @@ class Assets {
 
 		$this->css_files = [];
 		foreach ( $css_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}
@@ -422,16 +305,10 @@ class Assets {
 		}
 
 		$js_files = [
-			'menu'     => [
-                'file' => 'menu.js',
-				'global' => true,
-			],
-
-			// Tutor
-			'tutorstarter'     => [
-                'file' => 'tutorstarter.js',
-				'global' => true,
-			],
+            'app' => [
+                'file' => 'app.js',
+                'global' => true,
+            ],
 
             'scroll-behavior'     => [
                 'file' => 'anchor-behavior.js',
@@ -443,13 +320,6 @@ class Assets {
 				'global' => true,
 			],
 
-			'filter' => [
-				'file'   => 'perguntas-frequentes.js',
-				'preload_callback' => function() {
-					return ( is_post_type_archive( 'perguntas_frequentes' ) || is_singular( 'perguntas_frequentes' ) ) ? true : false;
-				}
-			],
-			
 			'copy-url' => [
                 'file' => 'copy-url.js',
                 'global' => true,
@@ -461,17 +331,17 @@ class Assets {
 					return is_page_template( 'page-anchor.php' );
 				}
 			],
-			
+
+            'tabs' => [
+                'file' => 'tabs.js',
+                'global' => true,
+			],
  		];
-		
+
 		$js_files = apply_filters('js_files_before_output', $js_files);
 
 		$this->js_files = [];
 		foreach ( $js_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}
@@ -487,174 +357,6 @@ class Assets {
 
 		return $this->js_files;
 	}
-
-	/**
-	 * Returns Google Fonts used in theme.
-	 *
-	 * @return array Associative array of $font_name => $font_variants pairs.
-	 */
-	protected function get_google_fonts() : array {
-		if ( is_array( $this->google_fonts ) ) {
-			return $this->google_fonts;
-		}
-
-		$google_fonts = [
-            'Lato' => [ '300', '400', '700', '900' ],
-		];
-
-		/**
-		 * Filters default Google Fonts.
-		 *
-		 * @param array $google_fonts Associative array of $font_name => $font_variants pairs.
-		 */
-		$this->google_fonts = (array) apply_filters( 'buddyx_google_fonts', $google_fonts );
-
-		return $this->google_fonts;
-	}
-
-	/**
-	 * Returns the Google Fonts URL to use for enqueuing Google Fonts CSS.
-	 *
-	 * Uses `latin` subset by default. To use other subsets, add a `subset` key to $query_args and the desired value.
-	 *
-	 * @return string Google Fonts URL, or empty string if no Google Fonts should be used.
-	 */
-	protected function get_google_fonts_url() : string {
-		$google_fonts = $this->get_google_fonts();
-
-		if ( empty( $google_fonts ) ) {
-			return '';
-		}
-
-		$font_families = [];
-
-		foreach ( $google_fonts as $font_name => $font_variants ) {
-			if ( ! empty( $font_variants ) ) {
-				if ( ! is_array( $font_variants ) ) {
-					$font_variants = explode( ',', str_replace( ' ', '', $font_variants ) );
-				}
-
-				$font_families[] = $font_name . ':' . implode( ',', $font_variants );
-				continue;
-			}
-
-			$font_families[] = $font_name;
-		}
-
-		$query_args = [
-			'family'  => implode( '&family=', $font_families ),
-			'display' => 'swap',
-		];
-
-		return add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	}
-
-    public function gutenberg_block_enqueues() {
-		$id = get_the_ID();
-
-        $block_list = [
-            'jaci/featured-slider' => function() {
-                wp_enqueue_style(
-                    'tiny-slider',
-                    get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/assets/vendor/tiny-slider/tiny-slider.css'),
-                    'all'
-                );
-
-                wp_enqueue_style(
-                    'featured-slider',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-featured-slider.css',
-                    ['tiny-slider'],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-featured-slider.css'),
-                    'all'
-                );
-
-                wp_enqueue_script( 'tiny-slider', get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js', [], false, true );
-		        wp_enqueue_script( 'news-slider', get_stylesheet_directory_uri() . '/dist/js/functionalities/featured-slider.js', ['tiny-slider'], false, true );
-            },
-            
-			'jaci/embed-template' => function() {
-				wp_enqueue_style(
-					'embed-template',
-					get_stylesheet_directory_uri() . '/dist/css/_b-embed-template.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-embed-template.css'),
-					'all'
-				);
-				wp_enqueue_script( 'embed-template', get_stylesheet_directory_uri() . '/dist/js/blocks/embed-template.js', [], false, true );
-			},
-			'jaci/video-gallery' => function() {
-				wp_enqueue_style(
-					'video-gallery',
-					get_stylesheet_directory_uri() . '/dist/css/_b-video-gallery.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-video-gallery.css'),
-					'all'
-				);
-				wp_enqueue_script( 'video-gallery', get_stylesheet_directory_uri() . '/dist/js/blocks/video-gallery.js', [], false, true );
-				wp_enqueue_script( 'functionalities-video-gallery', get_stylesheet_directory_uri() . '/dist/js/functionalities/video-gallery.js', ['video-gallery'], false, true );
-			},
-            'core/cover' => function() {
-                wp_enqueue_style(
-                    'core-cover',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-                    'all'
-                );
-            },
-            'core/image' => function() {
-                wp_enqueue_style(
-                    'core-image',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-image.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-image.css'),
-                    'all'
-                );
-            },
-
-			'core/query' => function() {
-				wp_enqueue_style(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/assets/vendor/tiny-slider/tiny-slider.css'),
-					'all'
-				);
-
-				wp_enqueue_style(
-					'core-query',
-					get_stylesheet_directory_uri() . '/dist/css/_b-query.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-query.css'),
-					'all'
-				);
-
-				wp_enqueue_script(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js',
-					[], '2.9.3',
-					true
-				);
-
-				wp_enqueue_script(
-					'query-slider',
-					get_stylesheet_directory_uri() . '/dist/js/functionalities/query-slider.js',
-					['tiny-slider'],
-					filemtime(get_stylesheet_directory() . '/dist/js/functionalities/query-slider.js'),
-					true
-				);
-			}
-		];
-
-        // Enqueue only used blocks
-		foreach($block_list as $key => $block) {
-			if(has_block($key, $id)){
-				$block();
-			}
-		}
-    }
 }
 
 

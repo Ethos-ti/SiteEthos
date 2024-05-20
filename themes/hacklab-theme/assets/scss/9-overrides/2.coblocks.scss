@@ -1,0 +1,11 @@
+.wp-block-coblocks-accordion-item {
+    @extend .accordeon__item;
+
+    &__title {
+        @extend .accordeon__title;
+    }
+
+    &__content {
+        @extend .accordeon__content;
+    }
+}

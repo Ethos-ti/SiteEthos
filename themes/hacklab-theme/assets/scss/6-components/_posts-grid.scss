@@ -1,0 +1,29 @@
+.archive,
+.search {
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $gap--large;
+
+        @media (min-width: $break--small) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (min-width: $break--desktop) {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+
+    &__content:has(.no-post) {
+        display: flex;
+        text-align: center;
+    }
+
+    .card {
+
+        &__meta,
+        &__excerpt {
+            display: none;
+        }
+    }
+}

@@ -11,9 +11,9 @@ if ( ! empty( $search_query ) ) {
     $title = 'Pesquisar';
 } ?>
 
-<header class="c-title title-search">
+<header class="search__header">
     <div class="container">
-        <h1 class="entry-title">
+        <h1 class="search__title">
             <?php echo apply_filters( 'the_title' , $title ); ?>
         </h1>
     </div>

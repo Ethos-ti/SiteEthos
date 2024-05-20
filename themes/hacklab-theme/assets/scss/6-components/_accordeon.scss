@@ -1,0 +1,43 @@
+.accordeon {
+
+    &__item {
+        border: $border-width--small solid $color--primary-pure;
+        border-bottom: none;
+        pointer-events: visible;
+
+        &:last-child {
+            border: $border-width--small solid $color--primary-pure;
+        }
+
+        details[open] .accordeon__title::before {
+            transform: rotate(-135deg);
+        }
+    }
+
+    &__title {
+        color: $color--low-pure;
+        font-family: $font-family--primary;
+        font-size: $font-size--large;
+        padding: $padding--medium;
+        position: relative;
+        cursor: pointer;
+
+        &::marker {
+            content: "";
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            right: $padding--medium;
+            top: calc(1em + #{2 * $border-width--medium});
+            transition: $transition--default;
+            @include arrow('down', $border-width--medium, $color--primary-pure);
+        }
+    }
+
+    &__content {
+        background-color: $color--high-light;
+        padding: $padding--medium;
+    }
+}

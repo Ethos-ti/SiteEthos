@@ -1,0 +1,31 @@
+.main-footer{
+    background-color: $color--primary-dark;
+    color: $color--high-pure;
+    padding-bottom: $padding--large;
+    padding-top: $padding--xx-large;
+
+    @include mobile{
+        padding-top: $padding--x-large;
+    }
+
+    &__widgets{
+        max-width: $grid--wide;
+
+        @include mobile{
+            padding-inline: $padding--x-large;
+        }
+
+        .wp-block-heading{
+            border-top: $border-width--medium solid $color--high-pure;
+            font-size: $font-size--x-small;
+            margin-block: $margin--small;
+            padding-top: $padding--small;
+            font-family: $font-family--primary;
+        }
+    }
+
+    .wp-block-columns>.wp-block-column>p{
+        font-size: $font-size--x-small;
+    }
+}
+

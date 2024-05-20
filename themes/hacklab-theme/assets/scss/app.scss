@@ -1,1 +1,58 @@
-// The enqueue is page based so every single page has its own SCSS -> CSS file.
+// SETTINGS
+@import '1-settings/1.constants';
+@import '1-settings/2.variables';
+@import '1-settings/9.root';
+
+// TOOLS
+@import '2-tools/1.mixins';
+@import '2-tools/2.functions';
+
+// GENERIC
+@import '3-generic/1.reset';
+@import '3-generic/2.globals';
+@import '3-generic/3.fonts.scss';
+
+// ELEMENTS
+@import '4-elements/1.typography';
+@import '4-elements/icons';
+
+// OBJECTS
+@import '5-objects/arrow';
+@import '5-objects/button';
+@import '5-objects/container';
+@import '5-objects/form';
+@import '5-objects/hamburger';
+@import '5-objects/post-content';
+@import '5-objects/site-by-hacklab';
+@import '5-objects/stack';
+@import '5-objects/tab';
+@import '5-objects/tag';
+
+// COMPONENTS
+@import '6-components/accordeon';
+@import '6-components/archive-header';
+@import '6-components/card';
+@import '6-components/kitchen-sink';
+@import '6-components/main-footer';
+@import '6-components/pre-header';
+@import '6-components/main-header';
+@import '6-components/main-header-lateral';
+@import '6-components/pagination';
+@import '6-components/posts-grid';
+@import '6-components/post-header';
+@import '6-components/related-posts';
+@import '6-components/share-links';
+@import '6-components/social-menu';
+@import '6-components/table';
+@import '6-components/tabs';
+
+// TRUMPS
+@import '7-trumps/accessibility';
+@import '7-trumps/dev-utils';
+@import '7-trumps/spacing';
+@import '7-trumps/typography';
+@import '7-trumps/visibility';
+
+// OVERRIDES
+@import '9-overrides/1.wordpress';
+@import '9-overrides/2.coblocks';

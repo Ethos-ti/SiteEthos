@@ -1,0 +1,17 @@
+.kitchen-sink {
+    margin-block: $gap--large;
+
+    &__stack-item {
+        background-color: $color--high-dark;
+        border-radius: $border-radius--medium;
+        padding: $padding--small;
+    }
+
+    hr {
+        margin-block: $gap--medium;
+    }
+
+    code {
+        display: block;
+    }
+}

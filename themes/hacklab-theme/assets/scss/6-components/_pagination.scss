@@ -1,0 +1,32 @@
+.pagination {
+    margin: $margin--large auto;
+    width: fit-content;
+
+    &__nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap--medium;
+    }
+
+    &__previous,
+    &__next {
+        color: $color--primary-pure;
+        font-weight: $font-weight--bold;
+        text-decoration: none;
+    }
+
+    &__number {
+        align-items: center;
+        display: flex;
+        height: $font-size--xx-large;
+        justify-content: center;
+        min-width: $font-size--xx-large;
+        padding: $padding--small;
+        text-decoration: none;
+
+        &--current {
+            background-color: $color--primary-pure;
+            border-radius: $border-radius--round;
+        }
+    }
+}

@@ -1,0 +1,144 @@
+@use "sass:math";
+
+@mixin small {
+    @media (max-width: $break--small) {
+        @content;
+    }
+}
+
+@mixin small-up {
+    @media (min-width: calc(#{$break--small} + 1px)) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $break--tablet) {
+        @content;
+    }
+}
+
+@mixin mobile-up {
+    @media (min-width: calc(#{$break--tablet} + 1px)) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $break--desktop) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (min-width: $break--tablet) and (max-width: $break--desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $break--desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-large {
+    @media (min-width: $break--desktop-large) {
+        @content;
+    }
+}
+
+@mixin desktop-xlarge {
+    @media (min-width: $break--desktop-x-large) {
+        @content;
+    }
+}
+
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
+@mixin dark-mode {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+@mixin sr-only {
+    border-width: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+}
+
+@mixin triangle($direction, $sizeH, $sizeV, $color) {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+
+    @if $direction ==top {
+        border-width: 0 $sizeV $sizeH $sizeV;
+        border-color: transparent transparent $color transparent;
+    }
+
+    @if $direction ==bottom {
+        border-width: $sizeV $sizeH 0 $sizeV;
+        border-color: $color transparent transparent transparent;
+    }
+
+    @if $direction ==left {
+        border-width: $sizeV $sizeH $sizeV 0;
+        border-color: transparent $color transparent transparent;
+    }
+
+    @if $direction ==right {
+        border-width: $sizeV 0 $sizeV $sizeH;
+        border-color: transparent transparent transparent $color;
+    }
+
+    @if $direction ==topright {
+        border-width: 0 $sizeH $sizeV 0;
+        border-color: transparent $color transparent transparent;
+    }
+
+    @if $direction ==bottomright {
+        border-width: 0 0 $sizeH $sizeV;
+        border-color: transparent transparent $color transparent;
+    }
+
+    @if $direction ==bottomleft {
+        border-width: $sizeH 0 0 $sizeV;
+        border-color: transparent transparent transparent $color;
+    }
+
+    @if $direction ==topleft {
+        border-width: $sizeH $sizeV 0 0;
+        border-color: $color transparent transparent transparent;
+    }
+}
+
+@mixin arrow($direction, $size: 2px, $color: $color--primary-dark) {
+    border: solid $color;
+    border-width: 0 $size $size 0;
+    display: inline-block;
+    padding: $size * 2;
+
+    @if $direction == 'up' {
+        transform: rotate(-135deg);
+    } @else if $direction == 'down' {
+        transform: rotate(45deg);
+    } @else if $direction == 'left' {
+        transform: rotate(135deg);
+    } @else if $direction == 'right' {
+        transform: rotate(-45deg);
+    }
+}
