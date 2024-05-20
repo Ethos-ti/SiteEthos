@@ -1,0 +1,5 @@
+.posts-grid-block {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    width: 100%;
+}
