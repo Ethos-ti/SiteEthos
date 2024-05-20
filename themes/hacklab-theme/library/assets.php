@@ -27,6 +27,8 @@ class Assets {
         $this->enqueue_styles();
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_external_dependencies' ], 11 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_external_dependencies' ], 11 );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
@@ -107,9 +109,6 @@ class Assets {
 
     public function enqueue_javascripts() {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
-        $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
-
-        $assets_meta = require __DIR__ . '/../dist/assets.php';
 
         $js_files = $this->get_js_files();
 
@@ -118,23 +117,39 @@ class Assets {
             if ( self::should_preload_asset( $data ) ) {
                 $src = $js_uri . $data['file'];
 
-                $asset_meta = $assets_meta[ '/js/functionalities/' . $data['file'] ] ?: null;
-
-                if ( empty( $asset_meta ) ) {
-                    $external_deps = $asset_meta['dependencies'];
-                    $version = $asset_meta['version'];
-                } else {
-                    $external_deps = [];
-                    $version = (string) filemtime( $js_dir . $data['file'] );
-                }
+                // Version is overriden in the `add_external_dependencies` function below
+                $version = false;
 
                 if ( empty( $data['deps'] ) ) {
-                    $deps = $external_deps;
+                    $deps = [];
                 } else {
-                    $deps = array_unique( array_merge( $data['deps'], $external_deps ), SORT_STRING );
+                    $deps = $data['deps'];
                 }
 
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
+            }
+        }
+    }
+
+    /**
+     * Automatically add dependencies found by `/dist/assets.php` file
+     */
+    public function add_external_dependencies () {
+        global $wp_scripts;
+
+        $assets_meta = require __DIR__ . '/../dist/assets.php';
+        $dist_dir = get_theme_file_uri( '/dist/' );
+
+        foreach ( $wp_scripts->registered as $wp_script ) {
+            if ( str_starts_with( $wp_script->src, $dist_dir ) ) {
+                $asset_key = str_replace( $dist_dir, '/', $wp_script->src );
+
+                if ( ! empty( $assets_meta[ $asset_key ] ) ) {
+                    $asset_meta = $assets_meta[ $asset_key ];
+
+                    $wp_script->ver = $asset_meta['version'];
+                    $wp_script->deps = array_unique( array_merge( $wp_script->deps, $asset_meta['dependencies'] ), SORT_STRING );
+                }
             }
         }
     }
