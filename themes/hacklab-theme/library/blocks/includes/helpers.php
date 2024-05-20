@@ -85,26 +85,18 @@ function build_posts_query ($attributes, $posts_to_show, $post__not_in = []) {
     return $args;
 }
 
-function filter_save_post ($post_id, $post) {
-    if (!current_user_can('edit_post', $post_id)) {
-        return $post_id;
-    }
-
-    clear_block_transients($post, 'hacklabr/posts-grid', 'hacklabr_posts_grid_');
+function compute_block_transient_key ( string $namespace, array $attributes = [] ) {
+    return $namespace . '_' . md5( serialize( $attributes ) );
 }
-add_action('save_post', 'hacklabr\\filter_save_post', 10, 2);
-add_action('delete_post', 'hacklabr\\filter_save_post', 10, 2);
 
-function clear_block_transients ($post, $block_name, $transient_name) {
-    if (has_block($block_name, $post)) {
-        global $wpdb;
+function delete_block_transient ( string $namespace, array $attributes = [] ) {
+    return delete_transient( compute_block_transient_key( $namespace, $attributes ) );
+}
 
-        $transient_name = '_transient_' . $transient_name;
-        $cache_keys = $wpdb->get_col("SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '$transient_name%'");
+function get_block_transient ( string $namespace, array $attributes = [] ) {
+    return get_transient( compute_block_transient_key( $namespace, $attributes ) );
+}
 
-        foreach ($cache_keys as $key) {
-            $transient_name = str_replace('_transient_', '', $key);
-            delete_transient($transient_name);
-        }
-    }
+function set_block_transient ( string $namespace, array $attributes, $value, $expiration = HOUR_IN_SECONDS ) {
+    return set_transient( compute_block_transient_key( $namespace, $attributes ), $value, $expiration );
 }

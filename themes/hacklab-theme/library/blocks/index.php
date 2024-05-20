@@ -7,7 +7,7 @@ require __DIR__ . '/includes/helpers.php';
 function get_blocks_list () {
     return [
         'posts-grid' => [
-            'render_callback' => 'hacklabr\\render_post_grid_callback',
+            'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],
     ];
 }
