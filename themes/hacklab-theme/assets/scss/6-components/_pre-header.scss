@@ -1,0 +1,9 @@
+.pre-header {
+    &__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        min-height: 40px;
+        padding: 0 $padding--medium;
+    }
+}

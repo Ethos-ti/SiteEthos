@@ -1,6 +1,10 @@
 <?php
-namespace hacklabTema;
 
+namespace hacklabr;
+
+/**
+ * @todo refactor filters on search
+ */
 function join_meta_table( $join ) {
     global $wpdb;
 
@@ -10,7 +14,8 @@ function join_meta_table( $join ) {
 
     return $join;
 }
-add_filter( 'posts_join', 'hacklabTema\\join_meta_table' );
+
+// add_filter( 'posts_join', 'hacklabr\\join_meta_table' );
 
 function modify_where_clause( $where ) {
     global $pagenow, $wpdb;
@@ -22,7 +27,8 @@ function modify_where_clause( $where ) {
     }
     return $where;
 }
-add_filter( 'posts_where', 'hacklabTema\\modify_where_clause' );
+
+// add_filter( 'posts_where', 'hacklabr\\modify_where_clause' );
 
 function prevent_duplicates( $where ) {
     global $wpdb;
@@ -32,7 +38,8 @@ function prevent_duplicates( $where ) {
     }
     return $where;
 }
-add_filter( 'posts_distinct', 'hacklabTema\\prevent_duplicates' );
+
+// add_filter( 'posts_distinct', 'hacklabr\\prevent_duplicates' );
 
 function post_types_in_search_results( $query ) {
     if ( $query->is_main_query() && $query->is_search() && ! is_admin() ) {
@@ -42,4 +49,4 @@ function post_types_in_search_results( $query ) {
 
     }
 }
-add_action( 'pre_get_posts', 'hacklabTema\\post_types_in_search_results' );
+add_action( 'pre_get_posts', 'hacklabr\\post_types_in_search_results' );

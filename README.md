@@ -1,12 +1,4 @@
-# Tema Site Ethos
-
-Este repositório contém os arquivos iniciais para se ter um projeto WordPress
-nos moldes do Hacklab. Isso significa que as ferramentas de desenvolvimento
-e deploy estão protegidas por um padrão.
-
-A ideia é que seja feito um fork deste repositório para começar um novo projeto
-WordPress. Os arquivos deverão ser modificados conforme as peculiaridades do
-projeto.
+# Site Ethos
 
 # Desenvolvimento
 
@@ -43,7 +35,7 @@ $ git submodule add -f git@gitlab.hacklab.com.br:open-source/hacklab-blocks.git 
 ```
 
 ## Compilando os assets do tema
-Abra um terminar, vá até a a pasta `themes/ethos-theme/` e execute os comandos abaixo:
+Abra um terminar, vá até a a pasta `themes/hacklab-theme/` e execute os comandos abaixo:
 
 ```
 $ npm install
@@ -74,23 +66,18 @@ Se você tem um dump de banco de dados `.sql` ou `.sql.gz`, para importá-lo em 
 
 ```
 docker-compose down -v # o parametro -v apaga os dados do mariadb
-docker-compose up 
+docker-compose up
 ```
 
-## Substituir strings e renomear arquivos/pastas:
-- **ethos-theme** pela slug nova ex: fpa-theme
-- **Tema Site Ethos** pelo nome (exemplo Tema FPA )
-- alterar nome da pasta para corresponder ao slug
-- alterar nome do arquivo /languages/*.pot
 
 
 ## Variaveis de ambiente
 
-### Variaveis da imagem wordpress    
+### Variaveis da imagem wordpress
 https://hub.docker.com/_/wordpress
 
 Exemplo: desativando o debug do wordpress
-    
+
     WORDPRESS_DEBUG: 0
 
 ## Configurações PHP
@@ -108,7 +95,7 @@ Para iniciar o ambiente de debug, rode o script `./dev-scripts/dev.sh`
 
 Adicione `<?php eval(\psy\sh()); ?>` na linha onde deseja debugar. No terminal, o código será interrompido exatamente no lugar onde adicionou o comando e você terá às variavés declaradas, classes instanciadas, funções disponíveis e etc.
 
-**Exemplo:** 
+**Exemplo:**
 Ao adicionar `eval(\psy\sh());` dentro do loop você pode chamar a função get_the_title() no terminal.
 
 ### Adicione um snippet no VSCode para facilitar:

@@ -1,0 +1,10 @@
+.hacklabr-gutenberg-panel {
+
+    &__panel-body {
+        width: 100%;
+
+        .components-base-control, .components-form-token-field {
+            width: 100%;
+        }
+    }
+}

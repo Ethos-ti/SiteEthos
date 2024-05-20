@@ -3,83 +3,43 @@
  * The template for displaying all single posts
  */
 
-gt_set_post_view();
-
-get_header(); 
-
+get_header();
+the_post();
+$category = get_the_category();
 ?>
-    
-<div class="container single" id="single">
 
-    <div class="content" id="content">
-        <?php while ( have_posts() ) :
-			the_post();
-        ?>
-            <div class="post" id="post">
+<div class="container container--wide single">
+    <div class="post-header">
+        <div class="post-header__featured-image">
+            <?= get_the_post_thumbnail(null, 'post-thumbnail',['class'=>'post-header__featured-image']); ?>
+        </div>
 
-                <div class="post-header">
-                
-                    <div class="info">
+        <div class="post-header__tags">
+            <a class="tag tag--category-<?= $category[0]->slug ?>" href="<?= get_term_link($category[0], 'category') ?>">
+                <?= $category[0]->name ?>
+            </a>
+        </div>
 
-                        <span class="category"><?php the_category(', '); ?></span>
+        <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
-                    </div>    
-                
-                    <div class="title">
-                        <h4> <?php the_title(); ?> </h4>
-                    </div>
-                
-                
-                    <div class="data">
-                        <?php the_date(); ?>
-                    </div>
-                
-                </div>
+        <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
 
-                <div class="post-content">
-                    <?php the_content(); ?>
-                </div>
+        <div class="post-header__meta container container--normal">
+            <p class="post-header__date"><?= _e('Publicado em: ') ?><?= get_the_date() ?></p>
+            <?php get_template_part('template-parts/share-links', null, ['link'=>get_the_permalink()]) ?>
+        </div>
 
-                <div class="post-footer">
+        <div class="post-header__author container container--normal">
+            <p class="post-header__author-name"><?= _e('Publicado por: ') ?><?= get_the_author() ?></p>
+        </div>
 
-                    <div class="post-footer-tags">
-                        <?php echo get_html_terms( get_the_ID(), 'post_tag', true ); ?>                    
-                    </div>
+        <div class="post-content container container--normal">
+            <?php the_content() ?>
+        </div>
 
-                    <div class="post-footer-share">
-                        <h6><?php _e( 'Share', 'base-textdomain' ); ?></h6>
-
-                        <div class="social-media">
-
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= get_the_permalink() ?>" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                            <a href="whatsapp://send?text=<?= (get_the_title().' - '.get_the_permalink()) ?>" target="_blank" class="hide-for-large"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://api.whatsapp.com/send?text=<?= (get_the_title().' - '.get_the_permalink()) ?>" class="show-for-large" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://telegram.me/share/url?url=<?= get_the_title().' - '.get_the_permalink() ?>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                        
-                            <input type="text" style="display: none;" id="url" value="<?= get_the_permalink() ?>" />
-                            <a href="" class="copy" url="<?= get_the_permalink() ?>"> <i class="fas fa-link"></i> </a>
-                            <span id="alert" class="hide"> </span>
-
-                        </div>
-
-                    </div>
-
-                    <div class="post-footer-views">
-                        <p> <?= gt_get_post_view(); ?> </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <?php get_template_part( 'template-parts/content/related-posts' ); ?>
-        <?php endwhile;?>
     </div>
 
-    <aside class="col-sm-3">
-        <?php dynamic_sidebar( 'sidebar-posts' ) ?>
-    </aside>
+    <?php get_template_part('template-parts/content/related-posts') ?>
 
 </div>
-
 <?php get_footer();

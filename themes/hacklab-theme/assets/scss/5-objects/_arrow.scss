@@ -1,0 +1,17 @@
+.arrow {
+    &--up {
+        @include arrow('up', 2px);
+    }
+
+    &--down {
+        @include arrow('down', 2px);
+    }
+
+    &--left {
+        @include arrow('left', 2px);
+    }
+
+    &--right {
+        @include arrow('right', 2px);
+    }
+}

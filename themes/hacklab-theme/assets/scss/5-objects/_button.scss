@@ -1,0 +1,69 @@
+.button {
+    border: $border-width--medium solid transparent;
+    border-radius: $border-radius--medium;
+    cursor: pointer;
+    line-height: $line-height--none;
+    padding: $padding--small $padding--medium;
+    transition: $transition--default;
+
+    // Styles
+
+    &--solid {
+        background-color: var(--hl-button-color, $color--low-pure);
+        color: $color--high-pure;
+
+        &:active, &:hover {
+            background-color: var(--hl-button-hover-color, $color--low-pure);
+        }
+    }
+
+    &--outline {
+        background-color: $color--high-pure;
+        border-color: var(--hl-button-color);
+        color: var(--hl-button-color, $color--low-pure);
+
+        &:active, &:hover {
+            background-color: $color--high-light;
+        }
+    }
+
+    // Sizes
+
+    &--large {
+        border-radius: $border-radius--large;
+        font-size: $font-size--large;
+        padding: $padding--medium $padding--large;
+    }
+
+    &--small {
+        border-radius: $border-radius--small;
+        font-size: $font-size--small;
+    }
+
+    // Colors
+
+    &--highlight {
+        --hl-button-color: #{$color--highlight-pure};
+        --hl-button-hover-color: #{$color--highlight-dark};
+    }
+
+    &--primary {
+        --hl-button-color: #{$color--primary-pure};
+        --hl-button-hover-color: #{$color--primary-dark};
+    }
+
+    &--secondary {
+        --hl-button-color: #{$color--secondary-pure};
+        --hl-button-hover-color: #{$color--secondary-dark};
+    }
+
+    &--helper {
+        --hl-button-color: #{$color--helper-pure};
+        --hl-button-hover-color: #{$color--helper-dark};
+    }
+
+    &--warning {
+        --hl-button-color: #{$color--warning-pure};
+        --hl-button-hover-color: #{$color--warning-dark};
+    }
+}

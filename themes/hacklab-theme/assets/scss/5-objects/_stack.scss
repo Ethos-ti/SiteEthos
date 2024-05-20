@@ -1,0 +1,23 @@
+.stack {
+    gap: $gap--medium;
+
+    & > * + * {
+        margin-top: $gap--medium;
+    }
+
+    &--large {
+        gap: $gap--large;
+
+        & > * + * {
+            margin-top: $gap--large;
+        }
+    }
+
+    &--small {
+        gap: $gap--small;
+
+        & > * + * {
+            margin-top: $gap--small;
+        }
+    }
+}

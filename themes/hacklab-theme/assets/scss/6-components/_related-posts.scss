@@ -1,0 +1,26 @@
+.related-posts{
+    &__title{
+        border-top: $border-width--small solid $color--high-dark;
+        color: $color--primary-dark;
+        font-weight: $font-weight--bold;
+        margin-top: $margin--large;
+        padding-bottom: $padding--xx-large;
+        padding-top: $padding--x-large;
+    }
+
+    &__content{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: $gap--large;
+    }
+
+    .card{
+        &__author, &__date, &__excerpt{
+            display: none;
+        }
+
+        &__title{
+            font-size: $font-size--x-large;
+        }
+    }
+}

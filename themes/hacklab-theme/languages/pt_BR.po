@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Tema Site Ethos 1.0\n"
+"Project-Id-Version: hacklabr 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themes\n"
 "Last-Translator: \n"
 "Language-Team: Português do Brasil\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: 2022-03-23 17:26+0000\n"
 "Language: pt_BR\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Domain: base-textdomain\n"
+"X-Domain: hacklabr\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.6.1; wp-5.9.2\n"
 
@@ -28,7 +28,7 @@ msgid "Autores"
 msgstr ""
 
 #. Theme Name of the theme
-msgid "Tema Site Ethos"
+msgid "hacklabr"
 msgstr ""
 
 #: theme.json

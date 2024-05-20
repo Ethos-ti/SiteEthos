@@ -1,0 +1,136 @@
+.main-header-lateral {
+    box-shadow: $box-shadow--default;
+
+    &__content {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        min-height: size(80);
+        padding: $padding--medium;
+    }
+
+    &__toggle-menu {
+        display: none;
+
+        @include tablet {
+            display: block;
+        }
+    }
+
+    &__logo {
+
+        img {
+            height: $font-size--hero;
+            width: auto;
+        }
+    }
+
+    &__search {
+        display: flex;
+        gap: $gap--medium;
+        position: relative;
+
+        form {
+            display: none;
+        }
+
+        input[type="submit"] {
+            @include sr-only;
+        }
+    }
+
+    &__desktop-content {
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__menu-desktop {
+
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        &>ul {
+            align-items: center;
+            display: flex;
+            gap: $gap--medium;
+        }
+
+        li {
+            list-style: none;
+            font-size: $font-size--small;
+            font-weight: $font-weight--bold;
+        }
+
+        .sub-menu {
+            display: none;
+            box-shadow: $box-shadow--default;
+            min-width: 10rem;
+            padding: $padding--medium;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .menu-item-has-children {
+            display: inline-block;
+            position: relative;
+
+            iconify-icon {
+                margin-inline-start: $gap--small;
+            }
+
+            &:hover .sub-menu {
+                display: block;
+            }
+        }
+
+        .area-associado,
+        .associar {
+            background: $color--primary-light;
+            padding: $padding--small $padding--medium;
+            border-radius: 16px;
+        }
+
+        .area-associado {
+            margin-left: 90px;
+        }
+
+        .login::before {
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12px' height='12px' viewBox='0 0 448 512'%3E%3Cpath fill='black' d='M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128m89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4'/%3E%3C/svg%3E");
+            margin-right: $margin--small;
+
+        }
+    }
+
+    &__mobile-content {
+        display: none;
+    }
+
+    &--menu-open {
+
+        .main-header-lateral__mobile-content {
+            display: block;
+        }
+    }
+
+    &--search-open {
+
+        .main-header-lateral__search form {
+            display: block;
+            position: absolute;
+            top: -5px;
+            right: 30px;
+        }
+
+        .main-header-lateral__logo {
+
+            @include tablet {
+                display: none;
+            }
+        }
+    }
+}
