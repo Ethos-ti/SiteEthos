@@ -23,14 +23,16 @@
             "default": "OR"
         },
         "noPostType": {
-            "type": "string"
+            "type": "string",
+            "default": ""
         },
         "noQueryTerms": {
             "type": "array",
             "default": []
         },
         "noTaxonomy": {
-            "type": "string"
+            "type": "string",
+            "default": ""
         },
         "order": {
             "type": "string",
@@ -61,7 +63,8 @@
             "default": false
         },
         "taxonomy": {
-            "type": "string"
+            "type": "string",
+            "default": ""
         }
     },
     "textdomain": "hacklabr",
