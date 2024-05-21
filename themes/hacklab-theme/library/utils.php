@@ -200,6 +200,11 @@ function get_posts_by_month( $args = [] ) {
 
 }
 
+function allow_svg_uploads( $file_types ){
+	$file_types['svg'] = 'image/svg+xml';
+	return $file_types;
+}
+add_filter( 'upload_mimes', 'allow_svg_uploads' );
 
 function archive_filter_posts( $query ) {
     // Apply filter of the archives
