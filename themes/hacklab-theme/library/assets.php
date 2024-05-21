@@ -24,16 +24,23 @@ class Assets {
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
 	public function initialize() {
+        $this->enqueue_scripts();
         $this->enqueue_styles();
-        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
-        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
-        add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
         add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_assets' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
-        add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
+	}
 
-		// add_action( 'wp_head', [ $this, 'action_preload_styles' ] );
+    /**
+	 * Registers or enqueues scripts.
+	 *
+	 * Stylesheets that are global are enqueued. All other stylesheets are only registered, to be enqueued later.
+	 */
+	public function enqueue_scripts() {
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_javascripts' ] );
+
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
 	}
 
     /**
@@ -41,17 +48,11 @@ class Assets {
 	 *
 	 * Stylesheets that are global are enqueued. All other stylesheets are only registered, to be enqueued later.
 	 */
-	public function enqueue_styles() {
+    public function enqueue_styles() {
         add_action( 'wp_head', [ $this, 'enqueue_inline_styles' ], 99);
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_generic_styles' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_styles' ] );
 	}
-
-    public function add_rel_preload($html, $handle, $href, $media) {
-        if (!WP_DEBUG && (is_admin() || is_user_logged_in())) return $html;
-
-        $html = "<link rel='stylesheet' onload=\"this.onload=null;this.media='all'\" id='$handle' href='$href' type='text/css' media='print' />";
-        return $html;
-    }
 
     public function should_preload_asset ($asset) {
         if ($asset['global']) {
@@ -115,6 +116,39 @@ class Assets {
 
         foreach ( $js_files as $handle => $data ) {
 
+            if ( $data['admin'] ) {
+                continue;
+            }
+
+            if ( self::should_preload_asset( $data ) ) {
+                $src = $js_uri . $data['file'];
+
+                // Version is overriden in the `add_externalized_dependencies` function below
+                $version = false;
+
+                if ( empty( $data['deps'] ) ) {
+                    $deps = [];
+                } else {
+                    $deps = $data['deps'];
+                }
+
+                wp_enqueue_script( $handle, $src, $deps, $version, true );
+            }
+        }
+    }
+
+    public function enqueue_admin_javascripts() {
+        $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
+
+        $js_files = $this->get_js_files();
+
+        foreach ( $js_files as $handle => $data ) {
+
+            if ( ! $data['admin'] ) {
+                continue;
+            }
+
+
             if ( self::should_preload_asset( $data ) ) {
                 $src = $js_uri . $data['file'];
 
@@ -158,7 +192,7 @@ class Assets {
 	/**
 	 * Register and enqueue a custom stylesheet in the WordPress admin.
 	 */
-	public function enqueue_admin_style() {
+	public function enqueue_admin_styles() {
         $css_uri = get_theme_file_uri( '/dist/css/' );
 
         wp_enqueue_style('hacklabr-editor', $css_uri . 'editor.css');
@@ -171,39 +205,6 @@ class Assets {
             wp_enqueue_style('app', $css_uri . 'app.css');
         }
     }
-
-	/**
-	 * Preloads in-body stylesheets depending on what templates are being used.
-	 *
-	 * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content
-	 */
-	public function action_preload_styles() {
-		$wp_styles = wp_styles();
-
-		$css_files = $this->get_css_files();
-		foreach ( $css_files as $handle => $data ) {
-
-			// Skip if stylesheet not registered.
-			if ( ! isset( $wp_styles->registered[ $handle ] ) ) {
-				continue;
-			}
-
-			// Skip if no preload callback provided.
-			if ( ! is_callable( $data['preload_callback'] ) ) {
-				continue;
-			}
-
-			// Skip if preloading is not necessary for this request.
-			if ( ! call_user_func( $data['preload_callback'] ) ) {
-				continue;
-			}
-
-			$preload_uri = $wp_styles->registered[ $handle ]->src . '?ver=' . $wp_styles->registered[ $handle ]->ver;
-
-			echo '<link rel="preload" id="' . esc_attr( $handle ) . '-preload" href="' . esc_url( $preload_uri ) . '" as="style">';
-			echo "\n";
-		}
-	}
 
 	/**
 	 * Enqueues WordPress theme styles for the editor.
@@ -320,6 +321,12 @@ class Assets {
                 'global' => true,
             ],
 
+            'gutenberg' => [
+                'file'   => 'gutenberg.js',
+                'admin'  => true,
+                'global' => true,
+            ],
+
             'scroll-behavior'     => [
                 'file' => 'anchor-behavior.js',
 				'global' => true,
@@ -359,6 +366,7 @@ class Assets {
 			$this->js_files[ $handle ] = array_merge(
 				[
 					'global'           => false,
+                    'admin'            => false,
 					'preload_callback' => null,
 				],
 				$data

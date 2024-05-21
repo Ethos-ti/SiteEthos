@@ -20,7 +20,6 @@ services:
       - ./wp-root:/var/www/html/
       - ./themes/hacklab-theme:/var/www/html/wp-content/themes/hacklab-theme
       - ./plugins/hacklab-dev-utils:/var/www/html/wp-content/plugins/hacklab-dev-utils
-      - ./plugins/hacklab-blocks:/var/www/html/wp-content/plugins/hacklab-blocks
       - ./compose/local/wordpress/htaccess:/var/www/html/.htaccess
       - ./compose/local/wordpress/php/extra.ini:/usr/local/etc/php/conf.d/extra.ini
 
@@ -30,13 +29,6 @@ services:
       dockerfile: ./compose/local/watcher/Dockerfile
     volumes:
       - ./themes/hacklab-theme:/app
-
-  watcher-plugin:
-    build:
-      context: .
-      dockerfile: ./compose/local/watcher/Dockerfile-node14 # Workaround until we update the blocks plugin
-    volumes:
-      - ./plugins/hacklab-blocks:/app
 
   mariadb:
     image: mariadb:10.4
