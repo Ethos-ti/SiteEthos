@@ -26,7 +26,7 @@ Para o desenvolvimento é requisito ter instaladas ao menos as seguintes ferramt
 Clone o repositório e seus submódulos recursivamente:
 
 ```bash
-git clone git@git.hacklab.com.br:open-source/base-wordpress-project.git --recursive
+git clone git@github.com:Ethos-ti/SiteEthos.git --recursive
 ```
 
 ### Adicionando submódulos
