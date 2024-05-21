@@ -203,46 +203,36 @@
                 {
                     "name": "Enorme",
                     "slug": "hero",
-                    "size": "5rem"
+                    "size": "4rem"
                 },
                 {
                     "name": "Extra grande",
                     "slug": "xx-large",
-                    "size": "4rem"
+                    "size": "2rem"
                 },
                 {
                     "name": "Muito grande",
                     "slug": "x-large",
-                    "size": "3rem"
+                    "size": "1.5rem"
                 },
                 {
                     "name": "Grande",
                     "slug": "large",
-                    "size": "2rem"
+                    "size": "1.25rem"
                 },
                 {
                     "name": "Média",
                     "slug": "medium",
-                    "size": "1.5rem"
+                    "size": "1rem"
                 },
                 {
                     "name": "Pequena",
                     "slug": "small",
-                    "size": "1.25rem"
+                    "size": "0.875rem"
                 },
                 {
                     "name": "Muito pequena",
                     "slug": "x-small",
-                    "size": "1rem"
-                },
-                {
-                    "name": "Muito muito pequena",
-                    "slug": "xx-small",
-                    "size": "0.875rem"
-                },
-                {
-                    "name": "Muito muito muito pequena",
-                    "slug": "xxx-small",
                     "size": "0.75rem"
                 }
             ],
