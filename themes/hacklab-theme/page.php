@@ -1,14 +1,15 @@
 <?php
 get_header();
 ?>
-
-<div class="index-wrapper">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 content">
-                <?php the_content() ?>
+        <div class="post-header post-header__separator">
+            <h1 class="post-header__title"><?php the_title() ?></h1>
+            <div class="post-header__excerpt container--wide">
+                <?php the_excerpt() ?>
             </div>
         </div>
+        <div class="post-content content content--normal">
+            <?php the_content() ?>
+        </div>
     </div>
-</div>
 <?php get_footer();
