@@ -9,7 +9,7 @@
 </head>
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
-    
+
     <div class="pre-header">
         <div class="container container--wide">
             <div class="pre-header__content">
@@ -56,7 +56,7 @@
                 <div class="main-header-lateral__search">
                     <?php get_search_form(); ?>
                     <button type="button" class="main-header__toggle-search main-header-lateral__toggle-search" aria-label="<?= __( 'Toggle search form visibility', 'hacklabr' ) ?>" @click="searchOpen = !searchOpen">
-                        <iconify-icon icon="fa6-solid:magnifying-glass"></iconify-icon>
+                        <iconify-icon icon="fa-solid:search"></iconify-icon>
                     </button>
                 </div>
 

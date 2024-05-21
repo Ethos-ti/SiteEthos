@@ -1,0 +1,74 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/posts-grid",
+    "title": "Posts grid",
+    "description": "Display post cards on a grid",
+    "category": "text",
+    "icon": "grid-view",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "cardModel": {
+            "type": "string",
+            "default": ""
+        },
+        "compare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "noCompare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "noPostType": {
+            "type": "string",
+            "default": ""
+        },
+        "noQueryTerms": {
+            "type": "array",
+            "default": []
+        },
+        "noTaxonomy": {
+            "type": "string",
+            "default": ""
+        },
+        "order": {
+            "type": "string",
+            "default": "desc"
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "date"
+        },
+        "postType": {
+            "type": "string",
+            "default": "post"
+        },
+        "postsPerColumn": {
+            "type": "number",
+            "default": 1
+        },
+        "postsPerRow": {
+            "type": "number",
+            "default": 1
+        },
+        "queryTerms": {
+            "type": "array",
+            "default": []
+        },
+        "showChildren": {
+            "type": "boolean",
+            "default": false
+        },
+        "taxonomy": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/posts-grid/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/posts-grid/editor.css"],
+    "style": ["file:../../../dist/blocks/posts-grid/style.css"]
+}

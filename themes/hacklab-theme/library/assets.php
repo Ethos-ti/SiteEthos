@@ -26,9 +26,10 @@ class Assets {
 	public function initialize() {
         $this->enqueue_styles();
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'gutenberg_block_enqueues' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_style' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_assets' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_assets' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
         add_filter( 'style_loader_tag', [ $this, 'add_rel_preload' ], 10, 4 );
 
@@ -89,11 +90,6 @@ class Assets {
             $src = $css_uri . $data['file'];
             $version = (string) filemtime( $css_dir . $data['file'] );
 
-            /**
-             * Dependencies
-             *
-             * @see https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-             */
             $deps = [];
             if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
                 $deps = $data['deps'];
@@ -114,20 +110,47 @@ class Assets {
 
     public function enqueue_javascripts() {
         $js_uri = get_theme_file_uri( '/dist/js/functionalities/' );
-        $js_dir = get_theme_file_path( '/dist/js/functionalities/' );
 
         $js_files = $this->get_js_files();
-        foreach ( $js_files as $handle => $data ) {
-            $src = $js_uri . $data['file'];
-            $version = (string) filemtime( $js_dir . $data['file'] );
 
-            $deps = [];
-            if ( isset( $data['deps'] ) && ! empty( $data['deps'] ) ) {
-                $deps = $data['deps'];
-            }
+        foreach ( $js_files as $handle => $data ) {
 
             if ( self::should_preload_asset( $data ) ) {
+                $src = $js_uri . $data['file'];
+
+                // Version is overriden in the `add_externalized_dependencies` function below
+                $version = false;
+
+                if ( empty( $data['deps'] ) ) {
+                    $deps = [];
+                } else {
+                    $deps = $data['deps'];
+                }
+
                 wp_enqueue_script( $handle, $src, $deps, $version, true );
+            }
+        }
+    }
+
+    /**
+     * Automatically add dependencies found by `/dist/assets.php` file
+     */
+    public function add_externalized_dependencies () {
+        global $wp_scripts;
+
+        $assets_meta = require __DIR__ . '/../dist/assets.php';
+        $dist_dir = get_theme_file_uri( '/dist/' );
+
+        foreach ( $wp_scripts->registered as $wp_script ) {
+            if ( str_starts_with( $wp_script->src, $dist_dir ) ) {
+                $asset_key = str_replace( $dist_dir, '/', $wp_script->src );
+
+                if ( ! empty( $assets_meta[ $asset_key ] ) ) {
+                    $asset_meta = $assets_meta[ $asset_key ];
+
+                    $wp_script->ver = $asset_meta['version'];
+                    $wp_script->deps = array_unique( array_merge( $wp_script->deps, $asset_meta['dependencies'] ), SORT_STRING );
+                }
             }
         }
     }
@@ -135,37 +158,19 @@ class Assets {
 	/**
 	 * Register and enqueue a custom stylesheet in the WordPress admin.
 	 */
-	public function enqueue_admin_style($hook) {
+	public function enqueue_admin_style() {
         $css_uri = get_theme_file_uri( '/dist/css/' );
-        $css_dir = get_theme_file_path( '/dist/css/' );
 
-        // wp_enqueue_style( 'buddyx-admin', $css_uri . '/admin.min.css' );
-        // wp_enqueue_script(
-        //     'buddyx-admin-script',
-        //     get_theme_file_uri( '/assets/js/buddyx-admin.min.js' ),
-        //     '',
-        //     '',
-        //     true
-        // );
+        wp_enqueue_style('hacklabr-editor', $css_uri . 'editor.css');
 	}
 
-	/**
-	 * Enqueue custom assets on admin after default asstes blocks
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
-	 */
-	public function enqueue_block_editor_assets() {
+    public function enqueue_block_assets() {
+        if ( is_admin() ) {
+            $css_uri = get_theme_file_uri( '/dist/css/' );
 
-		// Cover
-		wp_enqueue_style(
-			'custom-core-cover',
-			get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-			[],
-			filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-			'all'
-		);
-
-	}
+            wp_enqueue_style('app', $css_uri . 'app.css');
+        }
+    }
 
 	/**
 	 * Preloads in-body stylesheets depending on what templates are being used.
@@ -281,10 +286,6 @@ class Assets {
 
 		$this->css_files = [];
 		foreach ( $css_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}
@@ -351,10 +352,6 @@ class Assets {
 
 		$this->js_files = [];
 		foreach ( $js_files as $handle => $data ) {
-			if ( is_string( $data ) ) {
-				$data = [ 'file' => $data ];
-			}
-
 			if ( empty( $data['file'] ) ) {
 				continue;
 			}
@@ -370,71 +367,6 @@ class Assets {
 
 		return $this->js_files;
 	}
-
-    public function gutenberg_block_enqueues() {
-		$id = get_the_ID();
-
-        $block_list = [
-            'core/cover' => function() {
-                wp_enqueue_style(
-                    'core-cover',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-cover.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-cover.css'),
-                    'all'
-                );
-            },
-            'core/image' => function() {
-                wp_enqueue_style(
-                    'core-image',
-                    get_stylesheet_directory_uri() . '/dist/css/_b-image.css',
-                    [],
-                    filemtime(get_stylesheet_directory() . '/dist/css/_b-image.css'),
-                    'all'
-                );
-            },
-
-			'core/query' => function() {
-				wp_enqueue_style(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/assets/vendor/tiny-slider/tiny-slider.css'),
-					'all'
-				);
-
-				wp_enqueue_style(
-					'core-query',
-					get_stylesheet_directory_uri() . '/dist/css/_b-query.css',
-					[],
-					filemtime(get_stylesheet_directory() . '/dist/css/_b-query.css'),
-					'all'
-				);
-
-				wp_enqueue_script(
-					'tiny-slider',
-					get_stylesheet_directory_uri() . '/assets/vendor/tiny-slider/tiny-slider.js',
-					[], '2.9.3',
-					true
-				);
-
-				wp_enqueue_script(
-					'query-slider',
-					get_stylesheet_directory_uri() . '/dist/js/functionalities/query-slider.js',
-					['tiny-slider'],
-					filemtime(get_stylesheet_directory() . '/dist/js/functionalities/query-slider.js'),
-					true
-				);
-			}
-		];
-
-        // Enqueue only used blocks
-		foreach($block_list as $key => $block) {
-			if(has_block($key, $id)){
-				$block();
-			}
-		}
-    }
 }
 
 
