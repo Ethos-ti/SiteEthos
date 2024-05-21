@@ -22,7 +22,7 @@
 
     &__title{
         color: $color--primary-dark;
-        font-size: $font-size--x-large;
+        font-size: $font-size--hero;
         text-align: center;
 
         @include small{
@@ -35,18 +35,18 @@
     }
 
     &__excerpt{
-        font-size: $font-size--small;
+        font-size: $font-size--large;
         font-weight: $font-weight--regular;
         margin-bottom: $margin--large;
         margin-top: $margin--small;
         text-align: center;
 
         @include small{
-            font-size: $font-size--xx-small;
+            font-size: $font-size--x-small;
         }
 
         @include mobile{
-            font-size: $font-size--xx-small;
+            font-size: $font-size--x-small;
         }
     }
 
@@ -75,7 +75,7 @@
     }
 
     &__date{
-        font-size: $font-size--xx-small;
+        font-size: $font-size--small;
     }
 
     &__author{
@@ -83,15 +83,15 @@
         padding: 0;
 
         @include small{
-            padding-top: $padding--small;
+            padding-top: $padding--x-small;
         }
 
         @include mobile{
-            padding-top: $padding--small;
+            padding-top: $padding--x-small;
         }
 
         &-name{
-            font-size: $font-size--xx-small;
+            font-size: $font-size--x-small;
             padding-top: $padding--x-small;
         }
     }
