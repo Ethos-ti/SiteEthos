@@ -42,7 +42,7 @@ git submodule add -f git@gitlab.hacklab.com.br:open-source/hacklab-blocks.git pl
 Para receber novas funcionalidades do tema base diretamente no seu board, é pré-requisito inserir o repositório do tema base como um `remote` do Git:
 
 ```bash
-git remote add temaBase git@gitlab.hacklab.com.br:open-source/hacklab-blocks.git
+git remote add temaBase git@git.hacklab.com.br:open-source/base-wordpress-project.git
 ```
 
 Então, para sincronizar o tema base com seu fork, rode o seguinte comando no branch `develop` do seu fork:
