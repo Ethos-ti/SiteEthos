@@ -1,9 +1,31 @@
 .pre-header {
+    background-color: $color--primary-pure;
+    ;
+
     &__content {
         align-items: center;
         display: flex;
         justify-content: space-between;
         min-height: 40px;
         padding: 0 $padding--medium;
+
+        .social-menu {
+            gap: calc($gap--small * 3);
+            color: $color--high-pure;
+        }
+
+        .acessibilidade {
+            display: flex;
+            gap: $gap--large;
+
+            iconify-icon {
+                color: $color--high-pure;
+
+                svg {
+                    width: 12px;
+                }
+            }
+        }
+
     }
 }

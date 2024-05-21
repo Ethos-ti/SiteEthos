@@ -1,4 +1,10 @@
 .post-header{
+
+    &__separator{
+        border-bottom: $border-width--small solid $color--high-dark;
+        margin-bottom: $margin--large;
+    }
+
     &__featured-image{
         border-radius: $border-radius--large;
         margin-bottom: $margin--large;
@@ -23,6 +29,7 @@
     &__title{
         color: $color--primary-dark;
         font-size: $font-size--hero;
+        margin-top: $margin--large;
         text-align: center;
 
         @include small{
@@ -96,3 +103,4 @@
         }
     }
 }
+

@@ -14,14 +14,14 @@
         <div class="container container--wide">
             <div class="pre-header__content">
                 <div class="main-header__social-content">
-                    <?= the_social_networks_menu(); ?>
+                    <?= the_social_networks_menu( false ); ?>
                 </div>
                 <div class="acessibilidade">
                     <iconify-icon icon="material-symbols-light:contrast"></iconify-icon>
-                    <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
-                    <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
+                    <iconify-icon icon="mdi:format-font-size-increase"></iconify-icon>
+                    <iconify-icon icon="mdi:format-font-size-decrease"></iconify-icon>
                     <iconify-icon icon="bi:volume-down-fill"></iconify-icon>
-                    <iconify-icon icon="fa-solid:print"></iconify-icon>
+                    <iconify-icon icon="fa:print"></iconify-icon>
                 </div>
             </div>
         </div>
