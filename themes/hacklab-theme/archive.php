@@ -11,10 +11,14 @@ $post_type = get_queried_object()->name;
         <?php
         if ( $post_type === 'publicacao' ) :
             echo hacklabr\get_layout_part( 'publicacoes', 'header' );
+        elseif ( $post_type === 'iniciativa' ) :
+            echo hacklabr\get_layout_part( 'atuacao', 'header' );
         elseif( is_tax('tipo_post', 'opinioes-e-analises') ) :
             echo hacklabr\get_layout_part( 'opiniao', 'header' );
         elseif( is_tax('tipo_post', 'posicionamentos-institucionais') ) :
             echo hacklabr\get_layout_part( 'posicionamentos-institucionais', 'header' );
+        elseif( is_tax('tipo_post', 'novidades') ) :
+            echo hacklabr\get_layout_part( 'novidades', 'header' );
         // elseif( $post_type === 'tribe_events' ) :
         //     echo get_layout_header( 'agenda' );
         endif;
