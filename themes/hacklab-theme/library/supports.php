@@ -19,16 +19,6 @@ function theme_supports() {
     add_theme_support( 'editor-styles' );
     add_theme_support( 'responsive-embeds' );
     add_theme_support( 'widgets' );
-
-    global $wp_version;
-    if ( version_compare( $wp_version, '5.8', '<' ) ) {
-        add_theme_support( 'custom-line-height' );
-        add_theme_support( 'custom-spacing' );
-        add_theme_support( 'custom-units' );
-        add_theme_support( 'editor-color-palette');
-        add_theme_support( 'editor-gradient-presets' );
-        add_theme_support( 'editor-font-sizes' );
-    }
 }
 
 add_action( 'after_setup_theme', 'hacklabr\\theme_supports' );
