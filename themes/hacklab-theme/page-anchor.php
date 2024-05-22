@@ -8,11 +8,11 @@ get_header(); ?>
     <div class="container">
         <?php get_template_part( 'template-parts/title/default' ); ?>
         <div class="row">
-            <div class="col-md-3 sidebar-page">
+            <div class=" sidebarpage">
                 <p class="anchor-title"><?= __( 'Sections', 'hacklabr' ) ?></p>
                 <ul id="anchors"></ul>
             </div>
-            <div class="col-md-9 content">
+            <div class="content">
                 <?php the_content() ?>
             </div>
         </div>

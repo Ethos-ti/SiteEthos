@@ -1,21 +1,21 @@
-.main-footer{
+.main-footer {
     background-color: $color--primary-dark;
     color: $color--high-pure;
     padding-bottom: $padding--large;
     padding-top: $padding--xx-large;
 
-    @include mobile{
+    @include mobile {
         padding-top: $padding--x-large;
     }
 
-    &__widgets{
+    &__widgets {
         max-width: $grid--wide;
 
-        @include mobile{
+        @include mobile {
             padding-inline: $padding--x-large;
         }
 
-        .wp-block-heading{
+        .wp-block-heading {
             border-top: $border-width--large solid $color--primary-light;
             font-family: $font-family--primary;
             font-size: $font-size--x-small;
@@ -24,15 +24,14 @@
         }
     }
 
-    .wp-block-columns>.wp-block-column>p{
+    .wp-block-columns>.wp-block-column>p {
         font-size: $font-size--x-small;
     }
 
-    .wp-block-columns>.wp-block-column>.wp-block-columns{
+    .wp-block-columns>.wp-block-column>.wp-block-columns {
         gap: $gap--large;
         margin-bottom: $margin--large;
         margin-top: $margin--large;
     }
 
 }
-

@@ -19,8 +19,9 @@
     &__logo {
 
         img {
-            height: 65px;
-            width: auto;
+            height: auto;
+            min-width: 150px;
+            width: 100%;
         }
     }
 
@@ -80,8 +81,10 @@
             }
         }
 
-        .menu>.menu-item:hover {
-            padding: 29px $padding--small;
+        .menu>.menu-item {
+            height: 80px;
+            width: max-content;
+            place-content: center;
         }
 
         .sub-menu {
@@ -114,18 +117,19 @@
             background: $color--primary-light;
             padding: $padding--small $padding--medium;
             border-radius: 16px;
+            height: auto !important;
 
             &:hover {
                 padding: $padding--small $padding--medium !important;
             }
-        }
-
-        .area-do-associado {
-            margin-left: 90px;
 
             .sub-menu {
                 top: 38px;
             }
+        }
+
+        .area-do-associado {
+            margin-left: 6em;
         }
 
         .entrar::before {
