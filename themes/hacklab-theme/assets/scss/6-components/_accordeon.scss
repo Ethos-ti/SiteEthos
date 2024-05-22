@@ -3,6 +3,7 @@
     &__item {
         border: $border-width--small solid $color--primary-pure;
         border-bottom: none;
+        margin-top: $margin--large;
         pointer-events: visible;
 
         &:last-child {
@@ -32,7 +33,7 @@
             right: $padding--medium;
             top: calc(1em + #{2 * $border-width--medium});
             transition: $transition--default;
-            @include arrow('down', $border-width--medium, $color--primary-pure);
+            @include arrow('down', $border-width--medium, $color--primary-dark);
         }
     }
 
