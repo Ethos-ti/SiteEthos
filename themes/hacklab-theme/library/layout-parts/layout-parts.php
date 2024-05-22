@@ -24,7 +24,7 @@ function get_layout_part( $slug, $position = 'header' ) {
 	$html = '';
 
 	$args = [
-		'post_type'  => 'layout-part',
+		'post_type'  => 'layout-parts',
 		'meta_key'   => 'archive',
 		'meta_query' => [
 			[

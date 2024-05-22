@@ -19,7 +19,7 @@
                 <div class="acessibilidade">
                    <a href="#"><iconify-icon icon="material-symbols-light:contrast"></iconify-icon></a>
                    <a href="#"><iconify-icon icon="mdi:format-font-size-increase"></iconify-icon></a>
-                   <a href="#"><iconify-icon icon="mdi:format-font-size-decrease"></iconify-icon></a> 
+                   <a href="#"><iconify-icon icon="mdi:format-font-size-decrease"></iconify-icon></a>
                    <a href="#"><iconify-icon icon="bi:volume-down-fill"></iconify-icon></a>
                    <a href="#"><iconify-icon icon="fa:print"></iconify-icon></a>
                 </div>
