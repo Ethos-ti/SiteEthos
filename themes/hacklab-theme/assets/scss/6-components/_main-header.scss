@@ -15,9 +15,11 @@
         text-decoration: none;
     }
 
-    &__toggle-menu, &__toggle-search {
+    &__toggle-menu,
+    &__toggle-search {
         background-color: transparent;
         padding: 0;
+        z-index: 1;
     }
 
     .sub-menu {

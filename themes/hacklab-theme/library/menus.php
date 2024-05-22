@@ -23,28 +23,54 @@ add_filter( 'walker_nav_menu_start_el', 'hacklabr\\add_menu_arrow', 10, 4 );
 
 //Hide menu item if logged
 function hide_menu_item_if_logged_in_ethos($items, $menu, $args) {
-    if (is_user_logged_in()) {
-        // Altere 'classe-do-item-a-esconder' para a classe do item de menu que você deseja esconder
+    if (is_user_logged_in() && !is_admin() ) {
         $class_to_hide = [
-            'login',
-            'associar',
+            'entrar',
+            'quero-me-associar',
         ];
 
-        foreach ($items as $key => $item) {
-            foreach ($class_to_hide as $class) {
-                if (in_array($class, $item->classes)) {
-                    unset($items[$key]);
-                    break;
+        $hiden_itens = [];
+
+        foreach ($items as $item) {
+            foreach ($item->classes as $class) {
+                if (in_array($class, $class_to_hide)) {
+                    $hiden_itens[] = $item->ID;
                 }
             }
 
+            if (in_array($item->menu_item_parent, $hiden_itens)) {
+                $hiden_itens[] = $item->ID;
+            }
+
         }
-    } else {
-        $class_to_hide = 'area-associado';
 
         foreach ($items as $key => $item) {
-            if (in_array($class_to_hide, $item->classes)) {
+            if (in_array($item->ID, $hiden_itens)) {
                 unset($items[$key]);
+            }
+        }
+
+    } else {
+        if ( !is_admin() ) {
+            $class_to_hide = ['area-do-associado'];
+            $hiden_itens = [];
+
+            foreach ($items as $item) {
+                foreach ($item->classes as $class) {
+                    if (in_array($class, $class_to_hide)) {
+                        $hiden_itens[] = $item->ID;
+                    }
+                }
+
+                if (in_array($item->menu_item_parent, $hiden_itens)) {
+                    $hiden_itens[] = $item->ID;
+                }
+            }
+
+            foreach ($items as $key => $item) {
+                if (in_array($item->ID, $hiden_itens)) {
+                    unset($items[$key]);
+                }
             }
         }
     }
