@@ -1,4 +1,4 @@
-.tag{
+.tag {
     border: $border-width--medium solid $color--low-pure;
     border-radius: $border-radius--medium;
     line-height: $line-height--normal;
@@ -20,7 +20,8 @@
 
         &:is(a) {
 
-            &:active, &:hover {
+            &:active,
+            &:hover {
                 background-color: $color--high-pure;
                 color: var(--hl-tag-color, $color--low-pure);
             }
@@ -34,7 +35,8 @@
 
         &:is(a) {
 
-            &:active, &:hover {
+            &:active,
+            &:hover {
                 background-color: var(--hl-tag-color, $color--low-pure);
                 color: $color--high-pure;
             }

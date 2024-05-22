@@ -1,20 +1,20 @@
-.main-footer{
+.main-footer {
     background-color: $color--primary-dark;
     padding-bottom: $padding--large;
     padding-top: $padding--xx-large;
 
-    @include mobile{
+    @include mobile {
         padding-top: $padding--x-large;
     }
 
-    &__widgets{
+    &__widgets {
         max-width: $grid--wide;
 
-        @include mobile{
+        @include mobile {
             padding-inline: $padding--x-large;
         }
 
-        .wp-block-heading{
+        .wp-block-heading {
             margin-block: $margin--small;
         }
     }
