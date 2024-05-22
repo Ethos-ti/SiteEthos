@@ -15,7 +15,7 @@ $post_type = get_queried_object()->name;
             echo hacklabr\get_layout_part( 'atuacao', 'header' );
         elseif( is_tax('tipo_post', 'opinioes-e-analises') ) :
             echo hacklabr\get_layout_part( 'opiniao', 'header' );
-        elseif( is_tax('tipo_post', 'posicionamentos-institucionais') ) :
+        elseif( is_tax('tipo_post', 'posicionamento-institucional') ) :
             echo hacklabr\get_layout_part( 'posicionamentos-institucionais', 'header' );
         elseif( is_tax('tipo_post', 'novidades') ) :
             echo hacklabr\get_layout_part( 'novidades', 'header' );
