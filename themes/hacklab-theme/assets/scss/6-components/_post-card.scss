@@ -1,4 +1,4 @@
-.card {
+.post-card {
     $aspect-ratio: 16 / 9;
 
     &__image {
@@ -49,11 +49,11 @@
     &--cover {
         position: relative;
 
-        .card__image {
+        .post-card__image {
             height: auto;
         }
 
-        .card__content {
+        .post-card__content {
             background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
             bottom: 0;
             color: $color--high-pure;
@@ -62,7 +62,7 @@
             width: 100%;
         }
 
-        .card__category {
+        .post-card__category {
 
             .post-categories > li {
                 border: solid $border-width--medium $color--high-pure;
@@ -70,7 +70,7 @@
             }
         }
 
-        .card__title {
+        .post-card__title {
             font-size: $font-size--xx-large;
         }
     }
