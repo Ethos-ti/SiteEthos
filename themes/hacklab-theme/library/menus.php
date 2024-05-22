@@ -21,7 +21,6 @@ function add_menu_arrow( $output, $item, $depth, $args ) {
 
 add_filter( 'walker_nav_menu_start_el', 'hacklabr\\add_menu_arrow', 10, 4 );
 
-
 //Hide menu item if logged
 function hide_menu_item_if_logged_in_ethos($items, $menu, $args) {
     if (is_user_logged_in() && !is_admin() ) {

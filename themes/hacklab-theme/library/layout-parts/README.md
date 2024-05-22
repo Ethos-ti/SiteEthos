@@ -1,15 +1,15 @@
-# Cabeçalho e Rodapé das Listagens (archives e page templates)
+# Partes do layout (archives e page templates)
 
 ## Instalação
 
-Certifique que o arquivo `/library/header-and-footer-archive/header-and-footer-archive.php` está sendo incluído no `functions.php` do tema.
-Importe o arquivo `/library/header-and-footer-archive/pods/header-and-footer-archive.json` utilizando o plugin [Pods](https://br.wordpress.org/plugins/pods/).
+Certifique que o arquivo `/library/layout-parts/layout-parts.php` está sendo incluído no `functions.php` do tema.
+Importe o arquivo `/library/layout-parts/pods/layout-parts.json` utilizando o plugin [Pods](https://br.wordpress.org/plugins/pods/).
 
 ## Como usar
 
 ### Criando cabeçalhos e rodapés
 
-No painel, acesse o menu Aparência/Cabeçalho/Rodapé das Listagens (disponível apenas para usuários Admin) e adicione um novo. Edite como um post normal, usando blocos Gutenberg.
+No painel, acesse o menu Partes do layout (disponível apenas para usuários Admin) e adicione um novo. Edite como um post normal, usando blocos Gutenberg.
 Na parte inferior da edição, marque a posição (Cabeçalho ou Rodapé) e em qual página ele será usado (no campo Listagem (archive)).
 
 ### Como exibir na archive/page template
