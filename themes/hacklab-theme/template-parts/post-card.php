@@ -6,19 +6,19 @@ $post = $args['post'] ?? $post;
 $image_size = $args['image_size'] ?? 'card-large';
 
 $modifiers = (array) ($args['modifiers'] ?? []);
-$modifiers = array_map(fn ($modifier) => "card--{$modifier}", $modifiers);
+$modifiers = array_map(fn ($modifier) => "post-card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
 
 $categories = get_the_category();
 ?>
-<article id="post-ID-<?php the_ID(); ?>" class="card <?=$modifiers?>">
-    <header class="card__image">
+<article id="post-ID-<?php the_ID(); ?>" class="post-card <?=$modifiers?>">
+    <header class="post-card__image">
         <a href="<?php the_permalink();?>"><?php the_post_thumbnail($image_size); ?></a>
     </header>
 
-    <main class="card__content">
+    <main class="post-card__content">
         <?php if (!empty($categories)): ?>
-            <div class="card__category">
+            <div class="post-card__category">
                 <?php foreach ($categories as $category): ?>
                     <a class="tag tag--solid tag--category-<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
                         <?= $category->name ?>
@@ -27,21 +27,21 @@ $categories = get_the_category();
             </div>
         <?php endif; ?>
 
-        <h3 class="card__title">
+        <h3 class="post-card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
         </h3>
 
-        <div class="card__meta">
-              <div class="card__author">
+        <div class="post-card__meta">
+              <div class="post-card__author">
                 <?php the_author(); ?>
               </div>
 
-              <time class="card__date">
+              <time class="post-card__date">
                 <?php echo get_the_date(); ?>
               </time>
         </div>
 
-        <div class="card__excerpt">
+        <div class="post-card__excerpt">
             <?= get_the_excerpt(); ?>
         </div>
     </main>
