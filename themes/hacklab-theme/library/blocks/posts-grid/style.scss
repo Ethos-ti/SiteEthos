@@ -1,6 +1,6 @@
 @import '../../../assets/scss/includes';
 
-.posts-grid-block {
+.hacklabr-posts-grid-block {
     display: grid;
     gap: $gap--medium;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
