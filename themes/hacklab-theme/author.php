@@ -7,7 +7,7 @@ get_header();
         <div class="row">
             <?php get_template_part( 'template-parts/title/author' ); ?>
 
-            <main class="col-md-9">
+            <main class="">
                 <?php while ( have_posts() ) : the_post(); ?>
                     <?php get_template_part( 'template-parts/content/post' ); ?>
                 <?php endwhile; ?>
@@ -15,7 +15,7 @@ get_header();
                 <?php get_template_part( 'template-parts/content/pagination' ); ?>
             </main>
 
-            <aside class="col-md-3">
+            <aside class="">
                 <?php dynamic_sidebar( 'sidebar-default' ) ?>
             </aside>
         </div><!-- /.row -->

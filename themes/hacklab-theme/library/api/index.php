@@ -54,6 +54,12 @@ class API {
         ]);
     }
 
+    static function send_html ($html) {
+        header('Content-Type: text/html');
+        echo $html;
+        exit();
+    }
+
     static function rest_permission_to_edit_posts () {
         return current_user_can('edit_posts');
     }

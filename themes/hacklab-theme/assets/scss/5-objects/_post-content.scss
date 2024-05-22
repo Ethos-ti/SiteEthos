@@ -1,23 +1,20 @@
-.post-content{
-  margin-bottom: $margin--large;
-  padding-top: $padding--large;
-  padding-left: 0;
-  padding-right: 0;
+.post-content {
+    padding-top: $padding--large;
 }
 
-.post-content>ol>li::marker{
+.post-content>ol>li::marker {
     color: $color--primary-dark;
     font-family: $font-family--heading;
     font-size: $font-size--x-large;
 }
 
-.post-content>h2{
+.post-content>h2 {
     margin-bottom: $margin--medium;
     font-size: $font-size--xx-large;
     font-weight: $font-weight--bold;
 }
 
-.post-content>h3{
+.post-content>h3 {
     color: $color--primary-dark;
     font-family: $font-family--heading;
     font-size: $font-size--x-large;
@@ -26,6 +23,3 @@
     margin-bottom: $margin--medium;
     margin-top: $margin--medium;
 }
-
-
-
