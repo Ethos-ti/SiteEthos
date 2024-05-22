@@ -1,3 +1,21 @@
 .partners-list{
+    h2 {
+        font-size: var(--wp--preset--font-size--x-small);
+        font-weight: $font-weight--bold;
+        border-bottom: 1px solid #808080;
+        padding-bottom: $padding--small;
+        text-align: center;
+        @include mobile {
+            font-size: var(--wp--preset--font-size--x-small);
+        }
+    }
+    .wp-block-columns > .wp-block-column {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap:$gap--x-small;
+        margin-top: $margin--small;
+        justify-content: center;
 
+    }
 }
