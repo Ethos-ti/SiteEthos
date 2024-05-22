@@ -1,4 +1,8 @@
 .pre-header {
+    @include mobile {
+        display: none;
+    }
+
     background-color: $color--primary-pure;
 
     &__content {
@@ -26,6 +30,5 @@
                 }
             }
         }
-
     }
 }

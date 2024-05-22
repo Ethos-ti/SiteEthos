@@ -6,7 +6,7 @@ get_header();
 <div class="search container container--wide">
     <?php get_template_part( 'template-parts/title/archive-header' ); ?>
 
-    <main class="search__content col-md-9">
+    <main class="search__content">
         <?php
         if ( have_posts() ) {
             while ( have_posts() ) : the_post();
@@ -24,7 +24,7 @@ get_header();
 
     ]); ?>
 
-    <aside class="col-md-3">
+    <aside class="">
         <?php dynamic_sidebar( 'sidebar-search' ) ?>
     </aside>
 </div><!-- /.container -->

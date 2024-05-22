@@ -1,4 +1,4 @@
-.archive,
+.posts-grid,
 .search {
     &__content {
         display: grid;
@@ -19,7 +19,7 @@
         text-align: center;
     }
 
-    .card {
+    .post-card {
 
         &__meta,
         &__excerpt {
