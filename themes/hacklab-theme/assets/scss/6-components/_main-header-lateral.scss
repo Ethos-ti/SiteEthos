@@ -20,7 +20,7 @@
 
         img {
             height: auto;
-            width: auto;
+            width: 150px;
         }
     }
 
@@ -80,8 +80,10 @@
             }
         }
 
-        .menu>.menu-item:hover {
-            padding: 29px $padding--small;
+        .menu>.menu-item {
+            height: 80px;
+            width: max-content;
+            place-content: center;
         }
 
         .sub-menu {
@@ -114,6 +116,8 @@
             background: $color--primary-light;
             padding: $padding--small $padding--medium;
             border-radius: 16px;
+            height: auto !important;
+
 
             &:hover {
                 padding: $padding--small $padding--medium !important;
@@ -121,7 +125,7 @@
         }
 
         .area-do-associado {
-            margin-left: 90px;
+            margin-left: 6em;
 
             .sub-menu {
                 top: 38px;
