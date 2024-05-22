@@ -119,18 +119,17 @@
             border-radius: 16px;
             height: auto !important;
 
-
             &:hover {
                 padding: $padding--small $padding--medium !important;
+            }
+
+            .sub-menu {
+                top: 38px;
             }
         }
 
         .area-do-associado {
             margin-left: 6em;
-
-            .sub-menu {
-                top: 38px;
-            }
         }
 
         .entrar::before {
