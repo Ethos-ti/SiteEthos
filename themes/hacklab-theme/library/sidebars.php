@@ -37,16 +37,6 @@ function widgets_areas() {
 		'before_title'  => '<h2 class="main-footer__widget-title">',
 		'after_title'   => '</h2>',
 	));
-	register_sidebar(array(
-		'name'          => 'Widgets Parceiros',
-		'id'            => 'widget-parceiros',
-		'description'   => 'Barra lateral utilizada na maioria das listagens, como categorias, tags e etc',
-		'before_widget' => '<div class="sidebar-area before-sidebar-default">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	));
-
 }
 
 add_action('widgets_init', 'widgets_areas');
