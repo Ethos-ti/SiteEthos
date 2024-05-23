@@ -24,7 +24,7 @@ $post_type = get_queried_object()->name;
         endif;
         ?>
 
-        <main class="archive__content col-md-12">
+        <main class="archive__content">
             <?php while ( have_posts() ) : the_post(); ?>
                 <?php get_template_part( 'template-parts/post-card', 'vertical' ); ?>
             <?php endwhile; ?>
