@@ -87,6 +87,7 @@
     &__author {
         color: $color--low-light;
         padding: 0;
+        margin-bottom: $margin--large;
 
         @include small {
             padding-top: $padding--x-small;

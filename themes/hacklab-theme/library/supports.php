@@ -28,6 +28,8 @@ add_action( 'after_setup_theme', 'hacklabr\\theme_supports' );
  */
 function theme_setup() {
     load_theme_textdomain( 'hacklabr', get_stylesheet_directory() . '/languages' );
+
+    add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'after_setup_theme', 'hacklabr\\theme_setup' );
 

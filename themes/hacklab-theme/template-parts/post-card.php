@@ -20,7 +20,7 @@ $categories = get_the_category();
         <?php if (!empty($categories)): ?>
             <div class="post-card__category">
                 <?php foreach ($categories as $category): ?>
-                    <a class="tag tag--solid tag--category-<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
+                    <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
                         <?= $category->name ?>
                     </a>
                 <?php endforeach; ?>
