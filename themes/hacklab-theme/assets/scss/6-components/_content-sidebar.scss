@@ -1,9 +1,13 @@
 .content-sidebar {
-    display: flex;
+    background-color: $color--high-light;
 
-    @include small {
-        flex-direction: column;
-        padding-inline: 0;
+    &__container {
+        display: flex;
+
+        @include small {
+            flex-direction: column;
+            padding-inline: 0;
+        }
     }
 
     &__sidebar {
@@ -14,7 +18,7 @@
             padding: $padding--large $padding--medium;
         }
 
-        &--description {
+        &-description {
             color: $color--low-light;
             font-size: $font-size--x-small;
             font-weight: 700;
@@ -23,24 +27,8 @@
         }
 
         .button {
-            border-radius: $border-radius--xx-large;
-            color: $color--low-pure;
             display: inline-block;
-            font-size: $font-size--x-small;
-            font-weight: 700;
-            margin-left: $padding--medium;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-    }
-
-    &__content {
-        background-color: $color--high-pure;
-        flex: 2;
-        padding: $padding--xx-large;
-
-        @include small {
-            padding: $padding--large $padding--medium;
+            margin-left: $margin--medium;
         }
     }
 
@@ -71,7 +59,7 @@
             }
         }
 
-        &.active {
+        &--active {
             a {
                 background-color: $color--high-pure;
                 pointer-events: none;
@@ -79,8 +67,13 @@
         }
     }
 
-}
+    &__content {
+        background-color: $color--high-pure;
+        flex: 2;
+        padding: $padding--xx-large;
 
-body.page-template-template-associates-area {
-    background-color: $color--high-light;
+        @include small {
+            padding: $padding--large $padding--medium;
+        }
+    }
 }
