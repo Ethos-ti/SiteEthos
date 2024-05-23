@@ -1,8 +1,10 @@
 import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
 import { PanelBody, PanelRow, Path, SVG } from '@wordpress/components';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+import { SelectImage } from '../shared/SelectImage';
 
 import metadata from './block.json';
 
@@ -18,9 +20,32 @@ function Icon ({ size }) {
 }
 
 function Edit ({ attributes, setAttributes }) {
-    const blockProps = useBlockProps({ className: 'card__header' });
+    const { backgroundImage } = attributes;
+
+    const style = useMemo(() => {
+        return (backgroundImage?.url) ? { backgroundImage: `url(${backgroundImage?.url})` } : undefined;
+    }, [backgroundImage]);
+
+    const blockProps = useBlockProps({ className: 'card__header', style });
+
+    const onBackgroundImageChange = (backgroundImage) => {
+        const { alt, height, url, width } = backgroundImage;
+        setAttributes({ backgroundImage: { alt, height, url, width } });
+    };
 
     return <>
+        <InspectorControls>
+            <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout')}>
+                <PanelRow>
+                    <SelectImage
+                        label={__('Background image')}
+                        value={backgroundImage}
+                        onChange={onBackgroundImageChange}
+                    />
+                </PanelRow>
+            </PanelBody>
+        </InspectorControls>
+
         <header {...blockProps}>
             <InnerBlocks
                 allowedBlocks={true}
@@ -34,7 +59,11 @@ function Edit ({ attributes, setAttributes }) {
 }
 
 function Save ({ attributes }) {
-    const blockProps = useBlockProps.save({ className: 'card__header' });
+    const { backgroundImage } = attributes;
+
+    const style = (backgroundImage?.url) ? { backgroundImage: `url(${backgroundImage?.url})` } : undefined;
+
+    const blockProps = useBlockProps.save({ className: 'card__header', style });
 
     return (
         <header {...blockProps}>
