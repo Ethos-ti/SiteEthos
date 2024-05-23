@@ -111,8 +111,17 @@
             margin-inline-start: $gap--small;
         }
 
-        &:hover .sub-menu {
-            display: block;
+        &:hover {
+            iconify-icon {
+                transform: rotate(180deg);
+                transition: all .3s ease-in-out;
+            }
+
+            .sub-menu {
+                display: block;
+
+
+            }
         }
     }
 
