@@ -5,7 +5,7 @@
     "title": "Card body",
     "description": "The body of a generic card",
     "category": "text",
-    "icon": "grid-view",
+    "icon": "block-default",
     "parent": ["hacklabr/card"],
     "supports": {
         "color": {
