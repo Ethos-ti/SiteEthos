@@ -18,8 +18,8 @@ if ( ! empty( $search_query ) ) {
     $title = 'Pesquisar';
 };?>
 
-<header class="archive__header">
-    <div class="archive__title">
+<header class="archive-header__content">
+    <div class="archive-header__title">
         <h1>
             <?php echo apply_filters( 'the_title' , $title ); ?>
         </h1>
@@ -29,11 +29,11 @@ if ( ! empty( $search_query ) ) {
         endif; ?>
     </div>
 
-    <div class="archive__excerpt">
+    <div class="archive-header__excerpt">
         <?php the_archive_description(); ?>
     </div>
 
-    <div class="archive__results">
+    <div class="archive-header__results">
         <p><span><?= $wp_query->found_posts;?></span><?php _e(' Resultados Encontrados', 'hacklabr');?></p>
     </div>
 </header><!-- /.c-title.title-default -->

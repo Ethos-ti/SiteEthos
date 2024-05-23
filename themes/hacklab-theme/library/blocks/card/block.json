@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/card",
+    "title": "Card",
+    "description": "A generic card",
+    "category": "text",
+    "icon": "grid-view",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "mode": {
+            "type": "string",
+            "default": "vertical"
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/card/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/card/editor.css"]
+}

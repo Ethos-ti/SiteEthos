@@ -3,10 +3,10 @@ get_header();
 ?>
 
 
-<div class="search container container--wide">
+<div class="container container--wide">
     <?php get_template_part( 'template-parts/title/archive-header' ); ?>
 
-    <main class="search__content">
+    <main class="posts-grid__content">
         <?php
         if ( have_posts() ) {
             while ( have_posts() ) : the_post();
