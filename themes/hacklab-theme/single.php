@@ -6,6 +6,7 @@
 get_header();
 the_post();
 $category = get_the_category();
+$excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) : '';
 ?>
 
 <div class="container container--wide single">
@@ -14,15 +15,17 @@ $category = get_the_category();
             <?= get_the_post_thumbnail(null, 'post-thumbnail',['class'=>'post-header__featured-image']); ?>
         </div>
 
-        <!-- <div class="post-header__tags">
-            <a class="tag tag--category-<?= $category[0]->slug ?>" href="<?= get_term_link($category[0], 'category') ?>">
+        <div class="post-header__tags">
+            <a class="tag tag--<?= $category[0]->slug ?>" href="<?= get_term_link($category[0], 'category') ?>">
                 <?= $category[0]->name ?>
             </a>
-        </div> -->
+        </div>
 
         <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
-        <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
+        <?php if( $excerpt ) : ?>
+            <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
+        <?php endif; ?>
 
         <div class="post-header__meta container container--normal">
             <p class="post-header__date"><?= _e('Publicado em: ') ?><?= get_the_date() ?></p>
