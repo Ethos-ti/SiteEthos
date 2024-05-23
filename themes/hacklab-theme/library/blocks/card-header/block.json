@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/card-header",
+    "title": "Card header",
+    "description": "The header of a generic card",
+    "category": "text",
+    "icon": "grid-view",
+    "parent": ["hacklabr/card"],
+    "supports": {
+        "background": true,
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "html": false
+    },
+    "attributes": {
+        "style": {
+            "type": "object",
+            "default": {
+                "background": {
+                    "backgroundImage": {},
+                    "backgroundPosition": "50% 50%",
+                    "backgroundSize": "cover"
+                },
+                "color": {
+                    "background": "var(--wp--preset--color--high-dark)",
+                    "text": "var(--wp--preset--color--low-pure)"
+                }
+            }
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/card-header/editor.js"]
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/card-body",
+    "title": "Card body",
+    "description": "The body of a generic card",
+    "category": "text",
+    "icon": "grid-view",
+    "parent": ["hacklabr/card"],
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "html": false
+    },
+    "attributes": {
+        "style": {
+            "type": "object",
+            "default": {
+                "color": {
+                    "background": "var(--wp--preset--color--high-light)",
+                    "text": "var(--wp--preset--color--low-pure)"
+                }
+            }
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/card-body/editor.js"]
+}
