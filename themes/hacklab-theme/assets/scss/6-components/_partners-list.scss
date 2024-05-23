@@ -21,7 +21,7 @@
         justify-content: center;
         gap: 7rem;
         @include mobile{
-            gap:$gap--small;
+            gap:$gap--large;
         }
     }
     .wp-block-group:nth-last-of-type(2){ //parceria institucional
@@ -29,7 +29,7 @@
         justify-content: center;
         gap:$gap--x-large;
         @include mobile{
-            gap:$gap--small;
+            gap:$gap--large;
         }
     }
     .wp-block-group:nth-last-of-type(1){ //parceria institucional
@@ -37,7 +37,7 @@
         justify-content: center;
         gap: 7rem;
         @include mobile{
-            gap:$gap--small;
+            gap:$gap--large;
         }
     }
 
