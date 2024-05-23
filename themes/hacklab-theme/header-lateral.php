@@ -10,24 +10,24 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-    <div class="pre-header">
-        <div class="container container--wide">
-            <div class="pre-header__content">
-                <div class="main-header__social-content">
-                    <?= the_social_networks_menu( false ); ?>
-                </div>
-                <div class="acessibilidade">
-                   <a href="#"><iconify-icon icon="material-symbols-light:contrast"></iconify-icon></a>
-                   <a href="#"><iconify-icon icon="mdi:format-font-size-increase"></iconify-icon></a>
-                   <a href="#"><iconify-icon icon="mdi:format-font-size-decrease"></iconify-icon></a>
-                   <a href="#"><iconify-icon icon="bi:volume-down-fill"></iconify-icon></a>
-                   <a href="#"><iconify-icon icon="fa:print"></iconify-icon></a>
+    <header x-data="{ menuOpen: false, searchOpen: false }" class="main-header main-header-lateral" :class="{ 'main-header-lateral--menu-open': menuOpen, 'main-header-lateral--search-open': searchOpen }">
+        <div class="pre-header">
+            <div class="container container--wide">
+                <div class="pre-header__content">
+                    <div class="main-header__social-content">
+                        <?= the_social_networks_menu( false ); ?>
+                    </div>
+                    <div class="acessibilidade">
+                    <a href="#"><iconify-icon icon="material-symbols-light:contrast"></iconify-icon></a>
+                    <a href="#"><iconify-icon icon="ic:round-text-increase"></iconify-icon></a>
+                    <a href="#"><iconify-icon icon="ic:round-text-decrease"></iconify-icon></a>
+                    <a href="#"><iconify-icon icon="bi:volume-down-fill"></iconify-icon></a>
+                    <a href="#"><iconify-icon icon="fa:print"></iconify-icon></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <header x-data="{ menuOpen: false, searchOpen: false }" class="main-header main-header-lateral" :class="{ 'main-header-lateral--menu-open': menuOpen, 'main-header-lateral--search-open': searchOpen }">
         <div class="container container--wide">
 			<div class="main-header-lateral__content">
                 <button type="button" class="main-header__toggle-menu main-header-lateral__toggle-menu" aria-label="<?= __('Toggle menu visibility', 'hacklabr') ?>" @click="menuOpen = !menuOpen">
@@ -62,12 +62,28 @@
 
                 <?php do_action( 'hacklabr/header/menus-end' ); ?>
 				</div>
+
+                <div class="main-header-lateral__mobile-content">
+                    <div class="main-header-lateral__social-content">
+                        <?= the_social_networks_menu( false ); ?>
+                    </div>
+
+                    <?= wp_nav_menu(['theme_location' => 'main-menu', 'container' => 'nav', 'menu_class' => 'menu', 'container_class' => 'main-header-lateral__menu-mobile']) ?>
+
+                    <div class="main-header-lateral__acessibilidade">
+                        <a href="#"><iconify-icon icon="material-symbols-light:contrast"></iconify-icon></a>
+                        <a href="#"><iconify-icon icon="ic:round-text-increase"></iconify-icon></a>
+                        <a href="#"><iconify-icon icon="ic:round-text-decrease"></iconify-icon></a>
+                        <a href="#"><iconify-icon icon="bi:volume-down-fill"></iconify-icon></a>
+                        <a href="#"><iconify-icon icon="fa:print"></iconify-icon></a>
+                    </div>
+                </div>
 			</div>
+
+
         </div>
 
-        <div class="main-header-lateral__mobile-content">
-            <?= wp_nav_menu(['theme_location' => 'main-menu', 'container' => 'nav', 'menu_class' => 'menu', 'container_class' => 'main-header-lateral__menu-mobile']) ?>
-        </div>
+
 	</header>
 
 	<div id="app">

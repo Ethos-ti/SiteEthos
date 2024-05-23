@@ -1,5 +1,6 @@
 .pre-header {
     background-color: $color--primary-pure;
+    color: $color--high-pure;
 
     @include mobile {
         display: none;
