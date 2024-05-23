@@ -8,7 +8,6 @@
     "icon": "grid-view",
     "parent": ["hacklabr/card"],
     "supports": {
-        "background": true,
         "color": {
             "background": true,
             "text": true
@@ -16,14 +15,18 @@
         "html": false
     },
     "attributes": {
+        "backgroundImage": {
+            "type": "object",
+            "default": {
+                "alt": "",
+                "height": 0,
+                "url": "",
+                "width": 0
+            }
+        },
         "style": {
             "type": "object",
             "default": {
-                "background": {
-                    "backgroundImage": {},
-                    "backgroundPosition": "50% 50%",
-                    "backgroundSize": "cover"
-                },
                 "color": {
                     "background": "var(--wp--preset--color--high-dark)",
                     "text": "var(--wp--preset--color--low-pure)"
