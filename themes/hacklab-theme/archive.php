@@ -5,7 +5,7 @@ get_header(); ?>
 
             <?php get_template_part( 'template-parts/title/archive-header' ); ?>
 
-            <div class="archive__infos">
+            <div class="archive-header__infos">
                 <?php get_template_part( 'template-parts/filter', 'posts', ['taxonomy' => 'category'] ); ?>
             </div><!-- .infos -->
 
