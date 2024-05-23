@@ -1,0 +1,21 @@
+.content-sidebar {
+    display: flex;
+
+    @include small {
+        flex-direction: column;
+    }
+
+    &__sidebar {
+        flex: 1;
+        padding: $padding--medium;
+    }
+
+    &__content {
+        flex: 3;
+        padding: $padding--large;
+
+        @include small {
+            padding: $padding--medium;
+        }
+    }
+}

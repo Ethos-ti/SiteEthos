@@ -10,7 +10,7 @@ import { SelectCardModel } from '../shared/SelectCardModel';
 
 import metadata from './block.json';
 
-export default function Edit ({ attributes, setAttributes }) {
+function Edit ({ attributes, setAttributes }) {
     const { cardModel, postsPerColumn, postsPerRow } = attributes;
 
     const blockProps = useBlockProps();
