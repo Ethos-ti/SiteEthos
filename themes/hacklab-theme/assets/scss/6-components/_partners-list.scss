@@ -1,13 +1,13 @@
 .partners-list{
     h2 {
         color: $color--primary-dark;
-        font-size: $font-size--x-small;
+        font-size: $font-size--x-small !important;
         font-weight: $font-weight--bold;
         border-bottom: 1px solid #808080;
         padding-bottom: $padding--small;
         text-align: center;
         @include mobile {
-            font-size: $font-size--x-small;
+            font-size: $font-size--x-small !important;
         }
     }
     .wp-block-columns > .wp-block-column {
