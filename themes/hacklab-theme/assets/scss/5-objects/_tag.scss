@@ -64,4 +64,40 @@
     &--warning {
         --hl-tag-color: #{$color--warning-pure};
     }
+
+    &--direitos-humanos{
+        --hl-tag-color: #{$color--direitos-humanos};
+        background-color: $color--direitos-humanos;
+        color: $color--high-pure;
+        border: $border-width--small solid $color--direitos-humanos;
+    }
+
+    &--economia{
+        --hl-tag-color: #{$color--economia};
+        background-color: $color--economia;
+        color: $color--high-pure;
+        border: $border-width--small solid $color--economia;
+    }
+
+    &--gestao-sustentavel{
+        --hl-tag-color: #{$color--gesta-sustentavel};
+        background-color: $color--gestao-sustentavel;
+        color: $color--high-pure;
+        border: $border-width--small solid $color--gestao-sustentavel;
+    }
+
+    &--integridade{
+        --hl-tag-color: #{$color--integridade};
+        background-color: $color--integridade;
+        color: $color--high-pure;
+        border: $border-width--small solid $color--integridade;
+    }
+
+    &--meio-ambiente{
+        --hl-tag-color: #{$color--meio-ambiente};
+        background-color: $color--meio-ambiente;
+        color: $color--high-pure;
+        border: $border-width--small solid $color--meio-ambiente;
+    }
+
 }
