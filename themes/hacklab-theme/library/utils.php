@@ -237,3 +237,26 @@ function archive_filter_posts( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'archive_filter_posts' );
+
+/**
+ * Retrieves a list of pages by their template.
+ *
+ * @param string $template The page template to filter by. Defaults to 'default'.
+ * @param array  $args     Optional. Additional arguments to pass to `get_posts()`.
+ * @return WP_Post[]       An array of page posts.
+ */
+if ( ! \function_exists( 'get_pages_by_template' ) ) {
+    function get_pages_by_template( $template = 'default', $args = [] ) {
+        $args += [
+            'post_type'      => 'page',
+            'meta_key'       => '_wp_page_template',
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
+            'posts_per_page' => -1
+        ];
+
+        $args['meta_value'] = $template;
+
+        return \get_posts( $args );
+    }
+}

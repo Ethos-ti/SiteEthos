@@ -3,28 +3,84 @@
 
     @include small {
         flex-direction: column;
+        padding-inline: 0;
     }
 
     &__sidebar {
         flex: 1;
-        padding: $padding--medium;
+        padding: $padding--xx-large 0 $padding--xx-large $padding--medium;
+
+        @include small {
+            padding: $padding--large $padding--medium;
+        }
+
+        &--description {
+            color: $color--low-light;
+            font-size: $font-size--x-small;
+            font-weight: 700;
+            padding-left: $padding--medium;
+            text-transform: uppercase;
+        }
+
+        .button {
+            border-radius: $border-radius--xx-large;
+            color: $color--low-pure;
+            display: inline-block;
+            font-size: $font-size--x-small;
+            font-weight: 700;
+            margin-left: $padding--medium;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+    }
+
+    &__content {
+        background-color: $color--high-pure;
+        flex: 2;
+        padding: $padding--xx-large;
+
+        @include small {
+            padding: $padding--large $padding--medium;
+        }
     }
 
     &__list {
         margin-bottom: $margin--medium;
         margin-top: $margin--medium;
+        list-style: none;
+        padding: 0;
     }
 
-    &__list-item--active {
-        // @wip
-    }
+    &__list-item {
+        a {
+            border-bottom-left-radius: $border-radius--medium;
+            border-top-left-radius: $border-radius--medium;
+            color: $color--low-pure;
+            display: block;
+            font-size: $font-size--large;
+            font-weight: 700;
+            padding: $padding--small $padding--medium;
+            text-decoration: none;
 
-    &__content {
-        flex: 3;
-        padding: $padding--large;
+            @include small {
+                border-radius: $border-radius--medium;
+            }
 
-        @include small {
-            padding: $padding--medium;
+            &:hover {
+                color: $color--primary-dark;
+            }
+        }
+
+        &.active {
+            a {
+                background-color: $color--high-pure;
+                pointer-events: none;
+            }
         }
     }
+
+}
+
+body.page-template-template-associates-area {
+    background-color: $color--high-light;
 }

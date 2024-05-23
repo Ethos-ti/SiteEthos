@@ -5,28 +5,21 @@
 
 get_header();
 
+$current_post_id = get_the_ID();
 $login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login' ) ) ? $pmpro_url : home_url();
+
 ?>
 
-<div class="content-sidebar container">
+<div class="content-sidebar container container--wide">
     <aside class="content-sidebar__sidebar">
-        <h6><?= __( 'Associeted panel', 'base-textdomain' ); ?></h6>
+        <p class="content-sidebar__sidebar--description"><?= __( 'Associeted panel', 'base-textdomain' ); ?></p>
         <?php
-        $args = [
-            'post_type'      => 'page',
-            'meta_key'       => '_wp_page_template',
-            'meta_value'     => 'template-associates-area.php',
-            'orderby'        => 'menu_order',
-            'order'          => 'ASC',
-            'posts_per_page' => -1
-        ];
-
-        $associates_areas = \get_posts( $args );
+        $associates_areas = \get_pages_by_template( 'template-associates-area.php' );
 
         if ( $associates_areas ) {
             echo '<ul class="content-sidebar__list">';
             foreach ( $associates_areas as $associates_area ) {
-                $css_class = get_the_ID() === $associates_area->ID ? 'content-sidebar__list-item--active' : 'content-sidebar__list-item';
+                $css_class = $current_post_id === $associates_area->ID ? 'content-sidebar__list-item active' : 'content-sidebar__list-item';
                 echo '<li class="' . $css_class . '"><a href="' . esc_url( get_permalink( $associates_area ) ) . '">' . wp_kses_post( get_the_title( $associates_area ) ) . '</a></li>';
             }
             echo '</ul>';

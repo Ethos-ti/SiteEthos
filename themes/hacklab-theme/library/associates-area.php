@@ -34,7 +34,7 @@ function redirect_associates_template() {
         if ( ! is_user_logged_in() ) {
             $login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login' ) ) ? $pmpro_url : home_url();
 
-            wp_redirect( home_url( $login_url ), 301 );
+            wp_redirect( $login_url, 301 );
             exit;
         }
 
