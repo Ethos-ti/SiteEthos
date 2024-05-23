@@ -10,6 +10,15 @@
         padding: $padding--medium;
     }
 
+    &__list {
+        margin-bottom: $margin--medium;
+        margin-top: $margin--medium;
+    }
+
+    &__list-item--active {
+        // @wip
+    }
+
     &__content {
         flex: 3;
         padding: $padding--large;
