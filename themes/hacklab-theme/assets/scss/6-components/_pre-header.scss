@@ -1,9 +1,9 @@
 .pre-header {
+    background-color: $color--primary-pure;
+
     @include mobile {
         display: none;
     }
-
-    background-color: $color--primary-pure;
 
     &__content {
         align-items: center;
