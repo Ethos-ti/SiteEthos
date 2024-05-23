@@ -1,9 +1,7 @@
 {
     "version": 3,
     "settings": {
-        "appearanceTools": {
-            "background": true
-        },
+        "appearanceTools": true,
         "color": {
             "custom": false,
             "customGradient": false,

@@ -36,7 +36,7 @@
             input {
                 border-radius: 32px;
                 padding: $padding--small $padding--medium;
-                width: 280px;
+                width: 290px;
 
                 &[placeholder] {
                     color: $color--low-light;
@@ -57,85 +57,124 @@
         }
     }
 
+    ul,
+    li {
+        margin: 0;
+        padding: 0 $padding--small;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        gap: $padding--small;
+    }
+
+    li {
+        list-style: none;
+        font-size: $font-size--small;
+        font-weight: $font-weight--bold;
+
+        &:hover {
+            background-color: $color--high-dark;
+        }
+    }
+
     &__menu-desktop {
-
-        ul,
-        li {
-            margin: 0;
-            padding: 0 $padding--small;
-        }
-
-        &>ul {
-            align-items: center;
-            display: flex;
-            gap: $padding--small;
-        }
-
-        li {
-            list-style: none;
-            font-size: $font-size--small;
-            font-weight: $font-weight--bold;
-
-            &:hover {
-                background-color: $color--high-dark;
-            }
-        }
-
         .menu>.menu-item {
-            height: 80px;
+            height: 90px;
             width: max-content;
             place-content: center;
         }
+    }
 
-        .sub-menu {
-            display: none;
-            box-shadow: $box-shadow--default;
-            min-width: 10rem;
-            padding: $padding--medium;
-            position: absolute;
-            z-index: 2;
-            top: 80px;
-            left: 0;
-            gap: $gap--medium;
+
+    .sub-menu {
+        display: none;
+        box-shadow: $box-shadow--default;
+        min-width: 10rem;
+        padding: $padding--medium;
+        position: absolute;
+        z-index: 2;
+        top: 80px;
+        left: 0;
+
+        li {
+            margin: $margin--medium 0;
+        }
+    }
+
+    .menu-item-has-children {
+        display: inline-block;
+        position: relative;
+
+        iconify-icon {
+            margin-inline-start: $gap--small;
         }
 
-        .menu-item-has-children {
-            display: inline-block;
-            position: relative;
-
+        &:hover {
             iconify-icon {
-                margin-inline-start: $gap--small;
-            }
-
-            &:hover .sub-menu {
-                display: grid;
-            }
-        }
-
-        .area-do-associado,
-        .quero-me-associar {
-            background: $color--primary-light;
-            padding: $padding--small $padding--medium;
-            border-radius: 16px;
-            height: auto !important;
-
-            &:hover {
-                padding: $padding--small $padding--medium !important;
+                transform: rotate(180deg);
+                transition: all .3s ease-in-out;
             }
 
             .sub-menu {
-                top: 38px;
+                display: block;
+
+
             }
         }
+    }
 
-        .area-do-associado {
-            margin-left: 6em;
+    .area-do-associado,
+    .quero-me-associar {
+        background: $color--primary-light;
+        padding: $padding--small $padding--medium;
+        border-radius: 16px;
+        height: auto !important;
+
+        &:hover {
+            padding: $padding--small $padding--medium !important;
         }
 
-        .entrar::before {
-            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12px' height='12px' viewBox='0 0 448 512'%3E%3Cpath fill='black' d='M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128m89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4'/%3E%3C/svg%3E");
-            margin-right: $margin--small;
+        .sub-menu {
+            top: 38px;
+        }
+    }
 
+    .area-do-associado {
+        margin-left: 6em;
+    }
+
+    .entrar::before {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12px' height='12px' viewBox='0 0 448 512'%3E%3Cpath fill='black' d='M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128m89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4'/%3E%3C/svg%3E");
+        margin-right: $margin--small;
+
+    }
+
+    &__menu-mobile {
+        height: calc(100vh - 80px - 46px);
+
+        .menu {
+            display: block;
+        }
+
+        .menu-item {
+            margin: $margin--medium 0;
+
+            &--open {
+                iconify-icon {
+                    transform: rotate(180deg);
+                    transition: all .3s ease-in-out;
+                }
+
+                &>.sub-menu {
+                    display: block;
+                    position: unset;
+                    box-shadow: none;
+                    padding: 0 $padding--medium;
+
+                }
+            }
         }
     }
 
@@ -145,8 +184,40 @@
 
     &--menu-open {
 
-        .main-header-lateral__mobile-content {
-            display: block;
+        .main-header-lateral__logo,
+        .main-header-lateral__search {
+            display: none;
+        }
+
+        .main-header-lateral {
+            &__mobile-content {
+                display: block;
+                position: relative;
+            }
+
+            &__social-content {
+                position: absolute;
+                top: -50px;
+                right: 0;
+
+                .social-menu {
+                    gap: $gap--large;
+                    color: $color--primary-pure;
+                }
+            }
+
+            &__acessibilidade {
+                background-color: $color--primary-pure;
+                color: $color--high-pure;
+                gap: $gap--large;
+                display: flex;
+                justify-content: center;
+                padding: 12px 0;
+                width: 100vw;
+                left: 50%;
+                position: relative;
+                transform: translate(-50%);
+            }
         }
     }
 
@@ -156,7 +227,7 @@
             display: block;
             position: absolute;
             top: -8px;
-            right: -16px;
+            right: -10px;
         }
 
         .main-header-lateral__logo {

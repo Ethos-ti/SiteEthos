@@ -1,16 +1,16 @@
 .pre-header {
+    background-color: $color--primary-pure;
+    color: $color--high-pure;
+
     @include mobile {
         display: none;
     }
-
-    background-color: $color--primary-pure;
 
     &__content {
         align-items: center;
         display: flex;
         justify-content: space-between;
         min-height: 40px;
-        padding: 0 $padding--medium;
 
         .social-menu {
             gap: calc($gap--small * 3);
