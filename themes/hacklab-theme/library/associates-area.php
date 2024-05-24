@@ -15,11 +15,11 @@ function modify_associates_permalink( $url, $post_id ) {
     if ( is_page() && get_page_template_slug( $post_id ) == 'template-associates-area.php' ) {
         $post_name = get_post_field( 'post_name', $post_id );
 
-        if ( $post_name ) {
+        if ( $post_name && strpos( $url, '/associados/' . $post_name ) === false ) {
             $url = home_url( '/associados/' . $post_name );
         }
-
     }
+
     return $url;
 }
 add_filter( 'page_link', 'hacklabr\\modify_associates_permalink', 10, 2 );
@@ -48,3 +48,28 @@ function redirect_associates_template() {
     }
 }
 add_action( 'template_redirect', 'hacklabr\\redirect_associates_template' );
+
+function pmpro_login_redirect_url( $redirect_to, $request, $user ) {
+    if ( ! \function_exists( 'pmpro_url' ) || empty( $user->ID ) ) {
+        return $redirect_to;
+    }
+
+    global $wpdb;
+
+    $is_member = $wpdb->get_var( "SELECT membership_id FROM $wpdb->pmpro_memberships_users WHERE status = 'active' AND user_id = '" . esc_sql( $user->ID ) . "' LIMIT 1" );
+    if ( $is_member ) {
+
+        $get_welcome_page = get_page_by_path( 'boas-vindas', OBJECT, 'page' );
+
+        if ( $get_welcome_page ) {
+            $template = get_page_template_slug( $get_welcome_page->ID );
+            if ( $template == 'template-associates-area.php' ) {
+                $redirect_to = get_permalink( $get_welcome_page->ID );
+            }
+        }
+
+    }
+
+    return $redirect_to;
+}
+add_filter( 'pmpro_login_redirect_url', 'hacklabr\\pmpro_login_redirect_url', 20, 3 );
