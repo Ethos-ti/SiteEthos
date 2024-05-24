@@ -237,29 +237,3 @@ function archive_filter_posts( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'archive_filter_posts' );
-
-function get_archive_menu( $post_type, $taxonomy ) {
-
-    $terms = get_terms( $taxonomy );
-
-    if ( ! $terms || is_wp_error( $terms ) ) {
-        return false;
-    }
-
-    $html = '<ul class="archive-menu list-terms tax-' . sanitize_title( $taxonomy ) . '">';
-
-    foreach ( $terms as $term ) {
-
-        $html .= '<li class="term-' . sanitize_title( $term->slug ) . '">';
-        $html .= '<a href="' . esc_url( get_term_link( $term->term_id, $taxonomy ) ) . '?post_type='. $post_type. '">';
-        $html .= esc_attr( $term->name );
-        $html .= '</a>';
-        $html .= '</li>';
-
-    }
-
-    $html .= '</ul>';
-
-    return $html;
-
-}

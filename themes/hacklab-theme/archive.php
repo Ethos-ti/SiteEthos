@@ -3,9 +3,6 @@ get_header();
 
 global $wp_query;
 $post_type = get_queried_object()->name;
-echo '<pre>';
-    var_dump ( get_queried_object() );
-echo '</pre>';
 
 ?>
 
@@ -24,8 +21,6 @@ echo '</pre>';
             echo hacklabr\get_layout_part( 'novidades', 'header' );
         endif;
         ?>
-
-        <?php echo get_archive_menu('publicacao', 'category'); ?>
 
         <main class="posts-grid__content">
             <?php while ( have_posts() ) : the_post(); ?>
