@@ -5,7 +5,7 @@
     "title": "Card",
     "description": "A generic card",
     "category": "text",
-    "icon": "grid-view",
+    "icon": "block-default",
     "supports": {
         "html": false
     },

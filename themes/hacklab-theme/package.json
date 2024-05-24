@@ -21,6 +21,7 @@
     "@wordpress/i18n": "^4.58.0",
     "@wordpress/server-side-render": "^4.35.0",
     "alpinejs": "^3.13.10",
+    "clsx": "^2.1.1",
     "iconify-icon": "^2.1.0",
     "swr": "^2.2.5",
     "tiny-slider": "^2.9.4"
