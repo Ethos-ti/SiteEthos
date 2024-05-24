@@ -5,6 +5,11 @@ $post = $args['post'] ?? $post;
 
 $image_size = $args['image_size'] ?? 'card-large';
 
+$hide_author = (bool) ($args['hide_author'] ?? false);
+$hide_categories = (bool) ($args['hide_categories'] ?? false);
+$hide_date = (bool) ($args['hide_date'] ?? false);
+$hide_excerpt = (bool) ($args['hide_excerpt'] ?? false);
+
 $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "post-card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
@@ -17,7 +22,7 @@ $categories = get_the_category();
     </header>
 
     <main class="post-card__content">
-        <?php if (!empty($categories)): ?>
+        <?php if (!$hide_categories && !empty($categories)): ?>
             <div class="post-card__category">
                 <?php foreach ($categories as $category): ?>
                     <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
@@ -31,19 +36,27 @@ $categories = get_the_category();
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
         </h3>
 
+        <?php if (!$hide_author || !$hide_date): ?>
         <div class="post-card__meta">
-              <div class="post-card__author">
+            <?php if (!$hide_author): ?>
+            <div class="post-card__author">
                 <?php the_author(); ?>
-              </div>
+            </div>
+            <?php endif; ?>
 
-              <time class="post-card__date">
+            <?php if (!$hide_date): ?>
+            <time class="post-card__date">
                 <?php echo get_the_date(); ?>
-              </time>
+            </time>
+            <?php endif; ?>
         </div>
+        <?php endif; ?>
 
+        <?php if (!$hide_excerpt): ?>
         <div class="post-card__excerpt">
             <?= get_the_excerpt(); ?>
         </div>
+        <?php endif; ?>
     </main>
 </article>
 

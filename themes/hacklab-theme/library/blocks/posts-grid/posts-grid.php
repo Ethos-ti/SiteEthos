@@ -20,16 +20,18 @@ function get_posts_grid_data ($attributes): \WP_Query {
 
 function render_posts_grid_callback ($attributes) {
     $card_model = $attributes['cardModel'];
+    $hide_author = $attributes['hideAuthor'] ?: false;
+    $hide_categories = $attributes['hideCategories'] ?: false;
+    $hide_date = $attributes['hideDate'] ?: false;
+    $hide_excerpt = $attributes['hideExcerpt'] ?: false;
     $posts_per_column = $attributes['postsPerColumn'] ?: 1;
     $posts_per_row = $attributes['postsPerRow'] ?: 1;
 
     // Normalize attributes before calling `build_posts_query`
-    unset($attributes['cardModel']);
-    unset($attributes['postsPerColumn']);
-    unset($attributes['postsPerRow']);
-    $attributes['postsPerPage'] = $posts_per_column * $posts_per_row;
+    $query_attributes = normalize_posts_query($attributes);
+    $query_attributes['postsPerPage'] = $posts_per_column * $posts_per_row;
 
-    $query = get_posts_grid_data($attributes);
+    $query = get_posts_grid_data($query_attributes);
 
     ob_start();
     ?>
@@ -37,7 +39,13 @@ function render_posts_grid_callback ($attributes) {
     <div class="hacklabr-posts-grid-block" style="--grid-columns: <?= $posts_per_row ?>">
         <?php foreach ($query->posts as $post):
             mark_post_id_as_used($post->ID);
-            get_template_part('template-parts/post-card', $card_model ?: null, [ 'post' => $post ]);
+            get_template_part('template-parts/post-card', $card_model ?: null, [
+                'hide_author' => $hide_author,
+                'hide_categories' => $hide_categories,
+                'hide_date' => $hide_date,
+                'hide_excerpt' => $hide_excerpt,
+                'post' => $post,
+            ]);
         endforeach; ?>
     </div>
 
