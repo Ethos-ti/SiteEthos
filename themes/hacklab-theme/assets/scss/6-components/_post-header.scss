@@ -28,7 +28,7 @@
     .wp-block-heading {
         color: $color--primary-dark;
         font-size: $font-size--hero;
-        margin-top: calc($margin--medium * 3);
+        margin: calc($margin--medium * 3) 0 $margin--large;
         text-align: center;
 
         @include small {

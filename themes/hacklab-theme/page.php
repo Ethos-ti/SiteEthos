@@ -3,7 +3,7 @@ get_header();
 $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) : '';
 ?>
     <div class="container">
-        <div class="post-header post-header__separator">
+        <div class="post-header">
             <h1 class="post-header__title"><?php the_title() ?></h1>
             <?php if( $excerpt ) : ?>
                 <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
