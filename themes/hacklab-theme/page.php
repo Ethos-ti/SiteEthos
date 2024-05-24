@@ -9,7 +9,7 @@ $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) :
                 <p class="post-header__excerpt container container--normal"><?= get_the_excerpt() ?></p>
             <?php endif; ?>
         </div>
-        <div class="post-content content content--normal">
+        <div class="post-content content stack">
             <?php the_content() ?>
         </div>
     </div>
