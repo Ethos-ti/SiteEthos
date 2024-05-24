@@ -2,8 +2,9 @@ import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-
 import { registerBlockType } from '@wordpress/blocks';
 import { PanelBody, PanelRow } from '@wordpress/components';
 import { __experimentalNumberControl as NumberControl } from '@wordpress/components';
-import { useMemo } from '@wordpress/element';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
 
 import metadata from './block.json';
 
@@ -16,9 +17,14 @@ const TEMPLATE = [
 function Edit ({ attributes, setAttributes }) {
     const { lines } = attributes;
 
-    const style = useMemo(() => ({ '--lines-shown': String(lines) }), [lines]);
+    const [expanded, setExpanded] = useState(false);
 
-    const blockProps = useBlockProps({ className: 'hacklabr-read-more-block', style });
+    const blockProps = useBlockProps({
+        className: clsx('hacklabr-read-more-block', { 'hacklabr-read-more-block--expanded': expanded }),
+        style: { '--lines-shown': String(lines) },
+    });
+
+    const toggleExpanded = () => setExpanded((expanded) => !expanded);
 
     return <>
         <InspectorControls>
@@ -43,7 +49,9 @@ function Edit ({ attributes, setAttributes }) {
                     templateLock="all"
                 />
             </div>
-            <button className="hacklabr-read-more-block__toggle">{__('Read more', 'hacklabr')}</button>
+            <button className="hacklabr-read-more-block__toggle" onClick={toggleExpanded}>
+                { expanded ? __('Read less', 'hacklabr') : __('Read more', 'hacklabr') }
+            </button>
         </div>
     </>;
 }
