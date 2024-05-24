@@ -13,7 +13,8 @@ $hide_excerpt = (bool) ($args['hide_excerpt'] ?? false);
 $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "post-card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
-
+$post_id = get_the_ID();
+$editorias = get_the_terms($post_id, 'tipo_post');
 $categories = get_the_category();
 ?>
 <article id="post-ID-<?php the_ID(); ?>" class="post-card <?=$modifiers?>">
@@ -22,6 +23,18 @@ $categories = get_the_category();
     </header>
 
     <main class="post-card__content">
+
+    <div class="post-card__metas">
+        <?php if($editorias) : ?>
+            <div class="post-card__metas--editorias">
+                <?php foreach ($editorias as $editoria): ?>
+                    <a class="tag tag--outline">
+                        <?= $editoria->name ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
         <?php if (!$hide_categories && !empty($categories)): ?>
             <div class="post-card__category">
                 <?php foreach ($categories as $category): ?>
@@ -31,6 +44,7 @@ $categories = get_the_category();
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+    </div>
 
         <h3 class="post-card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>

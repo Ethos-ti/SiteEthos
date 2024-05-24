@@ -75,6 +75,12 @@
         }
     }
 
+    &__metas{
+        align-items: center;
+        display: flex;
+        gap: $gap--small;
+    }
+
     &--horizontal {
         display: grid;
         grid-template-columns: 1fr 1fr;

@@ -23,5 +23,9 @@
             font-size: $font-size--x-large;
             margin-bottom: $margin--large;
         }
+
+        &__content{
+            margin-top: 0;
+        }
     }
 }
