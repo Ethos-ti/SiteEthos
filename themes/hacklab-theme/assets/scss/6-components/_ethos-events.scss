@@ -76,4 +76,29 @@
             }
         }
     }
+    .tribe-events-calendar-list{
+        .tribe-events-calendar-list__month-separator{
+            color: $color--low-pure;
+            &-text{
+                font-family: $font-family--primary;
+            }
+        }
+        .tribe-events-calendar-list__event-row{
+            .tribe-events-calendar-list__event-date-tag{
+                &-datetime{
+                    .tribe-events-calendar-list__event-date-tag-weekday,
+                    .tribe-events-calendar-list__event-date-tag-daynum{
+                        font-family: $font-family--primary;
+                        color: $color--secondary-dark;
+                    }
+                    .tribe-events-calendar-list__event-date-tag-weekday{
+                        font-size: $font-size--small;
+                    }
+                    .tribe-events-calendar-list__event-date-tag-daynum{
+                        font-size: $font-size--xx-large;
+                    }
+                }
+            }
+        }
+    }
 }
