@@ -1,5 +1,5 @@
-.blockquote{
+.blockquote {
     border-bottom: $border-width--small solid $color--high-dark;
-    margin-bottom: $margin--large;
-    padding-bottom: $padding--large !important;
+    margin-bottom: calc($padding--large + $padding--small);
+    padding-bottom: calc($padding--large + $padding--small) !important;
 }

@@ -1,6 +1,5 @@
 .post-header {
     &__separator {
-        border-bottom: $border-width--small solid $color--high-dark;
         margin-bottom: $margin--large;
     }
 
@@ -25,10 +24,11 @@
         justify-content: center;
     }
 
-    &__title, .wp-block-heading {
+    &__title,
+    .wp-block-heading {
         color: $color--primary-dark;
         font-size: $font-size--hero;
-        margin-top: $margin--large;
+        margin-top: calc($margin--medium * 3);
         text-align: center;
 
         @include small {
@@ -36,7 +36,7 @@
         }
 
         @include mobile {
-            font-size: $font-size--large;
+            font-size: $font-size--xx-large;
         }
     }
 

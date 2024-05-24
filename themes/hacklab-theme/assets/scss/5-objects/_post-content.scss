@@ -1,6 +1,6 @@
 .post-content {
     margin-top: $margin--small;
-    margin-bottom: $margin--large;
+    margin-bottom: calc($margin--medium * 5);
 }
 
 .post-content>ol>li::marker {
@@ -23,4 +23,8 @@
     line-height: $line-height--normal;
     margin-bottom: $margin--medium;
     margin-top: $margin--medium;
+}
+
+.post-content .wp-block-buttons>.wp-block-button {
+    margin: calc($margin--small * 5) 0;
 }
