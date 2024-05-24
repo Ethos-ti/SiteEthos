@@ -1,0 +1,19 @@
+.hacklabr-read-more-block {
+
+    &:not(.hacklabr-read-more-block--expanded) {
+
+        .hacklabr-read-more-block__content {
+
+            p {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: var(--lines-shown);
+            }
+        }
+    }
+
+    &__toggle {
+
+    }
+}
