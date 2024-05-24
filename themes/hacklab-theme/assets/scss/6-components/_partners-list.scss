@@ -1,4 +1,4 @@
-.partners-list{
+.partners-list {
     h2 {
         color: $color--primary-dark;
         font-size: $font-size--x-small !important;
@@ -6,12 +6,14 @@
         border-bottom: 1px solid #808080;
         padding-bottom: $padding--small;
         text-align: center;
-        text-transform:uppercase;
+        text-transform: uppercase;
+
         @include mobile {
             font-size: $font-size--x-small !important;
         }
     }
-    .wp-block-group{
+
+    .wp-block-group {
         padding-bottom: $padding--xx-large;
         padding-top: $padding--medium;
 

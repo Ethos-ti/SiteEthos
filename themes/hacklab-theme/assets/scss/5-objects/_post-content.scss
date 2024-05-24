@@ -1,26 +1,30 @@
 .post-content {
     margin-top: $margin--small;
-    margin-bottom: $margin--large;
+    margin-bottom: calc($margin--medium * 5);
+}
 
-    & > h2 {
-        margin-bottom: $margin--medium;
-        font-size: $font-size--xx-large;
-        font-weight: $font-weight--bold;
-    }
+.post-content>ol>li::marker {
+    color: $color--primary-dark;
+    font-family: $font-family--heading;
+    font-size: $font-size--x-large;
+}
 
-    & > h3 {
-        color: $color--primary-dark;
-        font-family: $font-family--heading;
-        font-size: $font-size--x-large;
-        font-weight: $font-weight--regular;
-        line-height: $line-height--normal;
-        margin-bottom: $margin--medium;
-        margin-top: $margin--medium;
-    }
+.post-content>h2 {
+    margin-bottom: $margin--medium;
+    font-size: $font-size--xx-large;
+    font-weight: $font-weight--bold;
+}
 
-    & > ol > li::marker {
-        color: $color--primary-dark;
-        font-family: $font-family--heading;
-        font-size: $font-size--x-large;
-    }
+.post-content>h3 {
+    color: $color--primary-dark;
+    font-family: $font-family--heading;
+    font-size: $font-size--x-large;
+    font-weight: $font-weight--regular;
+    line-height: $line-height--normal;
+    margin-bottom: $margin--medium;
+    margin-top: $margin--medium;
+}
+
+.post-content .wp-block-buttons>.wp-block-button {
+    margin: calc($margin--small * 5) 0;
 }

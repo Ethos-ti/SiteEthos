@@ -1,12 +1,10 @@
 .post-header {
     &__separator {
-        border-bottom: $border-width--small solid $color--high-dark;
         margin-bottom: $margin--large;
     }
 
     &__featured-image {
         border-radius: $border-radius--large;
-        margin-bottom: $margin--large;
         margin-top: $margin--medium;
         object-fit: cover;
         width: 100%;
@@ -18,6 +16,14 @@
         @include mobile {
             max-height: 192px;
         }
+
+        &-caption{
+            color: $color--low-light;
+            font-size: $font-size--small;
+            line-height: $line-height--normal;
+            margin-bottom: $margin--medium;
+            text-align: right;
+        }
     }
 
     &__tags {
@@ -25,10 +31,11 @@
         justify-content: center;
     }
 
-    &__title, .wp-block-heading {
+    &__title,
+    .wp-block-heading {
         color: $color--primary-dark;
         font-size: $font-size--hero;
-        margin-top: $margin--large;
+        margin: calc($margin--medium * 3) 0 $margin--large;
         text-align: center;
 
         @include small {
@@ -36,7 +43,7 @@
         }
 
         @include mobile {
-            font-size: $font-size--large;
+            font-size: $font-size--xx-large;
         }
     }
 
@@ -44,6 +51,8 @@
         font-size: $font-size--large;
         font-weight: $font-weight--regular;
         margin-bottom: $margin--large;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: $margin--small;
         text-align: center;
 

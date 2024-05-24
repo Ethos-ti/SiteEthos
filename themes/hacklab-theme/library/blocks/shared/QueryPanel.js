@@ -13,19 +13,8 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
 
     const { data: postTypes } = useRestApi('hacklabr/v2/post_types');
 
-    const onCompareChange = (compare) => setAttributes({ compare });
-    const onNoCompareChange = (noCompare) => setAttributes({ noCompare });
-
-    const onOrderChange = (order) => setAttributes({ order });
-    const onOrderByChange = (orderBy) => setAttributes({ orderBy });
-
     const onPostTypeChange = (postType) => setAttributes({ postType, taxonomy: '', queryTerms: EMPTY_ARR });
     const onNoPostTypeChange = (noPostType) => setAttributes({ noPostType, noTaxonomy: '', noQueryTerms: EMPTY_ARR });
-
-    const onShowChildrenChange = (showChildren) => setAttributes({ showChildren });
-
-    const onQueryTermsChange = (queryTerms) => setAttributes({ queryTerms });
-    const onNoQueryTermsChange = (noQueryTerms) => setAttributes({ noQueryTerms });
 
     const onTaxonomyChange = (taxonomy) => setAttributes({ taxonomy, queryTerms: EMPTY_ARR });
     const onNoTaxonomyChange = (noTaxonomy) => setAttributes({ noTaxonomy, noQueryTerms: EMPTY_ARR });
@@ -33,7 +22,11 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
     return (
         <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={title}>
             <PanelRow>
-                <SelectPostType required={true} value={postType} onChange={onPostTypeChange}/>
+                <SelectPostType
+                    required={true}
+                    value={postType}
+                    onChange={onPostTypeChange}
+                />
             </PanelRow>
 
             {(postTypes?.[postType]?.hierarchical) ? (
@@ -41,24 +34,35 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
                     <ToggleControl
                         label={__('Show children posts?', 'hacklabr')}
                         checked={showChildren}
-                        onChange={onShowChildrenChange}
+                        onChange={(showChildren) => setAttributes({ showChildren })}
                     />
                 </PanelRow>
             ) : null}
 
             <PanelRow>
-                <SelectTaxonomy postType={postType} value={taxonomy} onChange={onTaxonomyChange}/>
+                <SelectTaxonomy
+                    postType={postType}
+                    value={taxonomy}
+                    onChange={onTaxonomyChange}
+                />
             </PanelRow>
 
             {(taxonomy) ? (
                 <PanelRow>
-                    <SelectTerms taxonomy={taxonomy} value={queryTerms} onChange={onQueryTermsChange}/>
+                    <SelectTerms
+                        taxonomy={taxonomy}
+                        value={queryTerms}
+                        onChange={(queryTerms) => setAttributes({ queryTerms })}
+                    />
                 </PanelRow>
             ) : null}
 
             {(queryTerms.length > 1) ? (
                 <PanelRow>
-                    <SelectCompare value={compare} onChange={onCompareChange}/>
+                    <SelectCompare
+                        value={compare}
+                        onChange={(compare) => setAttributes({ compare })}
+                    />
                 </PanelRow>
             ) : null}
 
@@ -66,8 +70,8 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
                 <QueryControls
                     order={order}
                     orderBy={orderBy}
-                    onOrderChange={onOrderChange}
-                    onOrderByChange={onOrderByChange}
+                    onOrderChange={(order) => setAttributes({ order })}
+                    onOrderByChange={(orderBy) => setAttributes({ orderBy })}
                 />
             </PanelRow>
 
@@ -76,24 +80,38 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
             </PanelRow>
 
             <PanelRow>
-                <SelectPostType value={noPostType} onChange={onNoPostTypeChange}/>
+                <SelectPostType
+                    value={noPostType}
+                    onChange={onNoPostTypeChange}
+                />
             </PanelRow>
 
             {(noPostType) ? (
-            <PanelRow>
-                    <SelectTaxonomy postType={noPostType} value={noTaxonomy} onChange={onNoTaxonomyChange}/>
-                </PanelRow>
-            ) : null}
+                <PanelRow>
+                    <SelectTaxonomy
+                        postType={noPostType}
+                        value={noTaxonomy}
+                        onChange={onNoTaxonomyChange}
+                    />
+                    </PanelRow>
+                ) : null}
 
             {(noTaxonomy) ? (
                 <PanelRow>
-                    <SelectTerms taxonomy={noTaxonomy} value={noQueryTerms} onChange={onNoQueryTermsChange}/>
+                    <SelectTerms
+                        taxonomy={noTaxonomy}
+                        value={noQueryTerms}
+                        onChange={(noQueryTerms) => setAttributes({ noQueryTerms })}
+                    />
                 </PanelRow>
             ) : null}
 
             {(noQueryTerms.length > 1) ? (
                 <PanelRow>
-                    <SelectCompare value={noCompare} onChange={onNoCompareChange}/>
+                    <SelectCompare
+                        value={noCompare}
+                        onChange={(noCompare) => setAttributes({ noCompare })}
+                    />
                 </PanelRow>
             ) : null}
         </PanelBody>
