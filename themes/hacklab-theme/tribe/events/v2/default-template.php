@@ -16,8 +16,15 @@ use Tribe\Events\Views\V2\Template_Bootstrap;
 
 get_header();
 
-echo hacklabr\get_layout_header( 'agenda' );
+?>
 
-echo tribe( Template_Bootstrap::class )->get_view_html();
+<?php echo hacklabr\get_layout_header( 'agenda' );?>
+
+<div class="ethos-events">
+
+    <?php echo tribe( Template_Bootstrap::class )->get_view_html();?>
+</div>
+
+<?php
 
 get_footer();

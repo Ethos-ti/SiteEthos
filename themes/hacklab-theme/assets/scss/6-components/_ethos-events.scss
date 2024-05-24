@@ -1,0 +1,24 @@
+.ethos-events{
+
+    .tribe-events-header{
+        .tribe-events-c-events-bar{
+            &__search-container{
+                .tribe-events-c-events-bar{
+                    &__search{
+                        &-form{
+                            .tribe-events-c-search{
+                                &__button{
+                                    background-color: $color--high-pure;
+                                    color: $color--low-pure;
+                                    border: $border-width--small solid $color--low-dark;
+                                    font-family: $font-family--primary;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
