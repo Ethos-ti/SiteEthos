@@ -1,11 +1,13 @@
 .tag {
     border: $border-width--medium solid $color--low-pure;
     border-radius: $border-radius--medium;
+    font-family: $font-family--heading;
     font-size: $font-size--x-small;
     font-weight: $font-weight--bold;
     line-height: $line-height--normal;
     padding: $padding--x-small $padding--small;
     text-decoration: none;
+    text-transform: uppercase;
 
     &:is(a) {
         cursor: pointer;

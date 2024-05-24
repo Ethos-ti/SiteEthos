@@ -9,9 +9,17 @@ $category = get_the_category();
 $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) : '';
 ?>
 
-<header class="post-header container">
+<header class="post-header container container--wide">
     <div class="post-header__featured-image">
-        <?= get_the_post_thumbnail(null, 'post-thumbnail',['class'=>'post-header__featured-image']); ?>
+        <?php
+            $thumbnail_id = get_post_thumbnail_id(get_the_ID());
+            echo get_the_post_thumbnail(null, 'post-thumbnail',['class'=>'post-header__featured-image']);
+            $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+
+            if ( !empty( $thumbnail_caption ) ) {
+                echo '<div class="post-header__featured-image-caption">' . esc_html($thumbnail_caption) . '</div>';
+            }
+        ?>
     </div>
 
     <div class="post-header__tags">
@@ -23,7 +31,7 @@ $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) :
     <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
     <?php if( $excerpt ) : ?>
-        <p class="post-header__excerpt"><?= get_the_excerpt() ?></p>
+        <p class="post-header__excerpt container--narrow"><?= get_the_excerpt() ?></p>
     <?php endif; ?>
 
     <div class="post-header__meta container">

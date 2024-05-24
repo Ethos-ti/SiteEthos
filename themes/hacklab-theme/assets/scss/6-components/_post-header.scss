@@ -5,7 +5,6 @@
 
     &__featured-image {
         border-radius: $border-radius--large;
-        margin-bottom: $margin--large;
         margin-top: $margin--medium;
         object-fit: cover;
         width: 100%;
@@ -16,6 +15,14 @@
 
         @include mobile {
             max-height: 192px;
+        }
+
+        &-caption{
+            color: $color--low-light;
+            font-size: $font-size--small;
+            line-height: $line-height--normal;
+            margin-bottom: $margin--medium;
+            text-align: right;
         }
     }
 
@@ -44,6 +51,8 @@
         font-size: $font-size--large;
         font-weight: $font-weight--regular;
         margin-bottom: $margin--large;
+        margin-left: auto;
+        margin-right: auto;
         margin-top: $margin--small;
         text-align: center;
 
