@@ -1,0 +1,21 @@
+.list-terms {
+    padding: $padding--large 0 $padding--medium;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    border-bottom: $border-width--small solid $color--primary-light ;
+    &__term,
+    &__term-all {
+        display: flex;
+        text-decoration: none;
+        text-transform: uppercase;
+        align-items: center;
+        >a{
+            text-decoration: none;
+            display: flex;
+            font-size: $font-size--x-small;
+            font-weight: $font-weight--bold;
+            gap: $gap--large;
+        }
+    }
+}
