@@ -1,0 +1,9 @@
+.wp-block-atbs-tabs{
+    @extend .tab;
+
+    h2{
+        @extend .tab--title;
+    }
+}
+
+
