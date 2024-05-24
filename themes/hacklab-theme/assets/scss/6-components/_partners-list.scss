@@ -24,7 +24,9 @@
         justify-content: center;
         gap: 6rem;
         @include mobile{
-            gap:$gap--xxx-large;
+            gap:$gap--large;
+            padding: $padding--medium;
+            margin-bottom: $margin--large;
         }
     }
     .parceria-estratégica{
@@ -32,7 +34,8 @@
         justify-content: center;
         gap:$gap--x-large;
         @include mobile{
-            gap:$gap--xxx-large;
+            gap:$gap--large;
+            padding: $padding--medium;
         }
     }
 }
