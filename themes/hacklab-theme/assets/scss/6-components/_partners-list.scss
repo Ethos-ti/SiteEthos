@@ -16,15 +16,16 @@
         padding-top: $padding--medium;
 
     }
-    .wp-block-group:nth-last-of-type(3){ //parceria institucional
+    .parceria-institucional,
+    .apoio-institucional{
         display: flex;
         justify-content: center;
-        gap: 7rem;
+        gap: 6rem;
         @include mobile{
             gap:$gap--xxx-large;
         }
     }
-    .wp-block-group:nth-last-of-type(2){ //parceria institucional
+    .parceria-estratégica{
         display: flex;
         justify-content: center;
         gap:$gap--x-large;
@@ -32,14 +33,4 @@
             gap:$gap--xxx-large;
         }
     }
-    .wp-block-group:nth-last-of-type(1){ //parceria institucional
-        display: flex;
-        justify-content: center;
-        gap: 7rem;
-        @include mobile{
-            gap:$gap--xxx-large;
-        }
-    }
-
-
 }
