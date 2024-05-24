@@ -18,43 +18,24 @@
         padding-top: $padding--medium;
 
     }
-
-    .wp-block-group:nth-last-of-type(3) {
-        //parceria institucional
+    .parceria-institucional,
+    .apoio-institucional{
         display: flex;
         justify-content: center;
-        gap: 7rem;
-
-        @include mobile {
-            gap: $gap--xxx-large;
-
-            @include mobile {
-                gap: $gap--large;
-            }
+        gap: 6rem;
+        @include mobile{
+            gap:$gap--large;
+            padding: $padding--medium;
+            margin-bottom: $margin--large;
         }
-
-        .wp-block-group:nth-last-of-type(2) {
-            //parceria institucional
-            display: flex;
-            justify-content: center;
-            gap: $gap--x-large;
-
-            @include mobile {
-                gap: $gap--large;
-            }
-        }
-
-        .wp-block-group:nth-last-of-type(1) {
-            //parceria institucional
-            display: flex;
-            justify-content: center;
-            gap: 7rem;
-            margin-bottom: calc($margin--small * 7);
-
-            @include mobile {
-                gap: $gap--large;
-                margin-bottom: 0;
-            }
+    }
+    .parceria-estratégica{
+        display: flex;
+        justify-content: center;
+        gap:$gap--x-large;
+        @include mobile{
+            gap:$gap--large;
+            padding: $padding--medium;
         }
     }
 }
