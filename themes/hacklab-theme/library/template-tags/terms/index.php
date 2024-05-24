@@ -127,3 +127,41 @@ function get_terms_by_post_type( $taxonomy, $post_type ) {
     return $terms;
 
 }
+
+function get_terms_by_use_menu( $taxonomy, $post_type ) {
+
+    // Get all terms that have posts
+    $terms = get_terms( [
+        'hide_empty' => true,
+        'taxonomy'   => $taxonomy,
+        'meta_query' => [
+            [
+                'key'    => 'use_menu',
+                'value'   => '1',
+                'compare' => '=',
+                'type'    => 'NUMERIC',
+            ]
+        ]
+
+    ] );
+
+    // Remove terms that don't have any posts in the current post type
+    $terms = array_filter( $terms, function ( $term ) use ( $post_type, $taxonomy ) {
+        $posts = get_posts( [
+            'fields'      => 'ids',
+            'numberposts' => 1,
+            'post_type'   => $post_type,
+            'tax_query'   => [
+                [
+                    'taxonomy' => $taxonomy,
+                    'terms'    => $term,
+                ]
+            ]
+        ]) ;
+
+        return ( count( $posts ) > 0 );
+    } );
+
+    return $terms;
+
+}
