@@ -14,7 +14,7 @@
         max-width: $grid--narrow;
     }
 
-    &--normal {
+    &:not(.container--wide) {
 
         .alignwide {
 
