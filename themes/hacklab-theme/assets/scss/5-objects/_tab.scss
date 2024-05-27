@@ -1,10 +1,21 @@
 .tab {
     background-color: transparent;
-    border-bottom: $border-width--large solid transparent;
+    border-bottom: $border-width--x-large solid transparent;
     cursor: pointer;
-    font-weight: $font-weight--regular;
-    margin-bottom: $margin--small;
+    display: flex;
+    font-size: $font-size--x-small;
+    font-weight: $font-weight--bold;
+    gap: $gap--large;
+    justify-content: space-around;
     max-width: $grid--normal;
+    padding-bottom: $margin--small;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    img{
+        object-fit: contain;
+    }
 
     &--active {
         border-bottom-color: $color--primary-pure;

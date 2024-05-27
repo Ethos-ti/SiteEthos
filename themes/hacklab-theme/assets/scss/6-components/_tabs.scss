@@ -2,9 +2,12 @@
     &__header {
         display: flex;
         gap: $gap--large;
+        justify-content: center;
+        overflow-x: auto;
+        border-bottom: $border-width--small solid $color--primary-light;
     }
 
     &__panels {
-        margin-top: $margin--medium;
+        margin-top: $margin--large;
     }
 }
