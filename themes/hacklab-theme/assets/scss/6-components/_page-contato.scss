@@ -33,7 +33,7 @@
                     margin-top: size(50);
                     .wpcf7{
                         form{
-                            height: 447px;
+
                             label > span > input,
                             label > span > textarea {
                                 width: 100%;
@@ -48,9 +48,11 @@
                                 padding-top: size(13);
                             }
                             .btn-enviar{
-                                width: size(470);
+                                width: 100%;
+                                max-width: size(470);
                                 display: flex;
                                 justify-content: flex-end;
+
                                 p{
                                     display: flex;
                                     flex-direction: column ;
