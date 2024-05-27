@@ -1,18 +1,18 @@
-.wp-block-atbs-tabs{
+.wp-block-atbs-tabs {
     margin-inline-start: inherit !important;
     max-width: $grid--normal;
 
-    .tabs-nav{
+    .tabs-nav {
         width: 100%;
     }
 
-    .tabs-titles{
+    .tabs-titles {
         @extend .tabs;
-        background-color: transparent;
+        background-color: transparent !important;
         border-bottom: $border-width--small solid $color--primary-light;
-        flex-direction: inherit;
+        flex-direction: inherit !important;
 
-        .tab-title{
+        .tab-title {
             @extend .tab;
             font-family: $font-family--heading;
             font-size: $font-size--x-large;
@@ -21,13 +21,11 @@
         }
     }
 
-    .tabs-content{
-        .wp-block-atbs-tab > .single-tab > .wp-block-group > h2{
+    .tabs-content {
+        .wp-block-atbs-tab>.single-tab>.wp-block-group>h2 {
             font-size: $font-size--xx-large;
             font-weight: $font-weight--regular;
             margin-bottom: $margin--small;
         }
     }
 }
-
-

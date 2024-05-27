@@ -1,8 +1,10 @@
 .partners-list {
-    margin-bottom: 120px;
-    @include mobile{
-        margin:0px;
+    margin-bottom: $margin--large;
+
+    @include mobile {
+        margin: 0px;
     }
+
     h2 {
         color: $color--primary-dark;
         font-size: $font-size--x-small !important;
@@ -12,36 +14,42 @@
         text-align: center;
         text-transform: uppercase;
         margin-bottom: 0px !important;
+
         @include mobile {
             font-size: $font-size--x-small !important;
         }
     }
-    .wp-block-group{
+
+    .wp-block-group {
         margin-bottom: $padding--xx-large;
-        figure:nth-child(2){
-            img{
-                @include mobile{
+
+        figure:nth-child(2) {
+            img {
+                @include mobile {
                     width: 128px;
                 }
 
             }
         }
     }
+
     .parceria-institucional,
-    .apoio-institucional{
+    .apoio-institucional {
         display: flex;
         justify-content: center;
-        gap:$gap--huge;
+        gap: $gap--huge;
         margin-top: $gap--small;
 
-        @include mobile{
+        @include mobile {
             gap: $gap--xxx-large;
         }
 
     }
-    .parceria-estratégica{
-        gap:$gap--huge;
-        @include mobile{
+
+    .parceria-estratégica {
+        gap: $gap--huge;
+
+        @include mobile {
             gap: $gap--xxx-large;
         }
     }

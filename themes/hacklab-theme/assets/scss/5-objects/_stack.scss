@@ -1,14 +1,14 @@
 .stack {
     gap: $gap--medium;
 
-    & > * + * {
-        margin-top: $gap--medium;
+    &>*+* {
+        margin-top: $gap--large;
     }
 
     &--large {
         gap: $gap--large;
 
-        & > * + * {
+        &>*+* {
             margin-top: $gap--large;
         }
     }
@@ -16,7 +16,7 @@
     &--small {
         gap: $gap--small;
 
-        & > * + * {
+        &>*+* {
             margin-top: $gap--small;
         }
     }
