@@ -7,6 +7,14 @@
 
     .tabs-nav{
         @extend .tabs--nav;
+
+        .tabs-titles{
+            @extend .tabs--titles;
+
+            .tab-title{
+                @extend .tabs--title;
+            }
+        }
     }
 }
 

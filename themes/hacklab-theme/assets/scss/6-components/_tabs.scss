@@ -14,4 +14,14 @@
         margin-right: auto;
         width: 100%;
     }
+
+    &--title{
+        border-bottom: none;
+    }
+
+    &--titles{
+        background-color: transparent;
+        border-bottom: $border-width--small solid $color--primary-light;
+        flex-direction: inherit;
+    }
 }
