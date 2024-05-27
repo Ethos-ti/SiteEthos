@@ -31,18 +31,18 @@
     .apoio-institucional{
         display: flex;
         justify-content: center;
-        //gap:$gap--xxx-x-large;
+        gap:$gap--huge;
         margin-top: $gap--small;
 
         @include mobile{
-            gap: $gap--xx-large;
+            gap: $gap--xxx-large;
         }
 
     }
     .parceria-estratégica{
-        gap:$gap--xx-large;
+        gap:$gap--huge;
         @include mobile{
-            gap: $gap--xx-large;
+            gap: $gap--xxx-large;
         }
     }
 }
