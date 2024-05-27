@@ -1,6 +1,6 @@
 .wp-block-atbs-tabs{
-    @extend .tab;
     margin-inline-start: inherit !important;
+    max-width: $grid--normal;
 
     .tabs-nav{
         width: 100%;
@@ -14,13 +14,16 @@
 
         .tab-title{
             @extend .tab;
+            font-family: $font-family--heading;
+            font-size: $font-size--x-large;
             margin-bottom: 0;
-
+            text-transform: capitalize;
         }
     }
 
     .tabs-content{
         .wp-block-atbs-tab > .single-tab > .wp-block-group > h2{
+            font-size: $font-size--xx-large;
             font-weight: $font-weight--regular;
             margin-bottom: $margin--small;
         }

@@ -8,7 +8,8 @@
         margin-top: $margin--medium;
         object-fit: cover;
         width: 100%;
-        max-height: 656px;
+        max-height: 41rem;
+        max-width: 72.938rem;
 
         @include small {
             max-height: 192px;
