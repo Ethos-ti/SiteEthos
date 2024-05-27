@@ -1,0 +1,62 @@
+@import '../../../assets/scss/includes';
+
+.hacklabr-download-image-block {
+    &__grid {
+        max-width: $grid--wide;
+        margin: 0 auto;
+    }
+
+    &__image {
+        height: auto;
+        position: relative;
+        width: 100%;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    &__text {
+        background-color: rgba(54, 59, 67, 0.72);
+        padding: $padding--medium;
+        position: absolute;
+
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        p {
+            text-transform: uppercase;
+
+            &:not(.has-text-color) {
+                color: $color--high-pure;
+            }
+        }
+    }
+
+    &__icon {
+        background-color: $color--high-pure;
+        border-radius: $border-radius--medium;
+        bottom: $margin--medium;
+        padding: $padding--x-small $padding--small;
+        position: absolute;
+        right: $margin--medium;
+    }
+
+    &__text {
+        &--horizontal {
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+
+            .hacklabr-download-image-block__icon {
+                position: relative;
+                bottom: inherit;
+                right: inherit;
+            }
+        }
+    }
+}

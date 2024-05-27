@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/download-image",
+    "title": "Download image",
+    "description": "A image download",
+    "category": "text",
+    "icon": "download",
+    "version": "0.0.2",
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "html": false
+    },
+    "attributes": {
+        "format": {
+            "type": "string",
+            "default": "square"
+        },
+        "image": {
+            "type": "object",
+            "default": {
+                "alt": "",
+                "url": ""
+            }
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "color": {
+                    "background": "var(--wp--preset--color--high-light)",
+                    "text": "var(--wp--preset--color--low-pure)"
+                }
+            }
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/download-image/editor.js"],
+    "style": ["file:../../../dist/blocks/download-image/style.css"]
+}
