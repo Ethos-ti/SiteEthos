@@ -1,4 +1,5 @@
 .partners-list {
+    margin-bottom: 120px;
     h2 {
         color: $color--primary-dark;
         font-size: $font-size--x-small !important;
@@ -7,35 +8,38 @@
         padding-bottom: $padding--small;
         text-align: center;
         text-transform: uppercase;
-
+        margin-bottom: 0px !important;
         @include mobile {
             font-size: $font-size--x-small !important;
         }
     }
+    .wp-block-group{
+        margin-bottom: $padding--xx-large;
+        figure:nth-child(2){
+            img{
+                @include mobile{
+                    width: 128px;
+                }
 
-    .wp-block-group {
-        padding-bottom: $padding--xx-large;
-        padding-top: $padding--medium;
-
+            }
+        }
     }
     .parceria-institucional,
     .apoio-institucional{
         display: flex;
         justify-content: center;
-        gap: 6rem;
+        gap:$gap--xxx-x-large;
+        margin-top: $gap--small;
+
         @include mobile{
-            gap:$gap--large;
-            padding: $padding--medium;
-            margin-bottom: $margin--large;
+            gap: $gap--xx-large;
         }
+
     }
     .parceria-estratégica{
-        display: flex;
-        justify-content: center;
-        gap:$gap--x-large;
+        gap:$gap--xx-large;
         @include mobile{
-            gap:$gap--large;
-            padding: $padding--medium;
+            gap: $gap--xx-large;
         }
     }
 }
