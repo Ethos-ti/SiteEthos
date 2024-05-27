@@ -4,8 +4,9 @@
     .wp-block-group{
         .wp-block-heading{
             color: $color--primary-dark;
+            font-size: $font-size--xxx-large;
             @mixin mobile{
-                font-size: $font-size--large;
+                font-size: $font-size--xx-large;
             }
         }
         .wp-block-group>p{
