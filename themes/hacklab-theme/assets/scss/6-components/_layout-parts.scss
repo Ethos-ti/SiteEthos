@@ -1,0 +1,14 @@
+.layout-part{
+    padding-top: calc($padding--x-large + $padding--small);
+    padding-bottom: $padding--x-large;
+    .wp-block-group{
+        .wp-block-heading{
+            @mixin mobile{
+                font-size: $font-size--large;
+            }
+        }
+        .wp-block-group>p{
+            font-size: $font-size--large;
+        }
+    }
+}
