@@ -10,6 +10,7 @@ function get_blocks_list () {
         'card' => null,
         'card-body' => null,
         'card-header' => null,
+        'download-image' => null,
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],
