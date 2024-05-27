@@ -7,21 +7,4 @@
     &__panels {
         margin-top: $margin--medium;
     }
-
-    &--nav{
-        max-width: $grid--normal;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-
-    &--title{
-        border-bottom: none;
-    }
-
-    &--titles{
-        background-color: transparent;
-        border-bottom: $border-width--small solid $color--primary-light;
-        flex-direction: inherit;
-    }
 }
