@@ -2,31 +2,27 @@
     @extend .tab;
     margin-inline-start: inherit !important;
 
-    .tabs{
+    .tabs-nav{
+        width: 100%;
+    }
 
-        &-nav{
-            width: 100%;
+    .tabs-titles{
+        @extend .tabs;
+        background-color: transparent;
+        border-bottom: $border-width--small solid $color--primary-light;
+        flex-direction: inherit;
+
+        .tab-title{
+            @extend .tab;
+            margin-bottom: 0;
+
         }
+    }
 
-        &-titles{
-            @extend .tabs;
-            background-color: transparent;
-            border-bottom: $border-width--small solid $color--primary-light;
-            flex-direction: inherit;
-
-            .tab{
-                &-title{
-                    @extend .tab;
-                    margin-bottom: 0;
-                }
-            }
-        }
-
-        &-content{
-            .wp-block-atbs-tab > .single-tab > .wp-block-group > h2{
-                font-weight: $font-weight--regular;
-                margin-bottom: $margin--small;
-            }
+    .tabs-content{
+        .wp-block-atbs-tab > .single-tab > .wp-block-group > h2{
+            font-weight: $font-weight--regular;
+            margin-bottom: $margin--small;
         }
     }
 }
