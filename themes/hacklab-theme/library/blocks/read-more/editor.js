@@ -49,7 +49,7 @@ function Edit ({ attributes, setAttributes }) {
                     templateLock="all"
                 />
             </div>
-            <button className="hacklabr-read-more-block__toggle" onClick={toggleExpanded}>
+            <button className="hacklabr-read-more-block__toggle" aria-hidden="true" onClick={toggleExpanded}>
                 { expanded ? __('Read less', 'hacklabr') : __('Read more', 'hacklabr') }
             </button>
         </div>
@@ -68,7 +68,7 @@ function Save ({ attributes }) {
             <div className="hacklabr-read-more-block__content">
                 <InnerBlocks.Content/>
             </div>
-            <button className="hacklabr-read-more-block__toggle">{__('Read more', 'hacklabr')}</button>
+            <button className="hacklabr-read-more-block__toggle" aria-hidden="true">{__('Read more', 'hacklabr')}</button>
         </div>
     );
 }
