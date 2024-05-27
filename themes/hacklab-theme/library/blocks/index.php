@@ -13,6 +13,7 @@ function get_blocks_list () {
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],
+        'read-more' => null,
     ];
 }
 
