@@ -15,9 +15,6 @@
     }
 
     .post-card{
-        &__author, &__date, &__excerpt{
-            display: none;
-        }
 
         &__title{
             font-size: $font-size--x-large;
