@@ -5,6 +5,7 @@
         .wp-block-heading{
             @mixin mobile{
                 font-size: $font-size--large;
+                color: $color--primary-dark;
             }
         }
         .wp-block-group>p{
