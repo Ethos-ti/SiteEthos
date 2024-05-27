@@ -3,6 +3,7 @@
     padding-bottom: $padding--x-large;
     .wp-block-group{
         .wp-block-heading{
+            color: $color--primary-dark;
             @mixin mobile{
                 font-size: $font-size--large;
             }
