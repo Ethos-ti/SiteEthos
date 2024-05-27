@@ -1,6 +1,80 @@
 .page-contato{
     .container{
+        max-width: $grid--wide;
         .post-header{
+            border-bottom: none;
+        }
+        .post-content{
+            .wp-block-group{
+                width: $grid--wide;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+
+                & p{
+                    max-width: 48.75rem;
+                    font-size: $font-size--large;
+                    color:$color--low-pure;
+                    font-family: $font-family--primary;
+                    padding-bottom:$margin--large;
+                    border-bottom: 1px solid #ddd;
+                }
+            }
+            .wp-block-columns{
+
+                .wp-block-column:first-child{
+                    margin-top: size(72);
+                    p{
+                        max-width: 370px;
+                    }
+                }
+                .wp-block-column:last-child{
+                    margin-top: size(50);
+                    .wpcf7{
+                        form{
+                            height: 447px;
+                            label > span > input,
+                            label > span > textarea {
+                                width: 100%;
+                                max-width: size(470);
+                                height: size(48);
+                                border-radius: $border-radius--medium;
+                                border: 1px solid #DDD;
+                                padding-left: size(16);
+                            }
+                            label > span > textarea {
+                                height: size(147);
+                                padding-top: size(13);
+                            }
+                            .btn-enviar{
+                                width: size(470);
+                                display: flex;
+                                justify-content: flex-end;
+                                p{
+                                    display: flex;
+                                    flex-direction: column ;
+                                    & input{
+                                        padding: $padding--small $padding--large;
+                                        border:$border-width--medium solid #222;
+                                        border-radius: $border-radius--large;
+                                        color:#222;
+                                        font-weight: $font-weight--bold;
+                                        background-color: unset;
+                                        width: size(180);
+                                        margin-top:$margin--medium;
+                                        text-transform: uppercase;
+
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+            }
+
         }
     }
 }
