@@ -2,6 +2,7 @@
     .tribe-events{
         .tribe-events-l-container{
             padding-top: $padding--medium;
+            padding-bottom: calc($padding--x-large + $padding--xx-large + $padding--medium);
         }
     }
     .tribe-events-header{
@@ -75,6 +76,33 @@
                         margin-top: $margin--small;
                         path{
                             fill: $color--low-dark;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tribe-filter-bar{
+        .tribe-filter-bar__form{
+            &-heading{
+                font-family: $font-family--primary;
+                font-size: $font-size--medium;
+                color: $color--secondary-dark;
+            }
+            .tribe-filter-bar__filters-container{
+                .tribe-filter-bar__filters{
+                    .tribe-filter-bar-c-filter{
+                        &__toggle-wrapper{
+                            .tribe-filter-bar-c-filter__toggle{
+                                font-family: $font-family--primary;
+                                font-size: $font-size--small;
+                                color: $color--secondary-dark;
+                                &-icon{
+                                    .tribe-common-c-svgicon>path{
+                                        stroke: $color--low-light;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
