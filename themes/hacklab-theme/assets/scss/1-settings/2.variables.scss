@@ -1,7 +1,7 @@
 // Breakpoints
-$break--small: 36rem; // 576px
-$break--tablet: 48rem; // 768px
-$break--desktop: 62rem; // 992px
+$break--small: 34rem; // 544px
+$break--tablet: 37.5rem; // 600px
+$break--desktop: 48rem; // 768px
 $break--desktop-large: 75rem; // 1200px
 $break--desktop-x-large: 87.5rem; // 1400px
 
@@ -12,6 +12,7 @@ $grid--narrow: 37.5rem;
 
 // Fontes para dispositivos móveis
 $font-size-mobile--hero:     var(--wp--preset--font-size--hero);
+$font-size-mobile--xxx-large: var(--wp--preset--font-size--xxx-large);
 $font-size-mobile--xx-large: var(--wp--preset--font-size--xx-large);
 $font-size-mobile--x-large:  var(--wp--preset--font-size--x-large);
 $font-size-mobile--large:    var(--wp--preset--font-size--large);
@@ -27,10 +28,11 @@ $font-weight--regular: 400;
 $font-weight--light: 300;
 
 // Line heights
-$line-height--loose: 1.8;
-$line-height--normal: 1.6;
-$line-height--tight: 1.2;
+$line-height--loose: 1.75;
+$line-height--normal: 1.5;
+$line-height--tight: 1.25;
 $line-height--none: 1;
+$line-height--auto: auto;
 $line-height--squeeze: 0.9;
 
 // Espaçamentos
@@ -49,22 +51,26 @@ $gap--x-small: 0.25rem;
 $gap--small: 0.5rem;
 $gap--medium: 1rem;
 $gap--large: 2rem;
-$gap--x-large:3rem;
-$gap--xx-large: 4rem;
-$gap--xxx-large: 5rem;
-$gap--xxx-x-large: 6rem;
+$gap--x-large: 2.5rem;
+$gap--xx-large: 3rem;
+$gap--xxx-large: 4rem;
+$gap--huge: 5rem;
+$gap--giant: 8rem;
 
 
 // Border radius
+$border-radius--pilled: 80px;
 $border-radius--round: 50%;
-$border-radius--small: 3px;
-$border-radius--medium: 6px;
-$border-radius--large: 9px;
+$border-radius--large: 16px;
+$border-radius--medium: 8px;
+$border-radius--small: 4px;
+$border-radius--none: 0;
 
 // Bordas
 $border-width--small: 1px;
 $border-width--medium: 2px;
 $border-width--large: 3px;
+$border-width--x-large: 4px;
 
 // Cores de borda
 $border-color--light: $color--high-light;

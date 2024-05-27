@@ -204,6 +204,11 @@
                 {
                     "name": "Enorme",
                     "slug": "hero",
+                    "size": "4rem"
+                },
+                {
+                    "name": "Extra Extra grande",
+                    "slug": "xxx-large",
                     "size": "3rem"
                 },
                 {

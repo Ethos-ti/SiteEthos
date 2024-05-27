@@ -28,7 +28,7 @@
     .apoio-institucional{
         display: flex;
         justify-content: center;
-        gap:$gap--xxx-x-large;
+        //gap:$gap--xxx-x-large;
         margin-top: $gap--small;
 
         @include mobile{
