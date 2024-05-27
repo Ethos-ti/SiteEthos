@@ -178,6 +178,20 @@
             }
         }
     }
+    .tribe-events-calendar-month{
+        &__header{
+            &-row{
+                .tribe-events-calendar-month__header-column{
+                    &-title{
+                        text-transform: capitalize;
+                        font-family: $font-family--primary;
+                        font-size: $font-size--small;
+                        color: $color--secondary-dark;
+                    }
+                }
+            }
+        }
+    }
     .tribe-events-calendar-list-nav{
         border-color: $color--low-light;
         .tribe-events-c-nav__list{
