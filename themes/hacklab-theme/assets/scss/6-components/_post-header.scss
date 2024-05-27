@@ -12,11 +12,11 @@
         max-width: 72.938rem;
 
         @include small {
-            max-height: 192px;
+            max-height: 12rem;
         }
 
         @include mobile {
-            max-height: 192px;
+            max-height: 12rem;
         }
 
         &-caption{
