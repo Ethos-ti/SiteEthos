@@ -24,9 +24,13 @@
         }
     }
 
-    .wp-block-columns>.wp-block-column>p {
+    .wp-block-columns > .wp-block-column > p {
         font-size: $font-size--x-small;
         margin-block-start: inherit;
+
+        & > a{
+            text-decoration: none;
+        }
     }
 
     .wp-block-columns>.wp-block-column>.wp-block-columns {
@@ -34,4 +38,5 @@
         margin-bottom: $margin--large;
         margin-top: $margin--large;
     }
+
 }

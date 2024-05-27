@@ -37,7 +37,7 @@ $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) :
     <?php endif; ?>
 
     <div class="post-header__meta container">
-        <p class="post-header__date"><?php _e('Published by:', 'hacklabr') ?><?= get_the_date() ?></p>
+        <p class="post-header__date"><?php _e('Published in:', 'hacklabr') ?><?= get_the_date() ?></p>
         <?php get_template_part('template-parts/share-links', null, ['link'=>get_the_permalink()]) ?>
     </div>
 

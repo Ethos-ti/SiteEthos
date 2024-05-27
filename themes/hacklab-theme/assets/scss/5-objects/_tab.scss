@@ -2,6 +2,9 @@
     background-color: transparent;
     border-bottom: $border-width--large solid transparent;
     cursor: pointer;
+    font-weight: $font-weight--regular;
+    margin-bottom: $margin--small;
+    max-width: $grid--normal;
 
     &--active {
         border-bottom-color: $color--primary-pure;
@@ -10,12 +13,6 @@
     &--disabled{
         color: $color--low-light;
         cursor: not-allowed;
-    }
-
-    &--title{
-        font-weight: $font-weight--regular;
-        margin-bottom: $margin--small;
-        max-width: $grid--normal;
     }
 }
 

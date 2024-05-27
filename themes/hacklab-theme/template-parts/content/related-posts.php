@@ -33,7 +33,11 @@ if ( $related_posts->have_posts() ) : ?>
                 $related_posts->the_post();
                 // Thumbnail
                 $thumbnail = ( has_post_thumbnail() ) ? get_the_post_thumbnail() : '<img src="' . get_stylesheet_directory_uri() . '/assets/images/default-image.png">'; ?>
-                <?php get_template_part( 'template-parts/post-card'); ?>
+                <?php get_template_part( 'template-parts/post-card', null, [
+                    'hide_author' => true,
+                    'hide_date' => true,
+                    'hide_excerpt' => true
+                ] ); ?>
             <?php endwhile; ?>
         </div>
     </div>
