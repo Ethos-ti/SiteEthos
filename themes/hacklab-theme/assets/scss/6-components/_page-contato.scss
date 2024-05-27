@@ -25,12 +25,18 @@
 
                 .wp-block-column:first-child{
                     margin-top: size(72);
+                    @include mobile{
+                        margin-top:$margin--medium
+                    }
                     p{
                         max-width: 370px;
                     }
                 }
                 .wp-block-column:last-child{
                     margin-top: size(50);
+                    @include mobile{
+                        margin-top:$margin--medium
+                    }
                     .wpcf7{
                         form{
 
