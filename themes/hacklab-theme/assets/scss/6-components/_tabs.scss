@@ -7,4 +7,11 @@
     &__panels {
         margin-top: $margin--medium;
     }
+
+    &--nav{
+        max-width: $grid--normal;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
 }
