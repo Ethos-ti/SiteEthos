@@ -45,7 +45,7 @@ function get_layout_part( $slug, $position = 'header' ) {
 	}
 
 	if ( $return ) {
-		$html .= '<div class="layout-part post-header position-' . $position . '">';
+        $html .= '<div class="layout-part layout-part--' . $slug . ' layout-part--position-' . $position . '">';
 		$html .= apply_filters( 'the_content', $return->post_content );
 		$html .=  '</div>';
 
