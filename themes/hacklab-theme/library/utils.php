@@ -260,3 +260,18 @@ if ( ! \function_exists( 'get_pages_by_template' ) ) {
         return \get_posts( $args );
     }
 }
+
+/**
+ * Get the URL for the login page.
+ *
+ * This function checks if the Paid Memberships Pro plugin is active and uses its login page URL if available,
+ * otherwise it falls back to the default WordPress login URL.
+ *
+ * @return string The URL for the login page.
+ */
+if ( ! \function_exists( 'get_login_page_url' ) ) {
+    function get_login_page_url() {
+        $login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login' ) ) ? $pmpro_url : wp_login_url();
+        return wp_login_url();
+    }
+}
