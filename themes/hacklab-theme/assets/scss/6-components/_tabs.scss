@@ -5,6 +5,11 @@
         justify-content: center;
         overflow-x: auto;
         border-bottom: $border-width--small solid $color--primary-light;
+        max-width: $grid--wide;
+        width: 100%;
+        @media(max-width:$break--desktop){
+            justify-content: flex-start;
+        }
     }
 
     &__panels {

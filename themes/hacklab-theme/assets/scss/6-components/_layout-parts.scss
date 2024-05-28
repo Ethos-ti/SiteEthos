@@ -5,7 +5,8 @@
         .wp-block-heading{
             color: $color--primary-dark;
             font-size: $font-size--xxx-large;
-            @mixin mobile{
+
+            @media(max-width:$break--tablet){
                 font-size: $font-size--xx-large;
             }
         }
