@@ -35,8 +35,9 @@
 
             input {
                 border-radius: 32px;
+                border: none;
                 padding: $padding--small $padding--medium;
-                width: 290px;
+                width: 340px;
 
                 &[placeholder] {
                     color: $color--low-light;
@@ -227,7 +228,7 @@
             display: block;
             position: absolute;
             top: -8px;
-            right: -10px;
+            right: -15px;
         }
 
         .main-header-lateral__logo {
