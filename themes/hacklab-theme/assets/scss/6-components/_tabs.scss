@@ -10,6 +10,9 @@
         @media(max-width:$break--desktop){
             justify-content: flex-start;
         }
+        .tab--active{
+            border-bottom: 8px solid $color--primary-pure;
+        }
     }
 
     &__panels {
