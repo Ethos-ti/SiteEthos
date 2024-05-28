@@ -10,9 +10,16 @@
         @media(max-width:$break--desktop){
             justify-content: flex-start;
         }
+        .tab--active{
+            border-bottom: 8px solid $color--primary-pure;
+        }
     }
 
     &__panels {
         margin-top: $margin--large;
+        padding-bottom: calc(3*($padding--large) + $padding--medium);
+        @media(max-width:$break--desktop){
+            padding-bottom: calc(2*($padding--large));
+        }
     }
 }
