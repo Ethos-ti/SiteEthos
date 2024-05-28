@@ -73,7 +73,17 @@
                                         margin-top:$margin--medium;
                                         text-transform: uppercase;
                                         cursor: pointer;
+                                    }
+                                }
 
+                            }
+                            .acept{
+                                p{
+                                    display: flex;
+                                    max-width: 100%;
+                                    justify-content: flex-start;
+                                    & span{
+                                        margin-right: size(2);
                                     }
                                 }
 
