@@ -27,6 +27,8 @@ if($wp_query->get('category_name')){
             echo hacklabr\get_layout_part( 'posicionamentos-institucionais', 'header' );
         elseif( is_tax('tipo_post', 'novidades') ) :
             echo hacklabr\get_layout_part( 'novidades', 'header' );
+        elseif( $post_type === 'post') :
+            echo hacklabr\get_layout_part( 'novidades', 'header' );
         endif;
         ?>
 
