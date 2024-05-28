@@ -88,14 +88,33 @@
         gap: $gap--medium;
     }
     &--vertcal-thumbnail{
+        @media(max-width:$break--desktop){
+            display: flex;
+            gap: $gap--medium;
+        }
         .post-card__image>a>img{
             aspect-ratio: 7 / 10;
             max-width: 270px;
+            @media(max-width:$break--desktop){
+                width: 104px;
+                height: 148px;
+            }
         }
         .post-card__content{
+            @media(max-width:$break--desktop){
+                margin-top: 0;
+            }
+            .post-card__title{
+                @media(max-width:$break--desktop){
+                    font-size: $font-size--large;
+                }
+            }
             .post-card__date{
                 font-size: $font-size--small;
                 color: $color--low-dark;
+                @media(max-width:$break--desktop){
+                    display: none;
+                }
             }
         }
     }

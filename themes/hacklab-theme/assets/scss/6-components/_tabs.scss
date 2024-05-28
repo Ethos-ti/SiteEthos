@@ -14,5 +14,9 @@
 
     &__panels {
         margin-top: $margin--large;
+        padding-bottom: calc(3*($padding--large) + $padding--medium);
+        @media(max-width:$break--desktop){
+            padding-bottom: calc(2*($padding--large));
+        }
     }
 }
