@@ -1,14 +1,35 @@
 .pmpro_login_wrap{
     & > form{
-        .login-username{
+        .login-username, .login-password{
             font-size: $font-size--x-small;
         }
 
-        input[type="text"]{
+        input[type="text"], input[type="password"]{
             @extend .text-input;
             height: 1.3125rem;
             padding: $padding--medium;
+            margin-top: $margin--small;
             width: 27.375rem;
+        }
+
+        .login-remember{
+            display: none;
+        }
+
+        .login-submit{
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="submit"]{
+            background-color: $color--low-pure;
+            border: $border-width--medium solid $color--low-pure;
+            border-radius: $border-radius--large;
+            color: $color--high-pure;
+            font-size: $font-size--small;
+            font-weight: $font-weight--bold;
+            padding: $padding--small $padding--large;
+            text-transform: uppercase;
         }
     }
 }

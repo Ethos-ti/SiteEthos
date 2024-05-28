@@ -3,4 +3,9 @@
         display: flex;
         justify-content: center;
     }
+
+    .post-header__excerpt{
+        border-bottom: $border-width--small solid $color--high-dark;
+        padding-bottom: $padding--x-large;
+    }
 }
