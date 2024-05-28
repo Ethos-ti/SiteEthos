@@ -41,4 +41,8 @@
         border-top: $border-width--small solid;
     }
 
+    .wp-block-gallery.has-nested-images figure.wp-block-image {
+        flex-grow: 0;
+    }
+
 }
