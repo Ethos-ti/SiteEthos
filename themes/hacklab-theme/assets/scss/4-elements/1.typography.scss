@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
     font-size: $font-size--medium;
 
     @include mobile {
@@ -7,24 +6,15 @@ body {
     }
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3 {
     font-weight: $font-weight--bold;
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     font-weight: $font-weight--regular;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     font-family: $font-family--heading;
     line-height: $line-height--tight;
     text-wrap: balance;
