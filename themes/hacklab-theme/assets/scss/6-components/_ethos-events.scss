@@ -72,6 +72,9 @@
                     font-family: $font-family--primary;
                     font-size: $font-size--xx-large;
                     color: $color--low-pure;
+                    @media(max-width:$break--tablet){
+                        font-size: $font-size--xx-medium;
+                    }
                     .tribe-events-c-top-bar__datepicker-button-icon-svg{
                         margin-top: $margin--small;
                         path{
