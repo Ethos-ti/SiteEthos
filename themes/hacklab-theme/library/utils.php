@@ -272,6 +272,6 @@ if ( ! \function_exists( 'get_pages_by_template' ) ) {
 if ( ! \function_exists( 'get_login_page_url' ) ) {
     function get_login_page_url() {
         $login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login' ) ) ? $pmpro_url : wp_login_url();
-        return wp_login_url();
+        return esc_url( $login_url );
     }
 }
