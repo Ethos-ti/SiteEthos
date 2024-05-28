@@ -1,9 +1,5 @@
 .partners-list {
-    margin-bottom: $margin--large;
-
-    @include mobile {
-        margin: 0px;
-    }
+    margin-top: $padding--xx-large;
 
     h2 {
         color: $color--primary-dark;

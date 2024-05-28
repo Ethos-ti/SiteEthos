@@ -1,18 +1,25 @@
 .button {
-    border: $border-width--medium solid transparent;
-    border-radius: $border-radius--medium;
-    cursor: pointer;
-    line-height: $line-height--none;
-    padding: $padding--small $padding--medium;
-    transition: $transition--default;
+    >a {
+        border: $border-width--medium solid !important;
+        border-radius: $border-radius--large !important;
+        cursor: pointer;
+        line-height: $line-height--none;
+        padding: $padding--small $padding--large !important;
+        transition: $transition--default;
+        text-transform: uppercase;
+        font-weight: $font-weight--bold;
+
+    }
 
     // Styles
 
     &--solid {
         background-color: var(--hl-button-color, $color--low-pure);
         color: $color--high-pure;
+        border-color: $color--low-pure !important;
 
-        &:active, &:hover {
+        &:active,
+        &:hover {
             background-color: var(--hl-button-hover-color, $color--low-pure);
         }
     }
@@ -22,8 +29,11 @@
         border-color: var(--hl-button-color);
         color: var(--hl-button-color, $color--low-pure);
 
-        &:active, &:hover {
-            background-color: $color--high-light;
+        &:active,
+        &:hover {
+            color: $color--low-light;
+            border-color: $color--low-light;
+
         }
     }
 
