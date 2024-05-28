@@ -1,0 +1,14 @@
+.pmpro_login_wrap{
+    & > form{
+        .login-username{
+            font-size: $font-size--x-small;
+        }
+
+        input[type="text"]{
+            @extend .text-input;
+            height: 1.3125rem;
+            padding: $padding--medium;
+            width: 27.375rem;
+        }
+    }
+}
