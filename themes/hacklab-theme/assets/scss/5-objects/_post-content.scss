@@ -8,13 +8,13 @@
         font-size: $font-size--x-large;
     }
 
-    h2 {
+    &>h2 {
         margin-bottom: $margin--medium;
         font-size: $font-size--xx-large;
         font-weight: $font-weight--bold;
     }
 
-    h3 {
+    &>h3 {
         color: $color--primary-dark;
         font-family: $font-family--heading;
         font-size: $font-size--x-large;
@@ -24,7 +24,7 @@
         margin-top: $margin--medium;
     }
 
-    h4 {
+    &>h4 {
         font-family: $font-family--heading;
         font-size: $font-size--large;
         font-weight: $font-weight--regular;
