@@ -3,6 +3,10 @@
         .tribe-events-l-container{
             padding-top: $padding--medium;
             padding-bottom: calc($padding--x-large + $padding--xx-large + $padding--medium);
+            @media(max-width:$break--tablet){
+                padding-left: $padding--small;
+                padding-right: $padding--small;
+            }
         }
     }
     .tribe-events-header{
@@ -72,6 +76,9 @@
                     font-family: $font-family--primary;
                     font-size: $font-size--xx-large;
                     color: $color--low-pure;
+                    @media(max-width:$break--tablet){
+                        font-size: $font-size--medium;
+                    }
                     .tribe-events-c-top-bar__datepicker-button-icon-svg{
                         margin-top: $margin--small;
                         path{
@@ -114,11 +121,19 @@
             color: $color--low-pure;
             &-text{
                 font-family: $font-family--primary;
+                @media(max-width:$break--tablet){
+                    text-transform: uppercase;
+                    font-weight: $font-weight--bold;
+                }
             }
         }
         .tribe-events-calendar-list__event-row{
             .tribe-events-calendar-list__event-date-tag{
                 &-datetime{
+                    @media(max-width:$break--tablet){
+                        padding-top: 0;
+                        padding-right: $padding--large;
+                    }
                     .tribe-events-calendar-list__event-date-tag-weekday,
                     .tribe-events-calendar-list__event-date-tag-daynum{
                         font-family: $font-family--primary;
@@ -135,6 +150,10 @@
             .tribe-events-calendar-list__event-wrapper{
                 .tribe-events-calendar-list__event{
                     &-featured-image-wrapper{
+                        @media(max-width:$break--tablet){
+                            display: none;
+                        }
+
                         .tribe-events-calendar-list__event-featured-image-link{
                             .tribe-events-calendar-list__event-featured-image{
                                 aspect-ratio: 12 / 12;

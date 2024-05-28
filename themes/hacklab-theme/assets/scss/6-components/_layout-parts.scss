@@ -1,6 +1,9 @@
 .layout-part{
     padding-top: calc($padding--x-large + $padding--small);
     padding-bottom: $padding--x-large;
+    @media(max-width:$break--tablet){
+        padding-bottom: $padding--medium;
+    }
     .wp-block-group{
         .wp-block-heading{
             color: $color--primary-dark;

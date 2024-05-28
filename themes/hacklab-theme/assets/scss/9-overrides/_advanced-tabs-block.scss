@@ -19,6 +19,14 @@
             font-size: $font-size--x-large;
             margin-bottom: 0;
             text-transform: capitalize;
+
+            @include small{
+                font-size: $font-size--medium;
+            }
+
+            @include mobile{
+                font-size: $font-size--medium;
+            }
         }
     }
 
@@ -28,5 +36,27 @@
             font-weight: $font-weight--regular;
             margin-bottom: $margin--small;
         }
+
+        .wp-block-columns>.wp-block-column>h2{
+            @include small{
+                font-size: $font-size--small !important;
+            }
+
+            @include mobile{
+                font-size: $font-size--small !important;
+            }
+        }
     }
+
+    & .wp-block-group > h4{
+
+        @include small{
+            font-size: $font-size--x-large !important;
+        }
+
+        @include mobile{
+            font-size: $font-size--x-large !important;
+        }
+    }
+
 }

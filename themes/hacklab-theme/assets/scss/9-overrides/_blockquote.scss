@@ -1,3 +1,13 @@
 .wp-block-pullquote{
     @extend .blockquote;
+
+    p{
+        @include small{
+            text-align: left;
+        }
+
+        @include mobile{
+            text-align: left;
+        }
+    }
 }
