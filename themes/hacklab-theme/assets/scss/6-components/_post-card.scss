@@ -18,7 +18,7 @@
         flex-direction: column;
         gap: $gap--small;
         justify-content: center;
-        margin-top: $margin--medium;
+        margin-top: $margin--small;
 
         a {
             text-decoration: none;
@@ -30,7 +30,7 @@
         flex-wrap: wrap;
         gap: $gap--x-small;
         list-style: none;
-        padding: $padding--x-small 0;
+        padding: 0;
     }
 
     &__title {
