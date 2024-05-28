@@ -59,7 +59,7 @@ function Edit ({ attributes, setAttributes }) {
                                     templateLock={false}
                                 />
                                 <a href={image.url} className="hacklabr-download-image-block__icon" download>
-                                    <iconify-icon icon="material-symbols:download" style={{ fontSize: '32px' }}></iconify-icon>
+                                    <iconify-icon icon="material-symbols:download"></iconify-icon>
                                 </a>
                             </div>
                         </>
@@ -84,7 +84,7 @@ function Save ({ attributes }) {
                             <div className={`hacklabr-download-image-block__text hacklabr-download-image-block__text--${format}`}>
                                 <InnerBlocks.Content/>
                                 <a href={image.url} className="hacklabr-download-image-block__icon" download>
-                                    <iconify-icon icon="material-symbols:download" style={{ fontSize: '32px' }}></iconify-icon>
+                                    <iconify-icon icon="material-symbols:download"></iconify-icon>
                                 </a>
                             </div>
                         </>

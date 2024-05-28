@@ -16,6 +16,7 @@
 
     &__text {
         background-color: rgba(54, 59, 67, 0.72);
+        min-height: 3rem;
         padding: $padding--medium;
         position: absolute;
 
@@ -34,12 +35,21 @@
     }
 
     &__icon {
+        align-items: center;
         background-color: $color--high-pure;
         border-radius: $border-radius--medium;
         bottom: $margin--medium;
-        padding: $padding--x-small $padding--small;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        padding: $padding--x-small;
         position: absolute;
         right: $margin--medium;
+        width: 2rem;
+
+        iconify-icon {
+            font-size: $font-size--x-large;
+        }
     }
 
     &__text {
