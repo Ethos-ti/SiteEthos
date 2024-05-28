@@ -69,8 +69,8 @@
 
     &__content {
         background-color: $color--high-pure;
-        flex: 2;
-        padding: $padding--xx-large;
+        flex: 3;
+        padding: $padding--xx-large $padding--large $padding--xx-large $padding--xx-large;
 
         @include small {
             padding: $padding--large $padding--medium;
