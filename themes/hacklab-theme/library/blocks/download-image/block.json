@@ -6,7 +6,7 @@
     "description": "A image download",
     "category": "media",
     "icon": "download",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "supports": {
         "color": {
             "background": true,
@@ -30,7 +30,7 @@
             "type": "object",
             "default": {
                 "color": {
-                    "background": "var(--wp--preset--color--high-light)",
+                    "background": "var(--wp--preset--color--high-pure)",
                     "text": "var(--wp--preset--color--low-pure)"
                 }
             }
