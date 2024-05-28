@@ -77,3 +77,11 @@
         }
     }
 }
+
+.wp-block-column--mobile-2-columns {
+    @include mobile {
+        display: grid !important;
+        gap: $gap--small $gap--medium;
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
