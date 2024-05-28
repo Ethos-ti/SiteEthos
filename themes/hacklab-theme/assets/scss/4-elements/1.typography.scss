@@ -1,13 +1,32 @@
-html, body {
+html,
+body {
     font-size: $font-size--medium;
-	@include mobile {
+
+    @include mobile {
         font-size: $font-size-mobile--medium;
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: $font-family--heading;
-	line-height: $line-height--tight;
+h1,
+h2,
+h3 {
+    font-weight: $font-weight--bold;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: $font-weight--regular;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family--heading;
+    line-height: $line-height--tight;
     text-wrap: balance;
 }
 
@@ -67,11 +86,11 @@ p {
 
 hr {
     border: 0;
-	border-top: $border-width--small solid $border-color--light;
+    border-top: $border-width--small solid $border-color--light;
 }
 
 // @todo: terminar estilização do link
 a {
-	color: inherit;
-	text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }

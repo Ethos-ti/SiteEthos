@@ -1,10 +1,8 @@
 @import '../../../assets/scss/includes';
-.wp-block-hacklabr-download-image {
-    display: inline-block;
-}
 
 .hacklabr-download-image-block {
     &__grid {
+        display: inline-block;
         max-width: $grid--wide;
         margin: 0 auto;
         width: auto;

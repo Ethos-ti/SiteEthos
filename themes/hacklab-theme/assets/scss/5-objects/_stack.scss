@@ -1,23 +1,11 @@
 .stack {
-    gap: $gap--medium;
-
-    &>*+* {
-        margin-top: $gap--large;
-    }
+    @include stack($gap--medium);
 
     &--large {
-        gap: $gap--large;
-
-        &>*+* {
-            margin-top: $gap--large;
-        }
+        @include stack($gap--large);
     }
 
     &--small {
-        gap: $gap--small;
-
-        &>*+* {
-            margin-top: $gap--small;
-        }
+        @include stack($gap--small);
     }
 }

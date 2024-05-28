@@ -6,14 +6,13 @@
 get_header();
 
 $current_post_id = get_the_ID();
-$login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login' ) ) ? $pmpro_url : home_url();
 
 ?>
 
 <div class="content-sidebar">
     <div class="container container--wide content-sidebar__container">
         <aside class="content-sidebar__sidebar">
-            <p class="content-sidebar__sidebar-description"><?= __( 'Associeted panel', 'base-textdomain' ); ?></p>
+            <p class="content-sidebar__sidebar-description"><?= __( 'Associeted panel', 'hacklabr' ); ?></p>
             <?php
             $associates_areas = \get_pages_by_template( 'template-associates-area.php' );
 
@@ -27,9 +26,9 @@ $login_url = \function_exists( 'pmpro_url' ) && ( $pmpro_url = pmpro_url( 'login
             }
             ?>
 
-            <a class="button button--outline" href="<?= wp_logout_url( $login_url ); ?>"><?= __( 'Logout', 'base-textdomain' ); ?></a>
+            <a class="button button--outline" href="<?= wp_logout_url( get_login_page_url() ); ?>"><?= __( 'Logout', 'hacklabr' ); ?></a>
         </aside>
-        <main class="content-sidebar__content">
+        <main class="content-sidebar__content stack">
             <?php the_content(); ?>
         </main>
     </div>

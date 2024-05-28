@@ -21,6 +21,7 @@
     }
 
     &__text {
+        @include stack($gap--medium);
         padding: $padding--medium;
     }
 }

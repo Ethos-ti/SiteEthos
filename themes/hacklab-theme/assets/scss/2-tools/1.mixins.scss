@@ -142,3 +142,11 @@
         transform: rotate(-45deg);
     }
 }
+
+@mixin stack($gap: $gap--medium) {
+    gap: $gap;
+
+    & > * + * {
+        margin-top: $gap;
+    }
+}
