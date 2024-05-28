@@ -60,6 +60,7 @@ $categories = get_the_category();
 
             <?php if (!$hide_date): ?>
             <time class="post-card__date">
+            <?php _e('Published in ', 'hacklabr') ?></a>
                 <?php echo get_the_date(); ?>
             </time>
             <?php endif; ?>
