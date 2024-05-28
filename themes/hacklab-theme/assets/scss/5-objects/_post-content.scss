@@ -24,25 +24,18 @@
         margin-top: $margin--medium;
     }
 
-    &>h4 {
-        font-family: $font-family--heading;
-        font-size: $font-size--large;
-        font-weight: $font-weight--regular;
-        line-height: $line-height--normal;
-        margin-bottom: $margin--medium;
-        margin-top: $margin--medium;
-    }
-
     & .wp-block-buttons>.wp-block-button {
         margin: calc($margin--small * 5) 0;
     }
 
     & hr.wp-block-separator {
-        border-top: $border-width--small solid;
+        border-top: $border-width--small solid $color--high-dark;
     }
 
-    .wp-block-gallery.has-nested-images figure.wp-block-image {
-        flex-grow: 0;
+    & .tabs-content {
+        hr.wp-block-separator {
+            border-color: $color--primary-pure;
+        }
     }
 
 }

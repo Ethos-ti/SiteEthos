@@ -1,9 +1,10 @@
 .wp-block-atbs-tabs {
     margin-inline-start: inherit !important;
-    max-width: $grid--normal;
+    max-width: 100%;
 
-    .tabs-nav {
+    .tabs-container .tabs-nav {
         width: 100%;
+        overflow: auto;
     }
 
     .tabs-titles {
