@@ -56,7 +56,6 @@ if($wp_query->get('category_name')){
                         <main class="posts-grid__content">
                             <?php while ( have_posts() ) : the_post(); ?>
                                 <?php get_template_part( 'template-parts/post-card', null, [
-                                    'modifiers' => ['vertcal-thumbnail'],
                                     'hide_author' => true,
                                     'hide_date' => true,
                                     'hide_excerpt' => true
