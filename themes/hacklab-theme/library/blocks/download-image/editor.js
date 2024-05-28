@@ -2,7 +2,7 @@ import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-
 import { registerBlockType } from '@wordpress/blocks'
 import { PanelBody, PanelRow, SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
-import { mediaAndText as Icon } from '@wordpress/icons'
+import { download as Icon } from '@wordpress/icons'
 
 import { SelectImage } from '../shared/SelectImage'
 

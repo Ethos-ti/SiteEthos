@@ -4,7 +4,7 @@
     "name": "hacklabr/download-image",
     "title": "Download image",
     "description": "A image download",
-    "category": "text",
+    "category": "media",
     "icon": "download",
     "version": "0.0.3",
     "supports": {
