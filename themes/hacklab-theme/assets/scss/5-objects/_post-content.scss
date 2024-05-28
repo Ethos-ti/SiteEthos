@@ -29,7 +29,13 @@
     }
 
     & hr.wp-block-separator {
-        border-top: $border-width--small solid;
+        border-top: $border-width--small solid $color--high-dark;
+    }
+
+    & .tabs-content {
+        hr.wp-block-separator {
+            border-color: $color--primary-pure;
+        }
     }
 
 }
