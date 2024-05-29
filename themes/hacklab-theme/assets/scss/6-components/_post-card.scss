@@ -81,6 +81,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: $gap--medium;
+
+        .post-card__title {
+            font-size: $font-size--large;
+        }
     }
 
     &--vertical-thumbnail{
