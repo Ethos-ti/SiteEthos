@@ -20,6 +20,7 @@ function get_posts_grid_data ($attributes): \WP_Query {
 
 function render_posts_grid_callback ($attributes) {
     $card_model = $attributes['cardModel'];
+    $card_modifiers = $attributes['cardModifiers'] ?: [];
     $hide_author = $attributes['hideAuthor'] ?: false;
     $hide_categories = $attributes['hideCategories'] ?: false;
     $hide_date = $attributes['hideDate'] ?: false;
@@ -44,6 +45,7 @@ function render_posts_grid_callback ($attributes) {
                 'hide_categories' => $hide_categories,
                 'hide_date' => $hide_date,
                 'hide_excerpt' => $hide_excerpt,
+                'modifiers' => $card_modifiers,
                 'post' => $post,
             ]);
         endforeach; ?>

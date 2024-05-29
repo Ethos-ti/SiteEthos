@@ -12,6 +12,10 @@
     &__panel-body {
         width: 100%;
 
+        .components-panel__row:empty {
+            display: none;
+        }
+
         .components-base-control, .components-form-token-field {
             width: 100%;
         }
