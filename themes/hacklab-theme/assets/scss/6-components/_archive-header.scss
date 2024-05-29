@@ -1,8 +1,9 @@
 .archive-header {
 
-    &__title,
-    &__excerpt {
+    &__title{
+        color: $color--primary-dark;
         text-align: center;
+        margin-top: $margin--large;
     }
 
     &__title *,
