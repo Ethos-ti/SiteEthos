@@ -22,8 +22,7 @@
 
         &:is(a) {
 
-            &:active,
-            &:hover {
+            &:active, &:hover {
                 background-color: $color--high-pure;
                 color: var(--hl-tag-color, $color--low-pure);
             }
@@ -31,14 +30,13 @@
     }
 
     &--outline {
-        background-color: $color--high-pure;
-        border-color: var(--hl-tag-color, $color--low-pure);
-        color: var(--hl-tag-color, $color--low-pure);
+        background-color: transparent;
+        border-color: var(--hl-tag-color, currentColor);
+        color: var(--hl-tag-color, currentColor);
 
         &:is(a) {
 
-            &:active,
-            &:hover {
+            &:active, &:hover {
                 background-color: var(--hl-tag-color, $color--low-pure);
                 color: $color--high-pure;
             }
