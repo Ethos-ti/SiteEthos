@@ -11,10 +11,14 @@
 
             @media(max-width:$break--tablet){
                 font-size: $font-size--xx-large;
+                margin-top: $margin--large;
             }
         }
         .wp-block-group>p{
             font-size: $font-size--large;
+            @media(max-width:$break--tablet){
+                margin-bottom: $margin--large;
+            }
         }
     }
 }
