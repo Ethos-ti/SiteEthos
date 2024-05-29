@@ -1,14 +1,18 @@
 .card {
 
     &__header {
+        @include stack($gap--medium);
         background-color: $color--high-dark;
+        background-position: center;
+        background-size: cover;
         border-radius: $border-radius--large $border-radius--large 0 0;
-        padding: $padding--large;
+        padding: $padding--large $padding--large $padding--medium;
     }
 
     &__body {
+        @include stack($gap--medium);
         background-color: $color--high-light;
         border-radius: 0 0 $border-radius--large $border-radius--large;
-        padding: $padding--large;
+        padding: $padding--medium $padding--large $padding--large;
     }
 }

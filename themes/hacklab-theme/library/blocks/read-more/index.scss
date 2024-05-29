@@ -1,0 +1,29 @@
+@import '../../../assets/scss/includes';
+
+
+.hacklabr-read-more-block {
+    &:not(.hacklabr-read-more-block--expanded) {
+
+        .hacklabr-read-more-block__content {
+
+            p {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: var(--lines-shown);
+            }
+        }
+    }
+
+    &__toggle {
+        background-color: transparent;
+        border-top: $border-width--small solid $color--high-dark;
+        font-size: $font-size--x-small;
+        font-weight: $font-weight--bold;
+        line-height: $line-height--loose;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        width: 100%;
+    }
+}

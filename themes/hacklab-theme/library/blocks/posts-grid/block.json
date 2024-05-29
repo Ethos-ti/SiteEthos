@@ -14,9 +14,29 @@
             "type": "string",
             "default": ""
         },
+        "cardModifiers": {
+            "type": "array",
+            "default": []
+        },
         "compare": {
             "type": "string",
             "default": "OR"
+        },
+        "hideAuthor": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideCategories": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideDate": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideExcerpt": {
+            "type": "boolean",
+            "default": false
         },
         "noCompare": {
             "type": "string",

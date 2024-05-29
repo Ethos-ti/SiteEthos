@@ -6,12 +6,14 @@ require __DIR__ . '/includes/helpers.php';
 
 function get_blocks_list () {
     return [
+        'banner-with-image' => null,
         'card' => null,
         'card-body' => null,
         'card-header' => null,
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],
+        'read-more' => null,
     ];
 }
 

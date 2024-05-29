@@ -123,7 +123,7 @@ class Assets {
             if ( self::should_preload_asset( $data ) ) {
                 $src = $js_uri . $data['file'];
 
-                // Version is overriden in the `add_externalized_dependencies` function below
+                // Version is overridden in the `add_externalized_dependencies` function below
                 $version = false;
 
                 if ( empty( $data['deps'] ) ) {
@@ -152,7 +152,7 @@ class Assets {
             if ( self::should_preload_asset( $data ) ) {
                 $src = $js_uri . $data['file'];
 
-                // Version is overriden in the `add_externalized_dependencies` function below
+                // Version is overridden in the `add_externalized_dependencies` function below
                 $version = false;
 
                 if ( empty( $data['deps'] ) ) {

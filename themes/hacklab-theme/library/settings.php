@@ -22,3 +22,7 @@ function get_card_models () {
         ],
     ];
 }
+
+function get_card_modifiers () {
+    return [];
+}

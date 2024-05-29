@@ -1,33 +1,44 @@
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
-import { Disabled, PanelBody, PanelRow } from '@wordpress/components';
+import { Disabled, PanelBody, PanelRow, ToggleControl } from '@wordpress/components';
 import { __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ServerSideRender from '@wordpress/server-side-render';
 
 import { QueryPanel } from '../shared/QueryPanel';
 import { SelectCardModel } from '../shared/SelectCardModel';
+import { SelectCardModifier } from '../shared/SelectCardModifier';
 
 import metadata from './block.json';
 
 function Edit ({ attributes, setAttributes }) {
-    const { cardModel, postsPerColumn, postsPerRow } = attributes;
+    const { cardModel, cardModifiers, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
 
     const blockProps = useBlockProps();
-
-    const onCardModelChange = (cardModel) => setAttributes({ cardModel });
-    const onPostsPerColumnChange = (raw) => setAttributes({ postsPerColumn: parseInt(raw) });
-    const onPostsPerRowChange = (raw) => setAttributes({ postsPerRow: parseInt(raw) });
 
     return <>
         <InspectorControls>
             <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout')}>
                 <PanelRow>
+                    <SelectCardModel
+                        value={cardModel}
+                        onChange={(cardModel) => setAttributes({ cardModel })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <SelectCardModifier
+                        value={cardModifiers}
+                        onChange={(cardModifiers) => setAttributes({ cardModifiers })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
                     <NumberControl
                         label={__('Cards per row', 'hacklabr')}
                         min={1}
                         value={postsPerRow}
-                        onChange={onPostsPerRowChange}
+                        onChange={(raw) => setAttributes({ postsPerRow: parseInt(raw) })}
                     />
                 </PanelRow>
 
@@ -36,16 +47,47 @@ function Edit ({ attributes, setAttributes }) {
                         label={__('Cards rows', 'hacklabr')}
                         min={1}
                         value={postsPerColumn}
-                        onChange={onPostsPerColumnChange}
+                        onChange={(raw) => setAttributes({ postsPerColumn: parseInt(raw) })}
                     />
                 </PanelRow>
 
                 <PanelRow>
-                    <SelectCardModel value={cardModel} onChange={onCardModelChange}/>
+                    <ToggleControl
+                        label={__('Hide author', 'hacklabr')}
+                        checked={hideAuthor}
+                        onChange={(hideAuthor) => setAttributes({ hideAuthor })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <ToggleControl
+                        label={__('Hide categories', 'hacklabr')}
+                        checked={hideCategories}
+                        onChange={(hideCategories) => setAttributes({ hideCategories })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <ToggleControl
+                        label={__('Hide date', 'hacklabr')}
+                        checked={hideDate}
+                        onChange={(hideDate) => setAttributes({ hideDate })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <ToggleControl
+                        label={__('Hide excerpt', 'hacklabr')}
+                        checked={hideExcerpt}
+                        onChange={(hideExcerpt) => setAttributes({ hideExcerpt })}
+                    />
                 </PanelRow>
             </PanelBody>
 
-            <QueryPanel attributes={attributes} setAttributes={setAttributes}/>
+            <QueryPanel
+                attributes={attributes}
+                setAttributes={setAttributes}
+            />
         </InspectorControls>
 
         <div {...blockProps}>

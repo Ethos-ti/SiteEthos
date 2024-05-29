@@ -159,6 +159,42 @@ function mark_post_id_as_used ( int $post_id ) {
 }
 
 /**
+ * Normalize the passed attributes for use in posts query and its caching,
+ * setting defaults and removing extraneous (e.g. presentational) attributes.
+ *
+ * @param array $attributes Block attributes.
+ * @return array The normalized attributes.
+ */
+function normalize_posts_query ($attributes) {
+    $default_attributes = [
+        'compare' => 'OR',
+        'noCompare' => 'OR',
+        'noPostType' => 'post',
+        'noQueryTerms' => [],
+        'noTaxonomy' => '',
+        'order' => 'desc',
+        'orderBy' => 'date',
+        'postsPerPage' => 3,
+        'postType' => 'post',
+        'queryTerms' => [],
+        'showChildren' => true,
+        'taxonomy' => '',
+    ];
+
+    $normalized_attributes = [];
+
+    foreach ($default_attributes as $key => $default_value) {
+        if (isset($attributes[$key])) {
+            $normalized_attributes[$key] = $attributes[$key];
+        } else {
+            $normalized_attributes[$key] = $default_value;
+        }
+    }
+
+    return $normalized_attributes;
+}
+
+/**
  * Sets/updates the value for the transient matching the namespace and attributes.
  *
  * @param string $namespace The block id, or a more generic identifier.
