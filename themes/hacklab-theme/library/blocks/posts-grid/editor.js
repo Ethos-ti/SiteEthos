@@ -7,11 +7,12 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 import { QueryPanel } from '../shared/QueryPanel';
 import { SelectCardModel } from '../shared/SelectCardModel';
+import { SelectCardModifier } from '../shared/SelectCardModifier';
 
 import metadata from './block.json';
 
 function Edit ({ attributes, setAttributes }) {
-    const { cardModel, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
+    const { cardModel, cardModifiers, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
 
     const blockProps = useBlockProps();
 
@@ -22,6 +23,13 @@ function Edit ({ attributes, setAttributes }) {
                     <SelectCardModel
                         value={cardModel}
                         onChange={(cardModel) => setAttributes({ cardModel })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <SelectCardModifier
+                        value={cardModifiers}
+                        onChange={(cardModifiers) => setAttributes({ cardModifiers })}
                     />
                 </PanelRow>
 

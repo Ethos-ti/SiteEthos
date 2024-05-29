@@ -70,6 +70,9 @@ class API {
                 'options' => get_card_models(),
                 'default' => get_default_card_model(),
             ],
+            'cardModifiers' => [
+                'options' => get_card_modifiers(),
+            ],
         ];
 
         return new \WP_REST_Response($response, 200);
