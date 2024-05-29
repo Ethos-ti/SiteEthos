@@ -18,7 +18,13 @@ $categories = get_the_category();
 ?>
 <article id="post-ID-<?php the_ID(); ?>" class="post-card <?=$modifiers?>">
     <header class="post-card__image">
-        <a href="<?php the_permalink();?>"><?php the_post_thumbnail($image_size); ?></a>
+        <a href="<?php the_permalink();?>">
+            <?php if (has_post_thumbnail()): ?>
+                <?php the_post_thumbnail($image_size); ?>
+            <?php else: ?>
+                <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/placeholder.png" alt="">
+            <?php endif; ?>
+        </a>
     </header>
 
     <main class="post-card__content">
