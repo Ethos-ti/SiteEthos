@@ -5,11 +5,12 @@
 
     &__featured-image {
         border-radius: $border-radius--large;
+        height: 100%;
         margin-top: $margin--medium;
-        object-fit: cover;
-        width: 100%;
         max-height: 41rem;
         max-width: 72.938rem;
+        object-fit: cover;
+        width: 100%;
 
         @include small {
             max-height: 12rem;

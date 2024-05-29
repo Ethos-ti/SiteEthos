@@ -1,20 +1,22 @@
-.layout-part{
-    padding-top: calc($padding--x-large + $padding--small);
-    padding-bottom: $padding--x-large;
-    @media(max-width:$break--tablet){
-        padding-bottom: $padding--medium;
+.layout-part {
+    padding: calc($padding--x-large + $padding--small) 0;
+
+    @include mobile {
+        padding: 0;
     }
-    .wp-block-group{
-        .wp-block-heading{
+
+    .wp-block-group {
+        .wp-block-heading {
             color: $color--primary-dark;
             font-size: $font-size--xxx-large;
 
-            @media(max-width:$break--tablet){
+            @media(max-width:$break--tablet) {
                 font-size: $font-size--xx-large;
                 margin-top: $margin--large;
             }
         }
-        .wp-block-group>p{
+
+        .wp-block-group>p {
             font-size: $font-size--large;
             @media(max-width:$break--tablet){
                 margin-bottom: $margin--large;

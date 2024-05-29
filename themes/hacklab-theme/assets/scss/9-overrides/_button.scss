@@ -1,0 +1,15 @@
+.wp-block-button {
+    @extend .button;
+
+    &.is-style-outline {
+        a {
+            @extend .button--outline;
+        }
+    }
+
+    &.is-style-fill {
+        a {
+            @extend .button--solid;
+        }
+    }
+}

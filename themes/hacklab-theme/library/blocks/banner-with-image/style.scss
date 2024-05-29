@@ -7,6 +7,10 @@
         grid-template-columns: 1fr 1fr;
         max-width: $grid--wide;
         margin: 0 auto;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__image {

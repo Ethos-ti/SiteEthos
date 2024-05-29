@@ -43,31 +43,34 @@
     }
 
     &--cover {
-        position: relative;
 
-        .post-card__image {
-            height: auto;
-        }
+        @include mobile-up {
+            position: relative;
 
-        .post-card__content {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
-            bottom: 0;
-            color: $color--high-pure;
-            padding: $padding--medium;
-            position: absolute;
-            width: 100%;
-        }
-
-        .post-card__category {
-
-            .post-categories > li {
-                border: solid $border-width--medium $color--high-pure;
-                color: $color--high-pure;
+            .post-card__image {
+                height: auto;
             }
-        }
 
-        .post-card__title {
-            font-size: $font-size--xx-large;
+            .post-card__content {
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #000 100%);
+                bottom: 0;
+                color: $color--high-pure;
+                padding: $padding--medium;
+                position: absolute;
+                width: 100%;
+            }
+
+            .post-card__category {
+
+                .post-categories > li {
+                    border: solid $border-width--medium $color--high-pure;
+                    color: $color--high-pure;
+                }
+            }
+
+            .post-card__title {
+                font-size: $font-size--xx-large;
+            }
         }
     }
 
