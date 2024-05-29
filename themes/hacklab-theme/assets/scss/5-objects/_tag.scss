@@ -38,6 +38,7 @@
 
             &:active, &:hover {
                 background-color: var(--hl-tag-color, $color--low-pure);
+                border-color: var(--hl-tag-color, $color--low-pure);
                 color: $color--high-pure;
             }
         }
