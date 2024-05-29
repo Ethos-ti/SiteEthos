@@ -1,6 +1,8 @@
 .page-login{
     .post-content{
+        align-items: center;
         display: flex;
+        flex-direction: column;
         justify-content: center;
     }
 
@@ -8,4 +10,5 @@
         border-bottom: $border-width--small solid $color--high-dark;
         padding-bottom: $padding--x-large;
     }
+
 }
