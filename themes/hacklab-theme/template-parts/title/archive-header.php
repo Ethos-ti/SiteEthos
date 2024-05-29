@@ -32,11 +32,4 @@ $search_query = get_search_query( false );
         endif; ?>
     </div>
 
-    <div class="archive-header__excerpt">
-        <?php the_archive_description(); ?>
-    </div>
-
-    <div class="archive-header__results">
-        <p><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
-    </div>
 </header><!-- /.c-title.title-default -->
