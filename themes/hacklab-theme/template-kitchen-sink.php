@@ -353,16 +353,8 @@ get_header();
             </main>
         </div>
     </div>
-    <div class="image-thumbnail image-thumbnail--large">
-        <div class="image-thumbnail__image-container">
-            <img src="screenshot.png" alt="Large Thumbnail Image" class="image-thumbnail__image">
-        </div>
-    </div>
-
-    <div class="image-thumbnail image-thumbnail--small">
-        <div class="image-thumbnail__image-container">
-            <img src="screenshot.png" alt="Small Thumbnail Image" class="image-thumbnail__image">
-        </div>
+    <div class="thumbnail">
+        <img src="..." alt="...">
     </div>
 
 </div>

@@ -1,15 +1,13 @@
 // Thumbnail Component
 .thumbnail {
-    display: inline-block;
-    border: $border-color--dark;
-    border-radius: $border-radius;
+    display: block;
+    border-radius: $border-radius--medium;
     overflow: hidden;
-    background-color: $body-background;
     text-align: center;
 
     &__image-container {
       width: 100%;
-      aspect-ratio: 16 / 9; // Proporção 16:9
+      aspect-ratio: 16 / 9;
       overflow: hidden;
       position: relative;
 
@@ -28,12 +26,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.3s ease;
-      &:hover {
-        transform: scale(1.05);
-      }
     }
-
-
     &--large {
       width: 300px;
     }
