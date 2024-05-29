@@ -24,5 +24,10 @@ function get_card_models () {
 }
 
 function get_card_modifiers () {
-    return [];
+    return [
+        'vertical-thumbnail' => [
+            'slug' => 'vertical-thumbnail',
+            'label' => __('Vertical thumbnail', 'hacklabr'),
+        ]
+    ];
 }

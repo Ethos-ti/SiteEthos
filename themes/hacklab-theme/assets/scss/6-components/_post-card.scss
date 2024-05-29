@@ -81,7 +81,8 @@
         grid-template-columns: 1fr 1fr;
         gap: $gap--medium;
     }
-    &--vertcal-thumbnail{
+
+    &--vertical-thumbnail{
         @media(max-width:$break--desktop){
             display: flex;
             gap: $gap--medium;
