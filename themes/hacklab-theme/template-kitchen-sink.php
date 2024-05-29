@@ -353,6 +353,16 @@ get_header();
             </main>
         </div>
     </div>
+    <div class="thumbnail">
+        <img src="<?= get_template_directory_uri() ?>/screenshot.png" alt="">
+    </div>
+    <div class="thumbnail thumbnail--square">
+        <img src="<?= get_template_directory_uri() ?>/screenshot.png" alt="">
+    </div>
+
+
+
+
 </div>
 
 <?php get_footer(); ?>

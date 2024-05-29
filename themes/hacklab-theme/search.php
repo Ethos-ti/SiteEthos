@@ -24,11 +24,11 @@ if($wp_query->get('category_name')){
     </div>
     <div class="tabs__panels">
         <div class="tabs__panel" x-bind="TabPanel('<?php echo $active_tab?>', $data)">
-            <div class="archive-header__results">
-                <div class="archive-header__results-found">
+            <div class="search__results">
+                <div class="search__results__found">
                     <p><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
                 </div>
-                <div class="archive-header__results-filter">
+                <div class="search__results__filter">
                     <label for="tipo"><?php _e('', 'hacklabr'); ?></label>
                     <div class="custom-select-wrapper-opinion">
                         <select name="tipo" id="tipo">
