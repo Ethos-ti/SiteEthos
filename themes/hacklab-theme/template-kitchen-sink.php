@@ -359,6 +359,17 @@ get_header();
     <div class="thumbnail thumbnail--square">
         <img src="<?= get_template_directory_uri() ?>/screenshot.png" alt="">
     </div>
+    <main class="book-detail">
+        <aside>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </aside>
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, felis eu pulvinar congue, ligula nunc congue quam, a tincidunt metus lacus quis tellus. Nulla facilisi. Praesent auctor, tortor sed consequat consequat, magna elit congue augue, eu vehicula nulla augue vel neque. Vivamus ut metus in metus bibendum tincidunt. Nullam euismod, felis sit amet tincidunt congue, augue odio scelerisque metus, a dignissim augue velit a risus. Sed vitae erat in purus.</p>
+        </div>
+    </main>
 
 
 
