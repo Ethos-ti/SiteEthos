@@ -1,0 +1,27 @@
+// Thumbnail Component
+.thumbnail {
+    display: block;
+
+    img {
+      aspect-ratio: 16 / 9;
+      border-radius: $border-radius--medium;
+      height: auto;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    &--square {
+
+        img {
+            aspect-ratio: 1 / 1;
+        }
+    }
+
+    &--vertical {
+
+        img {
+            aspect-ratio: 7 / 10;
+            border-radius: $border-radius--none;
+        }
+    }
+}

@@ -1,11 +1,38 @@
 .page-login{
     .post-content{
+        align-items: center;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+
+        & > p {
+            margin: 0;
+            text-decoration: none;
+        }
     }
 
     .post-header__excerpt{
         border-bottom: $border-width--small solid $color--high-dark;
         padding-bottom: $padding--x-large;
     }
+
+    .pmpro_actions_nav{
+        text-align: right;
+        position: relative;
+        top: -6.875rem;
+    }
+
+    .pmpro_actions_nav > a{
+        font-size: $font-size--small;
+        text-decoration: none;
+    }
+
+    & .wp-block-buttons > .wp-block-button{
+        margin-top: 0;
+    }
+
+    & .wp-block-buttons > .wp-block-button > a{
+        padding: $padding--small $padding--large !important;
+    }
+
 }

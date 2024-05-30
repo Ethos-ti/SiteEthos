@@ -275,3 +275,69 @@ if ( ! \function_exists( 'get_login_page_url' ) ) {
         return esc_url( $login_url );
     }
 }
+
+function pmpro_add_placeholder_to_login() {
+    ?>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            let loginField = document.querySelector('#user_login');
+            let passwordField = document.querySelector('#user_pass');
+            let loginLabel = document.querySelector('label[for="user_login"]');
+            let actionNav = document.querySelector('p.pmpro_actions_nav');
+            let submitButton = document.querySelector('#wp-submit');
+
+            if ( loginField ) {
+                loginField.setAttribute( 'placeholder', 'Insira o e-mail do usuário' );
+            }
+
+            if ( passwordField ) {
+                passwordField.setAttribute( 'placeholder', 'Digite sua senha' );
+            }
+
+            if( loginLabel){
+                loginLabel.innerHTML = 'E-MAIL';
+            }
+
+            if ( actionNav ) {
+                let link = actionNav.querySelector('a');
+
+                if ( link ) {
+                    link.innerHTML = 'Esqueci a senha';
+                }
+            }
+
+            if( submitButton ) {
+                submitButton.value = 'Entrar';
+            }
+
+        });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'pmpro_add_placeholder_to_login');
+
+function pmpro_add_toggle_password_script() {
+    ?>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            let passwordField = document.querySelector( 'input[type="password"]' );
+
+            if ( passwordField ) {
+                let togglePassword = document.createElement('span');
+                togglePassword.classList.add('toggle-password');
+
+                passwordField.parentNode.classList.add( 'login-password' );
+                passwordField.parentNode.appendChild( togglePassword );
+
+                togglePassword.addEventListener( 'click', function() {
+                    let type = passwordField.getAttribute( 'type' ) === 'password' ? 'text' : 'password';
+                    passwordField.setAttribute('type', type);
+                    togglePassword.classList.toggle('show');
+                });
+            }
+        });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'pmpro_add_toggle_password_script');
+

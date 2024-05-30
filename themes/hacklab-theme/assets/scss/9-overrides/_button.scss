@@ -1,5 +1,8 @@
 .wp-block-button {
-    @extend .button;
+    a {
+        @extend .button;
+    }
+
 
     &.is-style-outline {
         a {

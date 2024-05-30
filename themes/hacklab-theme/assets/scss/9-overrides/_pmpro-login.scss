@@ -1,4 +1,6 @@
 .pmpro_login_wrap{
+    margin-bottom: 0;
+
     & > form{
         .login-username, .login-password{
             font-size: $font-size--x-small;
@@ -6,10 +8,46 @@
 
         input[type="text"], input[type="password"]{
             @extend .text-input;
-            height: 1.3125rem;
             padding: $padding--medium;
             margin-top: $margin--small;
+            max-width: 100% !important;
             width: 27.375rem;
+
+            @include small{
+                width: 21.5rem !important;
+            }
+
+            @include mobile{
+                width: 21.5rem !important;
+            }
+        }
+
+        .login-password {
+            position: relative;
+
+            & > label{
+                text-transform: uppercase;
+            }
+        }
+
+        .login-password > .toggle-password {
+            background-image: url( $path--assets + "/images/show-pass.png" );
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            content: " ";
+            cursor: pointer;
+            display: block;
+            height: calc(1rem - 6px);
+            position: absolute;
+            right: calc(1rem - 1px);
+            top: 68%;
+            transform: translateY(-50%);
+            width: 1rem;
+        }
+
+        .login-password > .toggle-password.show {
+            background-image: url($path--assets + "/images/hide-pass.png");
         }
 
         .login-remember{
@@ -19,6 +57,7 @@
         .login-submit{
             display: flex;
             justify-content: center;
+            margin-top: $margin--large !important;
         }
 
         input[type="submit"]{
@@ -28,8 +67,24 @@
             color: $color--high-pure;
             font-size: $font-size--small;
             font-weight: $font-weight--bold;
+            height: 2.313rem;
+            margin-top: $margin--large;
             padding: $padding--small $padding--large;
             text-transform: uppercase;
+
+            @include small{
+                width: inherit !important;
+            }
+
+            @include mobile{
+                width: inherit !important;
+            }
         }
+
     }
+
+    & > hr {
+        display: none;
+    }
+
 }
