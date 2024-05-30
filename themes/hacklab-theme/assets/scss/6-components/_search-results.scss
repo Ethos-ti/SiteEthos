@@ -1,0 +1,9 @@
+.search-results{
+
+    .search__results{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $margin--large;
+        margin-top: $margin--large;
+    }
+}

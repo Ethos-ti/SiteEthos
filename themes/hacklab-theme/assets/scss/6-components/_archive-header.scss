@@ -8,14 +8,8 @@
     }
 
     &__title *,
-    &__results *,
     &__alert * {
         margin-bottom: $margin--medium;
-    }
-
-    &__results{
-        display: flex;
-        justify-content: space-between;
     }
 
 }

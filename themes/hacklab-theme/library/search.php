@@ -44,9 +44,27 @@ function prevent_duplicates( $where ) {
 function post_types_in_search_results( $query ) {
     if ( $query->is_main_query() && $query->is_search() && ! is_admin() ) {
 
-        $post_types = apply_filters( 'post_types_in_search_results', ['post', 'page'] );
-        $query->set( 'post_type', $post_types );
+        $term = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : false;
+        $post_type = isset($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : false;
 
+        if($term) {
+            $tax_query = [
+                [
+                    'field'    => 'slug',
+                    'taxonomy' => 'category',
+                    'terms'    => [ $term ]
+                ]
+            ];
+
+            $query->set( 'tax_query', $tax_query );
+
+        }
+
+        if($post_type) {
+            do_action( 'logger', $post_type );
+            $query->set( 'post_type', explode(',', $post_type) );
+        }
     }
 }
-add_action( 'pre_get_posts', 'hacklabr\\post_types_in_search_results' );
+add_action( 'pre_get_posts', 'hacklabr\\post_types_in_search_results', 99999 );
+
