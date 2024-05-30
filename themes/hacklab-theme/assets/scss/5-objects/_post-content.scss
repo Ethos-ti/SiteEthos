@@ -103,6 +103,78 @@
         }
     }
 
+    & .wp-block-group:has(form) {
+        @media (min-width: 560px) {
+            h2 {
+                font-size: $font-size--xx-large !important;
+            }
+        }
+    }
+
+    & .wp-block-contact-form-7-contact-form-selector form {
+
+        p {
+            margin: auto;
+            font-size: $font-size--small;
+
+            @media (min-width: 560px) {
+                width: fit-content;
+            }
+
+            label {
+                font-size: $font-size--x-small;
+                font-weight: $font-weight--bold;
+                text-transform: uppercase;
+            }
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            width: 100%;
+            max-width: 470px;
+            background-color: transparent;
+            border: $border-width--small solid $color--high-dark;
+            border-radius: $border-radius--medium;
+            padding: $padding--small $padding--medium;
+            font-size: $font-size--small;
+            font-weight: $font-weight--regular;
+            color: $color--low-light;
+            margin: $margin--small 0 $margin--medium;
+            max-height: 100px;
+
+            @media (min-width: 560px) {
+                width: 470px;
+            }
+
+        }
+
+        .button {
+            position: relative;
+            margin: 0 auto $gap--x-large;
+            width: fit-content;
+
+            input.wpcf7-submit {
+                @extend .button;
+                @extend .button--outline;
+            }
+
+            .wpcf7-spinner {
+                position: absolute;
+                top: calc($margin--small * 3);
+            }
+        }
+
+        .info {
+            margin: calc($margin--small * 3) 0;
+
+            p {
+                margin-top: $margin--medium;
+            }
+        }
+    }
+
 
 
 }

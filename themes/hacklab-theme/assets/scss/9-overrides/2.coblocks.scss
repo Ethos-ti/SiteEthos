@@ -1,28 +1,36 @@
-.wp-block-coblocks-accordion-item {
-    margin-top: $margin--large !important;
-    @extend .accordeon__item;
-    margin: 0 !important;
+.wp-block-coblocks-accordion {
 
-    &__title {
-        @extend .accordeon__title;
-        background-color: transparent !important;
-    }
+    &-item {
+        margin-top: $margin--large !important;
+        @extend .accordeon__item;
+        margin: 0 !important;
+        border-radius: 0 !important;
 
-    &__content {
-        @extend .accordeon__content;
-        background-color: transparent;
-    }
+        &__title {
+            @extend .accordeon__title;
+            background-color: transparent !important;
+        }
 
-    &__content>h3 {
-        color: $color--primary-dark;
-        font-family: $font-family--heading;
-        font-size: $font-size--x-large;
-        font-weight: $font-weight--regular;
-        line-height: $line-height--normal;
-        margin-bottom: $margin--large;
-    }
+        &__content {
+            @extend .accordeon__content;
+            background-color: $color--high-light;
 
-    &__content>h3>a{
-        text-decoration: none;
+            >*+* {
+                margin-top: $margin--medium !important;
+            }
+        }
+
+        &__content>h3 {
+            color: $color--primary-dark;
+            font-family: $font-family--heading;
+            font-size: $font-size--x-large;
+            font-weight: $font-weight--regular;
+            line-height: $line-height--normal;
+            margin-bottom: $margin--large;
+        }
+
+        &__content>h3>a {
+            text-decoration: none;
+        }
     }
 }
