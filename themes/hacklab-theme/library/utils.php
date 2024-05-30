@@ -283,6 +283,8 @@ function pmpro_add_placeholder_to_login() {
             let loginField = document.querySelector('#user_login');
             let passwordField = document.querySelector('#user_pass');
             let loginLabel = document.querySelector('label[for="user_login"]');
+            let actionNav = document.querySelector('p.pmpro_actions_nav');
+            let submitButton = document.querySelector('#wp-submit');
 
             if ( loginField ) {
                 loginField.setAttribute( 'placeholder', 'Insira o e-mail do usuário' );
@@ -293,7 +295,19 @@ function pmpro_add_placeholder_to_login() {
             }
 
             if( loginLabel){
-                loginLabel.innerHTML = 'E-mail';
+                loginLabel.innerHTML = 'E-MAIL';
+            }
+
+            if ( actionNav ) {
+                let link = actionNav.querySelector('a');
+
+                if ( link ) {
+                    link.innerHTML = 'Esqueci a senha';
+                }
+            }
+
+            if( submitButton ) {
+                submitButton.value = 'Entrar';
             }
 
         });

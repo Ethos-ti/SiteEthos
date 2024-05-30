@@ -2,16 +2,14 @@
 
     &__title{
         color: $color--primary-dark;
-        text-align: center;
+        margin-bottom: $margin--medium;
         margin-top: $margin--large;
+        text-align: center;
     }
 
     &__title *,
-    &__excerpt *,
-    &__infos *,
-    &__results *,
     &__alert * {
-        margin-bottom: $margin--large;
+        margin-bottom: $margin--medium;
     }
 
 }
