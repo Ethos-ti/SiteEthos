@@ -7,3 +7,20 @@
         margin-top: $margin--large;
     }
 }
+
+.search-no-results{
+    .search__results__filter,
+    .search__results__found-has-results{
+        display: none;
+    }
+    .search__results__found-no-results{
+        text-align: center;
+        font-size: $font-size--large;
+        color: $color--low-pure;
+        margin-top: calc($margin--large + $margin--small);
+        span{
+            color: $color--primary-pure;
+            font-weight: $font-weight--bold;
+        }
+    }
+}

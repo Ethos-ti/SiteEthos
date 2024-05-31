@@ -60,7 +60,10 @@ if($wp_query->get('category_name')){
             </div>
             <div class="search__results">
                 <div class="search__results__found">
-                    <p><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
+                    <p  class="search__results__found-has-results"><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
+                    <?php if ( $wp_query->found_posts == 0 ) : ?>
+                        <p class="search__results__found-no-results"><?php _e('This search yielded no results, do you want to perform a <span>new search</span>?', 'hacklabr');?></p>
+                    <?php endif; ?>
                 </div>
                 <div class="search__results__filter">
                     <label for="tipo"><?php _e('', 'hacklabr'); ?></label>
