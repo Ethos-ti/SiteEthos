@@ -17,10 +17,6 @@
             display: flex;
             font-size: $font-size--x-small;
             font-weight: $font-weight--bold;
-            gap: $gap--large;
-            @media(max-width:$break--tablet){
-                gap: $gap--medium;
-            }
         }
     }
 }

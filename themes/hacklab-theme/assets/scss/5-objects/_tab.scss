@@ -12,9 +12,12 @@
     text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
+    @media(max-width:$break--desktop){
+        gap: $gap--small;
+    }
 
     img{
-        object-fit: contain;
+        object-fit: scale-down;
     }
 
     &--active {
