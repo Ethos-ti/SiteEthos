@@ -72,11 +72,11 @@ if($wp_query->get('category_name')){
                         }
 
                         ?>
-                         <form name="filering">
-                            <select class="select-form" name="select" size="1" onChange="go()">
-                                <option <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>"><?= __( 'SHOWING: ALL CONTENTS', 'hacklabr' ) ?></option>
+                         <form name="search__results__filter__filering">
+                            <select class="search__results__filter__filering__select-form" name="select" size="1" onChange="go()">
+                                <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>"><?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?></option>
                                 <?php foreach( ['iniciativa', 'post', 'publicacao'] as $post_type ) : ?>
-                                    <option <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>"><?= $post_type; ?></option>
+                                    <option class="search__results__filter__filering__select-form__option" <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>"><?= $post_type; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <script type="text/javascript">
