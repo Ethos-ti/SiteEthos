@@ -7,6 +7,7 @@
         border-bottom: $border-width--small solid $color--primary-light;
         max-width: $grid--wide;
         width: 100%;
+        align-items: self-start;
         @media(max-width:$break--desktop){
             justify-content: flex-start;
         }
