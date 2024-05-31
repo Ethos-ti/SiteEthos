@@ -2,9 +2,27 @@
 
     &__title{
         color: $color--primary-dark;
-        margin-bottom: $margin--medium;
+        margin-bottom: $margin--large  + $margin--medium;
         margin-top: $margin--large;
         text-align: center;
+        form>input[type=text]{
+            border: $border-width--small solid $color--high-dark;
+            border-radius: $border-radius--medium;
+            padding: $padding--medium calc( (8 * $padding--large) + $padding--medium + $padding--small ) $padding--medium $padding--small;
+            font-size: $font-size--small;
+            color: $color--low-light;
+        }
+        form>input[type=submit]{
+            border: $border-width--medium solid $color--low-pure;
+            border-radius: $border-radius--large;
+            padding: $padding--x-small calc( 2 * $padding--medium );
+            font-size: $font-size--small;
+            color: $color--low-pure;
+            background-color: $color--high-pure;
+            text-transform: uppercase;
+            font-weight: $font-weight--bold;
+            margin-left: $margin--medium;
+        }
     }
 
     &__title *,
