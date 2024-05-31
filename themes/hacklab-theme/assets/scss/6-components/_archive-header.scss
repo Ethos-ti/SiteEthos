@@ -5,12 +5,32 @@
         margin-bottom: $margin--large  + $margin--medium;
         margin-top: $margin--large;
         text-align: center;
+        @media(max-width:$break--tablet){
+            margin-bottom: $margin--large;
+        }
+        &-text{
+            @media(max-width:$break--tablet){
+                font-size: $font-size--xx-large;
+            }
+        }
+        form{
+            @media(max-width:$break--tablet){
+                text-align: start;
+                display: flex;
+                margin-bottom: 0;
+
+            }
+        }
         form>input[type=text]{
             border: $border-width--small solid $color--high-dark;
             border-radius: $border-radius--medium;
             padding: calc($padding--small + $padding--x-small) calc( (8 * $padding--large) + $padding--medium + $padding--small )  calc($padding--small + $padding--x-small) $padding--small;
             font-size: $font-size--small;
             color: $color--low-light;
+            @media(max-width:$break--tablet){
+                padding: calc($padding--small + $padding--x-small) $padding--medium calc($padding--small + $padding--x-small) $padding--small;
+                margin-bottom: 0;
+            }
         }
         form>input[type=submit]{
             border: $border-width--medium solid $color--low-pure;
@@ -18,6 +38,11 @@
             color: $color--low-pure;
             background-color: $color--high-pure;
             margin-left: $margin--medium;
+            @media(max-width:$break--tablet){
+                padding: $padding--small ;
+                margin-left: $margin--small;
+                margin-bottom: 0;
+            }
         }
     }
 

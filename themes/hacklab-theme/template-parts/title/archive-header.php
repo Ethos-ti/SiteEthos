@@ -20,7 +20,7 @@ $search_query = get_search_query( false );
 
 <header class="archive-header__content">
     <div class="archive-header__title">
-        <h1>
+        <h1 class="archive-header__title-text">
             <?php _e('Search results', 'hacklabr');?>
         </h1>
         <p>

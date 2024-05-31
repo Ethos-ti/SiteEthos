@@ -6,9 +6,16 @@
         margin-bottom: $margin--large;
         margin-top: $margin--large;
         align-items: center;
+        @media(max-width:$break--tablet){
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
         &__filter{
             font-size: $font-size--small;
             font-weight: $font-weight--bold;
+            @media(max-width:$break--tablet){
+                margin-bottom: $margin--medium;
+            }
             &__filering{
                 &__select-form{
                     text-transform: uppercase;
