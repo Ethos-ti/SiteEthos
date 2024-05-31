@@ -1,0 +1,44 @@
+.form-book{
+    max-width:$grid--wide;
+    $border-radius: $border-radius--large;
+    $padding: $padding--medium;
+    background-color: $color--high-light;
+    border-radius: $border-radius $border-radius 0 0;
+    font-size: $font-size--small;
+    &__title{
+        align-items: center;
+        background-color: $color--gestao-sustentavel-light;
+        display: flex;
+        padding: $padding--medium;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+    &__check{
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+
+    }
+    &--form-field{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: $padding--x-large $padding--xxx-large;
+
+    }
+    &--input{
+        width: 100%;
+        max-width: 470px;
+
+    }
+    &--book-button{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+}
