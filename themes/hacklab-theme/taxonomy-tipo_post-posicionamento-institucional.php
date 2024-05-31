@@ -18,17 +18,7 @@ if($wp_query->get('category_name')){
 
     <div class="container container--wide">
 
-        <?php
-        if ( $post_type === 'iniciativa' ) :
-            echo hacklabr\get_layout_part( 'atuacao', 'header' );
-        elseif( is_tax('tipo_post', 'opinioes-e-analises') ) :
-            echo hacklabr\get_layout_part( 'opiniao', 'header' );
-        elseif( is_tax('tipo_post', 'novidades') ) :
-            echo hacklabr\get_layout_part( 'novidades', 'header' );
-        elseif( $post_type === 'post') :
-            echo hacklabr\get_layout_part( 'novidades', 'header' );
-        endif;
-        ?>
+        <?php echo hacklabr\get_layout_part( 'posicionamentos-institucionais', 'header' );?>
 
         <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
             <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
@@ -57,8 +47,7 @@ if($wp_query->get('category_name')){
                             <?php while ( have_posts() ) : the_post(); ?>
                                 <?php get_template_part( 'template-parts/post-card', null, [
                                     'hide_author' => true,
-                                    'hide_date' => true,
-                                    'hide_excerpt' => true
+                                    'hide_excerpt' => true,
                                 ] ); ?>
                             <?php endwhile; ?>
                         </main>
