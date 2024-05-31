@@ -13,4 +13,10 @@
     @include mobile {
         grid-template-columns: 1fr;
     }
+
+    .post-card--vertical-thumbnail{
+        img{
+            border-radius: 0;
+        }
+    }
 }

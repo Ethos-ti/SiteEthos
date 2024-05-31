@@ -22,9 +22,6 @@ if ( isset( $_GET['post_type'] ) ) {
     $selected = sanitize_title( $_GET['post_type'] );
 }
 
-// echo '<pre>';
-//     var_dump ( $wp_query );
-// echo '</pre>';
 if($wp_query->get('category_name')){
     $active_tab = $wp_query->get('category_name');
 
@@ -60,7 +57,10 @@ if($wp_query->get('category_name')){
             </div>
             <div class="search__results">
                 <div class="search__results__found">
-                    <p><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
+                    <p  class="search__results__found-has-results"><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
+                    <?php if ( $wp_query->found_posts == 0 ) : ?>
+                        <p class="search__results__found-no-results"><?php _e('This search yielded no results, do you want to perform a <span>new search</span>?', 'hacklabr');?></p>
+                    <?php endif; ?>
                 </div>
                 <div class="search__results__filter">
                     <label for="tipo"><?php _e('', 'hacklabr'); ?></label>
@@ -72,16 +72,16 @@ if($wp_query->get('category_name')){
                         }
 
                         ?>
-                         <form name="filering">
-                            <select class="select-form" name="select" size="1" onChange="go()">
-                                <option <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>"><?= __( 'SHOWING: ALL CONTENTS', 'hacklabr' ) ?></option>
+                         <form name="filtering">
+                            <select class="filtering filtering search__results__filter__filering__select-form" name="select" size="1" onChange="go()">
+                                <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>"><?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?></option>
                                 <?php foreach( ['iniciativa', 'post', 'publicacao'] as $post_type ) : ?>
-                                    <option <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>"><?= $post_type; ?></option>
+                                    <option class="search__results__filter__filering__select-form__option" <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>"><?= $post_type; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <script type="text/javascript">
                                 function go() {
-                                    location = document.filering.select.options[document.filering.select.selectedIndex].value
+                                    location = document.filtering.select.options[document.filtering.select.selectedIndex].value
                                 }
                             </script>
                         </form>
