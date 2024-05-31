@@ -22,9 +22,6 @@ if ( isset( $_GET['post_type'] ) ) {
     $selected = sanitize_title( $_GET['post_type'] );
 }
 
-// echo '<pre>';
-//     var_dump ( $wp_query );
-// echo '</pre>';
 if($wp_query->get('category_name')){
     $active_tab = $wp_query->get('category_name');
 

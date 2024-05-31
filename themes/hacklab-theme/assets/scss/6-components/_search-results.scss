@@ -9,6 +9,14 @@
 }
 
 .search-no-results{
+    background-color: $color--high-light;
+    .archive-header {
+        &__title{
+            form>input[type=text]{
+               background-color: $color--high-light;
+            }
+        }
+    }
     .search__results__filter,
     .search__results__found-has-results{
         display: none;
