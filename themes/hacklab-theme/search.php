@@ -3,9 +3,9 @@ get_header();
 global $wp_query;
 
 $post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa'];
-
+;
 if($post_type == 'any'){
-    $post_type = ['post', 'page', 'publicacao', 'iniciativa'];
+    $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'tribe_events'];
 }
 
 if(!is_array($post_type)){
@@ -74,9 +74,32 @@ if($wp_query->get('category_name')){
                         ?>
                          <form name="filtering">
                             <select class="filtering filtering search__results__filter__filering__select-form" name="select" size="1" onChange="go()">
-                                <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>"><?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?></option>
-                                <?php foreach( ['iniciativa', 'post', 'publicacao'] as $post_type ) : ?>
-                                    <option class="search__results__filter__filering__select-form__option" <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>"><?= $post_type; ?></option>
+                                <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
+                                    <?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?>
+                                </option>
+                                <?php foreach( ['iniciativa', 'tribe_events', 'post', 'publicacao'] as $post_type ) : ?>
+                                    <?php
+                                        switch ($post_type) {
+                                            case 'iniciativa':
+                                                $label = 'Atuação';
+                                                break;
+                                            case 'tribe_events':
+                                                $label = 'Eventos';
+                                                break;
+                                            case 'post':
+                                                $label = 'Novidades';
+                                                break;
+                                            case 'publicacao':
+                                                $label = 'Publicações';
+                                                break;
+                                            default:
+                                                $label = $post_type;
+                                                break;
+                                        }
+                                    ?>
+                                    <option class="search__results__filter__filering__select-form__option" <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>">
+                                        <?= $label; ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                             <script type="text/javascript">
