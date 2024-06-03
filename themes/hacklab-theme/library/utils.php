@@ -316,28 +316,13 @@ function pmpro_add_placeholder_to_login() {
 }
 add_action('wp_footer', 'pmpro_add_placeholder_to_login');
 
-function pmpro_add_toggle_password_script() {
-    ?>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            let passwordField = document.querySelector( 'input[type="password"]' );
+if ( class_exists( 'WPCaptcha_Functions' ) ) {
+    function wprecaptcha_login_print_scripts() {
+        add_filter( 'login_form_bottom', ['WPCaptcha_Functions', 'login_print_scripts'] );
+        add_filter( 'login_form_bottom', array('WPCaptcha_Functions', 'captcha_fields'));
+    }
 
-            if ( passwordField ) {
-                let togglePassword = document.createElement('span');
-                togglePassword.classList.add('toggle-password');
-
-                passwordField.parentNode.classList.add( 'login-password' );
-                passwordField.parentNode.appendChild( togglePassword );
-
-                togglePassword.addEventListener( 'click', function() {
-                    let type = passwordField.getAttribute( 'type' ) === 'password' ? 'text' : 'password';
-                    passwordField.setAttribute('type', type);
-                    togglePassword.classList.toggle('show');
-                });
-            }
-        });
-    </script>
-    <?php
+    add_action( 'init', 'wprecaptcha_login_print_scripts' );
 }
-add_action('wp_footer', 'pmpro_add_toggle_password_script');
+
 

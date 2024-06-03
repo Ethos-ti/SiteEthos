@@ -57,7 +57,7 @@
         .login-submit{
             display: flex;
             justify-content: center;
-            margin-top: $margin--large !important;
+            margin-top: calc($margin--large*3) !important;
         }
 
         input[type="submit"]{
