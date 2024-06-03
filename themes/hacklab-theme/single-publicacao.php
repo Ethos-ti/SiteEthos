@@ -21,8 +21,7 @@
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-        <div class="post-header post-header__title">
-
+        <div class="post-header post-header__title post-header--title-start">
             <h1><?php the_title() ?></h1>
         </div>
 
@@ -40,22 +39,8 @@
                     Solicite download gratuito
                     </h2>
                 </div>
-                <div class="form-book__form-field">
-                    <label for="fname"><?php _e('name', 'hacklabr') ?></label>
-                    <input type="text" name="" class="text-input  form-book__input">
-                    <label for="fname"><?php _e('e-mail', 'hacklabr') ?></label>
-                    <input type="text" name="" class="text-input form-book__input">
-
-                    <label class="form-book__check">
-                        <input type="checkbox"><?php _e('I agree to receive newsletters from Instituto Ethos ', 'hacklabr') ?>
-                    </label>
-                    <label class="form-book__check">
-                        <input type="checkbox"><?php _e('I agree to be contacted by Instituto Ethos ', 'hacklabr') ?>
-                    </label>
-
-                    <div class="form-book__book-button"><button type="submit" class="button button--outline">enviar</button>
-                </div>
             </div>
+            <?php echo do_shortcode('[contact-form-7 title="formulario-single-publicacao"]') ?>
 
 
         </div>
