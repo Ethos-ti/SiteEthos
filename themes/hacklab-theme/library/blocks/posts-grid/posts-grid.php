@@ -37,7 +37,7 @@ function render_posts_grid_callback ($attributes) {
     ob_start();
     ?>
 
-    <div class="hacklabr-posts-grid-block" style="--grid-columns: <?= $posts_per_row ?>">
+    <div class="<?= build_class_list('hacklabr-posts-grid-block', $attributes) ?>" style="--grid-columns: <?= $posts_per_row ?>">
         <?php foreach ($query->posts as $post):
             mark_post_id_as_used($post->ID);
             get_template_part('template-parts/post-card', $card_model ?: null, [
