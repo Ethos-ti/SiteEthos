@@ -61,10 +61,9 @@ function post_types_in_search_results( $query ) {
         }
 
         if($post_type) {
-            do_action( 'logger', $post_type );
             $query->set( 'post_type', explode(',', $post_type) );
         }
     }
 }
-add_action( 'pre_get_posts', 'hacklabr\\post_types_in_search_results', 99999 );
+add_action( 'pre_get_posts', 'hacklabr\\post_types_in_search_results' );
 

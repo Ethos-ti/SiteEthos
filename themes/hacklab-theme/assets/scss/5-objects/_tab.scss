@@ -1,6 +1,6 @@
 .tab {
     background-color: transparent;
-    border-bottom: $border-width--x-large solid transparent;
+    border-bottom: $border-width--large solid transparent;
     cursor: pointer;
     display: flex;
     font-size: $font-size--x-small;
@@ -13,8 +13,12 @@
     text-transform: uppercase;
     white-space: nowrap;
 
+    @media(max-width:$break--desktop){
+        gap: $gap--small;
+    }
+
     img{
-        object-fit: contain;
+        object-fit: scale-down;
     }
 
     &--active {
