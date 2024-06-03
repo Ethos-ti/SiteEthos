@@ -3,4 +3,9 @@
     grid-template-columns: 1fr 2fr;
     gap:$gap--large;
     margin-top: $margin--large ;
+
+    @include mobile{
+        display: flex;
+        flex-direction: column;
+    }
 }

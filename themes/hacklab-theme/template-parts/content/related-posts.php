@@ -1,7 +1,7 @@
 <?php
 
 $post_id = get_the_ID();
-
+$modifiers = $args['modifiers'] ?? [];
 $projects = get_the_terms( $post_id, 'category' );
 
 if ( $projects && ! is_wp_error( $projects ) ) {
@@ -9,7 +9,7 @@ if ( $projects && ! is_wp_error( $projects ) ) {
 }
 
 $args = [
-    'post_type'      => 'post',
+    'post_type'      => get_post_type(),
     'posts_per_page' => 3,
     'post__not_in'   => [ $post_id ],
     'orderby'        => 'date',
@@ -36,7 +36,8 @@ if ( $related_posts->have_posts() ) : ?>
                 <?php get_template_part( 'template-parts/post-card', null, [
                     'hide_author' => true,
                     'hide_date' => true,
-                    'hide_excerpt' => true
+                    'hide_excerpt' => true,
+                    'modifiers' => $modifiers,
                 ] ); ?>
             <?php endwhile; ?>
         </div>

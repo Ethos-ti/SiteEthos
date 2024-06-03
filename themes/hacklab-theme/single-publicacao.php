@@ -26,23 +26,25 @@
             <h1><?php the_title() ?></h1>
         </div>
 
-        <div class="post-header__meta container ">
+        <div class="post-header__meta ">
             <p class="post-header__date"><?php _e('Published in:', 'hacklabr') ?><?= get_the_date() ?></p>
             <?php get_template_part('template-parts/share-links', null, ['link'=>get_the_permalink()]) ?>
         </div>
-        <div class="container">
+        <div class="post-content stack">
             <p> <?php the_content() ?></p>
 
             <div class="form-book">
                 <div class="form-book form-book__title">
-                    <div class="icon">icone</div>
-                    <h2>Solicite download gratuito</h2>
+                    <h2>
+                    <iconify-icon icon="fa-solid:book-open"></iconify-icon>
+                    Solicite download gratuito
+                    </h2>
                 </div>
-                <div class="form-book--form-field">
+                <div class="form-book__form-field">
                     <label for="fname"><?php _e('name', 'hacklabr') ?></label>
-                    <input type="text" name="" class="text-input  form-book--input">
+                    <input type="text" name="" class="text-input  form-book__input">
                     <label for="fname"><?php _e('e-mail', 'hacklabr') ?></label>
-                    <input type="text" name="" class="text-input form-book--input">
+                    <input type="text" name="" class="text-input form-book__input">
 
                     <label class="form-book__check">
                         <input type="checkbox"><?php _e('I agree to receive newsletters from Instituto Ethos ', 'hacklabr') ?>
@@ -51,7 +53,7 @@
                         <input type="checkbox"><?php _e('I agree to be contacted by Instituto Ethos ', 'hacklabr') ?>
                     </label>
 
-                    <div class="button form-book--book-button"><a class= "button button--outline" href="">enviar</a></div>
+                    <div class="form-book__book-button"><button type="submit" class="button button--outline">enviar</button>
                 </div>
             </div>
 
@@ -59,9 +61,9 @@
         </div>
 
     </main>
-
 </div>
-<?php get_template_part('template-parts/content/related-posts-book') ?>
+<?php get_template_part('template-parts/content/related-posts', null, ['modifiers' => ['vertical-thumbnail']]) ?>
+
 
 
 <?php get_footer() ?>
