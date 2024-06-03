@@ -62,17 +62,16 @@ $gap--giant: 8rem;
 
 // Border radius
 $border-radius--pilled: 80px;
-$border-radius--round: 50%;
-$border-radius--large: 16px;
-$border-radius--medium: 8px;
-$border-radius--small: 4px;
+$border-radius--round: 32px;
+$border-radius--large: 24px;
+$border-radius--medium: 16px;
+$border-radius--small: 8px;
 $border-radius--none: 0;
 
 // Bordas
 $border-width--small: 1px;
 $border-width--medium: 2px;
-$border-width--large: 3px;
-$border-width--x-large: 4px;
+$border-width--large: 4px;
 
 // Cores de borda
 $border-color--light: $color--high-light;
@@ -82,7 +81,9 @@ $border-color--dark: $color--primary-dark;
 $transition--default: all 0.3s ease-in-out;
 
 // Box shadows
-$box-shadow--default: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+$box-shadow--default: 0px 8px 16px 0px #00000029;
+$box-shadow--light: 0px 4px 8px 0px #00000029;
+$box-shadow--dark: 0px 8px 24px 0px #0000003D;
 
 // Paths
 $path--theme: '/wp-content/themes/hacklab-theme';
