@@ -1,6 +1,5 @@
 import { __experimentalToggleGroupControl as ToggleGroupControl, __experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon } from '@wordpress/components';
 import { __, _x } from '@wordpress/i18n';
-import { } from '@wordpress/icons';
 
 const DEFAULT_OPTIONS = ['small', 'medium', 'large'];
 
