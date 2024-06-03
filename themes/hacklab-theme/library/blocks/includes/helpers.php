@@ -3,6 +3,35 @@
 namespace hacklabr;
 
 /**
+ * Build a dynamic class list from attributes data.
+ *
+ * @param string $base_class Default block class.
+ * @param array $attributes Block attributes.
+ * @return string Space-separated class list.
+ */
+function build_class_list ($base_class = '', $attributes = []) {
+    $class_list = [];
+
+    if (!empty($base_class)) {
+        $class_list[] = $base_class;
+    }
+
+    if (!empty($attributes['className'])) {
+        $class_list[] = trim($attributes['className']);
+    }
+
+    if (!empty($attributes['align'])) {
+        $class_list[] = 'align' . $attributes['align'];
+    }
+
+    if (!empty($attributes['gridGap'])) {
+        $class_list[] = '-gap-' . $attributes['gridGap'];
+    }
+
+    return implode(' ', $class_list);
+}
+
+/**
  * Builds a WP_Query args array to query posts for a block.
  *
  * This takes in the block attributes and an optional array of post IDs
