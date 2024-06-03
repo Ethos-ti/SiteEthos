@@ -8,6 +8,7 @@
     padding: $padding--x-small $padding--small;
     text-decoration: none;
     text-transform: uppercase;
+    display: inline-block;
 
     &:is(a) {
         cursor: pointer;
