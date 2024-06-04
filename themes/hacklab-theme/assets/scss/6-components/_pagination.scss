@@ -15,9 +15,9 @@
 
     &__previous,
     &__next {
-        color: $color--primary-pure;
         font-weight: $font-weight--bold;
         text-decoration: none;
+        color: $color--primary-dark;
     }
 
     &__number {
