@@ -35,7 +35,7 @@ if($wp_query->get('category_name')){
     $active_tab = 'all';
 }
 
-$desired_order = [ 'Direitos Humanos', 'Integridade', 'Gestão Sustentável', 'Meio Ambiente', 'Institucional' ];
+$desired_order = [ 'DIREITOS HUMANOS', 'INTEGRIDADE', 'GESTÃO SUSTENTÁVEL', 'MEIO AMBIENTE', 'INSTITUCIONAL' ];
 
 function custom_sort($a, $b) {
     global $desired_order;
