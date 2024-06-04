@@ -6,6 +6,12 @@
         margin: 0 !important;
         border-radius: 0 !important;
 
+        summary {
+            display: flex;
+            align-items: center;
+            gap: $gap--small;
+        }
+
         &__title {
             @extend .accordeon__title;
             background-color: transparent !important;

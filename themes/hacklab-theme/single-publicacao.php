@@ -10,10 +10,12 @@
             <?php the_post_thumbnail('card-large'); ?>
         </div>
         <button>
-        <?php if ($documento_url) : ?>
-            <a class="button button--outline" href="<?php echo esc_url($documento_url); ?>">Amostra da publicação</a>
+            <?php if ($documento_url) : ?>
+                <a class="button button--outline" href="<?php echo esc_url($documento_url); ?>">
+                    <?php _e('Publication Sample', 'hacklabr'); ?>
+                </a>
             <?php else : ?>
-                <p>Nenhum documento disponível.</p>
+                <p><?php _e('No document available.', 'hacklabr'); ?></p>
             <?php endif; ?>
         </button>
     </aside>
