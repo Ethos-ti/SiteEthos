@@ -153,11 +153,10 @@ usort($terms, 'custom_sort');
                         <?php endwhile; ?>
                     </main>
                     <?php
-                    the_posts_pagination([
-                        'prev_text' => __( '<iconify-icon icon="iconamoon:arrow-left-2-bold"></iconify-icon>', 'hacklbr'),
-                        'next_text' => __( '<iconify-icon icon="iconamoon:arrow-right-2-bold"></iconify-icon>', 'hacklbr'),
-
-                    ]); ?>
+                        the_posts_pagination([
+                            'prev_text' => '<iconify-icon icon="fa-solid:angle-left" aria-label="' . __('Previous page') . '"></iconify-icon>',
+                            'next_text' => '<iconify-icon icon="fa-solid:angle-right" aria-label="' . __('Next page') . '"></iconify-icon>',
+                        ]); ?>
                 </div>
             </div>
         </div>
