@@ -82,19 +82,25 @@ if($wp_query->get('category_name')){
                                         switch ($post_type) {
                                             case 'iniciativa':
                                                 $label = 'Atuação';
+                                            break;
                                             case 'tribe_events':
                                                 $label = 'Eventos';
+                                            break;
                                             case 'post':
                                                 $label = 'Novidades';
+                                            break;
                                             case 'publicacao':
                                                 $label = 'Publicações';
+                                            break;
                                             default:
                                                 $label = $post_type;
+                                            break;
                                         }
                                     ?>
                                     <option class="search__results__filter__filering__select-form__option" <?= ( $selected == $post_type ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>&post_type=<?= $post_type; ?>">
                                         <?= $label; ?>
                                     </option>
+
                                 <?php endforeach; ?>
                             </select>
                             <script type="text/javascript">
