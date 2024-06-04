@@ -120,7 +120,7 @@
             }
         }
     }
-    .tribe-events-calendar-list{
+    .tribe-events-calendar-list {
         .tribe-events-calendar-list__month-separator{
             color: $color--low-pure;
             &-text{
@@ -196,6 +196,85 @@
                                 font-size: $font-size--small;
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+    .tribe-events-calendar-latest-past{
+        &__heading{
+            font-family: $font-family--primary;
+            color: $color--secondary-dark;
+            font-weight: $font-weight--regular;
+        }
+        .tribe-events-calendar-latest-past__event-row{
+            .tribe-events-calendar-latest-past__event-date-tag{
+                &-datetime{
+                    @media(max-width:$break--tablet){
+                        padding-top: 0;
+                        padding-right: $padding--large;
+                    }
+                    .tribe-events-calendar-latest-past__event-date-tag-month,
+                    .tribe-events-calendar-latest-past__event-date-tag-daynum{
+                        font-family: $font-family--primary;
+                        color: $color--secondary-dark;
+                    }
+                    .tribe-events-calendar-latest-past__event-date-tag-month{
+                        font-size: $font-size--small;
+                    }
+                    .tribe-events-calendar-latest-past__event-date-tag-daynum{
+                        font-size: $font-size--xx-large;
+                    }
+                    .tribe-events-calendar-latest-past__event-date-tag-year{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .tribe-events-calendar-latest-past__event-wrapper{
+        .tribe-events-calendar-latest-past__event{
+            &-featured-image-wrapper{
+                @media(max-width:$break--tablet){
+                    display: none;
+                }
+
+                .tribe-events-calendar-latest-past__event-featured-image-link{
+                    .tribe-events-calendar-latest-past__event-featured-image{
+                        aspect-ratio: 12 / 12;
+                    }
+                }
+            }
+            &-details{
+                .tribe-events-calendar-latest-past__event-header{
+                    .tribe-events-calendar-latest-past__event-datetime-wrapper{
+                        .tribe-events-calendar-latest-past__event-datetime{
+                            font-family: $font-family--primary;
+                            color: $color--secondary-dark;
+                            font-size: $font-size--small;
+                        }
+                    }
+                    .tribe-events-calendar-latest-past__event-title{
+                        &-link{
+                            font-family: $font-family--primary;
+                            color: $color--secondary-dark;
+                        }
+                    }
+                    .tribe-events-calendar-latest-past__event-venue{
+                        font-family: $font-family--primary;
+                        color: $color--secondary-dark;
+                    }
+                }
+                .tribe-events-calendar-latest-past__event-description>p{
+                    font-family: $font-family--primary;
+                    color: $color--secondary-dark;
+                    font-size: $font-size--small;
+                }
+                .tribe-events-calendar-latest-past__event-cost{
+                    .tribe-events-c-small-cta__price{
+                        font-family: $font-family--primary;
+                        color: $color--secondary-dark;
+                        font-size: $font-size--small;
                     }
                 }
             }
