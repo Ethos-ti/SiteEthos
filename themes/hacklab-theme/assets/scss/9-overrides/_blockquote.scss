@@ -2,12 +2,11 @@
     @extend .blockquote;
 
     p{
-        @include small{
-            text-align: left;
-        }
+        font-size: $font-size--large;
 
-        @include mobile{
-            text-align: left;
+        @include mobile {
+            font-size: $font-size--medium;
+            line-height: $line-height--normal;
         }
     }
 }
