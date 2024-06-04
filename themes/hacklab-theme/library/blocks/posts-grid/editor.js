@@ -8,11 +8,12 @@ import ServerSideRender from '@wordpress/server-side-render';
 import { QueryPanel } from '../shared/QueryPanel';
 import { SelectCardModel } from '../shared/SelectCardModel';
 import { SelectCardModifier } from '../shared/SelectCardModifier';
+import { SelectSize } from '../shared/SelectSize';
 
 import metadata from './block.json';
 
 function Edit ({ attributes, setAttributes }) {
-    const { cardModel, cardModifiers, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
+    const { cardModel, cardModifiers, gridGap, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
 
     const blockProps = useBlockProps();
 
@@ -35,7 +36,7 @@ function Edit ({ attributes, setAttributes }) {
 
                 <PanelRow>
                     <NumberControl
-                        label={__('Cards per row', 'hacklabr')}
+                        label={__('Grid columns', 'hacklabr')}
                         min={1}
                         value={postsPerRow}
                         onChange={(raw) => setAttributes({ postsPerRow: parseInt(raw) })}
@@ -44,10 +45,18 @@ function Edit ({ attributes, setAttributes }) {
 
                 <PanelRow>
                     <NumberControl
-                        label={__('Cards rows', 'hacklabr')}
+                        label={__('Grid rows', 'hacklabr')}
                         min={1}
                         value={postsPerColumn}
                         onChange={(raw) => setAttributes({ postsPerColumn: parseInt(raw) })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <SelectSize
+                        label={__('Grid gap', 'hacklabr')}
+                        value={gridGap}
+                        onChange={(gridGap) => setAttributes({ gridGap })}
                     />
                 </PanelRow>
 

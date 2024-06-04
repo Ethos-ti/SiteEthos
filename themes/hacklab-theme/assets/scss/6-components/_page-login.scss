@@ -9,6 +9,60 @@
             margin: 0;
             text-decoration: none;
         }
+
+        .pmpro_lost_password-field{
+            margin-top: $margin--large;
+
+            & > label{
+                font-size: $font-size--x-small;
+            }
+
+            input[type="text"]{
+                @extend .text-input;
+                font-size: $font-size--x-small;
+                padding: $padding--medium;
+                margin-top: $margin--small;
+                max-width: 100% !important;
+                width: 23.375rem;
+            }
+        }
+
+        .pmpro_lost_password_wrap > .pmpro_actions_nav{
+            display: none;
+        }
+
+        .pmpro_lost_password_wrap > .pmpro_form > .pmpro_submit, .pmpro_lost_password-fields{
+            display: flex;
+            justify-content: center;
+        }
+
+        .pmpro_lost_password_wrap > .pmpro_form > .pmpro_submit > input[type="submit"] {
+            background-color: $color--low-pure;
+            border: $border-width--medium solid $color--low-pure;
+            border-radius: $border-radius--large;
+            color: $color--high-pure;
+            font-size: $font-size--small;
+            font-weight: $font-weight--bold;
+            height: 2.313rem;
+            margin-bottom: $margin--large;
+            padding: $padding--small $padding--large;
+            text-transform: uppercase;
+            line-height: $line-height--squeeze;
+
+            @include small{
+                max-width: 18.35rem;
+            }
+        }
+    }
+
+    .pmpro_login_wrap{
+        position: relative;
+        top: -4rem;
+
+        .g-recaptcha{
+            position: relative;
+            top: 16.875rem;
+        }
     }
 
     .post-header__excerpt{
@@ -19,7 +73,7 @@
     .pmpro_actions_nav{
         text-align: right;
         position: relative;
-        top: -6.875rem;
+        top: -11.25rem;
     }
 
     .pmpro_actions_nav > a{
@@ -34,5 +88,4 @@
     & .wp-block-buttons > .wp-block-button > a{
         padding: $padding--small $padding--large !important;
     }
-
 }
