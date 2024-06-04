@@ -10,6 +10,9 @@
         }
     }
     .tribe-events-header{
+        &__title{
+            display: none;
+        }
         .tribe-events-c-events-bar{
             border: $border-width--small solid $color--high-dark;
             &__search-container{

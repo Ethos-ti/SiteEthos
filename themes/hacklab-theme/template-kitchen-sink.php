@@ -6,6 +6,7 @@ get_header();
 ?>
 
 <div class="container kitchen-sink">
+    <code>Títulos</code>
     <h1>&lt;h1&gt; Título 1</h1>
     <h2>&lt;h2&gt; Título 2</h2>
     <h3>&lt;h3&gt; Título 3</h3>
@@ -15,13 +16,13 @@ get_header();
     <p>&lt;p&gt; Parágrafo</p>
 
     <hr/>s
-
+    <code>Ícones</code>
     <iconify-icon icon="fa6-brands:wordpress-simple"></iconify-icon>
     <iconify-icon icon="skill-icons:instagram"></iconify-icon>
     <iconify-icon icon="iconamoon:arrow-right-2-bold"></iconify-icon>
 
     <hr/>
-
+    <code>Botões</code>
     <button type="button" class="button">Default</button>
     <button type="button" class="button button--solid">Solid</button>
     <button type="button" class="button button--outline">Outline</button>
@@ -34,7 +35,7 @@ get_header();
     <button type="button" class="button button--solid button--helper">Helper</button>
 
     <hr/>
-
+    <code>Site By Hacklab</code>
     <div class="site-by-hacklab">
         <div class="container">
             <a href="https://hacklab.com.br">site por <strong>hacklab<span>/</span></strong></a>
@@ -43,6 +44,7 @@ get_header();
 
     <hr/>
 
+    <code>Stack</code>
     <div class="stack stack--large">
         <div class="stack">
             <div class="kitchen-sink__stack-item">Item</div>
@@ -65,6 +67,7 @@ get_header();
 
     <hr/>
 
+    <code>Formulário</code>
     <div class="form-field">
         <label for="input-1" class="form-field__label">Texto</label>
         <input id="input-1" class="text-input" type="text">
