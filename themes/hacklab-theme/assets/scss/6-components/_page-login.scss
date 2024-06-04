@@ -1,4 +1,9 @@
 .page-login{
+
+    .container{
+        max-width: $grid--wide;
+    }
+
     .post-content{
         align-items: center;
         display: flex;
