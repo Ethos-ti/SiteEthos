@@ -79,6 +79,11 @@
         .post-card__title {
             font-size: $font-size--medium;
         }
+
+        .post-card__content {
+            justify-content: start;
+            margin-top: 0 !important;
+        }
     }
 
     &--vertical-thumbnail{
