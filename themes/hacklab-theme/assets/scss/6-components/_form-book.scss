@@ -5,8 +5,9 @@
     background-color: $color--high-light;
     border-radius: $border-radius $border-radius 0 0;
     font-size: $font-size--small;
+
     & p {
-        width: 470px;
+        max-width: 470px;
     }
     &__title{
         align-items: center;
@@ -43,6 +44,9 @@
         align-items: center;
         padding: $padding--x-large $padding--xxx-large;
         border-radius: 0px 0px 16px 16px;
+        @include mobile{
+            padding: $padding--large $padding--medium ;
+        }
 
     }
 

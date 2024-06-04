@@ -8,4 +8,18 @@
         display: flex;
         flex-direction: column;
     }
+
+}
+.related-posts__content{
+    @include mobile{
+        display: flex !important;
+        flex-direction: column;
+        padding: $padding--medium;
+
+    }
+}
+.related-posts__title{
+    @include mobile{
+        padding: 1rem;
+    }
 }
