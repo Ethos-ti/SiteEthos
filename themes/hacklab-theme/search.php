@@ -34,6 +34,27 @@ if($wp_query->get('category_name')){
 }else{
     $active_tab = 'all';
 }
+
+$desired_order = [ 'DIREITOS HUMANOS', 'INTEGRIDADE', 'GESTÃO SUSTENTÁVEL', 'MEIO AMBIENTE', 'INSTITUCIONAL' ];
+
+function custom_sort($a, $b) {
+    global $desired_order;
+    $pos_a = array_search($a->name, $desired_order);
+    $pos_b = array_search($b->name, $desired_order);
+
+    if ($pos_a === false && $pos_b === false) {
+        return 0;
+    } elseif ($pos_a === false) {
+        return 1;
+    } elseif ($pos_b === false) {
+        return -1;
+    } else {
+        return $pos_a - $pos_b;
+    }
+}
+
+usort($terms, 'custom_sort');
+
 ?>
 
 
@@ -42,9 +63,10 @@ if($wp_query->get('category_name')){
 
     <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
         <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
-            <div class="tabs__header" role="tablist">
+        <div class="tabs__header" role="tablist">
                 <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( $permalink_all ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
                 <?php foreach ( $terms as $term ) : ?>
+
                     <?php
                         $icon = get_term_meta($term->term_id, 'icon', true);
                         $icon_url = '';

@@ -30,19 +30,16 @@ $categories = get_the_category();
 
     <main class="post-card__content">
 
-    <div class="post-card__metas">
-        <?php if($editorias) : ?>
-            <div class="post-card__metas--editorias">
-                <?php foreach ($editorias as $editoria): ?>
-                    <a class="tag tag--outline">
-                        <?= $editoria->name ?>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if (!$hide_categories && !empty($categories)): ?>
+        <?php if (!$hide_categories && (!empty($categories) || !empty($editorias))): ?>
             <div class="post-card__category">
+                <?php if (!empty($editorias)): ?>
+                    <?php foreach ($editorias as $editoria): ?>
+                        <a class="tag tag--outline" href="<?= get_term_link($editoria, 'tipo_post') ?>">
+                            <?= $editoria->name ?>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
                 <?php foreach ($categories as $category): ?>
                     <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
                         <?= $category->name ?>
@@ -50,7 +47,6 @@ $categories = get_the_category();
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
-    </div>
 
         <h3 class="post-card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
