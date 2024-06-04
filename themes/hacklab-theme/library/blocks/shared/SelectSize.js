@@ -57,7 +57,6 @@ function SmallIcon ({ size }) {
 }
 
 export function SelectSize ({ label = __('Size', 'hacklabr'), options = DEFAULT_OPTIONS, value, onChange }) {
-    console.log(1, options);
     return (
         <ToggleGroupControl isBlock={true} label={label} value={value} onChange={onChange}>
         {options?.map?.((option) => (
