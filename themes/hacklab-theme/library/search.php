@@ -61,7 +61,12 @@ function post_types_in_search_results( $query ) {
         }
 
         if($post_type) {
-            $query->set( 'post_type', explode(',', $post_type) );
+            if($post_type === 'events'){
+                $query->set( 'post_type', 'tribe_events' );
+            }else{
+                $query->set( 'post_type', explode(',', $post_type) );
+
+            }
         }
     }
 }
