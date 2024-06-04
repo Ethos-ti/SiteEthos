@@ -15,6 +15,11 @@
         display: flex;
         padding: $padding--large;
         justify-content: center;
+        h2{
+            gap: $gap--large;
+            display: flex;
+            align-items: center;
+        }
     }
 
     &__check{

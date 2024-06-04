@@ -18,7 +18,7 @@
         flex-direction: column;
         gap: $gap--small;
         justify-content: center;
-        margin-top: $margin--small;
+        margin-top: $margin--small !important;
 
         a {
             text-decoration: none;
