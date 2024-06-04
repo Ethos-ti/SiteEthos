@@ -9,10 +9,17 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin-bottom: 0;
 
         & > p {
             margin: 0;
             text-decoration: none;
+        }
+
+        & > .wp-block-group{
+            margin-top: 0;
+            position: relative;
+            top: 10px;
         }
 
         .pmpro_lost_password-field{
@@ -62,9 +69,9 @@
 
     .pmpro_login_wrap{
         position: relative;
-        top: -4rem;
+        top: -2rem;
 
-        .g-recaptcha{
+       .g-recaptcha{
             position: relative;
             top: 16.875rem;
         }
@@ -92,5 +99,9 @@
 
     & .wp-block-buttons > .wp-block-button > a{
         padding: $padding--small $padding--large !important;
+    }
+
+    & .partners-list{
+        margin-top: 0;
     }
 }
