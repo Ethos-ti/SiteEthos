@@ -1,15 +1,21 @@
 <?php
     get_header();
     $categories = get_the_category();
+    $post_id = get_the_ID();
+    $documento_url = get_post_meta($post_id, 'arquivo_publicação', true);
 ?>
 <div class="container container--wide book-detail">
     <aside class="stack">
         <div class="thumbnail thumbnail--vertical">
             <?php the_post_thumbnail('card-large'); ?>
         </div>
-        <div>
-            <a class= "button button--outline" href="">Amostra da publicação</a>
-        </div>
+        <button>
+        <?php if ($documento_url) : ?>
+            <a class="button button--outline" href="<?php echo esc_url($documento_url); ?>">Amostra da publicação</a>
+            <?php else : ?>
+                <p>Nenhum documento disponível.</p>
+            <?php endif; ?>
+        </button>
     </aside>
     <main class="container container--wide">
         <?php if (!empty($categories)): ?>
