@@ -71,12 +71,6 @@
         }
     }
 
-    &__metas{
-        align-items: center;
-        display: flex;
-        gap: $gap--small;
-    }
-
     &--horizontal {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -84,6 +78,11 @@
 
         .post-card__title {
             font-size: $font-size--medium;
+        }
+
+        .post-card__content {
+            justify-content: start;
+            margin-top: 0 !important;
         }
     }
 

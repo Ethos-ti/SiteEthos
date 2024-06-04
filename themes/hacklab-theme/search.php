@@ -3,9 +3,9 @@ get_header();
 global $wp_query;
 
 $post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa'];
-;
+
 if($post_type == 'any'){
-    $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'tribe_events'];
+    $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'events'];
 }
 
 if(!is_array($post_type)){
@@ -15,11 +15,17 @@ if(!is_array($post_type)){
 $terms = get_terms_by_use_menu( 'category', ['iniciativa', 'post', 'publicacao'] );
 
 $permalink = home_url( '?s=' . get_search_query( true ) );
+$permalink_all = $permalink;
 
 $selected = '';
 
 if ( isset( $_GET['post_type'] ) ) {
-    $selected = sanitize_title( $_GET['post_type'] );
+    if (strpos($_GET['post_type'], ",") !== false) {
+        $selected = 'any';
+    } else {
+        $selected = sanitize_title( $_GET['post_type'] );
+    }
+    $permalink_all .= '&post_type='. $selected;
 }
 
 if($wp_query->get('category_name')){
@@ -28,6 +34,27 @@ if($wp_query->get('category_name')){
 }else{
     $active_tab = 'all';
 }
+
+$desired_order = [ 'DIREITOS HUMANOS', 'INTEGRIDADE', 'GESTÃO SUSTENTÁVEL', 'MEIO AMBIENTE', 'INSTITUCIONAL' ];
+
+function custom_sort($a, $b) {
+    global $desired_order;
+    $pos_a = array_search($a->name, $desired_order);
+    $pos_b = array_search($b->name, $desired_order);
+
+    if ($pos_a === false && $pos_b === false) {
+        return 0;
+    } elseif ($pos_a === false) {
+        return 1;
+    } elseif ($pos_b === false) {
+        return -1;
+    } else {
+        return $pos_a - $pos_b;
+    }
+}
+
+usort($terms, 'custom_sort');
+
 ?>
 
 
@@ -36,9 +63,10 @@ if($wp_query->get('category_name')){
 
     <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
         <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
-            <div class="tabs__header" role="tablist">
-                <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( get_post_type_archive_link( $post_type ) ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
+        <div class="tabs__header" role="tablist">
+                <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( $permalink_all ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
                 <?php foreach ( $terms as $term ) : ?>
+
                     <?php
                         $icon = get_term_meta($term->term_id, 'icon', true);
                         $icon_url = '';
@@ -77,13 +105,13 @@ if($wp_query->get('category_name')){
                                 <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
                                     <?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?>
                                 </option>
-                                <?php foreach( ['iniciativa', 'tribe_events', 'post', 'publicacao'] as $post_type ) : ?>
+                                <?php foreach( ['iniciativa', 'events', 'post', 'publicacao'] as $post_type ) : ?>
                                     <?php
                                         switch ($post_type) {
                                             case 'iniciativa':
                                                 $label = 'Atuação';
                                             break;
-                                            case 'tribe_events':
+                                            case 'events':
                                                 $label = 'Eventos';
                                             break;
                                             case 'post':
@@ -125,11 +153,10 @@ if($wp_query->get('category_name')){
                         <?php endwhile; ?>
                     </main>
                     <?php
-                    the_posts_pagination([
-                        'prev_text' => __( '<iconify-icon icon="iconamoon:arrow-left-2-bold"></iconify-icon>', 'hacklbr'),
-                        'next_text' => __( '<iconify-icon icon="iconamoon:arrow-right-2-bold"></iconify-icon>', 'hacklbr'),
-
-                    ]); ?>
+                        the_posts_pagination([
+                            'prev_text' => '<iconify-icon icon="fa-solid:angle-left" aria-label="' . __('Previous page') . '"></iconify-icon>',
+                            'next_text' => '<iconify-icon icon="fa-solid:angle-right" aria-label="' . __('Next page') . '"></iconify-icon>',
+                        ]); ?>
                 </div>
             </div>
         </div>
