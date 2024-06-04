@@ -10,7 +10,8 @@
         }
     }
     .tribe-events-header{
-        &__title{
+        &__title,
+        &__breadcrumbs{
             display: none;
         }
         .tribe-events-c-events-bar{
