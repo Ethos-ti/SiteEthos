@@ -26,6 +26,7 @@
         background-color: $color--high-pure;
         border-color: var(--hl-button-color);
         color: var(--hl-button-color, $color--low-pure);
+        text-decoration: none;
 
         &:active,
         &:hover {
