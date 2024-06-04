@@ -2,7 +2,7 @@
     get_header();
     $categories = get_the_category();
     $post_id = get_the_ID();
-    $documento_url = get_post_meta($post_id, 'arquivo_publicação', true);
+    $documento_url = get_field('arquivo_publicacao', $post_id);
 ?>
 <div class="container container--wide book-detail">
     <aside class="stack">
