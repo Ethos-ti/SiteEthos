@@ -7,6 +7,15 @@
     margin-top: size(0);
     & .post-header__title{
         margin-bottom: size(8);
+        color: var(--Primary-dark, #0075AD);
+        /* Secondary/Bold/hero */
+        font-family: $font-family--heading;
+        font-size: size(64);
+        font-style: normal;
+        font-weight: $font-weight--bold;
+        line-height: size(76);
+        letter-spacing: -1.92px;
+
     }
     & .not-found{
         color: var(--Primary-dark, #0075AD);
@@ -14,19 +23,17 @@
         font-size: size(32);
         font-style: normal;
         font-weight: $font-weight--bold;
-        line-height: 120%;
-        margin-bottom: $margin--medium;
-        text-align: center;
+        line-height: size(38);
     }
     & span,
     p{
         color: var(--Low-light, #7D7D7D);
         text-align: center;
         font-family: $font-family--primary;
-        font-size: 14px;
+        font-size: size(14);
         font-style: normal;
-        font-weight: 400;
-        line-height: 150%; /* 21px */
+        font-weight: $font-weight--regular;
+        line-height: size(21); /* 21px */
         letter-spacing: -0.42px;
     }
     span{
@@ -37,5 +44,10 @@
         display: flex;
         gap: $gap--medium;
         margin-top: size(24);
+        & a{
+            @include mobile{
+                padding: 0.5rem 1rem;
+            }
+        }
     }
 }
