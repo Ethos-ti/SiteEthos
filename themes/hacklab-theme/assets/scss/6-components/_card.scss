@@ -1,7 +1,6 @@
 .card {
 
     &__header {
-        @include stack($gap--medium);
         background-color: $color--high-dark;
         background-position: center;
         background-size: cover;
