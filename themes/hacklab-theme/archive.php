@@ -38,17 +38,7 @@ usort($terms, 'custom_sort');
 
     <div class="container container--wide">
 
-        <?php
-        if ( $post_type === 'iniciativa' ) :
-            echo hacklabr\get_layout_part( 'atuacao', 'header' );
-        elseif( is_tax('tipo_post', 'opinioes-e-analises') ) :
-            echo hacklabr\get_layout_part( 'opiniao', 'header' );
-        elseif( is_tax('tipo_post', 'novidades') ) :
-            echo hacklabr\get_layout_part( 'novidades', 'header' );
-        elseif( $post_type === 'post') :
-            echo hacklabr\get_layout_part( 'novidades', 'header' );
-        endif;
-        ?>
+        <?php echo hacklabr\get_layout_part_header(); ?>
 
         <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
             <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
