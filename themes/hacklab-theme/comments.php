@@ -59,8 +59,8 @@ if ( post_password_required() )
         ?>
         <nav class="navigation comment-navigation" role="navigation">
             <h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'hacklabr' ); ?></h1>
-            <div class="nav-previous"><?php previous_comments_link( __( '&larr; Mais antigos', 'hacklabr' ) ); ?></div>
-            <div class="nav-next"><?php next_comments_link( __( 'Mais Novos &rarr;', 'hacklabr' ) ); ?></div>
+            <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older', 'hacklabr' ) ); ?></div>
+            <div class="nav-next"><?php next_comments_link( __( 'Newest &rarr;', 'hacklabr' ) ); ?></div>
         </nav><!-- .comment-navigation -->
         <?php endif; // Check for comment navigation ?>
 
