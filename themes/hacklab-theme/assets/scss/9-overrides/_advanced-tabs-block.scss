@@ -61,6 +61,13 @@
         .wp-block-query .wp-block-post ul li {
             @extend .card;
         }
+
+        .hacklabr-posts-grid-block.alignwide {
+            max-width: 1170px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+        }
     }
 
 }
