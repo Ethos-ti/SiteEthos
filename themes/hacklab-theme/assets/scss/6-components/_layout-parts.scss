@@ -20,6 +20,8 @@
             font-size: $font-size--large;
             @media(max-width:$break--tablet){
                 margin-bottom: calc($margin--large + $margin--medium);
+                padding-left: $padding--small;
+                padding-right: $padding--small;
             }
         }
     }

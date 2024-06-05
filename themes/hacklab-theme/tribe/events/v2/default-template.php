@@ -16,23 +16,12 @@ use Tribe\Events\Views\V2\Template_Bootstrap;
 
 get_header();
 
+echo hacklabr\get_layout_part_header();
+
 ?>
-
-<?php
-
-if(is_tax('tribe_events_cat', 'cursos' )) :
-    echo hacklabr\get_layout_header( 'cursos' );
-elseif(is_tax('tribe_events_cat', 'grupos-de-trabalhos' )) :
-    echo hacklabr\get_layout_header( 'grupos-de-trabalho' );
-else :
-    echo hacklabr\get_layout_header( 'agenda' );
-endif;
-?>
-
 
 <div class="ethos-events">
-
-    <?php echo tribe( Template_Bootstrap::class )->get_view_html();?>
+    <?php echo tribe( Template_Bootstrap::class )->get_view_html(); ?>
 </div>
 
 <?php

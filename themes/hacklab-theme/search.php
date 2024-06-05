@@ -105,15 +105,16 @@ usort($terms, 'custom_sort');
                                 <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
                                     <?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?>
                                 </option>
-                                <?php foreach( ['iniciativa', 'events', 'post', 'publicacao'] as $post_type ) : ?>
+                                <?php foreach( ['iniciativa', 'post', 'publicacao'] as $post_type ) : ?>
                                     <?php
                                         switch ($post_type) {
                                             case 'iniciativa':
                                                 $label = 'Atuação';
                                             break;
-                                            case 'events':
-                                                $label = 'Eventos';
-                                            break;
+                                            // descomentar e inserir no array da linha 108 o cpt 'events'
+                                            // case 'events':
+                                            //     $label = 'Eventos';
+                                            // break;
                                             case 'post':
                                                 $label = 'Novidades';
                                             break;
