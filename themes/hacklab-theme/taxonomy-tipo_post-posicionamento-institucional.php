@@ -38,7 +38,7 @@ usort($terms, 'custom_sort');
 
     <div class="container container--wide">
 
-        <?php echo hacklabr\get_layout_part( 'posicionamentos-institucionais', 'header' );?>
+        <?php echo hacklabr\get_layout_part_header(); ?>
 
         <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
             <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">

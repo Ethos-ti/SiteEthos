@@ -34,9 +34,11 @@ $categories = get_the_category();
             <div class="post-card__category">
                 <?php if (!empty($editorias)): ?>
                     <?php foreach ($editorias as $editoria): ?>
-                        <a class="tag tag--outline" href="<?= get_term_link($editoria, 'tipo_post') ?>">
-                            <?= $editoria->name ?>
-                        </a>
+                        <?php if (!is_wp_error($editoria)): ?>
+                            <a class="tag tag--outline" href="<?= get_term_link($editoria, 'tipo_post') ?>">
+                                <?= $editoria->name ?>
+                            </a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
 

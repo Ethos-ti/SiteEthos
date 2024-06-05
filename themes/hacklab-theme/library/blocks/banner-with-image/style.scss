@@ -27,5 +27,9 @@
     &__text {
         @include stack($gap--medium);
         padding: $padding--medium;
+
+        @include desktop {
+            padding-inline-start: $gap--xxx-large;
+        }
     }
 }
