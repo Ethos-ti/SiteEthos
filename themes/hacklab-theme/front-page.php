@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="container container--wide">
-    <div class="post-content content content--normal stack stack--large ">
+    <div class="post-content content content--normal stack stack--large -margin-top-large">
         <?php the_content(); ?>
     </div>
 </div>

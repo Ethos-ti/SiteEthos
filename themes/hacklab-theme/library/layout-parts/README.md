@@ -1,21 +1,44 @@
-# Partes do layout (archives e page templates)
+# Partes do layout (`layout parts`)
+
+Essa funcionalidade permite adicionar cabeçalhos, rodapés e sidebars em qualquer página do WordPress usando blocos Gutenberg.
 
 ## Instalação
 
 Certifique que o arquivo `/library/layout-parts/layout-parts.php` está sendo incluído no `functions.php` do tema.
-Importe o arquivo `/library/layout-parts/pods/layout-parts.json` utilizando o plugin [Pods](https://br.wordpress.org/plugins/pods/).
+Importe o arquivo `/library/layout-parts/Pods/layout-parts.json` utilizando o plugin [Pods](https://br.wordpress.org/plugins/pods/).
 
 ## Como usar
 
-### Criando cabeçalhos e rodapés
+### Criando cabeçalhos, rodapés e sidebars
 
-No painel, acesse o menu Partes do layout (disponível apenas para usuários Admin) e adicione um novo. Edite como um post normal, usando blocos Gutenberg.
-Na parte inferior da edição, marque a posição (Cabeçalho ou Rodapé) e em qual página ele será usado (no campo Listagem (archive)).
+No painel, acesse o menu Aparência/Partes do layout (disponível apenas para usuários administradores) e adicione clique em *Adicionar Novo*. Use blocos Gutenberg para montar sua parte do layout.
 
-### Como exibir na archive/page template
+Na parte inferior da edição, marque a posição em que deseja usar o layout, sendo cabeçalho, rodapé ou sidebar.
 
-Na edição do arquivo PHP referente a archive ou o page template, adicione `<?php echo get_layout_archive( 'blog', 'header' ); ?>` alterando os parâmetros da função para atender corretamente à página em questão e a posição
+#### Algumas regras importantes para o funcionamento das partes do layout
 
-Outras duas funções estão disponíveis para exibição dos templates e são específicas para cada posição (Cabeçalho ou Rodapé):
+Sempre inicie o título da parte do layout com a posição como prefixo, por exemplo: *Header Page*.
 
-`<?php echo get_layout_header( 'blog' ); ?>` e `<?php echo get_layout_footer( 'blog' ); ?>`
+Após o prefixo, adicione o nome da página em que essa parte do layout deve ser exibida, continuando o exemplo acima: *Page*.
+
+Seguindo o método de hierarquia de templates do WordPress, temos outras regras que permitem a criação de cabeçalhos específicos, por exemplo:
+
+- Header Page 14
+
+- Header Page Contato
+
+- Header Page Template
+
+- Header Page Template Pagina com Âncoras
+
+- Header Page Template Pagina com Âncoras 14
+
+- Header Page Template Pagina com Âncoras Glossário
+
+### Como exibir a parte do layout nos templates PHP do tema
+
+No arquivo PHP, adicione `<?php echo get_layout_part( 'header' ); ?>`, essa função recebe apenas o parâmetro da posição da parte do layout, podendo ser `header`, `footer` ou `sidebar`.
+
+Outras três funções estão disponíveis para exibição das partes do layout e são específicas para cada posição (cabeçalho, rodapé ou sidebar) e essas não recebem parâmetro:
+
+`<?php echo get_layout_part_header(); ?>`, `<?php echo get_layout_part_footer(); ?>` e `<?php echo get_layout_part_sidebar(); ?>`
