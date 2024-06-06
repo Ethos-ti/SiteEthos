@@ -2,7 +2,7 @@
 get_header();
 global $wp_query;
 
-$post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa'];
+$post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa', 'events'];
 
 if($post_type == 'any'){
     $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'events'];
@@ -12,7 +12,14 @@ if(!is_array($post_type)){
     $post_type = [$post_type];
 }
 
-$terms = get_terms_by_use_menu( 'category', ['iniciativa', 'post', 'publicacao'] );
+foreach ($post_type as $key => $value) {
+    if($value == 'tribe_events'){
+        unset($post_type[$key]);
+        $post_type[] = 'events';
+    }
+}
+
+$terms = get_terms_by_use_menu( 'category', ['iniciativa', 'post', 'publicacao', 'events'] );
 
 $permalink = home_url( '?s=' . get_search_query( true ) );
 $permalink_all = $permalink;
@@ -105,16 +112,16 @@ usort($terms, 'custom_sort');
                                 <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
                                     <?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?>
                                 </option>
-                                <?php foreach( ['iniciativa', 'post', 'publicacao'] as $post_type ) : ?>
+                                <?php foreach( ['iniciativa', 'events', 'post', 'publicacao'] as $post_type ) : ?>
                                     <?php
                                         switch ($post_type) {
                                             case 'iniciativa':
                                                 $label = 'Atuação';
                                             break;
                                             // descomentar e inserir no array da linha 108 o cpt 'events'
-                                            // case 'events':
-                                            //     $label = 'Eventos';
-                                            // break;
+                                            case 'events':
+                                                $label = 'Eventos';
+                                            break;
                                             case 'post':
                                                 $label = 'Novidades';
                                             break;

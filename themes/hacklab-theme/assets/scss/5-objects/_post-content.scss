@@ -78,6 +78,8 @@
 
     & .wp-block-contact-form-7-contact-form-selector form {
 
+        padding-bottom: 2rem;
+
         p {
             margin: auto;
             font-size: $font-size--small;
@@ -90,6 +92,13 @@
                 font-size: $font-size--x-small;
                 font-weight: $font-weight--bold;
                 text-transform: uppercase;
+
+                .warning {
+                    color: $color--warning-pure;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--regular;
+                    float: right;
+                }
             }
         }
 
@@ -117,7 +126,7 @@
 
         .button {
             position: relative;
-            margin: 0 auto $gap--x-large;
+            margin: 0 auto;
             width: fit-content;
 
             input.wpcf7-submit {
@@ -139,8 +148,14 @@
             }
         }
     }
+
     .wpcf7{
         margin: 0px;
+    }
+
+    & .recaptcha {
+        display: flex;
+        justify-content: center;
     }
 
 
