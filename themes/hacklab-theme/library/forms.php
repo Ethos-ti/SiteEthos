@@ -2,6 +2,34 @@
 
 namespace hacklabr;
 
+function sanitize_form_params () {
+    $params = [];
+
+    foreach ($_POST as $key => $value) {
+        if (str_starts_with($key, '_')) {
+            $params[substr($key, 1)] = filter_input(INPUT_POST, $key);
+        }
+    }
+
+    return $params;
+}
+
+function register_form (string $form_id, string $name, array $options) {
+    global $hacklabr_registered_forms;
+
+    if (!empty($hacklabr_registered_forms)) {
+        $hacklabr_registered_forms = [];
+    }
+
+    $hacklabr_registered_forms[$form_id] = [
+        'id' => $form_id,
+        'name' => $name,
+        'options' => $options,
+    ];
+
+    return true;
+}
+
 function render_field (string $name, array $definition, array $context = []) {
     $value = array_key_exists($name, $context) ? $context[$name] : '';
 
@@ -46,10 +74,21 @@ function render_field (string $name, array $definition, array $context = []) {
 <?php
 }
 
-function render_form (array $fields, array $params = []) {
-    foreach ($fields as $field => $definition) {
-        render_field($field, $definition, $params);
-    }
+function render_form (array $form, array $params = []) {
+    $submit_label = $form['submit_label'] ?? __('Submit', 'hacklabr');
+?>
+    <form class="form" id="form:<?= $form['id'] ?>" method="post">
+        <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
+        <div class="form__grid">
+        <?php foreach ($form['fields'] as $field => $definition): ?>
+            <?php render_field($field, $definition, $params); ?>
+        <?php endforeach; ?>
+        </div>
+        <div class="form__buttons">
+            <button class="button button--solid" type="submit"><?= $submit_label ?></button>
+        </div>
+    </form>
+<?php
 }
 
 function validate_field (array $definition, mixed $value, array $context = []) {
