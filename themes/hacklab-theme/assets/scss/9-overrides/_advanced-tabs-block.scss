@@ -13,20 +13,24 @@
         border-bottom: $border-width--small solid $color--primary-light;
         flex-direction: inherit !important;
 
-        .tab-title-text {
-            @extend .tab;
-            font-family: $font-family--heading;
-            font-size: $font-size--x-large;
-            margin-bottom: 0;
-            text-transform: capitalize;
+        .tab-title{
+            align-items: normal;
+            &-text {
+                @extend .tab;
+                font-family: $font-family--heading;
+                font-size: $font-size--x-large;
+                margin-bottom: 0;
+                text-transform: capitalize;
+                padding-bottom: 0;
 
-            @include mobile {
-                font-size: $font-size--medium !important;
-            }
+                @include mobile {
+                    font-size: $font-size--medium !important;
+                }
 
-            @include small {
-                font-size: $font-size--x-small !important;
-                line-height: 13.2px !important;
+                @include small {
+                    font-size: $font-size--x-small !important;
+                    line-height: 13.2px !important;
+                }
             }
         }
     }
