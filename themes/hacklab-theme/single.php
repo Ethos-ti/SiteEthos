@@ -50,6 +50,15 @@ $excerpt = !empty( $post->post_excerpt ) ? wp_kses_post( $post->post_excerpt ) :
     <?php the_content() ?>
 </main>
 
-<?php get_template_part('template-parts/content/related-posts') ?>
+<?php
+$current_post = get_the_ID();
+
+$exclude_post = 'Instituto Ethos celebra 25 anos em evento em São Paulo, com debate sobre as desigualdades';
+?>
+
+<?php if ( $current_post != $exclude_post ) : ?>
+    <?php get_template_part('template-parts/content/related-posts') ?>
+<?php endif; ?>
+
 
 <?php get_footer();
