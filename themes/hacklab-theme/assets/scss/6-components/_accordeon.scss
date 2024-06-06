@@ -33,7 +33,7 @@
             right: $padding--medium;
             top: calc(1em + #{2 * $border-width--medium});
             transition: $transition--default;
-            @include arrow('down', calc($border-width--small * 3), $color--primary-dark);
+            @include arrow('down', calc($border-width--small * 5), $color--primary-dark);
         }
     }
 
