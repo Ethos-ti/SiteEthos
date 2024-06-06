@@ -5,19 +5,22 @@
     width: fit-content;
     @media(max-width:$break--desktop){
         margin-top: calc(3*($margin--medium));
+        width: max-content;
     }
 
     &__nav-links {
         display: flex;
         flex-wrap: wrap;
         gap: $gap--medium;
+        @media(max-width:$break--desktop){
+            gap: $gap--small;
+
+        }
     }
 
     &__previous,
     &__next {
         font-size: $font-size--x-large;
-        font-weight: $font-weight--bold;
-        text-decoration: none;
         color: $color--primary-dark;
     }
 
