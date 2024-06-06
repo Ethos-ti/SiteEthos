@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Inventário de componentes
+ * Template Name: Component Inventory
  */
 get_header();
 ?>

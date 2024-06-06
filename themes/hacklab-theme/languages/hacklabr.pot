@@ -1,506 +1,529 @@
+# Copyright (C) 2024 Hacklab
+# This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: hacklabr 1.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-06T19:01:52+00:00\n"
-"PO-Revision-Date: 2024-06-06 16:17-0300\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: pt_BR\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0.1\n"
-"X-Poedit-Basepath: .\n"
+"POT-Creation-Date: 2024-06-06T19:01:52+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: hacklabr\n"
 
 #. Theme Name of the theme
 msgid "hacklabr"
-msgstr "hacklabr"
+msgstr ""
 
 #. Theme URI of the theme
 #. Author URI of the theme
 msgid "https://hacklab.com.br/"
-msgstr "https://hacklab.com.br/"
+msgstr ""
 
 #. Description of the theme
 msgid "Base theme for developing new websites."
-msgstr "Tema base para desenvolvimento de novos sites."
+msgstr ""
 
 #. Author of the theme
 msgid "Hacklab"
-msgstr "Hacklab"
+msgstr ""
 
 #: 404.php:4
 msgid "error"
-msgstr "erro"
+msgstr ""
 
 #: 404.php:8
 msgid "Page not found"
-msgstr "Página não encontrada"
+msgstr ""
 
 #: 404.php:9
 msgid "Return to home page"
-msgstr "Voltar para a página inicial"
+msgstr ""
 
 #. translators: %s: Post title.
 #: comments.php:28
 msgctxt "comments title"
 msgid "One thought on &ldquo;%s&rdquo;"
-msgstr "Um comentário em  &ldquo;%s&rdquo;"
+msgstr ""
 
 #. translators: 1: Number of comments, 2: Post title.
 #: comments.php:32
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "%1$s comentário em &ldquo;%2$s&rdquo;"
-msgstr[1] "%1$s comentários em &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
 
 #: comments.php:61
 msgid "Comment navigation"
-msgstr "Navegação de comentários"
+msgstr ""
 
 #: comments.php:62
 msgid "&larr; Older"
-msgstr "&larr; Mais antigos"
+msgstr ""
 
 #: comments.php:63
 msgid "Newest &rarr;"
-msgstr "Mais novos &rarr;"
+msgstr ""
 
 #: comments.php:68
 msgid "Comments are disabled."
-msgstr "Os comentários estão desativados."
+msgstr ""
 
 #: header-lateral.php:33
 msgid "Toggle menu visibility"
-msgstr "Alternar visibilidade do menu"
+msgstr ""
 
 #: header-lateral.php:58
 msgid "Toggle search form visibility"
-msgstr "Alternar a visibilidade do formulário de pesquisa"
+msgstr ""
 
 #: library/menus.php:6
 msgid "Main menu"
-msgstr "Menu principal"
+msgstr ""
 
 #: library/menus.php:7
 msgid "Social networks"
-msgstr "Redes sociais"
+msgstr ""
 
 #: library/settings.php:13
 msgid "Cover card"
-msgstr "Card cobertura"
+msgstr ""
 
 #: library/settings.php:17
 msgid "Horizontal card"
-msgstr "Card horizontal"
+msgstr ""
 
 #: library/settings.php:21
 msgid "Vertical card"
-msgstr "Card vertical"
+msgstr ""
 
 #. Template Name of the theme
 msgid "Page with anchors"
-msgstr "Página com âncoras"
+msgstr ""
 
 #: page-anchor.php:12
 msgid "Sections"
-msgstr "Seções"
+msgstr ""
 
-#: single.php:30 single.php:35
+#: single.php:30
+#: single.php:35
 msgid "Published by:"
-msgstr "Publicado por:"
+msgstr ""
 
 #. Template Name of the theme
 msgid "Component Inventory"
-msgstr "Inventário de Componentes"
+msgstr ""
 
 #. Template Name of the theme
 msgid "Untitled pagebuilder"
-msgstr "Construtor de páginas sem título"
+msgstr ""
 
 #: template-parts/archive-title.php:3
 msgid "results found"
-msgstr "resultados encontrados"
+msgstr ""
 
 #: template-parts/content/no-post.php:3
-msgid ""
-"Sorry, but nothing matched your search criteria. Please try again with some "
-"different keywords."
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
 msgstr ""
-"Desculpe, mas nada corresponde aos seus critérios de busca. Por favor, tente "
-"novamente com algumas palavras-chave diferentes."
 
 #: template-parts/share-links.php:2
 msgid "Share"
-msgstr "Compartilhar"
+msgstr ""
 
 #: template-parts/site-by-hacklab.php:2
 msgid "website by"
-msgstr "site por"
+msgstr ""
 
 #: template-parts/title/archive-header.php:37
 msgid " Results Found"
-msgstr " Resultados Encontrados"
+msgstr ""
 
 #: template-parts/title/author.php:6
 msgid "Author: %s"
-msgstr "Autor:%s"
+msgstr ""
 
 #: dist/blocks/banner-with-image/editor.js:29
 #: dist/blocks/card-header/editor.js:19
 #: library/blocks/banner-with-image/editor.js:11
 #: library/blocks/card-header/editor.js:11
 msgid "Header content"
-msgstr "Conteúdo do cabeçalho"
+msgstr ""
 
-#: dist/blocks/card-body/editor.js:19 library/blocks/card-body/editor.js:8
+#: dist/blocks/card-body/editor.js:19
+#: library/blocks/card-body/editor.js:8
 msgid "Body content"
-msgstr "Conteúdo do corpo"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:39
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:39
 msgid "Grid columns"
-msgstr "Colunas do grid"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:48
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:48
 msgid "Grid rows"
-msgstr "Linhas do grid"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:57
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:57
 msgid "Grid gap"
-msgstr "Espaçamento do grid"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:65
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:65
 msgid "Hide author"
-msgstr "Ocultar autor"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:73
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:73
 msgid "Hide categories"
-msgstr "Ocultar categorias"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:81
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:81
 msgid "Hide date"
-msgstr "Ocultar data"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:89
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:89
 msgid "Hide excerpt"
-msgstr "Ocultar resumo"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:11
 msgid "Query"
-msgstr "Consulta"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:35
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:35
 msgid "Show children posts?"
-msgstr "Mostar posts filhos?"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:79
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:79
 msgid "Filter posts to not display"
-msgstr "Filtre as postagens para não serem exibidas"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
 msgid "Card model"
-msgstr "Modelo de card"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
 msgctxt "card"
 msgid "Default model"
-msgstr "Modelo padrão"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
 msgid "Card modifier"
-msgstr "Modificador do card"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:5
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:5
 msgid "OR"
-msgstr "OU"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:6
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:6
 msgid "AND"
-msgstr "E"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:9
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:9
 msgid "Compare terms"
-msgstr "Comparar termos"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
 msgid "No post type"
-msgstr "Nenhum tipo de postagem"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:7
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:7
 msgctxt "size"
 msgid "Large"
-msgstr "Grande"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:8
 msgctxt "size"
 msgid "Medium"
-msgstr "Médio"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:9
 msgctxt "size"
 msgid "Small"
-msgstr "Pequeno"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:10
 msgctxt "size"
 msgid "Extra Large"
-msgstr "Muito Grande"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:11
 msgctxt "size"
 msgid "Extra Small"
-msgstr "Muito Pequeno"
+msgstr ""
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:59
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:59
 msgid "Size"
-msgstr "Tamanho"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomy.js:26
 msgid "No taxonomy"
-msgstr "Sem taxonomia"
+msgstr ""
 
-#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:14
+#: dist/blocks/read-more/editor.js:19
+#: library/blocks/read-more/editor.js:14
 msgid "Full text"
-msgstr "Texto completo"
+msgstr ""
 
-#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:34
+#: dist/blocks/read-more/editor.js:19
+#: library/blocks/read-more/editor.js:34
 msgid "Lines shown"
-msgstr "Linhas mostradas"
+msgstr ""
 
-#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
-#: library/blocks/read-more/editor.js:53 library/blocks/read-more/index.js:15
+#: dist/blocks/read-more/editor.js:19
+#: dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53
+#: library/blocks/read-more/index.js:15
 msgid "Read less"
-msgstr "Leia menos"
+msgstr ""
 
-#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
-#: library/blocks/read-more/editor.js:53 library/blocks/read-more/editor.js:71
+#: dist/blocks/read-more/editor.js:19
+#: dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53
+#: library/blocks/read-more/editor.js:71
 #: library/blocks/read-more/index.js:12
 msgid "Read more"
-msgstr "Leia mais"
+msgstr ""
 
 #: dist/js/functionalities/gutenberg.js:29
 msgid "Iconify ID"
-msgstr "Iconify ID"
+msgstr ""
 
 #: library/blocks/banner-with-image/block.json
 msgctxt "block title"
 msgid "Banner with image"
-msgstr "Banner com imagem"
+msgstr ""
 
 #: library/blocks/banner-with-image/block.json
 msgctxt "block description"
 msgid "A banner with image and text side-by-side"
-msgstr "Um banner com imagem e texto lado a lado"
+msgstr ""
 
 #: library/blocks/card-body/block.json
 msgctxt "block title"
 msgid "Card body"
-msgstr "Corpo do card"
+msgstr ""
 
 #: library/blocks/card-body/block.json
 msgctxt "block description"
 msgid "The body of a generic card"
-msgstr "O corpo de um card genérico"
+msgstr ""
 
 #: library/blocks/card-header/block.json
 msgctxt "block title"
 msgid "Card header"
-msgstr "Cabeçalho do card"
+msgstr ""
 
 #: library/blocks/card-header/block.json
 msgctxt "block description"
 msgid "The header of a generic card"
-msgstr "O cabeçalho de um card genérico"
+msgstr ""
 
 #: library/blocks/card/block.json
 msgctxt "block title"
 msgid "Card"
-msgstr "Card"
+msgstr ""
 
 #: library/blocks/card/block.json
 msgctxt "block description"
 msgid "A generic card"
-msgstr "Um card genérico"
+msgstr ""
 
 #: library/blocks/posts-grid/block.json
 msgctxt "block title"
 msgid "Posts grid"
-msgstr "Grid de posts"
+msgstr ""
 
 #: library/blocks/posts-grid/block.json
 msgctxt "block description"
 msgid "Display post cards on a grid"
-msgstr "Exibir cards em um grid"
+msgstr ""
 
 #: library/blocks/read-more/block.json
 msgctxt "block title"
 msgid "Read more"
-msgstr "Leia mais"
+msgstr ""
 
 #: library/blocks/read-more/block.json
 msgctxt "block description"
 msgid "A collapsible text paragraph with 'Read more' button"
-msgstr "Um parágrafo de texto recolhível com o botão \"Leia mais\""
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Primary pure"
-msgstr "Pura primária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Primary light"
-msgstr "Clara primária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Primary dark"
-msgstr "Escura primária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Secondary pure"
-msgstr "Pura secundária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Secondary light"
-msgstr "Clara secundária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Secondary dark"
-msgstr "Escura secundária"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Highlight pure"
-msgstr "Pura destaque"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Highlight light"
-msgstr "Clara destaque"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Highlight dark"
-msgstr "Escura destaque"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Low Pure"
-msgstr "Pura baixa"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Low light"
-msgstr "Clara baixa"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Low dark"
-msgstr "Escura baixa"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "High pure"
-msgstr "Pura alta"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "High light"
-msgstr "Clara alta"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "High dark"
-msgstr "Escura alta"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Warning pure"
-msgstr "Pura aviso"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Warning light"
-msgstr "Clara aviso"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Warning dark"
-msgstr "Escura aviso"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Helper pure"
-msgstr "Pura ajuda"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Helper light"
-msgstr "Clara ajuda"
+msgstr ""
 
 #: theme.json
 msgctxt "Color name"
 msgid "Helper dark"
-msgstr "Escura ajuda"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Huge"
-msgstr "Enorme"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Extra big"
-msgstr "Muito grande"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Very large"
-msgstr "Muito grande"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Big"
-msgstr "Grande"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Average"
-msgstr "Médio"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Small"
-msgstr "Pequeno"
+msgstr ""
 
 #: theme.json
 msgctxt "Font size name"
 msgid "Too small"
-msgstr "Muito pequeno"
+msgstr ""
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Primary"
-msgstr "Primária"
+msgstr ""
 
 #: theme.json
 msgctxt "Font family name"
 msgid "System"
-msgstr "Sistema"
+msgstr ""
 
 #: theme.json
 msgctxt "Font family name"
 msgid "Title"
-msgstr "Título"
+msgstr ""

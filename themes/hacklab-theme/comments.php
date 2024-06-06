@@ -65,7 +65,7 @@ if ( post_password_required() )
         <?php endif; // Check for comment navigation ?>
 
         <?php if ( ! comments_open() && get_comments_number() ) : ?>
-        <p class="no-comments"><?php _e( 'Os comentários estão desabilitados.' , 'hacklabr' ); ?></p>
+        <p class="no-comments"><?php _e( 'Comments are disabled.' , 'hacklabr' ); ?></p>
         <?php endif; ?>
 
     <?php endif; // have_comments() ?>
