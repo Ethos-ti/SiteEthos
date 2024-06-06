@@ -2,7 +2,7 @@
 
 .hacklabr-posts-grid-block {
     display: grid;
-    gap: $gap--medium;
+    gap: $gap--large !important;
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     width: 100%;
 

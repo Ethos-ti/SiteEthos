@@ -11,7 +11,7 @@
     &__body {
         @include stack($gap--medium);
         background-color: $color--high-light;
-        border-radius: 0 0 $border-radius--round $border-radius--round;
+        border-radius: 0 0 $border-radius--pilled $border-radius--pilled;
         padding: $padding--medium $padding--large $padding--large;
     }
 }

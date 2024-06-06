@@ -15,6 +15,7 @@
 
         .tab-title{
             align-items: normal !important;
+
             &-text {
                 @extend .tab;
                 font-family: $font-family--heading;
