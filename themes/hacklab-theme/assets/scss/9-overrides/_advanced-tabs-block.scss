@@ -14,7 +14,7 @@
         flex-direction: inherit !important;
 
         .tab-title{
-            align-items: normal;
+            align-items: normal !important;
             &-text {
                 @extend .tab;
                 font-family: $font-family--heading;
