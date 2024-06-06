@@ -1,6 +1,7 @@
 .wp-block-button {
     a {
         @extend .button;
+        padding: $padding--small $padding--large !important;
     }
 
 
