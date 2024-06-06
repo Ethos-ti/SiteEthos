@@ -29,3 +29,14 @@ document.addEventListener('alpine:init', () => {
         ':id': () => $data.$id('tabs', `panel-${tab}`),
     }));
 });
+
+document.addEventListener('alpine:init', () => {
+    // ...
+    document.querySelectorAll('.tabs__header').forEach((tabsHeader) => {
+        window.setTimeout(() => {
+            tabsHeader.querySelectorAll('.tab--active').forEach((activeTab) => {
+                tabsHeader.scrollLeft = Math.max(activeTab.offsetLeft - 10, 0);
+            });
+        }, 100);
+    });
+});
