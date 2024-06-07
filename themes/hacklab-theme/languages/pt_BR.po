@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-06T19:01:52+00:00\n"
-"PO-Revision-Date: 2024-06-06 16:17-0300\n"
+"POT-Creation-Date: 2024-06-07T01:43:17+00:00\n"
+"PO-Revision-Date: 2024-06-06 22:45-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -109,9 +109,13 @@ msgstr "Página com âncoras"
 msgid "Sections"
 msgstr "Seções"
 
-#: single.php:30 single.php:35
-msgid "Published by:"
-msgstr "Publicado por:"
+#: single.php:30
+msgid "Published in "
+msgstr "Publicado em "
+
+#: single.php:35
+msgid "Published by "
+msgstr "Publicado por "
 
 #. Template Name of the theme
 msgid "Component Inventory"
