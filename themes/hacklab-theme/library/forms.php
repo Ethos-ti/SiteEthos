@@ -5,6 +5,10 @@ namespace hacklabr;
 function sanitize_form_params () {
     $params = [];
 
+    if (empty($_POST['__hacklabr_form'])) {
+        return $params;
+    }
+
     foreach ($_POST as $key => $value) {
         if (str_starts_with($key, '_')) {
             $params[substr($key, 1)] = filter_input(INPUT_POST, $key);
@@ -14,11 +18,15 @@ function sanitize_form_params () {
     return $params;
 }
 
-function register_form (string $form_id, string $name, array $options) {
+function register_form (string $form_id, string $name, array $options = []) {
     global $hacklabr_registered_forms;
 
     if (!empty($hacklabr_registered_forms)) {
         $hacklabr_registered_forms = [];
+    }
+
+    if (empty($options['get_params'])) {
+        $options['get_params'] = 'hacklabr\\sanitize_form_params';
     }
 
     $hacklabr_registered_forms[$form_id] = [
@@ -74,13 +82,14 @@ function render_field (string $name, array $definition, array $context = []) {
 <?php
 }
 
-function render_form (array $form, array $params = []) {
-    $submit_label = $form['submit_label'] ?? __('Submit', 'hacklabr');
+function render_form (array $form, array $params = [], string $class = 'form') {
+    $form_options = $form['options'];
+    $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 ?>
-    <form class="form" id="form:<?= $form['id'] ?>" method="post">
+    <form class="<?= $class ?>" id="form:<?= $form['id'] ?>" method="post">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
         <div class="form__grid">
-        <?php foreach ($form['fields'] as $field => $definition): ?>
+        <?php foreach ($form_options['fields'] as $field => $definition): ?>
             <?php render_field($field, $definition, $params); ?>
         <?php endforeach; ?>
         </div>

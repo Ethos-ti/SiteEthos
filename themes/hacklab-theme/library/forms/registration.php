@@ -44,12 +44,14 @@ function register_registration_form () {
             'class' => '-colspan-12',
             'label' => 'Inscrição estadual',
             'placeholder' => 'Insira a inscrição estadual',
+            'required' => false,
         ],
         'inscricao_municipal' => [
             'type' => 'text',
             'class' => '-colspan-12',
             'label' => 'Inscrição municipal',
             'placeholder' => 'Insira a inscrição municipal',
+            'required' => false,
         ],
         'logomarca' => [
             'type' => 'file',
@@ -57,6 +59,7 @@ function register_registration_form () {
             'label' => 'Logomarca da empresa',
             'accept' => 'image/*',
             'hint' => 'A imagem deve estar no tamanho de 164 x 164 pixels',
+            'required' => false,
         ],
         'website' => [
             'type' => 'url',
@@ -77,6 +80,7 @@ function register_registration_form () {
             'class' => '-colspan-12',
             'label' => 'Porte',
             'options' => [],
+            'required' => false,
         ],
         'end_logradouro' => [
             'type' => 'text',
@@ -96,6 +100,7 @@ function register_registration_form () {
             'class' => '-colspan-6',
             'label' => 'Complemento',
             'placeholder' => 'Insira o complemento',
+            'required' => false,
         ],
         'end_bairro' => [
             'type' => 'text',

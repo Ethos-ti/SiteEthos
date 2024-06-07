@@ -11,6 +11,9 @@ function get_blocks_list () {
         'card-body' => null,
         'card-header' => null,
         'download-image' => null,
+        'form' => [
+            'render_callback' => 'hacklabr\\render_form_callback',
+        ],
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],

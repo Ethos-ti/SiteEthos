@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/form",
+    "title": "Form",
+    "description": "Render a code-driven form",
+    "category": "theme",
+    "icon": "forms",
+    "supports": {
+        "align": ["center", "wide", "full"],
+        "html": false
+    },
+    "attributes": {
+        "formId": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/form/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/form/editor.css"],
+    "script": ["file:../../../dist/blocks/form/index.js"]
+}

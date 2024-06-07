@@ -15,6 +15,12 @@ class API {
             'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
         ]);
 
+        register_rest_route('hacklabr/v2', '/forms', [
+            'methods' => 'GET',
+            'callback' => 'hacklabr\API::rest_forms_callback',
+            'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
+        ]);
+
         register_rest_route('hacklabr/v2', '/post_types', [
             'methods' => 'GET',
             'callback' => 'hacklabr\API::rest_post_types_callback',
@@ -76,6 +82,23 @@ class API {
         ];
 
         return new \WP_REST_Response($response, 200);
+    }
+
+    static function rest_forms_callback () {
+        global $hacklabr_registered_forms;
+
+        $response = [];
+
+        if (!empty($hacklabr_registered_forms)) {
+            foreach ($hacklabr_registered_forms as $form_id => $form) {
+                $response[$form_id] = [
+                    'slug' => $form_id,
+                    'label' => $form['name'],
+                ];
+            }
+        }
+
+        return new \WP_REST_Response((object) $response, 200);
     }
 
     static function rest_post_types_callback () {
