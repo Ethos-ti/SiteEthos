@@ -99,6 +99,14 @@
                 height: 148px;
             }
         }
+        .post-card__image>a>.placeholder{
+            object-fit: none;
+            background-color: #dbdbdb;
+            @media(max-width:$break--desktop){
+                width: 104px;
+                height: 148px;
+            }
+        }
         .post-card__content{
             @media(max-width:$break--desktop){
                 margin-top: 0;

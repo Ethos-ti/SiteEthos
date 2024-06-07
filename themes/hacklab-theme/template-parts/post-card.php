@@ -22,8 +22,9 @@ $categories = get_the_category();
         <a href="<?php the_permalink();?>">
             <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail($image_size); ?>
+                <div>
             <?php else: ?>
-                <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/placeholder-ethos.png" alt="">
+                <img class="placeholder" src="<?= get_stylesheet_directory_uri() ?>/assets/images/placeholder-ethos.png" alt="">
             <?php endif; ?>
         </a>
     </header>
