@@ -15,8 +15,10 @@
     }
 
     &__label {
+        font-size: $font-size--x-small;
         font-weight: bold;
         order: 1;
+        text-transform: uppercase;
     }
 
     &__required {
