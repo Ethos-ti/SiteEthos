@@ -2,15 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-07T01:43:17+00:00\n"
-"PO-Revision-Date: 2024-06-06 22:45-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-06-07T01:43:17+00:00\n"
+"PO-Revision-Date: 2024-06-06 22:45-0300\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: hacklabr\n"
 "X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: .\n"
 
@@ -130,12 +131,8 @@ msgid "results found"
 msgstr "resultados encontrados"
 
 #: template-parts/content/no-post.php:3
-msgid ""
-"Sorry, but nothing matched your search criteria. Please try again with some "
-"different keywords."
-msgstr ""
-"Desculpe, mas nada corresponde aos seus critérios de busca. Por favor, tente "
-"novamente com algumas palavras-chave diferentes."
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Desculpe, mas nada corresponde aos seus critérios de busca. Por favor, tente novamente com algumas palavras-chave diferentes."
 
 #: template-parts/share-links.php:2
 msgid "Share"
@@ -152,147 +149,6 @@ msgstr " Resultados Encontrados"
 #: template-parts/title/author.php:6
 msgid "Author: %s"
 msgstr "Autor:%s"
-
-#: dist/blocks/banner-with-image/editor.js:29
-#: dist/blocks/card-header/editor.js:19
-#: library/blocks/banner-with-image/editor.js:11
-#: library/blocks/card-header/editor.js:11
-msgid "Header content"
-msgstr "Conteúdo do cabeçalho"
-
-#: dist/blocks/card-body/editor.js:19 library/blocks/card-body/editor.js:8
-msgid "Body content"
-msgstr "Conteúdo do corpo"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:39
-msgid "Grid columns"
-msgstr "Colunas do grid"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:48
-msgid "Grid rows"
-msgstr "Linhas do grid"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:57
-msgid "Grid gap"
-msgstr "Espaçamento do grid"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:65
-msgid "Hide author"
-msgstr "Ocultar autor"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:73
-msgid "Hide categories"
-msgstr "Ocultar categorias"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:81
-msgid "Hide date"
-msgstr "Ocultar data"
-
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:89
-msgid "Hide excerpt"
-msgstr "Ocultar resumo"
-
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
-msgid "Query"
-msgstr "Consulta"
-
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:35
-msgid "Show children posts?"
-msgstr "Mostar posts filhos?"
-
-#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:79
-msgid "Filter posts to not display"
-msgstr "Filtre as postagens para não serem exibidas"
-
-#: dist/blocks/posts-grid/editor.js:41
-#: library/blocks/shared/SelectCardModel.js:21
-msgid "Card model"
-msgstr "Modelo de card"
-
-#: dist/blocks/posts-grid/editor.js:41
-#: library/blocks/shared/SelectCardModel.js:26
-msgctxt "card"
-msgid "Default model"
-msgstr "Modelo padrão"
-
-#: dist/blocks/posts-grid/editor.js:52
-#: library/blocks/shared/SelectCardModifier.js:29
-msgid "Card modifier"
-msgstr "Modificador do card"
-
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:5
-msgid "OR"
-msgstr "OU"
-
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:6
-msgid "AND"
-msgstr "E"
-
-#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:9
-msgid "Compare terms"
-msgstr "Comparar termos"
-
-#: dist/blocks/posts-grid/editor.js:74
-#: library/blocks/shared/SelectPostType.js:26
-msgid "No post type"
-msgstr "Nenhum tipo de postagem"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:7
-msgctxt "size"
-msgid "Large"
-msgstr "Grande"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
-msgctxt "size"
-msgid "Medium"
-msgstr "Médio"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
-msgctxt "size"
-msgid "Small"
-msgstr "Pequeno"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
-msgctxt "size"
-msgid "Extra Large"
-msgstr "Muito Grande"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
-msgctxt "size"
-msgid "Extra Small"
-msgstr "Muito Pequeno"
-
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:59
-msgid "Size"
-msgstr "Tamanho"
-
-#: dist/blocks/posts-grid/editor.js:96
-#: library/blocks/shared/SelectTaxonomy.js:26
-msgid "No taxonomy"
-msgstr "Sem taxonomia"
-
-#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:14
-msgid "Full text"
-msgstr "Texto completo"
-
-#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:34
-msgid "Lines shown"
-msgstr "Linhas mostradas"
-
-#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
-#: library/blocks/read-more/editor.js:53 library/blocks/read-more/index.js:15
-msgid "Read less"
-msgstr "Leia menos"
-
-#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
-#: library/blocks/read-more/editor.js:53 library/blocks/read-more/editor.js:71
-#: library/blocks/read-more/index.js:12
-msgid "Read more"
-msgstr "Leia mais"
-
-#: dist/js/functionalities/gutenberg.js:29
-msgid "Iconify ID"
-msgstr "Iconify ID"
 
 #: library/blocks/banner-with-image/block.json
 msgctxt "block title"

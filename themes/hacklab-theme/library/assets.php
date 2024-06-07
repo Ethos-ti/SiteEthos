@@ -38,10 +38,21 @@ class Assets {
 	public function enqueue_scripts() {
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_javascripts' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_javascripts' ] );
-
         add_action( 'wp_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
         add_action( 'admin_enqueue_scripts', [ $this, 'add_externalized_dependencies' ], 11 );
+        add_action( 'wp_enqueue_scripts', [ $this, 'localize_scripts' ], 12 );
+        add_action( 'admin_enqueue_scripts', [ $this, 'localize_scripts' ], 12 );
 	}
+
+    public function localize_scripts () {
+        $js_files = $this->get_js_files();
+
+        $language_path = get_stylesheet_directory() . '/languages';
+
+        foreach ( $js_files as $handle => $data ) {
+            wp_set_script_translations( $handle, 'hacklabr', $language_path );
+        }
+    }
 
     /**
 	 * Registers or enqueues stylesheets.
