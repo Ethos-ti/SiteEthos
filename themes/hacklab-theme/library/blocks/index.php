@@ -58,4 +58,4 @@ function localize_block_scripts () {
 }
 
 add_action('wp_enqueue_scripts', 'hacklabr\\localize_block_scripts', 12);
-add_action('_enqueue_scripts', 'hacklabr\\localize_block_scripts', 12);
+add_action('admin_enqueue_scripts', 'hacklabr\\localize_block_scripts', 12);
