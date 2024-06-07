@@ -1,20 +1,3 @@
-.form-field {
-
-    & > * {
-        display: block;
-    }
-
-    &:has(.checkbox, .radio) {
-        align-items: center;
-        display: flex;
-        gap: $gap--small;
-    }
-
-    &__label {
-        order: 1;
-    }
-}
-
 .text-input, .select {
     background-color: $color--high-pure;
     border: $border-width--small solid $color--high-dark;

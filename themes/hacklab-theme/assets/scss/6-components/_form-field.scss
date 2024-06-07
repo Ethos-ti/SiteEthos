@@ -1,0 +1,25 @@
+.form-field {
+
+    & > * {
+        display: block;
+    }
+
+    &:has(.checkbox, .radio) {
+        align-items: center;
+        display: flex;
+        gap: $gap--small;
+    }
+
+    &__input {
+        width: 100%;
+    }
+
+    &__label {
+        font-weight: bold;
+        order: 1;
+    }
+
+    &__required {
+        color: $color--warning-pure;
+    }
+}
