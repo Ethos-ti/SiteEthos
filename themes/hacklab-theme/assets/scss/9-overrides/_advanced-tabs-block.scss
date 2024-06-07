@@ -5,6 +5,16 @@
     .tabs-container .tabs-nav {
         width: 100%;
         overflow: auto;
+
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
     }
 
     .tabs-titles {
@@ -13,7 +23,7 @@
         border-bottom: $border-width--small solid $color--primary-light;
         flex-direction: inherit !important;
 
-        .tab-title{
+        .tab-title {
             align-items: normal !important;
 
             &-text {
@@ -43,13 +53,13 @@
             margin: $margin--medium 0;
         }
 
-        .wp-block-columns>.wp-block-column>h2{
+        .wp-block-columns>.wp-block-column>h2 {
 
-            @include mobile{
+            @include mobile {
                 font-size: $font-size--small !important;
             }
 
-            @include small{
+            @include small {
                 font-size: $font-size--small !important;
             }
 
