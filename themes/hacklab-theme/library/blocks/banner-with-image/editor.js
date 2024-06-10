@@ -22,10 +22,10 @@ function Edit ({ attributes, setAttributes }) {
 
     return <>
         <InspectorControls>
-            <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout')}>
+            <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout', 'hacklabr')}>
                 <PanelRow>
                     <SelectImage
-                        label={__('Image')}
+                        label={__('Image', 'hacklabr')}
                         value={image}
                         onChange={onImageChange}
                     />

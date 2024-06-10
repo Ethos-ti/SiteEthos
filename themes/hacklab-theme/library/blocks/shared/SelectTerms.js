@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 import { useRestApi } from './hooks';
 import { EMPTY_ARR } from './utils';
 
-export function SelectTerms ({ label = __('Terms'), taxonomy, value, onChange }) {
+export function SelectTerms ({ label = __('Terms', 'hacklabr'), taxonomy, value, onChange }) {
     const [search, setSearch] = useState('');
     const setDebouncedSearch = useDebounce(setSearch, 500);
 
