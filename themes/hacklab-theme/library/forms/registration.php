@@ -3,7 +3,51 @@
 namespace hacklabr;
 
 function register_registration_form () {
+	$states_options = [
+		'AC' => 'Acre',
+		'AL' => 'Alagoas',
+		'AP' => 'Amapá',
+		'AM' => 'Amazonas',
+		'BA' => 'Bahia',
+		'CE' => 'Ceará',
+		'DF' => 'Distrito Federal',
+		'ES' => 'Espírito Santo',
+		'GO' => 'Goiás',
+		'MA' => 'Maranhão',
+		'MT' => 'Mato Grosso',
+		'MS' => 'Mato Grosso do Sul',
+		'MG' => 'Minas Gerais',
+		'PA' => 'Pará',
+		'PB' => 'Paraíba',
+		'PR' => 'Paraná',
+		'PE' => 'Pernambuco',
+		'PI' => 'Piauí',
+		'RJ' => 'Rio de Janeiro',
+		'RN' => 'Rio Grande do Norte',
+		'RS' => 'Rio Grande do Sul',
+		'RO' => 'Rondônia',
+		'RR' => 'Roraima',
+		'SC' => 'Santa Catarina',
+		'SP' => 'São Paulo',
+		'SE' => 'Sergipe',
+		'TO' => 'Tocantins',
+	];
+
     $fields = [
+        'cnpj' => [
+            'type' => 'masked',
+            'class' => '-colspan-12',
+            'label' => 'CNPJ',
+            'mask' => '00.000.000/0000-00',
+            'placeholder' => 'Insira o CNPJ da empresa',
+            'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || strlen($value) !== 14) {
+                    return 'CNPJ inválido';
+                }
+                return true;
+            },
+        ],
         'razao_social' => [
             'type' => 'text',
             'class' => '-colspan-12',
@@ -26,11 +70,18 @@ function register_registration_form () {
             'required' => true,
         ],
         'cnae' => [
-            'type' => 'text',
+            'type' => 'masked',
             'class' => '-colspan-12',
             'label' => 'CNAE',
+            'mask' => '0000-0/00',
             'placeholder' => 'Insira o CNAE da empresa',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || strlen($value) !== 7) {
+                    return 'CNAE inválido';
+                }
+                return true;
+            },
         ],
         'faturamento_anual' => [
             'type' => 'select',
@@ -120,8 +171,14 @@ function register_registration_form () {
             'type' => 'select',
             'class' => '-colspan-6',
             'label' => 'Estado',
-            'options' => [],
+            'options' => $states_options,
             'required' => true,
+            'validate' => function ($value, $context) use ($states_options) {
+                if (!array_key_exists($value, $states_options)) {
+                    return 'Estado inválido';
+                }
+                return true;
+            },
         ],
         'end_cep' => [
             'type' => 'masked',
@@ -130,6 +187,12 @@ function register_registration_form () {
             'mask' => '00000-000',
             'placeholder' => 'Insira o CEP',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || strlen($value) !== 8) {
+                    return 'CEP inválido';
+                }
+                return true;
+            },
         ],
         'termos_de_uso' => [
             'type' => 'checkbox',
