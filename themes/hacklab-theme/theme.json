@@ -207,12 +207,12 @@
                     "size": "4rem"
                 },
                 {
-                    "name": "Extra Extra grande",
+                    "name": "Extra Extra big",
                     "slug": "xxx-large",
                     "size": "3rem"
                 },
                 {
-                    "name": "Extra grande",
+                    "name": "Extra big",
                     "slug": "xx-large",
                     "size": "2rem"
                 },
