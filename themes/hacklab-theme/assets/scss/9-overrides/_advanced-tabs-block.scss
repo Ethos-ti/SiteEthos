@@ -26,6 +26,34 @@
         .tab-title {
             align-items: normal !important;
 
+            @include small{
+               align-items: center !important;
+            }
+
+            @include mobile{
+               align-items: center !important;
+            }
+
+            &-text{
+                @include small{
+                    text-wrap: wrap;
+                }
+
+                @include mobile{
+                    text-wrap: wrap;
+                }
+            }
+
+            &-media{
+                @include small{
+                    width: 20px;
+                }
+
+                @include mobile{
+                    width: 20px;
+                }
+            }
+
             &-text {
                 @extend .tab;
                 font-family: $font-family--heading;
