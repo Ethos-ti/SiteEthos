@@ -24,4 +24,15 @@
             font-size: $font-size--medium;
         }
     }
+
+    & .hacklabr-posts-grid-block > .post-card{
+        &--vertical-thumbnail{
+
+            .post-card__image > a > img{
+                width: 6.563rem;
+                height: 8.938;
+            }
+        }
+
+    }
 }
