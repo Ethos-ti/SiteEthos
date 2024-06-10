@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "POT-Creation-Date: 2024-06-10T14:16:39+00:00\n"
-"PO-Revision-Date: 2024-06-10 11:31-0300\n"
+"PO-Revision-Date: 2024-06-10 11:40-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -207,7 +207,7 @@ msgstr ""
 
 #: template-parts/content/related-posts.php:30
 msgid "Read too: "
-msgstr "Leia mais "
+msgstr "Leia também: "
 
 #: template-parts/content/timeline.php:23
 msgid "Timeline"
