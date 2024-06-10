@@ -18,7 +18,7 @@ function getOptions (taxonomies) {
         .sort(sortByString('label'));
 }
 
-export function SelectTaxonomy ({ label = __('Taxonomy'), postType, required = false, value, onChange }) {
+export function SelectTaxonomy ({ label = __('Taxonomy', 'hacklabr'), postType, required = false, value, onChange }) {
     const { data: taxonomies } = useRestApi(`hacklabr/v2/taxonomies/${postType}`);
 
     const options = useMemo(() => {

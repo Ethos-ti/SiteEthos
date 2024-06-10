@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-07T01:43:17+00:00\n"
-"PO-Revision-Date: 2024-06-07 19:19-0300\n"
+"POT-Creation-Date: 2024-06-10T12:35:29+00:00\n"
+"PO-Revision-Date: 2024-06-10 09:36-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -12,6 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.0.1\n"
+"X-Domain: hacklabr\n"
 "X-Poedit-Basepath: .\n"
 
 #. Theme Name of the theme
@@ -70,8 +71,8 @@ msgid "Newest &rarr;"
 msgstr "Mais novos &rarr;"
 
 #: comments.php:68
-msgid "Comments are disabled."
-msgstr "Os comentários estão desativados."
+msgid "Comments are disabled"
+msgstr "Os comentários estão desativados"
 
 #: header-lateral.php:33
 msgid "Toggle menu visibility"
@@ -160,9 +161,47 @@ msgstr "Autor:%s"
 msgid "Header content"
 msgstr "Conteúdo do cabeçalho"
 
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/card-header/editor.js:19 dist/blocks/posts-grid/editor.js:19
+#: library/blocks/banner-with-image/editor.js:25
+#: library/blocks/card-header/editor.js:38
+#: library/blocks/posts-grid/editor.js:22
+msgid "Layout"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29
+#: library/blocks/banner-with-image/editor.js:28
+#: library/blocks/shared/SelectImage.js:32
+msgid "Image"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 library/blocks/shared/SelectImage.js:15
+#, fuzzy
+#| msgctxt "block title"
+#| msgid "Banner with image"
+msgid "Change image"
+msgstr "Banner com imagem"
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 library/blocks/shared/SelectImage.js:18
+msgid "Remove image"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 library/blocks/shared/SelectImage.js:24
+msgid "Select image"
+msgstr ""
+
 #: dist/blocks/card-body/editor.js:19 library/blocks/card-body/editor.js:8
 msgid "Body content"
 msgstr "Conteúdo do corpo"
+
+#: dist/blocks/card-header/editor.js:19 library/blocks/card-header/editor.js:41
+msgid "Background image"
+msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:39
 msgid "Grid columns"
@@ -233,6 +272,13 @@ msgid "Compare terms"
 msgstr "Comparar termos"
 
 #: dist/blocks/posts-grid/editor.js:74
+#: library/blocks/shared/SelectPostType.js:21
+#, fuzzy
+#| msgid "No post type"
+msgid "Post type"
+msgstr "Nenhum tipo de postagem"
+
+#: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
 msgid "No post type"
 msgstr "Nenhum tipo de postagem"
@@ -267,9 +313,20 @@ msgid "Size"
 msgstr "Tamanho"
 
 #: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomy.js:21
+#, fuzzy
+#| msgid "No taxonomy"
+msgid "Taxonomy"
+msgstr "Sem taxonomia"
+
+#: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomy.js:26
 msgid "No taxonomy"
 msgstr "Sem taxonomia"
+
+#: dist/blocks/posts-grid/editor.js:107 library/blocks/shared/SelectTerms.js:9
+msgid "Terms"
+msgstr ""
 
 #: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:14
 msgid "Full text"
