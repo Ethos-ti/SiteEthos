@@ -12,16 +12,16 @@ function ImagePreview ({ image, label, open, resetImage }) {
                 <VStack>
                     <img alt={image.alt} height={image.height} src={image.url} width={image.width} tabIndex={0} onClick={open}/>
                     <Button variant="secondary" onClick={open}>
-                        {__('Change image')}
+                        {__('Change image', 'hacklabr')}
                     </Button>
                     <Button variant="secondary" isDestructive={true} onClick={resetImage}>
-                        {__('Remove image')}
+                        {__('Remove image', 'hacklabr')}
                     </Button>
                 </VStack>
             ) : (
-                <VStack>
+                <VStack>,
                     <Button variant="primary" onClick={open}>
-                        {__('Select image')}
+                        {__('Select image', 'hacklabr')}
                     </Button>
                 </VStack>
             )}
@@ -29,7 +29,7 @@ function ImagePreview ({ image, label, open, resetImage }) {
     )
 }
 
-export function SelectImage ({ label = __('Image'), value, onChange }) {
+export function SelectImage ({ label = __('Image', 'hacklabr'), value, onChange }) {
     const resetImage = () => onChange(RESET_IMAGE);
 
     return (

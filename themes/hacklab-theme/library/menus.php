@@ -3,8 +3,8 @@
 namespace hacklabr;
 
 function register_menus() {
-    register_nav_menu( 'main-menu', __( 'Menu Principal', 'hacklabr' ) );
-    register_nav_menu( 'social-networks', __( 'Redes Sociais', 'hacklabr' ) );
+    register_nav_menu( 'main-menu', __( 'Main menu', 'hacklabr' ) );
+    register_nav_menu( 'social-networks', __( 'Social networks', 'hacklabr' ) );
 }
 
 add_action( 'init', 'hacklabr\\register_menus' );

@@ -59,13 +59,13 @@ if ( post_password_required() )
         ?>
         <nav class="navigation comment-navigation" role="navigation">
             <h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'hacklabr' ); ?></h1>
-            <div class="nav-previous"><?php previous_comments_link( __( '&larr; Mais antigos', 'hacklabr' ) ); ?></div>
-            <div class="nav-next"><?php next_comments_link( __( 'Mais Novos &rarr;', 'hacklabr' ) ); ?></div>
+            <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older', 'hacklabr' ) ); ?></div>
+            <div class="nav-next"><?php next_comments_link( __( 'Newest &rarr;', 'hacklabr' ) ); ?></div>
         </nav><!-- .comment-navigation -->
         <?php endif; // Check for comment navigation ?>
 
         <?php if ( ! comments_open() && get_comments_number() ) : ?>
-        <p class="no-comments"><?php _e( 'Os comentários estão desabilitados.' , 'hacklabr' ); ?></p>
+        <p class="no-comments"><?php _e( 'Comments are disabled' , 'hacklabr' ); ?></p>
         <?php endif; ?>
 
     <?php endif; // have_comments() ?>
