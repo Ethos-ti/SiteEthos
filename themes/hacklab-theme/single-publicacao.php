@@ -7,7 +7,11 @@
 <div class="container container--wide book-detail">
     <aside class="stack">
         <div class="thumbnail thumbnail--vertical">
-            <?php the_post_thumbnail('card-large'); ?>
+            <?php if (has_post_thumbnail()): ?>
+                <?php the_post_thumbnail('card-large'); ?>
+            <?php else: ?>
+                <img class="placeholder" src="<?= get_stylesheet_directory_uri() ?>/assets/images/placeholder-ethos.png" alt="">
+            <?php endif; ?>
         </div>
         <button>
             <?php if ($documento_url) : ?>

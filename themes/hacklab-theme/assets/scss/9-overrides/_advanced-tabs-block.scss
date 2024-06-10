@@ -5,6 +5,16 @@
     .tabs-container .tabs-nav {
         width: 100%;
         overflow: auto;
+
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
+        scrollbar-width: none;
+        /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
     }
 
     .tabs-titles {
@@ -13,20 +23,25 @@
         border-bottom: $border-width--small solid $color--primary-light;
         flex-direction: inherit !important;
 
-        .tab-title-text {
-            @extend .tab;
-            font-family: $font-family--heading;
-            font-size: $font-size--x-large;
-            margin-bottom: 0;
-            text-transform: capitalize;
+        .tab-title {
+            align-items: normal !important;
 
-            @include mobile {
-                font-size: $font-size--medium !important;
-            }
+            &-text {
+                @extend .tab;
+                font-family: $font-family--heading;
+                font-size: $font-size--x-large;
+                margin-bottom: 0;
+                text-transform: capitalize;
+                padding-bottom: 0;
 
-            @include small {
-                font-size: $font-size--x-small !important;
-                line-height: 13.2px !important;
+                @include mobile {
+                    font-size: $font-size--medium !important;
+                }
+
+                @include small {
+                    font-size: $font-size--x-small !important;
+                    line-height: 13.2px !important;
+                }
             }
         }
     }
@@ -38,13 +53,13 @@
             margin: $margin--medium 0;
         }
 
-        .wp-block-columns>.wp-block-column>h2{
+        .wp-block-columns>.wp-block-column>h2 {
 
-            @include mobile{
+            @include mobile {
                 font-size: $font-size--small !important;
             }
 
-            @include small{
+            @include small {
                 font-size: $font-size--small !important;
             }
 

@@ -18,7 +18,7 @@
         flex-direction: column;
         gap: $gap--small;
         justify-content: center;
-        margin-top: $margin--small !important;
+        margin-top: $margin--small/2 !important;
 
         a {
             text-decoration: none;
@@ -94,6 +94,14 @@
         .post-card__image>a>img{
             aspect-ratio: 7 / 10;
             max-width: 270px;
+            @media(max-width:$break--desktop){
+                width: 104px;
+                height: 148px;
+            }
+        }
+        .post-card__image>a>.placeholder{
+            object-fit: none;
+            background-color: #dbdbdb;
             @media(max-width:$break--desktop){
                 width: 104px;
                 height: 148px;

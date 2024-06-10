@@ -11,7 +11,17 @@
     &__body {
         @include stack($gap--medium);
         background-color: $color--high-light;
-        border-radius: 0 0 $border-radius--round $border-radius--round;
+        border-radius: 0 0 $border-radius--pilled $border-radius--pilled;
         padding: $padding--medium $padding--large $padding--large;
+    }
+
+    .post-card__title > a{
+        @include small{
+            font-size: $font-size--medium;
+        }
+
+        @include mobile{
+            font-size: $font-size--medium;
+        }
     }
 }

@@ -13,6 +13,9 @@
         }
         .tab--active{
             border-bottom: 8px solid $color--primary-pure;
+            @media(max-width:$break--small){
+                padding-left: $padding--small;
+            }
         }
     }
 
