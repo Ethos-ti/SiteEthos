@@ -42,6 +42,22 @@ function get_custom_excerpt( $post_id = '', $limit = 30 ) {
 
 }
 
+function concat_class_list ($classes = []) {
+    $filtered_classes = [];
+
+    foreach ($classes as $class) {
+        if (!empty($class)) {
+            if (is_array($class)) {
+                $filtered_classes[] = concat_class_list($class);
+            } else {
+                $filtered_classes[] = $class;
+            }
+        }
+    }
+
+    return implode(' ', $filtered_classes);
+}
+
 /**
  * Rename the defaults taxonomies
  */

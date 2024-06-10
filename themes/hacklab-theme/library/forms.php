@@ -2,6 +2,26 @@
 
 namespace hacklabr;
 
+function process_form_data () {
+    global $hacklabr_registered_forms;
+
+    if (empty($hacklabr_registered_forms) || empty($_POST['__hacklabr_form'])) {
+        return;
+    }
+
+    $form_id = $_POST['__hacklabr_form'];
+
+    if (!empty($hacklabr_registered_forms[$form_id])) {
+        $form = $hacklabr_registered_forms[$form_id];
+        $form_options = $form['options'];
+        $params = call_user_func($form_options['get_params']);
+
+        do_action('hacklabr\\form_action', $form_id, $form_options, $params);
+    }
+}
+
+add_action('template_redirect', 'hacklabr\\process_form_data');
+
 function sanitize_form_params () {
     $params = [];
 
@@ -51,7 +71,12 @@ function render_field (string $name, array $definition, array $context = []) {
     }
 ?>
 
-    <div class="form-field <?= $definition['class'] ?><?= ($validation === true) ? '' : ' form-field--invalid' ?>">
+    <div class="<?= concat_class_list([
+        'form-field',
+        'fom-field--' . $definition['type'],
+        $definition['class'],
+        ($validation === true) ? null : 'form-field--invalid'
+    ]) ?>">
         <?php if ($definition['type'] !== 'static'): ?>
             <label class="form-field__label" for="<?= $name ?>">
                 <?= $definition['label'] ?>
@@ -100,7 +125,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
 <?php
 }
 
-function validate_field (array $definition, mixed $value, array $context = []) {
+function validate_field (array $definition, $value, array $context = []) {
     if (isset($definition['editable']) && $definition['editable'] !== true) {
         return true;
     } elseif ($definition['required'] && empty($value)) {
@@ -127,7 +152,7 @@ function validate_form (array $fields, array $params = []) {
         }
     }
 
-    if (empty($errors)) {
+    if (!empty($errors)) {
         return $errors;
     } else {
         return true;

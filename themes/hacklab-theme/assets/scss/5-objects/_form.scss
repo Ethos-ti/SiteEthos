@@ -14,7 +14,7 @@
         cursor: not-allowed;
     }
 
-    &--error {
+    &--error, .form-field--invalid & {
         background-color: color-mix(in lab, $color--high-pure 75%, $color--warning-light);
         border-color: $color--warning-light;
     }

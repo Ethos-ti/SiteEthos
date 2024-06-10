@@ -36,6 +36,30 @@ function render_input_field (string $name, $value, array $definition) {
 <?php
 }
 
+function render_masked_field (string $name, $value, array $definition) {
+    $placeholder = $definition['placeholder'] ?? '';
+?>
+    <input
+        class="form-field__input text-input"
+        id="<?= $name ?>__mask"
+        placeholder="<?= $placeholder ?>"
+        type="text"
+        <?= $definition['required'] ? 'required' : '' ?>
+        value="<?= $value ?>"
+        aria-errormessage="<?= $name ?>__error"
+        data-mask="<?= $definition['mask'] ?>"
+        <?= (!empty($definition['disabled'])) ? 'disabled' : '' ?>
+    >
+    <input
+        id="<?= $name ?>"
+        name="_<?= $name ?>"
+        type="hidden"
+        value="<?= $value ?>"
+        <?= (!empty($definition['disabled'])) ? 'disabled' : '' ?>
+    >
+<?php
+}
+
 function render_select_field (string $name, $value, array $definition) {
     $placeholder = $definition['placeholder'] ?? __('Select an option', 'hacklabr');
 ?>

@@ -124,9 +124,10 @@ function register_registration_form () {
             'required' => true,
         ],
         'end_cep' => [
-            'type' => 'text',
+            'type' => 'masked',
             'class' => '-colspan-6',
             'label' => 'CEP',
+            'mask' => '00000-000',
             'placeholder' => 'Insira o CEP',
             'required' => true,
         ],
@@ -144,3 +145,14 @@ function register_registration_form () {
     ]);
 }
 add_action('init', 'hacklabr\\register_registration_form');
+
+function validate_registration_form ($form_id, $form, $params) {
+    if ($form_id === 'member-registration-1') {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation === true) {
+
+        }
+    }
+}
+add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);

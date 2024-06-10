@@ -10,6 +10,11 @@
         gap: $gap--small;
     }
 
+    &__error {
+        color: $color--warning-pure;
+        font-size: $font-size--small;
+    }
+
     &__input {
         width: 100%;
     }
@@ -23,5 +28,22 @@
 
     &__required {
         color: $color--warning-pure;
+    }
+
+    &:has(.checkbox, .radio) {
+        align-items: center;
+        display: flex;
+        gap: $gap--small;
+
+        .form-field__label {
+            font-size: $font-size--medium;
+            font-weight: $font-weight--regular;
+            text-transform: unset;
+
+            a {
+                color: $color--primary-pure;
+                text-decoration: none;
+            }
+        }
     }
 }

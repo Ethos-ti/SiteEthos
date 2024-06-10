@@ -4,4 +4,10 @@
         display: grid;
         gap: $gap--medium;
     }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: $gap--huge;
+    }
 }
