@@ -216,3 +216,23 @@
         }
     }
 }
+
+.page-faca-parte-associe-se {
+    .post-content {
+        .card {
+            &__header {
+                border-radius: 0;
+            }
+
+            &__body {
+                border-radius: 0;
+            }
+        }
+
+        .wp-block-hacklabr-card-body {
+            figure {
+                min-width: 24px;
+            }
+        }
+    }
+}
