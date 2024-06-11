@@ -197,7 +197,7 @@ function register_registration_form () {
         'termos_de_uso' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Li e concordo com os <a href="#">termos de uso de dados</a> pelo Instituto Ethos',
+            'label' => 'Li e concordo com os <a href="' . get_privacy_policy_url() . '">termos de uso de dados</a> pelo Instituto Ethos',
             'required' => true,
         ],
     ];
