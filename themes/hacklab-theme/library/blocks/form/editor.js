@@ -1,3 +1,4 @@
+import { useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
 import { Path, Placeholder, SelectControl, SVG } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
@@ -35,20 +36,24 @@ function Edit ({ attributes, setAttributes }) {
 
     const { data: forms } = useRestApi('hacklabr/v2/forms');
 
+    const blockProps = useBlockProps();
+
     const options = useMemo(() => {
         const baseOptions = getOptions(forms);
         return [{ label: __('Select option', 'hacklabr'), value: '' }, ...baseOptions];
     }, [forms]);
 
     return (
-        <Placeholder label={__('Form', 'hacklabr')} icon={Icon} isColumnLayout={true}>
-            <SelectControl
-                label={__('Form', 'hacklabr')}
-                options={options}
-                value={formId}
-                onChange={(formId) => setAttributes({ formId })}
-            />
-        </Placeholder>
+        <div {...blockProps}>
+            <Placeholder label={__('Form', 'hacklabr')} icon={Icon} isColumnLayout={true}>
+                <SelectControl
+                    label={__('Form', 'hacklabr')}
+                    options={options}
+                    value={formId}
+                    onChange={(formId) => setAttributes({ formId })}
+                />
+            </Placeholder>
+        </div>
     )
 }
 
