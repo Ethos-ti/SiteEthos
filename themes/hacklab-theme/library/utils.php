@@ -341,5 +341,14 @@ if ( class_exists( 'WPCaptcha_Functions' ) ) {
 // }
 // add_filter( 'register_post_type_args', 'wp1482371_custom_post_type_args', 20, 2 );
 
-
+function redirect_single_tribe_events_template() {
+	if ( is_singular( 'tribe_events' ) ) {
+		$new_template = locate_template('single-evento.php');
+		if ($new_template) {
+			include($new_template);
+			exit;
+		}
+	}
+}
+add_action( 'template_redirect', 'redirect_single_tribe_events_template' );
 
