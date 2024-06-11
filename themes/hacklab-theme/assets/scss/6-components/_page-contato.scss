@@ -75,7 +75,11 @@
                                         cursor: pointer;
                                     }
                                 }
-
+                                span{
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    margin-right: 7rem;
+                                }
                             }
                             .acept{
                                 p{
