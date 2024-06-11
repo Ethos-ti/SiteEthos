@@ -19,6 +19,12 @@ function render_checkbox_field (string $name, $value, array $definition) {
 <?php
 }
 
+function render_hidden_field (string $name, $value, array $definition = []) {
+?>
+    <input id="<?= $name ?>" name="_<?= $name ?>" type="hidden" value="<?= $value ?>">
+<?php
+}
+
 function render_input_field (string $name, $value, array $definition) {
     $placeholder = $definition['placeholder'] ?? '';
 ?>

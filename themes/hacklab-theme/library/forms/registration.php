@@ -33,7 +33,7 @@ function register_registration_form () {
 		'TO' => 'Tocantins',
 	];
 
-    $fields = [
+    $fields_step1 = [
         'cnpj' => [
             'type' => 'masked',
             'class' => '-colspan-12',
@@ -202,8 +202,97 @@ function register_registration_form () {
         ],
     ];
 
+    $fields_step2 = [
+        'nome_completo' => [
+            'type' => 'text',
+            'class' => '-colspan-12',
+            'label' => 'Nome completo',
+            'placeholder' => 'Insira o nome completo',
+            'required' => true,
+        ],
+        'cpf' => [
+            'type' => 'masked',
+            'class' => '-colspan-12',
+            'label' => 'CPF',
+            'mask' => '000.000.000-00',
+            'placeholder' => 'Insira o CPF do responsável',
+            'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || strlen($value) !== 11) {
+                    return 'CPF inválido';
+                }
+                return true;
+            },
+        ],
+        'cargo' => [
+            'type' => 'text',
+            'class' => '-colspan-12',
+            'label' => 'Cargo',
+            'placeholder' => 'Insira o cargo na empresa',
+            'required' => true,
+        ],
+        'area' => [
+            'type' => 'text',
+            'class' => '-colspan-12',
+            'label' => 'Área',
+            'placeholder' => 'Descreva a área na empresa',
+            'required' => true,
+        ],
+        'email' => [
+            'type' => 'email',
+            'class' => '-colspan-12',
+            'label' => 'Email',
+            'placeholder' => 'Insira o e-mail',
+            'required' => true,
+        ],
+        'celular' => [
+            'type' => 'masked',
+            'class' => '-colspan-12',
+            'label' => 'Celular',
+            'mask' => '(00) 0000-0000|(00) 00000-0000',
+            'placeholder' => 'Insira o número de celular',
+            'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || strlen($value) < 10 || strlen($value) > 11) {
+                    return 'Número de celular inválido';
+                }
+                return true;
+            },
+        ],
+        'celular_is_whatsapp' => [
+            'type' => 'checkbox',
+            'class' => '-colspan-12',
+            'label' => 'Este número também é WhatsApp',
+            'required' => false,
+        ],
+        'telefone' => [
+            'type' => 'masked',
+            'class' => '-colspan-12',
+            'label' => 'Telefone',
+            'mask' => '(00) 0000-0000',
+            'placeholder' => 'Insira o número de telefone',
+            'required' => false,
+            'validate' => function ($value, $context) {
+                if (empty($value)) {
+                    return true;
+                } elseif (!is_numeric($value) || strlen($value) !== 10) {
+                    return 'Número de telefone inválido';
+                }
+                return true;
+            },
+        ],
+    ];
+
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
-        'fields' => $fields,
+        'fields' => $fields_step1,
+        'submit_label' => __('Continue', 'hacklabr'),
+    ]);
+
+    register_form('member-registration-2', __('Member registration - step 2', 'hacklabr'), [
+        'back_label' => __('Back', 'hacklabr'),
+        'back_url' => get_permalink(get_page_by_form('member-registration-1')),
+        'fields' => $fields_step2,
+        'hidden_fields' => array_keys($fields_step1),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 }
@@ -211,6 +300,20 @@ add_action('init', 'hacklabr\\register_registration_form');
 
 function validate_registration_form ($form_id, $form, $params) {
     if ($form_id === 'member-registration-1') {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation === true) {
+            var_dump($params);
+
+            /*
+            $next_page = get_page_by_form('member-registration-2');
+            if (!empty($next_page)) {
+                wp_safe_redirect(get_permalink($next_page));
+                exit;
+            }
+            */
+        }
+    } else if ($form_id === 'member-registration-2') {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation === true) {

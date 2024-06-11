@@ -7,7 +7,8 @@
 
     &__buttons {
         display: flex;
+        gap: $gap--medium;
         justify-content: space-evenly;
-        margin-top: $gap--huge;
+        margin-top: $gap--x-large;
     }
 }
