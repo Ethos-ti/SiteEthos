@@ -1,0 +1,38 @@
+.single-tribe_events{
+    .event-metadada-container{
+        margin-top: $margin--large;
+        width: 100%;
+        background-color: $color--high-light;
+        padding: $padding--large $padding--small;
+        .event-metadada__infos{
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            margin-bottom: $margin--medium;
+            &__date,
+            &__time,
+            &__workload,
+            &__investment{
+                :first-child{
+                    border-bottom: $border-width--small solid $color--primary-light;
+                    padding-bottom: $padding--x-small;
+                }
+                :last-child{
+                    padding-top: $padding--x-small;
+                }
+            }
+        }
+        .event-metadada__location{
+            text-align: center;
+            &__local{
+                :first-child{
+                    border-bottom: $border-width--small solid $color--primary-light;
+                    padding-bottom: $padding--x-small;
+                }
+                :last-child{
+                    padding-top: $padding--x-small;
+                }
+            }
+        }
+    }
+}
