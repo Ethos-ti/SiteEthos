@@ -15,6 +15,11 @@
         &__title {
             @extend .accordeon__title;
             background-color: transparent !important;
+
+            @include mobile {
+                padding-right: 25px !important;
+            }
+
         }
 
         &__content {
