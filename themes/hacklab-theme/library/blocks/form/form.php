@@ -23,7 +23,7 @@ function render_form_callback ($attributes) {
         return '';
     }
 
-    $form = $hacklabr_registered_forms[$form_id];
+    $form = $hacklabr_registered_forms[$form_id] ?? null;
     if (empty($form)) {
         return '';
     }

@@ -86,7 +86,7 @@ function render_field (string $name, array $definition, array $context = []) {
             </label>
         <?php endif; ?>
 
-        <?php if (isset($definition['description']) && !empty($definition['description'])): ?>
+        <?php if (!empty($definition['description'])): ?>
             <p class="form-field__description"><?= esc_html($definition['description']) ?></p>
         <?php endif; ?>
 
@@ -123,6 +123,15 @@ function render_form (array $form, array $params = [], string $class = 'form') {
         </div>
     </form>
 <?php
+}
+
+function render_hidden_fields ($fields, $params = []) {
+    foreach ($fields as $field => $definition) {
+        $value = $params[$field] ?? '';
+    ?>
+        <input type="hidden" name="_<?= $field ?>" value="<?= $value ?>">
+    <?php
+    }
 }
 
 function validate_field (array $definition, $value, array $context = []) {
