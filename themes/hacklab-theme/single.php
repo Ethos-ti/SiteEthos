@@ -33,7 +33,7 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
 
     if ( $category && !should_exclude_related_posts_and_tag( $excluded_post_title ) ) : ?>
         <div class="post-header__tags">
-            <a class="tag tag--<?= $category[0]->slug ?>" href="<?= get_term_link( $category[0], 'category' ) ?>">
+            <a class="tag tag--solid tag--<?= $category[0]->slug ?>" href="<?= get_term_link( $category[0], 'category' ) ?>">
                 <?= $category[0]->name ?>
             </a>
         </div>
