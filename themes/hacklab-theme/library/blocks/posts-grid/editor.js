@@ -19,7 +19,7 @@ function Edit ({ attributes, setAttributes }) {
 
     return <>
         <InspectorControls>
-            <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout')}>
+            <PanelBody className="hacklabr-gutenberg-panel__panel-body" title={__('Layout', 'hacklabr')}>
                 <PanelRow>
                     <SelectCardModel
                         value={cardModel}

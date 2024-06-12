@@ -56,7 +56,7 @@
         padding-bottom: 3rem !important;
 
         @include mobile {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             padding-bottom: 2rem !important;
         }
     }
@@ -210,7 +210,28 @@
                     text-decoration: underline;
                     color: $color--primary-dark;
                     font-size: $font-size--large !important;
+                    line-height: $line-height--normal;
                 }
+            }
+        }
+    }
+}
+
+.page-faca-parte-associe-se {
+    .post-content {
+        .card {
+            &__header {
+                border-radius: 0;
+            }
+
+            &__body {
+                border-radius: 0;
+            }
+        }
+
+        .wp-block-hacklabr-card-body {
+            figure {
+                min-width: 24px;
             }
         }
     }

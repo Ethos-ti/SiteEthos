@@ -202,59 +202,59 @@
             "fluid": false,
             "fontSizes": [
                 {
-                    "name": "Enorme",
+                    "name": "Huge",
                     "slug": "hero",
                     "size": "4rem"
                 },
                 {
-                    "name": "Extra Extra grande",
+                    "name": "Extra Extra big",
                     "slug": "xxx-large",
                     "size": "3rem"
                 },
                 {
-                    "name": "Extra grande",
+                    "name": "Extra big",
                     "slug": "xx-large",
                     "size": "2rem"
                 },
                 {
-                    "name": "Muito grande",
+                    "name": "Very large",
                     "slug": "x-large",
                     "size": "1.5rem"
                 },
                 {
-                    "name": "Grande",
+                    "name": "Big",
                     "slug": "large",
                     "size": "1.25rem"
                 },
                 {
-                    "name": "Média",
+                    "name": "Average",
                     "slug": "medium",
                     "size": "1rem"
                 },
                 {
-                    "name": "Pequena",
+                    "name": "Small",
                     "slug": "small",
                     "size": "0.875rem"
                 },
                 {
-                    "name": "Muito pequena",
+                    "name": "Too small",
                     "slug": "x-small",
                     "size": "0.75rem"
                 }
             ],
             "fontFamilies": [
                 {
-                    "name": "Primária",
+                    "name": "Primary",
                     "slug": "primary",
                     "fontFamily": "'Open Sans', sans-serif"
                 },
                 {
-                    "name": "Sistema",
+                    "name": "System",
                     "slug": "secondary",
                     "fontFamily": "system-ui, sans-serif"
                 },
                 {
-                    "name": "Título",
+                    "name": "Title",
                     "slug": "heading",
                     "fontFamily": "'Montserrat', sans-serif"
                 }

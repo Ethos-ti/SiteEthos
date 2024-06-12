@@ -13,6 +13,13 @@
         background-color: white;
         padding-left: 0;
     }
+    & .stack{
+        .thumbnail--vertical > .placeholder{
+            object-fit: contain;
+            background-color: #dbdbdb;
+        }
+
+    }
 
 }
 .related-posts__content{

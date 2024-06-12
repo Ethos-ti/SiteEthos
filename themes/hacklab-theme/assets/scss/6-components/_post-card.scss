@@ -100,7 +100,7 @@
             }
         }
         .post-card__image>a>.placeholder{
-            object-fit: none;
+            object-fit: contain;
             background-color: #dbdbdb;
             @media(max-width:$break--desktop){
                 width: 104px;

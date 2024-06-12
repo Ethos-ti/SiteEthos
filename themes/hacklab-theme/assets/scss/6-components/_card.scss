@@ -13,15 +13,30 @@
         background-color: $color--high-light;
         border-radius: 0 0 $border-radius--pilled $border-radius--pilled;
         padding: $padding--medium $padding--large $padding--large;
+
+        @include mobile {
+            padding: $padding--medium $padding--medium calc($padding--small * 3);
+        }
     }
 
-    .post-card__title > a{
-        @include small{
+    .post-card__title>a {
+        @include small {
             font-size: $font-size--medium;
         }
 
-        @include mobile{
+        @include mobile {
             font-size: $font-size--medium;
         }
+    }
+
+    & .hacklabr-posts-grid-block>.post-card {
+        &--vertical-thumbnail {
+
+            .post-card__image>a>img {
+                width: 6.563rem;
+                height: 8.938;
+            }
+        }
+
     }
 }

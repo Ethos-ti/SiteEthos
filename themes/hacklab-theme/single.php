@@ -33,7 +33,7 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
 
     if ( $category && !should_exclude_related_posts_and_tag( $excluded_post_title ) ) : ?>
         <div class="post-header__tags">
-            <a class="tag tag--<?= $category[0]->slug ?>" href="<?= get_term_link( $category[0], 'category' ) ?>">
+            <a class="tag tag--solid tag--<?= $category[0]->slug ?>" href="<?= get_term_link( $category[0], 'category' ) ?>">
                 <?= $category[0]->name ?>
             </a>
         </div>
@@ -46,12 +46,12 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
     <?php endif; ?>
 
     <div class="post-header__meta container">
-        <p class="post-header__date"><?php _e('Published in: ', 'hacklabr') ?><?= get_the_date() ?></p>
+        <p class="post-header__date"><?php _e('Published in ', 'hacklabr') ?><?= get_the_date() ?></p>
         <?php get_template_part('template-parts/share-links', null, ['link' => get_the_permalink()]) ?>
     </div>
 
     <div class="post-header__author container">
-        <p class="post-header__author-name"><?php _e('Published by: ', 'hacklabr') ?><?= get_the_author() ?></p>
+        <p class="post-header__author-name"><?php _e('Published by ', 'hacklabr') ?><?= get_the_author() ?></p>
     </div>
 </header>
 

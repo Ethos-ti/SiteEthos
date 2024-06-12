@@ -14,13 +14,13 @@
 		'order' => 'ASC',
 		'orderby' => 'date'
 		]
-	)); 
+	));
 
 ?>
 
 <div class="timeline-container">
     <section>
-        <h2 class="title-with-graphics title-transform-uppercase"><span>Linha do tempo</span> <span class="line"></span></h2>
+        <h2 class="title-with-graphics title-transform-uppercase"><span><?php __('Timeline', 'hacklabr' )?></span> <span class="line"></span></h2>
     </section>
 	<ul class="dates">
 		<?php

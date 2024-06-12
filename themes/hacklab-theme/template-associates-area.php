@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Área de associados
+ * Template Name: Membership area
  */
 
 get_header();

@@ -41,3 +41,25 @@ function initialize_blocks () {
 }
 
 add_action('init', 'hacklabr\\initialize_blocks');
+
+function localize_block_scripts () {
+    $blocks = get_blocks_list();
+
+    $language_path = get_stylesheet_directory() . '/languages';
+
+    if (is_admin()) {
+        $fields = ['script', 'editorScript'];
+    } else {
+        $fields = ['script', 'viewScript'];
+    }
+
+    foreach ($blocks as $block_id => $block_args) {
+        foreach ($fields as $field) {
+            $handle = generate_block_asset_handle('hacklabr/' . $block_id, $field);
+            wp_set_script_translations($handle, 'hacklabr', $language_path);
+        }
+    }
+}
+
+add_action('wp_enqueue_scripts', 'hacklabr\\localize_block_scripts', 12);
+add_action('admin_enqueue_scripts', 'hacklabr\\localize_block_scripts', 12);

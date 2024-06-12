@@ -94,7 +94,7 @@ usort($terms, 'custom_sort');
                 <div class="search__results__found">
                     <p  class="search__results__found-has-results"><?php _e('We found ', 'hacklabr');?><span><?= $wp_query->found_posts;?></span><?php _e(' results for this search.', 'hacklabr');?></p>
                     <?php if ( $wp_query->found_posts == 0 ) : ?>
-                        <p class="search__results__found-no-results"><?php _e('This search yielded no results, do you want to perform a <span>new search</span>?', 'hacklabr');?></p>
+                        <p class="search__results__found-no-results"><?php _e('This search yielded no results, do you want to perform a new search?', 'hacklabr');?></p>
                     <?php endif; ?>
                 </div>
                 <div class="search__results__filter">
@@ -110,7 +110,7 @@ usort($terms, 'custom_sort');
                          <form name="filtering">
                             <select class="filtering filtering search__results__filter__filering__select-form" name="select" size="1" onChange="go()">
                                 <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
-                                    <?= __( '<span>Showing:</span> &nbsp &nbsp all contents', 'hacklabr' ) ?>
+                                    <?= __( 'Showing: &nbsp &nbsp all contents', 'hacklabr' ) ?>
                                 </option>
                                 <?php foreach( ['iniciativa', 'events', 'post', 'publicacao'] as $post_type ) : ?>
                                     <?php

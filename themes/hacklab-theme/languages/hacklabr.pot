@@ -1,0 +1,794 @@
+# Copyright (C) 2024 Hacklab
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ethos 0.0.43\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-06-10T14:16:39+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: hacklabr\n"
+
+#. Theme Name of the theme
+msgid "Ethos"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+msgid "https://hacklab.com.br/"
+msgstr ""
+
+#. Description of the theme
+msgid "New website theme"
+msgstr ""
+
+#. Author of the theme
+msgid "Hacklab"
+msgstr ""
+
+#: 404.php:8
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:10
+msgid "It looks like this page does not exist or has been deleted, go back to"
+msgstr ""
+
+#: 404.php:10
+msgid "home or let us know about the issue"
+msgstr ""
+
+#: 404.php:14
+msgid "Go to Home"
+msgstr ""
+
+#: 404.php:15
+msgid "Contact"
+msgstr ""
+
+#: archive-publicacao.php:46
+#: archive.php:46
+#: search.php:74
+#: taxonomy-tipo_post-posicionamento-institucional.php:46
+msgid "All the areas"
+msgstr ""
+
+#. translators: %s: Post title.
+#: comments.php:28
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:32
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:62
+msgid "&larr; Older"
+msgstr ""
+
+#: comments.php:63
+msgid "Newest &rarr;"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are disabled"
+msgstr ""
+
+#: header-lateral.php:33
+msgid "Toggle menu visibility"
+msgstr ""
+
+#: header-lateral.php:58
+msgid "Toggle search form visibility"
+msgstr ""
+
+#: library/menus.php:6
+msgid "Main menu"
+msgstr ""
+
+#: library/menus.php:7
+msgid "Social networks"
+msgstr ""
+
+#: library/settings.php:13
+msgid "Cover card"
+msgstr ""
+
+#: library/settings.php:17
+msgid "Horizontal card"
+msgstr ""
+
+#: library/settings.php:21
+msgid "Vertical card"
+msgstr ""
+
+#: library/settings.php:30
+msgid "Vertical thumbnail"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Page with anchors"
+msgstr ""
+
+#: page-anchor.php:12
+msgid "Sections"
+msgstr ""
+
+#: search.php:95
+msgid "We found "
+msgstr ""
+
+#: search.php:95
+msgid " results for this search."
+msgstr ""
+
+#: search.php:97
+msgid "This search yielded no results, do you want to perform a new search?"
+msgstr ""
+
+#: search.php:113
+msgid "Showing: &nbsp &nbsp all contents"
+msgstr ""
+
+#: searchform.php:2
+msgid "search"
+msgstr ""
+
+#: searchform.php:3
+msgid "New search"
+msgstr ""
+
+#: single-publicacao.php:19
+msgid "Publication Sample"
+msgstr ""
+
+#: single-publicacao.php:22
+msgid "No document available."
+msgstr ""
+
+#: single-publicacao.php:41
+msgid "Published in"
+msgstr ""
+
+#: single.php:49
+#: template-parts/post-card.php:67
+msgid "Published in "
+msgstr ""
+
+#: single.php:54
+msgid "Published by "
+msgstr ""
+
+#. Template Name of the theme
+msgid "Membership area"
+msgstr ""
+
+#: template-associates-area.php:15
+msgid "Associeted panel"
+msgstr ""
+
+#: template-associates-area.php:29
+msgid "Logout"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Component Inventory"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Untitled pagebuilder"
+msgstr ""
+
+#: template-parts/archive-title.php:3
+msgid "results found"
+msgstr ""
+
+#: template-parts/content/no-post.php:3
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content/related-posts.php:30
+msgid "Read too: "
+msgstr ""
+
+#: template-parts/content/timeline.php:23
+msgid "Timeline"
+msgstr ""
+
+#: template-parts/share-links.php:2
+msgid "Share"
+msgstr ""
+
+#: template-parts/site-by-hacklab.php:2
+msgid "website by"
+msgstr ""
+
+#: template-parts/title/archive-header.php:24
+msgid "Search results"
+msgstr ""
+
+#: template-parts/title/author.php:6
+msgid "Author: %s"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/card-header/editor.js:19
+#: dist/blocks/download-image/editor.js:29
+#: library/blocks/banner-with-image/editor.js:11
+#: library/blocks/card-header/editor.js:11
+#: library/blocks/download-image/editor.js:11
+#: dist/blocks/banner-with-image/editor.js:128
+#: dist/blocks/card-header/editor.js:115
+#: dist/blocks/download-image/editor.js:128
+msgid "Header content"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/card-header/editor.js:19
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/banner-with-image/editor.js:25
+#: library/blocks/card-header/editor.js:38
+#: library/blocks/posts-grid/editor.js:22
+msgid "Layout"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29
+#: dist/blocks/download-image/editor.js:39
+#: library/blocks/banner-with-image/editor.js:28
+#: library/blocks/shared/SelectImage.js:32
+msgid "Image"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29
+#: dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:15
+msgid "Change image"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29
+#: dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:18
+msgid "Remove image"
+msgstr ""
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29
+#: dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:24
+msgid "Select image"
+msgstr ""
+
+#: dist/blocks/card-body/editor.js:19
+#: library/blocks/card-body/editor.js:8
+#: dist/blocks/card-body/editor.js:58
+msgid "Body content"
+msgstr ""
+
+#: dist/blocks/card-header/editor.js:19
+#: library/blocks/card-header/editor.js:41
+msgid "Background image"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:39
+#: dist/blocks/posts-grid/editor.js:1841
+msgid "Grid columns"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:48
+#: dist/blocks/posts-grid/editor.js:1850
+msgid "Grid rows"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:57
+#: dist/blocks/posts-grid/editor.js:1859
+msgid "Grid gap"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:65
+#: dist/blocks/posts-grid/editor.js:1867
+msgid "Hide author"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:73
+#: dist/blocks/posts-grid/editor.js:1875
+msgid "Hide categories"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:81
+#: dist/blocks/posts-grid/editor.js:1883
+msgid "Hide date"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:19
+#: library/blocks/posts-grid/editor.js:89
+#: dist/blocks/posts-grid/editor.js:1891
+msgid "Hide excerpt"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:11
+#: dist/blocks/posts-grid/editor.js:1498
+msgid "Query"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:35
+#: dist/blocks/posts-grid/editor.js:1522
+msgid "Show children posts?"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:30
+#: library/blocks/shared/QueryPanel.js:79
+#: dist/blocks/posts-grid/editor.js:1566
+msgid "Filter posts to not display"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:41
+#: library/blocks/shared/SelectCardModel.js:21
+#: dist/blocks/posts-grid/editor.js:1628
+msgid "Card model"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:41
+#: library/blocks/shared/SelectCardModel.js:26
+#: dist/blocks/posts-grid/editor.js:1633
+msgctxt "card"
+msgid "Default model"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:52
+#: library/blocks/shared/SelectCardModifier.js:29
+#: dist/blocks/posts-grid/editor.js:1674
+msgid "Card modifier"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:5
+#: dist/blocks/posts-grid/editor.js:1341
+msgid "OR"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:6
+#: dist/blocks/posts-grid/editor.js:1342
+msgid "AND"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:63
+#: library/blocks/shared/SelectCompare.js:9
+#: dist/blocks/posts-grid/editor.js:1345
+msgid "Compare terms"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:74
+#: library/blocks/shared/SelectPostType.js:21
+msgid "Post type"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:74
+#: library/blocks/shared/SelectPostType.js:26
+#: dist/blocks/posts-grid/editor.js:1382
+msgid "No post type"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:7
+#: dist/blocks/posts-grid/editor.js:1737
+msgctxt "size"
+msgid "Large"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:1738
+msgctxt "size"
+msgid "Medium"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:1739
+msgctxt "size"
+msgid "Small"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:1740
+msgctxt "size"
+msgid "Extra Large"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:1741
+msgctxt "size"
+msgid "Extra Small"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:85
+#: library/blocks/shared/SelectSize.js:59
+#: dist/blocks/posts-grid/editor.js:1789
+msgid "Size"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomy.js:21
+msgid "Taxonomy"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomy.js:26
+#: dist/blocks/posts-grid/editor.js:1420
+msgid "No taxonomy"
+msgstr ""
+
+#: dist/blocks/posts-grid/editor.js:107
+#: library/blocks/shared/SelectTerms.js:9
+msgid "Terms"
+msgstr ""
+
+#: dist/blocks/read-more/editor.js:19
+#: library/blocks/read-more/editor.js:14
+#: dist/blocks/read-more/editor.js:66
+msgid "Full text"
+msgstr ""
+
+#: dist/blocks/read-more/editor.js:19
+#: library/blocks/read-more/editor.js:34
+#: dist/blocks/read-more/editor.js:86
+msgid "Lines shown"
+msgstr ""
+
+#: dist/blocks/read-more/editor.js:19
+#: dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53
+#: library/blocks/read-more/index.js:15
+#: dist/blocks/read-more/editor.js:105
+#: dist/blocks/read-more/index.js:16
+msgid "Read less"
+msgstr ""
+
+#: dist/blocks/read-more/editor.js:19
+#: dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53
+#: library/blocks/read-more/editor.js:71
+#: library/blocks/read-more/index.js:12
+#: dist/blocks/read-more/editor.js:105
+#: dist/blocks/read-more/editor.js:123
+#: dist/blocks/read-more/index.js:13
+msgid "Read more"
+msgstr ""
+
+#: dist/js/functionalities/gutenberg.js:29
+msgid "Iconify ID"
+msgstr ""
+
+#: library/blocks/banner-with-image/block.json
+msgctxt "block title"
+msgid "Banner with image"
+msgstr ""
+
+#: library/blocks/banner-with-image/block.json
+msgctxt "block description"
+msgid "A banner with image and text side-by-side"
+msgstr ""
+
+#: library/blocks/card-body/block.json
+msgctxt "block title"
+msgid "Card body"
+msgstr ""
+
+#: library/blocks/card-body/block.json
+msgctxt "block description"
+msgid "The body of a generic card"
+msgstr ""
+
+#: library/blocks/card-header/block.json
+msgctxt "block title"
+msgid "Card header"
+msgstr ""
+
+#: library/blocks/card-header/block.json
+msgctxt "block description"
+msgid "The header of a generic card"
+msgstr ""
+
+#: library/blocks/card/block.json
+msgctxt "block title"
+msgid "Card"
+msgstr ""
+
+#: library/blocks/card/block.json
+msgctxt "block description"
+msgid "A generic card"
+msgstr ""
+
+#: library/blocks/download-image/block.json
+msgctxt "block title"
+msgid "Download image"
+msgstr ""
+
+#: library/blocks/download-image/block.json
+msgctxt "block description"
+msgid "A image download"
+msgstr ""
+
+#: library/blocks/posts-grid/block.json
+msgctxt "block title"
+msgid "Posts grid"
+msgstr ""
+
+#: library/blocks/posts-grid/block.json
+msgctxt "block description"
+msgid "Display post cards on a grid"
+msgstr ""
+
+#: library/blocks/read-more/block.json
+msgctxt "block title"
+msgid "Read more"
+msgstr ""
+
+#: library/blocks/read-more/block.json
+msgctxt "block description"
+msgid "A collapsible text paragraph with 'Read more' button"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low Pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "High dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper pure"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente Dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade Dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável Dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia Dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos Dark"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Extra big"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra big"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Very large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Big"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Average"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Too small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Title"
+msgstr ""

@@ -2,6 +2,8 @@
 
 namespace hacklabr;
 
+load_theme_textdomain('hacklabr');
+
 require __DIR__ . '/library/layout-parts/layout-parts.php';
 require __DIR__ . '/library/supports.php';
 require __DIR__ . '/library/sidebars.php';

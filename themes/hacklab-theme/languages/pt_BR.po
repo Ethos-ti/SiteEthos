@@ -1,240 +1,788 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: hacklabr 1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/themes\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
+"POT-Creation-Date: 2024-06-10T14:16:39+00:00\n"
+"PO-Revision-Date: 2024-06-10 11:40-0300\n"
 "Last-Translator: \n"
-"Language-Team: Português do Brasil\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-22T12:04:08+00:00\n"
-"PO-Revision-Date: 2022-03-23 17:26+0000\n"
-"Language: pt_BR\n"
-"X-Generator: Loco https://localise.biz/\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: hacklabr\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Loco-Version: 2.6.1; wp-5.9.2\n"
-
-#: comments.php:62
-msgid "&larr; Mais antigos"
-msgstr ""
-
-#: template-parts/authors-list.php:7
-msgid "Autor"
-msgstr ""
-
-#: template-parts/authors-list.php:7
-msgid "Autores"
-msgstr ""
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: hacklabr\n"
+"X-Poedit-Basepath: .\n"
 
 #. Theme Name of the theme
-msgid "hacklabr"
-msgstr ""
+msgid "Ethos"
+msgstr "Ethos"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Amarelo"
-msgstr ""
+#. Theme URI of the theme
+#. Author URI of the theme
+msgid "https://hacklab.com.br/"
+msgstr "https://hacklab.com.br/"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Amarelo claro"
-msgstr ""
+#. Description of the theme
+msgid "New website theme"
+msgstr "Novo tema do site"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Azul"
-msgstr ""
+#. Author of the theme
+msgid "Hacklab"
+msgstr "Hacklab"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Azul claro"
-msgstr ""
+#: 404.php:8
+msgid "Page not found"
+msgstr "Página não encontrada"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Bege"
-msgstr ""
+#: 404.php:10
+msgid "It looks like this page does not exist or has been deleted, go back to"
+msgstr "Parece que esta página não existe ou foi excluída, volte para"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Branco"
-msgstr ""
+#: 404.php:10
+msgid "home or let us know about the issue"
+msgstr "página principal ou informe-nos sobre o problema"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Cinza escuro"
-msgstr ""
+#: 404.php:14
+msgid "Go to Home"
+msgstr "Vá para a página principal"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Verde"
-msgstr ""
+#: 404.php:15
+msgid "Contact"
+msgstr "Contato"
 
-#: theme.json
-msgctxt "Color name"
-msgid "Verde claro"
-msgstr ""
+#: archive-publicacao.php:46 archive.php:46 search.php:74
+#: taxonomy-tipo_post-posicionamento-institucional.php:46
+msgid "All the areas"
+msgstr "Todas as áreas"
 
-#: comments.php:61
-msgid "Comment navigation"
-msgstr ""
+#. translators: %s: Post title.
+#: comments.php:28
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Um comentário em  &ldquo;%s&rdquo;"
 
 #. translators: 1: Number of comments, 2: Post title.
 #: comments.php:32
 msgctxt "comments title"
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s comentário em &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s comentários em &ldquo;%2$s&rdquo;"
 
-#. translators: %s: Post title.
-#: comments.php:28
-msgctxt "comments title"
-msgid "One thought on &ldquo;%s&rdquo;"
-msgstr ""
+#: comments.php:61
+msgid "Comment navigation"
+msgstr "Navegação de comentários"
 
-#: library/customizer/footer/index.php:50
-msgid "Display year and site name aside copyright info?"
-msgstr ""
-
-#: library/settings.php:14
-msgid "Endereço"
-msgstr ""
-
-#: 404.php:4
-msgid "erro"
-msgstr ""
-
-#: theme.json
-msgctxt "Font size name"
-msgid "Grande"
-msgstr ""
-
-#: theme.json
-msgctxt "Font size name"
-msgid "Média"
-msgstr ""
-
-#: theme.json
-msgctxt "Font size name"
-msgid "Pequena"
-msgstr ""
-
-#: library/customizer/footer/index.php:11
-msgid "Footer"
-msgstr "Rodapé"
-
-#: library/customizer/footer/index.php:68
-msgid "Footer background"
-msgstr "Cor de fundo do rodapé"
-
-#: library/customizer/footer/index.php:27
-msgid "Footer copyright text"
-msgstr "Texto de direitos autorais (copyright) no rodapé"
-
-#: library/customizer/footer/index.php:90
-msgid "Footer text color"
-msgstr "Cor do texto no rodapé"
-
-#. Author of the theme
-msgid "Hacklab"
-msgstr ""
-
-#: library/customizer/header/index.php:10
-msgid "Header"
-msgstr "Cabeçalho"
-
-#. Theme URI of the theme
-#. Author URI of the theme
-msgid "https://hacklab.com.br/"
-msgstr ""
-
-#: library/customizer/footer/index.php:28
-msgid "Leave it empty to hide all copyright info."
-msgstr ""
-
-#: template-parts/related-posts.php:10
-msgid "Leia Também"
-msgstr ""
+#: comments.php:62
+msgid "&larr; Older"
+msgstr "&larr; Mais antigos"
 
 #: comments.php:63
-msgid "Mais Novos &rarr;"
-msgstr ""
-
-#: library/menus.php:10
-msgid "Menu de Rodapé 1"
-msgstr ""
-
-#: library/menus.php:11
-msgid "Menu de Rodapé 2"
-msgstr ""
-
-#: library/menus.php:12
-msgid "Menu de Rodapé 3"
-msgstr ""
-
-#: library/menus.php:13
-msgid "Menu de Rodapé 4"
-msgstr ""
-
-#: library/menus.php:6
-msgid "Menu Principal"
-msgstr ""
-
-#: library/settings.php:17
-msgid "Número de palavras do resumo automático (excerpt)"
-msgstr ""
+msgid "Newest &rarr;"
+msgstr "Mais novos &rarr;"
 
 #: comments.php:68
-msgid "Os comentários estão desabilitados."
-msgstr ""
+msgid "Comments are disabled"
+msgstr "Os comentários estão desativados"
+
+#: header-lateral.php:33
+msgid "Toggle menu visibility"
+msgstr "Alternar visibilidade do menu"
+
+#: header-lateral.php:58
+msgid "Toggle search form visibility"
+msgstr "Alternar a visibilidade do formulário de pesquisa"
+
+#: library/menus.php:6
+msgid "Main menu"
+msgstr "Menu principal"
+
+#: library/menus.php:7
+msgid "Social networks"
+msgstr "Redes sociais"
+
+#: library/settings.php:13
+msgid "Cover card"
+msgstr "Card cobertura"
+
+#: library/settings.php:17
+msgid "Horizontal card"
+msgstr "Card horizontal"
+
+#: library/settings.php:21
+msgid "Vertical card"
+msgstr "Card vertical"
+
+#: library/settings.php:30
+msgid "Vertical thumbnail"
+msgstr "Miniatura vertical"
 
 #. Template Name of the theme
-msgid "Pagebuilder sem título"
-msgstr ""
+msgid "Page with anchors"
+msgstr "Página com âncoras"
 
-#: template-parts/card.php:37
-msgid "Por:"
-msgstr ""
+#: page-anchor.php:12
+msgid "Sections"
+msgstr "Seções"
 
-#: template-parts/card.php:43
-msgid "publicado em"
-msgstr ""
+#: search.php:95
+msgid "We found "
+msgstr "Nós encontramos  "
 
-#: 404.php:8
-msgid "Página não encontrada"
-msgstr ""
+#: search.php:95
+msgid " results for this search."
+msgstr " resultados desta pesquisa."
 
-#: library/menus.php:9
-msgid "Redes Sociais"
+#: search.php:97
+msgid "This search yielded no results, do you want to perform a new search?"
 msgstr ""
+"Esta pesquisa não obteve resultados, deseja realizar uma nova pesquisa?"
+
+#: search.php:113
+msgid "Showing: &nbsp &nbsp all contents"
+msgstr "Exibindo: &nbsp &nbsp todos os conteúdos"
+
+#: searchform.php:2
+msgid "search"
+msgstr "buscar"
+
+#: searchform.php:3
+msgid "New search"
+msgstr "Nova busca"
+
+#: single-publicacao.php:19
+msgid "Publication Sample"
+msgstr "Amostra de publicação"
+
+#: single-publicacao.php:22
+msgid "No document available."
+msgstr "Nenhum documento disponível."
+
+#: single-publicacao.php:41
+msgid "Published in"
+msgstr "Publicado em"
+
+#: single.php:49 template-parts/post-card.php:67
+msgid "Published in "
+msgstr "Publicado em "
+
+#: single.php:54
+msgid "Published by "
+msgstr "Publicado por "
+
+#. Template Name of the theme
+msgid "Membership area"
+msgstr "Área do associado"
+
+#: template-associates-area.php:15
+msgid "Associeted panel"
+msgstr "Painel do associado"
+
+#: template-associates-area.php:29
+msgid "Logout"
+msgstr "Sair"
+
+#. Template Name of the theme
+msgid "Component Inventory"
+msgstr "Inventário de Componentes"
+
+#. Template Name of the theme
+msgid "Untitled pagebuilder"
+msgstr "Construtor de páginas sem título"
 
 #: template-parts/archive-title.php:3
-msgid "resultados encontrados"
-msgstr ""
+msgid "results found"
+msgstr "resultados encontrados"
 
-#: single.php:50
+#: template-parts/content/no-post.php:3
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Desculpe, mas nada corresponde aos seus critérios de busca. Por favor, tente "
+"novamente com algumas palavras-chave diferentes."
+
+#: template-parts/content/related-posts.php:30
+msgid "Read too: "
+msgstr "Leia também: "
+
+#: template-parts/content/timeline.php:23
+msgid "Timeline"
+msgstr "Linha do tempo"
+
 #: template-parts/share-links.php:2
 msgid "Share"
 msgstr "Compartilhar"
 
 #: template-parts/site-by-hacklab.php:2
-msgid "site por"
-msgstr ""
+msgid "website by"
+msgstr "site por"
 
-#. Description of the theme
-msgid "Tema base para desenvolvimento de novos sites."
-msgstr ""
+#: template-parts/title/archive-header.php:24
+msgid "Search results"
+msgstr "Resultados de busca"
 
-#: header.php:30
-msgid "Toggle menu visibility"
-msgstr ""
+#: template-parts/title/author.php:6
+msgid "Author: %s"
+msgstr "Autor:%s"
 
-#: 404.php:9
-msgid "Voltar para a página inicial"
-msgstr ""
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/card-header/editor.js:19 dist/blocks/download-image/editor.js:29
+#: library/blocks/banner-with-image/editor.js:11
+#: library/blocks/card-header/editor.js:11
+#: library/blocks/download-image/editor.js:11
+#: dist/blocks/banner-with-image/editor.js:128
+#: dist/blocks/card-header/editor.js:115
+#: dist/blocks/download-image/editor.js:128
+msgid "Header content"
+msgstr "Conteúdo do cabeçalho"
 
-#: template-parts/content/search-overlay.php:3
-msgid "What are you looking for?"
-msgstr "O que você está procurando?"
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/card-header/editor.js:19 dist/blocks/posts-grid/editor.js:19
+#: library/blocks/banner-with-image/editor.js:25
+#: library/blocks/card-header/editor.js:38
+#: library/blocks/posts-grid/editor.js:22
+msgid "Layout"
+msgstr "Layout"
+
+#: dist/blocks/banner-with-image/editor.js:29
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
+#: library/blocks/banner-with-image/editor.js:28
+#: library/blocks/shared/SelectImage.js:32
+msgid "Image"
+msgstr "Imagem"
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:15
+msgid "Change image"
+msgstr "Alterar imagem"
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:18
+msgid "Remove image"
+msgstr "Remover imagem"
+
+#: dist/blocks/banner-with-image/editor.js:39
+#: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
+#: library/blocks/shared/SelectImage.js:24
+msgid "Select image"
+msgstr "Selecionar imagem"
+
+#: dist/blocks/card-body/editor.js:19 library/blocks/card-body/editor.js:8
+#: dist/blocks/card-body/editor.js:58
+msgid "Body content"
+msgstr "Conteúdo do corpo"
+
+#: dist/blocks/card-header/editor.js:19 library/blocks/card-header/editor.js:41
+msgid "Background image"
+msgstr "Imagem de fundo"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:39
+#: dist/blocks/posts-grid/editor.js:1841
+msgid "Grid columns"
+msgstr "Colunas do grid"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:48
+#: dist/blocks/posts-grid/editor.js:1850
+msgid "Grid rows"
+msgstr "Linhas do grid"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:57
+#: dist/blocks/posts-grid/editor.js:1859
+msgid "Grid gap"
+msgstr "Espaçamento do grid"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:65
+#: dist/blocks/posts-grid/editor.js:1867
+msgid "Hide author"
+msgstr "Ocultar autor"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:73
+#: dist/blocks/posts-grid/editor.js:1875
+msgid "Hide categories"
+msgstr "Ocultar categorias"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:81
+#: dist/blocks/posts-grid/editor.js:1883
+msgid "Hide date"
+msgstr "Ocultar data"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:89
+#: dist/blocks/posts-grid/editor.js:1891
+msgid "Hide excerpt"
+msgstr "Ocultar resumo"
+
+#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
+#: dist/blocks/posts-grid/editor.js:1498
+msgid "Query"
+msgstr "Consulta"
+
+#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:35
+#: dist/blocks/posts-grid/editor.js:1522
+msgid "Show children posts?"
+msgstr "Mostar posts filhos?"
+
+#: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:79
+#: dist/blocks/posts-grid/editor.js:1566
+msgid "Filter posts to not display"
+msgstr "Filtre as postagens para não serem exibidas"
+
+#: dist/blocks/posts-grid/editor.js:41
+#: library/blocks/shared/SelectCardModel.js:21
+#: dist/blocks/posts-grid/editor.js:1628
+msgid "Card model"
+msgstr "Modelo de card"
+
+#: dist/blocks/posts-grid/editor.js:41
+#: library/blocks/shared/SelectCardModel.js:26
+#: dist/blocks/posts-grid/editor.js:1633
+msgctxt "card"
+msgid "Default model"
+msgstr "Modelo padrão"
+
+#: dist/blocks/posts-grid/editor.js:52
+#: library/blocks/shared/SelectCardModifier.js:29
+#: dist/blocks/posts-grid/editor.js:1674
+msgid "Card modifier"
+msgstr "Modificador do card"
+
+#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:5
+#: dist/blocks/posts-grid/editor.js:1341
+msgid "OR"
+msgstr "OU"
+
+#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:6
+#: dist/blocks/posts-grid/editor.js:1342
+msgid "AND"
+msgstr "E"
+
+#: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:9
+#: dist/blocks/posts-grid/editor.js:1345
+msgid "Compare terms"
+msgstr "Comparar termos"
+
+#: dist/blocks/posts-grid/editor.js:74
+#: library/blocks/shared/SelectPostType.js:21
+msgid "Post type"
+msgstr "Tipo de post"
+
+#: dist/blocks/posts-grid/editor.js:74
+#: library/blocks/shared/SelectPostType.js:26
+#: dist/blocks/posts-grid/editor.js:1382
+msgid "No post type"
+msgstr "Nenhum tipo de postagem"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:7
+#: dist/blocks/posts-grid/editor.js:1737
+msgctxt "size"
+msgid "Large"
+msgstr "Grande"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:1738
+msgctxt "size"
+msgid "Medium"
+msgstr "Médio"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:1739
+msgctxt "size"
+msgid "Small"
+msgstr "Pequeno"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:1740
+msgctxt "size"
+msgid "Extra Large"
+msgstr "Muito Grande"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:1741
+msgctxt "size"
+msgid "Extra Small"
+msgstr "Muito Pequeno"
+
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:59
+#: dist/blocks/posts-grid/editor.js:1789
+msgid "Size"
+msgstr "Tamanho"
+
+#: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomy.js:21
+msgid "Taxonomy"
+msgstr "Taxonomia"
+
+#: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomy.js:26
+#: dist/blocks/posts-grid/editor.js:1420
+msgid "No taxonomy"
+msgstr "Sem taxonomia"
+
+#: dist/blocks/posts-grid/editor.js:107 library/blocks/shared/SelectTerms.js:9
+msgid "Terms"
+msgstr "Termos"
+
+#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:14
+#: dist/blocks/read-more/editor.js:66
+msgid "Full text"
+msgstr "Texto completo"
+
+#: dist/blocks/read-more/editor.js:19 library/blocks/read-more/editor.js:34
+#: dist/blocks/read-more/editor.js:86
+msgid "Lines shown"
+msgstr "Linhas mostradas"
+
+#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53 library/blocks/read-more/index.js:15
+#: dist/blocks/read-more/editor.js:105 dist/blocks/read-more/index.js:16
+msgid "Read less"
+msgstr "Leia menos"
+
+#: dist/blocks/read-more/editor.js:19 dist/blocks/read-more/index.js:19
+#: library/blocks/read-more/editor.js:53 library/blocks/read-more/editor.js:71
+#: library/blocks/read-more/index.js:12 dist/blocks/read-more/editor.js:105
+#: dist/blocks/read-more/editor.js:123 dist/blocks/read-more/index.js:13
+msgid "Read more"
+msgstr "Leia mais"
+
+#: dist/js/functionalities/gutenberg.js:29
+msgid "Iconify ID"
+msgstr "Iconify ID"
+
+#: library/blocks/banner-with-image/block.json
+msgctxt "block title"
+msgid "Banner with image"
+msgstr "Banner com imagem"
+
+#: library/blocks/banner-with-image/block.json
+msgctxt "block description"
+msgid "A banner with image and text side-by-side"
+msgstr "Um banner com imagem e texto lado a lado"
+
+#: library/blocks/card-body/block.json
+msgctxt "block title"
+msgid "Card body"
+msgstr "Corpo do card"
+
+#: library/blocks/card-body/block.json
+msgctxt "block description"
+msgid "The body of a generic card"
+msgstr "O corpo de um card genérico"
+
+#: library/blocks/card-header/block.json
+msgctxt "block title"
+msgid "Card header"
+msgstr "Cabeçalho do card"
+
+#: library/blocks/card-header/block.json
+msgctxt "block description"
+msgid "The header of a generic card"
+msgstr "O cabeçalho de um card genérico"
+
+#: library/blocks/card/block.json
+msgctxt "block title"
+msgid "Card"
+msgstr "Card"
+
+#: library/blocks/card/block.json
+msgctxt "block description"
+msgid "A generic card"
+msgstr "Um card genérico"
+
+#: library/blocks/download-image/block.json
+msgctxt "block title"
+msgid "Download image"
+msgstr "Download da imagem"
+
+#: library/blocks/download-image/block.json
+msgctxt "block description"
+msgid "A image download"
+msgstr "Download de imagem"
+
+#: library/blocks/posts-grid/block.json
+msgctxt "block title"
+msgid "Posts grid"
+msgstr "Grid de posts"
+
+#: library/blocks/posts-grid/block.json
+msgctxt "block description"
+msgid "Display post cards on a grid"
+msgstr "Exibir cards em um grid"
+
+#: library/blocks/read-more/block.json
+msgctxt "block title"
+msgid "Read more"
+msgstr "Leia mais"
+
+#: library/blocks/read-more/block.json
+msgctxt "block description"
+msgid "A collapsible text paragraph with 'Read more' button"
+msgstr "Um parágrafo de texto recolhível com o botão \"Leia mais\""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary pure"
+msgstr "Pura primária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary light"
+msgstr "Clara primária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary dark"
+msgstr "Escura primária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary pure"
+msgstr "Pura secundária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary light"
+msgstr "Clara secundária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary dark"
+msgstr "Escura secundária"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight pure"
+msgstr "Pura destaque"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight light"
+msgstr "Clara destaque"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight dark"
+msgstr "Escura destaque"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low Pure"
+msgstr "Pura baixa"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low light"
+msgstr "Clara baixa"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Low dark"
+msgstr "Escura baixa"
+
+#: theme.json
+msgctxt "Color name"
+msgid "High pure"
+msgstr "Pura alta"
+
+#: theme.json
+msgctxt "Color name"
+msgid "High light"
+msgstr "Clara alta"
+
+#: theme.json
+msgctxt "Color name"
+msgid "High dark"
+msgstr "Escura alta"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning pure"
+msgstr "Pura aviso"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning light"
+msgstr "Clara aviso"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Warning dark"
+msgstr "Escura aviso"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper pure"
+msgstr "Pura ajuda"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper light"
+msgstr "Clara ajuda"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Helper dark"
+msgstr "Escura ajuda"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente"
+msgstr "Meio Ambiente"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente Light"
+msgstr "Clara Meio Ambiente"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Meio Ambiente Dark"
+msgstr "Escura Meio Ambiente"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade"
+msgstr "Integridade"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade Light"
+msgstr "Clara Integridade"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Integridade Dark"
+msgstr "Escura Integridade"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável"
+msgstr "Gestão Sustentável"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável Light"
+msgstr "Clara Gestão Sustentável"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Gestão Sustentável Dark"
+msgstr "Escura Gestão Sustentável"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia"
+msgstr "Economia"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia Light"
+msgstr "Clara Economia"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Economia Dark"
+msgstr "Escura Economia"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos"
+msgstr "Direitos Humanos"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos Light"
+msgstr "Clara Direitos Humanos"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Direitos Humanos Dark"
+msgstr "Escura Direitos Humanos"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge"
+msgstr "Enorme"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Extra big"
+msgstr "Muito muito Grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra big"
+msgstr "Muito grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Very large"
+msgstr "Muito grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Big"
+msgstr "Grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Average"
+msgstr "Médio"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Pequeno"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Too small"
+msgstr "Muito pequeno"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Primary"
+msgstr "Primária"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "Sistema"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Title"
+msgstr "Título"
+
+#, fuzzy
+#~| msgid "Published in "
+#~ msgid "Published in: "
+#~ msgstr "Publicado em "
+
+#, fuzzy
+#~| msgctxt "size"
+#~| msgid "Extra Large"
+#~ msgctxt "Font size name"
+#~ msgid "Extra grande"
+#~ msgstr "Muito Grande"
+
+#~ msgid "hacklabr"
+#~ msgstr "hacklabr"
+
+#~ msgid "Base theme for developing new websites."
+#~ msgstr "Tema base para desenvolvimento de novos sites."
+
+#~ msgid "error"
+#~ msgstr "erro"
+
+#~ msgid "Return to home page"
+#~ msgstr "Voltar para a página inicial"
+
+#~ msgid " Results Found"
+#~ msgstr " Resultados Encontrados"

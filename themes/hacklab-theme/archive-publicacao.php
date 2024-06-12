@@ -3,7 +3,7 @@ get_header();
 
 global $wp_query;
 
-$post_type = get_post_type() ?: 'post';
+$post_type = get_post_type() ?: 'publicacao';
 
 $terms = get_terms_by_use_menu( 'category', get_post_type() );
 

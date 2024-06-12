@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
             var content = document.getElementById('url').value;
             navigator.clipboard.writeText(content)
                 .then(() => {
-                    document.querySelector('#alert').textContent = "Link copiado com sucesso!";
+                    document.querySelector('#alert').textContent = "Link copied successfully!";
                 })
                 .catch(err => {
-                    document.getElementById('alert').textContent = "Algo deu errado.";
+                    document.getElementById('alert').textContent = "Something went wrong.";
                 });
 
             document.getElementById('alert').classList.remove("hide");
