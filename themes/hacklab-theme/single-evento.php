@@ -44,25 +44,25 @@ $time = get_post_meta($post_id, 'horario', true );
                 <?php if ($date) : ?>
                 <div class="event-metadada__infos__date">
                     <p class="-bold"><?php _e('Date', 'Hacklabr') ?></p>
-                    <p><?php echo apply_filters('the_content', $date); ?></p>
+                    <?php echo apply_filters('the_content', $date); ?>
                 </div>
                 <?php endif; ?>
                 <?php if ($time) : ?>
                 <div class="event-metadada__infos__date">
                     <p class="-bold"><?php _e('Time', 'Hacklabr') ?></p>
-                    <p><?php echo apply_filters('the_content', $time); ?></p>
+                    <?php echo apply_filters('the_content', $time); ?>
                 </div>
                 <?php endif; ?>
                 <?php if ($workload) : ?>
                     <div class="event-metadada__infos__workload">
                         <p class="-bold"><?php _e('Workload', 'Hacklabr') ?></p>
-                        <p><?php echo apply_filters('the_content', $workload); ?></p>
+                        <?php echo apply_filters('the_content', $workload); ?>
                     </div>
                 <?php endif; ?>
                 <?php if ($investiment) : ?>
                 <div class="event-metadada__infos__investment">
                     <p class="-bold"><?php _e('Investment', 'Hacklabr') ?></p>
-                    <p><?php echo apply_filters('the_content', $investiment); ?></p>
+                    <?php echo apply_filters('the_content', $investiment); ?>
                 </div>
                 <?php endif; ?>
             </div>
@@ -70,7 +70,7 @@ $time = get_post_meta($post_id, 'horario', true );
             <div class="event-metadada__location -text-center">
                 <div class="event-metadada__location__local">
                     <p class="-bold"><?php _e('Local', 'Hacklabr') ?></p>
-                    <p><?php echo apply_filters('the_content', $local); ?></p>
+                    <?php echo apply_filters('the_content', $local); ?>
                 </div>
             </div>
             <?php endif; ?>
