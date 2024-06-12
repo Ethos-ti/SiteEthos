@@ -122,12 +122,8 @@
                         }
                         &__container{
                             .tribe-filter-bar-c-filter__filters-fieldset{
-                                .tribe-filter-bar-c-filter__filters-legend{
-                                    .tribe-filter-bar-c-filter__filter-fields{
-                                        .tribe-filter-bar-c-dropdown{
-                                            margin-top: $margin--medium;
-                                        }
-                                    }
+                                .tribe-filter-bar-c-filter__filter-fields{
+                                    margin-top: $margin--medium;
                                 }
                             }
                         }
