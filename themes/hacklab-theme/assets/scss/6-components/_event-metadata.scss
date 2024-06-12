@@ -11,7 +11,6 @@
             .event-metadada__infos{
                 display: flex;
                 justify-content: space-between;
-                text-align: center;
                 margin-bottom: $margin--medium;
                 &__date,
                 &__time,
@@ -20,21 +19,26 @@
                     :first-child{
                         border-bottom: $border-width--small solid $color--primary-light;
                         padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
                     }
                     :last-child{
                         padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
                     }
                 }
             }
             .event-metadada__location{
-                text-align: center;
                 &__local{
                     :first-child{
                         border-bottom: $border-width--small solid $color--primary-light;
                         padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
                     }
                     :last-child{
                         padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
                     }
                 }
             }

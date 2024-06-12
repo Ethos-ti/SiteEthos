@@ -22,27 +22,27 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
 
     <div class="event-metadada-section">
         <div class="event-metadada container">
-            <div class="event-metadada__infos">
+            <div class="event-metadada__infos -text-center">
                 <div class="event-metadada__infos__date">
-                    <p><?php _e('Date', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Date', 'Hacklabr') ?></p>
                     <p><?php _e('08/10/2024', 'Hacklabr') ?></p>
                 </div>
                 <div class="event-metadada__infos__time">
-                    <p><?php _e('Time', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Time', 'Hacklabr') ?></p>
                     <p><?php _e('das 8h às 18h30', 'Hacklabr') ?></p>
                 </div>
                 <div class="event-metadada__infos__workload">
-                    <p><?php _e('Workload', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Workload', 'Hacklabr') ?></p>
                     <p><?php _e('3 horas', 'Hacklabr') ?></p>
                 </div>
                 <div class="event-metadada__infos__investment">
-                    <p><?php _e('Investment', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Investment', 'Hacklabr') ?></p>
                     <p><?php _e('459,00 (50% de desconto para estudantes)', 'Hacklabr') ?></p>
                 </div>
             </div>
-            <div class="event-metadada__location">
+            <div class="event-metadada__location -text-center">
                 <div class="event-metadada__location__local">
-                    <p><?php _e('Local', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Local', 'Hacklabr') ?></p>
                     <p><?php _e('Online e ao vivo, via webconferência nas plataformas Zoom e Meeting', 'Hacklabr') ?></p>
                 </div>
             </div>
