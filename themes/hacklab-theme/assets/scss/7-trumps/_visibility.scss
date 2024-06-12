@@ -4,3 +4,27 @@
 .-hidden {
     display: none !important;
 }
+
+.-hide-mobile {
+    @include mobile {
+        display: none !important;
+    }
+ }
+
+.-show-mobile {
+    @include tablet-up {
+        display: none !important;
+    }
+}
+
+.-hide-desktop {
+    @include desktop {
+        display: none !important;
+    }
+}
+
+.-show-desktop {
+    @include tablet {
+        display: none !important;
+    }
+}
