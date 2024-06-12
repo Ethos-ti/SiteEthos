@@ -109,9 +109,6 @@
                 .tribe-filter-bar__filters{
                     .tribe-filter-bar-c-filter{
                         &__toggle-wrapper{
-                            &:focus-visible{
-                                outline: none;
-                            }
                             .tribe-filter-bar-c-filter__toggle{
                                 font-family: $font-family--primary;
                                 font-size: $font-size--small;
@@ -121,6 +118,11 @@
                                         stroke: $color--low-light;
                                     }
                                 }
+                            }
+                        }
+                        &--open{
+                            .tribe-filter-bar-c-filter__container{
+                                margin-top: $margin--medium;
                             }
                         }
                     }
