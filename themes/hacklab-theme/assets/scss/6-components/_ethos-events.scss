@@ -108,7 +108,7 @@
             .tribe-filter-bar__filters-container{
                 .tribe-filter-bar__filters{
                     .tribe-filter-bar-c-filter{
-                        &:focus-visible{
+                        :focus-visible{
                             outline: none;
                         }
                         &__toggle-wrapper{
