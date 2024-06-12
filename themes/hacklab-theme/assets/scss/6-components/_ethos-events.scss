@@ -120,11 +120,9 @@
                                 }
                             }
                         }
-                        &__container{
-                            .tribe-filter-bar-c-filter__filters-fieldset{
-                                .tribe-filter-bar-c-filter__filter-fields{
-                                    margin-top: $margin--medium;
-                                }
+                        &--open{
+                            .tribe-filter-bar-c-filter__container{
+                                margin-top: $margin--medium;
                             }
                         }
                     }
