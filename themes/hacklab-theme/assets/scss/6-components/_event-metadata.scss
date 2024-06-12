@@ -2,7 +2,31 @@
     .post-header__postdata{
         margin-left: auto;
         margin-right: auto;
+        .tag{
+            margin-top: calc( $margin--large + $margin--medium );
+            border-radius: $border-radius--small;
+        }
+        .list-terms{
+            list-style: none;
+            padding-left: 0;
+        }
+        .post-header__title{
+            margin-top: calc( $margin--medium + $margin--small );
+        }
+        .post-header__excerpt{
+            @media(max-width:$break--tablet){
+                font-size: $font-size--large;
+            }
+        }
+        .post-header__meta{
+            @media(max-width:$break--tablet){
+                padding-left: $padding--small;
+                padding-right: $padding--small;
+                flex-direction: column-reverse;
+            }
+        }
     }
+
     .event-metadada-section{
         background-color: $color--high-light;
         .event-metadada{
