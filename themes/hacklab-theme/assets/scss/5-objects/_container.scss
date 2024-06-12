@@ -19,14 +19,22 @@
         .alignwide {
 
             @include desktop {
-                margin-inline-start: calc(#{math.div($grid--wide, -2)} + 50%);
+                //margin-inline-start: calc(#{math.div($grid--wide, -2)} + 50%);
                 width: $grid--wide;
+                max-width: inherit;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%);
             }
         }
     }
 
     .alignfull {
-        margin-inline-start: calc(-50vw + 50%);
+        //margin-inline-start: calc(-50vw + 50%);
         width: 100vw;
+        max-width: inherit;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
     }
 }

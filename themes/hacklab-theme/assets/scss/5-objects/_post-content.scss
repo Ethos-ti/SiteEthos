@@ -170,6 +170,10 @@
         justify-content: center;
     }
 
+    & .tab-title {
+        user-select: none;
+    }
+
 
 
 }
