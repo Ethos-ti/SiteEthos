@@ -8,6 +8,10 @@
         padding-top: $padding--x-large;
     }
 
+    .logged-footer{
+        display: none;
+    }
+
     &__widgets {
         max-width: $grid--wide;
 
@@ -39,4 +43,16 @@
         margin-top: $margin--large;
     }
 
+}
+
+body.logged-in{
+    .main-footer{
+        .login-footer{
+            display: none;
+        }
+
+        .logged-footer{
+            display: block;
+        }
+    }
 }

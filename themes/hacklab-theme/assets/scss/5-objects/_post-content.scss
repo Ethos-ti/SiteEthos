@@ -238,5 +238,16 @@
                 min-width: 24px;
             }
         }
+
+        .wp-block-column:has(.wp-block-embed) {
+            width: 200px;
+            height: 360px;
+
+            iframe {
+                width: 200px;
+                height: 360px;
+                margin: 0 auto;
+            }
+        }
     }
 }
