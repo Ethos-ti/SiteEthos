@@ -108,9 +108,6 @@
             .tribe-filter-bar__filters-container{
                 .tribe-filter-bar__filters{
                     .tribe-filter-bar-c-filter{
-                        &:focus-visible{
-                            outline: none;
-                        }
                         &__toggle-wrapper{
                             .tribe-filter-bar-c-filter__toggle{
                                 font-family: $font-family--primary;
@@ -119,6 +116,17 @@
                                 &-icon{
                                     .tribe-common-c-svgicon>path{
                                         stroke: $color--low-light;
+                                    }
+                                }
+                            }
+                        }
+                        &__container{
+                            .tribe-filter-bar-c-filter__filters-fieldset{
+                                .tribe-filter-bar-c-filter__filters-legend{
+                                    .tribe-filter-bar-c-filter__filter-fields{
+                                        .tribe-filter-bar-c-dropdown{
+                                            margin-top: $margin--medium;
+                                        }
                                     }
                                 }
                             }
