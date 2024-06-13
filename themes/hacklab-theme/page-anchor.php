@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página com âncoras
+ * Template Name: Page with anchors
  */
 get_header(); ?>
 

@@ -34,6 +34,6 @@ if ( ! empty( $search_query ) ) {
     </div>
 
     <div class="archive-header__results">
-        <p><span><?= $wp_query->found_posts;?></span><?php _e(' Resultados Encontrados', 'hacklabr');?></p>
+        <p><span><?= $wp_query->found_posts;?></span><?php _e(' Results Found', 'hacklabr');?></p>
     </div>
 </header><!-- /.c-title.title-default -->
