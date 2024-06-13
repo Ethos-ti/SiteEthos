@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/video-playlist",
+    "title": "Video Playlist",
+    "description": "Displays videos from a YouTube channel or playlist.",
+    "category": "media",
+    "icon": "format-video",
+    "supports": {
+        "html": false,
+        "align": true
+    },
+	"attributes": {
+        "numItems": {
+            "type": "string",
+            "default": "5"
+		},
+        "style": {
+            "type": "string",
+            "default": "sidebar",
+            "enum": ["block", "sidebar"]
+		},
+		"title": {
+			"type": "string",
+            "default": ""
+		},
+        "youtubeFormat": {
+			"type": "string",
+            "default": "channel",
+            "enum": ["channel", "playlist"]
+		},
+        "youtubeId": {
+            "type": "string",
+            "default": ""
+        }
+	},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/video-playlist/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/video-playlist/editor.css"],
+    "script": ["file:../../../dist/blocks/video-playlist/index.js"],
+    "style": ["file:../../../dist/blocks/video-playlist/index.css"]
+}
