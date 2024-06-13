@@ -61,6 +61,22 @@
                     align-items: center;
                     justify-content: center;
                 }
+                .recaptcha{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    color: #363B43;
+                    font-family: "Open Sans";
+                    font-size: (14);
+                    font-style: normal;
+                    font-weight: $font-weight--regular;
+                    line-height: (21);
+                    letter-spacing: -0.42px;
+                    span{
+                        margin-top: 24px;
+                    }
+
+                }
             }
 
         }
