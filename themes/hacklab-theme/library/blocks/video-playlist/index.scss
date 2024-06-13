@@ -1,5 +1,19 @@
 @import '../../../assets/scss/includes';
 
+.video-gallery-block{
+    width: $grid--wide;
+    left: -30%;
+
+    @include small{
+        width: inherit;
+        left: inherit;
+    }
+
+    @include mobile{
+        width: inherit;
+        left: inherit;
+    }
+}
  .embed-template-block {
     display: grid;
     grid-template-columns: 3fr 7fr;
@@ -151,15 +165,6 @@
         }
 
         .title-line {
-            height: 2px;
-            background-color: #CE1141;
-            flex-grow: 1;
-            margin-left: size(30);
-
-            @include mobile {
-                display: none;
-            }
-
             .sidebar-area & { // block as widget
                 display: flex;
                 margin-left: size(15);
