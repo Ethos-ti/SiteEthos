@@ -16,7 +16,7 @@ $time = get_post_meta($post_id, 'horario', true );
 ?>
 
 <header class="post-header">
-    <div class="post-header__postdata container--wide">
+    <div class="post-header__postdata alingfull">
 
     <div class="post-header__postdata__date">
 
@@ -43,25 +43,25 @@ $time = get_post_meta($post_id, 'horario', true );
             <div class="event-metadada__infos -text-center">
                 <?php if ($date) : ?>
                 <div class="event-metadada__infos__date">
-                    <p class="-bold"><?php _e('Date', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Date', 'hacklabr') ?></p>
                     <?php echo apply_filters('the_content', $date); ?>
                 </div>
                 <?php endif; ?>
                 <?php if ($time) : ?>
                 <div class="event-metadada__infos__date">
-                    <p class="-bold"><?php _e('Time', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Time', 'hacklabr') ?></p>
                     <?php echo apply_filters('the_content', $time); ?>
                 </div>
                 <?php endif; ?>
                 <?php if ($workload) : ?>
                     <div class="event-metadada__infos__workload">
-                        <p class="-bold"><?php _e('Workload', 'Hacklabr') ?></p>
+                        <p class="-bold"><?php _e('Workload', 'hacklabr') ?></p>
                         <?php echo apply_filters('the_content', $workload); ?>
                     </div>
                 <?php endif; ?>
                 <?php if ($investiment) : ?>
                 <div class="event-metadada__infos__investment">
-                    <p class="-bold"><?php _e('Investment', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Investment', 'hacklabr') ?></p>
                     <?php echo apply_filters('the_content', $investiment); ?>
                 </div>
                 <?php endif; ?>
@@ -69,7 +69,7 @@ $time = get_post_meta($post_id, 'horario', true );
             <?php if ($local) : ?>
             <div class="event-metadada__location -text-center">
                 <div class="event-metadada__location__local">
-                    <p class="-bold"><?php _e('Local', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Local', 'hacklabr') ?></p>
                     <?php echo apply_filters('the_content', $local); ?>
                 </div>
             </div>

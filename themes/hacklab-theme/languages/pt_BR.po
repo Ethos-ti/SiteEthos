@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-10T14:16:39+00:00\n"
-"PO-Revision-Date: 2024-06-10 11:40-0300\n"
+"POT-Creation-Date: 2024-06-12T20:04:47+00:00\n"
+"PO-Revision-Date: 2024-06-12 17:05-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -153,6 +153,30 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
+#: single-evento.php:36 single.php:49 template-parts/post-card.php:67
+msgid "Published in "
+msgstr "Publicado em "
+
+#: single-evento.php:46
+msgid "Date"
+msgstr "Data"
+
+#: single-evento.php:52
+msgid "Time"
+msgstr "Horário"
+
+#: single-evento.php:58
+msgid "Workload"
+msgstr "Carga horária total"
+
+#: single-evento.php:64
+msgid "Investment"
+msgstr "Investimento"
+
+#: single-evento.php:72
+msgid "Local"
+msgstr "Local"
+
 #: single-publicacao.php:19
 msgid "Publication Sample"
 msgstr "Amostra de publicação"
@@ -164,10 +188,6 @@ msgstr "Nenhum documento disponível."
 #: single-publicacao.php:41
 msgid "Published in"
 msgstr "Publicado em"
-
-#: single.php:49 template-parts/post-card.php:67
-msgid "Published in "
-msgstr "Publicado em "
 
 #: single.php:54
 msgid "Published by "
@@ -245,6 +265,8 @@ msgstr "Conteúdo do cabeçalho"
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:22
+#: dist/blocks/banner-with-image/editor.js:142
+#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1824
 msgid "Layout"
 msgstr "Layout"
 
@@ -253,24 +275,33 @@ msgstr "Layout"
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/banner-with-image/editor.js:28
 #: library/blocks/shared/SelectImage.js:32
+#: dist/blocks/banner-with-image/editor.js:96
+#: dist/blocks/banner-with-image/editor.js:145
+#: dist/blocks/card-header/editor.js:83 dist/blocks/download-image/editor.js:96
 msgid "Image"
 msgstr "Imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:15
+#: dist/blocks/banner-with-image/editor.js:79
+#: dist/blocks/card-header/editor.js:66 dist/blocks/download-image/editor.js:79
 msgid "Change image"
 msgstr "Alterar imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:18
+#: dist/blocks/banner-with-image/editor.js:82
+#: dist/blocks/card-header/editor.js:69 dist/blocks/download-image/editor.js:82
 msgid "Remove image"
 msgstr "Remover imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:24
+#: dist/blocks/banner-with-image/editor.js:88
+#: dist/blocks/card-header/editor.js:75 dist/blocks/download-image/editor.js:88
 msgid "Select image"
 msgstr "Selecionar imagem"
 
@@ -280,6 +311,7 @@ msgid "Body content"
 msgstr "Conteúdo do corpo"
 
 #: dist/blocks/card-header/editor.js:19 library/blocks/card-header/editor.js:41
+#: dist/blocks/card-header/editor.js:145
 msgid "Background image"
 msgstr "Imagem de fundo"
 
@@ -369,6 +401,7 @@ msgstr "Comparar termos"
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
+#: dist/blocks/posts-grid/editor.js:1377
 msgid "Post type"
 msgstr "Tipo de post"
 
@@ -415,6 +448,7 @@ msgstr "Tamanho"
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomy.js:21
+#: dist/blocks/posts-grid/editor.js:1415
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
@@ -425,6 +459,7 @@ msgid "No taxonomy"
 msgstr "Sem taxonomia"
 
 #: dist/blocks/posts-grid/editor.js:107 library/blocks/shared/SelectTerms.js:9
+#: dist/blocks/posts-grid/editor.js:1442
 msgid "Terms"
 msgstr "Termos"
 
