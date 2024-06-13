@@ -3,6 +3,12 @@
 namespace hacklabr;
 
 function register_registration_form () {
+    $revenue_options = [
+        'small' => 'Micro e pequeno (até R$ 16 milhões)',
+        'medium' => 'Médio (R$ 16 a 300 milhões)',
+        'large' => 'Grande (maior que R$ 300 milhões)',
+    ];
+
 	$states_options = [
 		'AC' => 'Acre',
 		'AL' => 'Alagoas',
@@ -87,8 +93,14 @@ function register_registration_form () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Faturamento do ano anterior (R$)',
-            'options' => [],
+            'options' => $revenue_options,
             'required' => true,
+            'validate' => function ($value, $context) use ($revenue_options) {
+                if (!array_key_exists($value, $revenue_options)) {
+                    return 'Valor inválido';
+                }
+                return true;
+            },
         ],
         'inscricao_estadual' => [
             'type' => 'text',
@@ -302,23 +314,74 @@ function validate_registration_form ($form_id, $form, $params) {
     if ($form_id === 'member-registration-1') {
         $validation = validate_form($form['fields'], $params);
 
-        if ($validation === true) {
-            var_dump($params);
-
-            /*
-            $next_page = get_page_by_form('member-registration-2');
-            if (!empty($next_page)) {
-                wp_safe_redirect(get_permalink($next_page));
-                exit;
-            }
-            */
+        if ($validation !== true) {
+            return;
         }
-    } else if ($form_id === 'member-registration-2') {
+
+        $group = pmpro_create_blank_group();
+
+        $post_meta = array_merge($params, [
+            '_pmpro_group' => $group->id,
+        ]);
+        unset($post_meta['_hacklabr_form']);
+
+        $post_id = wp_insert_post([
+            'post_type' => 'organizacao',
+            'post_title' => $params['nome_fantasia'],
+            'post_status' => 'draft',
+            'meta_input' => $post_meta,
+        ]);
+
+        $next_page = get_page_by_form('member-registration-2');
+        $params = [ 'groupid' => $group->id ];
+
+        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        exit;
+    }
+
+    if ($form_id === 'member-registration-2' && !empty($_GET['groupid'])) {
         $validation = validate_form($form['fields'], $params);
 
-        if ($validation === true) {
+        $group_id = (int) filter_input(INPUT_GET, 'groupid', FILTER_VALIDATE_INT);
 
+        if ($validation !== true) {
+            return;
         }
+
+        $posts = get_posts([
+            'post_type' => 'organizacao',
+            'post_status' => ['draft', 'publish'],
+            'meta_key' => '_pmpro_group',
+            'meta_value' => $group_id,
+        ]);
+
+        if (empty($posts)) {
+            return;
+        }
+
+        $post = $posts[0];
+
+        $user_meta = array_merge($params, []);
+        unset($user_meta['_hacklabr_form']);
+
+        $user_id = wp_insert_user([
+            'display_name' => $params['nome_completo'],
+            'user_email' => $params['email'],
+            'user_pass' => wp_generate_password(),
+            'role' => 'subscriber',
+            'meta_input' => $user_meta,
+        ]);
+
+        wp_insert_post([
+            'ID' => $post->ID,
+            'post_status' => 'publish',
+            'post_author' => $user_id,
+        ]);
+
+        pmpro_fill_group($group_id, $user_id);
+
+        wp_safe_redirect(get_home_url());
+        exit;
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);
