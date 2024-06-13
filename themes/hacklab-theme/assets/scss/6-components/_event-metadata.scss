@@ -1,0 +1,71 @@
+.single-tribe_events{
+    .post-header__postdata{
+        margin-left: auto;
+        margin-right: auto;
+        .tag{
+            margin-top: calc( $margin--large + $margin--medium );
+            border-radius: $border-radius--small;
+        }
+        .list-terms{
+            list-style: none;
+            padding-left: 0;
+        }
+        .post-header__title{
+            margin-top: calc( $margin--medium + $margin--small );
+        }
+        .post-header__excerpt{
+            @media(max-width:$break--tablet){
+                font-size: $font-size--large;
+            }
+        }
+        .post-header__meta{
+            @media(max-width:$break--tablet){
+                padding-left: $padding--small;
+                padding-right: $padding--small;
+                flex-direction: column-reverse;
+            }
+        }
+    }
+
+    .event-metadada-section{
+        background-color: $color--high-light;
+        .event-metadada{
+            margin-top: $margin--large;
+            padding: $padding--large $padding--small;
+            .event-metadada__infos{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: $margin--medium;
+                &__date,
+                &__time,
+                &__workload,
+                &__investment{
+                    :first-child{
+                        border-bottom: $border-width--small solid $color--primary-light;
+                        padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
+                    }
+                    :last-child{
+                        padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
+                    }
+                }
+            }
+            .event-metadada__location{
+                &__local{
+                    :first-child{
+                        border-bottom: $border-width--small solid $color--primary-light;
+                        padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
+                    }
+                    :last-child{
+                        padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
+                    }
+                }
+            }
+        }
+    }
+}
