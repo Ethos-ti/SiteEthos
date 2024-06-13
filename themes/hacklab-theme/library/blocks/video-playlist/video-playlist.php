@@ -175,5 +175,22 @@ function render_video_playlist_callback( $attributes = [] ) {
     return $embeds;
 }
 
+function cookieyes_is_active() {
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+    if ( is_plugin_active( 'cookie-law-info/cookie-law-info.php' ) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function enqueue_scripts() {
+    wp_localize_script( 'hacklabr-video-playlist-script', 'videoPlaylist', [
+        'cookieYesActive' => cookieyes_is_active()
+    ]);
+}
+add_action( 'wp_enqueue_scripts', 'hacklabr\\enqueue_scripts' );
+
 
 

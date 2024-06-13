@@ -1,15 +1,47 @@
 import { __ } from '@wordpress/i18n';
 
+window.addEventListener("DOMContentLoaded", function () {
+
+	if (!videoPlaylist.cookieYesActive || checkCookieYesConsent()) {
+		placeholderToggleActive("remove")
+		render_gallery()
+	} else {
+		placeholderToggleActive("add")
+	}
+
+	document.addEventListener("cookieyes_consent_update", function (eventData) {
+		const data = eventData.detail;
+		if (videoPlaylist.cookieYesActive) {
+			if (data.rejected.includes("functional")) {
+				placeholderToggleActive("add")
+			} else {
+				placeholderToggleActive("remove")
+				render_gallery()
+			}
+		} else {
+			render_gallery()
+		}
+	});
+
+})
+
 function render_gallery() {
+    console.log('oi');
     document.querySelectorAll('.video-gallery-wrapper').forEach( videoGallery => {
         let videoItens = videoGallery.querySelectorAll('.embed-template-block');
 
         if(videoItens.length > 1) {
-            videoCopyPolicyFix = videoItens[0].cloneNode(true);
+            let videoCopyPolicyFix = videoItens[0].cloneNode(true);
+
+            if(document.querySelector('body').classList.contains('cmplz-status-allow')){
+                // plugin cmplz postprocessing fix.
+                videoCopyPolicyFix.querySelector('figure > div').classList.remove('cmplz-blocked-content-container', 'cmplz-placeholder-1');
+                videoCopyPolicyFix.querySelector('figure .wp-block-embed__wrapper iframe').classList.remove('cmplz-video', 'cmplz-hidden');
+            }
 
             videoGallery.insertBefore(videoCopyPolicyFix, videoItens[1]);
         } else if (videoItens.length == 1 && videoItens[0].querySelector('.video-excerpt')) {
-            videoCopyPolicyFix = videoItens[0].querySelector('.video-excerpt').cloneNode(true);
+            let videoCopyPolicyFix = videoItens[0].querySelector('.video-excerpt').cloneNode(true);
             videoCopyPolicyFix.classList.add('video-excerpt-show');
 
             const excerptLimiter = document.createElement('div');
@@ -56,6 +88,34 @@ function render_gallery() {
             videoGallery.appendChild(gridScrollLimiter);
         }
     })
+}
+function placeholderToggleActive(toggle = "remove") {
+    let placeholders = document.querySelectorAll(".cookieyes-placeholder")
+
+    placeholders.forEach(placeholder => {
+        if (toggle == "add") {
+            placeholder.classList.add("active")
+        } else {
+            placeholder.classList.remove("active")
+        }
+    })
+}
+
+function checkCookieYesConsent() {
+    var cookies = document.cookie.split(';')
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim()
+        if (cookie.startsWith("cookieyes-consent")) {
+            var parts = cookie.split(',')
+            for (var j = 0; j < parts.length; j++) {
+                var part = parts[j].trim()
+                if (part.startsWith("functional:yes")) {
+                    return true
+                }
+            }
+        }
+    }
+    return false
 }
 
 
