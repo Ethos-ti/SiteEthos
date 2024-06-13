@@ -20,9 +20,9 @@
         }
         .post-header__meta{
             @media(max-width:$break--tablet){
-                padding-left: $padding--small;
-                padding-right: $padding--small;
                 flex-direction: column-reverse;
+                margin-left: $margin--small;
+                margin-right: $margin--small;
             }
         }
     }
@@ -36,6 +36,11 @@
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: $margin--medium;
+                @media(max-width:$break--small){
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: $gap--medium;
+                }
                 &__date,
                 &__time,
                 &__workload,

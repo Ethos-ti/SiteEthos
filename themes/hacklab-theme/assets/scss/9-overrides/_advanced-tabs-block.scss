@@ -69,6 +69,7 @@
                 @include small {
                     font-size: $font-size--x-small !important;
                     line-height: 13.2px !important;
+                    white-space: nowrap;
                 }
             }
         }
