@@ -1,17 +1,35 @@
 <?php
+
+global $post;
+
 get_header();
-the_post();
+$post_id  = get_the_ID();
 $category = get_the_category();
 $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
+$terms    = get_html_terms( $post_id , 'tribe_events_cat' );
+$workload = get_post_meta($post_id, 'carga_horaria_total', true );
+$investiment = get_post_meta($post_id, '_EventCost', true );
+$local = get_post_meta($post_id, 'local', true );
+$date = get_post_meta($post_id, 'data-do-evento', true );
+$time = get_post_meta($post_id, 'horario', true );
 
 ?>
 
 <header class="post-header">
     <div class="post-header__postdata container--wide">
+
+    <div class="post-header__postdata__date">
+
+        <?php if ( $terms ) : ?>
+            <div class="tag-event -text-center">
+                <span class="tag"><?php echo $terms ?></span>
+            </div>
+        <?php endif; ?>
+
         <h1 class="post-header__title"> <?php the_title(); ?> </h1>
 
         <?php if ( $excerpt ) : ?>
-            <p class="post-header__excerpt container--narrow"><?= get_the_excerpt() ?></p>
+            <p class="post-header__excerpt container"><?= get_the_excerpt() ?></p>
         <?php endif; ?>
 
         <div class="post-header__meta container">
@@ -22,30 +40,40 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
 
     <div class="event-metadada-section">
         <div class="event-metadada container">
-            <div class="event-metadada__infos">
+            <div class="event-metadada__infos -text-center">
+                <?php if ($date) : ?>
                 <div class="event-metadada__infos__date">
-                    <p><?php _e('Date', 'Hacklabr') ?></p>
-                    <p><?php _e('08/10/2024', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Date', 'Hacklabr') ?></p>
+                    <?php echo apply_filters('the_content', $date); ?>
                 </div>
-                <div class="event-metadada__infos__time">
-                    <p><?php _e('Time', 'Hacklabr') ?></p>
-                    <p><?php _e('das 8h às 18h30', 'Hacklabr') ?></p>
+                <?php endif; ?>
+                <?php if ($time) : ?>
+                <div class="event-metadada__infos__date">
+                    <p class="-bold"><?php _e('Time', 'Hacklabr') ?></p>
+                    <?php echo apply_filters('the_content', $time); ?>
                 </div>
-                <div class="event-metadada__infos__workload">
-                    <p><?php _e('Workload', 'Hacklabr') ?></p>
-                    <p><?php _e('3 horas', 'Hacklabr') ?></p>
-                </div>
+                <?php endif; ?>
+                <?php if ($workload) : ?>
+                    <div class="event-metadada__infos__workload">
+                        <p class="-bold"><?php _e('Workload', 'Hacklabr') ?></p>
+                        <?php echo apply_filters('the_content', $workload); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($investiment) : ?>
                 <div class="event-metadada__infos__investment">
-                    <p><?php _e('Investment', 'Hacklabr') ?></p>
-                    <p><?php _e('459,00 (50% de desconto para estudantes)', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Investment', 'Hacklabr') ?></p>
+                    <?php echo apply_filters('the_content', $investiment); ?>
                 </div>
+                <?php endif; ?>
             </div>
-            <div class="event-metadada__location">
+            <?php if ($local) : ?>
+            <div class="event-metadada__location -text-center">
                 <div class="event-metadada__location__local">
-                    <p><?php _e('Local', 'Hacklabr') ?></p>
-                    <p><?php _e('Online e ao vivo, via webconferência nas plataformas Zoom e Meeting', 'Hacklabr') ?></p>
+                    <p class="-bold"><?php _e('Local', 'Hacklabr') ?></p>
+                    <?php echo apply_filters('the_content', $local); ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 

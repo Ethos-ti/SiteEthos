@@ -120,6 +120,11 @@
                                 }
                             }
                         }
+                        &--open{
+                            .tribe-filter-bar-c-filter__container{
+                                margin-top: $margin--medium;
+                            }
+                        }
                     }
                 }
             }
