@@ -1,0 +1,40 @@
+.page-minhas-solicitacoes{
+    .content-sidebar{
+        .wpcf7{
+            margin-inline: auto;
+            max-width: $grid--narrow;
+            padding-inline: $padding--medium;
+            width: 100%;
+            label{
+                color: #363B43;
+                font-family: "Open Sans";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: $font-weight--bold;
+                line-height: 13.2px; /*  */
+                letter-spacing: -0.36px;
+                text-transform: uppercase;
+                border-radius: $border-radius--medium;
+            }
+            select{
+                width: 100%;
+                max-width: 470px;
+                height: 48px !important;
+
+            }
+            form{
+            }
+            p{
+                .form-book__input{
+                    background-color: white;
+                    height: 99px;
+
+                }
+                .wpcf7-date,
+                .wpcf7-text{
+                    height: 48px;
+                }
+            }
+        }
+    }
+}
