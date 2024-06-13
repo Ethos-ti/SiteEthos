@@ -15,6 +15,12 @@ class API {
             'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
         ]);
 
+        register_rest_route('hacklabr/v2', '/options', [
+            'methods' => 'GET',
+            'callback' => 'hacklabr\API::rest_options_callback',
+            'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
+        ]);
+
         register_rest_route('hacklabr/v2', '/post_types', [
             'methods' => 'GET',
             'callback' => 'hacklabr\API::rest_post_types_callback',
@@ -73,6 +79,14 @@ class API {
             'cardModifiers' => [
                 'options' => get_card_modifiers(),
             ],
+        ];
+
+        return new \WP_REST_Response($response, 200);
+    }
+
+    static function rest_options_callback () {
+        $response = [
+            'youtubeKey' => get_option('youtube_key', ''),
         ];
 
         return new \WP_REST_Response($response, 200);
