@@ -13,7 +13,7 @@ export function QueryPanel ({ attributes, setAttributes, title = __('Query', 'ha
 
     const { data: postTypes } = useRestApi('hacklabr/v2/post_types');
 
-    const onPostTypeChange = (postType) => setAttributes({ postType, taxonomy: '', queryTerms: EMPTY_ARR });
+    const onPostTypeChange = (postType) => setAttributes({ postType, taxonomy: '', queryTerms: EMPTY_ARR, showTaxonomies: [] });
     const onNoPostTypeChange = (noPostType) => setAttributes({ noPostType, noTaxonomy: '', noQueryTerms: EMPTY_ARR });
 
     const onTaxonomyChange = (taxonomy) => setAttributes({ taxonomy, queryTerms: EMPTY_ARR });

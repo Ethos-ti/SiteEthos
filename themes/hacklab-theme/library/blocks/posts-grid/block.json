@@ -87,6 +87,10 @@
             "type": "boolean",
             "default": false
         },
+        "showTaxonomies": {
+            "type": "array",
+            "default": []
+        },
         "taxonomy": {
             "type": "string",
             "default": ""
