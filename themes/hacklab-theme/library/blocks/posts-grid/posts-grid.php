@@ -20,13 +20,14 @@ function get_posts_grid_data ($attributes): \WP_Query {
 
 function render_posts_grid_callback ($attributes) {
     $card_model = $attributes['cardModel'];
-    $card_modifiers = $attributes['cardModifiers'] ?: [];
-    $hide_author = $attributes['hideAuthor'] ?: false;
-    $hide_categories = $attributes['hideCategories'] ?: false;
-    $hide_date = $attributes['hideDate'] ?: false;
-    $hide_excerpt = $attributes['hideExcerpt'] ?: false;
-    $posts_per_column = $attributes['postsPerColumn'] ?: 1;
-    $posts_per_row = $attributes['postsPerRow'] ?: 1;
+    $card_modifiers = $attributes['cardModifiers'] ?? [];
+    $hide_author = $attributes['hideAuthor'] ?? false;
+    $hide_categories = $attributes['hideCategories'] ?? false;
+    $hide_date = $attributes['hideDate'] ?? false;
+    $hide_excerpt = $attributes['hideExcerpt'] ?? false;
+    $posts_per_column = $attributes['postsPerColumn'] ?? 1;
+    $posts_per_row = $attributes['postsPerRow'] ?? 1;
+    $show_taxonomies = $attributes['showTaxonomies'] ?? [];
 
     // Normalize attributes before calling `build_posts_query`
     $query_attributes = normalize_posts_query($attributes);
@@ -47,6 +48,7 @@ function render_posts_grid_callback ($attributes) {
                 'hide_excerpt' => $hide_excerpt,
                 'modifiers' => $card_modifiers,
                 'post' => $post,
+                'show_taxonomies' => $show_taxonomies,
             ]);
         endforeach; ?>
     </div>
