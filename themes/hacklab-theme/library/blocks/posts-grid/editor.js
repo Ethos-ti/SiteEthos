@@ -9,11 +9,12 @@ import { QueryPanel } from '../shared/QueryPanel';
 import { SelectCardModel } from '../shared/SelectCardModel';
 import { SelectCardModifier } from '../shared/SelectCardModifier';
 import { SelectSize } from '../shared/SelectSize';
+import { SelectTaxonomies } from '../shared/SelectTaxonomies';
 
 import metadata from './block.json';
 
 function Edit ({ attributes, setAttributes }) {
-    const { cardModel, cardModifiers, gridGap, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow } = attributes;
+    const { cardModel, cardModifiers, gridGap, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow, postType, showTaxonomies } = attributes;
 
     const blockProps = useBlockProps();
 
@@ -89,6 +90,15 @@ function Edit ({ attributes, setAttributes }) {
                         label={__('Hide excerpt', 'hacklabr')}
                         checked={hideExcerpt}
                         onChange={(hideExcerpt) => setAttributes({ hideExcerpt })}
+                    />
+                </PanelRow>
+
+                <PanelRow>
+                    <SelectTaxonomies
+                        label={__('Show taxonomies', 'hacklabr')}
+                        postType={postType}
+                        value={showTaxonomies}
+                        onChange={(showTaxonomies) => setAttributes({ showTaxonomies })}
                     />
                 </PanelRow>
             </PanelBody>
