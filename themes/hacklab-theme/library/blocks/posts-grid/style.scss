@@ -15,8 +15,17 @@
     }
 
     .post-card--vertical-thumbnail{
+        grid-template-columns: 0.7fr 1fr;
         img{
             border-radius: 0;
+        }
+
+    }
+    &.-gap-small{
+        .post-card--vertical-thumbnail{
+            .post-card__term{
+                display: none;
+            }
         }
     }
 }

@@ -13,11 +13,13 @@ $hide_excerpt = (bool) ($args['hide_excerpt'] ?? false);
 $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "post-card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
-
 $post_id = get_the_ID();
 $editorias = get_the_terms($post_id, 'tipo_post');
 $categories = get_the_category();
+$publication_terms = get_html_terms( $post_id , 'tipo_publicacao' );
+$initiative_terms = get_html_terms( $post_id , 'tipo_iniciativa' );
 $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
+
 ?>
 <article id="post-ID-<?php the_ID(); ?>" class="post-card <?=$modifiers?>">
     <header class="post-card__image">
@@ -32,25 +34,38 @@ $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
 
     <main class="post-card__content">
 
-        <?php if (!$hide_categories && (!empty($categories) || !empty($editorias))): ?>
-            <div class="post-card__category">
-                <?php if (!empty($editorias)): ?>
-                    <?php foreach ($editorias as $editoria): ?>
-                        <?php if (!is_wp_error($editoria)): ?>
-                            <a class="tag tag--outline" href="<?= get_term_link($editoria, 'tipo_post') ?>">
-                                <?= $editoria->name ?>
-                            </a>
-                        <?php endif; ?>
+        <div class="post-card__terms">
+            <?php if (!$hide_categories && (!empty($categories) || !empty($editorias))): ?>
+                <div class="post-card__category">
+                    <?php if (!empty($editorias)): ?>
+                        <?php foreach ($editorias as $editoria): ?>
+                            <?php if (!is_wp_error($editoria)): ?>
+                                <a class="tag tag--outline" href="<?= get_term_link($editoria, 'tipo_post') ?>">
+                                    <?= $editoria->name ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php foreach ($categories as $category): ?>
+                        <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
+                            <?= $category->name ?>
+                        </a>
                     <?php endforeach; ?>
-                <?php endif; ?>
+                </div>
+            <?php endif; ?>
 
-                <?php foreach ($categories as $category): ?>
-                    <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
-                        <?= $category->name ?>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
+            <?php if ( $publication_terms ) : ?>
+                <div class="post-card__term">
+                    <span class="tag"><?php echo $publication_terms ?></span>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( $initiative_terms ) : ?>
+                <div class="post-card__term">
+                    <span class="tag"><?php echo $initiative_terms ?></span>
+                </div>
+            <?php endif; ?>
+        </div>
 
         <h3 class="post-card__title">
             <a href="<?php the_permalink();?>"><?php the_title();?></a>
