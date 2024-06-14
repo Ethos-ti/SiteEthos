@@ -69,6 +69,7 @@ usort($terms, 'custom_sort');
                                     'hide_author' => true,
                                     'hide_excerpt' => true,
                                     'modifiers' => ['vertical-thumbnail'],
+                                    'show_taxonomies' => ['tipo_publicacao'],
                                 ] ); ?>
                             <?php endwhile; ?>
                         </main>

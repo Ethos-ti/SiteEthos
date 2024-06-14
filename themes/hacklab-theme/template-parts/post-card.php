@@ -13,11 +13,13 @@ $hide_excerpt = (bool) ($args['hide_excerpt'] ?? false);
 $modifiers = (array) ($args['modifiers'] ?? []);
 $modifiers = array_map(fn ($modifier) => "post-card--{$modifier}", $modifiers);
 $modifiers = implode(' ', $modifiers);
-
 $post_id = get_the_ID();
 $editorias = get_the_terms($post_id, 'tipo_post');
 $categories = get_the_category();
+$publication_terms = get_html_terms( $post_id , 'tipo_publicacao' );
+$initiative_terms = get_html_terms( $post_id , 'tipo_iniciativa' );
 $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
+
 ?>
 <article id="post-ID-<?php the_ID(); ?>" class="post-card <?=$modifiers?>">
     <header class="post-card__image">
@@ -44,7 +46,6 @@ $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
                             <?php endif; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
-
                     <?php foreach ($categories as $category): ?>
                         <a class="tag tag--solid tag--<?= $category->slug ?>" href="<?= get_term_link($category, 'category') ?>">
                             <?= $category->name ?>

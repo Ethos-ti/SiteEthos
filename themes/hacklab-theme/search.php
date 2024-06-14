@@ -123,7 +123,7 @@ usort($terms, 'custom_sort');
                                                 $label = 'Eventos';
                                             break;
                                             case 'post':
-                                                $label = 'Novidades';
+                                                $label = 'Notícias';
                                             break;
                                             case 'publicacao':
                                                 $label = 'Publicações';
