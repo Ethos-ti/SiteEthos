@@ -5,6 +5,9 @@
             max-width: $grid--narrow;
             padding-inline: $padding--medium;
             width: 100%;
+            @include mmobile{
+                padding-inline: initial;
+            }
             form{
                 display: flex;
                 flex-direction: column;
