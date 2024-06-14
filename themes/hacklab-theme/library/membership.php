@@ -2,7 +2,15 @@
 
 namespace hacklabr;
 
-function pmpro_create_blank_group ($level_id = 0) {
+function pmpro_add_user_to_group ($user_id, $group_id) {
+    $group = new \PMProGroupAcct_Group($group_id);
+
+    $membership = \PMProGroupAcct_Group_Member::create($user_id, $group->group_parent_level_id, $group->id);
+
+    return $membership;
+}
+
+function pmpro_create_blank_group ($level_id = 11) {
     global $wpdb;
 
     $wpdb->insert($wpdb->pmprogroupacct_groups, [
@@ -31,6 +39,8 @@ function pmpro_fill_group ($group_id, $user_id) {
     $group = new \PMProGroupAcct_Group($group_id);
 
     $group->regenerate_group_checkout_code();
+
+    pmpro_changeMembershipLevel($group->group_parent_level_id, $user_id);
 
     return $group;
 }
