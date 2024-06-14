@@ -3,6 +3,8 @@
 .video-gallery-block{
     width: $grid--wide;
     left: -30%;
+    padding-left: $padding--medium;
+    padding-right: $padding--medium;
 
     @include small{
         width: inherit;
