@@ -35,6 +35,18 @@ $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
     <main class="post-card__content">
 
         <div class="post-card__terms">
+            <?php if ( $publication_terms ) : ?>
+                <div class="post-card__term">
+                    <span class="tag"><?php echo $publication_terms ?></span>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( $initiative_terms ) : ?>
+                <div class="post-card__term">
+                    <span class="tag"><?php echo $initiative_terms ?></span>
+                </div>
+            <?php endif; ?>
+
             <?php if (!$hide_categories && (!empty($categories) || !empty($editorias))): ?>
                 <div class="post-card__category">
                     <?php if (!empty($editorias)): ?>
@@ -54,17 +66,6 @@ $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
                 </div>
             <?php endif; ?>
 
-            <?php if ( $publication_terms ) : ?>
-                <div class="post-card__term">
-                    <span class="tag"><?php echo $publication_terms ?></span>
-                </div>
-            <?php endif; ?>
-
-            <?php if ( $initiative_terms ) : ?>
-                <div class="post-card__term">
-                    <span class="tag"><?php echo $initiative_terms ?></span>
-                </div>
-            <?php endif; ?>
         </div>
 
         <h3 class="post-card__title">
