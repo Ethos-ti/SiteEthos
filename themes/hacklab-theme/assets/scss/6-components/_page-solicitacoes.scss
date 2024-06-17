@@ -1,5 +1,10 @@
 .page-minhas-solicitacoes{
     .content-sidebar{
+        main{
+            h1{
+                margin-bottom: $margin--large;
+            }
+        }
         .wpcf7{
             margin-inline: auto;
             max-width: $grid--narrow;
@@ -72,12 +77,16 @@
                     justify-content: center;
                 }
                 .recaptcha{
-                    align-items: center;
                     color: #363b43;
                     display: flex;
                     flex-direction: column;
-                    font-size: 14;
-                    font-weight: 400;
+                    font-size: 14px;
+                    font-weight: $font-weight--regular;
+                    align-items: center;
+                    margin-right: 91px;
+                    @include mobile{
+                        margin-right: initial;
+                    }
                     span{
                         margin-top: 24px;
                     }
