@@ -25,12 +25,27 @@
         }
     }
 
+    &__terms{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: $gap--small;
+    }
+
     &__category {
         display: flex;
         flex-wrap: wrap;
         gap: $gap--x-small;
         list-style: none;
         padding: 0;
+    }
+
+    &__term{
+        .list-terms{
+            list-style: none;
+            padding-left: 0;
+            margin: 0 0;
+        }
     }
 
     &__title {

@@ -38,7 +38,7 @@
         </div>
 
         <div class="post-header__meta ">
-            <p class="post-header__date"><?php _e('Published in', 'hacklabr') ?><?= get_the_date() ?></p>
+            <p class="post-header__date"><?php _e('Published in', 'hacklabr') ?> <?= get_the_date() ?></p>
             <?php get_template_part('template-parts/share-links', null, ['link'=>get_the_permalink()]) ?>
         </div>
         <div class="post-content stack">
