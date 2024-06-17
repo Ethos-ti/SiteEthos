@@ -346,6 +346,7 @@ function validate_registration_form ($form_id, $form, $params) {
         $post_id = wp_insert_post([
             'post_type' => 'organizacao',
             'post_title' => $params['nome_fantasia'],
+            'post_content' => '',
             'post_status' => 'draft',
             'meta_input' => $post_meta,
         ]);
