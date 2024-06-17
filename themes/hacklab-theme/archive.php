@@ -68,7 +68,8 @@ usort($terms, 'custom_sort');
                                 <?php get_template_part( 'template-parts/post-card', null, [
                                     'hide_author' => true,
                                     'hide_date' => true,
-                                    'hide_excerpt' => true
+                                    'hide_excerpt' => true,
+                                    'show_taxonomies' => ['tipo_iniciativa'],
                                 ] ); ?>
                             <?php endwhile; ?>
                         </main>
