@@ -5,7 +5,7 @@
             max-width: $grid--narrow;
             padding-inline: $padding--medium;
             width: 100%;
-            @include mmobile{
+            @include mobile{
                 padding-inline: initial;
             }
 
