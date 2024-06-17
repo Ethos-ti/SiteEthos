@@ -2,14 +2,14 @@
 
 namespace hacklabr;
 
-function register_registration_form () {
+function get_registration_step1_fields () {
     $revenue_options = [
         'small' => 'Micro e pequeno (até R$ 16 milhões)',
         'medium' => 'Médio (R$ 16 a 300 milhões)',
         'large' => 'Grande (maior que R$ 300 milhões)',
     ];
 
-	$states_options = [
+    $states_options = [
 		'AC' => 'Acre',
 		'AL' => 'Alagoas',
 		'AP' => 'Amapá',
@@ -39,7 +39,7 @@ function register_registration_form () {
 		'TO' => 'Tocantins',
 	];
 
-    $fields_step1 = [
+    $fields = [
         'cnpj' => [
             'type' => 'masked',
             'class' => '-colspan-12',
@@ -214,7 +214,11 @@ function register_registration_form () {
         ],
     ];
 
-    $fields_step2 = [
+    return $fields;
+}
+
+function get_registration_step2_fields () {
+    $fields = [
         'nome_completo' => [
             'type' => 'text',
             'class' => '-colspan-12',
@@ -294,6 +298,13 @@ function register_registration_form () {
             },
         ],
     ];
+
+    return $fields;
+}
+
+function register_registration_form () {
+    $fields_step1 = get_registration_step1_fields();
+    $fields_step2 = get_registration_step2_fields();
 
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
         'fields' => $fields_step1,
