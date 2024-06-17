@@ -1,0 +1,10 @@
+.tribe-compatibility-container{
+    .tribe-events{
+        .tribe-events-widget-events-list{
+            &__header,
+            &__view-more-link{
+                display: none;
+            }
+        }
+    }
+}
