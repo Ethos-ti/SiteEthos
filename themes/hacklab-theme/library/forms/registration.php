@@ -261,6 +261,13 @@ function get_registration_step2_fields () {
             'placeholder' => 'Insira o e-mail',
             'required' => true,
         ],
+        'senha' => [
+            'type' => 'password',
+            'class' => '-colspan-12',
+            'label' => 'Senha',
+            'placeholder' => 'Insira a senha',
+            'required' => true,
+        ],
         'celular' => [
             'type' => 'masked',
             'class' => '-colspan-12',
@@ -373,12 +380,14 @@ function validate_registration_form ($form_id, $form, $params) {
         $post = $posts[0];
 
         $user_meta = array_merge($params, []);
+        $password = $params['senha'];
         unset($user_meta['_hacklabr_form']);
+        unset($user_meta['senha']);
 
         $user_id = wp_insert_user([
             'display_name' => $params['nome_completo'],
             'user_email' => $params['email'],
-            'user_pass' => wp_generate_password(),
+            'user_pass' => $password,
             'role' => 'subscriber',
             'meta_input' => $user_meta,
         ]);
