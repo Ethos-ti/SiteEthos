@@ -5,7 +5,7 @@
             max-width: $grid--narrow;
             padding-inline: $padding--medium;
             width: 100%;
-            @include mmobile{
+            @include mobile{
                 padding-inline: initial;
             }
 
@@ -90,6 +90,14 @@
                     font-style: normal;
                     font-weight: $font-weight--regular;
                     line-height: 21px; /* 21px */
+                }
+            }
+            & .date > label {
+                .walcf7-timepicker{
+                    width: 100%;
+                    max-width: 470px;
+                    border-radius: 8px;
+                    border: 1px solid #DDD;
                 }
             }
 
