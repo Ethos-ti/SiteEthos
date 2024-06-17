@@ -115,18 +115,21 @@
             margin-inline-start: $gap--small;
         }
 
-        &:hover {
-            iconify-icon {
-                transform: rotate(180deg);
-                transition: all .3s ease-in-out;
-            }
+        @include desktop {
+            &:hover {
+                iconify-icon {
+                    transform: rotate(180deg);
+                    transition: all .3s ease-in-out;
+                }
 
-            .sub-menu {
-                display: block;
+                .sub-menu {
+                    display: block;
 
 
+                }
             }
         }
+
     }
 
     .area-do-associado,
