@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-12T20:04:47+00:00\n"
-"PO-Revision-Date: 2024-06-12 17:05-0300\n"
+"POT-Creation-Date: 2024-06-17T19:21:28+00:00\n"
+"PO-Revision-Date: 2024-06-17 16:24-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -120,6 +120,10 @@ msgstr "Card vertical"
 msgid "Vertical thumbnail"
 msgstr "Miniatura vertical"
 
+#: library/settings.php:44
+msgid "YouTube Key"
+msgstr "Chave do YouTube"
+
 #. Template Name of the theme
 msgid "Page with anchors"
 msgstr "Página com âncoras"
@@ -153,27 +157,27 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
-#: single-evento.php:36 single.php:49 template-parts/post-card.php:67
+#: single-evento.php:32 single.php:49 template-parts/post-card.php:85
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:46
-msgid "Date"
-msgstr "Data"
+#: single-evento.php:42
+msgid "Start"
+msgstr "Início"
 
-#: single-evento.php:52
-msgid "Time"
-msgstr "Horário"
+#: single-evento.php:48
+msgid "End"
+msgstr "Fim"
 
-#: single-evento.php:58
+#: single-evento.php:54
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:64
+#: single-evento.php:60
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:72
+#: single-evento.php:68
 msgid "Local"
 msgstr "Local"
 
@@ -264,9 +268,9 @@ msgstr "Conteúdo do cabeçalho"
 #: dist/blocks/card-header/editor.js:19 dist/blocks/posts-grid/editor.js:19
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
-#: library/blocks/posts-grid/editor.js:22
+#: library/blocks/posts-grid/editor.js:23
 #: dist/blocks/banner-with-image/editor.js:142
-#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1824
+#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1909
 msgid "Layout"
 msgstr "Layout"
 
@@ -315,40 +319,45 @@ msgstr "Conteúdo do corpo"
 msgid "Background image"
 msgstr "Imagem de fundo"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:39
-#: dist/blocks/posts-grid/editor.js:1841
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
+#: dist/blocks/posts-grid/editor.js:1926
 msgid "Grid columns"
 msgstr "Colunas do grid"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:48
-#: dist/blocks/posts-grid/editor.js:1850
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:49
+#: dist/blocks/posts-grid/editor.js:1935
 msgid "Grid rows"
 msgstr "Linhas do grid"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:57
-#: dist/blocks/posts-grid/editor.js:1859
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:58
+#: dist/blocks/posts-grid/editor.js:1944
 msgid "Grid gap"
 msgstr "Espaçamento do grid"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:65
-#: dist/blocks/posts-grid/editor.js:1867
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:66
+#: dist/blocks/posts-grid/editor.js:1952
 msgid "Hide author"
 msgstr "Ocultar autor"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:73
-#: dist/blocks/posts-grid/editor.js:1875
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:74
+#: dist/blocks/posts-grid/editor.js:1960
 msgid "Hide categories"
 msgstr "Ocultar categorias"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:81
-#: dist/blocks/posts-grid/editor.js:1883
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:82
+#: dist/blocks/posts-grid/editor.js:1968
 msgid "Hide date"
 msgstr "Ocultar data"
 
-#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:89
-#: dist/blocks/posts-grid/editor.js:1891
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:90
+#: dist/blocks/posts-grid/editor.js:1976
 msgid "Hide excerpt"
 msgstr "Ocultar resumo"
+
+#: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:98
+#: dist/blocks/posts-grid/editor.js:1984
+msgid "Show taxonomies"
+msgstr "Mostrar taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
 #: dist/blocks/posts-grid/editor.js:1498
@@ -447,18 +456,24 @@ msgid "Size"
 msgstr "Tamanho"
 
 #: dist/blocks/posts-grid/editor.js:96
+#: library/blocks/shared/SelectTaxonomies.js:29
+#: dist/blocks/posts-grid/editor.js:1831
+msgid "Taxonomies"
+msgstr "Taxonomias"
+
+#: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
 #: dist/blocks/posts-grid/editor.js:1415
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
-#: dist/blocks/posts-grid/editor.js:96
+#: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
 #: dist/blocks/posts-grid/editor.js:1420
 msgid "No taxonomy"
 msgstr "Sem taxonomia"
 
-#: dist/blocks/posts-grid/editor.js:107 library/blocks/shared/SelectTerms.js:9
+#: dist/blocks/posts-grid/editor.js:118 library/blocks/shared/SelectTerms.js:9
 #: dist/blocks/posts-grid/editor.js:1442
 msgid "Terms"
 msgstr "Termos"
@@ -559,6 +574,16 @@ msgstr "Leia mais"
 msgctxt "block description"
 msgid "A collapsible text paragraph with 'Read more' button"
 msgstr "Um parágrafo de texto recolhível com o botão \"Leia mais\""
+
+#: library/blocks/video-playlist/block.json
+msgctxt "block title"
+msgid "Video Playlist"
+msgstr "Playlist de vídeos"
+
+#: library/blocks/video-playlist/block.json
+msgctxt "block description"
+msgid "Displays videos from a YouTube channel or playlist."
+msgstr "Exibe vídeos de um canal ou playlist do YouTube."
 
 #: theme.json
 msgctxt "Color name"
@@ -794,6 +819,12 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "Time"
+#~ msgstr "Horário"
 
 #, fuzzy
 #~| msgid "Published in "
