@@ -113,5 +113,11 @@
             transform: translate(-50%);
         }
     }
-
+    .hacklabr-posts-grid-block{
+        &.-gap-small{
+            .post-card__term{
+                display: none;
+            }
+        }
+    }
 }
