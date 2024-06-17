@@ -354,7 +354,7 @@ add_action( 'template_redirect', 'redirect_single_tribe_events_template' );
 
 function get_primary_category($terms, $post_id, $taxonomy){
 
-    if(is_archive() || is_search() || is_page('indicadores') || is_front_page()) {
+    if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_singular() || is_page() ) {
         if( $taxonomy == 'category' ){
             $term_id = get_post_meta($post_id, '_yoast_wpseo_primary_category', true);
             if ($term_id) {
