@@ -73,19 +73,7 @@ usort($terms, 'custom_sort');
         <div class="tabs__header" role="tablist">
                 <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( $permalink_all ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
                 <?php foreach ( $terms as $term ) : ?>
-
-                    <?php
-                        $icon = get_term_meta($term->term_id, 'icon', true);
-                        $icon_url = '';
-                        if($icon){
-                            $icon_url = wp_get_attachment_image_url($icon, 'thumbnail');
-                        }
-                    ?>
                     <a class="tab" x-bind="TabButton('<?= esc_attr( $term->slug ); ?>', $data)" href="<?= esc_url( $permalink . '&category=' . $term->slug . '&post_type=' . implode(',', $post_type)); ?>">
-
-                        <?php if($icon_url) :?>
-                            <img src="<?php echo $icon_url ?>" alt="">
-                        <?php endif; ?>
                         <?= esc_attr( $term->name ); ?>
                     </a>
                 <?php endforeach; ?>
