@@ -23,5 +23,5 @@ require __DIR__ . '/library/blocks/index.php';
 require __DIR__ . '/library/associates-area.php';
 require __DIR__ . '/library/remove-thumbnail-and-excerpt.php';
 
-require __DIR__ . '/library/forms/fields.php';
+require __DIR__ . '/library/forms/custom-fields.php';
 require __DIR__ . '/library/forms/registration.php';
