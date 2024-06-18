@@ -336,11 +336,7 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
-        $group = pmpro_create_blank_group();
-
-        $post_meta = array_merge($params, [
-            '_pmpro_group' => $group->id,
-        ]);
+        $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
         $post_id = wp_insert_post([
@@ -352,38 +348,25 @@ function validate_registration_form ($form_id, $form, $params) {
         ]);
 
         $next_page = get_page_by_form('member-registration-2');
-        $params = [ 'groupid' => $group->id ];
+        $params = [ 'orgid' => $post_id ];
 
         wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
     }
 
-    if ($form_id === 'member-registration-2' && !empty($_GET['groupid'])) {
+    if ($form_id === 'member-registration-2' && !empty($_GET['orgid'])) {
         $validation = validate_form($form['fields'], $params);
-
-        $group_id = (int) filter_input(INPUT_GET, 'groupid', FILTER_VALIDATE_INT);
 
         if ($validation !== true) {
             return;
         }
 
-        $posts = get_posts([
-            'post_type' => 'organizacao',
-            'post_status' => ['draft', 'publish'],
-            'meta_key' => '_pmpro_group',
-            'meta_value' => $group_id,
-        ]);
+        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
-        if (empty($posts)) {
-            return;
-        }
-
-        $post = $posts[0];
-
-        $user_meta = array_merge($params, []);
+        $user_meta = $params;
         $password = $params['senha'];
         unset($user_meta['_hacklabr_form']);
-        unset($user_meta['senha']);
+        unset($user_meta['senha']); // Don't store plaintext password
 
         $user_id = wp_insert_user([
             'display_name' => $params['nome_completo'],
@@ -393,13 +376,16 @@ function validate_registration_form ($form_id, $form, $params) {
             'meta_input' => $user_meta,
         ]);
 
+        $group = create_pmpro_group($user_id);
+
         wp_insert_post([
-            'ID' => $post->ID,
+            'ID' => $post_id,
             'post_status' => 'publish',
             'post_author' => $user_id,
+            'meta_input' => [
+                '_pmpro_group' => $group->id,
+            ],
         ]);
-
-        pmpro_fill_group($group_id, $user_id);
 
         wp_safe_redirect(get_home_url());
         exit;
