@@ -233,7 +233,9 @@ function archive_filter_posts( $query ) {
                     $query->set( 'tax_query', $tax_query );
                 }
             }
+        }
 
+        if ( is_search() ) {
             /**
              * Adds a tax query to the main query to filter posts by the 'curadoria' category.
              */
@@ -247,11 +249,17 @@ function archive_filter_posts( $query ) {
                     ]
                 ];
 
-                if ( isset( $query->tax_query ) ) {
-                    $query->tax_query->queries[] = $tax_query;
-                    $query->query_vars['tax_query'] = $query->tax_query->queries;
+                if ( isset( $query->query_vars['tax_query'] ) ) {
+                    $mount_tax_query = $query->query_vars['tax_query'];
+
+                    if ( ! isset( $mount_tax_query['relation'] ) ) {
+                        $mount_tax_query['relation'] = 'AND';
+                    }
+
+                    $mount_tax_query[] = $tax_query;
+                    $query->set( 'tax_query', $mount_tax_query );
                 } else {
-                    $query->set( 'tax_query', $tax_query );
+                    $query->set('tax_query', ['relation' => 'AND', $tax_query]);
                 }
             }
         }
