@@ -249,6 +249,27 @@ function archive_filter_posts( $query ) {
                     $query->set( 'tax_query', $tax_query );
                 }
             }
+
+            /**
+             * Adds a tax query to the main query to filter posts by the 'curadoria' category.
+             */
+            if ( isset( $_GET['curadoria'] ) ) {
+                $tax_query = [
+                    [
+                        'field'    => 'slug',
+                        'taxonomy' => 'category',
+                        'terms'    => 'curadoria',
+                        'operator' => 'IN'
+                    ]
+                ];
+
+                if ( isset( $query->tax_query ) ) {
+                    $query->tax_query->queries[] = $tax_query;
+                    $query->query_vars['tax_query'] = $query->tax_query->queries;
+                } else {
+                    $query->set( 'tax_query', $tax_query );
+                }
+            }
         }
     }
 }
@@ -370,7 +391,7 @@ add_action( 'template_redirect', 'redirect_single_tribe_events_template' );
 
 function get_primary_category($terms, $post_id, $taxonomy){
 
-    if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_singular() || is_page() ) {
+    if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_page() || is_singular() ) {
         if( $taxonomy == 'category' ){
             $term_id = get_post_meta($post_id, '_yoast_wpseo_primary_category', true);
             if ($term_id) {

@@ -38,6 +38,9 @@
         gap: $gap--x-small;
         list-style: none;
         padding: 0;
+        :nth-child(n+3){
+            display: none;
+        }
     }
 
     &__term{

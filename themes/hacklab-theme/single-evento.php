@@ -10,9 +10,9 @@ $excerpt = !empty($post->post_excerpt) ? wp_kses_post($post->post_excerpt) : '';
 $terms    = get_html_terms( $post_id , 'tribe_events_cat' );
 $workload = get_post_meta($post_id, 'carga_horaria_total', true );
 $investiment = get_post_meta($post_id, '_EventCost', true );
-$local = get_post_meta($post_id, 'local', true );
-$date = get_post_meta($post_id, 'data-do-evento', true );
-$time = get_post_meta($post_id, 'horario', true );
+$local = tribe_get_venue($post_id);
+$start = get_post_meta($post_id, '_EventStartDate', true );
+$end = get_post_meta($post_id, '_EventEndDate', true );
 
 ?>
 
@@ -37,16 +37,16 @@ $time = get_post_meta($post_id, 'horario', true );
     <div class="event-metadada-section">
         <div class="event-metadada container">
             <div class="event-metadada__infos -text-center">
-                <?php if ($date) : ?>
+                <?php if ($start) : ?>
                     <div class="event-metadada__infos__date">
-                        <p class="-bold"><?php _e('Date', 'hacklabr') ?></p>
-                        <?php echo apply_filters('the_content', $date); ?>
+                        <p class="-bold"><?php _e('Start', 'hacklabr') ?></p>
+                        <?php echo apply_filters('the_content', $start); ?>
                     </div>
                 <?php endif; ?>
-                <?php if ($time) : ?>
+                <?php if ($end) : ?>
                     <div class="event-metadada__infos__date">
-                        <p class="-bold"><?php _e('Time', 'hacklabr') ?></p>
-                        <?php echo apply_filters('the_content', $time); ?>
+                        <p class="-bold"><?php _e('End', 'hacklabr') ?></p>
+                        <?php echo apply_filters('the_content', $end); ?>
                     </div>
                 <?php endif; ?>
                 <?php if ($workload) : ?>
