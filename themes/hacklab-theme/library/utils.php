@@ -233,6 +233,27 @@ function archive_filter_posts( $query ) {
                     $query->set( 'tax_query', $tax_query );
                 }
             }
+
+            /**
+             * Adds a tax query to the main query to filter posts by the 'curadoria' category.
+             */
+            if ( isset( $_GET['curadoria'] ) ) {
+                $tax_query = [
+                    [
+                        'field'    => 'slug',
+                        'taxonomy' => 'category',
+                        'terms'    => 'curadoria',
+                        'operator' => 'IN'
+                    ]
+                ];
+
+                if ( isset( $query->tax_query ) ) {
+                    $query->tax_query->queries[] = $tax_query;
+                    $query->query_vars['tax_query'] = $query->tax_query->queries;
+                } else {
+                    $query->set( 'tax_query', $tax_query );
+                }
+            }
         }
     }
 }
