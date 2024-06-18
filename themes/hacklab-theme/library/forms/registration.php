@@ -267,6 +267,12 @@ function get_registration_step2_fields () {
             'label' => 'Senha',
             'placeholder' => 'Insira a senha',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (strlen($value) < 8) {
+					return 'Senha deve ter pelo menos 8 caracteres';
+				}
+				return true;
+            },
         ],
         'celular' => [
             'type' => 'masked',
