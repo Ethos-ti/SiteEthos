@@ -6,6 +6,8 @@
 $title = '';
 $search_query = get_search_query( false );
 
+$is_curation = isset( $_GET['curadoria'] );
+
 // if ( is_category() ) {
 //     $title = single_cat_title( '', false );
 // } else {
@@ -21,13 +23,17 @@ $search_query = get_search_query( false );
 <header class="archive-header__content">
     <div class="archive-header__title">
         <h1 class="archive-header__title-text">
-            <?php _e('Search results', 'hacklabr');?>
+            <?php if ( $is_curation ) : ?>
+                <?= __( 'Selected content', 'hacklabr' ); ?>
+            <?php else : ?>
+                <?= __( 'Search results', 'hacklabr' ); ?>
+            <?php endif; ?>
         </h1>
         <p>
             <?php echo apply_filters( 'the_title' , $title ); ?>
         <p>
         <?php
-        if ( is_search() ) :
+        if ( is_search() && ! $is_curation ) :
             get_search_form();
         endif; ?>
     </div>
