@@ -234,6 +234,35 @@ function archive_filter_posts( $query ) {
                 }
             }
         }
+
+        if ( is_search() ) {
+            /**
+             * Adds a tax query to the main query to filter posts by the 'curadoria' category.
+             */
+            if ( isset( $_GET['curadoria'] ) ) {
+                $tax_query = [
+                    [
+                        'field'    => 'slug',
+                        'taxonomy' => 'category',
+                        'terms'    => 'curadoria',
+                        'operator' => 'IN'
+                    ]
+                ];
+
+                if ( isset( $query->query_vars['tax_query'] ) ) {
+                    $mount_tax_query = $query->query_vars['tax_query'];
+
+                    if ( ! isset( $mount_tax_query['relation'] ) ) {
+                        $mount_tax_query['relation'] = 'AND';
+                    }
+
+                    $mount_tax_query[] = $tax_query;
+                    $query->set( 'tax_query', $mount_tax_query );
+                } else {
+                    $query->set('tax_query', ['relation' => 'AND', $tax_query]);
+                }
+            }
+        }
     }
 }
 add_action( 'pre_get_posts', 'archive_filter_posts' );
@@ -354,7 +383,7 @@ add_action( 'template_redirect', 'redirect_single_tribe_events_template' );
 
 function get_primary_category($terms, $post_id, $taxonomy){
 
-    if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_singular() || is_page() ) {
+    if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_page() || is_singular() ) {
         if( $taxonomy == 'category' ){
             $term_id = get_post_meta($post_id, '_yoast_wpseo_primary_category', true);
             if ($term_id) {
