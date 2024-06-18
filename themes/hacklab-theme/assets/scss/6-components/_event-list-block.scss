@@ -18,6 +18,27 @@
                             }
                         }
                     }
+                    .tribe-events-widget-events-list__event-wrapper{
+                        .tribe-events-widget-events-list__event{
+                            .tribe-events-widget-events-list__event-details{
+                                .tribe-events-widget-events-list__event-header{
+                                    .tribe-events-widget-events-list__event-datetime-wrapper{
+                                        .tribe-events-widget-events-list__event-datetime{
+                                            .tribe-event-date-start,
+                                            .tribe-event-time{
+                                                font-family: $font-family--primary;
+                                            }
+                                        }
+                                    }
+                                    .tribe-events-widget-events-list__event-title{
+                                        .tribe-events-widget-events-list__event-title-link{
+                                            font-family: $font-family--primary;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
