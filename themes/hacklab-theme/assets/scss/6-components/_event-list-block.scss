@@ -5,6 +5,21 @@
             &__view-more-link{
                 display: none;
             }
+            &__events{
+                .tribe-events-widget-events-list__event-row{
+                    .tribe-events-widget-events-list__event-date-tag{
+                        &-datetime{
+                            .tribe-events-widget-events-list__event-date-tag-month{
+                                font-family: $font-family--primary;
+                                color: $color--low-light;
+                            }
+                            .tribe-events-widget-events-list__event-date-tag-daynum{
+                                font-family: $font-family--primary;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
