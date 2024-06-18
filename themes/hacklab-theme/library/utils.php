@@ -369,3 +369,46 @@ function get_primary_category($terms, $post_id, $taxonomy){
     return $terms;
 }
 add_filter('get_the_terms', 'get_primary_category', 10, 3);
+
+function filter_allowed_block_types($allowed_block_types, $editor_context)
+{
+	$registry = WP_Block_Type_Registry::get_instance();
+	$registerd_blocks = $registry->get_all_registered();
+	$registerd_blocks = array_keys($registerd_blocks);
+
+	$blocks_to_remove = [
+        'tribe/classic-event-details',
+        'tribe/event-datetime',
+        'tribe/event-venue',
+        'tribe/event-organizer',
+        'tribe/event-links',
+        'tribe/event-price',
+        'tribe/event-category',
+        'tribe/event-tags',
+        'tribe/event-website',
+        'tribe/featured-image',
+        'tec/archive-events',
+        'tec/single-event'
+	];
+
+	$allowed_block_types = array_diff($registerd_blocks, $blocks_to_remove);
+	$allowed_block_types = array_values($allowed_block_types);
+
+	return $allowed_block_types;
+}
+add_filter('allowed_block_types_all', 'filter_allowed_block_types', 10, 2);
+
+function list_registered_blocks() {
+    $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+    echo '<div style="padding: 20px; background-color: #f5f5f5; margin-top: 20px;">';
+    echo '<h2>Registered Blocks</h2>';
+    echo '<ul>';
+    foreach ($blocks as $block) {
+        echo '<li>' . esc_html($block->name) . '</li>';
+    }
+    echo '</ul>';
+    echo '</div>';
+}
+
+// add_action('admin_notices', 'list_registered_blocks');
