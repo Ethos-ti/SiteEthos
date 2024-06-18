@@ -12,6 +12,10 @@ function add_user_to_pmpro_group ($user_id, $group_id) {
     return $membership;
 }
 
+function change_user_pmpro_level ($user_id, $level_id = 11) {
+    \pmpro_changeMembershipLevel($level_id, $user_id);
+}
+
 function create_pmpro_group ($user_id, $level_id = 11) {
     $group = \PMProGroupAcct_Group::create($user_id, $level_id, 100);
 

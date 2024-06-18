@@ -315,9 +315,30 @@ function get_registration_step2_fields () {
     return $fields;
 }
 
+function get_registration_step3_fields () {
+    $fields = [
+        'level' => [
+            'type' => 'pmpro_level',
+            'class' => '-colspan-12 choose-plan',
+            'label' => 'Plano',
+            'for_manager' => true,
+            'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value)) {
+                    return 'Plano inválido';
+                }
+                return true;
+            }
+        ],
+    ];
+
+    return $fields;
+}
+
 function register_registration_form () {
     $fields_step1 = get_registration_step1_fields();
     $fields_step2 = get_registration_step2_fields();
+    $fields_step3 = get_registration_step3_fields();
 
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
         'fields' => $fields_step1,
@@ -328,7 +349,13 @@ function register_registration_form () {
         'back_label' => __('Back', 'hacklabr'),
         'back_url' => get_permalink(get_page_by_form('member-registration-1')),
         'fields' => $fields_step2,
-        'hidden_fields' => array_keys($fields_step1),
+        'submit_label' => __('Continue', 'hacklabr'),
+    ]);
+
+    register_form('member-registration-3', __('Member registration - step 3', 'hacklabr'), [
+        'back_label' => __('Back', 'hacklabr'),
+        'back_url' => get_permalink(get_page_by_form('member-registration-2')),
+        'fields' => $fields_step3,
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 }
@@ -394,8 +421,21 @@ function validate_registration_form ($form_id, $form, $params) {
             ],
         ]);
 
-        wp_safe_redirect(get_home_url());
+        $next_page = get_page_by_form('member-registration-3');
+        $params = [ 'orgid' => $post_id ];
+
+        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
+    }
+
+    if ($form_id === 'member-registration-3' && !empty($_GET['orgid'])) {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation !== true) {
+            return;
+        }
+
+        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);
