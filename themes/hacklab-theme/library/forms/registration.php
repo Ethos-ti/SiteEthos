@@ -371,6 +371,7 @@ function validate_registration_form ($form_id, $form, $params) {
         $user_id = wp_insert_user([
             'display_name' => $params['nome_completo'],
             'user_email' => $params['email'],
+            'user_login' => sanitize_title($params['nome_completo']),
             'user_pass' => $password,
             'role' => 'subscriber',
             'meta_input' => $user_meta,
@@ -378,7 +379,7 @@ function validate_registration_form ($form_id, $form, $params) {
 
         $group = create_pmpro_group($user_id);
 
-        wp_insert_post([
+        wp_update_post([
             'ID' => $post_id,
             'post_status' => 'publish',
             'post_author' => $user_id,
