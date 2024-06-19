@@ -99,6 +99,8 @@ function render_field (string $name, array $definition, array $context = []) {
         <?php endif; ?>
 
         <?php
+        $value = $value ?: ($definition['default'] ?? '');
+
         $render_function = __NAMESPACE__ . '\Fields\render_' . $definition['type'] . '_field';
         if (function_exists($render_function)) {
             call_user_func($render_function, $name, $value, $definition);
