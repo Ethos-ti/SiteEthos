@@ -1,3 +1,6 @@
+.container{
+    max-width: 75rem;
+}
 .choose-plan {
     &__grid {
         display: grid;
@@ -8,6 +11,7 @@
     &__title {
         width: 17px;
         height: 17px;
+        margin-bottom: $margin--large;
         strong {
             color: $color--primary-dark;
             text-align: center;
@@ -23,11 +27,37 @@
     }
 
     &__text {
-        // Estilos para o texto
+        margin-bottom: $margin--large;
+        ul{
+            padding: 0px;
+        }
+        ul > li {
+            display: flex;
+            align-items: center; // Para centralizar verticalmente o ícone com o texto
+            & .icon {
+                background-image: url('#{$path--assets}/images/check.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 24px;
+                height: 24px;
+                margin-right: 8px; // Espaço entre o ícone e o texto
+            }
+            & span{
+                max-width: 205px;
+            }
+
+        }
     }
     &__plan {
         display: flex;
         flex-direction: column;
+        width: size(270);
+        padding: $padding--medium;
+        border-radius: 0px 0px 8px 8px;
+        background: var(--High-light, #F2F3F4);
+        box-shadow: 4px 6px 4px 0px rgba(0, 0, 0, 0.25);
+
 
         .choose-plan__title {
             order: 1;

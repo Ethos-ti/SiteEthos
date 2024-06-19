@@ -40,7 +40,70 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                     <strong>Conexão</strong>
                 </div>
                 <div class="choose-plan__text">
-                    Texto do plano Conexão
+
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Vínculo à marca Ethos(referência em sustentabilidade)</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Networking junto ao ecossistema Ethos</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Ferramentas de gestão – acesso completo à plataforma online dos Indicadores Ethos</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Participação nas rodas de diálogo</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Participação na Jornada de Indicadores Ethos</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>15% de desconto em eventos e capacitações</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>25% de desconto na contratação de palestras</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Vínculo à marca Ethos(referência em sustentabilidade)</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Descontos na contratação de serviços de consultoria</span>
+                        </li>
+
+                    </ul>
                 </div>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['conexao'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['conexao'] ?>">
