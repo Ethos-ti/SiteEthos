@@ -2,6 +2,7 @@
     max-width: 75rem;
 }
 .choose-plan {
+
     &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -70,6 +71,7 @@
     &__plan {
         display: flex;
         flex-direction: column;
+        height:  max-content;
         padding: $padding--medium;
         border-radius: 0px 0px 8px 8px;
         background: var(--High-light, #F2F3F4);
