@@ -1,0 +1,25 @@
+.choose-plan__grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap--large;
+    .choose-plan__plan{
+        & .choose-plan__title> strong{
+            color: var(--wp--preset--color--primary-dark);
+            text-align: center;
+            /* Secondary/Bold/x-large */
+            font-family: $font-family--primary;
+            font-size: size(24);
+            font-style: normal;
+            font-weight:$font-weight--bold;
+            line-height: 1.5rem;
+        }
+    }
+    .choose-plan__plan:nth-child(1){ //col1
+        .choose-plan__title {
+            background-image: url($p_theme_assets+'/images/circle1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}
