@@ -117,7 +117,49 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                     <strong>Essencial</strong>
                 </div>
                 <div class="choose-plan__text">
-                    Texto do plano Essencial
+                    <p>Tudo do plano conexão +</p>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Influência e incidência coletiva em políticas públicas (advocacy)</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Participação em 1 Grupo de Trabalho</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>10 cortesias para eventos e capacitações</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span> 25% de desconto em eventos e capacitações adicionais</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>50% de desconto na contratação de palestras</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span> Exposição da marca nos conteúdos dos Grupos de Trabalho e áreas de atuação</span>
+                        </li>
+
+                    </ul>
                 </div>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['essencial'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['essencial'] ?>">
@@ -131,7 +173,35 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                     <strong>Vivência</strong>
                 </div>
                 <div class="choose-plan__text">
-                    Texto do plano Vivência
+                    <p>Tudo do plano Essencial +</p>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span> 2 Palestras</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Participação ilimitada em Grupos de Trabalho</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>17 cortesias em eventos e capacitações</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Descontos de até 75% em eventos,  capacitações e contratação de palestras adicionais</span>
+                        </li>
+
+                    </ul>
                 </div>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['vivencia'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['vivencia'] ?>">
@@ -145,7 +215,58 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                     <strong>Institucional</strong>
                 </div>
                 <div class="choose-plan__text">
-                    Texto do plano Institucional
+                    <p>Tudo do plano Vivência +</p>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Participação no Conselho Orientador</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>3 Palestras</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>20 cortesias em eventos e capacitações</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Exposição da marca em todas as publicações do ano vingente (inclusive virtuais)</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Exposição da marca em todas as páginas do site do Ethos</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Exposição da marca como patrocinadora da Conferência Ethos</span>
+                        </li>
+
+                    </ul>
+                    <ul>
+                        <li>
+                            <div class="icon"></div>
+                            <span>Desenvolvimento de atividade conjunta</span>
+                        </li>
+
+                    </ul>
+
+
                 </div>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['institucional'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['institucional'] ?>">

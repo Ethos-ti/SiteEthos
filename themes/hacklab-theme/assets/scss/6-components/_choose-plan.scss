@@ -6,6 +6,12 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: $gap--large;
+        @include tablet{
+            grid-template-columns: repeat(2, 2fr);
+        }
+        @include mobile{
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 
     &__title {
@@ -28,6 +34,15 @@
 
     &__text {
         margin-bottom: $margin--large;
+        p{
+            color: #000;
+            font-family: $font-family--primary;
+            font-size: $font-size--medium;
+            font-style: normal;
+            font-weight: $font-weight--bold;
+            line-height: size(25);
+            margin-top: 1rem;
+        }
         ul{
             padding: 0px;
         }
@@ -45,6 +60,9 @@
             }
             & span{
                 max-width: 205px;
+                @include tablet{
+                    max-width: initial;
+                }
             }
 
         }
@@ -52,7 +70,6 @@
     &__plan {
         display: flex;
         flex-direction: column;
-        width: size(270);
         padding: $padding--medium;
         border-radius: 0px 0px 8px 8px;
         background: var(--High-light, #F2F3F4);
@@ -73,7 +90,7 @@
 
         &:nth-child(1) {
             .choose-plan__title {
-                background-image: url('#{$path--assets}/images/circle1.png');
+                background-image: url('#{$path--assets}/images/circle-conexao-1.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -82,7 +99,7 @@
 
         &:nth-child(2) {
             .choose-plan__title {
-                background-image: url('#{$path--assets}/images/circle2.png');
+                background-image: url('#{$path--assets}/images/circle-conexao-2.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -91,7 +108,7 @@
 
         &:nth-child(3) {
             .choose-plan__title {
-                background-image: url('#{$path--assets}/images/circle3.png');
+                background-image: url('#{$path--assets}/images/circle-conexao-3.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -100,7 +117,7 @@
 
         &:nth-child(4) {
             .choose-plan__title {
-                background-image: url('#{$path--assets}/images/circle4.png');
+                background-image: url('#{$path--assets}/images/circle-conexao-4.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
