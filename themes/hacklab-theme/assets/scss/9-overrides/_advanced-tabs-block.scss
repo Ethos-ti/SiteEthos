@@ -35,6 +35,7 @@
             }
 
             &-text{
+
                 @include small{
                     text-wrap: wrap;
                 }
@@ -45,12 +46,16 @@
             }
 
             &-media{
+                display: none;
                 @include small{
                     width: 20px;
                 }
 
                 @include mobile{
                     width: 20px;
+                }
+                &svg{
+                    display: none;
                 }
             }
 

@@ -4,6 +4,8 @@ global $wp_query;
 
 $post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa', 'events'];
 
+$is_curation = isset( $_GET['curadoria'] );
+
 if($post_type == 'any'){
     $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'events'];
 }
@@ -22,6 +24,11 @@ foreach ($post_type as $key => $value) {
 $terms = get_terms_by_use_menu( 'category', ['iniciativa', 'post', 'publicacao', 'events'] );
 
 $permalink = home_url( '?s=' . get_search_query( true ) );
+
+if ( $is_curation ) {
+    $permalink.= '&curadoria';
+}
+
 $permalink_all = $permalink;
 
 $selected = '';
@@ -73,19 +80,7 @@ usort($terms, 'custom_sort');
         <div class="tabs__header" role="tablist">
                 <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( $permalink_all ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
                 <?php foreach ( $terms as $term ) : ?>
-
-                    <?php
-                        $icon = get_term_meta($term->term_id, 'icon', true);
-                        $icon_url = '';
-                        if($icon){
-                            $icon_url = wp_get_attachment_image_url($icon, 'thumbnail');
-                        }
-                    ?>
                     <a class="tab" x-bind="TabButton('<?= esc_attr( $term->slug ); ?>', $data)" href="<?= esc_url( $permalink . '&category=' . $term->slug . '&post_type=' . implode(',', $post_type)); ?>">
-
-                        <?php if($icon_url) :?>
-                            <img src="<?php echo $icon_url ?>" alt="">
-                        <?php endif; ?>
                         <?= esc_attr( $term->name ); ?>
                     </a>
                 <?php endforeach; ?>
