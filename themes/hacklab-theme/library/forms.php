@@ -2,7 +2,11 @@
 
 namespace hacklabr;
 
-use function hacklabr\Fields\render_hidden_field;
+function delete_form_post_meta ($post_id) {
+    delete_post_meta($post_id, 'hacklabr_form');
+}
+add_action('save_post_page', 'hacklabr\\delete_form_post_meta');
+add_action('save_post_post', 'hacklabr\\delete_form_post_meta');
 
 function get_page_by_form (string $form_id) {
     $pages = get_posts([
@@ -148,7 +152,7 @@ function render_hidden_fields ($fields, $params = []) {
     foreach ($fields as $field) {
         $value = $params[$field] ?? '';
         if (!empty($value)) {
-            render_hidden_field($field, $value);
+            Fields\render_hidden_field($field, $value);
         }
     }
 }
