@@ -1,5 +1,4 @@
 .choose-plan {
-
     &__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -7,7 +6,8 @@
     }
 
     &__title {
-
+        width: 17px;
+        height: 17px;
         strong {
             color: $color--primary-dark;
             text-align: center;
@@ -16,7 +16,13 @@
             font-style: normal;
             font-weight:$font-weight--bold;
             line-height: $line-height--normal;
+            position: relative;
+            left: 20px;
+            bottom: 12px;
+
         }
+    }
+    &__text{
     }
 
     &__plan {
@@ -25,6 +31,42 @@
 
             .choose-plan__title {
                 background-image: url('#{$path--assets}/images/circle1.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &:nth-child(2) {
+
+            .choose-plan__title {
+                background-image: url('#{$path--assets}/images/circle2.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &:nth-child(3) {
+
+            .choose-plan__title {
+                background-image: url('#{$path--assets}/images/circle3.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &:nth-child(4) {
+
+            .choose-plan__title {
+                background-image: url('#{$path--assets}/images/circle3.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+        &:nth-child(4) {
+
+            .choose-plan__title {
+                background-image: url('#{$path--assets}/images/circle4.png');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
