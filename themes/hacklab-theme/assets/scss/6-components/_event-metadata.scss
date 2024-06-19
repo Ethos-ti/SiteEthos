@@ -2,6 +2,10 @@
     .post-header__postdata{
         margin-left: auto;
         margin-right: auto;
+        .post-header__postdata__date{
+            margin-left: auto;
+            margin-right: auto;
+        }
         .tag{
             margin-top: calc( $margin--large + $margin--medium );
             border-radius: $border-radius--small;
@@ -29,6 +33,7 @@
 
     .event-metadada-section{
         background-color: $color--high-light;
+        margin-bottom: $margin--medium;
         .event-metadada{
             margin-top: $margin--large;
             padding: $padding--large $padding--small;

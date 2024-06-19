@@ -18,7 +18,7 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
 
 <header class="post-header">
     <div class="post-header__postdata alingfull">
-        <div class="post-header__postdata__date">
+        <div class="post-header__postdata__date container--wide">
             <?php if ( $terms ) : ?>
                 <div class="tag-event -text-center">
                     <span class="tag"><?php echo $terms ?></span>
