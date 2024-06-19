@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "hacklabr/steps-viewer",
+    "title": "Steps viewer",
+    "description": "Show the current step from a multi-step flow",
+    "category": "text",
+    "icon": "ellipsis",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "current": {
+            "type": "number",
+            "default": 1
+        },
+        "total": {
+            "type": "number",
+            "default": 3
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/steps-viewer/editor.js"],
+    "style": ["file:../../../dist/blocks/steps-viewer/index.css"]
+}
