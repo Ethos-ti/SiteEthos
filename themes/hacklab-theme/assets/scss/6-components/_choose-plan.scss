@@ -1,5 +1,20 @@
-.container{
+.container {
     max-width: 75rem;
+
+    .post-content {
+        figure {
+            @media (min-width: 48rem) {
+                width: initial;
+            }
+            table {
+                border-style: none;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+        }
+    }
 }
 .choose-plan {
 
@@ -34,7 +49,6 @@
     }
 
     &__text {
-        margin-bottom: $margin--large;
         p{
             color: #000;
             font-family: $font-family--primary;
@@ -42,8 +56,24 @@
             font-style: normal;
             font-weight: $font-weight--bold;
             line-height: size(25);
-            margin-top: 1rem;
+            margin-bottom: $margin--medium;
+
         }
+        .wp-block-columns{
+            margin-bottom: $margin--medium;
+            p{
+                font-size: size(14);
+                font-weight: $font-weight--regular;
+            }
+            @include tablet{
+                flex-wrap: nowrap !important;
+            }
+            .wp-block-column:first-child{
+                max-width: 25px;
+            }
+        }
+
+
         ul{
             padding: 0px;
         }
@@ -67,6 +97,9 @@
             }
 
         }
+    }
+    &__button{
+        margin-bottom: $margin--large;
     }
     &__plan {
         display: flex;
