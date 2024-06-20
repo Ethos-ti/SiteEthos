@@ -354,21 +354,20 @@ if ( class_exists( 'WPCaptcha_Functions' ) ) {
     add_action( 'init', 'wprecaptcha_login_print_scripts' );
 }
 
-function tribe_events_category() {
-	register_taxonomy_for_object_type( 'category', 'tribe_events' );
-}
+// function tribe_events_category() {
+// 	register_taxonomy_for_object_type( 'category', 'tribe_events' );
+// }
 
-add_action( 'init', 'tribe_events_category', 0 );
+// add_action( 'init', 'tribe_events_category', 0 );
 
-function wp1482371_custom_post_type_args( $args, $post_type ) {
-    if ( $post_type == "tribe_events" ) {
-        $args['taxonomies'][] = 'category';
-        // do_action( 'logger', $args );
-    }
+// function wp1482371_custom_post_type_args( $args, $post_type ) {
+//     if ( $post_type == "tribe_events" ) {
+//         $args['taxonomies'][] = 'category';
+//     }
 
-    return $args;
-}
-add_filter( 'register_post_type_args', 'wp1482371_custom_post_type_args', 20, 2 );
+//     return $args;
+// }
+// add_filter( 'register_post_type_args', 'wp1482371_custom_post_type_args', 20, 2 );
 
 function redirect_single_tribe_events_template() {
 	if ( is_singular( 'tribe_events' ) ) {
