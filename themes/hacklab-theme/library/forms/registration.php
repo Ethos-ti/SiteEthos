@@ -336,30 +336,30 @@ function get_registration_step3_fields () {
 }
 
 function get_registration_step4_fields () {
-    $condicao_options = [
+    $advance_options = [
         'no' => 'À vista',
         'yes' => 'Parcelado',
     ];
 
-    $periodicidade_options = [
+    $periodicity_options = [
         'monthly' => 'Mensal',
         'semianually' => 'Semestral',
         'yearly' => 'Anual',
     ];
 
-    $recebimento_termo_options = [
+    $receive_billing_options = [
+        'email' => 'Email',
+        'post' => 'Correio',
+    ];
+
+    $receive_terms_options = [
         'email' => 'Email',
         'post' => 'Correio',
         'icp' => 'Assinatura eletrônica',
     ];
 
-    $recebimento_pagto_options = [
-        'email' => 'Email',
-        'post' => 'Correio',
-    ];
-
     $fields = [
-        'valor_sugerido' => [
+        'pagto_sugerido' => [
             'type' => 'masked',
             'class' => '-colspan-12',
             'label' => 'Valor sugerido de contribuição',
@@ -367,7 +367,7 @@ function get_registration_step4_fields () {
             'placeholder' => 'R$',
             'required' => false,
         ],
-        'valor_negociado' => [
+        'pagto_negociado' => [
             'type' => 'masked',
             'class' => '-colspan-12',
             'label' => 'Valor negociado',
@@ -375,7 +375,7 @@ function get_registration_step4_fields () {
             'placeholder' => 'R$',
             'required' => false,
         ],
-        'pgto_primeira_data' => [
+        'pgto_inicio' => [
             'type' => 'date',
             'class' => '-colspan-12',
             'label' => 'Data de previsão do 1º pagamento',
@@ -386,12 +386,12 @@ function get_registration_step4_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Condição de pagamento',
-            'options' => $condicao_options,
+            'options' => $advance_options,
             'required' => false,
-            'validate' => function ($value, $context) use ($condicao_options) {
+            'validate' => function ($value, $context) use ($advance_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $condicao_options)) {
+                } else if (!array_key_exists($value, $advance_options)) {
                     return 'Condição inválida';
                 }
                 return true;
@@ -401,12 +401,12 @@ function get_registration_step4_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Periodicidade do pagamento',
-            'options' => $periodicidade_options,
+            'options' => $periodicity_options,
             'required' => false,
-            'validate' => function ($value, $context) use ($periodicidade_options) {
+            'validate' => function ($value, $context) use ($periodicity_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $periodicidade_options)) {
+                } else if (!array_key_exists($value, $periodicity_options)) {
                     return 'Periodicidade inválida';
                 }
                 return true;
@@ -423,12 +423,12 @@ function get_registration_step4_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Meio de recebimento do termo de associação',
-            'options' => $recebimento_termo_options,
+            'options' => $receive_terms_options,
             'required' => false,
-            'validate' => function ($value, $context) use ($recebimento_termo_options) {
+            'validate' => function ($value, $context) use ($receive_terms_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $recebimento_termo_options)) {
+                } else if (!array_key_exists($value, $receive_terms_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -438,12 +438,12 @@ function get_registration_step4_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Meio de recebimento dos boletos',
-            'options' => $recebimento_pagto_options,
+            'options' => $receive_billing_options,
             'required' => false,
-            'validate' => function ($value, $context) use ($recebimento_pagto_options) {
+            'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $recebimento_pagto_options)) {
+                } else if (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -453,12 +453,12 @@ function get_registration_step4_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Meio de recebimento dos recibos',
-            'options' => $recebimento_pagto_options,
+            'options' => $receive_billing_options,
             'required' => false,
-            'validate' => function ($value, $context) use ($recebimento_pagto_options) {
+            'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $recebimento_pagto_options)) {
+                } else if (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
