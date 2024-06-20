@@ -10,9 +10,10 @@ const CURRENCY_MASK = {
             mask: Number,
             mapToRadix: ['.'],
             normalizeZeros: true,
+            padFractionalZeros: true,
             radix: ',',
             scale: 2,
-            thousandSeparator: '.',
+            thousandsSeparator: '.',
         },
     },
 }
@@ -23,19 +24,19 @@ function parseMask (mask) {
         if (parts[0] === '__currency__') {
             return CURRENCY_MASK
         } else {
-            return parts[0]
+            return { mask: parts[0] }
         }
     } else {
-        return parts.map((part) => ({ mask: part }))
+        return { mask: parts.map((part) => ({ mask: part })) }
     }
 }
 
 document.querySelectorAll('input[data-mask]').forEach((maskedEl) => {
     const unmaskedEl = document.querySelector(`input#${maskedEl.id.replace('__mask', '')}`)
 
-    const pattern = parseMask(maskedEl.dataset.mask)
+    const maskPattern = parseMask(maskedEl.dataset.mask)
 
-    const mask = IMask(maskedEl, { mask: pattern })
+    const mask = IMask(maskedEl, maskPattern)
     mask.unmaskedValue = unmaskedEl.value
 
     maskedEl.addEventListener('change', () => {
