@@ -1,0 +1,26 @@
+@import '../../../assets/scss/includes';
+
+.steps-viewer {
+
+    &__steps {
+        display: flex;
+        gap: calc(1.5 * #{$gap--medium});
+        justify-content: center;
+    }
+
+    &__step {
+        height: $font-size--medium;
+        width: $font-size--medium;
+
+        circle {
+            fill: $color--primary-light;
+        }
+
+        &--active {
+
+            circle {
+                fill: $color--primary-pure;
+            }
+        }
+    }
+}
