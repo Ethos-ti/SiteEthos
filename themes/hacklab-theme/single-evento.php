@@ -18,7 +18,7 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
 
 <header class="post-header">
     <div class="post-header__postdata alingfull">
-        <div class="post-header__postdata__date">
+        <div class="post-header__postdata__date container--wide">
             <?php if ( $terms ) : ?>
                 <div class="tag-event -text-center">
                     <span class="tag"><?php echo $terms ?></span>
@@ -37,16 +37,23 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
     <div class="event-metadada-section">
         <div class="event-metadada container">
             <div class="event-metadada__infos -text-center">
-                <?php if ($start) : ?>
+                <?php
+                if ($start) :
+                    $date = new DateTime($start);
+                    $formatted_date_time = $date->format('d/m/Y H:i:s');
+                    ?>
                     <div class="event-metadada__infos__date">
                         <p class="-bold"><?php _e('Start', 'hacklabr') ?></p>
-                        <?php echo apply_filters('the_content', $start); ?>
+                        <?php echo apply_filters('the_content', $formatted_date_time); ?>
                     </div>
                 <?php endif; ?>
-                <?php if ($end) : ?>
+                <?php if ($end) :
+                    $date = new DateTime($end);
+                    $formatted_date_time = $date->format('d/m/Y H:i:s');
+                    ?>
                     <div class="event-metadada__infos__date">
                         <p class="-bold"><?php _e('End', 'hacklabr') ?></p>
-                        <?php echo apply_filters('the_content', $end); ?>
+                        <?php echo apply_filters('the_content', $formatted_date_time); ?>
                     </div>
                 <?php endif; ?>
                 <?php if ($workload) : ?>

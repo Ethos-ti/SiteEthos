@@ -30,6 +30,10 @@
         gap: $gap--medium;
         position: relative;
 
+        @include small{
+            margin-right: $margin--small;
+        }
+
         form {
             display: none;
 
@@ -38,6 +42,9 @@
                 border: none;
                 padding: $padding--small $padding--medium;
                 width: 340px;
+                @include small{
+                    width: 290px;
+                }
 
                 &[placeholder] {
                     color: $color--low-light;
