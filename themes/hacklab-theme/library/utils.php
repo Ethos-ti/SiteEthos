@@ -363,7 +363,6 @@ if ( class_exists( 'WPCaptcha_Functions' ) ) {
 // function wp1482371_custom_post_type_args( $args, $post_type ) {
 //     if ( $post_type == "tribe_events" ) {
 //         $args['taxonomies'][] = 'category';
-//         do_action( 'logger', $args );
 //     }
 
 //     return $args;
