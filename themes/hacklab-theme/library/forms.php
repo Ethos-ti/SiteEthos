@@ -89,7 +89,7 @@ function render_field (string $name, array $definition, array $context = []) {
     }
 ?>
     <div class="<?= concat_class_list(['form-field', $definition['class'], ($validation === true) ? null : 'form-field--invalid']) ?>">
-        <?php if ($definition['type'] !== 'static'): ?>
+        <?php if ($definition['type'] !== 'static' && $definition['type'] !== 'hidden'): ?>
             <label class="form-field__label" for="<?= $name ?>">
                 <?= $definition['label'] ?>
                 <?php if ($definition['required']): ?>
