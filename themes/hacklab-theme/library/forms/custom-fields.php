@@ -71,8 +71,8 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <div class="choose-plan__title">
                     <strong>Vivência</strong>
                 </div>
-                <?php if (is_active_sidebar('vantagens_essencial')): ?>
-                    <?php dynamic_sidebar('vantagens_essencial'); ?>
+                <?php if (is_active_sidebar('vantagens_vivencia')): ?>
+                    <?php dynamic_sidebar('vantagens_vivencia'); ?>
                 <?php else: ?>
                     <div class="choose-plan__text"></div>
                 <?php endif; ?>
@@ -87,8 +87,8 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <div class="choose-plan__title">
                     <strong>Institucional</strong>
                 </div>
-                <?php if (is_active_sidebar('vantagens_essencial')): ?>
-                    <?php dynamic_sidebar('vantagens_essencial'); ?>
+                <?php if (is_active_sidebar('vantagens_institucional')): ?>
+                    <?php dynamic_sidebar('vantagens_institucional'); ?>
                 <?php else: ?>
                     <div class="choose-plan__text"></div>
                 <?php endif; ?>
