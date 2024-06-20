@@ -37,6 +37,24 @@ function widgets_areas() {
 		'before_title'  => '<h2 class="main-footer__widget-title">',
 		'after_title'   => '</h2>',
 	));
+
+    $plans = [
+        'conexao'       => 'Conexão',
+        'essencial'     => 'Essencial',
+        'vivencia'      => 'Vivência',
+        'institucional' => 'Institucional',
+    ];
+
+    foreach ($plans as $slug => $label) {
+        register_sidebar(array(
+            'name'          => 'Vantagens - Plano ' . $label,
+            'id'            => 'vantagens_' . $slug,
+            'before_widget' => '<div class="choose-plan__text">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<div class="choose-plan__widget-title">',
+            'after_title'   => '</div>',
+        ));
+    }
 }
 
 add_action('widgets_init', 'widgets_areas');
