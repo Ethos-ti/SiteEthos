@@ -481,22 +481,16 @@ function register_registration_form () {
     ]);
 
     register_form('member-registration-2', __('Member registration - step 2', 'hacklabr'), [
-        'back_label' => __('Back', 'hacklabr'),
-        'back_url' => get_permalink(get_page_by_form('member-registration-1')),
         'fields' => $fields_step2,
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-3', __('Member registration - step 3', 'hacklabr'), [
-        'back_label' => __('Back', 'hacklabr'),
-        'back_url' => get_permalink(get_page_by_form('member-registration-2')),
         'fields' => $fields_step3,
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-4', __('Member registration - step 4', 'hacklabr'), [
-        'back_label' => __('Back', 'hacklabr'),
-        'back_url' => get_permalink(get_page_by_form('member-registration-3')),
         'fields' => $fields_step4,
         'submit_label' => __('Continue', 'hacklabr'),
     ]);

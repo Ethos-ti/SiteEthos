@@ -122,15 +122,10 @@ function render_field (string $name, array $definition, array $context = []) {
 
 function render_form (array $form, array $params = [], string $class = 'form') {
     $form_options = $form['options'];
-    $back_label = $form_options['back_label'] ?? __('Back', 'hacklabr');
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 ?>
     <form class="<?= $class ?>" id="form:<?= $form['id'] ?>" method="post">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
-
-        <?php if (!empty($form_options['hidden_fields'])): ?>
-            <?php render_hidden_fields($form_options['hidden_fields'], $params); ?>
-        <?php endif; ?>
 
         <div class="form__grid">
         <?php foreach ($form_options['fields'] as $field => $definition): ?>
@@ -139,22 +134,10 @@ function render_form (array $form, array $params = [], string $class = 'form') {
         </div>
 
         <div class="form__buttons">
-            <?php if (!empty($form_options['back_url'])): ?>
-                <a class="button button--outline" href="<?= $form_options['back_url'] ?>"><?= $back_label ?></a>
-            <?php endif; ?>
             <button class="button button--solid" type="submit"><?= $submit_label ?></button>
         </div>
     </form>
 <?php
-}
-
-function render_hidden_fields ($fields, $params = []) {
-    foreach ($fields as $field) {
-        $value = $params[$field] ?? '';
-        if (!empty($value)) {
-            Fields\render_hidden_field($field, $value);
-        }
-    }
 }
 
 function validate_field (array $definition, $value, array $context = []) {
