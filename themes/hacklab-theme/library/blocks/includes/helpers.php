@@ -28,7 +28,7 @@ function build_class_list ($base_class = '', $attributes = []) {
         $class_list[] = '-gap-' . $attributes['gridGap'];
     }
 
-    return implode(' ', $class_list);
+    return concat_class_list($class_list);
 }
 
 /**

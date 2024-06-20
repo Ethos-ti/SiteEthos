@@ -4,6 +4,9 @@
     height: 1em;
     shape-rendering: geometricPrecision;
     width: 1em;
+    @include small{
+        margin-left: $margin--small;
+    }
 
     rect {
         transform-origin: 50% 50%;
