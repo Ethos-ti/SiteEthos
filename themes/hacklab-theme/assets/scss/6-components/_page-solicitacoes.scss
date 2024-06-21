@@ -29,23 +29,6 @@
                     .wpcf7-form-control-wrap{
                         display: flex;
                         flex-direction: column-reverse;
-                        gap: $gap--small;
-                        max-width: 470px;
-                        width: 100%;
-                        :nth-child(n+1){
-                            display: none;
-                        }
-                        .wpcf7-not-valid-tip{
-
-                            display: flex;
-                            justify-content: flex-end;
-                        }
-
-                        .wpcf7-textarea{
-                            font-weight: $font-weight--regular;
-                            font-size: $font-size--medium;
-                            color: $color--low-light
-                        }
                     }
 
                     .form-book__input {
@@ -90,6 +73,10 @@
                     & span>input {
                         padding-left: $padding--medium;
                     }
+
+                }
+
+                .wpcf7-form-control-wrap{
 
                 }
 
