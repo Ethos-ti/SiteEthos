@@ -595,8 +595,6 @@ function validate_registration_form ($form_id, $form, $params) {
 
         $group = create_pmpro_group($user_id, $level_id);
 
-        change_user_pmpro_level($user_id, $level_id);
-
         add_user_meta($user_id, '_pmpro_group', $group->id);
         add_user_meta($user_id, '_pmpro_role', 'primary');
 
@@ -630,6 +628,46 @@ function validate_registration_form ($form_id, $form, $params) {
         foreach ($params as $meta_key => $meta_value) {
             add_post_meta($post_id, $meta_key, $meta_value, true);
         }
+
+        $next_page = get_page_by_form('member-registration-5');
+        $params = [ 'orgid' => $post_id ];
+
+        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        exit;
+    }
+
+    if ($form_id === 'member-registration-5' && !empty($_GET['orgid']) && !empty($params['_role'])) {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation !== true) {
+            return;
+        }
+
+        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+
+        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+
+        $role = $params['_role'];
+        unset($user_meta['_role']);
+
+        $user_meta = array_merge($params, [
+            '_pmpro_group' => $group_id,
+            '_pmpro_role' => $role,
+        ]);
+        unset($user_meta['_hacklabr_form']);
+
+        $password = wp_generate_password(16);
+
+        $user_id = wp_insert_user([
+            'display_name' => $params['nome_completo'],
+            'user_email' => $params['email'],
+            'user_login' => sanitize_title($params['nome_completo']),
+            'user_pass' => $password,
+            'role' => 'subscriber',
+            'meta_input' => $user_meta,
+        ]);
+
+        add_user_to_pmpro_group($user_id, $group_id);
 
         $next_page = get_page_by_form('member-registration-5');
         $params = [ 'orgid' => $post_id ];

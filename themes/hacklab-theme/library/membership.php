@@ -9,17 +9,17 @@ function add_user_to_pmpro_group ($user_id, $group_id) {
 
     assert($membership instanceof \PMProGroupAcct_Group_Member);
 
-    return $membership;
-}
+    \pmpro_changeMembershipLevel($user_id, $group->group_parent_level_id);
 
-function change_user_pmpro_level ($user_id, $level_id = 11) {
-    \pmpro_changeMembershipLevel($level_id, $user_id);
+    return $membership;
 }
 
 function create_pmpro_group ($user_id, $level_id = 11) {
     $group = \PMProGroupAcct_Group::create($user_id, $level_id, 100);
 
     assert($group instanceof \PMProGroupAcct_Group);
+
+    \pmpro_changeMembershipLevel($level_id, $user_id);
 
     return $group;
 }

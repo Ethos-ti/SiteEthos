@@ -37,7 +37,7 @@ function wrap_step_5_form ($form_html, $form) {
 
     $form_lines = explode("\n", $form_html);
     array_splice($form_lines, 1, 0, [
-        '<input type="hidden" name="_role" :value="role">',
+        '<input type="hidden" name="__role" :value="role">',
     ]);
     $form_html = implode("\n", $form_lines);
 
