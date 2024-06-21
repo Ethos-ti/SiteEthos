@@ -30,9 +30,12 @@
                         display: flex;
                         flex-direction: column-reverse;
                         gap: $gap--small;
+                        max-width: 470px;
+                        width: 100%;
                         .wpcf7-not-valid-tip{
-                            text-align: center;
-                            margin-left: calc(6.5*$margin--large);
+
+                            display: flex;
+                            justify-content: flex-end;
                         }
 
                         .wpcf7-textarea{
