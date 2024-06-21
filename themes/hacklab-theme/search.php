@@ -69,6 +69,8 @@ function custom_sort($a, $b) {
 
 usort($terms, 'custom_sort');
 
+$wp_query = New WP_Query($wp_query->query_vars);
+
 ?>
 
 

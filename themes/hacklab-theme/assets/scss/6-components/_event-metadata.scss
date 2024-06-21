@@ -18,11 +18,13 @@
             margin-top: calc( $margin--medium + $margin--small );
         }
         .post-header__excerpt{
+            max-width: $grid--normal;
             @media(max-width:$break--tablet){
                 font-size: $font-size--large;
             }
         }
         .post-header__meta{
+            max-width: $grid--normal;
             @media(max-width:$break--tablet){
                 flex-direction: column-reverse;
                 margin-left: $margin--small;
@@ -37,6 +39,9 @@
         .event-metadada{
             margin-top: $margin--large;
             padding: $padding--large $padding--small;
+            &.container{
+                max-width: $grid--normal;
+            }
             .event-metadada__infos{
                 display: flex;
                 justify-content: space-between;
@@ -77,5 +82,8 @@
                 }
             }
         }
+    }
+    .post-content{
+        max-width: $grid--normal;
     }
 }
