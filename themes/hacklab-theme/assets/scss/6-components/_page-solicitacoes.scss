@@ -26,6 +26,22 @@
 
                 p {
 
+                    .wpcf7-form-control-wrap{
+                        display: flex;
+                        flex-direction: column-reverse;
+                        gap: $gap--small;
+                        .wpcf7-not-valid-tip{
+                            text-align: center;
+                            margin-left: calc(6.5*$margin--large);
+                        }
+
+                        .wpcf7-textarea{
+                            font-weight: $font-weight--regular;
+                            font-size: $font-size--medium;
+                            color: $color--low-light
+                        }
+                    }
+
                     .form-book__input {
                         background-color: white;
                         height: 99px;
@@ -45,6 +61,7 @@
                         font-style: normal;
                         font-weight: $font-weight--bold;
                         line-height: 13.2px;
+                        display: flex;
                         /*  */
                         letter-spacing: -0.36px;
                         text-transform: uppercase;
@@ -101,12 +118,16 @@
                     line-height: 21px; /* 21px */
                 }
             }
-            & .date > label {
+            & .time > label {
                 .walcf7-timepicker{
                     width: 100%;
                     max-width: 470px;
                     border-radius: 8px;
                     border: 1px solid #DDD;
+                    &::placeholder{
+                        font-weight: $font-weight--regular;
+                        font-size: $font-size--medium;
+                    }
                 }
             }
 
