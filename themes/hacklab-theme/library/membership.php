@@ -3,13 +3,13 @@
 namespace hacklabr;
 
 function add_user_to_pmpro_group ($user_id, $group_id) {
-    $group = new \PMProGroupAcct_Group($group_id);
+    $group = get_pmpro_group($group_id);
 
     $membership = \PMProGroupAcct_Group_Member::create($user_id, $group->group_parent_level_id, $group->id);
 
     assert($membership instanceof \PMProGroupAcct_Group_Member);
 
-    \pmpro_changeMembershipLevel($user_id, $group->group_parent_level_id);
+    \pmpro_changeMembershipLevel($group->group_parent_level_id, $user_id);
 
     return $membership;
 }
@@ -22,6 +22,10 @@ function create_pmpro_group ($user_id, $level_id = 11) {
     \pmpro_changeMembershipLevel($level_id, $user_id);
 
     return $group;
+}
+
+function get_pmpro_group ($group_id) {
+    return new \PMProGroupAcct_Group($group_id);
 }
 
 function register_organization_cpt () {
