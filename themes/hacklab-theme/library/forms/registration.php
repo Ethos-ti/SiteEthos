@@ -527,7 +527,7 @@ function register_registration_form () {
 
     register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
         'fields' => $fields_step5,
-        'submit_label' => __('Add contact', 'hacklabr'),
+        'submit_label' => 'Adicionar contato',
     ]);
 }
 add_action('init', 'hacklabr\\register_registration_form');

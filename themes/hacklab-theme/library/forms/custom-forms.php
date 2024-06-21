@@ -28,6 +28,10 @@ function wrap_step_5_form ($form_html, $form) {
     $script = <<<SCRIPT
     {
         role: '',
+        closeFormModal () {
+            this.role = '';
+            this.\$refs.formModal.close();
+        },
         openFormModal (role) {
             this.role = role;
             this.\$refs.formModal.showModal();
@@ -104,7 +108,13 @@ function wrap_step_5_form ($form_html, $form) {
         </div>
 
         <dialog x-ref="formModal" class="members-form__modal">
-            <?= $form_html ?>
+            <header class="members-form__modal-header">
+                <span>Adicionar contato</span>
+                <button type="button" @click="closeFormModal()" title="Fechar">
+                    <iconify-icon icon="material-symbols:close"></iconify-icon>
+                </button>
+            </header>
+            <main class="members-form__modal-body"><?= $form_html ?></main>
         </dialog>
     </div>
 <?php
