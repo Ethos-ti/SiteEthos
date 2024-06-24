@@ -34,7 +34,7 @@
             form {
                 display: flex;
                 flex-direction: column;
-                gap: $gap--large;
+                gap: $gap--medium;
                 br {
                     display: none;
                 }
@@ -50,7 +50,9 @@
                         margin-left: 0;
                     }
 
-
+                    select, input, textarea{
+                        margin-bottom: $margin--medium;
+                    }
 
                     .wpcf7-form-control-wrap{
                         display: flex;
