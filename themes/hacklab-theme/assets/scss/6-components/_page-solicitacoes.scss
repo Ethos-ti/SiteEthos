@@ -1,8 +1,25 @@
 .page-minhas-solicitacoes{
     .content-sidebar{
         main{
+            @include small{
+                padding: $padding--large $padding--small;
+            }
             h1{
                 margin-bottom: $margin--large;
+                @include small{
+                    font-size: $font-size--xx-large;
+                    text-align: center;
+                }
+            }
+            .wp-block-spacer{
+                @include small{
+                    display: none;
+                }
+            }
+            p{
+                @include small{
+                    margin-bottom: $margin--large;
+                }
             }
         }
         .wpcf7{
@@ -18,18 +35,31 @@
                 display: flex;
                 flex-direction: column;
                 gap: $gap--large;
-                max-width: 470px;
                 br {
                     display: none;
                 }
 
-
+                :nth-child(8){
+                    margin-left: 0;
+                }
                 p {
+
+                    margin-left: calc(3 * $margin--medium);
+
+                    @include mobile{
+                        margin-left: 0;
+                    }
+
+
 
                     .wpcf7-form-control-wrap{
                         display: flex;
                         flex-direction: column-reverse;
                         text-align: end;
+                        .wpcf7-not-valid-tip{
+                            max-width: 470px;
+                            width: 100%;
+                        }
 
                     }
 
@@ -42,7 +72,6 @@
                     .text-input{
                         color: $color--low-light;
                     }
-
                     .wpcf7-date,
                     .wpcf7-text {
                         height: 48px;
@@ -86,7 +115,6 @@
                     & span>input {
                         padding-left: $padding--medium;
                     }
-
                 }
 
                 .btn {
@@ -94,15 +122,20 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: center;
+                    p{
+                        margin-left: 0;
+                        .wpcf7-spinner{
+                            display: none;
+                        }
+                    }
                 }
                 .recaptcha{
+
                     color: $color--low-dark;
                     display: flex;
                     flex-direction: column;
                     font-size: 14px;
                     font-weight: $font-weight--regular;
-                    align-items: center;
-                    margin-right: 91px;
                     @include mobile{
                         margin-right: initial;
                     }
@@ -111,6 +144,7 @@
                     }
 
                 }
+
                 .aceite{
                     color: $color--low-dark;
                     font-family: "Open Sans";
@@ -132,7 +166,6 @@
                     }
                 }
             }
-
         }
     }
 }
