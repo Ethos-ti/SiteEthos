@@ -20,6 +20,21 @@
     }
 }
 
+.text-input[type="file"] {
+    line-height: 2rem;
+
+    &::file-selector-button {
+        background-color: $color--low-pure;
+        border: none;
+        border-radius: $border-radius--small;
+        color: $color--high-pure;
+        float: right;
+        font-weight: $font-weight--bold;
+        margin: 0;
+        padding: $padding--small $padding--medium;
+    }
+}
+
 .checkbox, .radio {
     accent-color: $color--primary-pure;
     transform: scale(1.125);

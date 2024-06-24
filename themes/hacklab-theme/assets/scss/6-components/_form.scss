@@ -1,5 +1,10 @@
 .form {
 
+    &.aligncenter {
+        margin-inline: auto;
+        max-width: $grid--narrow;
+    }
+
     &__grid {
         display: grid;
         gap: $gap--medium;
