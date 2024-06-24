@@ -1,8 +1,25 @@
 .page-minhas-solicitacoes{
     .content-sidebar{
         main{
+            @include small{
+                padding: $padding--large $padding--small;
+            }
             h1{
                 margin-bottom: $margin--large;
+                @include small{
+                    font-size: $font-size--xx-large;
+                    text-align: center;
+                }
+            }
+            .wp-block-spacer{
+                @include small{
+                    display: none;
+                }
+            }
+            p{
+                @include small{
+                    margin-bottom: $margin--large;
+                }
             }
         }
         .wpcf7{
@@ -18,13 +35,33 @@
                 display: flex;
                 flex-direction: column;
                 gap: $gap--large;
-
                 br {
                     display: none;
                 }
 
-
+                :nth-child(8){
+                    margin-left: 0;
+                }
                 p {
+
+                    margin-left: calc(3 * $margin--medium);
+
+                    @include mobile{
+                        margin-left: 0;
+                    }
+
+
+
+                    .wpcf7-form-control-wrap{
+                        display: flex;
+                        flex-direction: column-reverse;
+                        text-align: end;
+                        .wpcf7-not-valid-tip{
+                            max-width: 470px;
+                            width: 100%;
+                        }
+
+                    }
 
                     .form-book__input {
                         background-color: white;
@@ -32,24 +69,35 @@
 
                     }
 
+                    .text-input{
+                        color: $color--low-light;
+                    }
                     .wpcf7-date,
                     .wpcf7-text {
                         height: 48px;
                         color: #7D7D7D;
                     }
+                    .wpcf7-select{
+                        margin-top: $margin--small;
+                    }
+                    .wpcf7-textarea{
+                        font-weight: $font-weight--regular;
+                        font-size: $font-size--medium;
+                        color: $color--low-light;
+                    }
 
                     label {
-                        color: #363B43;
-                        font-family: "Open Sans";
+                        color: $color--low-dark;
+                        font-family: $font-family--primary;
                         font-size: 12px;
                         font-style: normal;
                         font-weight: $font-weight--bold;
                         line-height: 13.2px;
+                        display: flex;
                         /*  */
                         letter-spacing: -0.36px;
                         text-transform: uppercase;
                         border-radius: $border-radius--medium;
-                        margin-bottom: size(12);
                         display: flex;
                         flex-direction: column;
                         gap: 1rem;
@@ -67,7 +115,6 @@
                     & span>input {
                         padding-left: $padding--medium;
                     }
-
                 }
 
                 .btn {
@@ -75,15 +122,20 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: center;
+                    p{
+                        margin-left: 0;
+                        .wpcf7-spinner{
+                            display: none;
+                        }
+                    }
                 }
                 .recaptcha{
-                    color: #363b43;
+
+                    color: $color--low-dark;
                     display: flex;
                     flex-direction: column;
                     font-size: 14px;
                     font-weight: $font-weight--regular;
-                    align-items: center;
-                    margin-right: 91px;
                     @include mobile{
                         margin-right: initial;
                     }
@@ -92,8 +144,9 @@
                     }
 
                 }
+
                 .aceite{
-                    color: #363B43;
+                    color: $color--low-dark;
                     font-family: "Open Sans";
                     font-size: 13px;
                     font-style: normal;
@@ -101,17 +154,18 @@
                     line-height: 21px; /* 21px */
                 }
             }
-            & .date > label {
+            & .time > label {
                 .walcf7-timepicker{
                     width: 100%;
                     max-width: 470px;
                     border-radius: 8px;
                     border: 1px solid #DDD;
+                    &::placeholder{
+                        font-weight: $font-weight--regular;
+                        font-size: $font-size--medium;
+                    }
                 }
             }
-
         }
-
     }
-
 }
