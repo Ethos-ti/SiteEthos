@@ -113,6 +113,10 @@ function render_field (string $name, array $definition, array $context = []) {
         }
         ?>
 
+        <?php if (!empty($definition['hint'])): ?>
+            <div id="<?= $name ?>__hint" class="form-field__hint"><?= $definition['hint'] ?></div>
+        <?php endif; ?>
+
         <?php if ($validation !== true): ?>
             <div id="<?= $name ?>__error" class="form-field__error"><?= $validation ?></div>
         <?php endif; ?>
