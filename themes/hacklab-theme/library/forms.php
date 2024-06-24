@@ -89,7 +89,7 @@ function render_field (string $name, array $definition, array $context = []) {
     }
 ?>
     <div class="<?= concat_class_list(['form-field', $definition['class'], ($validation === true) ? null : 'form-field--invalid']) ?>">
-        <?php if ($definition['type'] !== 'static'): ?>
+        <?php if ($definition['type'] !== 'static' && $definition['type'] !== 'hidden'): ?>
             <label class="form-field__label" for="<?= $name ?>">
                 <?= $definition['label'] ?>
                 <?php if ($definition['required']): ?>
@@ -113,6 +113,10 @@ function render_field (string $name, array $definition, array $context = []) {
         }
         ?>
 
+        <?php if (!empty($definition['hint'])): ?>
+            <div id="<?= $name ?>__hint" class="form-field__hint"><?= $definition['hint'] ?></div>
+        <?php endif; ?>
+
         <?php if ($validation !== true): ?>
             <div id="<?= $name ?>__error" class="form-field__error"><?= $validation ?></div>
         <?php endif; ?>
@@ -124,7 +128,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
     $form_options = $form['options'];
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 ?>
-    <form class="<?= $class ?>" id="form:<?= $form['id'] ?>" method="post">
+    <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
 
         <div class="form__grid">

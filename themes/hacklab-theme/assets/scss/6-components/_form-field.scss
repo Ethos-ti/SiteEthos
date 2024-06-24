@@ -10,9 +10,12 @@
         gap: $gap--small;
     }
 
+    &__error, &__hint {
+        font-size: $font-size--small;
+    }
+
     &__error {
         color: $color--warning-pure;
-        font-size: $font-size--small;
     }
 
     &__input {

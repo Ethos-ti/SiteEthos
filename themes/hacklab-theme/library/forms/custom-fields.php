@@ -2,6 +2,14 @@
 
 namespace hacklabr\Fields;
 
+function get_pmpro_child_level ($level) {
+    if ($level === 8 || $level === 9) {
+        return $level + 12;
+    } else {
+        return $level;
+    }
+}
+
 function get_pmpro_level_options ($organization_id, $for_manager = true) {
     $revenue = get_post_meta($organization_id, 'faturamento_anual', true) ?: 'small';
 

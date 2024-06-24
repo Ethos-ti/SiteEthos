@@ -128,7 +128,7 @@ function get_registration_step1_fields () {
             'type' => 'url',
             'class' => '-colspan-12',
             'label' => 'Website',
-            'placeholder' => 'www.linkdosite.com.br',
+            'placeholder' => 'https://www.linkdosite.com.br',
             'required' => true,
         ],
         'num_funcionarios' => [
@@ -466,6 +466,35 @@ function get_registration_step4_fields () {
         ],
     ];
 
+    if (!empty($_GET['orgid'])) {
+        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+
+        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+        $group = get_pmpro_group($group_id);
+
+        $level = \pmpro_getLevel(Fields\get_pmpro_child_level($group->group_parent_level_id));
+
+        if (!empty($level->billing_amount)) {
+            $fields['pagto_sugerido']['default'] = $level->billing_amount ?? '';
+            $fields['pagto_sugerido']['disabled'] = true;
+        }
+
+    }
+
+    return $fields;
+}
+
+function get_registration_step5_fields () {
+    $step2_fields = get_registration_step2_fields();
+
+    $fields = [];
+
+    foreach ($step2_fields as $key => $definition) {
+        if ($key !== 'senha') {
+            $fields[$key] = $definition;
+        }
+    }
+
     return $fields;
 }
 
@@ -474,6 +503,7 @@ function register_registration_form () {
     $fields_step2 = get_registration_step2_fields();
     $fields_step3 = get_registration_step3_fields();
     $fields_step4 = get_registration_step4_fields();
+    $fields_step5 = get_registration_step5_fields();
 
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
         'fields' => $fields_step1,
@@ -494,8 +524,25 @@ function register_registration_form () {
         'fields' => $fields_step4,
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
+
+    register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
+        'fields' => $fields_step5,
+        'submit_label' => 'Adicionar contato',
+    ]);
 }
 add_action('init', 'hacklabr\\register_registration_form');
+
+function set_post_featured_image ($post_id, $file_key) {
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
+    $attachment_id = media_handle_upload($file_key, $post_id);
+
+    if (is_numeric($attachment_id)) {
+        set_post_thumbnail($post_id, $thumbnail_id);
+    }
+}
 
 function validate_registration_form ($form_id, $form, $params) {
     if ($form_id === 'member-registration-1') {
@@ -516,6 +563,10 @@ function validate_registration_form ($form_id, $form, $params) {
             'meta_input' => $post_meta,
         ]);
 
+        if (!empty($_FILES['_logomarca'])) {
+            set_post_featured_image($post_id, '_logomarca');
+        }
+
         $next_page = get_page_by_form('member-registration-2');
         $params = [ 'orgid' => $post_id ];
 
@@ -533,9 +584,11 @@ function validate_registration_form ($form_id, $form, $params) {
         $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $user_meta = $params;
-        $password = $params['senha'];
         unset($user_meta['_hacklabr_form']);
-        unset($user_meta['senha']); // Don't store plaintext password
+
+        // Don't store plaintext password
+        $password = $user_meta['senha'];
+        unset($user_meta['senha']);
 
         $user_id = wp_insert_user([
             'display_name' => $params['nome_completo'],
@@ -573,7 +626,8 @@ function validate_registration_form ($form_id, $form, $params) {
 
         $group = create_pmpro_group($user_id, $level_id);
 
-        change_user_pmpro_level($user_id, $level_id);
+        add_user_meta($user_id, '_pmpro_group', $group->id);
+        add_user_meta($user_id, '_pmpro_role', 'primary');
 
         wp_update_post([
             'ID' => $post_id,
@@ -584,7 +638,7 @@ function validate_registration_form ($form_id, $form, $params) {
         ]);
 
         $next_page = get_page_by_form('member-registration-4');
-        $params = [ 'orgid' => $post_id ];
+        $params = [ 'orgid' => $post_id, 'userid' => $user_id ];
 
         wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
@@ -598,6 +652,59 @@ function validate_registration_form ($form_id, $form, $params) {
         }
 
         $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+
+        $post_meta = $params;
+        unset($post_meta['_hacklabr_form']);
+
+        foreach ($params as $meta_key => $meta_value) {
+            add_post_meta($post_id, $meta_key, $meta_value, true);
+        }
+
+        $next_page = get_page_by_form('member-registration-5');
+        $params = [ 'orgid' => $post_id ];
+
+        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        exit;
+    }
+
+    if ($form_id === 'member-registration-5' && !empty($_GET['orgid']) && !empty($params['_role'])) {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation !== true) {
+            return;
+        }
+
+        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+
+        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+
+        $role = $params['_role'];
+        unset($user_meta['_role']);
+
+        $user_meta = array_merge($params, [
+            '_pmpro_group' => $group_id,
+            '_pmpro_role' => $role,
+        ]);
+        unset($user_meta['_hacklabr_form']);
+
+        $password = wp_generate_password(16);
+
+        $user_id = wp_insert_user([
+            'display_name' => $params['nome_completo'],
+            'user_email' => $params['email'],
+            'user_login' => sanitize_title($params['nome_completo']),
+            'user_pass' => $password,
+            'role' => 'subscriber',
+            'meta_input' => $user_meta,
+        ]);
+
+        add_user_to_pmpro_group($user_id, $group_id);
+
+        $next_page = get_page_by_form('member-registration-5');
+        $params = [ 'orgid' => $post_id ];
+
+        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        exit;
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);
