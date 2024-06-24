@@ -1,0 +1,39 @@
+.members-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__section{
+        text-align: center;
+    }
+    &__text{
+        h3{
+            color:$color--primary-dark;
+        }
+    }
+    &__grid{
+        display: flex;
+        flex-direction: row;
+        gap: $gap--medium;
+    }
+    &form__item::marker{
+        display: none;
+    }
+    &__card{
+        display: flex;
+        padding: $padding--large;
+        border-radius: 8px;
+        background: var(--High-light, #F2F3F4);
+
+    }
+    &__user{
+        h4{
+            color: #000;
+            text-align: center;
+            font-family: "Open Sans";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 160%; /* 25.6px */
+        }
+    }
+}
