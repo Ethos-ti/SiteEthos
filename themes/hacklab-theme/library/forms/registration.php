@@ -532,6 +532,18 @@ function register_registration_form () {
 }
 add_action('init', 'hacklabr\\register_registration_form');
 
+function set_post_featured_image ($post_id, $file_key) {
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
+    $attachment_id = media_handle_upload($file_key, $post_id);
+
+    if (is_numeric($attachment_id)) {
+        set_post_thumbnail($post_id, $thumbnail_id);
+    }
+}
+
 function validate_registration_form ($form_id, $form, $params) {
     if ($form_id === 'member-registration-1') {
         $validation = validate_form($form['fields'], $params);
@@ -550,6 +562,10 @@ function validate_registration_form ($form_id, $form, $params) {
             'post_status' => 'draft',
             'meta_input' => $post_meta,
         ]);
+
+        if (!empty($_FILES['_logomarca'])) {
+            set_post_featured_image($post_id, '_logomarca');
+        }
 
         $next_page = get_page_by_form('member-registration-2');
         $params = [ 'orgid' => $post_id ];

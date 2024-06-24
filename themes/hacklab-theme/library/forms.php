@@ -124,7 +124,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
     $form_options = $form['options'];
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 ?>
-    <form class="<?= $class ?>" id="form:<?= $form['id'] ?>" method="post">
+    <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
 
         <div class="form__grid">
