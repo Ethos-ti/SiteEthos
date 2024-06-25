@@ -38,11 +38,11 @@ function get_pmpro_level_options ($organization_id, $for_manager = true) {
 }
 
 function render_pmpro_level_field (string $name, $value, array $definition) {
-    $kit = filter_input(INPUT_GET, 'kit') ?? null;
+    $kit = filter_input(INPUT_GET, 'kit') ?? '';
     $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
     $level_options = get_pmpro_level_options($post_id, $definition['for_manager']);
-    $initial_value = $value ?: ($level_options[$kit ?? ''] ?? 'null');
+    $initial_value = $value ?: ($level_options[$kit] ?? 'null');
 ?>
     <div class="choose-plan__input" x-data="{ level: <?= $initial_value ?> }">
         <div class="choose-plan__grid">
