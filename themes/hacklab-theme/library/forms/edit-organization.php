@@ -8,7 +8,28 @@ function register_edit_organization_form () {
     register_form('edit-organization', __('Edit organization', 'hacklabr'), [
         'fields' => $fields,
         'submit_label' => __('Edit', 'hacklabr'),
-        'get_params' => function () {
+        'get_params' => function () use ($fields) {
+            $user_id = get_current_user_id();
+            $organizations = get_posts([
+
+                'post_type' => 'organizacao',
+                'author' => $user_id,
+                'posts_per_page' => 1,
+            ]);
+
+            if(!empty($organizations)) {
+                $organization = $organizations[0];
+                $meta = get_post_meta($organization->ID);
+                $params = [];
+
+                foreach ($fields as $key => $field) {
+                    if(!empty($meta [$key])) {
+                        $params[$key] = $meta[$key][0];
+                    }
+                }
+
+                return $params;
+            }
             return [];
         },
     ]);
