@@ -718,3 +718,16 @@ function validate_registration_form ($form_id, $form, $params) {
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);
+
+function update_registration_form_title ($title, $post_id) {
+    if (is_page()) {
+        $hacklabr_form = get_post_meta($post_id, 'hacklabr_form', true);
+
+        if (!empty($hacklabr_form) && str_starts_with($hacklabr_form, 'member-registration-')) {
+            return 'Associação ao Instituto Ethos';
+        }
+    }
+
+    return $title;
+}
+add_filter('the_title', 'hacklabr\\update_registration_form_title', 10, 2);
