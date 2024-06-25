@@ -719,7 +719,7 @@ function validate_registration_form ($form_id, $form, $params) {
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_registration_form', 10, 3);
 
-function update_registration_form_title ($title, $post_id) {
+function update_registration_form_title ($title, $post_id = null) {
     if (is_page()) {
         $hacklabr_form = get_post_meta($post_id, 'hacklabr_form', true);
 
