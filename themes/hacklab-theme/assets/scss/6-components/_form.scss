@@ -16,7 +16,12 @@
 
     &__grid {
         display: grid;
+        grid-template-columns: repeat(12, 1fr);
         gap: $gap--medium;
+
+        @include desktop {
+            gap: size(24);
+        }
     }
 
     &__buttons {
