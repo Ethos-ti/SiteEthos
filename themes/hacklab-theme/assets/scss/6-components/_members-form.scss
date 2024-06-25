@@ -1,39 +1,127 @@
-.members-form{
+.members-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    &__section{
+
+    &__section {
         text-align: center;
     }
-    &__text{
-        h3{
-            color:$color--primary-dark;
+
+    &__section:nth-child(1){
+        border-bottom: 1px solid $color--high-dark;
+        margin-bottom: $margin--large !important;
+    }
+
+    &__text {
+        max-width: $grid--narrow;
+        margin: auto;
+
+        h3 {
+            color: $color--primary-dark;
         }
     }
-    &__grid{
+
+    &__grid {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: $gap--medium;
+        justify-content: center;
+        margin-block: $margin--large !important;
+
+        @include mobile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
-    &form__item::marker{
+
+
+    &__form__item::marker {
         display: none;
     }
-    &__card{
+
+    &__card,
+    button {
         display: flex;
-        padding: $padding--large;
-        border-radius: 8px;
-        background: var(--High-light, #F2F3F4);
+        padding: $padding--medium $padding--large;
+        border-radius: $border-radius--small;
+        background: $color--high-light;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: $gap--small;
+        font-weight: $font-weight--bold;
+        color: $color--low-pure;
+        font-family: $font-family--primary;
+        font-size: $font-size--large;
+        cursor: pointer;
+    }
+
+    &__user {
+        h4 {
+            color: $color--low-pure;
+            text-align: center;
+            font-family: $font-family--primary;
+            font-size: $font-size--medium;
+            font-weight: $font-weight--bold;
+        }
+    }
+
+    &__avatar > img {
+        border-radius: 50%;
+    }
+
+    &__item {
+        display: flex;
+    }
+
+    &__modal{
+        max-width: $grid--narrow;
+        width: 100%;
+        margin: auto;
+        border: none;
+        border-radius: $border-radius--medium;
 
     }
-    &__user{
-        h4{
-            color: #000;
+    &__modal-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & span{
             text-align: center;
-            font-family: "Open Sans";
-            font-size: 16px;
+            width: 100%;
+            color: $color--primary-dark;
+            text-align: center;
+            font-family: $font-family--heading;
+            font-size: $font-size--x-large;
             font-style: normal;
-            font-weight: 700;
-            line-height: 160%; /* 25.6px */
+            font-weight: $font-weight--regular;
         }
+        & button{
+            background-color: transparent;
+            padding: 0;
+
+        }
+    }
+    &__modal-body{
+        margin-top: $gap--medium;
+
+        & button{
+            padding: $padding--small $padding--large;
+            justify-content: center;
+            align-items: center;
+            gap: $gap--small;
+            background-color: $color--low-pure;
+            border-radius: $border-radius--medium;
+            color: $color--high-pure;
+            text-align: center;
+            font-family: $font-family--heading;
+            font-size: $font-size--small;
+            font-style: normal;
+            font-weight: $font-weight--bold;
+            text-transform: uppercase;
+        }
+
     }
 }
