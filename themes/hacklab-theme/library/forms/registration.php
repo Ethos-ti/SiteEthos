@@ -550,7 +550,7 @@ function set_post_featured_image ($post_id, $file_key) {
     $attachment_id = media_handle_upload($file_key, $post_id);
 
     if (is_numeric($attachment_id)) {
-        set_post_thumbnail($post_id, $thumbnail_id);
+        set_post_thumbnail($post_id, $attachment_id);
     }
 }
 
