@@ -619,7 +619,7 @@ function validate_registration_form ($form_id, $form, $params) {
         ]);
 
         $next_page = get_page_by_form('member-registration-3');
-        $params = [ 'orgid' => $post_id, 'plano' => $plan, 'userid' => $user_id ];
+        $params = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
 
         wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
