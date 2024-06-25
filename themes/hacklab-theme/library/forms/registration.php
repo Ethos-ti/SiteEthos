@@ -466,19 +466,19 @@ function get_registration_step4_fields () {
         ],
     ];
 
-    if (!empty($_GET['orgid'])) {
+    if (class_exists('PMProGroupAcct_Group') && !empty($_GET['orgid'])) {
         $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
         $group = get_pmpro_group($group_id);
 
-        $level = \pmpro_getLevel(Fields\get_pmpro_child_level($group->group_parent_level_id));
+        $level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
+        $level = \pmpro_getLevel($level_id);
 
         if (!empty($level->billing_amount)) {
             $fields['pagto_sugerido']['default'] = $level->billing_amount ?? '';
             $fields['pagto_sugerido']['disabled'] = true;
         }
-
     }
 
     return $fields;
