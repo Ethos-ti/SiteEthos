@@ -131,6 +131,12 @@ function render_form (array $form, array $params = [], string $class = 'form') {
     <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
 
+        <?php if (!empty($form_options['skip_url']) && is_callable($form_options['skip_url'])): ?>
+        <div class="form__skipper">
+            <a class="button button--outline" href="<?= $form_options['skip_url']() ?>"><?= __('Skip step', 'hacklabr') ?></a>
+        </div>
+        <?php endif; ?>
+
         <div class="form__grid">
         <?php foreach ($form_options['fields'] as $field => $definition): ?>
             <?php render_field($field, $definition, $params); ?>

@@ -522,6 +522,16 @@ function register_registration_form () {
 
     register_form('member-registration-4', __('Member registration - step 4', 'hacklabr'), [
         'fields' => $fields_step4,
+        'skip_url' => function () {
+            $next_page = get_permalink(get_page_by_form('member-registration-5'));
+
+            if (!empty($_GET['orgid'])) {
+                $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+                return add_query_arg([ 'orgid' => $post_id ], $next_page);
+            } else {
+                return $next_page;
+            }
+        },
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 

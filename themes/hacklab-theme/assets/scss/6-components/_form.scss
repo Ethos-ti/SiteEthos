@@ -5,6 +5,15 @@
         max-width: $grid--narrow;
     }
 
+    &__skipper {
+        margin: $gap--large auto;
+        text-align: center;
+
+        .button {
+            display: inline-block;
+        }
+    }
+
     &__grid {
         display: grid;
         gap: $gap--medium;
