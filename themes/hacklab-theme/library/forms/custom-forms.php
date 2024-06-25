@@ -72,6 +72,7 @@ function wrap_step_5_form ($form_html, $form) {
 
                 <li class="members-form__item">
                     <button type="button" @click="openFormModal('primary')">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/add.svg" alt="">
                         Adicionar contato
                     </button>
                 </li>
@@ -101,6 +102,7 @@ function wrap_step_5_form ($form_html, $form) {
 
                 <li class="members-form__item">
                     <button type="button" @click="openFormModal('financial')">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/add.svg" alt="">
                         Adicionar contato
                     </button>
                 </li>
