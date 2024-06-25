@@ -68,6 +68,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
 
         wp_update_post([
             'ID' => $post_id,
+            'post_title' => $post_meta['nome_fantasia'],
             'meta_input' => $post_meta,
         ]);
     }
