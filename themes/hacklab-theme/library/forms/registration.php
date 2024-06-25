@@ -129,7 +129,7 @@ function get_registration_step1_fields () {
             'class' => '-colspan-12',
             'label' => 'Website',
             'placeholder' => 'https://www.linkdosite.com.br',
-            'required' => true,
+            'required' => false,
         ],
         'num_funcionarios' => [
             'type' => 'number',
