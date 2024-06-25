@@ -32,13 +32,13 @@ function register_edit_organization_form () {
                         '<input type="hidden" name="__organization_id" value="' . $organization->ID . '">',
                     ]);
                     return implode("\n", $form_lines);
-                });
+                }, 10, 2);
 
                 $meta = get_post_meta($organization->ID);
-                $params = [];
+                $params = sanitize_form_params();
 
                 foreach ($fields as $key => $field) {
-                    if(!empty($meta [$key])) {
+                    if (empty($params[$key]) && !empty($meta[$key])) {
                         $params[$key] = $meta[$key][0];
                     }
                 }
@@ -63,4 +63,4 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         // Save params
     }
 }
-add_action('hacklabr\\form_action', 'hacklabr\\validate_edit_organization_form');
+add_action('hacklabr\\form_action', 'hacklabr\\validate_edit_organization_form', 10, 3);
