@@ -60,7 +60,16 @@ function validate_edit_organization_form ($form_id, $form, $params) {
             return;
         }
 
-        // Save params
+        $post_id = $params['_organization_id'];
+        $post_meta = $params;
+
+        unset($post_meta['_hacklabr_form']);
+        unset($post_meta['_organization_id']);
+
+        wp_update_post([
+            'ID' => $post_id,
+            'meta_input' => $post_meta,
+        ]);
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_edit_organization_form', 10, 3);
