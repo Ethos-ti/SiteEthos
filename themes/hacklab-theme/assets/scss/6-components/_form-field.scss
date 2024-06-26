@@ -4,14 +4,9 @@
         display: block;
     }
 
-    &:has(.checkbox, .radio) {
-        align-items: center;
-        display: flex;
-        gap: $gap--small;
-    }
-
     &__error, &__hint {
         font-size: $font-size--small;
+        order: 3;
     }
 
     &__error {
@@ -35,8 +30,9 @@
 
     &:has(.checkbox, .radio) {
         align-items: center;
-        display: flex;
-        gap: $gap--small;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 $gap--small;
 
         .form-field__label {
             font-size: $font-size--medium;
@@ -47,6 +43,10 @@
                 color: $color--primary-pure;
                 text-decoration: none;
             }
+        }
+
+        .form-field__error, .form-field__hint {
+            grid-column: 1 / span 2;
         }
     }
 }
