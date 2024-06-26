@@ -258,8 +258,16 @@ function get_registration_step2_fields () {
             'type' => 'email',
             'class' => '-colspan-12',
             'label' => 'Email',
-            'placeholder' => 'Insira o e-mail',
+            'placeholder' => 'Insira o email',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    return 'Email inválido';
+                } elseif (!empty(get_user_by('email', $value))) {
+                    return 'Email já está em uso';
+                }
+                return true;
+            },
         ],
         'senha' => [
             'type' => 'password',
