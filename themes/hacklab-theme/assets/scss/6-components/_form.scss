@@ -27,7 +27,11 @@
     &__buttons {
         display: flex;
         gap: $gap--medium;
-        justify-content: space-evenly;
+        justify-content: center;
         margin-top: $gap--x-large;
+
+        &--has-previous {
+            justify-content: space-between;
+        }
     }
 }

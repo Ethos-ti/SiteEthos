@@ -2,11 +2,24 @@
 
 namespace hacklabr;
 
+function build_registration_step_link ($form_id, $kit, $post_id, $user_id) {
+    $page = get_page_by_form($form_id);
+    $args = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
+    return add_query_arg($args, get_permalink($page));
+}
+
 function get_registration_step1_fields () {
     $revenue_options = [
         'small' => 'Micro e pequeno (até R$ 16 milhões)',
         'medium' => 'Médio (R$ 16 a 300 milhões)',
         'large' => 'Grande (maior que R$ 300 milhões)',
+    ];
+
+    $size_options = [
+        'micro' => 'Microempresa',
+        'small' => 'Pequena empresa',
+        'medium' => 'Média empresa',
+        'large' => 'Grande empresa',
     ];
 
     $states_options = [
@@ -142,8 +155,16 @@ function get_registration_step1_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Porte',
-            'options' => [],
+            'options' => $size_options,
             'required' => false,
+            'validate' => function ($value, $context) use ($size_options) {
+                if (empty($value)) {
+                    return true;
+                } elseif (!array_key_exists($value, $size_options)) {
+                    return 'Porte inválido';
+                }
+                return true;
+            },
         ],
         'end_logradouro' => [
             'type' => 'text',
@@ -399,7 +420,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($advance_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $advance_options)) {
+                } elseif (!array_key_exists($value, $advance_options)) {
                     return 'Condição inválida';
                 }
                 return true;
@@ -414,7 +435,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($periodicity_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $periodicity_options)) {
+                } elseif (!array_key_exists($value, $periodicity_options)) {
                     return 'Periodicidade inválida';
                 }
                 return true;
@@ -436,7 +457,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_terms_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_terms_options)) {
+                } elseif (!array_key_exists($value, $receive_terms_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -451,7 +472,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_billing_options)) {
+                } elseif (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -466,7 +487,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_billing_options)) {
+                } elseif (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -513,6 +534,10 @@ function register_registration_form () {
     $fields_step4 = get_registration_step4_fields();
     $fields_step5 = get_registration_step5_fields();
 
+    $kit = filter_input(INPUT_GET, 'kit') ?? null;
+    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
+    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
         'fields' => $fields_step1,
         'submit_label' => __('Continue', 'hacklabr'),
@@ -520,31 +545,26 @@ function register_registration_form () {
 
     register_form('member-registration-2', __('Member registration - step 2', 'hacklabr'), [
         'fields' => $fields_step2,
+        'previous_url' => build_registration_step_link('member-registration-1', $kit, $post_id, $user_id),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-3', __('Member registration - step 3', 'hacklabr'), [
         'fields' => $fields_step3,
+        'previous_url' => build_registration_step_link('member-registration-2', $kit, $post_id, $user_id),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-4', __('Member registration - step 4', 'hacklabr'), [
         'fields' => $fields_step4,
-        'skip_url' => function () {
-            $next_page = get_permalink(get_page_by_form('member-registration-5'));
-
-            if (!empty($_GET['orgid'])) {
-                $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
-                return add_query_arg([ 'orgid' => $post_id ], $next_page);
-            } else {
-                return $next_page;
-            }
-        },
+        'previous_url' => build_registration_step_link('member-registration-3', $kit, $post_id, $user_id),
+        'skip_url' => build_registration_step_link('member-registration-5', $kit, $post_id, $user_id),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
         'fields' => $fields_step5,
+        // 'previous_url' => build_registration_step_link('member-registration-4', $kit, $post_id, $user_id),
         'submit_label' => 'Adicionar contato',
     ]);
 }
@@ -563,6 +583,10 @@ function set_post_featured_image ($post_id, $file_key) {
 }
 
 function validate_registration_form ($form_id, $form, $params) {
+    $kit = filter_input(INPUT_GET, 'kit') ?? null;
+    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
+    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+
     if ($form_id === 'member-registration-1') {
         $validation = validate_form($form['fields'], $params);
 
@@ -570,39 +594,40 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
-        $kit = filter_input(INPUT_GET, 'kit') ?? null;
-
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
-        $post_id = wp_insert_post([
-            'post_type' => 'organizacao',
-            'post_title' => $params['nome_fantasia'],
-            'post_content' => '',
-            'post_status' => 'draft',
-            'meta_input' => $post_meta,
-        ]);
+        if (empty($post_id)) {
+            $post_id = wp_insert_post([
+                'post_type' => 'organizacao',
+                'post_title' => $params['nome_fantasia'],
+                'post_content' => '',
+                'post_status' => 'draft',
+                'meta_input' => $post_meta,
+            ]);
+        } else {
+            wp_update_post([
+                'ID' => $post_id,
+                'post_title' => $params['nome_fantasia'],
+                'meta_input' => $post_meta,
+            ]);
+        }
 
         if (!empty($_FILES['_logomarca'])) {
             set_post_featured_image($post_id, '_logomarca');
         }
 
-        $next_page = get_page_by_form('member-registration-2');
-        $params = [ 'kit' => $kit, 'orgid' => $post_id ];
-
-        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        $next_page = build_registration_step_link('member-registration-2', $kit, $post_id, $user_id);
+        wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-2' && !empty($_GET['orgid'])) {
+    if ($form_id === 'member-registration-2' && !empty($post_id)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
-
-        $kit = filter_input(INPUT_GET, 'kit') ?? null;
-        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $user_meta = $params;
         unset($user_meta['_hacklabr_form']);
@@ -611,91 +636,94 @@ function validate_registration_form ($form_id, $form, $params) {
         $password = $user_meta['senha'];
         unset($user_meta['senha']);
 
-        $user_id = wp_insert_user([
-            'display_name' => $params['nome_completo'],
-            'user_email' => $params['email'],
-            'user_login' => sanitize_title($params['nome_completo']),
-            'user_pass' => $password,
-            'role' => 'subscriber',
-            'meta_input' => $user_meta,
-        ]);
+        if (empty($user_id)) {
+            $user_id = wp_insert_user([
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'user_login' => sanitize_title($params['nome_completo']),
+                'user_pass' => $password,
+                'role' => 'subscriber',
+                'meta_input' => $user_meta,
+            ]);
 
-        wp_update_post([
-            'ID' => $post_id,
-            'post_status' => 'publish',
-            'post_author' => $user_id,
-        ]);
+            wp_update_post([
+                'ID' => $post_id,
+                'post_status' => 'publish',
+                'post_author' => $user_id,
+            ]);
+        } else {
+            wp_update_user([
+                'ID' => $user_id,
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'user_pass' => $password,
+                'meta_input' => $user_meta,
+            ]);
+        }
 
-        $next_page = get_page_by_form('member-registration-3');
-        $params = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
-
-        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        $next_page = build_registration_step_link('member-registration-3', $kit, $post_id, $user_id);
+        wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-3' && !empty($_GET['orgid']) && !empty($_GET['userid'])) {
+    if ($form_id === 'member-registration-3' && !empty($post_id) && !empty($user_id)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
-
-        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
-        $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT);
 
         $level_id = (int) $params['nivel'];
 
-        $group = create_pmpro_group($user_id, $level_id);
+        $group_id = get_post_meta($post_id, '_pmpro_group', true);
 
-        add_user_meta($user_id, '_pmpro_group', $group->id);
-        add_user_meta($user_id, '_pmpro_role', 'primary');
+        if (empty($group_id)) {
+            $group = create_pmpro_group($user_id, $level_id);
 
-        wp_update_post([
-            'ID' => $post_id,
-            'post_status' => 'publish',
-            'meta_input' => [
-                '_pmpro_group' => $group->id,
-            ],
-        ]);
+            update_user_meta($user_id, '_pmpro_group', $group->id);
+            update_user_meta($user_id, '_pmpro_role', 'primary');
 
-        $next_page = get_page_by_form('member-registration-4');
-        $params = [ 'orgid' => $post_id, 'userid' => $user_id ];
+            wp_update_post([
+                'ID' => $post_id,
+                'post_status' => 'publish',
+                'meta_input' => [
+                    '_pmpro_group' => $group->id,
+                ],
+            ]);
+        } else {
+            update_group_level($group_id, $level_id);
+        }
 
-        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        $next_page = build_registration_step_link('member-registration-4', $kit, $post_id, $user_id);
+        wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-4' && !empty($_GET['orgid'])) {
+    if ($form_id === 'member-registration-4' && !empty($post_id)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
-
-        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
         foreach ($params as $meta_key => $meta_value) {
-            add_post_meta($post_id, $meta_key, $meta_value, true);
+            update_post_meta($post_id, $meta_key, $meta_value);
         }
 
-        $next_page = get_page_by_form('member-registration-5');
-        $params = [ 'orgid' => $post_id ];
-
-        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        $next_page = build_registration_step_link('member-registration-5', $kit, $post_id, $user_id);
+        wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-5' && !empty($_GET['orgid']) && !empty($params['_role'])) {
+    if ($form_id === 'member-registration-5' && !empty($post_id) && !empty($params['_role'])) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
-
-        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
 
@@ -721,10 +749,8 @@ function validate_registration_form ($form_id, $form, $params) {
 
         add_user_to_pmpro_group($user_id, $group_id);
 
-        $next_page = get_page_by_form('member-registration-5');
-        $params = [ 'orgid' => $post_id ];
-
-        wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
+        $next_page = build_registration_step_link('member-registration-5', $kit, $post_id, $user_id);
+        wp_safe_redirect($next_page);
         exit;
     }
 }
