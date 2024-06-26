@@ -660,18 +660,24 @@ function validate_registration_form ($form_id, $form, $params) {
 
         $level_id = (int) $params['nivel'];
 
-        $group = create_pmpro_group($user_id, $level_id);
+        $group_id = get_post_meta($post_id, '_pmpro_group', true);
 
-        add_user_meta($user_id, '_pmpro_group', $group->id);
-        add_user_meta($user_id, '_pmpro_role', 'primary');
+        if (empty($group_id)) {
+            $group = create_pmpro_group($user_id, $level_id);
 
-        wp_update_post([
-            'ID' => $post_id,
-            'post_status' => 'publish',
-            'meta_input' => [
-                '_pmpro_group' => $group->id,
-            ],
-        ]);
+            update_user_meta($user_id, '_pmpro_group', $group->id);
+            update_user_meta($user_id, '_pmpro_role', 'primary');
+
+            wp_update_post([
+                'ID' => $post_id,
+                'post_status' => 'publish',
+                'meta_input' => [
+                    '_pmpro_group' => $group->id,
+                ],
+            ]);
+        } else {
+            update_group_level($group_id, $level_id);
+        }
 
         $next_page = build_registration_step_link('member-registration-4', $kit, $post_id, $user_id);
         wp_safe_redirect($next_page);

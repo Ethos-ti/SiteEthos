@@ -28,6 +28,29 @@ function get_pmpro_group ($group_id) {
     return new \PMProGroupAcct_Group($group_id);
 }
 
+function update_group_level ($group_id, $level_id = 11) {
+    global $wpdb;
+
+    $group = get_pmpro_group($group_id);
+
+    $child_members = $group->get_active_members(false);
+
+    $wpdb->update($wpdb->prefix . 'pmprogroupacct_groups',
+    [
+        'group_parent_level_id' => $level_id,
+    ], [
+        'id' => $group_id,
+    ], ['%d'], ['%d']);
+
+    \pmpro_changeMembershipLevel($level_id, $group->group_parent_user_id);
+
+    foreach ($child_members as $child_member) {
+        \pmpro_changeMembershipLevel($level_id, $child_member->group_child_user_id);
+    }
+
+    return $group;
+}
+
 function register_organization_cpt () {
     register_post_type('organizacao', [
         'label' => __('Organizations', 'hacklabr'),
