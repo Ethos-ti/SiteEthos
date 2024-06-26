@@ -129,7 +129,7 @@ function get_registration_step1_fields () {
             'class' => '-colspan-12',
             'label' => 'Website',
             'placeholder' => 'https://www.linkdosite.com.br',
-            'required' => true,
+            'required' => false,
         ],
         'num_funcionarios' => [
             'type' => 'number',
@@ -258,8 +258,16 @@ function get_registration_step2_fields () {
             'type' => 'email',
             'class' => '-colspan-12',
             'label' => 'Email',
-            'placeholder' => 'Insira o e-mail',
+            'placeholder' => 'Insira o email',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    return 'Email inválido';
+                } elseif (!empty(get_user_by('email', $value))) {
+                    return 'Email já está em uso';
+                }
+                return true;
+            },
         ],
         'senha' => [
             'type' => 'password',
@@ -466,19 +474,19 @@ function get_registration_step4_fields () {
         ],
     ];
 
-    if (!empty($_GET['orgid'])) {
+    if (class_exists('PMProGroupAcct_Group') && !empty($_GET['orgid'])) {
         $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
         $group = get_pmpro_group($group_id);
 
-        $level = \pmpro_getLevel(Fields\get_pmpro_child_level($group->group_parent_level_id));
+        $level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
+        $level = \pmpro_getLevel($level_id);
 
         if (!empty($level->billing_amount)) {
             $fields['pagto_sugerido']['default'] = $level->billing_amount ?? '';
             $fields['pagto_sugerido']['disabled'] = true;
         }
-
     }
 
     return $fields;
@@ -562,6 +570,8 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
+        $kit = filter_input(INPUT_GET, 'kit') ?? null;
+
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
@@ -578,7 +588,7 @@ function validate_registration_form ($form_id, $form, $params) {
         }
 
         $next_page = get_page_by_form('member-registration-2');
-        $params = [ 'orgid' => $post_id ];
+        $params = [ 'kit' => $kit, 'orgid' => $post_id ];
 
         wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
@@ -591,6 +601,7 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
+        $kit = filter_input(INPUT_GET, 'kit') ?? null;
         $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
 
         $user_meta = $params;
@@ -616,7 +627,7 @@ function validate_registration_form ($form_id, $form, $params) {
         ]);
 
         $next_page = get_page_by_form('member-registration-3');
-        $params = [ 'orgid' => $post_id, 'userid' => $user_id ];
+        $params = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
 
         wp_safe_redirect(add_query_arg($params, get_permalink($next_page)));
         exit;
