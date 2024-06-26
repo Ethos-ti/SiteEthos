@@ -432,6 +432,7 @@ function filter_allowed_block_types($allowed_block_types, $editor_context)
         'tribe/event-tags',
         'tribe/event-website',
         'tribe/featured-image',
+        'tribe/related-events',
         'tec/archive-events',
         'tec/single-event'
 	];
