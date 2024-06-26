@@ -7,6 +7,8 @@
             }
             &__events{
                 .tribe-events-widget-events-list__event-row{
+                    border-bottom: $border-width--small solid $color--low-light;
+                    padding-bottom: $padding--medium;
                     .tribe-events-widget-events-list__event-date-tag{
                         &-datetime{
                             .tribe-events-widget-events-list__event-date-tag-month{
@@ -33,6 +35,35 @@
                                     .tribe-events-widget-events-list__event-title{
                                         .tribe-events-widget-events-list__event-title-link{
                                             font-family: $font-family--primary;
+                                        }
+                                    }
+                                }
+                                .tribe-events-widget-events-list__event-cost{
+                                    .tribe-events-widget-events-list__event-cost-price{
+                                        font-family: $font-family--primary;
+                                    }
+                                }
+                                .tribe-events-widget-events-list__event-venue{
+                                    &-name{
+                                        font-family: $font-family--primary;
+                                    }
+                                    &-address{
+                                        &-street{
+                                            font-family: $font-family--primary;
+                                        }
+                                        &-larger-areas{
+                                            .tribe-events-widget-events-list__event-venue-address-city,
+                                            .tribe-events-widget-events-list__event-venue-address-region,
+                                            .tribe-events-widget-events-list__event-venue-address-zip{
+                                                font-family: $font-family--primary;
+                                            }
+                                        }
+                                        &-country{
+                                            font-family: $font-family--primary;
+                                        }
+                                        .tribe-events-widget-events-list__event-venue-phone{
+                                            font-family: $font-family--primary;
+
                                         }
                                     }
                                 }
