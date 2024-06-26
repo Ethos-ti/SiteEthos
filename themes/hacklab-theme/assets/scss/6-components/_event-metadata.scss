@@ -85,5 +85,9 @@
     }
     .post-content{
         max-width: $grid--normal;
+        .tribe-block__related-events__title,
+        .tribe-related-events{
+            display: none;
+        }
     }
 }

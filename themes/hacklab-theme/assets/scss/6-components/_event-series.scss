@@ -10,6 +10,7 @@
     .post-content{
         .tribe-events{
             .tribe-common-l-container{
+                padding-bottom: $padding--x-large;
                 .tribe-events-header{
                     .tribe-events-c-events-bar{
                         border: $border-width--small solid $color--high-dark;
@@ -97,6 +98,50 @@
                 }
                 .tribe-events-pro-summary{
                     width: 100%;
+                    .tribe-events-pro-summary__month-separator{
+                        .tribe-events-pro-summary__event-date-tag{
+                            font-family: $font-family--primary;
+                        }
+                    }
+                    .tribe-events-pro-summary__event-row{
+                        .tribe-events-pro-summary__event-date-tag{
+                            &-datetime{
+                                .tribe-events-pro-summary__event-date-tag-weekday,
+                                .tribe-events-pro-summary__event-date-tag-daynum {
+                                    font-family: $font-family--primary;
+                                }
+                            }
+                        }
+                        .tribe-events-pro-summary__event-wrapper{
+                            .tribe-events-pro-summary__event{
+                                &-details{
+                                    .tribe-events-pro-summary__event-header{
+                                        display: block;
+                                        .tribe-events-pro-summary__event-datetime-wrapper{
+                                            .tribe-events-pro-summary__event-datetime{
+                                                .tribe-event-date-start,
+                                                .tribe-event-date-end{
+                                                    font-family: $font-family--primary;
+                                                }
+                                            }
+                                        }
+                                        .tribe-events-pro-summary__event-title{
+                                            .tribe-events-pro-summary__event-title-link{
+                                                font-family: $font-family--primary;
+                                            }
+                                            .tribe-events-pro-summary__event-cost{
+                                                .tribe-events-c-small-cta__text{
+                                                    .tribe-events-c-small-cta__price{
+                                                        font-family: $font-family--primary;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 .tribe-events-c-subscribe-dropdown__container{
                     display: none;
