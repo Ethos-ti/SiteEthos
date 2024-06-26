@@ -126,14 +126,17 @@ function render_field (string $name, array $definition, array $context = []) {
 
 function render_form (array $form, array $params = [], string $class = 'form') {
     $form_options = $form['options'];
+
+    $previous_url = $form_options['previous_url'] ?? null;
+    $skip_url = $form_options['skip_url'] ?? null;
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 ?>
     <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
 
-        <?php if (!empty($form_options['skip_url']) && is_callable($form_options['skip_url'])): ?>
+        <?php if (!empty($skip_url)): ?>
         <div class="form__skipper">
-            <a class="button button--outline" href="<?= $form_options['skip_url']() ?>"><?= __('Skip step', 'hacklabr') ?></a>
+            <a class="button button--outline" href="<?= $skip_url ?>"><?= __('Skip step', 'hacklabr') ?></a>
         </div>
         <?php endif; ?>
 
@@ -143,7 +146,11 @@ function render_form (array $form, array $params = [], string $class = 'form') {
         <?php endforeach; ?>
         </div>
 
-        <div class="form__buttons">
+        <div class="form__buttons <?= empty($previous_url) ? '' : ' form__buttons--has-previous' ?>">
+            <?php if (!empty($previous_url)): ?>
+                <a class="button button--outline" href="<?= $previous_url ?>"><?= __('Back') ?></a>
+            <?php endif; ?>
+
             <button class="button button--solid" type="submit"><?= $submit_label ?></button>
         </div>
     </form>
