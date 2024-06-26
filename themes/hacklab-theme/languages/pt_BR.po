@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-17T19:21:28+00:00\n"
-"PO-Revision-Date: 2024-06-17 16:24-0300\n"
+"POT-Creation-Date: 2024-06-26T18:29:40+00:00\n"
+"PO-Revision-Date: 2024-06-26 15:39-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -53,7 +53,7 @@ msgstr "Vá para a página principal"
 msgid "Contact"
 msgstr "Contato"
 
-#: archive-publicacao.php:46 archive.php:46 search.php:74
+#: archive-publicacao.php:46 archive.php:46 search.php:83
 #: taxonomy-tipo_post-posicionamento-institucional.php:46
 msgid "All the areas"
 msgstr "Todas as áreas"
@@ -96,6 +96,59 @@ msgstr "Alternar visibilidade do menu"
 msgid "Toggle search form visibility"
 msgstr "Alternar a visibilidade do formulário de pesquisa"
 
+#: library/form-fields.php:86
+msgid "Select an option"
+msgstr "Selecione uma opção"
+
+#: library/forms.php:129
+msgid "Submit"
+msgstr "Enviar"
+
+#: library/forms.php:136
+msgid "Skip step"
+msgstr "Próxima etapa"
+
+#: library/forms.php:157
+msgid "Required field"
+msgstr "Campo obrigatório"
+
+#: library/forms/edit-organization.php:10
+msgid "Edit organization"
+msgstr "Editar organização"
+
+#: library/forms/edit-organization.php:12
+msgid "Edit"
+msgstr "Editar"
+
+#: library/forms/registration.php:516
+msgid "Member registration - step 1"
+msgstr "Registro de membro - Etapa 1"
+
+#: library/forms/registration.php:518 library/forms/registration.php:523
+#: library/forms/registration.php:528 library/forms/registration.php:543
+msgid "Continue"
+msgstr "Continuar"
+
+#: library/forms/registration.php:521
+msgid "Member registration - step 2"
+msgstr "Registro de membro - Etapa 2"
+
+#: library/forms/registration.php:526
+msgid "Member registration - step 3"
+msgstr "Registro de membro - Etapa 3"
+
+#: library/forms/registration.php:531
+msgid "Member registration - step 4"
+msgstr "Registro de membro - Etapa 4"
+
+#: library/forms/registration.php:546
+msgid "Member registration - step 5"
+msgstr "Registro de membro - Etapa 5"
+
+#: library/membership.php:33
+msgid "Organizations"
+msgstr "Organizações"
+
 #: library/menus.php:6
 msgid "Main menu"
 msgstr "Menu principal"
@@ -132,20 +185,20 @@ msgstr "Página com âncoras"
 msgid "Sections"
 msgstr "Seções"
 
-#: search.php:95
+#: search.php:92
 msgid "We found "
 msgstr "Nós encontramos  "
 
-#: search.php:95
+#: search.php:92
 msgid " results for this search."
 msgstr " resultados desta pesquisa."
 
-#: search.php:97
+#: search.php:94
 msgid "This search yielded no results, do you want to perform a new search?"
 msgstr ""
 "Esta pesquisa não obteve resultados, deseja realizar uma nova pesquisa?"
 
-#: search.php:113
+#: search.php:110
 msgid "Showing: &nbsp &nbsp all contents"
 msgstr "Exibindo: &nbsp &nbsp todos os conteúdos"
 
@@ -161,23 +214,23 @@ msgstr "Nova busca"
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:42
+#: single-evento.php:46
 msgid "Start"
 msgstr "Início"
 
-#: single-evento.php:48
+#: single-evento.php:55
 msgid "End"
 msgstr "Fim"
 
-#: single-evento.php:54
+#: single-evento.php:61
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:60
+#: single-evento.php:67
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:68
+#: single-evento.php:75
 msgid "Local"
 msgstr "Local"
 
@@ -245,7 +298,11 @@ msgstr "Compartilhar"
 msgid "website by"
 msgstr "site por"
 
-#: template-parts/title/archive-header.php:24
+#: template-parts/title/archive-header.php:27
+msgid "Selected content"
+msgstr "Conteúdo selecionado"
+
+#: template-parts/title/archive-header.php:29
 msgid "Search results"
 msgstr "Resultados de busca"
 
@@ -270,7 +327,7 @@ msgstr "Conteúdo do cabeçalho"
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:23
 #: dist/blocks/banner-with-image/editor.js:142
-#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1909
+#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr "Layout"
 
@@ -319,162 +376,173 @@ msgstr "Conteúdo do corpo"
 msgid "Background image"
 msgstr "Imagem de fundo"
 
+#: dist/blocks/form/editor.js:19 library/blocks/form/editor.js:43
+#: dist/blocks/form/editor.js:1383
+msgid "Select option"
+msgstr "Selecione a opção"
+
+#: dist/blocks/form/editor.js:19 library/blocks/form/editor.js:48
+#: library/blocks/form/editor.js:50 dist/blocks/form/editor.js:1388
+#: dist/blocks/form/editor.js:1390
+msgid "Form"
+msgstr "Formulário"
+
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
-#: dist/blocks/posts-grid/editor.js:1926
+#: dist/blocks/posts-grid/editor.js:1931
 msgid "Grid columns"
 msgstr "Colunas do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:49
-#: dist/blocks/posts-grid/editor.js:1935
+#: dist/blocks/posts-grid/editor.js:1940
 msgid "Grid rows"
 msgstr "Linhas do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:58
-#: dist/blocks/posts-grid/editor.js:1944
+#: dist/blocks/posts-grid/editor.js:1949
 msgid "Grid gap"
 msgstr "Espaçamento do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:66
-#: dist/blocks/posts-grid/editor.js:1952
+#: dist/blocks/posts-grid/editor.js:1957
 msgid "Hide author"
 msgstr "Ocultar autor"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:74
-#: dist/blocks/posts-grid/editor.js:1960
+#: dist/blocks/posts-grid/editor.js:1965
 msgid "Hide categories"
 msgstr "Ocultar categorias"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:82
-#: dist/blocks/posts-grid/editor.js:1968
+#: dist/blocks/posts-grid/editor.js:1973
 msgid "Hide date"
 msgstr "Ocultar data"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:90
-#: dist/blocks/posts-grid/editor.js:1976
+#: dist/blocks/posts-grid/editor.js:1981
 msgid "Hide excerpt"
 msgstr "Ocultar resumo"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:98
-#: dist/blocks/posts-grid/editor.js:1984
+#: dist/blocks/posts-grid/editor.js:1989
 msgid "Show taxonomies"
 msgstr "Mostrar taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
-#: dist/blocks/posts-grid/editor.js:1498
+#: dist/blocks/posts-grid/editor.js:1502
 msgid "Query"
 msgstr "Consulta"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:35
-#: dist/blocks/posts-grid/editor.js:1522
+#: dist/blocks/posts-grid/editor.js:1526
 msgid "Show children posts?"
 msgstr "Mostar posts filhos?"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:79
-#: dist/blocks/posts-grid/editor.js:1566
+#: dist/blocks/posts-grid/editor.js:1570
 msgid "Filter posts to not display"
 msgstr "Filtre as postagens para não serem exibidas"
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
-#: dist/blocks/posts-grid/editor.js:1628
+#: dist/blocks/posts-grid/editor.js:1632
 msgid "Card model"
 msgstr "Modelo de card"
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
-#: dist/blocks/posts-grid/editor.js:1633
+#: dist/blocks/posts-grid/editor.js:1637
 msgctxt "card"
 msgid "Default model"
 msgstr "Modelo padrão"
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
-#: dist/blocks/posts-grid/editor.js:1674
+#: dist/blocks/posts-grid/editor.js:1678
 msgid "Card modifier"
 msgstr "Modificador do card"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:5
-#: dist/blocks/posts-grid/editor.js:1341
+#: dist/blocks/posts-grid/editor.js:1345
 msgid "OR"
 msgstr "OU"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:6
-#: dist/blocks/posts-grid/editor.js:1342
+#: dist/blocks/posts-grid/editor.js:1346
 msgid "AND"
 msgstr "E"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:9
-#: dist/blocks/posts-grid/editor.js:1345
+#: dist/blocks/posts-grid/editor.js:1349
 msgid "Compare terms"
 msgstr "Comparar termos"
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
-#: dist/blocks/posts-grid/editor.js:1377
+#: dist/blocks/posts-grid/editor.js:1381
 msgid "Post type"
 msgstr "Tipo de post"
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
-#: dist/blocks/posts-grid/editor.js:1382
+#: dist/blocks/posts-grid/editor.js:1386
 msgid "No post type"
 msgstr "Nenhum tipo de postagem"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:7
-#: dist/blocks/posts-grid/editor.js:1737
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:1742
 msgctxt "size"
 msgid "Large"
 msgstr "Grande"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
-#: dist/blocks/posts-grid/editor.js:1738
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:1743
 msgctxt "size"
 msgid "Medium"
 msgstr "Médio"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
-#: dist/blocks/posts-grid/editor.js:1739
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:1744
 msgctxt "size"
 msgid "Small"
 msgstr "Pequeno"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
-#: dist/blocks/posts-grid/editor.js:1740
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:1745
 msgctxt "size"
 msgid "Extra Large"
 msgstr "Muito Grande"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
-#: dist/blocks/posts-grid/editor.js:1741
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:12
+#: dist/blocks/posts-grid/editor.js:1746
 msgctxt "size"
 msgid "Extra Small"
 msgstr "Muito Pequeno"
 
-#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:59
-#: dist/blocks/posts-grid/editor.js:1789
+#: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:60
+#: dist/blocks/posts-grid/editor.js:1794
 msgid "Size"
 msgstr "Tamanho"
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomies.js:29
-#: dist/blocks/posts-grid/editor.js:1831
+#: dist/blocks/posts-grid/editor.js:1836
 msgid "Taxonomies"
 msgstr "Taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
-#: dist/blocks/posts-grid/editor.js:1415
+#: dist/blocks/posts-grid/editor.js:1419
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
-#: dist/blocks/posts-grid/editor.js:1420
+#: dist/blocks/posts-grid/editor.js:1424
 msgid "No taxonomy"
 msgstr "Sem taxonomia"
 
 #: dist/blocks/posts-grid/editor.js:118 library/blocks/shared/SelectTerms.js:9
-#: dist/blocks/posts-grid/editor.js:1442
+#: dist/blocks/posts-grid/editor.js:1446
 msgid "Terms"
 msgstr "Termos"
 
@@ -500,6 +568,32 @@ msgstr "Leia menos"
 #: dist/blocks/read-more/editor.js:123 dist/blocks/read-more/index.js:13
 msgid "Read more"
 msgstr "Leia mais"
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:32
+#: dist/blocks/steps-viewer/editor.js:97
+msgid "Steps"
+msgstr "Etapas"
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:35
+#: dist/blocks/steps-viewer/editor.js:100
+msgid "Current step"
+msgstr "Etapa atual"
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:45
+#: dist/blocks/steps-viewer/editor.js:110
+msgid "Last step"
+msgstr "Última etapa"
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:55
+#: library/blocks/steps-viewer/editor.js:71
+#: dist/blocks/steps-viewer/editor.js:120
+#: dist/blocks/steps-viewer/editor.js:136
+msgid "Step %s of %s"
+msgstr "Etapa %s de %s"
 
 #: dist/js/functionalities/gutenberg.js:29
 msgid "Iconify ID"
@@ -555,6 +649,16 @@ msgctxt "block description"
 msgid "A image download"
 msgstr "Download de imagem"
 
+#: library/blocks/form/block.json
+msgctxt "block title"
+msgid "Form"
+msgstr "Formulário"
+
+#: library/blocks/form/block.json
+msgctxt "block description"
+msgid "Render a code-driven form"
+msgstr "Renderizar um formulário baseado em código"
+
 #: library/blocks/posts-grid/block.json
 msgctxt "block title"
 msgid "Posts grid"
@@ -574,6 +678,16 @@ msgstr "Leia mais"
 msgctxt "block description"
 msgid "A collapsible text paragraph with 'Read more' button"
 msgstr "Um parágrafo de texto recolhível com o botão \"Leia mais\""
+
+#: library/blocks/steps-viewer/block.json
+msgctxt "block title"
+msgid "Steps viewer"
+msgstr "Visualizador de etapas"
+
+#: library/blocks/steps-viewer/block.json
+msgctxt "block description"
+msgid "Show the current step from a multi-step flow"
+msgstr "Mostrar a etapa atual de um fluxo de várias etapas"
 
 #: library/blocks/video-playlist/block.json
 msgctxt "block title"

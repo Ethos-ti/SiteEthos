@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.55\n"
+"Project-Id-Version: Ethos 0.0.65\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-17T19:21:28+00:00\n"
+"POT-Creation-Date: 2024-06-26T18:29:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: hacklabr\n"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: archive-publicacao.php:46
 #: archive.php:46
-#: search.php:74
+#: search.php:83
 #: taxonomy-tipo_post-posicionamento-institucional.php:46
 msgid "All the areas"
 msgstr ""
@@ -96,6 +96,61 @@ msgstr ""
 msgid "Toggle search form visibility"
 msgstr ""
 
+#: library/form-fields.php:86
+msgid "Select an option"
+msgstr ""
+
+#: library/forms.php:129
+msgid "Submit"
+msgstr ""
+
+#: library/forms.php:136
+msgid "Skip step"
+msgstr ""
+
+#: library/forms.php:157
+msgid "Required field"
+msgstr ""
+
+#: library/forms/edit-organization.php:10
+msgid "Edit organization"
+msgstr ""
+
+#: library/forms/edit-organization.php:12
+msgid "Edit"
+msgstr ""
+
+#: library/forms/registration.php:516
+msgid "Member registration - step 1"
+msgstr ""
+
+#: library/forms/registration.php:518
+#: library/forms/registration.php:523
+#: library/forms/registration.php:528
+#: library/forms/registration.php:543
+msgid "Continue"
+msgstr ""
+
+#: library/forms/registration.php:521
+msgid "Member registration - step 2"
+msgstr ""
+
+#: library/forms/registration.php:526
+msgid "Member registration - step 3"
+msgstr ""
+
+#: library/forms/registration.php:531
+msgid "Member registration - step 4"
+msgstr ""
+
+#: library/forms/registration.php:546
+msgid "Member registration - step 5"
+msgstr ""
+
+#: library/membership.php:33
+msgid "Organizations"
+msgstr ""
+
 #: library/menus.php:6
 msgid "Main menu"
 msgstr ""
@@ -132,19 +187,19 @@ msgstr ""
 msgid "Sections"
 msgstr ""
 
-#: search.php:95
+#: search.php:92
 msgid "We found "
 msgstr ""
 
-#: search.php:95
+#: search.php:92
 msgid " results for this search."
 msgstr ""
 
-#: search.php:97
+#: search.php:94
 msgid "This search yielded no results, do you want to perform a new search?"
 msgstr ""
 
-#: search.php:113
+#: search.php:110
 msgid "Showing: &nbsp &nbsp all contents"
 msgstr ""
 
@@ -162,23 +217,23 @@ msgstr ""
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:42
+#: single-evento.php:46
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:48
+#: single-evento.php:55
 msgid "End"
 msgstr ""
 
-#: single-evento.php:54
+#: single-evento.php:61
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:60
+#: single-evento.php:67
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:68
+#: single-evento.php:75
 msgid "Local"
 msgstr ""
 
@@ -242,7 +297,11 @@ msgstr ""
 msgid "website by"
 msgstr ""
 
-#: template-parts/title/archive-header.php:24
+#: template-parts/title/archive-header.php:27
+msgid "Selected content"
+msgstr ""
+
+#: template-parts/title/archive-header.php:29
 msgid "Search results"
 msgstr ""
 
@@ -270,7 +329,7 @@ msgstr ""
 #: library/blocks/posts-grid/editor.js:23
 #: dist/blocks/banner-with-image/editor.js:142
 #: dist/blocks/card-header/editor.js:142
-#: dist/blocks/posts-grid/editor.js:1909
+#: dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr ""
 
@@ -329,183 +388,197 @@ msgstr ""
 msgid "Background image"
 msgstr ""
 
+#: dist/blocks/form/editor.js:19
+#: library/blocks/form/editor.js:43
+#: dist/blocks/form/editor.js:1383
+msgid "Select option"
+msgstr ""
+
+#: dist/blocks/form/editor.js:19
+#: library/blocks/form/editor.js:48
+#: library/blocks/form/editor.js:50
+#: dist/blocks/form/editor.js:1388
+#: dist/blocks/form/editor.js:1390
+msgid "Form"
+msgstr ""
+
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:40
-#: dist/blocks/posts-grid/editor.js:1926
+#: dist/blocks/posts-grid/editor.js:1931
 msgid "Grid columns"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:49
-#: dist/blocks/posts-grid/editor.js:1935
+#: dist/blocks/posts-grid/editor.js:1940
 msgid "Grid rows"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:58
-#: dist/blocks/posts-grid/editor.js:1944
+#: dist/blocks/posts-grid/editor.js:1949
 msgid "Grid gap"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:66
-#: dist/blocks/posts-grid/editor.js:1952
+#: dist/blocks/posts-grid/editor.js:1957
 msgid "Hide author"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:74
-#: dist/blocks/posts-grid/editor.js:1960
+#: dist/blocks/posts-grid/editor.js:1965
 msgid "Hide categories"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:82
-#: dist/blocks/posts-grid/editor.js:1968
+#: dist/blocks/posts-grid/editor.js:1973
 msgid "Hide date"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:90
-#: dist/blocks/posts-grid/editor.js:1976
+#: dist/blocks/posts-grid/editor.js:1981
 msgid "Hide excerpt"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:98
-#: dist/blocks/posts-grid/editor.js:1984
+#: dist/blocks/posts-grid/editor.js:1989
 msgid "Show taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:11
-#: dist/blocks/posts-grid/editor.js:1498
+#: dist/blocks/posts-grid/editor.js:1502
 msgid "Query"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:35
-#: dist/blocks/posts-grid/editor.js:1522
+#: dist/blocks/posts-grid/editor.js:1526
 msgid "Show children posts?"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:79
-#: dist/blocks/posts-grid/editor.js:1566
+#: dist/blocks/posts-grid/editor.js:1570
 msgid "Filter posts to not display"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
-#: dist/blocks/posts-grid/editor.js:1628
+#: dist/blocks/posts-grid/editor.js:1632
 msgid "Card model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
-#: dist/blocks/posts-grid/editor.js:1633
+#: dist/blocks/posts-grid/editor.js:1637
 msgctxt "card"
 msgid "Default model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
-#: dist/blocks/posts-grid/editor.js:1674
+#: dist/blocks/posts-grid/editor.js:1678
 msgid "Card modifier"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:5
-#: dist/blocks/posts-grid/editor.js:1341
+#: dist/blocks/posts-grid/editor.js:1345
 msgid "OR"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:6
-#: dist/blocks/posts-grid/editor.js:1342
+#: dist/blocks/posts-grid/editor.js:1346
 msgid "AND"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:9
-#: dist/blocks/posts-grid/editor.js:1345
+#: dist/blocks/posts-grid/editor.js:1349
 msgid "Compare terms"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
-#: dist/blocks/posts-grid/editor.js:1377
+#: dist/blocks/posts-grid/editor.js:1381
 msgid "Post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
-#: dist/blocks/posts-grid/editor.js:1382
+#: dist/blocks/posts-grid/editor.js:1386
 msgid "No post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:7
-#: dist/blocks/posts-grid/editor.js:1737
+#: library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:1742
 msgctxt "size"
 msgid "Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:8
-#: dist/blocks/posts-grid/editor.js:1738
+#: library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:1743
 msgctxt "size"
 msgid "Medium"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:9
-#: dist/blocks/posts-grid/editor.js:1739
+#: library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:1744
 msgctxt "size"
 msgid "Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:10
-#: dist/blocks/posts-grid/editor.js:1740
+#: library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:1745
 msgctxt "size"
 msgid "Extra Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:11
-#: dist/blocks/posts-grid/editor.js:1741
+#: library/blocks/shared/SelectSize.js:12
+#: dist/blocks/posts-grid/editor.js:1746
 msgctxt "size"
 msgid "Extra Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
-#: library/blocks/shared/SelectSize.js:59
-#: dist/blocks/posts-grid/editor.js:1789
+#: library/blocks/shared/SelectSize.js:60
+#: dist/blocks/posts-grid/editor.js:1794
 msgid "Size"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomies.js:29
-#: dist/blocks/posts-grid/editor.js:1831
+#: dist/blocks/posts-grid/editor.js:1836
 msgid "Taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
-#: dist/blocks/posts-grid/editor.js:1415
+#: dist/blocks/posts-grid/editor.js:1419
 msgid "Taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
-#: dist/blocks/posts-grid/editor.js:1420
+#: dist/blocks/posts-grid/editor.js:1424
 msgid "No taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:118
 #: library/blocks/shared/SelectTerms.js:9
-#: dist/blocks/posts-grid/editor.js:1442
+#: dist/blocks/posts-grid/editor.js:1446
 msgid "Terms"
 msgstr ""
 
@@ -539,6 +612,32 @@ msgstr ""
 #: dist/blocks/read-more/editor.js:123
 #: dist/blocks/read-more/index.js:13
 msgid "Read more"
+msgstr ""
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:32
+#: dist/blocks/steps-viewer/editor.js:97
+msgid "Steps"
+msgstr ""
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:35
+#: dist/blocks/steps-viewer/editor.js:100
+msgid "Current step"
+msgstr ""
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:45
+#: dist/blocks/steps-viewer/editor.js:110
+msgid "Last step"
+msgstr ""
+
+#: dist/blocks/steps-viewer/editor.js:29
+#: library/blocks/steps-viewer/editor.js:55
+#: library/blocks/steps-viewer/editor.js:71
+#: dist/blocks/steps-viewer/editor.js:120
+#: dist/blocks/steps-viewer/editor.js:136
+msgid "Step %s of %s"
 msgstr ""
 
 #: dist/js/functionalities/gutenberg.js:29
@@ -595,6 +694,16 @@ msgctxt "block description"
 msgid "A image download"
 msgstr ""
 
+#: library/blocks/form/block.json
+msgctxt "block title"
+msgid "Form"
+msgstr ""
+
+#: library/blocks/form/block.json
+msgctxt "block description"
+msgid "Render a code-driven form"
+msgstr ""
+
 #: library/blocks/posts-grid/block.json
 msgctxt "block title"
 msgid "Posts grid"
@@ -613,6 +722,16 @@ msgstr ""
 #: library/blocks/read-more/block.json
 msgctxt "block description"
 msgid "A collapsible text paragraph with 'Read more' button"
+msgstr ""
+
+#: library/blocks/steps-viewer/block.json
+msgctxt "block title"
+msgid "Steps viewer"
+msgstr ""
+
+#: library/blocks/steps-viewer/block.json
+msgctxt "block description"
+msgid "Show the current step from a multi-step flow"
 msgstr ""
 
 #: library/blocks/video-playlist/block.json
