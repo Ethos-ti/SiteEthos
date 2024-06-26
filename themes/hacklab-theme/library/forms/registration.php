@@ -143,6 +143,14 @@ function get_registration_step1_fields () {
             'label' => 'Website',
             'placeholder' => 'https://www.linkdosite.com.br',
             'required' => false,
+            'validate' => function ($value, $context) {
+                if (empty($value)) {
+                    return true;
+                } else if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                    return 'URL inválida';
+                }
+                return true;
+            },
         ],
         'num_funcionarios' => [
             'type' => 'number',
@@ -284,8 +292,14 @@ function get_registration_step2_fields () {
             'validate' => function ($value, $context) {
                 if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     return 'Email inválido';
-                } elseif (!empty(get_user_by('email', $value))) {
-                    return 'Email já está em uso';
+                } else {
+                    $maybe_user = get_user_by('email', $value);
+                    if (!empty($maybe_user)) {
+                        $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+                        if (empty($user_id) || $maybe_user->ID != $user_id) {
+                            return 'Email já está em uso';
+                        }
+                    }
                 }
                 return true;
             },
