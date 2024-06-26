@@ -15,6 +15,13 @@ function get_registration_step1_fields () {
         'large' => 'Grande (maior que R$ 300 milhões)',
     ];
 
+    $size_options = [
+        'micro' => 'Microempresa',
+        'small' => 'Pequena empresa',
+        'medium' => 'Média empresa',
+        'large' => 'Grande empresa',
+    ];
+
     $states_options = [
 		'AC' => 'Acre',
 		'AL' => 'Alagoas',
@@ -148,8 +155,16 @@ function get_registration_step1_fields () {
             'type' => 'select',
             'class' => '-colspan-12',
             'label' => 'Porte',
-            'options' => [],
+            'options' => $size_options,
             'required' => false,
+            'validate' => function ($value, $context) use ($size_options) {
+                if (empty($value)) {
+                    return true;
+                } elseif (!array_key_exists($value, $size_options)) {
+                    return 'Porte inválido';
+                }
+                return true;
+            },
         ],
         'end_logradouro' => [
             'type' => 'text',
@@ -405,7 +420,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($advance_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $advance_options)) {
+                } elseif (!array_key_exists($value, $advance_options)) {
                     return 'Condição inválida';
                 }
                 return true;
@@ -420,7 +435,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($periodicity_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $periodicity_options)) {
+                } elseif (!array_key_exists($value, $periodicity_options)) {
                     return 'Periodicidade inválida';
                 }
                 return true;
@@ -442,7 +457,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_terms_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_terms_options)) {
+                } elseif (!array_key_exists($value, $receive_terms_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -457,7 +472,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_billing_options)) {
+                } elseif (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
@@ -472,7 +487,7 @@ function get_registration_step4_fields () {
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
-                } else if (!array_key_exists($value, $receive_billing_options)) {
+                } elseif (!array_key_exists($value, $receive_billing_options)) {
                     return 'Meio inválido';
                 }
                 return true;
