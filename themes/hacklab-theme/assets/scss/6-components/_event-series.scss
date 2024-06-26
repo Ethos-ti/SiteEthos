@@ -1,0 +1,107 @@
+.single-tribe_event_series{
+    #app{
+        .post-header{
+            &__meta,
+            &__author{
+                display: none;
+            }
+        }
+    }
+    .post-content{
+        .tribe-events{
+            .tribe-common-l-container{
+                .tribe-events-header{
+                    .tribe-events-c-events-bar{
+                        border: $border-width--small solid $color--high-dark;
+                        &__search-container{
+                            .tribe-events-c-events-bar__search-form{
+                                .tribe-events-c-search{
+                                    &__input-group{
+                                        .tribe-events-c-search__input-control{
+                                            .tribe-events-c-search__input{
+                                                font-family: $font-family--primary;
+                                                color: $color--low-light;
+                                                &-control-icon-svg{
+                                                    color: $color--low-dark;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &__button{
+                                        background-color: $color--high-pure;
+                                        color: $color--low-pure;
+                                        border: $border-width--small solid $color--low-dark;
+                                        border-radius: $border-radius--small;
+                                        font-family: $font-family--primary;
+                                    }
+                                }
+                            }
+                        }
+                        &__views{
+                            .tribe-events-c-view-selector__content{
+                                .tribe-events-c-view-selector__list-item-link{
+                                    .tribe-events-c-view-selector__list-item-text{
+                                        font-family: $font-family--primary;
+                                        color: $color--secondary-dark;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .tribe-events-c-top-bar{
+                        gap: $gap--small;
+                        .tribe-events-c-top-bar__today-button{
+                            border-radius: $border-radius--small;
+                            padding: $padding--small $padding--medium;
+                        }
+                        &__nav{
+                            .tribe-events-c-top-bar__nav-list{
+                                .tribe-events-c-top-bar__nav-list-item{
+                                    .tribe-events-c-top-bar__nav-link{
+                                        &--prev,
+                                        &--next{
+                                            .tribe-events-c-top-bar__nav-link-icon-svg{
+                                               path{
+                                                fill: $color--low-dark;
+                                               }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &__today-button{
+                            font-family: $font-family--primary;
+                            font-size: $font-size--small;
+                            color: $color--low-pure;
+                            border: $border-width--small solid $color--high-dark;
+                            border-radius: $border-radius--large;
+                        }
+                        &__datepicker{
+                            .tribe-events-c-top-bar__datepicker-button{
+                                font-family: $font-family--primary;
+                                font-size: $font-size--xx-large;
+                                color: $color--low-pure;
+                                @media(max-width:$break--tablet){
+                                    font-size: $font-size--medium;
+                                }
+                                .tribe-events-c-top-bar__datepicker-button-icon-svg{
+                                    margin-top: $margin--small;
+                                    path{
+                                        fill: $color--low-dark;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .tribe-events-pro-summary{
+                    width: 100%;
+                }
+                .tribe-events-c-subscribe-dropdown__container{
+                    display: none;
+                }
+            }
+        }
+    }
+}
