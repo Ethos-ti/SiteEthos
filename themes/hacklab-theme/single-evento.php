@@ -13,6 +13,7 @@ $investiment = get_post_meta($post_id, '_EventCost', true );
 $local = tribe_get_venue($post_id);
 $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
+$recurrence = get_post_meta($post_id, '_EventRecurrence', true );
 
 ?>
 
@@ -74,6 +75,14 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
                     <div class="event-metadada__location__local">
                         <p class="-bold"><?php _e('Local', 'hacklabr') ?></p>
                         <?php echo apply_filters('the_content', $local); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($recurrence) : ?>
+                <div class="event-metadada__recurrence -center">
+                    <div class="event-metadada__recurrence__infos">
+                        <p class="-bold"><?php _e('Recurring event', 'hacklabr') ?></p>
+                        <?php echo apply_filters('the_content', $recurrence); ?>
                     </div>
                 </div>
             <?php endif; ?>
