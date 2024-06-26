@@ -582,13 +582,21 @@ function validate_registration_form ($form_id, $form, $params) {
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
-        $post_id = wp_insert_post([
-            'post_type' => 'organizacao',
-            'post_title' => $params['nome_fantasia'],
-            'post_content' => '',
-            'post_status' => 'draft',
-            'meta_input' => $post_meta,
-        ]);
+        if (empty($post_id)) {
+            $post_id = wp_insert_post([
+                'post_type' => 'organizacao',
+                'post_title' => $params['nome_fantasia'],
+                'post_content' => '',
+                'post_status' => 'draft',
+                'meta_input' => $post_meta,
+            ]);
+        } else {
+            wp_update_post([
+                'ID' => $post_id,
+                'post_title' => $params['nome_fantasia'],
+                'meta_input' => $post_meta,
+            ]);
+        }
 
         if (!empty($_FILES['_logomarca'])) {
             set_post_featured_image($post_id, '_logomarca');
@@ -613,20 +621,30 @@ function validate_registration_form ($form_id, $form, $params) {
         $password = $user_meta['senha'];
         unset($user_meta['senha']);
 
-        $user_id = wp_insert_user([
-            'display_name' => $params['nome_completo'],
-            'user_email' => $params['email'],
-            'user_login' => sanitize_title($params['nome_completo']),
-            'user_pass' => $password,
-            'role' => 'subscriber',
-            'meta_input' => $user_meta,
-        ]);
+        if (empty($user_id)) {
+            $user_id = wp_insert_user([
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'user_login' => sanitize_title($params['nome_completo']),
+                'user_pass' => $password,
+                'role' => 'subscriber',
+                'meta_input' => $user_meta,
+            ]);
 
-        wp_update_post([
-            'ID' => $post_id,
-            'post_status' => 'publish',
-            'post_author' => $user_id,
-        ]);
+            wp_update_post([
+                'ID' => $post_id,
+                'post_status' => 'publish',
+                'post_author' => $user_id,
+            ]);
+        } else {
+            wp_update_user([
+                'ID' => $user_id,
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'user_pass' => $password,
+                'meta_input' => $user_meta,
+            ]);
+        }
 
         $next_page = build_registration_step_link('member-registration-3', $kit, $post_id, $user_id);
         wp_safe_redirect($next_page);
@@ -671,7 +689,7 @@ function validate_registration_form ($form_id, $form, $params) {
         unset($post_meta['_hacklabr_form']);
 
         foreach ($params as $meta_key => $meta_value) {
-            add_post_meta($post_id, $meta_key, $meta_value, true);
+            update_post_meta($post_id, $meta_key, $meta_value);
         }
 
         $next_page = build_registration_step_link('member-registration-5', $kit, $post_id, $user_id);
