@@ -2,6 +2,8 @@
 
 namespace hacklabr\Fields;
 
+use function hacklabr\get_post_by_transaction;
+
 function get_pmpro_child_level ($level) {
     if ($level === 8 || $level === 9) {
         return $level + 12;
@@ -38,10 +40,12 @@ function get_pmpro_level_options ($organization_id, $for_manager = true) {
 }
 
 function render_pmpro_level_field (string $name, $value, array $definition) {
-    $kit = filter_input(INPUT_GET, 'kit') ?? '';
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+    $kit = filter_input(INPUT_GET, 'kit', FILTER_SANITIZE_ADD_SLASHES) ?? '';
+    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
 
-    $level_options = get_pmpro_level_options($post_id, $definition['for_manager']);
+    $post = get_post_by_transaction('organizacao', $transaction);
+
+    $level_options = get_pmpro_level_options($post->ID, $definition['for_manager']);
     $initial_value = $value ?: ($level_options[$kit] ?? 'null');
 ?>
     <div class="choose-plan__input" x-data="{ level: <?= $initial_value ?> }">

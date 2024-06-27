@@ -3,13 +3,14 @@
 namespace hacklabr;
 
 function wrap_step_5_form ($form_html, $form) {
-    if ($form['id'] !== 'member-registration-5' || empty($_GET['orgid'])) {
+    if ($form['id'] !== 'member-registration-5' || empty($_GET['transaction'])) {
         return $form_html;
     }
 
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
 
-    $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+    $post = get_post_by_transaction('organizacao', $transaction);
+    $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
 
     $primary_users = get_users([
         'meta_query' => [

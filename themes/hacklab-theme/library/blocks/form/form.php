@@ -29,7 +29,7 @@ function render_form_callback ($attributes) {
     }
 
     $form_options = $form['options'];
-    $params = call_user_func($form_options['get_params']);
+    $params = call_user_func($form_options['get_params'], $form_options);
 
     enforce_form_post_meta($form_id);
 
