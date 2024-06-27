@@ -21,7 +21,15 @@ function generate_transaction_token ($length = 24) {
     return str_replace(['+','/','='], ['-','_',''], base64_encode($bytes));
 }
 
-function get_post_by_transaction ($post_type, $transaction) {
+function get_post_by_transaction ($post_type, $transaction = null) {
+    if (empty($transaction)) {
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+
+        if (empty($transaction)) {
+            return null;
+        }
+    }
+
     $posts = get_posts([
         'post_type' => $post_type,
         'meta_query' => [
@@ -277,9 +285,7 @@ function get_registration_step1_fields () {
 }
 
 function get_registration_step1_params ($form) {
-    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
-
-    $post = get_post_by_transaction('organizacao', $transaction);
+    $post = get_post_by_transaction('organizacao');
 
     $params = sanitize_form_params();
 
@@ -413,12 +419,12 @@ function get_registration_step2_fields () {
 }
 
 function get_registration_step2_params ($form) {
-    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+    $user = get_user_by_transaction();
 
     $params = sanitize_form_params();
 
-    if (!empty($user_id)) {
-        $meta = get_user_meta($user_id);
+    if (!empty($user)) {
+        $meta = get_user_meta($user->ID);
 
         foreach ($form['fields'] as $key => $field) {
             if (empty($params[$key]) && !empty($meta[$key])) {
@@ -582,9 +588,7 @@ function get_registration_step4_fields () {
     ];
 
     if (class_exists('PMProGroupAcct_Group') && !empty($_GET['transaction'])) {
-        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
-
-        $post = get_post_by_transaction('organizacao', $transaction);
+        $post = get_post_by_transaction('organizacao');
 
         $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
         $group = get_pmpro_group($group_id);
@@ -659,7 +663,15 @@ function register_registration_form () {
 }
 add_action('init', 'hacklabr\\register_registration_form');
 
-function get_user_by_transaction ($transaction) {
+function get_user_by_transaction ($transaction = null) {
+    if (empty($transaction)) {
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+
+        if (empty($transaction)) {
+            return null;
+        }
+    }
+
     $users = get_users([
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],

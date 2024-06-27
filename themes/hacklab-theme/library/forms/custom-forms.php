@@ -7,9 +7,7 @@ function wrap_step_5_form ($form_html, $form) {
         return $form_html;
     }
 
-    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
-
-    $post = get_post_by_transaction('organizacao', $transaction);
+    $post = get_post_by_transaction('organizacao');
     $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
 
     $primary_users = get_users([
