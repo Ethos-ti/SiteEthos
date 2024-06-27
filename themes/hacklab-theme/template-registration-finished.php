@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Member registration finished
+ * Template Name: Membership registration finished
  */
 
 get_header();
