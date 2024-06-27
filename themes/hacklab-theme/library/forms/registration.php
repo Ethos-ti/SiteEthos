@@ -2,6 +2,14 @@
 
 namespace hacklabr;
 
+function add_registration_user_role () {
+    add_role('ethos_under_progress', __('Registration under progress', 'hacklabr'), [
+        'read' => true,
+        'upload_files' => true,
+    ]);
+}
+add_action('init', 'hacklabr\\add_registration_user_role');
+
 function build_registration_step_link ($form_id, $kit, $post_id, $user_id) {
     $page = get_page_by_form($form_id);
     $args = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
@@ -660,7 +668,7 @@ function validate_registration_form ($form_id, $form, $params) {
                 'user_email' => $params['email'],
                 'user_login' => sanitize_title($params['nome_completo']),
                 'user_pass' => $password,
-                'role' => 'subscriber',
+                'role' => 'ethos_under_progress',
                 'meta_input' => $user_meta,
             ]);
 
@@ -698,8 +706,14 @@ function validate_registration_form ($form_id, $form, $params) {
         if (empty($group_id)) {
             $group = create_pmpro_group($user_id, $level_id);
 
-            update_user_meta($user_id, '_pmpro_group', $group->id);
-            update_user_meta($user_id, '_pmpro_role', 'primary');
+            wp_update_user([
+                'ID' => $user_id,
+                'role' => 'subscriber',
+                'meta_input' => [
+                    '_pmpro_group' => $group->id,
+                    '_pmpro_role' => 'primary',
+                ],
+            ]);
 
             wp_update_post([
                 'ID' => $post_id,
