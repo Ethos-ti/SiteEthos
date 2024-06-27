@@ -13,6 +13,37 @@ $investiment = get_post_meta($post_id, '_EventCost', true );
 $local = tribe_get_venue($post_id);
 $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
+$recurrence = get_post_meta($post_id, '_EventRecurrence', true );
+
+// Verifica se há recorrência configurada
+if (!empty($recurrence)) {
+    // Itera sobre as regras de recorrência
+    foreach ($recurrence[0]['rules'] as $rule) {
+        // Obtém os detalhes da regra
+        $type = $rule['type'];
+        $interval = $rule['custom']['interval'];
+        $days = $rule['custom']['week']['day'];
+        $same_time = $rule['custom']['same-time'];
+        $recurrence_type = $rule['custom']['type'];
+        $end_type = $rule['end-type'];
+        $end_count = $rule['end-count'];
+
+        // Converte os dias da semana para nomes legíveis
+        $week_days = array(
+            '1' => 'Segunda-feira',
+            '2' => 'Terça-feira',
+            '3' => 'Quarta-feira',
+            '4' => 'Quinta-feira',
+            '5' => 'Sexta-feira',
+            '6' => 'Sábado',
+            '7' => 'Domingo',
+        );
+        $day_names = array_map(function($day) use ($week_days) {
+            return $week_days[$day];
+        }, $days);
+    }
+}
+
 ?>
 
 <header class="post-header">
@@ -76,6 +107,18 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
                     </div>
                 </div>
             <?php endif; ?>
+
+            <?php if ($recurrence) : ?>
+                <div class="event-recurrence">
+                    <h3>Detalhes da Recorrência</h3>
+                    <p><strong>Tipo:</strong> <?php echo esc_html($recurrence_type); ?></p>
+                    <p><strong>Intervalo:</strong> <?php echo esc_html($interval); ?> semana(s)</p>
+                    <p><strong>Dias:</strong> <?php echo implode(', ', $day_names); ?></p>
+                    <p><strong>Mesmo horário:</strong> <?php echo esc_html($same_time); ?></p>
+                    <p><strong>Fim após:</strong> <?php echo esc_html($end_count); ?> ocorrências</p>
+                </div>
+            <?php endif; ?>
+
         </div>
     </div>
 </header>
