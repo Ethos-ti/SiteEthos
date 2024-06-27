@@ -351,8 +351,8 @@ function get_registration_step2_fields () {
                 } else {
                     $maybe_user = get_user_by('email', $value);
                     if (!empty($maybe_user)) {
-                        $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
-                        if (empty($user_id) || $maybe_user->ID != $user_id) {
+                        $user = get_user_by_transaction();
+                        if (empty($user) || $maybe_user->ID !== $user->ID) {
                             return 'Email já está em uso';
                         }
                     }
