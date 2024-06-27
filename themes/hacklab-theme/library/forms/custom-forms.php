@@ -17,6 +17,7 @@ function wrap_step_5_form ($form_html, $form) {
     $finish_url = get_permalink(get_page_by_template('template-registration-finished.php'));
 
     $primary_users = get_users([
+        'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_pmpro_group', 'value' => $group_id ],
             [ 'key' => '_pmpro_role', 'value' => 'primary' ],
@@ -24,6 +25,7 @@ function wrap_step_5_form ($form_html, $form) {
     ]);
 
     $financial_users = get_users([
+        'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_pmpro_group', 'value' => $group_id ],
             [ 'key' => '_pmpro_role', 'value' => 'financial' ],
