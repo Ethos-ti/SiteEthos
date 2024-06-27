@@ -32,6 +32,7 @@ function get_post_by_transaction ($post_type, $transaction = null) {
 
     $posts = get_posts([
         'post_type' => $post_type,
+        'post_status' => ['draft', 'publish'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
@@ -691,6 +692,7 @@ function get_user_by_transaction ($transaction = null) {
     }
 
     $users = get_users([
+        'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
