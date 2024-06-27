@@ -2,13 +2,22 @@
 
 namespace hacklabr;
 
-function add_registration_user_role () {
+function add_registration_status () {
     add_role('ethos_under_progress', __('Registration under progress', 'hacklabr'), [
         'read' => true,
         'upload_files' => true,
     ]);
+
+    register_post_status('ethos_under_progress', [
+        'label' => __('Registration under progress', 'hacklabr'),
+        'exclude_from_search' => true,
+        'public' => false,
+        'publicly_queryable' => true,
+        'show_in_admin_all_list' => false,
+        'show_in_admin_status_list' => true,
+    ]);
 }
-add_action('init', 'hacklabr\\add_registration_user_role');
+add_action('init', 'hacklabr\\add_registration_status');
 
 function build_registration_step_link ($form_id, $kit, $transaction) {
     $page = get_page_by_form($form_id);
@@ -32,7 +41,7 @@ function get_post_by_transaction ($post_type, $transaction = null) {
 
     $posts = get_posts([
         'post_type' => $post_type,
-        'post_status' => ['draft', 'publish'],
+        'post_status' => ['draft', 'ethos_under_progress', 'publish'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
@@ -741,7 +750,7 @@ function validate_registration_form ($form_id, $form, $params) {
                 'post_type' => 'organizacao',
                 'post_title' => $params['nome_fantasia'],
                 'post_content' => '',
-                'post_status' => 'draft',
+                'post_status' => 'ethos_under_progress',
                 'meta_input' => $post_meta,
             ]);
 

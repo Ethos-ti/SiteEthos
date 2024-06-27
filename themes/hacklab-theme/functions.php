@@ -14,6 +14,7 @@ require __DIR__ . '/library/membership.php';
 require __DIR__ . '/library/forms.php';
 require __DIR__ . '/library/form-fields.php';
 require __DIR__ . '/library/search.php';
+require __DIR__ . '/library/cron.php';
 require __DIR__ . '/library/api/index.php';
 require __DIR__ . '/library/sanitizers/index.php';
 require __DIR__ . '/library/template-tags/index.php';
