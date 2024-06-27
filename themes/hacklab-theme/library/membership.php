@@ -33,6 +33,10 @@ function update_group_level ($group_id, $level_id = 11) {
 
     $group = get_pmpro_group($group_id);
 
+    if ($group->group_parent_user_id == $level_id) {
+        return $group;
+    }
+
     $child_members = $group->get_active_members(false);
 
     $wpdb->update($wpdb->prefix . 'pmprogroupacct_groups',

@@ -2,10 +2,49 @@
 
 namespace hacklabr;
 
-function build_registration_step_link ($form_id, $kit, $post_id, $user_id) {
+function add_registration_user_role () {
+    add_role('ethos_under_progress', __('Registration under progress', 'hacklabr'), [
+        'read' => true,
+        'upload_files' => true,
+    ]);
+}
+add_action('init', 'hacklabr\\add_registration_user_role');
+
+function build_registration_step_link ($form_id, $kit, $transaction) {
     $page = get_page_by_form($form_id);
-    $args = [ 'kit' => $kit, 'orgid' => $post_id, 'userid' => $user_id ];
+    $args = [ 'kit' => $kit, 'transaction' => $transaction ];
     return add_query_arg($args, get_permalink($page));
+}
+
+function generate_transaction_token ($length = 24) {
+    $bytes = openssl_random_pseudo_bytes($length);
+    return str_replace(['+','/','='], ['-','_',''], base64_encode($bytes));
+}
+
+function get_post_by_transaction ($post_type, $transaction = null) {
+    if (empty($transaction)) {
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+
+        if (empty($transaction)) {
+            return null;
+        }
+    }
+
+    $posts = get_posts([
+        'post_type' => $post_type,
+        'post_status' => ['draft', 'publish'],
+        'meta_query' => [
+            [ 'key' => '_ethos_transaction', 'value' => $transaction ],
+        ],
+    ]);
+
+    if (empty($posts)) {
+        return null;
+    } else {
+        $post = $posts[0];
+        assert($post instanceof \WP_Post);
+        return $post;
+    }
 }
 
 function get_registration_step1_fields () {
@@ -246,8 +285,22 @@ function get_registration_step1_fields () {
     return $fields;
 }
 
-function get_registration_step1_params () {
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
+function get_registration_step1_params ($form) {
+    $post = get_post_by_transaction('organizacao');
+
+    $params = sanitize_form_params();
+
+    if (!empty($post)) {
+        $meta = get_post_meta($post->ID);
+
+        foreach ($form['fields'] as $key => $field) {
+            if (empty($params[$key]) && !empty($meta[$key])) {
+                $params[$key] = $meta[$key][0];
+            }
+        }
+    }
+
+    return $params;
 }
 
 function get_registration_step2_fields () {
@@ -299,8 +352,8 @@ function get_registration_step2_fields () {
                 } else {
                     $maybe_user = get_user_by('email', $value);
                     if (!empty($maybe_user)) {
-                        $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
-                        if (empty($user_id) || $maybe_user->ID != $user_id) {
+                        $user = get_user_by_transaction();
+                        if (empty($user) || $maybe_user->ID !== $user->ID) {
                             return 'Email já está em uso';
                         }
                     }
@@ -359,7 +412,29 @@ function get_registration_step2_fields () {
         ],
     ];
 
+    if (!empty($_GET['transaction'])) {
+        unset($fields['senha']);
+    }
+
     return $fields;
+}
+
+function get_registration_step2_params ($form) {
+    $user = get_user_by_transaction();
+
+    $params = sanitize_form_params();
+
+    if (!empty($user)) {
+        $meta = get_user_meta($user->ID);
+
+        foreach ($form['fields'] as $key => $field) {
+            if (empty($params[$key]) && !empty($meta[$key])) {
+                $params[$key] = $meta[$key][0];
+            }
+        }
+    }
+
+    return $params;
 }
 
 function get_registration_step3_fields () {
@@ -380,6 +455,23 @@ function get_registration_step3_fields () {
     ];
 
     return $fields;
+}
+
+function get_registration_step3_params () {
+    $post = get_post_by_transaction('organizacao');
+
+    $params = sanitize_form_params();
+
+    if (empty($params['nivel']) && !empty($post)) {
+        $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
+
+        if (!empty($group_id)) {
+            $group = get_pmpro_group($group_id);
+            $params['nivel'] = $group->group_parent_level_id;
+        }
+    }
+
+    return $params;
 }
 
 function get_registration_step4_fields () {
@@ -513,10 +605,10 @@ function get_registration_step4_fields () {
         ],
     ];
 
-    if (class_exists('PMProGroupAcct_Group') && !empty($_GET['orgid'])) {
-        $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT);
+    if (class_exists('PMProGroupAcct_Group') && !empty($_GET['transaction'])) {
+        $post = get_post_by_transaction('organizacao');
 
-        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+        $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
         $group = get_pmpro_group($group_id);
 
         $level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
@@ -552,41 +644,68 @@ function register_registration_form () {
     $fields_step4 = get_registration_step4_fields();
     $fields_step5 = get_registration_step5_fields();
 
-    $kit = filter_input(INPUT_GET, 'kit') ?? null;
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
-    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+    $kit = filter_input(INPUT_GET, 'kit', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
 
     register_form('member-registration-1', __('Member registration - step 1', 'hacklabr'), [
         'fields' => $fields_step1,
+        'get_params' => 'hacklabr\\get_registration_step1_params',
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-2', __('Member registration - step 2', 'hacklabr'), [
         'fields' => $fields_step2,
-        'previous_url' => build_registration_step_link('member-registration-1', $kit, $post_id, $user_id),
+        'get_params' => 'hacklabr\\get_registration_step2_params',
+        'previous_url' => build_registration_step_link('member-registration-1', $kit, $transaction),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-3', __('Member registration - step 3', 'hacklabr'), [
         'fields' => $fields_step3,
-        'previous_url' => build_registration_step_link('member-registration-2', $kit, $post_id, $user_id),
+        'get_params' => 'hacklabr\\get_registration_step3_params',
+        'previous_url' => build_registration_step_link('member-registration-2', $kit, $transaction),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-4', __('Member registration - step 4', 'hacklabr'), [
         'fields' => $fields_step4,
-        'previous_url' => build_registration_step_link('member-registration-3', $kit, $post_id, $user_id),
-        'skip_url' => build_registration_step_link('member-registration-5', $kit, $post_id, $user_id),
+        'get_params' => 'hacklabr\\get_registration_step1_params',
+        'previous_url' => build_registration_step_link('member-registration-3', $kit, $transaction),
+        'skip_url' => build_registration_step_link('member-registration-5', $kit, $transaction),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
         'fields' => $fields_step5,
-        // 'previous_url' => build_registration_step_link('member-registration-4', $kit, $post_id, $user_id),
         'submit_label' => 'Adicionar contato',
     ]);
 }
 add_action('init', 'hacklabr\\register_registration_form');
+
+function get_user_by_transaction ($transaction = null) {
+    if (empty($transaction)) {
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+
+        if (empty($transaction)) {
+            return null;
+        }
+    }
+
+    $users = get_users([
+        'role__in' => ['ethos_under_progress', 'subscriber'],
+        'meta_query' => [
+            [ 'key' => '_ethos_transaction', 'value' => $transaction ],
+        ],
+    ]);
+
+    if (empty($users)) {
+        return null;
+    } else {
+        $user = $users[0];
+        assert($user instanceof \WP_User);
+        return $user;
+    }
+}
 
 function set_post_featured_image ($post_id, $file_key) {
     require_once ABSPATH . 'wp-admin/includes/image.php';
@@ -601,9 +720,8 @@ function set_post_featured_image ($post_id, $file_key) {
 }
 
 function validate_registration_form ($form_id, $form, $params) {
-    $kit = filter_input(INPUT_GET, 'kit') ?? null;
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
-    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
+    $kit = filter_input(INPUT_GET, 'kit', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
 
     if ($form_id === 'member-registration-1') {
         $validation = validate_form($form['fields'], $params);
@@ -615,7 +733,10 @@ function validate_registration_form ($form_id, $form, $params) {
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
-        if (empty($post_id)) {
+        if (empty($transaction)) {
+            $transaction = generate_transaction_token(24);
+            $post_meta['_ethos_transaction'] = $transaction;
+
             $post_id = wp_insert_post([
                 'post_type' => 'organizacao',
                 'post_title' => $params['nome_fantasia'],
@@ -623,86 +744,104 @@ function validate_registration_form ($form_id, $form, $params) {
                 'post_status' => 'draft',
                 'meta_input' => $post_meta,
             ]);
+
+            if (!empty($_FILES['_logomarca'])) {
+                set_post_featured_image($post_id, '_logomarca');
+            }
         } else {
+            $post = get_post_by_transaction('organizacao', $transaction);
+
             wp_update_post([
-                'ID' => $post_id,
+                'ID' => $post->ID,
                 'post_title' => $params['nome_fantasia'],
                 'meta_input' => $post_meta,
             ]);
+
+            if (!empty($_FILES['_logomarca'])) {
+                set_post_featured_image($post->ID, '_logomarca');
+            }
         }
 
-        if (!empty($_FILES['_logomarca'])) {
-            set_post_featured_image($post_id, '_logomarca');
-        }
-
-        $next_page = build_registration_step_link('member-registration-2', $kit, $post_id, $user_id);
+        $next_page = build_registration_step_link('member-registration-2', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-2' && !empty($post_id)) {
+    if ($form_id === 'member-registration-2' && !empty($transaction)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
 
+        $post = get_post_by_transaction('organizacao', $transaction);
+        $user = get_user_by_transaction($transaction);
+
         $user_meta = $params;
         unset($user_meta['_hacklabr_form']);
 
-        // Don't store plaintext password
-        $password = $user_meta['senha'];
-        unset($user_meta['senha']);
+        if (empty($user)) {
+            $user_meta['_ethos_transaction'] = $transaction;
 
-        if (empty($user_id)) {
+            // Don't store plaintext password
+            $password = $user_meta['senha'];
+            unset($user_meta['senha']);
+
             $user_id = wp_insert_user([
                 'display_name' => $params['nome_completo'],
                 'user_email' => $params['email'],
                 'user_login' => sanitize_title($params['nome_completo']),
                 'user_pass' => $password,
-                'role' => 'subscriber',
+                'role' => 'ethos_under_progress',
                 'meta_input' => $user_meta,
             ]);
 
             wp_update_post([
-                'ID' => $post_id,
-                'post_status' => 'publish',
+                'ID' => $post->ID,
                 'post_author' => $user_id,
             ]);
         } else {
             wp_update_user([
-                'ID' => $user_id,
+                'ID' => $user->ID,
                 'display_name' => $params['nome_completo'],
                 'user_email' => $params['email'],
-                'user_pass' => $password,
                 'meta_input' => $user_meta,
             ]);
         }
 
-        $next_page = build_registration_step_link('member-registration-3', $kit, $post_id, $user_id);
+        $next_page = build_registration_step_link('member-registration-3', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-3' && !empty($post_id) && !empty($user_id)) {
+    if ($form_id === 'member-registration-3' && !empty($transaction)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
 
+        $post = get_post_by_transaction('organizacao', $transaction);
+        $user = get_user_by_transaction($transaction);
+
         $level_id = (int) $params['nivel'];
 
-        $group_id = get_post_meta($post_id, '_pmpro_group', true);
+        $group_id = get_post_meta($post->ID, '_pmpro_group', true);
 
         if (empty($group_id)) {
-            $group = create_pmpro_group($user_id, $level_id);
+            $group = create_pmpro_group($user->ID, $level_id);
 
-            update_user_meta($user_id, '_pmpro_group', $group->id);
-            update_user_meta($user_id, '_pmpro_role', 'primary');
+            wp_update_user([
+                'ID' => $user->ID,
+                'role' => 'subscriber',
+                'meta_input' => [
+                    '_pmpro_group' => $group->id,
+                    '_pmpro_role' => 'primary',
+                ],
+            ]);
 
             wp_update_post([
-                'ID' => $post_id,
+                'ID' => $post->ID,
                 'post_status' => 'publish',
                 'meta_input' => [
                     '_pmpro_group' => $group->id,
@@ -712,38 +851,42 @@ function validate_registration_form ($form_id, $form, $params) {
             update_group_level($group_id, $level_id);
         }
 
-        $next_page = build_registration_step_link('member-registration-4', $kit, $post_id, $user_id);
+        $next_page = build_registration_step_link('member-registration-4', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-4' && !empty($post_id)) {
+    if ($form_id === 'member-registration-4' && !empty($transaction)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
+
+        $post = get_post_by_transaction('organizacao', $transaction);
 
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
         foreach ($params as $meta_key => $meta_value) {
-            update_post_meta($post_id, $meta_key, $meta_value);
+            update_post_meta($post->ID, $meta_key, $meta_value);
         }
 
-        $next_page = build_registration_step_link('member-registration-5', $kit, $post_id, $user_id);
+        $next_page = build_registration_step_link('member-registration-5', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;
     }
 
-    if ($form_id === 'member-registration-5' && !empty($post_id) && !empty($params['_role'])) {
+    if ($form_id === 'member-registration-5' && !empty($transaction) && !empty($params['_role'])) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
             return;
         }
 
-        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+        $post = get_post_by_transaction('organizacao', $transaction);
+
+        $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
 
         $role = $params['_role'];
         unset($user_meta['_role']);
@@ -767,7 +910,7 @@ function validate_registration_form ($form_id, $form, $params) {
 
         add_user_to_pmpro_group($user_id, $group_id);
 
-        $next_page = build_registration_step_link('member-registration-5', $kit, $post_id, $user_id);
+        $next_page = build_registration_step_link('member-registration-5', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;
     }

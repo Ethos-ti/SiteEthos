@@ -35,7 +35,7 @@ function process_form_data () {
     if (!empty($hacklabr_registered_forms[$form_id])) {
         $form = $hacklabr_registered_forms[$form_id];
         $form_options = $form['options'];
-        $params = call_user_func($form_options['get_params']);
+        $params = call_user_func($form_options['get_params'], $form_options);
 
         do_action('hacklabr\\form_action', $form_id, $form_options, $params);
     }
