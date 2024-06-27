@@ -702,8 +702,6 @@ function set_post_featured_image ($post_id, $file_key) {
 function validate_registration_form ($form_id, $form, $params) {
     $kit = filter_input(INPUT_GET, 'kit', FILTER_SANITIZE_ADD_SLASHES) ?? null;
     $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
-    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
-    $user_id = (int) filter_input(INPUT_GET, 'userid', FILTER_VALIDATE_INT) ?: null;
 
     if ($form_id === 'member-registration-1') {
         $validation = validate_form($form['fields'], $params);
@@ -717,7 +715,6 @@ function validate_registration_form ($form_id, $form, $params) {
 
         if (empty($transaction)) {
             $transaction = generate_transaction_token(24);
-
             $post_meta['_ethos_transaction'] = $transaction;
 
             $post_id = wp_insert_post([
@@ -757,10 +754,15 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
+        $post = get_post_by_transaction('organizacao', $transaction);
+        $user = get_user_by_transaction($transaction);
+
         $user_meta = $params;
         unset($user_meta['_hacklabr_form']);
 
-        if (empty($user_id)) {
+        if (empty($user)) {
+            $user_meta['_ethos_transaction'] = $transaction;
+
             // Don't store plaintext password
             $password = $user_meta['senha'];
             unset($user_meta['senha']);
@@ -775,13 +777,12 @@ function validate_registration_form ($form_id, $form, $params) {
             ]);
 
             wp_update_post([
-                'ID' => $post_id,
-                'post_status' => 'publish',
+                'ID' => $post->ID,
                 'post_author' => $user_id,
             ]);
         } else {
             wp_update_user([
-                'ID' => $user_id,
+                'ID' => $user->ID,
                 'display_name' => $params['nome_completo'],
                 'user_email' => $params['email'],
                 'meta_input' => $user_meta,
@@ -800,15 +801,18 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
+        $post = get_post_by_transaction('organizacao', $transaction);
+        $user = get_user_by_transaction($transaction);
+
         $level_id = (int) $params['nivel'];
 
-        $group_id = get_post_meta($post_id, '_pmpro_group', true);
+        $group_id = get_post_meta($post->ID, '_pmpro_group', true);
 
         if (empty($group_id)) {
-            $group = create_pmpro_group($user_id, $level_id);
+            $group = create_pmpro_group($user->ID, $level_id);
 
             wp_update_user([
-                'ID' => $user_id,
+                'ID' => $user->ID,
                 'role' => 'subscriber',
                 'meta_input' => [
                     '_pmpro_group' => $group->id,
@@ -817,7 +821,7 @@ function validate_registration_form ($form_id, $form, $params) {
             ]);
 
             wp_update_post([
-                'ID' => $post_id,
+                'ID' => $post->ID,
                 'post_status' => 'publish',
                 'meta_input' => [
                     '_pmpro_group' => $group->id,
@@ -839,11 +843,13 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
+        $post = get_post_by_transaction('organizacao', $transaction);
+
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
         foreach ($params as $meta_key => $meta_value) {
-            update_post_meta($post_id, $meta_key, $meta_value);
+            update_post_meta($post->ID, $meta_key, $meta_value);
         }
 
         $next_page = build_registration_step_link('member-registration-5', $kit, $transaction);
@@ -858,7 +864,9 @@ function validate_registration_form ($form_id, $form, $params) {
             return;
         }
 
-        $group_id = (int) get_post_meta($post_id, '_pmpro_group', true);
+        $post = get_post_by_transaction('organizacao', $transaction);
+
+        $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
 
         $role = $params['_role'];
         unset($user_meta['_role']);
