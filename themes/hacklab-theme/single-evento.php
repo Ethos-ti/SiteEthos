@@ -15,34 +15,43 @@ $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
 $recurrence = get_post_meta($post_id, '_EventRecurrence', true );
 
-// Verifica se há recorrência configurada
-if (!empty($recurrence)) {
+// Verifica se há recorrência configurada e se a estrutura do array está correta
+if (!empty($recurrence) && isset($recurrence[0]['rules']) && is_array($recurrence[0]['rules'])) {
     // Itera sobre as regras de recorrência
     foreach ($recurrence[0]['rules'] as $rule) {
-        // Obtém os detalhes da regra
-        $type = $rule['type'];
-        $interval = $rule['custom']['interval'];
-        $days = $rule['custom']['week']['day'];
-        $same_time = $rule['custom']['same-time'];
-        $recurrence_type = $rule['custom']['type'];
-        $end_type = $rule['end-type'];
-        $end_count = $rule['end-count'];
+        // Verifica se 'custom' está definido e é um array
+        if (isset($rule['custom']) && is_array($rule['custom'])) {
+            // Obtém os detalhes da regra
+            $type = $rule['type'];
+            $interval = isset($rule['custom']['interval']) ? $rule['custom']['interval'] : '';
+            $days = isset($rule['custom']['week']['day']) ? $rule['custom']['week']['day'] : array();
+            $same_time = isset($rule['custom']['same-time']) ? $rule['custom']['same-time'] : '';
+            $recurrence_type = isset($rule['custom']['type']) ? $rule['custom']['type'] : '';
+            $end_type = isset($rule['end-type']) ? $rule['end-type'] : '';
+            $end_count = isset($rule['end-count']) ? $rule['end-count'] : '';
+            $start_date = isset($rule['EventStartDate']) ? $rule['EventStartDate'] : '';
+            $end_date = isset($rule['EventEndDate']) ? $rule['EventEndDate'] : '';
 
-        // Converte os dias da semana para nomes legíveis
-        $week_days = array(
-            '1' => 'Segunda-feira',
-            '2' => 'Terça-feira',
-            '3' => 'Quarta-feira',
-            '4' => 'Quinta-feira',
-            '5' => 'Sexta-feira',
-            '6' => 'Sábado',
-            '7' => 'Domingo',
-        );
-        $day_names = array_map(function($day) use ($week_days) {
-            return $week_days[$day];
-        }, $days);
+            // Converte os dias da semana para nomes legíveis
+            $week_days = array(
+                '1' => 'Segunda-feira',
+                '2' => 'Terça-feira',
+                '3' => 'Quarta-feira',
+                '4' => 'Quinta-feira',
+                '5' => 'Sexta-feira',
+                '6' => 'Sábado',
+                '7' => 'Domingo',
+            );
+            $day_names = array_map(function($day) use ($week_days) {
+                return isset($week_days[$day]) ? $week_days[$day] : '';
+            }, $days);
+
+            // Formata as datas de início e fim do evento
+            $start_date_formatted = !empty($start_date) ? date('d/m/Y H:i', strtotime($start_date)) : '';
+            $end_date_formatted = !empty($end_date) ? date('d/m/Y H:i', strtotime($end_date)) : '';
+            }
+        }
     }
-}
 
 ?>
 
@@ -116,6 +125,8 @@ if (!empty($recurrence)) {
                     <p><strong>Dias:</strong> <?php echo implode(', ', $day_names); ?></p>
                     <p><strong>Mesmo horário:</strong> <?php echo esc_html($same_time); ?></p>
                     <p><strong>Fim após:</strong> <?php echo esc_html($end_count); ?> ocorrências</p>
+                    <p><strong>Data de Início:</strong> <?php echo esc_html($start_date_formatted); ?></p>
+                    <p><strong>Data de Fim:</strong> <?php echo esc_html($end_date_formatted); ?></p>
                 </div>
             <?php endif; ?>
 
