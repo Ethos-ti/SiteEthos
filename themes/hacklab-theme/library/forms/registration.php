@@ -246,6 +246,10 @@ function get_registration_step1_fields () {
     return $fields;
 }
 
+function get_registration_step1_params () {
+    $post_id = (int) filter_input(INPUT_GET, 'orgid', FILTER_VALIDATE_INT) ?: null;
+}
+
 function get_registration_step2_fields () {
     $fields = [
         'nome_completo' => [

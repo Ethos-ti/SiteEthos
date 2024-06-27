@@ -21,16 +21,16 @@
 }
 
 .text-input[type="file"] {
-    line-height: 2rem;
+    height: size(52);
+    line-height: size(32);
 
     &::file-selector-button {
         background-color: $color--low-pure;
         border: none;
         border-radius: $border-radius--small;
         color: $color--high-pure;
-        float: right;
+        cursor: pointer;
         font-weight: $font-weight--bold;
-        margin: 0;
         padding: $padding--small $padding--medium;
     }
 }
