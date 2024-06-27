@@ -7,8 +7,14 @@ function wrap_step_5_form ($form_html, $form) {
         return $form_html;
     }
 
-    $post = get_post_by_transaction('organizacao');
+    $kit = filter_input(INPUT_GET, 'kit', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+    $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+
+    $post = get_post_by_transaction('organizacao', $transaction);
     $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
+
+    $previous_url = build_registration_step_link('member-registration-4', $kit, $transaction);
+    $finish_url = get_permalink(get_page_by_template('template-registration-finished.php'));
 
     $primary_users = get_users([
         'meta_query' => [
@@ -106,6 +112,13 @@ function wrap_step_5_form ($form_html, $form) {
                     </button>
                 </li>
             </ul>
+        </div>
+
+        <div class="members-form__section">
+            <div class="form__buttons form__buttons--has-previous">
+                <a class="button button--outline" href="<?= $previous_url ?>"><?= __('Back') ?></a>
+                <a class="button button--solid" href="<?= $finish_url ?>"><?= __('Finish', 'hacklabr') ?></a>
+            </div>
         </div>
 
         <dialog x-ref="formModal" class="members-form__modal">

@@ -8,6 +8,21 @@ add_action( 'init', function() {
     wp_dequeue_script( 'tainacan-google-recaptcha-script' );
 }, 150 );
 
+function get_page_by_template (string $template) {
+	$pages = get_pages([
+		'post_type' => 'page',
+		'meta_key' => '_wp_page_template',
+		'hierarchical' => 0,
+		'meta_value' => $template,
+	]);
+
+	foreach ($pages as $page) {
+		return $page;
+	}
+
+	return false;
+}
+
 /**
  * Print the excerpt with limit words
  */
