@@ -456,6 +456,23 @@ function get_registration_step3_fields () {
     return $fields;
 }
 
+function get_registration_step3_params () {
+    $post = get_post_by_transaction('organizacao');
+
+    $params = sanitize_form_params();
+
+    if (empty($params['nivel']) && !empty($post)) {
+        $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
+
+        if (!empty($group_id)) {
+            $group = get_pmpro_group($group_id);
+            $params['nivel'] = $group->group_parent_level_id;
+        }
+    }
+
+    return $params;
+}
+
 function get_registration_step4_fields () {
     $advance_options = [
         'no' => 'À vista',
@@ -644,12 +661,14 @@ function register_registration_form () {
 
     register_form('member-registration-3', __('Member registration - step 3', 'hacklabr'), [
         'fields' => $fields_step3,
+        'get_params' => 'hacklabr\\get_registration_step3_params',
         'previous_url' => build_registration_step_link('member-registration-2', $kit, $transaction),
         'submit_label' => __('Continue', 'hacklabr'),
     ]);
 
     register_form('member-registration-4', __('Member registration - step 4', 'hacklabr'), [
         'fields' => $fields_step4,
+        'get_params' => 'hacklabr\\get_registration_step1_params',
         'previous_url' => build_registration_step_link('member-registration-3', $kit, $transaction),
         'skip_url' => build_registration_step_link('member-registration-5', $kit, $transaction),
         'submit_label' => __('Continue', 'hacklabr'),
@@ -657,7 +676,6 @@ function register_registration_form () {
 
     register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
         'fields' => $fields_step5,
-        'previous_url' => build_registration_step_link('member-registration-4', $kit, $transaction),
         'submit_label' => 'Adicionar contato',
     ]);
 }
