@@ -132,17 +132,17 @@ if( $recurrence['rules'] ) {
                         </div>
                     <?php endif; ?>
 
-                    <?php if (isset($day_name)) : ?>
-                        <div class="event-metadada__recurrence__weekday">
-                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
-                            <?php echo apply_filters('the_content', $day_name); ?>
-                        </div>
-                    <?php endif; ?>
-
                     <?php if ($end_count) : ?>
                         <div class="event-metadada__recurrence__count">
                             <p class="-bold"><?php _e('Number of events', 'hacklabr') ?></p>
                             <?php echo apply_filters('the_content', $end_count); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (isset($day_name)) : ?>
+                        <div class="event-metadada__recurrence__weekday">
+                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $day_name); ?>
                         </div>
                     <?php endif; ?>
 
