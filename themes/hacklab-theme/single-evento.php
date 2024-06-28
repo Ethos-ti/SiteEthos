@@ -28,7 +28,7 @@ if( isset($recurrence['rules']) ) {
             $recurrence_type = isset($rule['custom']['type']) ? $rule['custom']['type'] : '';
             $end_type = isset($rule['end-type']) ? $rule['end-type'] : '';
             $end_count = isset($rule['end-count']) ? $rule['end-count'] : '';
-
+            $event_serie = $post->post_name;
 
             if($days) {
                 $week_days = array(
@@ -58,6 +58,8 @@ if( isset($recurrence['rules']) ) {
                     $recurrence_type = 'Semanal';
                 }elseif($recurrence_type =='Monthly') {
                     $recurrence_type = 'Mensal';
+                }elseif($recurrence_type =='Date'){
+                    $recurrence_type = 'Repetição única';
                 }
             }
         }
