@@ -67,6 +67,32 @@
                     }
                 }
             }
+
+            .event-metadada__recurrence{
+                display: flex;
+                justify-content: space-between;
+                @media(max-width:$break--small){
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: $gap--medium;
+                }
+                &__type,
+                &__weekday,
+                &__count{
+                    :first-child{
+                        border-bottom: $border-width--small solid $color--primary-light;
+                        padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
+                    }
+                    :last-child{
+                        padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
+                    }
+                }
+            }
+        }
+
             .event-metadada__location{
                 &__local{
                     :first-child{
@@ -81,7 +107,7 @@
                     }
                 }
             }
-        }
+
     }
     .post-content{
         max-width: $grid--normal;

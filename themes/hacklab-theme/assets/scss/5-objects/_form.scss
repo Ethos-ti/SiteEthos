@@ -32,6 +32,11 @@
         cursor: pointer;
         font-weight: $font-weight--bold;
         padding: $padding--small $padding--medium;
+
+        @include mobile-up {
+            float: right;
+            margin: 0;
+        }
     }
 }
 

@@ -460,11 +460,12 @@ function filter_allowed_block_types($allowed_block_types, $editor_context)
 add_filter('allowed_block_types_all', 'filter_allowed_block_types', 10, 2);
 
 //remove blocos do Events Calendar do início da edição de um novo evento
-function my_custom_tribe_events_editor_template( $template, $post_type, $args ) {
+function my_custom_tribe_events_editor_template( $template) {
     return [];
 }
 
-add_filter( 'tribe_events_editor_default_template', 'my_custom_tribe_events_editor_template', 10, 3 );
+add_filter( 'tribe_events_editor_default_template', 'my_custom_tribe_events_editor_template', 50, 3);
+add_filter( 'tribe_events_editor_default_classic_template', 'my_custom_tribe_events_editor_template', 50, 3);
 
 function list_registered_blocks() {
     $blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();

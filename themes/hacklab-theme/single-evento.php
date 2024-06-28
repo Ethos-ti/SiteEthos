@@ -13,6 +13,59 @@ $investiment = get_post_meta($post_id, '_EventCost', true );
 $local = tribe_get_venue($post_id);
 $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
+$recurrence = get_post_meta($post_id, '_EventRecurrence', true );
+
+if( isset($recurrence['rules']) ) {
+
+    foreach ($recurrence['rules'] as $rule) {
+
+        if ($rule['custom']){
+
+            $type = $rule['type'];
+            $interval = isset($rule['custom']['interval']) ? $rule['custom']['interval'] : '';
+            $days = isset($rule['custom']['week']['day']) ? $rule['custom']['week']['day'] : array();
+            $same_time = isset($rule['custom']['same-time']) ? $rule['custom']['same-time'] : '';
+            $recurrence_type = isset($rule['custom']['type']) ? $rule['custom']['type'] : '';
+            $end_type = isset($rule['end-type']) ? $rule['end-type'] : '';
+            $end_count = isset($rule['end-count']) ? $rule['end-count'] : '';
+            $event_serie = $post->post_name;
+
+            if($days) {
+                $week_days = array(
+                    '1' => 'Seguda-feira',
+                    '2' => 'Terca-feira',
+                    '3' => 'Quarta-feira',
+                    '4' => 'Quinta-feira',
+                    '5' => 'Sexta-feira',
+                    '6' => 'Sábado',
+                    '7' => 'Domingo',
+                );
+
+                $day_names = array_map(function($day) use ($week_days) {
+
+                    return isset($week_days[$day]) ? $week_days[$day] : '';
+
+                }, $days);
+
+                foreach ($day_names as $day_name) {
+                    $day_name;
+                }
+            }
+            if($recurrence_type){
+                if($recurrence_type == 'Daily') {
+                    $recurrence_type = 'Diário';
+                }elseif($recurrence_type == 'Weekly') {
+                    $recurrence_type = 'Semanal';
+                }elseif($recurrence_type =='Monthly') {
+                    $recurrence_type = 'Mensal';
+                }elseif($recurrence_type =='Date'){
+                    $recurrence_type = 'Repetição única';
+                }
+            }
+        }
+    }
+}
+
 
 ?>
 
@@ -69,6 +122,34 @@ $end = get_post_meta($post_id, '_EventEndDate', true );
                 </div>
                 <?php endif; ?>
             </div>
+
+            <?php if ($recurrence) : ?>
+                <div class="event-metadada__recurrence -text-center">
+
+                    <?php if ($recurrence_type) : ?>
+                        <div class="event-metadada__recurrence__type">
+                            <p class="-bold"><?php _e('Event type', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $recurrence_type); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($end_count) : ?>
+                        <div class="event-metadada__recurrence__count">
+                            <p class="-bold"><?php _e('Number of events', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $end_count); ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (isset($day_name)) : ?>
+                        <div class="event-metadada__recurrence__weekday">
+                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $day_name); ?>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+            <?php endif; ?>
+
             <?php if ($local) : ?>
                 <div class="event-metadada__location -text-center">
                     <div class="event-metadada__location__local">
