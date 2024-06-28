@@ -11,6 +11,7 @@ function add_registration_status () {
     register_post_status('ethos_under_progress', [
         'label' => __('Registration under progress', 'hacklabr'),
         'exclude_from_search' => true,
+        'post_status' => ['organizacao'],
         'public' => false,
         'publicly_queryable' => true,
         'show_in_admin_all_list' => false,
