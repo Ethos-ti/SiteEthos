@@ -15,7 +15,7 @@ $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
 $recurrence = get_post_meta($post_id, '_EventRecurrence', true );
 
-if( $recurrence['rules'] ) {
+if( isset($recurrence['rules']) ) {
 
     foreach ($recurrence['rules'] as $rule) {
 
