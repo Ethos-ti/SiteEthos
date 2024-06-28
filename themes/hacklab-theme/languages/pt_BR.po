@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-27T20:15:53+00:00\n"
-"PO-Revision-Date: 2024-06-27 17:17-0300\n"
+"POT-Creation-Date: 2024-06-28T11:45:27+00:00\n"
+"PO-Revision-Date: 2024-06-28 08:47-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -112,6 +112,10 @@ msgstr "Próxima etapa"
 msgid "Required field"
 msgstr "Campo obrigatório"
 
+#: library/forms/custom-forms.php:122
+msgid "Finish"
+msgstr "Finalizar"
+
 #: library/forms/edit-organization.php:10
 msgid "Edit organization"
 msgstr "Editar organização"
@@ -120,32 +124,36 @@ msgstr "Editar organização"
 msgid "Edit"
 msgstr "Editar"
 
-#: library/forms/registration.php:559
+#: library/forms/registration.php:6
+msgid "Registration under progress"
+msgstr "Inscrições em andamento"
+
+#: library/forms/registration.php:650
 msgid "Member registration - step 1"
 msgstr "Registro de membro - Etapa 1"
 
-#: library/forms/registration.php:561 library/forms/registration.php:567
-#: library/forms/registration.php:573 library/forms/registration.php:580
+#: library/forms/registration.php:653 library/forms/registration.php:660
+#: library/forms/registration.php:667 library/forms/registration.php:675
 msgid "Continue"
 msgstr "Continuar"
 
-#: library/forms/registration.php:564
+#: library/forms/registration.php:656
 msgid "Member registration - step 2"
 msgstr "Registro de membro - Etapa 2"
 
-#: library/forms/registration.php:570
+#: library/forms/registration.php:663
 msgid "Member registration - step 3"
 msgstr "Registro de membro - Etapa 3"
 
-#: library/forms/registration.php:576
+#: library/forms/registration.php:670
 msgid "Member registration - step 4"
 msgstr "Registro de membro - Etapa 4"
 
-#: library/forms/registration.php:583
+#: library/forms/registration.php:678
 msgid "Member registration - step 5"
 msgstr "Registro de membro - Etapa 5"
 
-#: library/membership.php:56
+#: library/membership.php:60
 msgid "Organizations"
 msgstr "Organizações"
 
@@ -210,39 +218,39 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
-#: single-evento.php:75 single.php:49 template-parts/post-card.php:85
+#: single-evento.php:84 single.php:49 template-parts/post-card.php:85
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:89
+#: single-evento.php:98
 msgid "Start"
 msgstr "Início"
 
-#: single-evento.php:98
+#: single-evento.php:107
 msgid "End"
 msgstr "Fim"
 
-#: single-evento.php:104
+#: single-evento.php:113
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:110
+#: single-evento.php:119
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:121
+#: single-evento.php:130
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: single-evento.php:128
-msgid "Description"
-msgstr "Descrição"
-
-#: single-evento.php:135
+#: single-evento.php:137
 msgid "Day of the week"
 msgstr "Dia da semana"
 
-#: single-evento.php:146
+#: single-evento.php:144
+msgid "Number of events"
+msgstr "Quantidade de eventos"
+
+#: single-evento.php:155
 msgid "Local"
 msgstr "Local"
 
@@ -949,6 +957,9 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Description"
+#~ msgstr "Descrição"
 
 #~ msgid "Date"
 #~ msgstr "Data"
