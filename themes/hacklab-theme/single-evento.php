@@ -123,10 +123,10 @@ if( $recurrence['rules'] ) {
                         </div>
                     <?php endif; ?>
 
-                    <?php if ($recurrence_description) : ?>
-                        <div class="event-recurrence-descriprtion">
-                            <p class="-bold"><?php _e('Description', 'hacklabr') ?></p>
-                            <?php echo apply_filters('the_content', $recurrence_description); ?>
+                    <?php if ($end_count) : ?>
+                        <div class="event-recurrence-count">
+                            <p class="-bold"><?php _e('Number of events', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $end_count); ?>
                         </div>
                     <?php endif; ?>
 
