@@ -146,7 +146,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
         <?php endforeach; ?>
         </div>
 
-        <div class="form__buttons <?= empty($previous_url) ? '' : ' form__buttons--has-previous' ?>">
+        <div class="form__buttons <?= empty($previous_url) ? '' : ' form__buttons' ?>">
             <?php if (!empty($previous_url)): ?>
                 <a class="button button--outline" href="<?= $previous_url ?>"><?= __('Back') ?></a>
             <?php endif; ?>
