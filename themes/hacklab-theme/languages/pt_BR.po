@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-06-28T11:45:27+00:00\n"
-"PO-Revision-Date: 2024-06-28 08:47-0300\n"
+"POT-Creation-Date: 2024-06-28T20:33:01+00:00\n"
+"PO-Revision-Date: 2024-06-28 17:35-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #. Theme Name of the theme
 msgid "Ethos"
-msgstr "Ethos"
+msgstr "Dia da semana"
 
 #. Theme URI of the theme
 #. Author URI of the theme
@@ -218,39 +218,39 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
-#: single-evento.php:84 single.php:49 template-parts/post-card.php:85
+#: single-evento.php:85 single.php:49 template-parts/post-card.php:85
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:98
+#: single-evento.php:99
 msgid "Start"
 msgstr "Início"
 
-#: single-evento.php:107
+#: single-evento.php:108
 msgid "End"
 msgstr "Fim"
 
-#: single-evento.php:113
+#: single-evento.php:114
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:119
+#: single-evento.php:120
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:130
+#: single-evento.php:131
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: single-evento.php:137
-msgid "Day of the week"
-msgstr "Dia da semana"
-
-#: single-evento.php:144
+#: single-evento.php:138
 msgid "Number of events"
 msgstr "Quantidade de eventos"
 
-#: single-evento.php:155
+#: single-evento.php:146
+msgid "Weekday"
+msgstr "Dia da semana"
+
+#: single-evento.php:159
 msgid "Local"
 msgstr "Local"
 
@@ -957,6 +957,9 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Day of the week"
+#~ msgstr "Dia da semana"
 
 #~ msgid "Description"
 #~ msgstr "Descrição"
