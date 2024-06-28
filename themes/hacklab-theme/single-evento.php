@@ -141,9 +141,15 @@ if( isset($recurrence['rules']) ) {
                     <?php endif; ?>
 
                     <?php if (isset($day_name)) : ?>
+
                         <div class="event-metadada__recurrence__weekday">
-                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
-                            <?php echo apply_filters('the_content', $day_name); ?>
+                            <p class="event-metadada__recurrence__weekday__title -bold"> <?php _e('Weekday', 'hacklabr') ?></p>
+                                <div class="event-metadada__recurrence__weekday__day">
+                                    <?php foreach ($day_names as $day) : ?>
+                                        <?php echo apply_filters('the_content', $day); ?>
+                                        <span>,</span>
+                                    <?php endforeach; ?>
+                                </div>
                         </div>
                     <?php endif; ?>
 
