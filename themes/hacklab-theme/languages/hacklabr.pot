@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.66\n"
+"Project-Id-Version: Ethos 0.0.67\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-27T20:15:53+00:00\n"
+"POT-Creation-Date: 2024-06-28T11:45:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: hacklabr\n"
@@ -112,6 +112,10 @@ msgstr ""
 msgid "Required field"
 msgstr ""
 
+#: library/forms/custom-forms.php:122
+msgid "Finish"
+msgstr ""
+
 #: library/forms/edit-organization.php:10
 msgid "Edit organization"
 msgstr ""
@@ -120,34 +124,38 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: library/forms/registration.php:559
+#: library/forms/registration.php:6
+msgid "Registration under progress"
+msgstr ""
+
+#: library/forms/registration.php:650
 msgid "Member registration - step 1"
 msgstr ""
 
-#: library/forms/registration.php:561
-#: library/forms/registration.php:567
-#: library/forms/registration.php:573
-#: library/forms/registration.php:580
+#: library/forms/registration.php:653
+#: library/forms/registration.php:660
+#: library/forms/registration.php:667
+#: library/forms/registration.php:675
 msgid "Continue"
 msgstr ""
 
-#: library/forms/registration.php:564
+#: library/forms/registration.php:656
 msgid "Member registration - step 2"
 msgstr ""
 
-#: library/forms/registration.php:570
+#: library/forms/registration.php:663
 msgid "Member registration - step 3"
 msgstr ""
 
-#: library/forms/registration.php:576
+#: library/forms/registration.php:670
 msgid "Member registration - step 4"
 msgstr ""
 
-#: library/forms/registration.php:583
+#: library/forms/registration.php:678
 msgid "Member registration - step 5"
 msgstr ""
 
-#: library/membership.php:56
+#: library/membership.php:60
 msgid "Organizations"
 msgstr ""
 
@@ -211,41 +219,41 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: single-evento.php:75
+#: single-evento.php:84
 #: single.php:49
 #: template-parts/post-card.php:85
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:89
+#: single-evento.php:98
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:98
+#: single-evento.php:107
 msgid "End"
 msgstr ""
 
-#: single-evento.php:104
+#: single-evento.php:113
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:110
+#: single-evento.php:119
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:121
+#: single-evento.php:130
 msgid "Event type"
 msgstr ""
 
-#: single-evento.php:128
-msgid "Description"
-msgstr ""
-
-#: single-evento.php:135
+#: single-evento.php:137
 msgid "Day of the week"
 msgstr ""
 
-#: single-evento.php:146
+#: single-evento.php:144
+msgid "Number of events"
+msgstr ""
+
+#: single-evento.php:155
 msgid "Local"
 msgstr ""
 

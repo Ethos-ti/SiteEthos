@@ -76,19 +76,19 @@
                     grid-template-columns: 1fr 1fr;
                     gap: $gap--medium;
                 }
-                :first-child{
-                    padding-bottom: $padding--x-small;
-                    color: $color--primary-dark;
-                }
-                :last-child{
-                    border-top: $border-width--small solid $color--primary-light;
-
-                    padding-top: $padding--x-small;
-                    font-size: $font-size--small;
-                    color: $color--low-pure;
-                }
-                &-type{
-                    border-bottom: none;
+                &__type,
+                &__weekday,
+                &__count{
+                    :first-child{
+                        border-bottom: $border-width--small solid $color--primary-light;
+                        padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
+                    }
+                    :last-child{
+                        padding-top: $padding--x-small;
+                        font-size: $font-size--small;
+                        color: $color--low-pure;
+                    }
                 }
             }
         }

@@ -52,6 +52,15 @@ if( $recurrence['rules'] ) {
                     $day_name;
                 }
             }
+            if($recurrence_type){
+                if($recurrence_type == 'Daily') {
+                    $recurrence_type = 'Diário';
+                }elseif($recurrence_type == 'Weekly') {
+                    $recurrence_type = 'Semanal';
+                }elseif($recurrence_type =='Monthly') {
+                    $recurrence_type = 'Mensal';
+                }
+            }
         }
     }
 }
@@ -117,23 +126,23 @@ if( $recurrence['rules'] ) {
                 <div class="event-metadada__recurrence -text-center">
 
                     <?php if ($recurrence_type) : ?>
-                        <div class="event-recurrence-type">
+                        <div class="event-metadada__recurrence__type">
                             <p class="-bold"><?php _e('Event type', 'hacklabr') ?></p>
                             <?php echo apply_filters('the_content', $recurrence_type); ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if ($end_count) : ?>
-                        <div class="event-recurrence-count">
-                            <p class="-bold"><?php _e('Number of events', 'hacklabr') ?></p>
-                            <?php echo apply_filters('the_content', $end_count); ?>
+                    <?php if (isset($day_name)) : ?>
+                        <div class="event-metadada__recurrence__weekday">
+                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $day_name); ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php if (isset($day_name)) : ?>
-                        <div class="event-recurrence-type">
-                            <p class="-bold"><?php _e('Day of the week', 'hacklabr') ?></p>
-                            <?php echo apply_filters('the_content', $day_name); ?>
+                    <?php if ($end_count) : ?>
+                        <div class="event-metadada__recurrence__count">
+                            <p class="-bold"><?php _e('Number of events', 'hacklabr') ?></p>
+                            <?php echo apply_filters('the_content', $end_count); ?>
                         </div>
                     <?php endif; ?>
 
