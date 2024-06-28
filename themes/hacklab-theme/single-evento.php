@@ -14,7 +14,6 @@ $local = tribe_get_venue($post_id);
 $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
 $recurrence = get_post_meta($post_id, '_EventRecurrence', true );
-$recurrence_description = $recurrence['description'] ? $recurrence['description'] : esc_html__( 'Recurring event', 'the-events-calendar' );
 
 if( $recurrence['rules'] ) {
 
