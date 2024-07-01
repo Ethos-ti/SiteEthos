@@ -623,11 +623,10 @@ function get_registration_step4_fields () {
         $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
         $group = get_pmpro_group($group_id);
 
-        $level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
-        $level = \pmpro_getLevel($level_id);
+        $level = \pmpro_getLevel($group->group_parent_level_id);
 
-        if (!empty($level->billing_amount)) {
-            $fields['pagto_sugerido']['default'] = $level->billing_amount ?? '';
+        if (!empty($level)) {
+            $fields['pagto_sugerido']['default'] = $level->billing_amount ?: 0;
             $fields['pagto_sugerido']['disabled'] = true;
         }
     }
