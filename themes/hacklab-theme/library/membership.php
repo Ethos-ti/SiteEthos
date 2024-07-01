@@ -59,6 +59,29 @@ function update_group_level ($group_id, $level_id = 11) {
     return $group;
 }
 
+function require_approval_for_login ($user) {
+    if (!class_exists('PMPro_Approvals') || empty($user) || is_wp_error($user)) {
+        return $user;
+    }
+
+    assert($user instanceof \WP_User);
+
+    $group_id = get_user_meta($user->ID, '_pmpro_group', true);
+
+    if (!empty($group_id)) {
+        $group = get_pmpro_group($group_id);
+        $level_id = $group->group_parent_level_id;
+        $child_level_id = Fields\get_pmpro_child_level($level_id);
+
+        if (!\PMPro_Approvals::isApproved($user->ID, $level_id) && !\PMPro_Approvals::isApproved($user->ID, $child_level_id)) {
+            return new \WP_Error('ethos_not_approved', 'Associação ainda não foi aprovada.');
+        }
+    }
+
+    return $user;
+}
+add_filter('wp_authenticate_user', 'hacklabr\\require_approval_for_login');
+
 function register_organization_cpt () {
     register_post_type('organizacao', [
         'label' => __('Organizations', 'hacklabr'),
