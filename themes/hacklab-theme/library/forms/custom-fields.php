@@ -44,7 +44,7 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
 
     $post = get_post_by_transaction('organizacao');
 
-    $level_options = get_pmpro_level_options($post->ID, $definition['for_manager']);
+    $level_options = get_pmpro_level_options($post->ID ?? null, $definition['for_manager']);
     $initial_value = $value ?: ($level_options[$kit] ?? 'null');
 ?>
     <div class="choose-plan__input" x-data="{ level: <?= $initial_value ?> }">
