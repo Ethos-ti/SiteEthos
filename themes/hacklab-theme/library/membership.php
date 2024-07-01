@@ -36,7 +36,7 @@ function update_group_level ($group_id, $level_id = 11) {
 
     $group = get_pmpro_group($group_id);
 
-    if ($group->group_parent_user_id == $level_id) {
+    if ($group->group_parent_level_id == $level_id) {
         return $group;
     }
 
