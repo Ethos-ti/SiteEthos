@@ -77,7 +77,6 @@
                     gap: $gap--medium;
                 }
                 &__type,
-                &__weekday,
                 &__count{
                     :first-child{
                         border-bottom: $border-width--small solid $color--primary-light;
@@ -88,6 +87,33 @@
                         padding-top: $padding--x-small;
                         font-size: $font-size--small;
                         color: $color--low-pure;
+                    }
+                }
+                &__weekday{
+
+                    &__title{
+                        border-bottom: $border-width--small solid $color--primary-light;
+                        padding-bottom: $padding--x-small;
+                        color: $color--primary-dark;
+
+                    }
+
+                    &__day{
+                        display: flex;
+                        gap: $gap--x-small;
+                        flex-wrap: wrap;
+
+                        p{
+                            padding-top: $padding--x-small;
+                            font-size: $font-size--small;
+                            color: $color--low-pure;
+                        }
+                        :last-child{
+
+                            display: none;
+
+                        }
+
                     }
                 }
             }

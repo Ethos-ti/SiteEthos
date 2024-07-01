@@ -11,6 +11,7 @@ function add_registration_status () {
     register_post_status('ethos_under_progress', [
         'label' => __('Registration under progress', 'hacklabr'),
         'exclude_from_search' => true,
+        'post_status' => ['organizacao'],
         'public' => false,
         'publicly_queryable' => true,
         'show_in_admin_all_list' => false,
@@ -142,9 +143,11 @@ function get_registration_step1_fields () {
             'label' => 'CNAE',
             'mask' => '0000-0/00',
             'placeholder' => 'Insira o CNAE da empresa',
-            'required' => true,
+            'required' => false,
             'validate' => function ($value, $context) {
-                if (!is_numeric($value) || strlen($value) !== 7) {
+                if (empty($value)) {
+                    return true;
+                } elseif (!is_numeric($value) || strlen($value) !== 7) {
                     return 'CNAE inválido';
                 }
                 return true;

@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.67\n"
+"Project-Id-Version: Ethos 0.0.68\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-28T11:45:27+00:00\n"
+"POT-Creation-Date: 2024-06-28T20:33:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: hacklabr\n"
@@ -219,41 +219,41 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: single-evento.php:84
+#: single-evento.php:85
 #: single.php:49
 #: template-parts/post-card.php:85
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:98
+#: single-evento.php:99
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:107
+#: single-evento.php:108
 msgid "End"
 msgstr ""
 
-#: single-evento.php:113
+#: single-evento.php:114
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:119
+#: single-evento.php:120
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:130
+#: single-evento.php:131
 msgid "Event type"
 msgstr ""
 
-#: single-evento.php:137
-msgid "Day of the week"
-msgstr ""
-
-#: single-evento.php:144
+#: single-evento.php:138
 msgid "Number of events"
 msgstr ""
 
-#: single-evento.php:155
+#: single-evento.php:146
+msgid "Weekday"
+msgstr ""
+
+#: single-evento.php:159
 msgid "Local"
 msgstr ""
 
