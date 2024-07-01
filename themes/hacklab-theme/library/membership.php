@@ -5,11 +5,14 @@ namespace hacklabr;
 function add_user_to_pmpro_group ($user_id, $group_id) {
     $group = get_pmpro_group($group_id);
 
-    $membership = \PMProGroupAcct_Group_Member::create($user_id, $group->group_parent_level_id, $group->id);
+    $parent_level_id = $group->group_parent_level_id;
+    $child_level_id = Fields\get_pmpro_child_level($parent_level_id);
+
+    $membership = \PMProGroupAcct_Group_Member::create($user_id, $child_level_id, $group->id);
 
     assert($membership instanceof \PMProGroupAcct_Group_Member);
 
-    \pmpro_changeMembershipLevel($group->group_parent_level_id, $user_id);
+    \pmpro_changeMembershipLevel($child_level_id, $user_id);
 
     return $membership;
 }
@@ -38,6 +41,7 @@ function update_group_level ($group_id, $level_id = 11) {
     }
 
     $child_members = $group->get_active_members(false);
+    $child_level_id = Fields\get_pmpro_child_level($level_id);
 
     $wpdb->update($wpdb->prefix . 'pmprogroupacct_groups',
     [
@@ -49,7 +53,7 @@ function update_group_level ($group_id, $level_id = 11) {
     \pmpro_changeMembershipLevel($level_id, $group->group_parent_user_id);
 
     foreach ($child_members as $child_member) {
-        \pmpro_changeMembershipLevel($level_id, $child_member->group_child_user_id);
+        \pmpro_changeMembershipLevel($child_level_id, $child_member->group_child_user_id);
     }
 
     return $group;
