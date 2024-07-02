@@ -59,18 +59,30 @@
             font-style: normal;
             font-weight: $font-weight--regular;
             line-height: size(21);
-            letter-spacing: -0.42px;
+
+            s{
+                text-decoration: none;
+            }
+
+            &:has(s){
+                @include desktop{
+                    display: none;
+                }
+            }
         }
 
         ul > li::before {
             content: '';
-            background-image: url('#{$path--assets}/images/check.png');
+            background-image: url('#{$path--assets}/images/check.svg');
             background-size: contain;
             background-repeat: no-repeat;
             display: inline-block;
             min-width: 25px;
             min-height: 25px;
             margin-right: 8px;
+        }
+        ul > li:has(s)::before{
+            background-image: url('#{$path--assets}/images/uncheck.svg');
         }
 
     }
