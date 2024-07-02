@@ -11,9 +11,8 @@
         padding: $padding--small $padding--large;
         border: $border-width--medium solid $color--low-pure;
         &:hover {
-            color:white;
+            color: $color--high-pure;;
             border-radius: $border-radius--medium;
-
             background: $color--low-pure;
             border: $border-width--medium solid $color--low-pure;
 
