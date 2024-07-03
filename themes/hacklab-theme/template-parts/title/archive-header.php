@@ -30,7 +30,7 @@ $is_curation = isset( $_GET['curadoria'] );
             <?php endif; ?>
         </h1>
         <p>
-            <?php echo apply_filters( 'the_title' , $title ); ?>
+            <?php echo apply_filters( 'the_title' , $title, get_the_ID() ); ?>
         <p>
         <?php
         if ( is_search() && ! $is_curation ) :
