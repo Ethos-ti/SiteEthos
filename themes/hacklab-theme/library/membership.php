@@ -74,7 +74,7 @@ function require_approval_for_login ($user) {
         $child_level_id = Fields\get_pmpro_child_level($level_id);
 
         if (!\PMPro_Approvals::isApproved($user->ID, $level_id) && !\PMPro_Approvals::isApproved($user->ID, $child_level_id)) {
-            return new \WP_Error('ethos_not_approved', 'Associação ainda não foi aprovada.');
+            return new \WP_Error('failed', 'Associação ainda não foi aprovada.');
         }
     }
 
