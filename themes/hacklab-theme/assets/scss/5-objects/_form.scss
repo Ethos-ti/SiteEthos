@@ -20,6 +20,9 @@
     }
 }
 
+.text-input:is(textarea) {
+}
+
 .text-input[type="file"] {
     height: size(52);
     line-height: size(32);
