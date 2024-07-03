@@ -19,10 +19,9 @@
         border-color: $color--warning-light;
     }
 }
-
-.text-input:is(textarea) {
+.text-input:is(textarea){
+    min-height: 170px;
 }
-
 .text-input[type="file"] {
     height: size(52);
     line-height: size(32);
