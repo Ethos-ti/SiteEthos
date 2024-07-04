@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
     "name": "hacklabr/video-playlist",
     "title": "Video Playlist",
