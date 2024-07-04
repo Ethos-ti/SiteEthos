@@ -181,7 +181,10 @@ if( isset($recurrence['rules']) ) {
             <a class="button button--outline" href="<?= $pdf["arquivo"];?>"><?php _e($pdf["botao"], 'hacklabr');?></a>
         <?php endif; ?>
 
-        <a class="button button--solid" href="<?= $inscrever["link"];?>"><?php _e($inscrever["botao"], 'hacklabr');?></a>
+        <?php
+        if ( $inscrever["link"] ) : ?>
+            <a class="button button--solid" href="<?= $inscrever["link"];?>"><?php _e($inscrever["botao"], 'hacklabr');?></a>
+        <?php endif; ?>
     </div>
 </main>
 
