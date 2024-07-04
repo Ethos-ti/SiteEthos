@@ -177,14 +177,16 @@ if( isset($recurrence['rules']) ) {
 
     <div class="btn">
         <?php
-        if ( $pdf["arquivo"] ) : ?>
-            <a class="button button--outline" href="<?= $pdf["arquivo"];?>"><?php _e($pdf["botao"], 'hacklabr');?></a>
-        <?php endif; ?>
+        if ( $pdf || $inscrever ) {
+            if ( $pdf["arquivo"] ) : ?>
+                <a class="button button--outline" href="<?= $pdf["arquivo"];?>"><?php _e($pdf["botao"], 'hacklabr');?></a>
+            <?php endif; ?>
 
-        <?php
-        if ( $inscrever["link"] ) : ?>
-            <a class="button button--solid" href="<?= $inscrever["link"];?>"><?php _e($inscrever["botao"], 'hacklabr');?></a>
-        <?php endif; ?>
+            <?php
+            if ( $inscrever["link"] ) : ?>
+                <a class="button button--solid" href="<?= $inscrever["link"];?>"><?php _e($inscrever["botao"], 'hacklabr');?></a>
+            <?php endif;
+        };?>
     </div>
 </main>
 
