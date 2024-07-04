@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/my-plan",
+    "title": "My Plan",
+    "description": "Description of the plan I subscribe",
+    "category": "theme",
+    "icon": "admin-settings",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/my-plan/editor.js"],
+    "style": ["file:../../../dist/blocks/my-plan/index.css"]
+}

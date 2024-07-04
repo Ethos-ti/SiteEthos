@@ -12,6 +12,19 @@ function get_pmpro_child_level ($level) {
     }
 }
 
+function get_pmpro_level_slug_by_id ($level_id) {
+    switch (((int) $level_id) % 4) {
+        case 0: // 8, 12, 16, 20
+            return 'conexao';
+        case 1: // 9, 13, 17, 21
+            return 'essencial';
+        case 2: // 10, 14, 18
+            return 'vivencia';
+        case 3: // 11, 15, 19
+            return 'institucional';
+    }
+}
+
 function get_pmpro_level_options ($organization_id, $for_manager = true) {
     $revenue = get_post_meta($organization_id, 'faturamento_anual', true) ?: 'small';
 
