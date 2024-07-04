@@ -1,31 +1,39 @@
-.single-tribe_events{
-    .post-header__postdata{
+.single-tribe_events {
+    .post-header__postdata {
         margin-left: auto;
         margin-right: auto;
-        .post-header__postdata__date{
+
+        .post-header__postdata__date {
             margin-left: auto;
             margin-right: auto;
         }
-        .tag{
-            margin-top: calc( $margin--large + $margin--medium );
+
+        .tag {
+            margin-top: calc($margin--large + $margin--medium);
             border-radius: $border-radius--small;
         }
-        .list-terms{
+
+        .list-terms {
             list-style: none;
             padding-left: 0;
         }
-        .post-header__title{
-            margin-top: calc( $margin--medium + $margin--small );
+
+        .post-header__title {
+            margin-top: calc($margin--medium + $margin--small);
         }
-        .post-header__excerpt{
+
+        .post-header__excerpt {
             max-width: $grid--normal;
-            @media(max-width:$break--tablet){
+
+            @media(max-width:$break--tablet) {
                 font-size: $font-size--large;
             }
         }
-        .post-header__meta{
+
+        .post-header__meta {
             max-width: $grid--normal;
-            @media(max-width:$break--tablet){
+
+            @media(max-width:$break--tablet) {
                 flex-direction: column-reverse;
                 margin-left: $margin--small;
                 margin-right: $margin--small;
@@ -33,34 +41,40 @@
         }
     }
 
-    .event-metadada-section{
+    .event-metadada-section {
         background-color: $color--high-light;
         margin-bottom: $margin--medium;
-        .event-metadada{
+
+        .event-metadada {
             margin-top: $margin--large;
             padding: $padding--large $padding--small;
-            &.container{
+
+            &.container {
                 max-width: $grid--normal;
             }
-            .event-metadada__infos{
+
+            .event-metadada__infos {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: $margin--medium;
-                @media(max-width:$break--small){
+
+                @media(max-width:$break--small) {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: $gap--medium;
                 }
+
                 &__date,
                 &__time,
                 &__workload,
-                &__investment{
-                    :first-child{
+                &__investment {
+                    :first-child {
                         border-bottom: $border-width--small solid $color--primary-light;
                         padding-bottom: $padding--x-small;
                         color: $color--primary-dark;
                     }
-                    :last-child{
+
+                    :last-child {
                         padding-top: $padding--x-small;
                         font-size: $font-size--small;
                         color: $color--low-pure;
@@ -68,47 +82,52 @@
                 }
             }
 
-            .event-metadada__recurrence{
+            .event-metadada__recurrence {
                 display: flex;
                 justify-content: space-between;
-                @media(max-width:$break--small){
+
+                @media(max-width:$break--small) {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: $gap--medium;
                 }
+
                 &__type,
-                &__count{
-                    :first-child{
+                &__count {
+                    :first-child {
                         border-bottom: $border-width--small solid $color--primary-light;
                         padding-bottom: $padding--x-small;
                         color: $color--primary-dark;
                     }
-                    :last-child{
+
+                    :last-child {
                         padding-top: $padding--x-small;
                         font-size: $font-size--small;
                         color: $color--low-pure;
                     }
                 }
-                &__weekday{
 
-                    &__title{
+                &__weekday {
+
+                    &__title {
                         border-bottom: $border-width--small solid $color--primary-light;
                         padding-bottom: $padding--x-small;
                         color: $color--primary-dark;
 
                     }
 
-                    &__day{
+                    &__day {
                         display: flex;
                         gap: $gap--x-small;
                         flex-wrap: wrap;
 
-                        p{
+                        p {
                             padding-top: $padding--x-small;
                             font-size: $font-size--small;
                             color: $color--low-pure;
                         }
-                        :last-child{
+
+                        :last-child {
 
                             display: none;
 
@@ -119,27 +138,39 @@
             }
         }
 
-            .event-metadada__location{
-                &__local{
-                    :first-child{
-                        border-bottom: $border-width--small solid $color--primary-light;
-                        padding-bottom: $padding--x-small;
-                        color: $color--primary-dark;
-                    }
-                    :last-child{
-                        padding-top: $padding--x-small;
-                        font-size: $font-size--small;
-                        color: $color--low-pure;
-                    }
+        .event-metadada__location {
+            &__local {
+                :first-child {
+                    border-bottom: $border-width--small solid $color--primary-light;
+                    padding-bottom: $padding--x-small;
+                    color: $color--primary-dark;
+                }
+
+                :last-child {
+                    padding-top: $padding--x-small;
+                    font-size: $font-size--small;
+                    color: $color--low-pure;
                 }
             }
+        }
 
     }
-    .post-content{
+
+    .post-content {
         max-width: $grid--normal;
+
         .tribe-block__related-events__title,
-        .tribe-related-events{
+        .tribe-related-events {
             display: none;
+        }
+
+        .btn {
+            display: flex;
+            gap: $gap--medium;
+
+            .button {
+                margin-top: 20px;
+            }
         }
     }
 }

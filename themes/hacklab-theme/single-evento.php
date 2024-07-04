@@ -14,6 +14,9 @@ $local = tribe_get_venue($post_id);
 $start = get_post_meta($post_id, '_EventStartDate', true );
 $end = get_post_meta($post_id, '_EventEndDate', true );
 $recurrence = get_post_meta($post_id, '_EventRecurrence', true );
+$pdf = get_field( 'pdf', $post_id );
+$inscrever = get_field( 'inscrever', $post_id );
+
 
 if( isset($recurrence['rules']) ) {
 
@@ -171,6 +174,15 @@ if( isset($recurrence['rules']) ) {
 
 <main class="post-content stack container">
     <?php the_content() ?>
+
+    <div class="btn">
+        <?php
+        if ( $pdf["arquivo"] ) : ?>
+            <a class="button button--outline" href="<?= $pdf["arquivo"];?>"><?php _e($pdf["botao"], 'hacklabr');?></a>
+        <?php endif; ?>
+
+        <a class="button button--solid" href="<?= $inscrever["link"];?>"><?php _e($inscrever["botao"], 'hacklabr');?></a>
+    </div>
 </main>
 
 <?php get_footer() ?>
