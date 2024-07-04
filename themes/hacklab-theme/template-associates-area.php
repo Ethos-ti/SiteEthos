@@ -29,7 +29,19 @@ $current_post_id = get_the_ID();
             <a class="button button--outline" href="<?= wp_logout_url( get_login_page_url() ); ?>"><?= __( 'Logout', 'hacklabr' ); ?></a>
         </aside>
         <main class="content-sidebar__content stack">
+            <div class="collapse-menu active"></div>
             <?php the_content(); ?>
+
+            <script>
+                document.querySelector( '.collapse-menu' ).addEventListener( 'click', function() {
+                    var sidebar = document.querySelector( '.content-sidebar__sidebar' );
+                    if ( sidebar.style.display === 'none' || sidebar.style.display === '' ) {
+                        sidebar.style.display = 'block';
+                    } else {
+                        sidebar.style.display = 'none';
+                    }
+                });
+            </script>
         </main>
     </div>
 </div>
