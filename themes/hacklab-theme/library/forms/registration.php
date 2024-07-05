@@ -626,7 +626,7 @@ function get_registration_step4_fields () {
         $level = \pmpro_getLevel($group->group_parent_level_id);
 
         if (!empty($level)) {
-            $fields['pagto_sugerido']['default'] = $level->billing_amount ?: 0;
+            $fields['pagto_sugerido']['default'] = $level->initial_payment ?: 0;
             $fields['pagto_sugerido']['disabled'] = true;
         }
     }

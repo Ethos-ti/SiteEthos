@@ -14,6 +14,9 @@ function get_blocks_list () {
         'form' => [
             'render_callback' => 'hacklabr\\render_form_callback',
         ],
+        'my-plan' => [
+            'render_callback' => 'hacklabr\\render_my_plan_callback',
+        ],
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],

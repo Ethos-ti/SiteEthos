@@ -92,3 +92,30 @@ function register_organization_cpt () {
     ]);
 }
 add_action('init', 'hacklabr\\register_organization_cpt');
+
+function get_organization_by_user ($user_id = null) {
+    if (empty($user_id)) {
+        $user_id = get_current_user_id();
+    }
+
+    $group_id = get_user_meta($user_id, '_pmpro_group', true);
+
+    if (empty($group_id)) {
+        return null;
+    }
+
+    $posts = get_posts([
+        'post_type' => 'organizacao',
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+        ],
+    ]);
+
+    if (empty($posts)) {
+        return null;
+    } else {
+        $post = $posts[0];
+        assert($post instanceof \WP_Post);
+        return $post;
+    }
+}

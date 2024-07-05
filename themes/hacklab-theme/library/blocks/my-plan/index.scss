@@ -1,0 +1,33 @@
+@import '../../../assets/scss/includes';
+
+.my-plan {
+
+    &__summary {
+        font-size: $font-size--large;
+        margin-bottom: $gap--large;
+    }
+
+    &__advantages {
+
+        .choose-plan__text {
+
+            ul, li {
+                margin-block: size(8);
+            }
+
+            p, li:has(s) {
+                display: none !important;
+            }
+
+            li {
+                display: list-item;
+                list-style: circle;
+                margin-inline-start: $font-size--large;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
