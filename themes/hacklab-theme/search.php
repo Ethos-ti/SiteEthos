@@ -117,7 +117,7 @@ $wp_query = New WP_Query($wp_query->query_vars);
                                             break;
                                             // descomentar e inserir no array da linha 108 o cpt 'events'
                                             case 'events':
-                                                $label = 'Eventos';
+                                                $label = 'Próximos Eventos';
                                             break;
                                             case 'post':
                                                 $label = 'Notícias';

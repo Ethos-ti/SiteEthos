@@ -4,7 +4,11 @@ html {
     scroll-behavior: smooth;
 
     body {
-        overflow-x:  hidden;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         @include mobile {
             margin-top: 0;
