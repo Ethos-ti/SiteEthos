@@ -1,0 +1,19 @@
+.page-meu-plano{
+    .wp-block-table{
+        thead > tr > th{
+            padding:$padding--medium;
+            & img{
+                margin:0px;
+            }
+            &:nth-last-child(2){
+                display: flex;
+                gap: $gap--small;
+            }
+        }
+        tbody > tr >  td > mark{
+            display: flex;
+            justify-content: center;
+
+        }
+    }
+}
