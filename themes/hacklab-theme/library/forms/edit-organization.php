@@ -48,6 +48,7 @@ function register_edit_organization_form () {
     $fields_step4 = get_registration_step4_fields();
 
     unset($fields_step1['termos_de_uso']);
+    unset($fields_step1['codigo_de_conduta']);
 
     register_form('edit-organization', __('Edit organization', 'hacklabr'), [
         'fields' => $fields_step1,
