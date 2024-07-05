@@ -30,7 +30,7 @@
         gap: $gap--medium;
         position: relative;
 
-        @include small{
+        @include small {
             margin-right: $margin--small;
         }
 
@@ -40,9 +40,10 @@
             input {
                 border-radius: 32px;
                 border: none;
-                padding: $padding--small $padding--medium;
+                padding: $padding--small $padding--large $padding--small $padding--medium;
                 width: 340px;
-                @include small{
+
+                @include small {
                     width: 290px;
                 }
 
@@ -84,7 +85,8 @@
 
         &:hover {
             background-color: $color--high-dark;
-            @include mobile{
+
+            @include mobile {
                 background-color: initial;
             }
         }
