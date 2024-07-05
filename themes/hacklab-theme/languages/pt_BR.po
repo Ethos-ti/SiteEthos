@@ -18,7 +18,7 @@ msgstr ""
 
 #. Theme Name of the theme
 msgid "Ethos"
-msgstr "Dia da semana"
+msgstr "Ethos"
 
 #. Theme URI of the theme
 #. Author URI of the theme
