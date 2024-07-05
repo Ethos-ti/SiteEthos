@@ -2,6 +2,22 @@
 
 namespace hacklabr;
 
+function get_user_fields ($user, $fields) {
+    $data = [
+        'ID' => $user->ID,
+    ];
+
+    $user_meta = get_user_meta($user->ID);
+
+    foreach ($fields as $key => $field) {
+        if (!empty($user_meta[$key])) {
+            $data[$key] = $user_meta[$key][0];
+        }
+    }
+
+    return $data;
+}
+
 function wrap_step_5_form ($form_html, $form) {
     if ($form['id'] !== 'member-registration-5' || empty($_GET['transaction'])) {
         return $form_html;
@@ -139,3 +155,102 @@ function wrap_step_5_form ($form_html, $form) {
     return $html;
 }
 add_action('hacklabr\\form_output', 'hacklabr\\wrap_step_5_form', 10, 2);
+
+function wrap_edit_contacts_form ($form_html, $form) {
+    if ($form['id'] !== 'edit-organization-contacts') {
+        return $form_html;
+    }
+
+    $group_id = (int) get_user_meta(get_current_user_id(), '_pmpro_group', true);
+
+    if (empty($group_id)) {
+        return $form_html;
+    }
+
+    $script = <<<SCRIPT
+    {
+        userId: null,
+        closeFormModal () {
+            this.\$refs.formModal.close();
+        },
+        openFormModal (user) {
+            console.log(user);
+            this.\$refs.formModal.showModal();
+        },
+    }
+    SCRIPT;
+
+    $form_lines = explode("\n", $form_html);
+    array_splice($form_lines, 1, 0, [
+        '<input type="hidden" name="__user_id" :value="userId">',
+    ]);
+    $form_html = implode("\n", $form_lines);
+
+    $fields = $form['options']['fields'];
+
+    $contacts = get_users([
+        // 'role__in' => ['subscriber'],
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+        ],
+    ]);
+
+    ob_start();
+?>
+    <div class="contacts-list" x-data="<?= $script ?>">
+        <div class="contacts-list__count">Total de 250 contatos cadastrados</div>
+        <div class="contacts-list__buttons">
+            <button class="button button--outline" @click="openFormModal()">
+                Adicionar mais um contato
+            </button>
+        </div>
+        <div class="contacts-list__table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Aprovador</th>
+                        <th>Administrador</th>
+                        <th><span class="sr-only">Editar</span></th>
+                        <th><span class="sr-only">Excluir</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($contacts as $contact): ?>
+                    <tr x-data="{ user: <?= esc_attr(json_encode(get_user_fields($contact, $fields))) ?> }">
+                        <td><?= $contact->display_name ?></td>
+                        <td><?= $contact->user_email ?></td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>
+                            <button type="button" @click="openFormModal(user)">editar</button>
+                        </td>
+                        <td>
+                            <button type="button">excluir</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <dialog x-ref="formModal" class="contacts-list__modal">
+            <header class="contacts-list__modal-header">
+                <span>Adicionar contato</span>
+                <button type="button" @click="closeFormModal()" title="Fechar">
+                    <iconify-icon icon="material-symbols:close"></iconify-icon>
+                </button>
+            </header>
+            <main class="contacts-list__modal-body"><?= $form_html ?></main>
+        </dialog>
+    </div>
+<?php
+    $html = ob_get_clean();
+
+    return $html;
+}
+add_action('hacklabr\\form_output', 'hacklabr\\wrap_edit_contacts_form', 10, 2);

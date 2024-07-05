@@ -46,6 +46,7 @@ function get_organization_params ($form_id, $fields) {
 function register_edit_organization_form () {
     $fields_step1 = get_registration_step1_fields();
     $fields_step4 = get_registration_step4_fields();
+    $fields_step5 = get_registration_step5_fields();
 
     unset($fields_step1['termos_de_uso']);
     unset($fields_step1['codigo_de_conduta']);
@@ -54,6 +55,11 @@ function register_edit_organization_form () {
         'fields' => $fields_step1,
         'submit_label' => __('Edit', 'hacklabr'),
         'get_params' => get_organization_params('edit-organization', $fields_step1),
+    ]);
+
+    register_form('edit-organization-contacts', __('Edit contacts', 'hacklabr'), [
+        'fields' => $fields_step5,
+        'submit_label' => __('Save'),
     ]);
 
     register_form('edit-organization-finances', __('Edit organization finances', 'hacklabr'), [
