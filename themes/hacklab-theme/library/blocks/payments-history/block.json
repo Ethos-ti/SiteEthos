@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/payments-history",
+    "title": "Payments history",
+    "description": "Payments history on the CRM",
+    "category": "theme",
+    "icon": "money-alt",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/payments-history/editor.js"],
+    "style": ["file:../../../dist/blocks/payments-history/index.css"]
+}
