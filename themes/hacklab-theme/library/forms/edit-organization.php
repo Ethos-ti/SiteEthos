@@ -2,6 +2,27 @@
 
 namespace hacklabr;
 
+function get_edit_contact_fields () {
+    $fields = get_registration_step5_fields();
+
+    $fields['email']['validate'] = function ($value, $context) {
+        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            return 'Email inválido';
+        } else {
+            $maybe_user = get_user_by('email', $value);
+            if (!empty($maybe_user)) {
+                $user_id = $context['_user_id'];
+                if (empty($user_id) || $maybe_user->ID != $user_id) {
+                    return 'Email já está em uso';
+                }
+            }
+        }
+        return true;
+    };
+
+    return $fields;
+}
+
 function get_organization_params ($form_id, $fields) {
     return function () use ($form_id, $fields) {
         $user_id = get_current_user_id();
@@ -44,9 +65,9 @@ function get_organization_params ($form_id, $fields) {
 }
 
 function register_edit_organization_form () {
+    $fields_contacts = get_edit_contact_fields();
     $fields_step1 = get_registration_step1_fields();
     $fields_step4 = get_registration_step4_fields();
-    $fields_step5 = get_registration_step5_fields();
 
     unset($fields_step1['termos_de_uso']);
     unset($fields_step1['codigo_de_conduta']);
@@ -58,7 +79,7 @@ function register_edit_organization_form () {
     ]);
 
     register_form('edit-organization-contacts', __('Edit contacts', 'hacklabr'), [
-        'fields' => $fields_step5,
+        'fields' => $fields_contacts,
         'submit_label' => __('Save'),
     ]);
 
