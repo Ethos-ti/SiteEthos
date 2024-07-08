@@ -8,7 +8,7 @@ function get_my_data_fields () {
     return $fields;
 }
 
-function get_my_data_params ($form_id, $fields) {
+function get_my_data_params () {
    $params = sanitize_form_params();
 
    return $params;
@@ -36,4 +36,4 @@ function validate_my_data_form ($form_id, $form, $params) {
         // TODO
     }
 }
-add_action('hacklabr\\form_action', 'hacklabr\\validate_my_data_form');
+add_action('hacklabr\\form_action', 'hacklabr\\validate_my_data_form', 10, 3);
