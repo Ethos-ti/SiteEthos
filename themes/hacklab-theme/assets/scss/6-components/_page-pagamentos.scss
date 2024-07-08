@@ -1,0 +1,22 @@
+.page-pagamentos{
+    .wp-block-atbs-tabs{
+        .tabs-content{
+            background-color: transparent;
+        }
+
+        .tabs-container{
+            .tabs-nav{
+                .tabs-titles{
+                    .tab-title{
+                        &.active{
+                            background-color:$color--high-light !important;
+                        }
+                    }
+                }
+                .tab-title-text{
+                   color: $color--secondary-dark;
+                }
+            }
+        }
+    }
+}

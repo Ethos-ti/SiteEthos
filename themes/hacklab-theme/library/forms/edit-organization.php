@@ -182,15 +182,37 @@ function validate_edit_organization_form ($form_id, $form, $params) {
     }
 
     if ($form_id === 'edit-organization-contacts__hidden') {
-        if ($params['_action'] === 'deleteUser') {
+        $action = $params['_action'];
+        $user_id = (int) $params['_user_id'];
+
+        if (empty($action) || empty($user_id)) {
+            return;
+        }
+
+        if ($action === 'addAdmin') {
+            update_user_meta($user_id, '_ethos_admin', '1');
+        } elseif ($action === 'addApprover') {
+            $group_id = get_user_meta($user_id, '_pmpro_group', true);
+
+            $current_approvers = get_users([
+                'meta_query' => [
+                    [ 'key' => '_pmpro_group', 'value' => $group_id ],
+                ],
+            ]);
+            foreach ($current_approvers as $approver) {
+                delete_user_meta($approver->ID, '_ethos_approver', '1');
+            }
+
+            update_user_meta($user_id, '_ethos_approver', '1');
+        } elseif ($action === 'deleteUser') {
             // Required for using `wp_delete_user` function
 	        require_once(ABSPATH . 'wp-admin/includes/user.php');
 
-            $user_id = (int) $params['userId'];
-
-            if (!empty($user_id)) {
-                wp_delete_user($user_id, null);
-            }
+            wp_delete_user($user_id, null);
+        } elseif ($action === 'removeAdmin') {
+            delete_user_meta($user_id, '_ethos_admin', '1');
+        } elseif ($action === 'removeApprover') {
+            delete_user_meta($user_id, '_ethos_approver', '1');
         }
     }
 }

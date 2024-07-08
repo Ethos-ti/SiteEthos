@@ -852,6 +852,7 @@ function validate_registration_form ($form_id, $form, $params) {
                 'ID' => $user->ID,
                 'role' => 'subscriber',
                 'meta_input' => [
+                    '_ethos_admin' => '1',
                     '_pmpro_group' => $group->id,
                     '_pmpro_role' => 'primary',
                 ],

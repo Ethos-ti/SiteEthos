@@ -161,7 +161,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
         return $form_html;
     }
 
-    $group_id = (int) get_user_meta(get_current_user_id(), '_pmpro_group', true);
+    $current_user = get_current_user_id();
+    $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
     if (empty($group_id)) {
         return $form_html;
@@ -186,12 +187,9 @@ function wrap_edit_contacts_form ($form_html, $form) {
         },
         deleteUser (userId) {
             if (confirm('Deseja remover o usuário?')) {
-                const form = this.\$refs.implicitForm;
                 this.action = 'deleteUser';
                 this.userId = userId;
-                setTimeout(function () {
-                    form.submit();
-                }, 100);
+                \$nextTick(() => this.\$refs.implicitForm.submit());
             }
         },
         editUser (user) {
@@ -208,8 +206,25 @@ function wrap_edit_contacts_form ($form_html, $form) {
             this.\$refs.formModal.showModal();
         },
         toggleAdmin (el, user) {
-            console.log(el, user);
+            this.action = el.checked ? 'addAdmin' : 'removeAdmin';
+            this.userId = user.ID;
+            \$nextTick(() => this.\$refs.implicitForm.submit());
         },
+        toggleApprover (el, user) {
+            if (el.checked) {
+                if (confirm('Só é permitido um membro aprovador por equipe, deseja alterar o membro aprovador?')) {
+                    this.action = 'addApprover';
+                    this.userId = user.ID;
+                    \$nextTick(() => this.\$refs.implicitForm.submit());
+                } else {
+                    el.checked = false;
+                }
+            } else {
+                this.action = 'removeApprover';
+                this.userId = user.ID;
+                \$nextTick(() => this.\$refs.implicitForm.submit());
+            }
+        }
     }
     SCRIPT;
 
@@ -235,8 +250,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
     ob_start();
 ?>
-    <div class="contacts-list" x-data="<?= $script ?>" x-ref="contactsList">
-        <div class="contacts-list__count">Total de 250 contatos cadastrados</div>
+    <div class="contacts-list" x-data="<?= esc_attr($script) ?>" x-ref="contactsList">
+        <div class="contacts-list__count">Total de <?= count($contacts) ?> contatos cadastrados</div>
 
         <div class="contacts-list__buttons">
             <button class="button button--outline" @click="createUser()">
@@ -262,16 +277,20 @@ function wrap_edit_contacts_form ($form_html, $form) {
                         <td><?= $contact->display_name ?></td>
                         <td><?= $contact->user_email ?></td>
                         <td>
-                            <input type="checkbox">
+                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_approver', true)) ?> @click="toggleApprover($el, user)">
                         </td>
                         <td>
-                            <input type="checkbox" @click="toggleAdmin($el, user)">
+                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> @click="toggleAdmin($el, user)">
                         </td>
                         <td>
-                            <button type="button" @click="editUser(user)">editar</button>
+                            <button type="button" class="contacts-list__edit" title="Editar" @click="editUser(user)">
+                                <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                            </button>
                         </td>
                         <td>
-                            <button type="button"<?= $contact->ID === $original_user ? ' disabled' : '' ?> @click="deleteUser(<?= $contact->ID ?>)">excluir</button>
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="Excluir" @click="deleteUser(<?= $contact->ID ?>)">
+                                <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
