@@ -136,6 +136,49 @@ function validate_edit_organization_form ($form_id, $form, $params) {
     }
 
     if ($form_id === 'edit-organization-contacts') {
+        $validation = validate_form($form['fields'], $params);
+
+        if ($validation !== true) {
+            return;
+        }
+
+        $user_id = (int) $params['_user_id'];
+
+        unset($post_meta['_action']);
+        unset($post_meta['_hacklabr_form']);
+        unset($post_meta['_user_id']);
+
+        if (empty($user_id)) {
+            $current_user = get_current_user_id();
+            $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
+
+            $user_meta = array_merge($params, [
+                '_pmpro_group' => $group_id,
+                '_pmpro_role' => 'primary',
+            ]);
+
+            $password = wp_generate_password(16);
+
+            $user_id = wp_insert_user([
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'user_login' => sanitize_title($params['nome_completo']),
+                'user_pass' => $password,
+                'role' => 'subscriber',
+                'meta_input' => $user_meta,
+            ]);
+
+            add_user_to_pmpro_group($user_id, $group_id);
+        } else {
+            $user_meta = $params;
+
+            wp_update_user([
+                'ID' => $user_id,
+                'display_name' => $params['nome_completo'],
+                'user_email' => $params['email'],
+                'meta_input' => $user_meta,
+            ]);
+        }
     }
 
     if ($form_id === 'edit-organization-contacts__hidden') {
