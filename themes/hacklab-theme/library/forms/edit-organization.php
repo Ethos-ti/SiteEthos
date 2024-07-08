@@ -62,6 +62,11 @@ function register_edit_organization_form () {
         'submit_label' => __('Save'),
     ]);
 
+    register_form('edit-organization-contacts__hidden', __('Edit contacts', 'hacklabr') . ' ' . __('(hidden)', 'hacklabr'), [
+        'fields' => [],
+        'hidden' => true,
+    ]);
+
     register_form('edit-organization-finances', __('Edit organization finances', 'hacklabr'), [
         'fields' => $fields_step4,
         'submit_label' => __('Edit', 'hacklabr'),
@@ -106,6 +111,22 @@ function validate_edit_organization_form ($form_id, $form, $params) {
 
         foreach ($params as $meta_key => $meta_value) {
             update_post_meta($post_id, $meta_key, $meta_value);
+        }
+    }
+
+    if ($form_id === 'edit-organization-contacts') {
+    }
+
+    if ($form_id === 'edit-organization-contacts__hidden') {
+        if ($params['_action'] === 'deleteUser') {
+            // Required for using `wp_delete_user` function
+	        require_once(ABSPATH . 'wp-admin/includes/user.php');
+
+            $user_id = (int) $params['userId'];
+
+            if (!empty($user_id)) {
+                wp_delete_user($user_id, null);
+            }
         }
     }
 }

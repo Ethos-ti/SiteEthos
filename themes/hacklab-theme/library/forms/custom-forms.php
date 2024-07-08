@@ -169,12 +169,37 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
     $script = <<<SCRIPT
     {
+        action: '',
         userId: null,
         closeFormModal () {
             this.\$refs.formModal.close();
         },
+        deleteUser (userId) {
+            if (confirm('Deseja remover o usuário?')) {
+                const form = this.\$refs.implicitForm;
+                this.action = 'deleteUser';
+                this.userId = userId;
+                setTimeout(function () {
+                    form.submit();
+                }, 100);
+            }
+        },
+        editUser (user) {
+            const form = document.querySelector('#form_edit-organization-contacts');
+            for (const [key, value] of Object.entries(user)) {
+                if (form.elements[key]) {
+                    form.elements[key].value = value;
+                    if (form.elements[key]._mask) {
+                        form.elements[key]._mask.value = value;
+                    }
+                }
+            }
+            this.userId = user.ID;
+            this.\$refs.formModal.showModal();
+        },
         openFormModal (user) {
             console.log(user);
+            // this.userId = user.ID;
             this.\$refs.formModal.showModal();
         },
     }
@@ -182,28 +207,35 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
     $form_lines = explode("\n", $form_html);
     array_splice($form_lines, 1, 0, [
+        '<input type="hidden" name="__action" :value="action">',
         '<input type="hidden" name="__user_id" :value="userId">',
     ]);
     $form_html = implode("\n", $form_lines);
 
     $fields = $form['options']['fields'];
 
+    $group = get_pmpro_group($group_id);
+    $original_user = $group->group_parent_user_id;
+
     $contacts = get_users([
         // 'role__in' => ['subscriber'],
         'meta_query' => [
             [ 'key' => '_pmpro_group', 'value' => $group_id ],
         ],
+        'orderby' => 'display_name',
     ]);
 
     ob_start();
 ?>
-    <div class="contacts-list" x-data="<?= $script ?>">
+    <div class="contacts-list" x-data="<?= $script ?>" x-ref="contactsList">
         <div class="contacts-list__count">Total de 250 contatos cadastrados</div>
+
         <div class="contacts-list__buttons">
             <button class="button button--outline" @click="openFormModal()">
                 Adicionar mais um contato
             </button>
         </div>
+
         <div class="contacts-list__table">
             <table>
                 <thead>
@@ -228,16 +260,23 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             <input type="checkbox">
                         </td>
                         <td>
-                            <button type="button" @click="openFormModal(user)">editar</button>
+                            <button type="button" @click="editUser(user)">editar</button>
                         </td>
                         <td>
-                            <button type="button">excluir</button>
+                            <button type="button"<?= $contact->ID === $original_user ? ' disabled' : '' ?> @click="deleteUser(<?= $contact->ID ?>)">excluir</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
+
+        <form x-ref="implicitForm" method="post">
+            <input type="hidden" name="__hacklabr_form" value="edit-organization-contacts__hidden">
+            <input type="hidden" name="__action" :value="action">
+            <input type="hidden" name="__user_id" :value="userId">
+        </form>
+
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
                 <span>Adicionar contato</span>

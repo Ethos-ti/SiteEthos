@@ -97,10 +97,12 @@ class API {
 
         if (!empty($hacklabr_registered_forms)) {
             foreach ($hacklabr_registered_forms as $form_id => $form) {
-                $response[$form_id] = [
-                    'slug' => $form_id,
-                    'label' => $form['name'],
-                ];
+                if (empty($form['options']['hidden'])) {
+                    $response[$form_id] = [
+                        'slug' => $form_id,
+                        'label' => $form['name'],
+                    ];
+                }
             }
         }
 
