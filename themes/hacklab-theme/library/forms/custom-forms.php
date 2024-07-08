@@ -174,6 +174,16 @@ function wrap_edit_contacts_form ($form_html, $form) {
         closeFormModal () {
             this.\$refs.formModal.close();
         },
+        createUser () {
+            const form = document.querySelector('#form_edit-organization-contacts');
+            for (const [key, el] of Object.entries(form.elements)) {
+                if (key.match(/^[a-z]/)) {
+                    el.value = '';
+                }
+            }
+            this.userId = null;
+            this.\$refs.formModal.showModal();
+        },
         deleteUser (userId) {
             if (confirm('Deseja remover o usuário?')) {
                 const form = this.\$refs.implicitForm;
@@ -197,10 +207,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
             this.userId = user.ID;
             this.\$refs.formModal.showModal();
         },
-        openFormModal (user) {
-            console.log(user);
-            // this.userId = user.ID;
-            this.\$refs.formModal.showModal();
+        toggleAdmin (el, user) {
+            console.log(el, user);
         },
     }
     SCRIPT;
@@ -231,7 +239,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
         <div class="contacts-list__count">Total de 250 contatos cadastrados</div>
 
         <div class="contacts-list__buttons">
-            <button class="button button--outline" @click="openFormModal()">
+            <button class="button button--outline" @click="createUser()">
                 Adicionar mais um contato
             </button>
         </div>
@@ -257,7 +265,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             <input type="checkbox">
                         </td>
                         <td>
-                            <input type="checkbox">
+                            <input type="checkbox" @click="toggleAdmin($el, user)">
                         </td>
                         <td>
                             <button type="button" @click="editUser(user)">editar</button>
@@ -279,7 +287,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
-                <span>Adicionar contato</span>
+                <span x-text="userId ? 'Editar contato' : 'Adicionar contato'"></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>
