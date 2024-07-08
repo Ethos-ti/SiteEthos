@@ -2,6 +2,19 @@
 
     &__table {
 
+        th {
+            color: $color--low-light;
+            font-weight: $font-weight--bold;
+            text-align: start;
+        }
+
+        td {
+
+            &:has(input[type="checkbox"]) {
+                text-align: center;
+            }
+        }
+
         button {
             background-color: transparent;
 
