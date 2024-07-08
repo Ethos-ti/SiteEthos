@@ -10,7 +10,7 @@
                 gap: $gap--small;
                 padding: $padding--medium $padding--xx-large;
                 @include mobile{
-                    padding: 18px 0px;
+                    padding: 18px 0px !important;
                 }
 
                 span{
