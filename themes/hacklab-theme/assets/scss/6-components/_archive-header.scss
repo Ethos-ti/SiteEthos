@@ -48,7 +48,7 @@
             margin-left: $margin--medium;
 
             @media(max-width:$break--tablet) {
-                padding: $padding--small;
+                padding: $padding--small $padding--medium;
                 margin-left: $margin--small;
                 margin-bottom: 0;
             }
