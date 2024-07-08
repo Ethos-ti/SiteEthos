@@ -13,6 +13,9 @@ function add_cron_schedules (array $schedules) {
 add_filter('cron_schedules', 'hacklabr\\add_cron_schedules');
 
 function clean_abandoned_registrations () {
+    // Required for using `wp_delete_user` function
+	require_once(ABSPATH . 'wp-admin/includes/user.php');
+
     $TRANSACTION_KEY = '_ethos_transaction';
 
     $abandoned_posts = get_posts([
