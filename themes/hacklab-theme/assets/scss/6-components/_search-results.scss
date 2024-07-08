@@ -31,7 +31,18 @@
             .custom-select-wrapper-opinion form {
                 border: 1px solid;
                 padding: $padding--small $padding--large;
-                border-radius: $border-radius--large;
+                border-radius: $border-radius--medium;
+                display: flex;
+                align-items: baseline;
+
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    cursor: pointer;
+                }
+
+                cursor: pointer;
             }
 
             &__filering {
@@ -39,7 +50,6 @@
                     border: none;
                     text-transform: uppercase;
                     background-color: $color--high-pure;
-                    padding-right: $padding--medium;
 
                     &__option {
                         font-weight: $font-weight--bold;

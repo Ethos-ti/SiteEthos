@@ -106,9 +106,11 @@ $wp_query = New WP_Query($wp_query->query_vars);
                         ?>
                          <form name="filtering">
                             <select class="filtering filtering search__results__filter__filering__select-form" name="select" size="1" onChange="go()">
+
                                 <option class="search__results__filter__filering__select-form__option" <?= ( $selected == 'any' ) ? 'selected' : '' ?> class="select-form-item" value="<?= $current_permalink; ?>">
                                     <?= __( 'Showing: &nbsp &nbsp all contents', 'hacklabr' ) ?>
                                 </option>
+
                                 <?php foreach( ['iniciativa', 'events', 'post', 'publicacao'] as $post_type ) : ?>
                                     <?php
                                         switch ($post_type) {
@@ -135,7 +137,11 @@ $wp_query = New WP_Query($wp_query->query_vars);
                                     </option>
 
                                 <?php endforeach; ?>
+
                             </select>
+
+                            <iconify-icon icon="ep:arrow-down-bold"></iconify-icon>
+
                             <script type="text/javascript">
                                 function go() {
                                     location = document.filtering.select.options[document.filtering.select.selectedIndex].value
