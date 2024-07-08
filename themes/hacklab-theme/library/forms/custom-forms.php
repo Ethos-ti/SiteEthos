@@ -283,10 +283,14 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> @click="toggleAdmin($el, user)">
                         </td>
                         <td>
-                            <button type="button" @click="editUser(user)">editar</button>
+                            <button type="button" class="contacts-list__edit" title="Editar" @click="editUser(user)">
+                                <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                            </button>
                         </td>
                         <td>
-                            <button type="button"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> @click="deleteUser(<?= $contact->ID ?>)">excluir</button>
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="Excluir" @click="deleteUser(<?= $contact->ID ?>)">
+                                <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

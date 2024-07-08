@@ -1,0 +1,21 @@
+.contacts-list {
+
+    &__table {
+
+        button {
+            background-color: transparent;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &__edit {
+        color: $color--low-pure;
+    }
+
+    &__remove {
+        color: $color--warning-pure;
+    }
+}
