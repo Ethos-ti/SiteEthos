@@ -1,14 +1,19 @@
 .contacts-list {
-
+    padding: $padding--medium;
     &__table {
-
+        tr{
+            margin-bottom: $margin--small;
+        }
         th {
             color: $color--low-light;
             font-weight: $font-weight--bold;
             text-align: start;
+            padding-right: $padding--small;
         }
 
         td {
+            padding-right: $padding--small;
+
 
             &:has(input[type="checkbox"]) {
                 text-align: center;
@@ -30,5 +35,11 @@
 
     &__remove {
         color: $color--warning-pure;
+    }
+    &__buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-bottom: $padding--x-large;
     }
 }
