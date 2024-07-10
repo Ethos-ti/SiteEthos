@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/subscription",
+    "title": "Subscription table",
+    "description": "Subscription on the CRM",
+    "category": "theme",
+    "icon": "money-alt",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/subscription/editor.js"],
+    "style": ["file:../../../dist/blocks/subscription/index.css"]
+}
