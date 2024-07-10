@@ -4,6 +4,9 @@
  * Remove recaptcha from tainacan
  *
  */
+
+use function RRule\not_empty;
+
 add_action( 'init', function() {
     wp_dequeue_script( 'tainacan-google-recaptcha-script' );
 }, 150 );
@@ -376,14 +379,75 @@ function pmpro_add_placeholder_to_login() {
 }
 add_action('wp_footer', 'pmpro_add_placeholder_to_login');
 
+// Adiciona o campo de captcha no login
+
 if ( class_exists( 'WPCaptcha_Functions' ) ) {
     function wprecaptcha_login_print_scripts() {
         add_filter( 'login_form_bottom', ['WPCaptcha_Functions', 'login_print_scripts'] );
         add_filter( 'login_form_bottom', 'captcha_fields');
+
+        remove_action( 'lostpassword_post', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 1 );
+        remove_action( 'validate_password_reset', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 2 );
     }
 
     add_action( 'init', 'wprecaptcha_login_print_scripts' );
 }
+
+function captcha_fields() {
+    if ( ! class_exists( 'WPCaptcha_Setup' ) ) {
+        error_log('WPCaptcha_Setup class not found. Please ensure the CAPTCHA plugin is active.');
+        return '<p style="color: red;">CAPTCHA plugin is not active. Please contact the administrator.</p>';
+    }
+
+    $options = \WPCaptcha_Setup::get_options();
+    $html = '';
+
+    if ( ! isset($options['captcha']) || ! isset($options['captcha_site_key']) ) {
+        error_log('CAPTCHA options are not properly set. Please configure the plugin correctly.');
+        return '<p style="color: red;">CAPTCHA is not configured properly. Please contact the administrator.</p>';
+    }
+
+    if ( $options['captcha'] == 'recaptchav2' ) {
+        $html .= '<div class="g-recaptcha" style="transform: scale(0.9); -webkit-transform: scale(0.9); transform-origin: 0 0; -webkit-transform-origin: 0 0;" data-sitekey="' . esc_html($options['captcha_site_key']) . '"></div>';
+        $html .= '<script>
+        jQuery("form.woocommerce-checkout").on("submit", function(){
+            setTimeout(function(){
+                grecaptcha.reset();
+            },100);
+        });
+        </script>';
+    } else if ( $options['captcha'] == 'recaptchav3' ) {
+        $html .= '<input type="hidden" name="g-recaptcha-response" class="agr-recaptcha-response" value="" />';
+        $html .= '<script>
+        function wpcaptcha_captcha(){
+            grecaptcha.execute("' . esc_html($options['captcha_site_key']) . '", {action: "submit"}).then(function(token) {
+                var captchas = document.querySelectorAll(".agr-recaptcha-response");
+                captchas.forEach(function(captcha) {
+                    captcha.value = token;
+                });
+            });
+        }
+
+        jQuery("form.woocommerce-checkout").on("submit", function(){
+            setTimeout(function(){
+                wpcaptcha_captcha();
+            },100);
+        });
+        </script>';
+    } else if ( $options['captcha'] == 'builtin' ) {
+        $html .= '<p><label for="wpcaptcha_captcha">Are you human? Please solve: ';
+        $captcha_id = rand(1000,9999);
+        $html .= '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' . esc_url(WPCAPTCHA_PLUGIN_URL) . 'libs/captcha.php?wpcaptcha-generate-image=true&color=' . esc_attr(urlencode('#FFFFFF')) . '&noise=1&id=' . intval($captcha_id) . '" alt="Captcha" />';
+        $html .= '<input class="input" type="text" size="3" name="wpcaptcha_captcha[' . intval($captcha_id) . ']" id="wpcaptcha_captcha" />';
+        $html .= '</label></p><br />';
+    } else {
+        error_log('Unknown CAPTCHA type configured.');
+        return '<p style="color: red;">Unknown CAPTCHA type configured. Please contact the administrator.</p>';
+    }
+
+    return $html;
+}
+
 
 function tribe_events_category() {
 	register_taxonomy_for_object_type( 'category', 'tribe_events' );
@@ -481,58 +545,3 @@ function list_registered_blocks() {
 }
 
 // add_action('admin_notices', 'list_registered_blocks');
-
-function captcha_fields() {
-    if ( ! class_exists( 'WPCaptcha_Setup' ) ) {
-        error_log('WPCaptcha_Setup class not found. Please ensure the CAPTCHA plugin is active.');
-        return '<p style="color: red;">CAPTCHA plugin is not active. Please contact the administrator.</p>';
-    }
-
-    $options = \WPCaptcha_Setup::get_options();
-    $html = '';
-
-    if ( ! isset($options['captcha']) || ! isset($options['captcha_site_key']) ) {
-        error_log('CAPTCHA options are not properly set. Please configure the plugin correctly.');
-        return '<p style="color: red;">CAPTCHA is not configured properly. Please contact the administrator.</p>';
-    }
-
-    if ( $options['captcha'] == 'recaptchav2' ) {
-        $html .= '<div class="g-recaptcha" style="transform: scale(0.9); -webkit-transform: scale(0.9); transform-origin: 0 0; -webkit-transform-origin: 0 0;" data-sitekey="' . esc_html($options['captcha_site_key']) . '"></div>';
-        $html .= '<script>
-        jQuery("form.woocommerce-checkout").on("submit", function(){
-            setTimeout(function(){
-                grecaptcha.reset();
-            },100);
-        });
-        </script>';
-    } else if ( $options['captcha'] == 'recaptchav3' ) {
-        $html .= '<input type="hidden" name="g-recaptcha-response" class="agr-recaptcha-response" value="" />';
-        $html .= '<script>
-        function wpcaptcha_captcha(){
-            grecaptcha.execute("' . esc_html($options['captcha_site_key']) . '", {action: "submit"}).then(function(token) {
-                var captchas = document.querySelectorAll(".agr-recaptcha-response");
-                captchas.forEach(function(captcha) {
-                    captcha.value = token;
-                });
-            });
-        }
-
-        jQuery("form.woocommerce-checkout").on("submit", function(){
-            setTimeout(function(){
-                wpcaptcha_captcha();
-            },100);
-        });
-        </script>';
-    } else if ( $options['captcha'] == 'builtin' ) {
-        $html .= '<p><label for="wpcaptcha_captcha">Are you human? Please solve: ';
-        $captcha_id = rand(1000,9999);
-        $html .= '<img class="wpcaptcha-captcha-img" style="vertical-align: text-top;" src="' . esc_url(WPCAPTCHA_PLUGIN_URL) . 'libs/captcha.php?wpcaptcha-generate-image=true&color=' . esc_attr(urlencode('#FFFFFF')) . '&noise=1&id=' . intval($captcha_id) . '" alt="Captcha" />';
-        $html .= '<input class="input" type="text" size="3" name="wpcaptcha_captcha[' . intval($captcha_id) . ']" id="wpcaptcha_captcha" />';
-        $html .= '</label></p><br />';
-    } else {
-        error_log('Unknown CAPTCHA type configured.');
-        return '<p style="color: red;">Unknown CAPTCHA type configured. Please contact the administrator.</p>';
-    }
-
-    return $html;
-}
