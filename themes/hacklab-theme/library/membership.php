@@ -17,6 +17,34 @@ function add_user_to_pmpro_group ($user_id, $group_id) {
     return $membership;
 }
 
+function calculate_membership_price( $group_id ){
+    $group = get_pmpro_group($group_id);
+
+    $users = get_users( [
+        'meta_query' => [
+            ['key' => '_pmpro_group', 'value' => $group_id ],
+        ],
+    ] );
+
+    $total = 0;
+
+    $level = \pmpro_getLevel($group->group_parent_level_id);
+
+    if (!empty($level)) {
+
+        $total += $level->initial_payment ?: 0;
+
+        if (count($users) > 1){
+            $child_level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
+            $child_level = \pmpro_getLevel($child_level_id);
+
+            $total += (count($users) - 1) * ($child_level->initial_payment ?: 0);
+        }
+    }
+
+    return $total;
+}
+
 function create_pmpro_group ($user_id, $level_id = 11) {
     $group = \PMProGroupAcct_Group::create($user_id, $level_id, 100);
 

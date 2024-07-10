@@ -519,15 +519,7 @@ function get_registration_step4_fields () {
         'pagto_sugerido' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'Valor sugerido de contribuição',
-            'mask' => '__currency__',
-            'placeholder' => 'R$',
-            'required' => false,
-        ],
-        'pagto_negociado' => [
-            'type' => 'masked',
-            'class' => '-colspan-12',
-            'label' => 'Valor negociado',
+            'label' => 'Valor de contribuição calculado',
             'mask' => '__currency__',
             'placeholder' => 'R$',
             'required' => false,
@@ -627,14 +619,11 @@ function get_registration_step4_fields () {
         $post = get_post_by_transaction('organizacao');
 
         $group_id = (int) get_post_meta($post->ID, '_pmpro_group', true);
-        $group = get_pmpro_group($group_id);
 
-        $level = \pmpro_getLevel($group->group_parent_level_id);
+        $membership_price = calculate_membership_price($group_id);
 
-        if (!empty($level)) {
-            $fields['pagto_sugerido']['default'] = $level->initial_payment ?: 0;
-            $fields['pagto_sugerido']['disabled'] = true;
-        }
+        $fields['pagto_sugerido']['default'] = $membership_price;
+        $fields['pagto_sugerido']['disabled'] = true;
     }
 
     return $fields;
