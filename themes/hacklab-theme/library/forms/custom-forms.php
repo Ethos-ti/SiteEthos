@@ -161,7 +161,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
         return $form_html;
     }
 
-    $group_id = (int) get_user_meta(get_current_user_id(), '_pmpro_group', true);
+    $current_user = get_current_user_id();
+    $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
     if (empty($group_id)) {
         return $form_html;
@@ -174,14 +175,21 @@ function wrap_edit_contacts_form ($form_html, $form) {
         closeFormModal () {
             this.\$refs.formModal.close();
         },
+        createUser () {
+            const form = document.querySelector('#form_edit-organization-contacts');
+            for (const [key, el] of Object.entries(form.elements)) {
+                if (key.match(/^[a-z]/)) {
+                    el.value = '';
+                }
+            }
+            this.userId = null;
+            this.\$refs.formModal.showModal();
+        },
         deleteUser (userId) {
             if (confirm('Deseja remover o usuário?')) {
-                const form = this.\$refs.implicitForm;
                 this.action = 'deleteUser';
                 this.userId = userId;
-                setTimeout(function () {
-                    form.submit();
-                }, 100);
+                \$nextTick(() => this.\$refs.implicitForm.submit());
             }
         },
         editUser (user) {
@@ -197,11 +205,26 @@ function wrap_edit_contacts_form ($form_html, $form) {
             this.userId = user.ID;
             this.\$refs.formModal.showModal();
         },
-        openFormModal (user) {
-            console.log(user);
-            // this.userId = user.ID;
-            this.\$refs.formModal.showModal();
+        toggleAdmin (el, user) {
+            this.action = el.checked ? 'addAdmin' : 'removeAdmin';
+            this.userId = user.ID;
+            \$nextTick(() => this.\$refs.implicitForm.submit());
         },
+        toggleApprover (el, user) {
+            if (el.checked) {
+                if (confirm('Só é permitido um membro aprovador por equipe, deseja alterar o membro aprovador?')) {
+                    this.action = 'addApprover';
+                    this.userId = user.ID;
+                    \$nextTick(() => this.\$refs.implicitForm.submit());
+                } else {
+                    el.checked = false;
+                }
+            } else {
+                this.action = 'removeApprover';
+                this.userId = user.ID;
+                \$nextTick(() => this.\$refs.implicitForm.submit());
+            }
+        }
     }
     SCRIPT;
 
@@ -227,11 +250,11 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
     ob_start();
 ?>
-    <div class="contacts-list" x-data="<?= $script ?>" x-ref="contactsList">
-        <div class="contacts-list__count">Total de 250 contatos cadastrados</div>
+    <div class="contacts-list" x-data="<?= esc_attr($script) ?>" x-ref="contactsList">
+        <div class="contacts-list__count">Total de <?= count($contacts) ?> contatos cadastrados</div>
 
         <div class="contacts-list__buttons">
-            <button class="button button--outline" @click="openFormModal()">
+            <button class="button button--outline" @click="createUser()">
                 Adicionar mais um contato
             </button>
         </div>
@@ -254,16 +277,20 @@ function wrap_edit_contacts_form ($form_html, $form) {
                         <td><?= $contact->display_name ?></td>
                         <td><?= $contact->user_email ?></td>
                         <td>
-                            <input type="checkbox">
+                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_approver', true)) ?> @click="toggleApprover($el, user)">
                         </td>
                         <td>
-                            <input type="checkbox">
+                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> @click="toggleAdmin($el, user)">
                         </td>
                         <td>
-                            <button type="button" @click="editUser(user)">editar</button>
+                            <button type="button" class="contacts-list__edit" title="Editar" @click="editUser(user)">
+                                <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
+                            </button>
                         </td>
                         <td>
-                            <button type="button"<?= $contact->ID === $original_user ? ' disabled' : '' ?> @click="deleteUser(<?= $contact->ID ?>)">excluir</button>
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="Excluir" @click="deleteUser(<?= $contact->ID ?>)">
+                                <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
+                            </button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -279,7 +306,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
-                <span>Adicionar contato</span>
+                <span x-text="userId ? 'Editar contato' : 'Adicionar contato'"></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>

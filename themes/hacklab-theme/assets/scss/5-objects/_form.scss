@@ -1,4 +1,5 @@
-.text-input, .select {
+.text-input,
+.select {
     background-color: $color--high-pure;
     border: $border-width--small solid $color--high-dark;
     border-radius: $border-radius--small;
@@ -6,7 +7,8 @@
     line-height: $line-height--none;
     padding: $padding--small $padding--medium;
 
-    &--disabled, &--readonly {
+    &--disabled,
+    &--readonly {
         background-color: $color--high-light;
     }
 
@@ -14,14 +16,17 @@
         cursor: not-allowed;
     }
 
-    &--error, .form-field--invalid & {
+    &--error,
+    .form-field--invalid & {
         background-color: color-mix(in lab, $color--high-pure 75%, $color--warning-light);
         border-color: $color--warning-light;
     }
 }
-.text-input:is(textarea){
+
+.text-input:is(textarea) {
     min-height: 170px;
 }
+
 .text-input[type="file"] {
     height: size(52);
     line-height: size(32);
@@ -42,11 +47,13 @@
     }
 }
 
-.checkbox, .radio {
+.checkbox,
+.radio {
     accent-color: $color--primary-pure;
     transform: scale(1.125);
 
-    &--disabled, &--readonly {
+    &--disabled,
+    &--readonly {
         accent-color: $color--high-dark;
     }
 

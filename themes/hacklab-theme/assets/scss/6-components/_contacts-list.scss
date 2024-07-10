@@ -1,0 +1,34 @@
+.contacts-list {
+
+    &__table {
+
+        th {
+            color: $color--low-light;
+            font-weight: $font-weight--bold;
+            text-align: start;
+        }
+
+        td {
+
+            &:has(input[type="checkbox"]) {
+                text-align: center;
+            }
+        }
+
+        button {
+            background-color: transparent;
+
+            &:disabled {
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    &__edit {
+        color: $color--low-pure;
+    }
+
+    &__remove {
+        color: $color--warning-pure;
+    }
+}

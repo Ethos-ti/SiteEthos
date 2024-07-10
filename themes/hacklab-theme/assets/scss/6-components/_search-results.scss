@@ -1,4 +1,13 @@
 .search-results {
+
+    .tabs__header {
+        .tab {
+            white-space: inherit;
+            min-width: 100px;
+            place-self: center;
+        }
+    }
+
     .search__results {
         display: flex;
         justify-content: space-between;
@@ -19,12 +28,28 @@
                 margin-bottom: $margin--medium;
             }
 
+            .custom-select-wrapper-opinion form {
+                border: 1px solid;
+                padding: $padding--small $padding--large;
+                border-radius: $border-radius--medium;
+                display: flex;
+                align-items: baseline;
+
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    cursor: pointer;
+                    margin-right: .5rem;
+                }
+
+
+            }
+
             &__filering {
                 &__select-form {
-                    border: 1px solid;
+                    border: none;
                     text-transform: uppercase;
-                    padding: $padding--small $padding--large;
-                    border-radius: $border-radius--large;
                     background-color: $color--high-pure;
 
                     &__option {

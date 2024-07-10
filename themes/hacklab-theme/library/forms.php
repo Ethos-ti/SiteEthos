@@ -79,10 +79,10 @@ function register_form (string $form_id, string $name, array $options = []) {
     return true;
 }
 
-function render_field (string $name, array $definition, array $context = []) {
+function render_field (string $name, array $definition, array $context = [], $skip_validation = false) {
     $value = array_key_exists($name, $context) ? $context[$name] : '';
 
-    $validation = empty($context) ? true : validate_field($definition, $value, $context);
+    $validation = ($skip_validation || empty($context)) ? true : validate_field($definition, $value, $context);
 
     if (isset($definition['conditional']) && !call_user_func($definition['conditional'])) {
         return;
@@ -130,6 +130,8 @@ function render_form (array $form, array $params = [], string $class = 'form') {
     $previous_url = $form_options['previous_url'] ?? null;
     $skip_url = $form_options['skip_url'] ?? null;
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
+
+    $skip_validation = empty($params) || (!empty($params['_hacklabr_form']) && $params['_hacklabr_form'] !== $form['id']);
 ?>
     <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
@@ -142,7 +144,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
 
         <div class="form__grid">
         <?php foreach ($form_options['fields'] as $field => $definition): ?>
-            <?php render_field($field, $definition, $params); ?>
+            <?php render_field($field, $definition, $params, $skip_validation); ?>
         <?php endforeach; ?>
         </div>
 

@@ -29,7 +29,7 @@
             width: 100%;
             max-width: 470px;
             border: $border-width--small solid $color--high-dark;
-            border-radius: $border-radius--medium;
+            border-radius: $border-radius--small;
             padding: calc($padding--small + $padding--x-small) $padding--small;
             font-size: $font-size--small;
             color: $color--low-light;
@@ -46,9 +46,10 @@
             color: $color--low-pure;
             background-color: $color--high-pure;
             margin-left: $margin--medium;
+            border-radius: $border-radius--medium;
 
             @media(max-width:$break--tablet) {
-                padding: $padding--small;
+                padding: $padding--small $padding--medium;
                 margin-left: $margin--small;
                 margin-bottom: 0;
             }
