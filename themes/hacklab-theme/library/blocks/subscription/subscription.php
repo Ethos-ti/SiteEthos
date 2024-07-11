@@ -25,7 +25,7 @@ function render_subscription_callback ($attributes) {
       <tbody>
       <tr>
         <td>Janeiro 2024</td>
-        <td><a href="#">Valor Estratégico/ODS e Agenda 2030</a></td>
+        <td><a href="https://abrir.link/sHNBW">Valor Estratégico/ODS e Agenda 2030</a></td>
         <td>Curso</td>
         <td class="status status--pendente"><span>Pendente</span></td>
       </tr>

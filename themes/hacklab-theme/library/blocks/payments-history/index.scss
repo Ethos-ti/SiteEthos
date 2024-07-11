@@ -13,9 +13,6 @@
     }
 
     .id__pedido{
-        a{
-            text-decoration: none;
-        }
 
         @include small{
             display: none;
