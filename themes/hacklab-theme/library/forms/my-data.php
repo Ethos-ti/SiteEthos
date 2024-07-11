@@ -8,10 +8,25 @@ function get_my_data_fields () {
     return $fields;
 }
 
-function get_my_data_params () {
-   $params = sanitize_form_params();
+function get_my_data_params ($form) {
+    $user_id = get_current_user_id();
 
-   return $params;
+    $params = sanitize_form_params();
+
+    // Workaround to email validation in `get_edit_contact_fields`
+    $params['_user_id'] = $user_id;
+
+    if (!empty($user_id)) {
+        $meta = get_user_meta($user_id);
+
+        foreach ($form['fields'] as $key => $field) {
+            if (empty($params[$key]) && !empty($meta[$key])) {
+                $params[$key] = $meta[$key][0];
+            }
+        }
+    }
+
+    return $params;
 }
 
 function register_my_data_form () {
@@ -26,14 +41,25 @@ function register_my_data_form () {
 add_action('init', 'hacklabr\\register_my_data_form');
 
 function validate_my_data_form ($form_id, $form, $params) {
-    if ($form_id === 'edit-my-data') {
+    $user_id = get_current_user_id();
+
+    if ($form_id === 'edit-my-data' && !empty($user_id)) {
         $validation = validate_form($form['fields'], $params);
 
         if ($validation !== true) {
-            return true;
+            return;
         }
 
-        // TODO
+        $user_meta = $params;
+        unset($user_meta['_hacklabr_form']);
+        unset($user_meta['_user_id']);
+
+        wp_update_user([
+            'ID' => $user_id,
+            'display_name' => $params['nome_completo'],
+            'user_email' => $params['email'],
+            'meta_input' => $user_meta,
+        ]);
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_my_data_form', 10, 3);

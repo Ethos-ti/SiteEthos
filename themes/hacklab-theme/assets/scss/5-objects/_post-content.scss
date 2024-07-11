@@ -251,5 +251,15 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+
+        thead > tr > th{
+            text-align: center;
+            color:$color--primary-dark;
+        }
+    }
+    @include mobile{
+        .hide-mobile{
+            display: none;
+        }
     }
 }

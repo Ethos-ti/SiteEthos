@@ -101,6 +101,9 @@ function get_registration_step1_fields () {
 		'TO' => 'Tocantins',
 	];
 
+    $privacy_policy_url =  get_privacy_policy_url();
+    $code_of_conduct_url = wp_get_upload_dir()['baseurl'] . '/2024/07/Codigo-de-Conduta_final.pdf';
+
     $fields = [
         'cnpj' => [
             'type' => 'masked',
@@ -209,6 +212,12 @@ function get_registration_step1_fields () {
             'label' => 'Quantidade de funcionários',
             'placeholder' => 'Insira a quantidade de funcionários da empresa',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || intval($value) <= 0) {
+                    return 'Número inválido';
+                }
+                return true;
+            },
         ],
         'porte' => [
             'type' => 'select',
@@ -289,13 +298,17 @@ function get_registration_step1_fields () {
         'termos_de_uso' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Li e concordo com os <a href="' . get_privacy_policy_url() . '">Termos de Uso e Política de Privacidade</a>',
+            'label' => 'Li e concordo com os <a target="_blank" href="' . $privacy_policy_url . '">Termos de Uso e Política de Privacidade</a>',
             'required' => true,
         ],
         'codigo_de_conduta' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
+<<<<<<< HEAD
             'label' => 'Li e concordo com o <a href="/wp-content/uploads/2024/07/Codigo-de-Conduta_final.pdf">Código de Conduta</a>',
+=======
+            'label' => 'Li e concordo com o <a target="_blank" href="' . $code_of_conduct_url . '">Código de Conduta</a>',
+>>>>>>> ca2b5c928fdc0b2875c287ca415d17e1fac3e2bb
             'required' => true,
         ],
     ];
@@ -431,7 +444,12 @@ function get_registration_step2_fields () {
     ];
 
     if (!empty($_GET['transaction'])) {
-        unset($fields['senha']);
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+        $user = get_user_by_transaction($transaction);
+
+        if (!empty($user)) {
+            unset($fields['senha']);
+        }
     }
 
     return $fields;

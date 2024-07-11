@@ -172,5 +172,71 @@
                 margin-top: 20px;
             }
         }
+        .event-tickets{
+            .tribe-tickets__tickets-form{
+                max-width: 100%;
+            }
+            .tribe-tickets__tickets-title{
+                font-family: $font-family--primary;
+            }
+            .tribe-tickets__notice{
+                .tribe-tickets-notice__content{
+                    font-family: $font-family--primary;
+                }
+            }
+            .tribe-tickets__tickets-item{
+                .tribe-tickets__tickets-item-content-title-container{
+                    .tribe-tickets__tickets-item-content-title{
+                        font-family: $font-family--primary;
+                    }
+                }
+                .tribe-tickets__tickets-item-details-content{
+                    font-family: $font-family--primary;
+                }
+                .tribe-tickets__tickets-item-extra{
+                    .tribe-tickets__tickets-item-extra-price{
+                        .tribe-tickets__tickets-sale-price{
+                            .tribe-formatted-currency-wrap{
+                                .tribe-currency-symbol,
+                                .tribe-amount{
+                                    font-family: $font-family--primary;
+                                }
+                            }
+                        }
+                    }
+                    .tribe-tickets__tickets-item-extra-available{
+                        font-family: $font-family--primary;
+                    }
+                }
+            }
+            .tribe-tickets__tickets-footer{
+                .tribe-tickets__tickets-footer-quantity{
+                    &-label,
+                    &-number{
+                        font-family: $font-family--primary;
+                    }
+                }
+                .tribe-tickets__tickets-footer-total{
+                    &-label{
+                        font-family: $font-family--primary;
+                    }
+                    &-wrap{
+                        .tribe-formatted-currency-wrap{
+                            .tribe-currency-symbol,
+                            .tribe-amount{
+                                font-family: $font-family--primary;
+                            }
+                        }
+                    }
+                }
+                .tribe-tickets__tickets-buy{
+                    background-color: transparent;
+                    border: 2px solid $color--low-pure;
+                    color: $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    font-size: $font-size--medium;
+                }
+            }
+        }
     }
 }
