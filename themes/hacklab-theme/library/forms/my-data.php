@@ -8,10 +8,22 @@ function get_my_data_fields () {
     return $fields;
 }
 
-function get_my_data_params () {
-   $params = sanitize_form_params();
+function get_my_data_params ($form) {
+    $user_id = get_current_user_id();
 
-   return $params;
+    $params = sanitize_form_params();
+
+    if (!empty($user_id)) {
+        $meta = get_user_meta($user_id);
+
+        foreach ($form['fields'] as $key => $field) {
+            if (empty($params[$key]) && !empty($meta[$key])) {
+                $params[$key] = $meta[$key][0];
+            }
+        }
+    }
+
+    return $params;
 }
 
 function register_my_data_form () {
