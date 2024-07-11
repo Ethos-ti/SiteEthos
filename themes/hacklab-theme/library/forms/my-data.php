@@ -13,6 +13,9 @@ function get_my_data_params ($form) {
 
     $params = sanitize_form_params();
 
+    // See `get_edit_contact_fields`
+    $params['_user_id'] = $user_id;
+
     if (!empty($user_id)) {
         $meta = get_user_meta($user_id);
 
