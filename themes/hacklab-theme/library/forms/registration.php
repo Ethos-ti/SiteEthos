@@ -431,7 +431,12 @@ function get_registration_step2_fields () {
     ];
 
     if (!empty($_GET['transaction'])) {
-        unset($fields['senha']);
+        $transaction = filter_input(INPUT_GET, 'transaction', FILTER_SANITIZE_ADD_SLASHES) ?? null;
+        $user = get_user_by_transaction($transaction);
+
+        if (!empty($user)) {
+            unset($fields['senha']);
+        }
     }
 
     return $fields;
