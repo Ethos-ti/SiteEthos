@@ -209,6 +209,12 @@ function get_registration_step1_fields () {
             'label' => 'Quantidade de funcionários',
             'placeholder' => 'Insira a quantidade de funcionários da empresa',
             'required' => true,
+            'validate' => function ($value, $context) {
+                if (!is_numeric($value) || intval($value) <= 0) {
+                    return 'Número inválido';
+                }
+                return true;
+            },
         ],
         'porte' => [
             'type' => 'select',
