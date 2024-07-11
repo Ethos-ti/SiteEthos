@@ -295,7 +295,7 @@ function get_registration_step1_fields () {
         'codigo_de_conduta' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Li e concordo com o <a href="#">Código de Conduta</a>',
+            'label' => 'Li e concordo com o <a href="/wp-content/uploads/2024/07/Codigo-de-Conduta_final.pdf">Código de Conduta</a>',
             'required' => true,
         ],
     ];
