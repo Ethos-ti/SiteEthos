@@ -119,6 +119,10 @@
             }
             .pmpro_submit{
                 text-align: center;
+                @include small{
+                    display: flex;
+                    justify-content: center;
+                }
                 input[type="submit"]{
                     background-color: $color--low-pure;
                     border: $border-width--medium solid $color--low-pure;
