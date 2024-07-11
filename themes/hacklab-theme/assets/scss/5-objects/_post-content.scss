@@ -247,4 +247,9 @@
             }
         }
     }
+    .wp-block-coblocks-accordion-item__content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }

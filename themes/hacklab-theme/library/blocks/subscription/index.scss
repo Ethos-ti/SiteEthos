@@ -1,6 +1,6 @@
 @import '../../../assets/scss/includes';
 
-.hacklabr-payments-history-block {
+.hacklabr-subscription-block {
     max-width: $break--desktop;
     width: 100%;
 
@@ -10,17 +10,6 @@
         font-size: $font-size--small;
         height: 3.5rem;
         text-align: left;
-    }
-
-    .id__pedido{
-
-        @include small{
-            display: none;
-        }
-
-        @include mobile{
-            display: none;
-        }
     }
 
     th{
@@ -33,6 +22,10 @@
         padding-bottom: $padding--medium;
         padding-left: $padding--medium;
         padding-top: $padding--medium;
+
+        a{
+            color: $color--primary-dark;
+        }
     }
 
     .status{
@@ -56,7 +49,7 @@
             }
         }
 
-        &--pago{
+        &--inscrito{
             span{
                 background-color: $color--meio-ambiente;
             }
