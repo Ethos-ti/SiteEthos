@@ -559,64 +559,62 @@ function get_posts_by_author( $user_id, $args = [] ) {
 }
 
 /**
- * Retrieves the name of the manager associated with the current user's organization.
- *
+ * Retrieves the name of the manager associated with an organization.
+ * @param int|null $post_id The organization ID (default to current user's organization).
  * @return string|null The display name of the manager, or null if no manager is found.
  */
-function get_manager_name() {
-    $current_user = wp_get_current_user();
+function get_manager_name($post_id = null) {
+    if ( empty( $post_id ) ) {
+        $current_user = get_current_user_id();
 
-    if ( ! ( $current_user instanceof \WP_User ) ) {
-        return;
+        if ( empty( $current_user ) ) {
+            return null;
+        }
+    
+        $organizations = get_posts_by_author( $current_user, [
+            'post_type'      => 'organizacao',
+            'posts_per_page' => 1
+        ] );
+
+        if ( ! empty( $organizations ) ) {
+            $post_id = $organizations[0];
+        }
     }
 
-    $organization_id = get_posts_by_author( $current_user->ID, [
-        'post_type'      => 'organizacao',
-        'fields'         => 'ids',
-        'posts_per_page' => 1
-    ] );
+    $organization = get_post($post_id);
 
-    if ( ! isset( $organization_id[0] ) ) {
-        return;
-    }
+    $author_id = $organizations[0]->post_author;
+    $author = get_user_by( 'ID', $author_id );
 
-    $organization_author_id = get_post_field( 'post_author', $organization_id[0] );
-
-    if ( $current_user->ID != $organization_author_id ) {
-        return;
-    }
-
-    $get_userdata = get_userdata( $organization_author_id );
-
-    if ( isset( $get_userdata->display_name ) ) {
-        return $get_userdata->display_name;
-    }
-
-    return '';
-
+    return $author->display_name ?? null;
 }
 
 /**
- * Retrieves the name of the organization associated with the current user.
+ * Retrieves the name of an organization.
  *
+ * @param int|null $post_id The organization ID (default to current user's organization).
  * @return string|null The title of the organization post, or null if no
  *                     organization is found.
  */
-function get_organization_name() {
-    $current_user = wp_get_current_user();
+function get_organization_name( $post_id = null ) {
+    if ( empty( $post_id ) ) {
+        $current_user = get_current_user_id();
 
-    if ( ! ( $current_user instanceof \WP_User ) ) {
-        return;
+        if ( empty( $current_user ) ) {
+            return null;
+        }
+    
+        $organizations = get_posts_by_author( $current_user, [
+            'post_type'      => 'organizacao',
+            'posts_per_page' => 1
+        ] );
+
+        if ( ! empty( $organizations ) ) {
+            $post_id = $organizations[0];
+        }
     }
 
-    $organization_id = get_posts_by_author( $current_user->ID, [
-        'post_type'      => 'organizacao',
-        'posts_per_page' => 1
-    ] );
+    $organization = get_post($post_id);
 
-    if ( ! isset( $organization_id[0] ) ) {
-        return;
-    }
-
-    return $organization_id[0]->post_title;
+    return $organization->post_title ?? null;
 }
