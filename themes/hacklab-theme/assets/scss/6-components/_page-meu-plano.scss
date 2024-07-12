@@ -1,4 +1,7 @@
 .page-meu-plano{
+    main{
+        overflow: auto !important;
+    }
     .wp-block-table{
         thead > tr > th{
             padding:$padding--medium;
