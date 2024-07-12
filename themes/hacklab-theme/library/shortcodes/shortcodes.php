@@ -11,7 +11,7 @@ function nome_do_gerente_shortcode ($attributes) {
     if (!empty($attrs['postid'])) {
         $post_id = intval($attrs['postid']);
     } else {
-        $post_id = null 
+        $post_id = null;
     }
 
     return get_manager_name($post_id) ?: $attrs['fallback'];
@@ -23,7 +23,7 @@ function nome_da_empresa_shortcode ($attributes) {
         'postid' => null,
     ], $attributes);
 
-    
+
     if (!empty($attrs['postid'])) {
         $post_id = intval($attrs['postid']);
     } else {
