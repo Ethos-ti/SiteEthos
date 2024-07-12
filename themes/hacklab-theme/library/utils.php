@@ -545,3 +545,78 @@ function list_registered_blocks() {
 }
 
 // add_action('admin_notices', 'list_registered_blocks');
+
+/**
+ * Retrieves a list of posts written by the specified author.
+ *
+ * @param int   $user_id The ID of the author to retrieve posts for.
+ * @param array $args    Optional. An array of arguments to modify the query. See get_posts() for available options.
+ * @return array An array of post objects.
+ */
+function get_posts_by_author( $user_id, $args = [] ) {
+    $args['author'] = $user_id;
+    return get_posts( $args );
+}
+
+/**
+ * Retrieves the name of the manager associated with the current user's organization.
+ *
+ * @return string|null The display name of the manager, or null if no manager is found.
+ */
+function get_manager_name() {
+    $current_user = wp_get_current_user();
+
+    if ( ! ( $current_user instanceof \WP_User ) ) {
+        return;
+    }
+
+    $organization_id = get_posts_by_author( $current_user->ID, [
+        'post_type'      => 'organizacao',
+        'fields'         => 'ids',
+        'posts_per_page' => 1
+    ] );
+
+    if ( ! isset( $organization_id[0] ) ) {
+        return;
+    }
+
+    $organization_author_id = get_post_field( 'post_author', $organization_id[0] );
+
+    if ( $current_user->ID != $organization_author_id ) {
+        return;
+    }
+
+    $get_userdata = get_userdata( $organization_author_id );
+
+    if ( isset( $get_userdata->display_name ) ) {
+        return $get_userdata->display_name;
+    }
+
+    return '';
+
+}
+
+/**
+ * Retrieves the name of the organization associated with the current user.
+ *
+ * @return string|null The title of the organization post, or null if no
+ *                     organization is found.
+ */
+function get_organization_name() {
+    $current_user = wp_get_current_user();
+
+    if ( ! ( $current_user instanceof \WP_User ) ) {
+        return;
+    }
+
+    $organization_id = get_posts_by_author( $current_user->ID, [
+        'post_type'      => 'organizacao',
+        'posts_per_page' => 1
+    ] );
+
+    if ( ! isset( $organization_id[0] ) ) {
+        return;
+    }
+
+    return $organization_id[0]->post_title;
+}
