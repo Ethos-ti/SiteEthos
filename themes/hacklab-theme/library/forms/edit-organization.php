@@ -167,6 +167,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         }
 
         $user_id = (int) $params['_user_id'];
+        $post_meta = $params;
 
         unset($post_meta['_action']);
         unset($post_meta['_hacklabr_form']);
