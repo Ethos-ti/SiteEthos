@@ -59,6 +59,9 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
 
     $level_options = get_pmpro_level_options($post->ID ?? null, $definition['for_manager']);
     $initial_value = $value ?: ($level_options[$kit] ?? 'null');
+
+    $select_plan_str = esc_attr(__('Select plan', 'hacklabr'));
+    $selected_plan_str = esc_attr(__('Selected plan', 'hacklabr'));
 ?>
     <div class="choose-plan__input" x-data="{ level: <?= $initial_value ?> }">
         <div class="choose-plan__grid">
@@ -73,7 +76,7 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <?php endif; ?>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['conexao'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['conexao'] ?>">
-                        <span x-text="(level === <?= $level_options['conexao'] ?> ? 'Plano selecionado' : 'Selecionar plano')"></span>
+                        <span x-text="(level === <?= $level_options['conexao'] ?> ? '<?= $selected_plan_str ?>' : '<?= $select_plan_str ?>')"></span>
                     </button>
                 </div>
             </div>
@@ -89,7 +92,7 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <?php endif; ?>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['essencial'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['essencial'] ?>">
-                        <span x-text="(level === <?= $level_options['essencial'] ?> ? 'Plano selecionado' : 'Selecionar plano')"></span>
+                        <span x-text="(level === <?= $level_options['essencial'] ?> ? '<?= $selected_plan_str ?>' : '<?= $select_plan_str ?>')"></span>
                     </button>
                 </div>
             </div>
@@ -105,7 +108,7 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <?php endif; ?>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['vivencia'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['vivencia'] ?>">
-                        <span x-text="(level === <?= $level_options['vivencia'] ?> ? 'Plano selecionado' : 'Selecionar plano')"></span>
+                        <span x-text="(level === <?= $level_options['vivencia'] ?> ? '<?= $selected_plan_str ?>' : '<?= $select_plan_str ?>')"></span>
                     </button>
                 </div>
             </div>
@@ -121,7 +124,7 @@ function render_pmpro_level_field (string $name, $value, array $definition) {
                 <?php endif; ?>
                 <div class="choose-plan__button">
                     <button type="button" class="button" :class="level === <?= $level_options['institucional'] ?> ? 'button--solid' : 'button--outline'" @click="level = <?= $level_options['institucional'] ?>">
-                        <span x-text="(level === <?= $level_options['institucional'] ?> ? 'Plano selecionado' : 'Selecionar plano')"></span>
+                        <span x-text="(level === <?= $level_options['institucional'] ?> ? '<?= $selected_plan_str ?>' : '<?= $select_plan_str ?>')"></span>
                     </button>
                 </div>
             </div>

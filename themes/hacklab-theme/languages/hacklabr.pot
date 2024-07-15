@@ -2,32 +2,36 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.68\n"
+"Project-Id-Version: Ethos 0.0.75\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-28T20:33:01+00:00\n"
+"POT-Creation-Date: 2024-07-15T15:08:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
 
 #. Theme Name of the theme
+#: style.css
 msgid "Ethos"
 msgstr ""
 
 #. Theme URI of the theme
 #. Author URI of the theme
+#: style.css
 msgid "https://hacklab.com.br/"
 msgstr ""
 
 #. Description of the theme
+#: style.css
 msgid "New website theme"
 msgstr ""
 
 #. Author of the theme
+#: style.css
 msgid "Hacklab"
 msgstr ""
 
@@ -96,6 +100,10 @@ msgstr ""
 msgid "Toggle search form visibility"
 msgstr ""
 
+#: library/cron.php:8
+msgid "Hourly"
+msgstr ""
+
 #: library/form-fields.php:86
 msgid "Select an option"
 msgstr ""
@@ -104,58 +112,563 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: library/forms.php:139
+#: library/forms.php:141
 msgid "Skip step"
 msgstr ""
 
-#: library/forms.php:164
+#: library/forms.php:166
 msgid "Required field"
 msgstr ""
 
-#: library/forms/custom-forms.php:122
+#: library/forms/custom-fields.php:63
+msgid "Select plan"
+msgstr ""
+
+#: library/forms/custom-fields.php:64
+msgid "Selected plan"
+msgstr ""
+
+#: library/forms/custom-forms.php:76
+msgid "Main contacts"
+msgstr ""
+
+#: library/forms/custom-forms.php:77
+msgid "This contact will receive all communications by Ethos."
+msgstr ""
+
+#: library/forms/custom-forms.php:78
+msgid "It's possible to have more than one main contact."
+msgstr ""
+
+#: library/forms/custom-forms.php:99
+#: library/forms/custom-forms.php:129
+#: library/forms/custom-forms.php:144
+#: library/forms/custom-forms.php:171
+#: library/forms/registration.php:700
+msgid "Add contact"
+msgstr ""
+
+#: library/forms/custom-forms.php:107
+msgid "Financial contact"
+msgstr ""
+
+#: library/forms/custom-forms.php:108
+msgid "This contact will receive documents and communications related to the membership payments."
+msgstr ""
+
+#: library/forms/custom-forms.php:138
 msgid "Finish"
 msgstr ""
 
-#: library/forms/edit-organization.php:10
-msgid "Edit organization"
+#: library/forms/custom-forms.php:172
+msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: library/forms/edit-organization.php:12
+#: library/forms/custom-forms.php:173
+msgid "Edit contact"
+msgstr ""
+
+#: library/forms/custom-forms.php:174
+msgid "You can only have one approver by team, do you want to replace the approver?"
+msgstr ""
+
+#: library/forms/custom-forms.php:263
+msgid "Add one more contact"
+msgstr ""
+
+#: library/forms/custom-forms.php:271
+msgid "Name"
+msgstr ""
+
+#: library/forms/custom-forms.php:272
+#: library/forms/registration.php:373
+msgid "Email"
+msgstr ""
+
+#: library/forms/custom-forms.php:273
+msgid "Approver"
+msgstr ""
+
+#: library/forms/custom-forms.php:274
+msgid "Administrator"
+msgstr ""
+
+#: library/forms/custom-forms.php:275
+#: library/forms/custom-forms.php:291
+#: library/forms/edit-organization.php:101
+#: library/forms/edit-organization.php:117
 msgid "Edit"
 msgstr ""
 
+#: library/forms/custom-forms.php:276
+#: library/forms/custom-forms.php:296
+msgid "Delete"
+msgstr ""
+
+#: library/forms/edit-organization.php:10
+#: library/forms/registration.php:378
+msgid "Invalid email"
+msgstr ""
+
+#: library/forms/edit-organization.php:16
+#: library/forms/registration.php:384
+msgid "Email is already in use"
+msgstr ""
+
+#: library/forms/edit-organization.php:99
+msgid "Edit organization"
+msgstr ""
+
+#: library/forms/edit-organization.php:105
+#: library/forms/edit-organization.php:110
+msgid "Edit contacts"
+msgstr ""
+
+#: library/forms/edit-organization.php:110
+msgid "(hidden)"
+msgstr ""
+
+#: library/forms/edit-organization.php:115
+msgid "Edit organization finances"
+msgstr ""
+
+#: library/forms/my-data.php:35
+msgid "My data"
+msgstr ""
+
+#: library/forms/my-data.php:38
+msgid "Save changes"
+msgstr ""
+
 #: library/forms/registration.php:6
+#: library/forms/registration.php:12
 msgid "Registration under progress"
 msgstr ""
 
-#: library/forms/registration.php:650
-msgid "Member registration - step 1"
+#: library/forms/registration.php:62
+msgid "Micro and small (up to R$ 16 million)"
 msgstr ""
 
-#: library/forms/registration.php:653
-#: library/forms/registration.php:660
-#: library/forms/registration.php:667
-#: library/forms/registration.php:675
-msgid "Continue"
+#: library/forms/registration.php:63
+msgid "Medium (R$ 16 to 300 million)"
 msgstr ""
 
-#: library/forms/registration.php:656
-msgid "Member registration - step 2"
+#: library/forms/registration.php:64
+msgid "Large (over R$ 300 million)"
 msgstr ""
 
-#: library/forms/registration.php:663
-msgid "Member registration - step 3"
+#: library/forms/registration.php:68
+msgid "Micro-enterprise"
+msgstr ""
+
+#: library/forms/registration.php:69
+msgid "Small business"
+msgstr ""
+
+#: library/forms/registration.php:70
+msgid "Medium business"
+msgstr ""
+
+#: library/forms/registration.php:71
+msgid "Large business"
+msgstr ""
+
+#: library/forms/registration.php:111
+msgid "CNPJ number"
+msgstr ""
+
+#: library/forms/registration.php:113
+msgid "Enter the company' CNPJ number"
+msgstr ""
+
+#: library/forms/registration.php:117
+msgid "Invalid CNPJ number"
+msgstr ""
+
+#: library/forms/registration.php:125
+msgid "Legal name"
+msgstr ""
+
+#: library/forms/registration.php:126
+msgid "Enter the legal name"
+msgstr ""
+
+#: library/forms/registration.php:132
+msgid "Trade name"
+msgstr ""
+
+#: library/forms/registration.php:133
+msgid "Enter the trade name"
+msgstr ""
+
+#: library/forms/registration.php:139
+msgid "Sector / segment"
+msgstr ""
+
+#: library/forms/registration.php:140
+msgid "Enter the company's sector / segment"
+msgstr ""
+
+#: library/forms/registration.php:146
+msgid "CNAE number"
+msgstr ""
+
+#: library/forms/registration.php:148
+msgid "Enter the company's CNAE number"
+msgstr ""
+
+#: library/forms/registration.php:154
+msgid "Invalid CNAE number"
+msgstr ""
+
+#: library/forms/registration.php:162
+msgid "Revenue from the previous year (R$)"
+msgstr ""
+
+#: library/forms/registration.php:167
+msgid "Invalid revenue"
+msgstr ""
+
+#: library/forms/registration.php:175
+msgid "State registration"
+msgstr ""
+
+#: library/forms/registration.php:176
+msgid "Enter the state registration"
+msgstr ""
+
+#: library/forms/registration.php:182
+msgid "Municipal registration"
+msgstr ""
+
+#: library/forms/registration.php:183
+msgid "Enter the municipal registration"
+msgstr ""
+
+#: library/forms/registration.php:189
+msgid "Company logo"
+msgstr ""
+
+#: library/forms/registration.php:191
+msgid "Picture should be 164 x 164 pixels"
+msgstr ""
+
+#: library/forms/registration.php:197
+msgid "Website"
+msgstr ""
+
+#: library/forms/registration.php:198
+msgid "https://www.companysite.com"
+msgstr ""
+
+#: library/forms/registration.php:204
+msgid "Invalid URL"
+msgstr ""
+
+#: library/forms/registration.php:212
+msgid "Number of employees"
+msgstr ""
+
+#: library/forms/registration.php:213
+msgid "Enter the number of company employees"
+msgstr ""
+
+#: library/forms/registration.php:217
+msgid "Invalid number"
+msgstr ""
+
+#: library/forms/registration.php:225
+msgctxt "company size"
+msgid "Size"
+msgstr ""
+
+#: library/forms/registration.php:232
+msgctxt "company size"
+msgid "Invalid size"
+msgstr ""
+
+#: library/forms/registration.php:240
+msgid "Address (street)"
+msgstr ""
+
+#: library/forms/registration.php:241
+msgid "Enter the address street"
+msgstr ""
+
+#: library/forms/registration.php:247
+msgctxt "address"
+msgid "Number"
+msgstr ""
+
+#: library/forms/registration.php:253
+msgctxt "address"
+msgid "Complement"
+msgstr ""
+
+#: library/forms/registration.php:254
+msgid "Enter the address complement"
+msgstr ""
+
+#: library/forms/registration.php:260
+msgid "Neighborhood"
+msgstr ""
+
+#: library/forms/registration.php:261
+msgid "Enter the neighborhood"
+msgstr ""
+
+#: library/forms/registration.php:267
+msgid "City"
+msgstr ""
+
+#: library/forms/registration.php:268
+msgid "Enter the city"
+msgstr ""
+
+#: library/forms/registration.php:274
+msgctxt "address"
+msgid "State"
+msgstr ""
+
+#: library/forms/registration.php:279
+msgctxt "address"
+msgid "Invalid state"
+msgstr ""
+
+#: library/forms/registration.php:287
+msgid "CEP code"
+msgstr ""
+
+#: library/forms/registration.php:289
+msgid "Enter the CEP code"
+msgstr ""
+
+#: library/forms/registration.php:293
+msgid "Invalid CEP code"
+msgstr ""
+
+#: library/forms/registration.php:301
+msgid "I have read and agreed with the <a href=\"%s\" target=\"_blank\">Terms of Use and Privacy Policy</a>"
+msgstr ""
+
+#: library/forms/registration.php:307
+msgid "I have read and agreed with the <a href=\"%s\" target=\"_blank\">Code of Conduct</a>"
+msgstr ""
+
+#: library/forms/registration.php:338
+msgid "Full name"
+msgstr ""
+
+#: library/forms/registration.php:339
+msgid "Enter the full name"
+msgstr ""
+
+#: library/forms/registration.php:345
+msgid "CPF number"
+msgstr ""
+
+#: library/forms/registration.php:347
+msgid "Enter the CPF number"
+msgstr ""
+
+#: library/forms/registration.php:351
+msgid "Invalid CPF number"
+msgstr ""
+
+#: library/forms/registration.php:359
+msgid "Role"
+msgstr ""
+
+#: library/forms/registration.php:360
+msgid "Enter the role in company"
+msgstr ""
+
+#: library/forms/registration.php:366
+msgctxt "company"
+msgid "Area"
+msgstr ""
+
+#: library/forms/registration.php:367
+msgid "Enter the area in company"
+msgstr ""
+
+#: library/forms/registration.php:374
+msgid "Enter the email"
+msgstr ""
+
+#: library/forms/registration.php:394
+msgid "Password"
+msgstr ""
+
+#: library/forms/registration.php:395
+msgid "Enter the password"
+msgstr ""
+
+#: library/forms/registration.php:399
+msgid "Password should be at least 8 characters long"
+msgstr ""
+
+#: library/forms/registration.php:407
+msgid "Cell phone number"
+msgstr ""
+
+#: library/forms/registration.php:409
+msgid "Enter the cell phone number"
+msgstr ""
+
+#: library/forms/registration.php:413
+#: library/forms/registration.php:435
+msgid "Invalid phone number"
+msgstr ""
+
+#: library/forms/registration.php:421
+msgid "This is also a WhatsApp number"
+msgstr ""
+
+#: library/forms/registration.php:427
+msgid "Phone number"
+msgstr ""
+
+#: library/forms/registration.php:429
+msgid "Enter the phone number"
+msgstr ""
+
+#: library/forms/registration.php:477
+msgctxt "membership"
+msgid "Plan"
+msgstr ""
+
+#: library/forms/registration.php:482
+msgctxt "membership"
+msgid "Invalid plan"
+msgstr ""
+
+#: library/forms/registration.php:511
+msgctxt "payment"
+msgid "In advance"
+msgstr ""
+
+#: library/forms/registration.php:512
+msgctxt "payment"
+msgid "In stallments"
+msgstr ""
+
+#: library/forms/registration.php:516
+msgid "Monthly"
+msgstr ""
+
+#: library/forms/registration.php:517
+msgid "Semianually"
+msgstr ""
+
+#: library/forms/registration.php:518
+msgid "Yearly"
+msgstr ""
+
+#: library/forms/registration.php:522
+#: library/forms/registration.php:527
+msgctxt "medium"
+msgid "Email"
+msgstr ""
+
+#: library/forms/registration.php:523
+#: library/forms/registration.php:528
+msgctxt "medium"
+msgid "Post mail"
+msgstr ""
+
+#: library/forms/registration.php:529
+msgctxt "medium"
+msgid "Electronic signature"
+msgstr ""
+
+#: library/forms/registration.php:536
+msgid "Calculated payment value"
+msgstr ""
+
+#: library/forms/registration.php:544
+msgid "Expected date of first payment"
+msgstr ""
+
+#: library/forms/registration.php:545
+msgid "Select a date"
+msgstr ""
+
+#: library/forms/registration.php:551
+msgid "Payment terms"
+msgstr ""
+
+#: library/forms/registration.php:558
+msgid "Invalid payment term"
+msgstr ""
+
+#: library/forms/registration.php:566
+msgid "Payment frequency"
+msgstr ""
+
+#: library/forms/registration.php:573
+msgid "Invalid payment frequency"
+msgstr ""
+
+#: library/forms/registration.php:581
+msgid "Observations about payment terms"
+msgstr ""
+
+#: library/forms/registration.php:582
+msgid "Describe here your observations"
+msgstr ""
+
+#: library/forms/registration.php:588
+msgid "Means of receiving the association agreement"
+msgstr ""
+
+#: library/forms/registration.php:595
+#: library/forms/registration.php:610
+#: library/forms/registration.php:625
+msgctxt "medium"
+msgid "Invalid mean"
+msgstr ""
+
+#: library/forms/registration.php:603
+msgid "Means of receiving the banking slips"
+msgstr ""
+
+#: library/forms/registration.php:618
+msgid "Means of receiving the receipts"
 msgstr ""
 
 #: library/forms/registration.php:670
+msgid "Member registration - step 1"
+msgstr ""
+
+#: library/forms/registration.php:673
+#: library/forms/registration.php:680
+#: library/forms/registration.php:687
+#: library/forms/registration.php:695
+msgid "Continue"
+msgstr ""
+
+#: library/forms/registration.php:676
+msgid "Member registration - step 2"
+msgstr ""
+
+#: library/forms/registration.php:683
+msgid "Member registration - step 3"
+msgstr ""
+
+#: library/forms/registration.php:690
 msgid "Member registration - step 4"
 msgstr ""
 
-#: library/forms/registration.php:678
+#: library/forms/registration.php:698
 msgid "Member registration - step 5"
 msgstr ""
 
-#: library/membership.php:60
+#: library/forms/registration.php:946
+msgid "Membership to Ethos Institute"
+msgstr ""
+
+#: library/membership.php:115
 msgid "Organizations"
 msgstr ""
 
@@ -207,7 +720,7 @@ msgstr ""
 msgid "This search yielded no results, do you want to perform a new search?"
 msgstr ""
 
-#: search.php:110
+#: search.php:111
 msgid "Showing: &nbsp &nbsp all contents"
 msgstr ""
 
@@ -219,41 +732,41 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: single-evento.php:85
+#: single-evento.php:88
 #: single.php:49
 #: template-parts/post-card.php:85
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:99
+#: single-evento.php:102
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:108
+#: single-evento.php:111
 msgid "End"
 msgstr ""
 
-#: single-evento.php:114
+#: single-evento.php:117
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:120
+#: single-evento.php:123
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:131
+#: single-evento.php:134
 msgid "Event type"
 msgstr ""
 
-#: single-evento.php:138
+#: single-evento.php:141
 msgid "Number of events"
 msgstr ""
 
-#: single-evento.php:146
+#: single-evento.php:149
 msgid "Weekday"
 msgstr ""
 
-#: single-evento.php:159
+#: single-evento.php:165
 msgid "Local"
 msgstr ""
 
@@ -278,11 +791,17 @@ msgid "Membership area"
 msgstr ""
 
 #: template-associates-area.php:15
+#: template-invoice.php:17
 msgid "Associeted panel"
 msgstr ""
 
 #: template-associates-area.php:29
+#: template-invoice.php:31
 msgid "Logout"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Invoice area"
 msgstr ""
 
 #. Template Name of the theme
@@ -339,9 +858,6 @@ msgstr ""
 #: library/blocks/banner-with-image/editor.js:11
 #: library/blocks/card-header/editor.js:11
 #: library/blocks/download-image/editor.js:11
-#: dist/blocks/banner-with-image/editor.js:128
-#: dist/blocks/card-header/editor.js:115
-#: dist/blocks/download-image/editor.js:128
 msgid "Header content"
 msgstr ""
 
@@ -351,9 +867,6 @@ msgstr ""
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:23
-#: dist/blocks/banner-with-image/editor.js:142
-#: dist/blocks/card-header/editor.js:142
-#: dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr ""
 
@@ -363,10 +876,6 @@ msgstr ""
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/banner-with-image/editor.js:28
 #: library/blocks/shared/SelectImage.js:32
-#: dist/blocks/banner-with-image/editor.js:96
-#: dist/blocks/banner-with-image/editor.js:145
-#: dist/blocks/card-header/editor.js:83
-#: dist/blocks/download-image/editor.js:96
 msgid "Image"
 msgstr ""
 
@@ -374,9 +883,6 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:15
-#: dist/blocks/banner-with-image/editor.js:79
-#: dist/blocks/card-header/editor.js:66
-#: dist/blocks/download-image/editor.js:79
 msgid "Change image"
 msgstr ""
 
@@ -384,9 +890,6 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:18
-#: dist/blocks/banner-with-image/editor.js:82
-#: dist/blocks/card-header/editor.js:69
-#: dist/blocks/download-image/editor.js:82
 msgid "Remove image"
 msgstr ""
 
@@ -394,227 +897,198 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:24
-#: dist/blocks/banner-with-image/editor.js:88
-#: dist/blocks/card-header/editor.js:75
-#: dist/blocks/download-image/editor.js:88
 msgid "Select image"
 msgstr ""
 
 #: dist/blocks/card-body/editor.js:19
 #: library/blocks/card-body/editor.js:8
-#: dist/blocks/card-body/editor.js:58
 msgid "Body content"
 msgstr ""
 
 #: dist/blocks/card-header/editor.js:19
 #: library/blocks/card-header/editor.js:41
-#: dist/blocks/card-header/editor.js:145
 msgid "Background image"
 msgstr ""
 
 #: dist/blocks/form/editor.js:19
 #: library/blocks/form/editor.js:43
-#: dist/blocks/form/editor.js:1383
 msgid "Select option"
 msgstr ""
 
 #: dist/blocks/form/editor.js:19
 #: library/blocks/form/editor.js:48
 #: library/blocks/form/editor.js:50
-#: dist/blocks/form/editor.js:1388
-#: dist/blocks/form/editor.js:1390
 msgid "Form"
+msgstr ""
+
+#: dist/blocks/my-plan/editor.js:19
+#: library/blocks/my-plan/editor.js:22
+msgid "My Plan"
+msgstr ""
+
+#: dist/blocks/payments-history/editor.js:19
+#: library/blocks/payments-history/editor.js:13
+msgid "Payments history"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:40
-#: dist/blocks/posts-grid/editor.js:1931
 msgid "Grid columns"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:49
-#: dist/blocks/posts-grid/editor.js:1940
 msgid "Grid rows"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:58
-#: dist/blocks/posts-grid/editor.js:1949
 msgid "Grid gap"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:66
-#: dist/blocks/posts-grid/editor.js:1957
 msgid "Hide author"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:74
-#: dist/blocks/posts-grid/editor.js:1965
 msgid "Hide categories"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:82
-#: dist/blocks/posts-grid/editor.js:1973
 msgid "Hide date"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:90
-#: dist/blocks/posts-grid/editor.js:1981
 msgid "Hide excerpt"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:98
-#: dist/blocks/posts-grid/editor.js:1989
 msgid "Show taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:11
-#: dist/blocks/posts-grid/editor.js:1502
 msgid "Query"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:35
-#: dist/blocks/posts-grid/editor.js:1526
 msgid "Show children posts?"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:79
-#: dist/blocks/posts-grid/editor.js:1570
 msgid "Filter posts to not display"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
-#: dist/blocks/posts-grid/editor.js:1632
 msgid "Card model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
-#: dist/blocks/posts-grid/editor.js:1637
 msgctxt "card"
 msgid "Default model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
-#: dist/blocks/posts-grid/editor.js:1678
 msgid "Card modifier"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:5
-#: dist/blocks/posts-grid/editor.js:1345
 msgid "OR"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:6
-#: dist/blocks/posts-grid/editor.js:1346
 msgid "AND"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:9
-#: dist/blocks/posts-grid/editor.js:1349
 msgid "Compare terms"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
-#: dist/blocks/posts-grid/editor.js:1381
 msgid "Post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
-#: dist/blocks/posts-grid/editor.js:1386
 msgid "No post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:8
-#: dist/blocks/posts-grid/editor.js:1742
 msgctxt "size"
 msgid "Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:9
-#: dist/blocks/posts-grid/editor.js:1743
 msgctxt "size"
 msgid "Medium"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:10
-#: dist/blocks/posts-grid/editor.js:1744
 msgctxt "size"
 msgid "Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:11
-#: dist/blocks/posts-grid/editor.js:1745
 msgctxt "size"
 msgid "Extra Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:12
-#: dist/blocks/posts-grid/editor.js:1746
 msgctxt "size"
 msgid "Extra Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:60
-#: dist/blocks/posts-grid/editor.js:1794
 msgid "Size"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomies.js:29
-#: dist/blocks/posts-grid/editor.js:1836
 msgid "Taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
-#: dist/blocks/posts-grid/editor.js:1419
 msgid "Taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
-#: dist/blocks/posts-grid/editor.js:1424
 msgid "No taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:118
 #: library/blocks/shared/SelectTerms.js:9
-#: dist/blocks/posts-grid/editor.js:1446
 msgid "Terms"
 msgstr ""
 
 #: dist/blocks/read-more/editor.js:19
 #: library/blocks/read-more/editor.js:14
-#: dist/blocks/read-more/editor.js:66
 msgid "Full text"
 msgstr ""
 
 #: dist/blocks/read-more/editor.js:19
 #: library/blocks/read-more/editor.js:34
-#: dist/blocks/read-more/editor.js:86
 msgid "Lines shown"
 msgstr ""
 
@@ -622,8 +1096,6 @@ msgstr ""
 #: dist/blocks/read-more/index.js:19
 #: library/blocks/read-more/editor.js:53
 #: library/blocks/read-more/index.js:15
-#: dist/blocks/read-more/editor.js:105
-#: dist/blocks/read-more/index.js:16
 msgid "Read less"
 msgstr ""
 
@@ -632,36 +1104,33 @@ msgstr ""
 #: library/blocks/read-more/editor.js:53
 #: library/blocks/read-more/editor.js:71
 #: library/blocks/read-more/index.js:12
-#: dist/blocks/read-more/editor.js:105
-#: dist/blocks/read-more/editor.js:123
-#: dist/blocks/read-more/index.js:13
 msgid "Read more"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:32
-#: dist/blocks/steps-viewer/editor.js:97
 msgid "Steps"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:35
-#: dist/blocks/steps-viewer/editor.js:100
 msgid "Current step"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:45
-#: dist/blocks/steps-viewer/editor.js:110
 msgid "Last step"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:55
 #: library/blocks/steps-viewer/editor.js:71
-#: dist/blocks/steps-viewer/editor.js:120
-#: dist/blocks/steps-viewer/editor.js:136
 msgid "Step %s of %s"
+msgstr ""
+
+#: dist/blocks/subscription/editor.js:19
+#: library/blocks/subscription/editor.js:13
+msgid "Subscription"
 msgstr ""
 
 #: dist/js/functionalities/gutenberg.js:29
@@ -728,6 +1197,26 @@ msgctxt "block description"
 msgid "Render a code-driven form"
 msgstr ""
 
+#: library/blocks/my-plan/block.json
+msgctxt "block title"
+msgid "My Plan"
+msgstr ""
+
+#: library/blocks/my-plan/block.json
+msgctxt "block description"
+msgid "Description of the plan I subscribe"
+msgstr ""
+
+#: library/blocks/payments-history/block.json
+msgctxt "block title"
+msgid "Payments history"
+msgstr ""
+
+#: library/blocks/payments-history/block.json
+msgctxt "block description"
+msgid "Payments history on the CRM"
+msgstr ""
+
 #: library/blocks/posts-grid/block.json
 msgctxt "block title"
 msgid "Posts grid"
@@ -756,6 +1245,16 @@ msgstr ""
 #: library/blocks/steps-viewer/block.json
 msgctxt "block description"
 msgid "Show the current step from a multi-step flow"
+msgstr ""
+
+#: library/blocks/subscription/block.json
+msgctxt "block title"
+msgid "Subscription table"
+msgstr ""
+
+#: library/blocks/subscription/block.json
+msgctxt "block description"
+msgid "Subscription on the CRM"
 msgstr ""
 
 #: library/blocks/video-playlist/block.json
