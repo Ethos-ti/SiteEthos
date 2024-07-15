@@ -42,4 +42,52 @@
         justify-content: flex-end;
         padding-bottom: $padding--x-large;
     }
+    &__modal{
+        margin: auto;
+        width: 100%;
+        max-width:$grid--narrow;
+        border: none;
+        border-radius:$border-radius--medium;
+
+        .form__buttons > button  {
+            background-color: $color--low-pure;
+            color: white;
+            cursor: pointer;
+        }
+        .form__buttons > button:hover  {
+            background-color: unset;
+            color:$color--low-pure;
+        }
+
+    }
+    .form__grid{
+        padding: 0 $padding--xx-large;
+        @include mobile{
+            padding: 0px;
+        }
+        label{
+            padding-bottom: $padding--small;
+        }
+
+    }
+    &__modal-header{
+        display: flex;
+        justify-content: space-between;
+        margin:$margin--medium 0px;
+        & span{
+            text-align: center;
+            align-content: center;
+            width: 100%;
+            color:$color--primary-dark;
+            font-size: $font-size--x-large;
+
+        }
+        & button{
+            background-color: unset;
+            cursor: pointer;
+        }
+    }
+
+
+
 }

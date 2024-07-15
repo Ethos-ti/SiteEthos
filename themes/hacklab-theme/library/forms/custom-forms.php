@@ -306,7 +306,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
-                <span x-text="userId ? 'Editar contato' : 'Adicionar contato'"></span>
+                <span x-text="userId ? 'Editar informações do contato' : 'Adicionar contato'"></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>
