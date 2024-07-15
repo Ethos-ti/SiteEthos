@@ -59,16 +59,16 @@ function get_post_by_transaction ($post_type, $transaction = null) {
 
 function get_registration_step1_fields () {
     $revenue_options = [
-        'small' => 'Micro e pequeno (até R$ 16 milhões)',
-        'medium' => 'Médio (R$ 16 a 300 milhões)',
-        'large' => 'Grande (maior que R$ 300 milhões)',
+        'small' => __('Micro and small (up to R$ 16 million)', 'hacklabr'),
+        'medium' => __('Medium (R$ 16 to 300 million)', 'hacklabr'),
+        'large' => __('Large (over R$ 300 million)', 'hacklabr'),
     ];
 
     $size_options = [
-        'micro' => 'Microempresa',
-        'small' => 'Pequena empresa',
-        'medium' => 'Média empresa',
-        'large' => 'Grande empresa',
+        'micro' => __('Micro-enterprise', 'hacklabr'),
+        'small' => __('Small business', 'hacklabr'),
+        'medium' => __('Medium business', 'hacklabr'),
+        'large' => __('Large business', 'hacklabr'),
     ];
 
     $states_options = [
@@ -108,13 +108,13 @@ function get_registration_step1_fields () {
         'cnpj' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'CNPJ',
+            'label' => __('CNPJ number', 'hacklabr'),
             'mask' => '00.000.000/0000-00',
-            'placeholder' => 'Insira o CNPJ da empresa',
+            'placeholder' => __("Enter the company' CNPJ number", 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value) || strlen($value) !== 14) {
-                    return 'CNPJ inválido';
+                    return __('Invalid CNPJ number', 'hacklabr');
                 }
                 return true;
             },
@@ -122,36 +122,36 @@ function get_registration_step1_fields () {
         'razao_social' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Razão social',
-            'placeholder' => 'Insira a razão social',
+            'label' => __('Legal name', 'hacklabr'),
+            'placeholder' => __('Enter the legal name', 'hacklabr'),
             'required' => true,
         ],
         'nome_fantasia' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Nome fantasia',
-            'placeholder' => 'Insira o nome fantasia',
+            'label' => __('Trade name', 'hacklabr'),
+            'placeholder' => __('Enter the trade name', 'hacklabr'),
             'required' => true,
         ],
         'segmento' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Setor / segmento',
-            'placeholder' => 'Insira o setor/segmento da empresa',
+            'label' => __('Sector / segment', 'hacklabr'),
+            'placeholder' => __("Enter the company's sector / segment", 'hacklabr'),
             'required' => true,
         ],
         'cnae' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'CNAE',
+            'label' => __('CNAE number', 'hacklabr'),
             'mask' => '0000-0/00',
-            'placeholder' => 'Insira o CNAE da empresa',
+            'placeholder' => __("Enter the company's CNAE number", 'hacklabr'),
             'required' => false,
             'validate' => function ($value, $context) {
                 if (empty($value)) {
                     return true;
                 } elseif (!is_numeric($value) || strlen($value) !== 7) {
-                    return 'CNAE inválido';
+                    return __('Invalid CNAE number', 'hacklabr');
                 }
                 return true;
             },
@@ -159,12 +159,12 @@ function get_registration_step1_fields () {
         'faturamento_anual' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Faturamento do ano anterior (R$)',
+            'label' =>__('Revenue from the previous year (R$)', 'hacklabr'),
             'options' => $revenue_options,
             'required' => true,
             'validate' => function ($value, $context) use ($revenue_options) {
                 if (!array_key_exists($value, $revenue_options)) {
-                    return 'Valor inválido';
+                    return __('Invalid revenue', 'hacklabr');
                 }
                 return true;
             },
@@ -172,36 +172,36 @@ function get_registration_step1_fields () {
         'inscricao_estadual' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Inscrição estadual',
-            'placeholder' => 'Insira a inscrição estadual',
+            'label' => __('State registration', 'hacklabr'),
+            'placeholder' => __('Enter the state registration', 'hacklabr'),
             'required' => false,
         ],
         'inscricao_municipal' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Inscrição municipal',
-            'placeholder' => 'Insira a inscrição municipal',
+            'label' => __('Municipal registration', 'hacklabr'),
+            'placeholder' => __('Enter the municipal registration', 'hacklabr'),
             'required' => false,
         ],
         'logomarca' => [
             'type' => 'file',
             'class' => '-colspan-12',
-            'label' => 'Logomarca da empresa',
+            'label' => __('Company logo', 'hacklabr'),
             'accept' => 'image/*',
-            'hint' => 'A imagem deve estar no tamanho de 164 x 164 pixels',
+            'hint' => __('Picture should be 164 x 164 pixels', 'hacklabr'),
             'required' => false,
         ],
         'website' => [
             'type' => 'url',
             'class' => '-colspan-12',
-            'label' => 'Website',
-            'placeholder' => 'https://www.linkdosite.com.br',
+            'label' => __('Website', 'hacklabr'),
+            'placeholder' => __('https://www.companysite.com', 'hacklabr'),
             'required' => false,
             'validate' => function ($value, $context) {
                 if (empty($value)) {
                     return true;
                 } else if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                    return 'URL inválida';
+                    return __('Invalid URL', 'hacklabr');
                 }
                 return true;
             },
@@ -209,12 +209,12 @@ function get_registration_step1_fields () {
         'num_funcionarios' => [
             'type' => 'number',
             'class' => '-colspan-12',
-            'label' => 'Quantidade de funcionários',
-            'placeholder' => 'Insira a quantidade de funcionários da empresa',
+            'label' => __('Number of employees', 'hacklabr'),
+            'placeholder' => __('Enter the number of company employees', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value) || intval($value) <= 0) {
-                    return 'Número inválido';
+                    return __('Invalid number', 'hacklabr');
                 }
                 return true;
             },
@@ -222,14 +222,14 @@ function get_registration_step1_fields () {
         'porte' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Porte',
+            'label' => _x('Size', 'company size', 'hacklabr'),
             'options' => $size_options,
             'required' => false,
             'validate' => function ($value, $context) use ($size_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $size_options)) {
-                    return 'Porte inválido';
+                    return _x('Invalid size', 'company size', 'hacklabr');
                 }
                 return true;
             },
@@ -237,46 +237,46 @@ function get_registration_step1_fields () {
         'end_logradouro' => [
             'type' => 'text',
             'class' => '-colspan-9',
-            'label' => 'Endereço (logradouro)',
-            'placeholder' => 'Insira o logradouro do endereço',
+            'label' => __('Address (street)', 'hacklabr'),
+            'placeholder' => __('Enter the address street', 'hacklabr'),
             'required' => true,
         ],
         'end_numero' => [
             'type' => 'text',
             'class' => '-colspan-3',
-            'label' => 'Número',
+            'label' => _x('Number', 'address', 'hacklabr'),
             'required' => true,
         ],
         'end_complemento' => [
             'type' => 'text',
             'class' => '-colspan-6',
-            'label' => 'Complemento',
-            'placeholder' => 'Insira o complemento',
+            'label' => _x('Complement', 'address', 'hacklabr'),
+            'placeholder' => __('Enter the address complement', 'hacklabr'),
             'required' => false,
         ],
         'end_bairro' => [
             'type' => 'text',
             'class' => '-colspan-6',
-            'label' => 'Bairro',
-            'placeholder' => 'Insira o bairro',
+            'label' => __('Neighborhood', 'hacklabr'),
+            'placeholder' => __('Enter the neighborhood', 'hacklabr'),
             'required' => true,
         ],
         'end_cidade' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Cidade',
-            'placeholder' => 'Insira a cidade',
+            'label' => __('City', 'hacklabr'),
+            'placeholder' => __('Enter the city', 'hacklabr'),
             'required' => true,
         ],
         'end_estado' => [
             'type' => 'select',
             'class' => '-colspan-6',
-            'label' => 'Estado',
+            'label' => _x('State', 'address', 'hacklabr'),
             'options' => $states_options,
             'required' => true,
             'validate' => function ($value, $context) use ($states_options) {
                 if (!array_key_exists($value, $states_options)) {
-                    return 'Estado inválido';
+                    return _x('Invalid state', 'address', 'hacklabr');
                 }
                 return true;
             },
@@ -284,13 +284,13 @@ function get_registration_step1_fields () {
         'end_cep' => [
             'type' => 'masked',
             'class' => '-colspan-6',
-            'label' => 'CEP',
+            'label' => __('CEP code', 'hacklabr'),
             'mask' => '00000-000',
-            'placeholder' => 'Insira o CEP',
+            'placeholder' => __('Enter the CEP code', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value) || strlen($value) !== 8) {
-                    return 'CEP inválido';
+                    return __('Invalid CEP code', 'hacklabr');
                 }
                 return true;
             },
@@ -298,13 +298,13 @@ function get_registration_step1_fields () {
         'termos_de_uso' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Li e concordo com os <a target="_blank" href="' . $privacy_policy_url . '">Termos de Uso e Política de Privacidade</a>',
+            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank>Terms of Use and Privacy Policy</a>', 'hacklabr'), $privacy_policy_url),
             'required' => true,
         ],
         'codigo_de_conduta' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Li e concordo com o <a target="_blank" href="' . $code_of_conduct_url . '">Código de Conduta</a>',
+            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank>Code of Conduct</a>', 'hacklabr'), $code_of_conduct_url),
             'required' => true,
         ],
     ];
@@ -335,20 +335,20 @@ function get_registration_step2_fields () {
         'nome_completo' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Nome completo',
-            'placeholder' => 'Insira o nome completo',
+            'label' => __('Full name', 'hacklabr'),
+            'placeholder' => __('Enter the full name', 'hacklabr'),
             'required' => true,
         ],
         'cpf' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'CPF',
+            'label' => __('CPF number', 'hacklabr'),
             'mask' => '000.000.000-00',
-            'placeholder' => 'Insira o CPF do responsável',
+            'placeholder' => __('Enter the CPF number', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value) || strlen($value) !== 11) {
-                    return 'CPF inválido';
+                    return __('Invalid CPF number', 'hacklabr');
                 }
                 return true;
             },
@@ -356,32 +356,32 @@ function get_registration_step2_fields () {
         'cargo' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Cargo',
-            'placeholder' => 'Insira o cargo na empresa',
+            'label' => __('Role', 'hacklabr'),
+            'placeholder' => __('Enter the role in company', 'hacklabr'),
             'required' => true,
         ],
         'area' => [
             'type' => 'text',
             'class' => '-colspan-12',
-            'label' => 'Área',
-            'placeholder' => 'Descreva a área na empresa',
+            'label' => _x('Area', 'company', 'hacklabr'),
+            'placeholder' => __('Enter the area in company', 'hacklabr'),
             'required' => true,
         ],
         'email' => [
             'type' => 'email',
             'class' => '-colspan-12',
-            'label' => 'Email',
-            'placeholder' => 'Insira o email',
+            'label' => __('Email', 'hacklabr'),
+            'placeholder' => __('Enter the email', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    return 'Email inválido';
+                    return __('Invalid email', 'hacklabr');
                 } else {
                     $maybe_user = get_user_by('email', $value);
                     if (!empty($maybe_user)) {
                         $user = get_user_by_transaction();
                         if (empty($user) || $maybe_user->ID !== $user->ID) {
-                            return 'Email já está em uso';
+                            return __('Email is already in use', 'hacklabr');
                         }
                     }
                 }
@@ -391,12 +391,12 @@ function get_registration_step2_fields () {
         'senha' => [
             'type' => 'password',
             'class' => '-colspan-12',
-            'label' => 'Senha',
-            'placeholder' => 'Insira a senha',
+            'label' => __('Password', 'hacklabr'),
+            'placeholder' => __('Enter the password', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (strlen($value) < 8) {
-					return 'Senha deve ter pelo menos 8 caracteres';
+					return __('Password should be at least 8 characters long', 'hacklabr');
 				}
 				return true;
             },
@@ -404,13 +404,13 @@ function get_registration_step2_fields () {
         'celular' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'Celular',
+            'label' => __('Cell phone number', 'hacklabr'),
             'mask' => '(00) 0000-0000|(00) 00000-0000',
-            'placeholder' => 'Insira o número de celular',
+            'placeholder' => __('Enter the cell phone number', 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value) || strlen($value) < 10 || strlen($value) > 11) {
-                    return 'Número de celular inválido';
+                    return __('Invalid phone number', 'hacklabr');
                 }
                 return true;
             },
@@ -418,21 +418,21 @@ function get_registration_step2_fields () {
         'celular_is_whatsapp' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => 'Este número também é WhatsApp',
+            'label' => __('This is also a WhatsApp number', 'hacklabr'),
             'required' => false,
         ],
         'telefone' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'Telefone',
-            'mask' => '(00) 0000-0000',
-            'placeholder' => 'Insira o número de telefone',
+            'label' => __('Phone number', 'hacklabr'),
+            'mask' => '(00) 0000-0000|(00) 00000-0000',
+            'placeholder' => __('Enter the phone number', 'hacklabr'),
             'required' => false,
             'validate' => function ($value, $context) {
                 if (empty($value)) {
                     return true;
-                } elseif (!is_numeric($value) || strlen($value) !== 10) {
-                    return 'Número de telefone inválido';
+                } elseif (!is_numeric($value) || strlen($value) < 10 || strlen($value) > 11) {
+                    return __('Invalid phone number', 'hacklabr');
                 }
                 return true;
             },
@@ -474,12 +474,12 @@ function get_registration_step3_fields () {
         'nivel' => [
             'type' => 'pmpro_level',
             'class' => '-colspan-12 choose-plan',
-            'label' => 'Plano',
+            'label' => _x('Plan', 'membership', 'hacklabr'),
             'for_manager' => true,
             'required' => true,
             'validate' => function ($value, $context) {
                 if (!is_numeric($value)) {
-                    return 'Plano inválido';
+                    return _x('Invalid plan', 'membership', 'hacklabr');
                 }
                 return true;
             }
@@ -508,32 +508,32 @@ function get_registration_step3_params () {
 
 function get_registration_step4_fields () {
     $advance_options = [
-        'no' => 'À vista',
-        'yes' => 'Parcelado',
+        'no' => _x('In advance', 'payment', 'hacklabr'),
+        'yes' => _x('In stallments', 'payment', 'hacklabr'),
     ];
 
     $periodicity_options = [
-        'monthly' => 'Mensal',
-        'semianually' => 'Semestral',
-        'yearly' => 'Anual',
+        'monthly' => __('Monthly', 'hacklabr'),
+        'semianually' => __('Semianually', 'hacklabr'),
+        'yearly' => __('Yearly', 'hacklabr'),
     ];
 
     $receive_billing_options = [
-        'email' => 'Email',
-        'post' => 'Correio',
+        'email' => _x('Email', 'medium', 'hacklabr'),
+        'post' => _x('Post mail', 'medium', 'hacklabr'),
     ];
 
     $receive_terms_options = [
-        'email' => 'Email',
-        'post' => 'Correio',
-        'icp' => 'Assinatura eletrônica',
+        'email' => _x('Email', 'medium', 'hacklabr'),
+        'post' => _x('Post mail', 'medium', 'hacklabr'),
+        'icp' => _x('Electronic signature', 'medium', 'hacklabr'),
     ];
 
     $fields = [
         'pagto_sugerido' => [
             'type' => 'masked',
             'class' => '-colspan-12',
-            'label' => 'Valor de contribuição calculado',
+            'label' => __('Calculated payment value', 'hacklabr'),
             'mask' => '__currency__',
             'placeholder' => 'R$',
             'required' => false,
@@ -541,21 +541,21 @@ function get_registration_step4_fields () {
         'pgto_inicio' => [
             'type' => 'date',
             'class' => '-colspan-12',
-            'label' => 'Data de previsão do 1º pagamento',
-            'placeholder' => 'Selecione uma data',
+            'label' => __('Expected date of first payment', 'hacklabr'),
+            'placeholder' => __('Select a date', 'hacklabr'),
             'required' => false,
         ],
         'pagto_a_vista' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Condição de pagamento',
+            'label' => __('Payment terms', 'hacklabr'),
             'options' => $advance_options,
             'required' => false,
             'validate' => function ($value, $context) use ($advance_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $advance_options)) {
-                    return 'Condição inválida';
+                    return __('Invalid payment term', 'hacklabr');
                 }
                 return true;
             },
@@ -563,14 +563,14 @@ function get_registration_step4_fields () {
         'pagto_periodicidade' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Periodicidade do pagamento',
+            'label' => __('Payment frequency', 'hacklabr'),
             'options' => $periodicity_options,
             'required' => false,
             'validate' => function ($value, $context) use ($periodicity_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $periodicity_options)) {
-                    return 'Periodicidade inválida';
+                    return __('Invalid payment frequency', 'hacklabr');
                 }
                 return true;
             },
@@ -578,21 +578,21 @@ function get_registration_step4_fields () {
         'pagto_observacoes' => [
             'type' => 'textarea',
             'class' => '-colspan-12',
-            'label' => 'Observações sobre condições de pagamento',
-            'placeholder' => 'Descreva aqui suas observações',
+            'label' => __('Observations about payment terms', 'hacklabr'),
+            'placeholder' => __('Describe here your observations', 'hacklabr'),
             'required' => false,
         ],
         'envio_termos' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Meio de recebimento do termo de associação',
+            'label' => __('Means of receiving the association agreement', 'hacklabr'),
             'options' => $receive_terms_options,
             'required' => false,
             'validate' => function ($value, $context) use ($receive_terms_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $receive_terms_options)) {
-                    return 'Meio inválido';
+                    return _x('Invalid mean', 'medium', 'hacklabr');
                 }
                 return true;
             },
@@ -600,14 +600,14 @@ function get_registration_step4_fields () {
         'envio_boleto' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Meio de recebimento dos boletos',
+            'label' => __('Means of receiving the banking slips', 'hacklabr'),
             'options' => $receive_billing_options,
             'required' => false,
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $receive_billing_options)) {
-                    return 'Meio inválido';
+                    return _x('Invalid mean', 'medium', 'hacklabr');
                 }
                 return true;
             },
@@ -615,14 +615,14 @@ function get_registration_step4_fields () {
         'envio_recibo' => [
             'type' => 'select',
             'class' => '-colspan-12',
-            'label' => 'Meio de recebimento dos recibos',
+            'label' => __('Means of receiving the receipts', 'hacklabr'),
             'options' => $receive_billing_options,
             'required' => false,
             'validate' => function ($value, $context) use ($receive_billing_options) {
                 if (empty($value)) {
                     return true;
                 } elseif (!array_key_exists($value, $receive_billing_options)) {
-                    return 'Meio inválido';
+                    return _x('Invalid mean', 'medium', 'hacklabr');
                 }
                 return true;
             },
@@ -697,7 +697,7 @@ function register_registration_form () {
 
     register_form('member-registration-5', __('Member registration - step 5', 'hacklabr'), [
         'fields' => $fields_step5,
-        'submit_label' => 'Adicionar contato',
+        'submit_label' => __('Add contact', 'hacklabr'),
     ]);
 }
 add_action('init', 'hacklabr\\register_registration_form');
@@ -943,7 +943,7 @@ function update_registration_form_title ($title, $post_id = null) {
         $hacklabr_form = get_post_meta($post_id, 'hacklabr_form', true);
 
         if (!empty($hacklabr_form) && str_starts_with($hacklabr_form, 'member-registration-')) {
-            return 'Associação ao Instituto Ethos';
+            return __('Membership to Ethos Institute', 'hacklabr');
         }
     }
 
