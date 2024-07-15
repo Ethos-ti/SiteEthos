@@ -73,9 +73,9 @@ function wrap_step_5_form ($form_html, $form) {
     <div class="members-form" x-data="<?= $script ?>">
         <div class="members-form__section">
             <div class="members-form__text">
-                <h3>Contato Principal</h3>
-                <p>Este contato receberá todas as comunicações do Ethos.</p>
-                <p>É possível ter mais de uma pessoa como principal</p>
+                <h3><?php _e('Main contacts', 'hacklabr') ?></h3>
+                <p><?php _e('This contact will receive all communications by Ethos.', 'hacklabr') ?></p>
+                <p><?php _e("It's possible to have more than one main contact.", 'hacklabr') ?></p>
             </div>
 
             <ul class="members-form__grid">
@@ -96,7 +96,7 @@ function wrap_step_5_form ($form_html, $form) {
                 <li class="members-form__item">
                     <button type="button" @click="openFormModal('primary')">
                         <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/add.svg" alt="">
-                        Adicionar contato
+                        <?php _e('Add contact', 'hacklabr') ?>
                     </button>
                 </li>
             </ul>
@@ -104,8 +104,8 @@ function wrap_step_5_form ($form_html, $form) {
 
         <div class="members-form__section">
             <div class="members-form__text">
-                <h3>Contato Financeiro</h3>
-                <p>Complete os campos a seguir com informações da pessoa que deverá receber os documentos e informações referentes à contribuição associativa.</p>
+                <h3><?php _e('Financial contact', 'hacklabr') ?></h3>
+                <p><?php _e('This contact will receive documents and communications related to the membership payments.', 'hacklabr') ?></p>
             </div>
 
             <ul class="members-form__grid">
@@ -126,7 +126,7 @@ function wrap_step_5_form ($form_html, $form) {
                 <li class="members-form__item">
                     <button type="button" @click="openFormModal('financial')">
                         <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/add.svg" alt="">
-                        Adicionar contato
+                        <?php _e('Add contact', 'hacklabr') ?>
                     </button>
                 </li>
             </ul>
@@ -141,7 +141,7 @@ function wrap_step_5_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="members-form__modal">
             <header class="members-form__modal-header">
-                <span>Adicionar contato</span>
+                <span><?php _e('Add contact', 'hacklabr') ?></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>
@@ -168,6 +168,11 @@ function wrap_edit_contacts_form ($form_html, $form) {
         return $form_html;
     }
 
+    $add_contact_str = esc_attr(__('Add contact', 'hacklabr'));
+    $confirm_removal_str = esc_attr(__('Are you sure you want to delete the user?', 'hacklabr'));
+    $edit_contact_str = esc_attr(__('Edit contact', 'hacklabr'));
+    $replace_approver_str = esc_attr(__('You can only have one approver by team, do you want to replace the remover?', 'hacklabr'));
+
     $script = <<<SCRIPT
     {
         action: '',
@@ -186,7 +191,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
             this.\$refs.formModal.showModal();
         },
         deleteUser (userId) {
-            if (confirm('Deseja remover o usuário?')) {
+            if (confirm("$confirm_removal_str")) {
                 this.action = 'deleteUser';
                 this.userId = userId;
                 \$nextTick(() => this.\$refs.implicitForm.submit());
@@ -212,7 +217,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
         },
         toggleApprover (el, user) {
             if (el.checked) {
-                if (confirm('Só é permitido um membro aprovador por equipe, deseja alterar o membro aprovador?')) {
+                if (confirm("$replace_approver_str")) {
                     this.action = 'addApprover';
                     this.userId = user.ID;
                     \$nextTick(() => this.\$refs.implicitForm.submit());
@@ -255,7 +260,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <div class="contacts-list__buttons">
             <button class="button button--outline" @click="createUser()">
-                Adicionar mais um contato
+                <?php _e('Add one more contact', 'hacklabr') ?>
             </button>
         </div>
 
@@ -263,12 +268,12 @@ function wrap_edit_contacts_form ($form_html, $form) {
             <table>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Aprovador</th>
-                        <th>Administrador</th>
-                        <th><span class="sr-only">Editar</span></th>
-                        <th><span class="sr-only">Excluir</span></th>
+                        <th><?php _e('Name', 'hacklabr') ?></th>
+                        <th><?php _e('Email', 'hacklabr') ?></th>
+                        <th><?php _e('Approver', 'hacklabr') ?></th>
+                        <th><?php _e('Administrator', 'hacklabr') ?></th>
+                        <th><span class="sr-only"><?php _e('Edit', 'hacklabr') ?></span></th>
+                        <th><span class="sr-only"><?php _e('Delete', 'hacklabr') ?></span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -283,12 +288,12 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> @click="toggleAdmin($el, user)">
                         </td>
                         <td>
-                            <button type="button" class="contacts-list__edit" title="Editar" @click="editUser(user)">
+                            <button type="button" class="contacts-list__edit" title="<?php _e('Edit', 'hacklabr') ?>" @click="editUser(user)">
                                 <iconify-icon icon="material-symbols:edit-outline"></iconify-icon>
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="Excluir" @click="deleteUser(<?= $contact->ID ?>)">
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="<?php _e('Delete', 'hacklabr') ?>" @click="deleteUser(<?= $contact->ID ?>)">
                                 <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
                             </button>
                         </td>
@@ -306,7 +311,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
-                <span x-text="userId ? 'Editar contato' : 'Adicionar contato'"></span>
+                <span x-text="userId ? '<?= $add_contact_str ?>' : '<?= $add_contact_str ?>'"></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>
