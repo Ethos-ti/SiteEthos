@@ -7,13 +7,13 @@ function get_edit_contact_fields () {
 
     $fields['email']['validate'] = function ($value, $context) {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            return 'Email inválido';
+            return __('Invalid email', 'hacklabr');
         } else {
             $maybe_user = get_user_by('email', $value);
             if (!empty($maybe_user)) {
                 $user_id = $context['_user_id'];
                 if (empty($user_id) || $maybe_user->ID != $user_id) {
-                    return 'Email já está em uso';
+                    return __('Email is already in use', 'hacklabr');
                 }
             }
         }
