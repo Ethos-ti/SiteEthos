@@ -298,13 +298,13 @@ function get_registration_step1_fields () {
         'termos_de_uso' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank>Terms of Use and Privacy Policy</a>', 'hacklabr'), $privacy_policy_url),
+            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank">Terms of Use and Privacy Policy</a>', 'hacklabr'), $privacy_policy_url),
             'required' => true,
         ],
         'codigo_de_conduta' => [
             'type' => 'checkbox',
             'class' => '-colspan-12',
-            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank>Code of Conduct</a>', 'hacklabr'), $code_of_conduct_url),
+            'label' => sprintf(__('I have read and agreed with the <a href="%s" target="_blank">Code of Conduct</a>', 'hacklabr'), $code_of_conduct_url),
             'required' => true,
         ],
     ];
