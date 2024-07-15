@@ -583,7 +583,11 @@ function get_manager_name($post_id = null) {
 
     $organization = get_post($post_id);
 
-    $author_id = $organizations[0]->post_author;
+    if ( ! $organization ) {
+        return null;
+    }
+
+    $author_id = $organization->post_author;
     $author = get_user_by( 'ID', $author_id );
 
     return $author->display_name ?? null;
