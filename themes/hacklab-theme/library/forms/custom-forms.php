@@ -171,7 +171,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
     $add_contact_str = esc_attr(__('Add contact', 'hacklabr'));
     $confirm_removal_str = esc_attr(__('Are you sure you want to delete the user?', 'hacklabr'));
     $edit_contact_str = esc_attr(__('Edit contact', 'hacklabr'));
-    $replace_approver_str = esc_attr(__('You can only have one approver by team, do you want to replace the remover?', 'hacklabr'));
+    $replace_approver_str = esc_attr(__('You can only have one approver by team, do you want to replace the approver?', 'hacklabr'));
 
     $script = <<<SCRIPT
     {
@@ -311,7 +311,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
 
         <dialog x-ref="formModal" class="contacts-list__modal">
             <header class="contacts-list__modal-header">
-                <span x-text="userId ? '<?= $add_contact_str ?>' : '<?= $add_contact_str ?>'"></span>
+                <span x-text="userId ? '<?= $edit_contact_str ?>' : '<?= $add_contact_str ?>'"></span>
                 <button type="button" @click="closeFormModal()" title="Fechar">
                     <iconify-icon icon="material-symbols:close"></iconify-icon>
                 </button>
