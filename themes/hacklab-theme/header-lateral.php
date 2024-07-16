@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>
+    <script>
+        (function(d){
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "BSnmevgzYX");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+        })(document)
+    </script>
 	<meta charset="<?php bloginfo('charset');?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1.0">
 	<?php wp_head()?>
