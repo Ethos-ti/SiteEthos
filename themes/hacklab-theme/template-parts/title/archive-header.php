@@ -6,7 +6,7 @@
 $title = '';
 $search_query = get_search_query( false );
 
-$is_curation = isset( $_GET['curadoria'] );
+$is_curation = isset( $_GET['exclusivo-do-associado'] );
 
 // if ( is_category() ) {
 //     $title = single_cat_title( '', false );

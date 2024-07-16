@@ -278,7 +278,7 @@ function archive_filter_posts( $query ) {
                     [
                         'field'    => 'slug',
                         'taxonomy' => 'category',
-                        'terms'    => 'curadoria',
+                        'terms'    => 'exclusivo-do-associado',
                         'operator' => 'IN'
                     ]
                 ];
@@ -570,7 +570,7 @@ function get_manager_name($post_id = null) {
         if ( empty( $current_user ) ) {
             return null;
         }
-    
+
         $organizations = get_posts_by_author( $current_user, [
             'post_type'      => 'organizacao',
             'posts_per_page' => 1
@@ -607,7 +607,7 @@ function get_organization_name( $post_id = null ) {
         if ( empty( $current_user ) ) {
             return null;
         }
-    
+
         $organizations = get_posts_by_author( $current_user, [
             'post_type'      => 'organizacao',
             'posts_per_page' => 1

@@ -7,6 +7,15 @@
             place-self: center;
         }
     }
+    .tabs{
+        &__panel > main{
+            .post-card{
+                &__category > .tag--exclusivo-do-associado{
+                    display: none;
+                }
+            }
+        }
+    }
 
     .search__results {
         display: flex;
@@ -57,6 +66,7 @@
                     }
                 }
             }
+
         }
     }
 }
