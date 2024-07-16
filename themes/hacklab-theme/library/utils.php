@@ -622,3 +622,30 @@ function get_organization_name( $post_id = null ) {
 
     return $organization->post_title ?? null;
 }
+// Adiciona o reCAPTCHA ao formulário de redefinição de senha
+function my_custom_recaptcha_for_reset_pass() {
+    if (isset($_GET['action']) && $_GET['action'] == 'reset_pass') {
+        echo '<div class="g-recaptcha" data-sitekey="6Ld-GewpAAAAAAcpRSdn9bn3nkTw_5U7dR65IA4a"></div>';
+        wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+    }
+}
+add_action('login_form', 'my_custom_recaptcha_for_reset_pass');
+
+// Valida o reCAPTCHA na redefinição de senha
+function my_custom_recaptcha_verify() {
+    if (isset($_GET['action']) && $_GET['action'] == 'reset_pass') {
+        if (!isset($_POST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response'])) {
+            wp_die('Por favor, complete o reCAPTCHA.');
+        }
+
+        $response = wp_remote_get("https://www.google.com/recaptcha/api/siteverify?secret=6Ld-GewpAAAAANrN0d-lyhZlrHsKE1_Fw30guatM&response=" . $_POST['g-recaptcha-response']);
+        $response_body = wp_remote_retrieve_body($response);
+        $result = json_decode($response_body, true);
+
+        if (!$result['success']) {
+            wp_die('Verificação reCAPTCHA falhou, por favor tente novamente.');
+        }
+    }
+}
+add_action('login_form_resetpass', 'my_custom_recaptcha_verify');
+add_action('login_form_rp', 'my_custom_recaptcha_verify');
