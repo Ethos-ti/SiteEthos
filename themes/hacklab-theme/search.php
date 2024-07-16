@@ -4,7 +4,7 @@ global $wp_query;
 
 $post_type = (isset($wp_query->query_vars['post_type']) && !empty($wp_query->query_vars['post_type']) ) ? $wp_query->query_vars['post_type'] : ['post', 'page', 'publicacao', 'iniciativa', 'events'];
 
-$is_curation = isset( $_GET['curadoria'] );
+$is_curation = isset( $_GET['exclusivo-do-associado'] );
 
 if($post_type == 'any'){
     $post_type = ['iniciativa', 'post', 'page', 'publicacao', 'events'];
@@ -26,7 +26,7 @@ $terms = get_terms_by_use_menu( 'category', ['iniciativa', 'post', 'publicacao',
 $permalink = home_url( '?s=' . get_search_query( true ) );
 
 if ( $is_curation ) {
-    $permalink.= '&curadoria';
+    $permalink.= '&exclusivo-do-associado';
 }
 
 $permalink_all = $permalink;
