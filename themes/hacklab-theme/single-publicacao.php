@@ -44,14 +44,14 @@
         <div class="post-content stack">
             <p> <?php the_content() ?></p>
 
-            <div class="form-book">
+           <!--  <div class="form-book">
                 <div class="form-book form-book__title">
                     <h2>
                     <iconify-icon icon="fa-solid:book-open"></iconify-icon>
                     Solicite download gratuito
                     </h2>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
