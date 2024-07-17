@@ -52,8 +52,6 @@
                     </h2>
                 </div>
             </div>
-            <?php echo do_shortcode('[contact-form-7 title="formulario-single-publicacao"]') ?>
-
 
         </div>
 
