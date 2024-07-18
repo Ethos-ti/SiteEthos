@@ -25,13 +25,6 @@
                     <div class="main-header__social-content">
                         <?= the_social_networks_menu( false ); ?>
                     </div>
-                    <div class="acessibilidade">
-                    <a href="#"><iconify-icon icon="material-symbols-light:contrast"></iconify-icon></a>
-                    <a href="#"><iconify-icon icon="ic:round-text-increase"></iconify-icon></a>
-                    <a href="#"><iconify-icon icon="ic:round-text-decrease"></iconify-icon></a>
-                    <a href="#"><iconify-icon icon="bi:volume-down-fill"></iconify-icon></a>
-                    <a href="#"><iconify-icon icon="fa:print"></iconify-icon></a>
-                    </div>
                 </div>
             </div>
         </div>
