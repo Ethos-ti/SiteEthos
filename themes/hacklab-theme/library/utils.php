@@ -475,18 +475,43 @@ function redirect_single_tribe_events_template() {
 }
 add_action( 'template_redirect', 'redirect_single_tribe_events_template' );
 
+/**
+ * Get the primary term of a given taxonomy
+ * @param int $post_id Post ID
+ * @param string $taxonomy Taxonomy slug
+ * @param bool $force_primary If should avoid returning fallback if the primary term is not set
+ * @return \WP_Term|false The primary term, or `false` on failure
+ */
+function get_primary_term( $post_id, $taxonomy, $force_primary = false ) {
+	$primary_term_id = get_post_meta( $post_id, '_yoast_wpseo_primary_' . $taxonomy, true );
+
+	// Returns the primary term, if it exists
+	if ( ! empty( $primary_term_id ) ) {
+		$primary_term = get_term( $primary_term_id, $taxonomy );
+
+		if ( ! empty( $primary_term ) ) {
+			return $primary_term;
+		}
+	}
+
+	// Returns an assorted term, if primary term does not exists
+	if ( ! $force_primary ) {
+		$terms = get_the_terms( $post_id, $taxonomy );
+
+		if ( ! empty( $terms ) ) {
+			return $terms[0];
+		}
+	}
+
+	// On failure, returns false
+	return false;
+}
+
 function get_primary_category($terms, $post_id, $taxonomy){
 
     if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_page() || is_singular() ) {
         if( $taxonomy == 'category' ){
-            $term_id = get_post_meta($post_id, '_yoast_wpseo_primary_category', true);
-            if ($term_id) {
-                $get_term = get_term($term_id, $taxonomy);
-                if( $get_term ){
-                    $terms = [];
-                    $terms[] = $get_term;
-                }
-            }
+            $terms = [get_primary_term($post_id,$taxonomy)];
         }
     }
     return $terms;
