@@ -511,7 +511,14 @@ function get_primary_category($terms, $post_id, $taxonomy){
 
     if(is_archive() || is_search() || is_page('indicadores') || is_front_page() || is_page() || is_singular() ) {
         if( $taxonomy == 'category' ){
-            $terms = [get_primary_term($post_id,$taxonomy)];
+            $term_id = get_post_meta($post_id, '_yoast_wpseo_primary_category', true);
+            if ($term_id) {
+                $get_term = get_term($term_id, $taxonomy);
+                if( $get_term ){
+                    $terms = [];
+                    $terms[] = $get_term;
+                }
+            }
         }
     }
     return $terms;
