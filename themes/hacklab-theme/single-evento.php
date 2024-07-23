@@ -69,8 +69,44 @@ if( isset($recurrence['rules']) ) {
     }
 }
 
+$crm_meta = hacklabr\get_crm_event_meta($post_id);
+
+$cpf = get_user_meta(get_current_user_id(), 'cpf', true);
+
+if(isset($_POST['SaveParticipant'])) {
+    // iCPFPre: 44021887091
+    // iCNPJPre:
+    // project: Conversa com Lideranças na PwC - presencial
+    // tpEvt: 0
+    $cpf = $_POST['iCPFPre'];
+    $result = hacklabr\save_participant([
+        'iCPFPre' => $cpf,
+        // 'iCNPJPre' => $cpf,
+        'project' => $post->post_title,
+        'tpEvt' => 0,
+    ]);
+
+    echo '<pre>';
+    var_dump($result);
+    die;
+}
 
 ?>
+<?php if($crm_meta->fut_dt_data_encerramento_inscricoes && $crm_meta->fut_dt_data_encerramento_inscricoes < date('Y-m-d H:i:s')): ?>
+    <div class="alert alert-danger" role="alert">
+        <p>As inscrições para este evento estão encerradas.</p>
+    </div>
+<?php elseif($crm_meta->fut_dt_data_encerramento_inscricoes): ?>
+    <div class="alert alert-warning" role="alert">
+        <p>As inscrições para este evento encerram em <?= date('d/m/Y H:i', strtotime($crm_meta->fut_dt_data_encerramento_inscricoes)) ?></p>
+    </div>
+    <form method="post">
+        <input type="hidden" name="SaveParticipant" value="1">
+        cpf: <input type="text" name="iCPFPre" value="<?=$cpf?>">
+        <button type="submit">Inscrever-se</button>
+    </form>
+<?php endif; ?>
+
 
 <header class="post-header">
     <div class="post-header__postdata alingfull">
