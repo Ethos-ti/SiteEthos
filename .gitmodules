@@ -1,3 +1,11 @@
 [submodule "plugins/hacklab-dev-utils"]
 	path = plugins/hacklab-dev-utils
 	url = git@gitlab.hacklab.com.br:open-source/hacklab-dev-utils.git
+[submodule "plugins/EthosMigrationPlugin"]
+	path = plugins/EthosMigrationPlugin
+	url = git@github.com:Ethos-ti/EthosMigrationPlugin.git
+	branch = main
+[submodule "plugins/EthosDynamics365IntegrationPlugin"]
+	path = plugins/EthosDynamics365IntegrationPlugin
+	url = git@github.com:Ethos-ti/EthosDynamics365IntegrationPlugin.git
+	branch = main

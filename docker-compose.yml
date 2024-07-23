@@ -20,6 +20,8 @@ services:
       - ./wp-root:/var/www/html/
       - ./themes/hacklab-theme:/var/www/html/wp-content/themes/hacklab-theme
       - ./plugins/hacklab-dev-utils:/var/www/html/wp-content/plugins/hacklab-dev-utils
+      - ./plugins/EthosMigrationPlugin:/var/www/html/wp-content/plugins/EthosMigrationPlugin
+      - ./plugins/EthosDynamics365IntegrationPlugin:/var/www/html/wp-content/plugins/EthosDynamics365IntegrationPlugin
       - ./compose/local/wordpress/htaccess:/var/www/html/.htaccess
       - ./compose/local/wordpress/php/extra.ini:/usr/local/etc/php/conf.d/extra.ini
 
@@ -40,6 +42,10 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
-
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
 volumes:
   mariadb_data:
