@@ -30,3 +30,13 @@ require __DIR__ . '/library/forms/custom-forms.php';
 require __DIR__ . '/library/forms/registration.php';
 require __DIR__ . '/library/forms/edit-organization.php';
 require __DIR__ . '/library/forms/my-data.php';
+
+
+add_action('init', function () {
+    if(isset($_GET['crm_sync'])) {
+        echo "IMPORTANDO EVENTOS <pre>";
+        do_get_crm_events();
+
+        die;
+    }
+});
