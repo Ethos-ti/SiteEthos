@@ -121,6 +121,14 @@ function register_edit_organization_form () {
 add_action('init', 'hacklabr\\register_edit_organization_form');
 
 function validate_edit_organization_form ($form_id, $form, $params) {
+    $current_user = get_current_user_id();
+
+    $is_ethos_admin = get_post_meta( $current_user, '_ethos_admin', true );
+
+    if ( empty( $is_ethos_admin ) ) {
+        return;
+    }
+
     if ($form_id === 'edit-organization') {
         $validation = validate_form($form['fields'], $params);
 
@@ -174,7 +182,6 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         unset($post_meta['_user_id']);
 
         if (empty($user_id)) {
-            $current_user = get_current_user_id();
             $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
             $user_meta = array_merge($params, [
