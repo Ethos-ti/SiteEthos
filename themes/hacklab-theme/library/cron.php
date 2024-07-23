@@ -49,9 +49,8 @@ function clean_transactions () {
 add_action('hacklabr\\run_every_hour', 'hacklabr\\clean_transactions');
 
 function schedule_recurring_tasks () {
-    wp_unschedule_hook('hacklabr\\run_every_hour');
-
-    wp_schedule_event(time(), 'hacklabr_hourly', 'hacklabr\\run_every_hour');
+    if (!wp_next_scheduled('hacklabr\\run_every_hour')) {
+		wp_schedule_event(time(), 'hacklabr_hourly', 'hacklabr\\run_every_hour');
+	}
 }
-
-add_action('after_switch_theme', 'hacklabr\\schedule_recurring_tasks');
+add_action('wp', 'hacklabr\\schedule_recurring_tasks');
