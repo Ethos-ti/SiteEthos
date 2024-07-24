@@ -21,7 +21,7 @@ services:
       - ./themes/hacklab-theme:/var/www/html/wp-content/themes/hacklab-theme
       - ./plugins/hacklab-dev-utils:/var/www/html/wp-content/plugins/hacklab-dev-utils
       - ./plugins/EthosMigrationPlugin:/var/www/html/wp-content/plugins/EthosMigrationPlugin
-      - ./plugins/EthosDynamics365IntegrationPlugin:/var/www/html/wp-content/plugins/EthosDynamics365IntegrationPlugin
+      - ./plugins/EthosDynamics365IntegrationPlugin/ethos-dynamics-365-integration:/var/www/html/wp-content/plugins/EthosDynamics365IntegrationPlugin
       - ./compose/local/wordpress/htaccess:/var/www/html/.htaccess
       - ./compose/local/wordpress/php/extra.ini:/usr/local/etc/php/conf.d/extra.ini
 
