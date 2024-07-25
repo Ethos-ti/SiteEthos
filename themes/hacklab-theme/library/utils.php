@@ -498,7 +498,7 @@ function get_primary_term( $post_id, $taxonomy, $force_primary = false ) {
 	if ( ! $force_primary ) {
 		$terms = get_the_terms( $post_id, $taxonomy );
 
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 			return $terms[0];
 		}
 	}
