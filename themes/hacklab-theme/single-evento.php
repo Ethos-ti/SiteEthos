@@ -82,6 +82,9 @@ if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
         ]
     );
 
+    // @todo: usar $result para exibir mensagem de sucesso ou erro
+    // @todo: no $result com sucesso tem o ID da entidade criada no CRM
+
     do_action( 'qm/debug', $result );
 }
 
@@ -96,6 +99,7 @@ if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
     </div>
     <form method="post">
         <input type="hidden" name="SaveParticipant" value="1">
+        <!-- @todo: verificar se o usuário já está inscrito e não exibir o botão -->
         <button type="submit">Inscrever-se</button>
     </form>
 <?php endif; ?>
