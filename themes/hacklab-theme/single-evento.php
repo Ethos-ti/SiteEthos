@@ -98,7 +98,6 @@ if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
     </div>
     <form method="post">
         <input type="hidden" name="SaveParticipant" value="1">
-        cpf: <input type="text" name="iCPFPre" value="<?=$cpf?>">
         <button type="submit">Inscrever-se</button>
     </form>
 <?php endif; ?>
