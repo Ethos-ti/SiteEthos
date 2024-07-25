@@ -71,24 +71,20 @@ if( isset($recurrence['rules']) ) {
 
 $crm_meta = hacklabr\get_crm_event_meta($post_id);
 
+$contact_id = get_user_meta( get_current_user_id(), '_ethos_crm_contact_id', true ) ?? '';
+$project_id = get_post_meta( $post_id, 'entity_fut_projeto', true ) ?? '';
+
 $cpf = get_user_meta(get_current_user_id(), 'cpf', true);
 
-if(isset($_POST['SaveParticipant'])) {
-    // iCPFPre: 44021887091
-    // iCNPJPre:
-    // project: Conversa com Lideranças na PwC - presencial
-    // tpEvt: 0
-    $cpf = $_POST['iCPFPre'];
-    $result = hacklabr\save_participant([
-        'iCPFPre' => $cpf,
-        // 'iCNPJPre' => $cpf,
-        'project' => $post->post_title,
-        'tpEvt' => 0,
-    ]);
+if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
+    $result = hacklabr\save_participant(
+        [
+            'contact_id' => $contact_id,
+            'project_id' => $project_id
+        ]
+    );
 
-    echo '<pre>';
-    var_dump($result);
-    die;
+    do_action( 'qm/debug', $result );
 }
 
 ?>
