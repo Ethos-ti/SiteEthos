@@ -74,8 +74,6 @@ $crm_meta = hacklabr\get_crm_event_meta($post_id);
 $contact_id = get_user_meta( get_current_user_id(), '_ethos_crm_contact_id', true ) ?? '';
 $project_id = get_post_meta( $post_id, 'entity_fut_projeto', true ) ?? '';
 
-$cpf = get_user_meta(get_current_user_id(), 'cpf', true);
-
 if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
     $result = hacklabr\save_participant(
         [
