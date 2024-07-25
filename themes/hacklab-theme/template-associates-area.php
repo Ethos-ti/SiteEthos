@@ -3,6 +3,23 @@
  * Template Name: Membership area
  */
 
+function show_associated_page($page) {
+    $admin_pages = [
+        'meu-plano',
+        'minhas-solicitacoes',
+        'pagamentos',
+        'perfil-da-empresa',
+    ];
+
+    if(in_array($page->post_name, $admin_pages)){
+        $user_id = get_current_user_id();
+
+        return (bool) get_user_meta($user_id, '_ethos_admin', true);
+    }
+
+    return true;
+}
+
 get_header();
 
 $current_post_id = get_the_ID();
@@ -19,8 +36,10 @@ $current_post_id = get_the_ID();
             if ( $associates_areas ) {
                 echo '<ul class="content-sidebar__list">';
                 foreach ( $associates_areas as $associates_area ) {
-                    $css_class = $current_post_id === $associates_area->ID ? 'content-sidebar__list-item content-sidebar__list-item--active' : 'content-sidebar__list-item';
-                    echo '<li class="' . $css_class . '"><a href="' . esc_url( get_permalink( $associates_area ) ) . '">' . wp_kses_post( get_the_title( $associates_area ) ) . '</a></li>';
+                    if(show_associated_page($associates_area)){
+                        $css_class = $current_post_id === $associates_area->ID ? 'content-sidebar__list-item content-sidebar__list-item--active' : 'content-sidebar__list-item';
+                        echo '<li class="' . $css_class . '"><a href="' . esc_url( get_permalink( $associates_area ) ) . '">' . wp_kses_post( get_the_title( $associates_area ) ) . '</a></li>';
+                    }
                 }
                 echo '</ul>';
             }
