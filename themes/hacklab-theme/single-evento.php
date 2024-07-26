@@ -69,8 +69,41 @@ if( isset($recurrence['rules']) ) {
     }
 }
 
+$crm_meta = hacklabr\get_crm_event_meta($post_id);
+
+$contact_id = get_user_meta( get_current_user_id(), '_ethos_crm_contact_id', true ) ?? '';
+$project_id = get_post_meta( $post_id, 'entity_fut_projeto', true ) ?? '';
+
+if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
+    $result = hacklabr\save_participant(
+        [
+            'contact_id' => $contact_id,
+            'project_id' => $project_id
+        ]
+    );
+
+    // @todo: usar $result para exibir mensagem de sucesso ou erro
+    // @todo: no $result com sucesso tem o ID da entidade criada no CRM
+
+    do_action( 'qm/debug', $result );
+}
 
 ?>
+<?php if($crm_meta->fut_dt_data_encerramento_inscricoes && $crm_meta->fut_dt_data_encerramento_inscricoes < date('Y-m-d H:i:s')): ?>
+    <div class="alert alert-danger" role="alert">
+        <p>As inscrições para este evento estão encerradas.</p>
+    </div>
+<?php elseif($crm_meta->fut_dt_data_encerramento_inscricoes): ?>
+    <div class="alert alert-warning" role="alert">
+        <p>As inscrições para este evento encerram em <?= date('d/m/Y H:i', strtotime($crm_meta->fut_dt_data_encerramento_inscricoes)) ?></p>
+    </div>
+    <form method="post">
+        <input type="hidden" name="SaveParticipant" value="1">
+        <!-- @todo: verificar se o usuário já está inscrito e não exibir o botão -->
+        <button type="submit">Inscrever-se</button>
+    </form>
+<?php endif; ?>
+
 
 <header class="post-header">
     <div class="post-header__postdata alingfull">
