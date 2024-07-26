@@ -29,6 +29,10 @@ function get_edit_organization_fields () {
     unset($fields['termos_de_uso']);
     unset($fields['codigo_de_conduta']);
 
+    foreach ($fields as $key => $field) {
+        $fields[$key]['disabled'] = true;
+    }
+
     return $fields;
 }
 
@@ -45,6 +49,10 @@ function get_edit_organization_finance_fields () {
 
         $fields['pagto_sugerido']['default'] = $membership_price;
         $fields['pagto_sugerido']['disabled'] = true;
+    }
+
+    foreach ($fields as $key => $field) {
+        $fields[$key]['disabled'] = true;
     }
 
     return $fields;
@@ -98,7 +106,7 @@ function register_edit_organization_form () {
 
     register_form('edit-organization', __('Edit organization', 'hacklabr'), [
         'fields' => $fields_organization,
-        'submit_label' => __('Edit', 'hacklabr'),
+        'submit_label' => false,
         'get_params' => get_organization_params('edit-organization', $fields_organization),
     ]);
 
@@ -114,7 +122,7 @@ function register_edit_organization_form () {
 
     register_form('edit-organization-finances', __('Edit organization finances', 'hacklabr'), [
         'fields' => $fields_finance,
-        'submit_label' => __('Edit', 'hacklabr'),
+        'submit_label' => false,
         'get_params' => get_organization_params('edit-organization-finances', $fields_finance),
     ]);
 }
