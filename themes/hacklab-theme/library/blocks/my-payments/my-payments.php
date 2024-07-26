@@ -68,33 +68,33 @@ function render_my_payments_callback ($attributes) {
         <tbody>
         <?php if (!empty($payment_data['plan'])): ?>
             <tr>
-                <td><?= _x('Plan', 'membership', 'hacklabr') ?></td>
+                <td><?php _ex('Plan', 'membership', 'hacklabr') ?></td>
                 <td><?= $payment_data['plan'] ?></td>
             </tr>
             <p></p>
         <?php endif; ?>
         <?php if (!empty($payment_data['periodicity'])): ?>
             <tr>
-                <td><?= __('Periodicity', 'hacklabr') ?></td>
+                <td><?php _e('Periodicity', 'hacklabr') ?></td>
                 <td><?= $payment_data['periodicity'] ?></td>
             </tr>
         <?php endif; ?>
         <?php if (!empty($payment_data['start'])): ?>
             <tr>
-                <td><?= __('Start of validity', 'hacklabr') ?></td>
+                <td><?php _e('Start of validity', 'hacklabr') ?></td>
                 <td><?= $payment_data['start'] ?></td>
             </tr>
         <?php endif; ?>
         <?php if (!empty($payment_data['value'])): ?>
             <tr>
-                <td><?= __('Value', 'hacklabr') ?></td>
+                <td><?php _e('Value', 'hacklabr') ?></td>
                 <td><?= $payment_data['value'] ?></td>
             </tr>
         <?php endif; ?>
         <?php if (!empty($payment_data['situation'])): ?>
             <?php $modifier = $payment_data['situation'] === 'Adimplente' ? 'adimplente' : 'inadimplente'; ?>
             <tr class="my-payments__situation my-payments__situation--<?= $modifier ?>">
-                <td><?= _x('Situation', 'membership', 'hacklabr') ?></td>
+                <td><?php _ex('Situation', 'membership', 'hacklabr') ?></td>
                 <td><span><?= $payment_data['situation'] ?></span></td>
             </tr>
         <?php endif; ?>
