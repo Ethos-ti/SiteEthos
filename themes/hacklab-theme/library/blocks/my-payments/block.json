@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/my-payments",
+    "title": "My Payments",
+    "description": "Details about my plan's finances",
+    "category": "theme",
+    "icon": "money-alt",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/my-payments/editor.js"],
+    "style": ["file:../../../dist/blocks/my-payments/index.css"]
+}

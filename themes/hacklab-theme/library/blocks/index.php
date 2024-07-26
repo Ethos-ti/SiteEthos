@@ -14,6 +14,9 @@ function get_blocks_list () {
         'form' => [
             'render_callback' => 'hacklabr\\render_form_callback',
         ],
+        'my-payments' => [
+            'render_callback' => 'hacklabr\\render_my_payments_callback',
+        ],
         'my-plan' => [
             'render_callback' => 'hacklabr\\render_my_plan_callback',
         ],
