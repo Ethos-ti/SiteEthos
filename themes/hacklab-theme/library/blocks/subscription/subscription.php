@@ -3,63 +3,65 @@
 namespace hacklabr;
 
 function get_subscription_data ($attributes): array {
-    return [];
+    $account_id = $attributes['account_id'];
+
+    $cached_data = get_block_transient('hacklabr/subscription', $attributes);
+    if ($cached_data !== false) {
+        return $cached_data;
+    }
+
+    $subscriptions_col = \hacklabr\get_crm_entities('fut_participante', [
+        'filters' => [
+            'fut_lk_empresa' => $account_id,
+        ],
+    ]);
+
+    $subscriptions = $subscriptions_col->Entities ?? [];
+
+    set_block_transient('hacklabr/subscription', $attributes, $subscriptions);
+
+    return $subscriptions;
 }
 
 function render_subscription_callback ($attributes) {
-    $query = get_posts_grid_data($attributes);
+    $user_id = get_current_user_id();
+
+    $organization = get_organization_by_user($user_id);
+
+    if (empty($organization)) {
+        return '';
+    }
+
+    $account_id = get_post_meta($organization->ID, '_ethos_crm_account_id', true);
+
+    $subscriptions = get_subscription_data([ 'account_id' => $account_id ]);
+
+    // echo '<pre>';
+    // var_dump($subscriptions);
+    // echo '</pre>';
 
     ob_start();
     ?>
 
     <table class="hacklabr-subscription-block">
-      <thead>
-        <tr>
-            <th>Data</th>
-            <th>Título</th>
-            <th>Tipo de inscrição</th>
-            <th>Status</th>
-        </tr>
-      </thead>
+        <thead>
+            <tr>
+                <th><?php _e('Date', 'hacklabr') ?></th>
+                <th><?php _e('Title', 'hacklabr') ?></th>
+                <th><?php _e('Status', 'hacklabr') ?></th>
+            </tr>
+        </thead>
 
-      <tbody>
-      <tr>
-        <td>Janeiro 2024</td>
-        <td><a href="https://abrir.link/sHNBW">Valor Estratégico/ODS e Agenda 2030</a></td>
-        <td>Curso</td>
-        <td class="status status--pendente"><span>Pendente</span></td>
-      </tr>
-      <tr>
-        <td>Dezembro 2023</td>
-        <td><a href="#">Título da palestra lorem ipsum</a></td>
-        <td>Palestra</td>
-        <td class="status status--pendente"><span>Pendente</span></td>
-      </tr>
-      <tr>
-        <td>Novembro 2023</td>
-        <td><a href="#">Título da palestra lorem ipsum</a></td>
-        <td>Curso</td>
-        <td class="status status--inscrito"><span>Inscrito</span></td>
-      </tr>
-      <tr>
-        <td>Outubro 2023</td>
-        <td><a href="#">Título da palestra lorem ipsum</a></td>
-        <td>Palestra</td>
-        <td class="status status--inscrito"><span>Inscrito</span></td>
-      </tr>
-      <tr>
-        <td>Setembro 2023</td>
-        <td><a href="#">Título da palestra lorem ipsum</a></td>
-        <td>Curso</td>
-        <td class="status status--inscrito"><span>Inscrito</span></td>
-      </tr>
-      <tr>
-        <td>Agosto 2023</td>
-        <td><a href="#">Título da palestra lorem ipsum</a></td>
-        <td>Palestra</td>
-        <td class="status status--inscrito" ><span>Inscrito</span></td>
-      </tr>
-      </tbody>
+        <tbody>
+        <?php foreach ($subscriptions as $subscription): ?>
+            <?php $event = event_exists_on_wp($subscription->Id); ?>
+            <tr>
+                <td><?= $subscription->FormattedValues['fut_dt_iniciodaparticipao'] ?? '' ?></td>
+                <td><a href="<?= $event ? get_permalink( $event->ID ) : '#' ?>"><?= $subscription->FormattedValues['fut_lk_projeto'] ?></a></td>
+                <td class="status status--pendente"><span>Pendente</span></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
     </table>
 
     <?php
