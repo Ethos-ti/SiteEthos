@@ -90,6 +90,7 @@ function render_select_field (string $name, $value, array $definition) {
         id="<?= $name ?>"
         name="_<?= $name ?>"
 		<?= $definition['required'] ? 'required' : '' ?>
+        <?= (!empty($definition['disabled'])) ? 'disabled' : '' ?>
 		aria-errormessage="<?= $name ?>__error"
 	>
 	<?php if (empty($value)): ?>

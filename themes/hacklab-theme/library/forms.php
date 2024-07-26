@@ -152,8 +152,9 @@ function render_form (array $form, array $params = [], string $class = 'form') {
             <?php if (!empty($previous_url)): ?>
                 <a class="button button--solid" href="<?= $previous_url ?>"><?= __('Back') ?></a>
             <?php endif; ?>
-
-            <button class="button button--solid" type="submit"><?= $submit_label ?></button>
+            <?php if (!empty($submit_label)): ?>
+                <button class="button button--solid" type="submit"><?= $submit_label ?></button>
+            <?php endif; ?>
         </div>
     </form>
 <?php
