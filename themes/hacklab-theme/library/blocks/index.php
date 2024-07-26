@@ -17,9 +17,6 @@ function get_blocks_list () {
         'my-plan' => [
             'render_callback' => 'hacklabr\\render_my_plan_callback',
         ],
-        'payments-history' =>[
-            'render_callback' => 'hacklabr\\render_payments_history_callback',
-        ],
         'posts-grid' => [
             'render_callback' => 'hacklabr\\render_posts_grid_callback',
         ],
