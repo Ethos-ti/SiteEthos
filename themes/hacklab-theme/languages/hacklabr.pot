@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.75\n"
+"Project-Id-Version: Ethos 0.0.79\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-15T15:08:15+00:00\n"
+"POT-Creation-Date: 2024-07-29T21:05:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
@@ -92,12 +92,47 @@ msgstr ""
 msgid "Comments are disabled"
 msgstr ""
 
-#: header-lateral.php:33
+#: header-lateral.php:34
 msgid "Toggle menu visibility"
 msgstr ""
 
-#: header-lateral.php:58
+#: header-lateral.php:59
 msgid "Toggle search form visibility"
+msgstr ""
+
+#: library/blocks/my-payments/my-payments.php:71
+#: library/forms/registration.php:477
+msgctxt "membership"
+msgid "Plan"
+msgstr ""
+
+#: library/blocks/my-payments/my-payments.php:78
+msgid "Periodicity"
+msgstr ""
+
+#: library/blocks/my-payments/my-payments.php:84
+msgid "Start of validity"
+msgstr ""
+
+#: library/blocks/my-payments/my-payments.php:90
+msgid "Value"
+msgstr ""
+
+#: library/blocks/my-payments/my-payments.php:97
+msgctxt "membership"
+msgid "Situation"
+msgstr ""
+
+#: library/blocks/subscription/subscription.php:49
+msgid "Date"
+msgstr ""
+
+#: library/blocks/subscription/subscription.php:50
+msgid "Title"
+msgstr ""
+
+#: library/blocks/subscription/subscription.php:51
+msgid "Status"
 msgstr ""
 
 #: library/cron.php:8
@@ -116,7 +151,7 @@ msgstr ""
 msgid "Skip step"
 msgstr ""
 
-#: library/forms.php:166
+#: library/forms.php:167
 msgid "Required field"
 msgstr ""
 
@@ -195,8 +230,6 @@ msgstr ""
 
 #: library/forms/custom-forms.php:275
 #: library/forms/custom-forms.php:291
-#: library/forms/edit-organization.php:101
-#: library/forms/edit-organization.php:117
 msgid "Edit"
 msgstr ""
 
@@ -215,20 +248,20 @@ msgstr ""
 msgid "Email is already in use"
 msgstr ""
 
-#: library/forms/edit-organization.php:99
+#: library/forms/edit-organization.php:107
 msgid "Edit organization"
 msgstr ""
 
-#: library/forms/edit-organization.php:105
-#: library/forms/edit-organization.php:110
+#: library/forms/edit-organization.php:113
+#: library/forms/edit-organization.php:118
 msgid "Edit contacts"
 msgstr ""
 
-#: library/forms/edit-organization.php:110
+#: library/forms/edit-organization.php:118
 msgid "(hidden)"
 msgstr ""
 
-#: library/forms/edit-organization.php:115
+#: library/forms/edit-organization.php:123
 msgid "Edit organization finances"
 msgstr ""
 
@@ -533,11 +566,6 @@ msgstr ""
 msgid "Enter the phone number"
 msgstr ""
 
-#: library/forms/registration.php:477
-msgctxt "membership"
-msgid "Plan"
-msgstr ""
-
 #: library/forms/registration.php:482
 msgctxt "membership"
 msgid "Invalid plan"
@@ -732,41 +760,41 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: single-evento.php:88
+#: single-evento.php:121
 #: single.php:49
-#: template-parts/post-card.php:85
+#: template-parts/post-card.php:81
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:102
+#: single-evento.php:135
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:111
+#: single-evento.php:144
 msgid "End"
 msgstr ""
 
-#: single-evento.php:117
+#: single-evento.php:150
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:123
+#: single-evento.php:156
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:134
+#: single-evento.php:167
 msgid "Event type"
 msgstr ""
 
-#: single-evento.php:141
+#: single-evento.php:174
 msgid "Number of events"
 msgstr ""
 
-#: single-evento.php:149
+#: single-evento.php:182
 msgid "Weekday"
 msgstr ""
 
-#: single-evento.php:165
+#: single-evento.php:198
 msgid "Local"
 msgstr ""
 
@@ -790,18 +818,12 @@ msgstr ""
 msgid "Membership area"
 msgstr ""
 
-#: template-associates-area.php:15
-#: template-invoice.php:17
+#: template-associates-area.php:32
 msgid "Associeted panel"
 msgstr ""
 
-#: template-associates-area.php:29
-#: template-invoice.php:31
+#: template-associates-area.php:48
 msgid "Logout"
-msgstr ""
-
-#. Template Name of the theme
-msgid "Invoice area"
 msgstr ""
 
 #. Template Name of the theme
@@ -858,6 +880,9 @@ msgstr ""
 #: library/blocks/banner-with-image/editor.js:11
 #: library/blocks/card-header/editor.js:11
 #: library/blocks/download-image/editor.js:11
+#: dist/blocks/banner-with-image/editor.js:128
+#: dist/blocks/card-header/editor.js:115
+#: dist/blocks/download-image/editor.js:128
 msgid "Header content"
 msgstr ""
 
@@ -867,6 +892,9 @@ msgstr ""
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:23
+#: dist/blocks/banner-with-image/editor.js:142
+#: dist/blocks/card-header/editor.js:142
+#: dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr ""
 
@@ -876,6 +904,10 @@ msgstr ""
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/banner-with-image/editor.js:28
 #: library/blocks/shared/SelectImage.js:32
+#: dist/blocks/banner-with-image/editor.js:96
+#: dist/blocks/banner-with-image/editor.js:145
+#: dist/blocks/card-header/editor.js:83
+#: dist/blocks/download-image/editor.js:96
 msgid "Image"
 msgstr ""
 
@@ -883,6 +915,9 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:15
+#: dist/blocks/banner-with-image/editor.js:79
+#: dist/blocks/card-header/editor.js:66
+#: dist/blocks/download-image/editor.js:79
 msgid "Change image"
 msgstr ""
 
@@ -890,6 +925,9 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:18
+#: dist/blocks/banner-with-image/editor.js:82
+#: dist/blocks/card-header/editor.js:69
+#: dist/blocks/download-image/editor.js:82
 msgid "Remove image"
 msgstr ""
 
@@ -897,198 +935,243 @@ msgstr ""
 #: dist/blocks/card-header/editor.js:29
 #: dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:24
+#: dist/blocks/banner-with-image/editor.js:88
+#: dist/blocks/card-header/editor.js:75
+#: dist/blocks/download-image/editor.js:88
 msgid "Select image"
 msgstr ""
 
 #: dist/blocks/card-body/editor.js:19
 #: library/blocks/card-body/editor.js:8
+#: dist/blocks/card-body/editor.js:58
 msgid "Body content"
 msgstr ""
 
 #: dist/blocks/card-header/editor.js:19
 #: library/blocks/card-header/editor.js:41
+#: dist/blocks/card-header/editor.js:145
 msgid "Background image"
 msgstr ""
 
 #: dist/blocks/form/editor.js:19
 #: library/blocks/form/editor.js:43
+#: dist/blocks/form/editor.js:1383
 msgid "Select option"
 msgstr ""
 
 #: dist/blocks/form/editor.js:19
 #: library/blocks/form/editor.js:48
 #: library/blocks/form/editor.js:50
+#: dist/blocks/form/editor.js:1388
+#: dist/blocks/form/editor.js:1390
 msgid "Form"
+msgstr ""
+
+#: dist/blocks/my-payments/editor.js:19
+#: library/blocks/my-payments/editor.js:13
+msgid "My Payments"
 msgstr ""
 
 #: dist/blocks/my-plan/editor.js:19
 #: library/blocks/my-plan/editor.js:22
+#: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
 msgstr ""
 
 #: dist/blocks/payments-history/editor.js:19
-#: library/blocks/payments-history/editor.js:13
+#: dist/blocks/payments-history/editor.js:63
 msgid "Payments history"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:40
+#: dist/blocks/posts-grid/editor.js:1931
 msgid "Grid columns"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:49
+#: dist/blocks/posts-grid/editor.js:1940
 msgid "Grid rows"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:58
+#: dist/blocks/posts-grid/editor.js:1949
 msgid "Grid gap"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:66
+#: dist/blocks/posts-grid/editor.js:1957
 msgid "Hide author"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:74
+#: dist/blocks/posts-grid/editor.js:1965
 msgid "Hide categories"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:82
+#: dist/blocks/posts-grid/editor.js:1973
 msgid "Hide date"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:90
+#: dist/blocks/posts-grid/editor.js:1981
 msgid "Hide excerpt"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
 #: library/blocks/posts-grid/editor.js:98
+#: dist/blocks/posts-grid/editor.js:1989
 msgid "Show taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:11
+#: dist/blocks/posts-grid/editor.js:1502
 msgid "Query"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:35
+#: dist/blocks/posts-grid/editor.js:1526
 msgid "Show children posts?"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:30
 #: library/blocks/shared/QueryPanel.js:79
+#: dist/blocks/posts-grid/editor.js:1570
 msgid "Filter posts to not display"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
+#: dist/blocks/posts-grid/editor.js:1632
 msgid "Card model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
+#: dist/blocks/posts-grid/editor.js:1637
 msgctxt "card"
 msgid "Default model"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
+#: dist/blocks/posts-grid/editor.js:1678
 msgid "Card modifier"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:5
+#: dist/blocks/posts-grid/editor.js:1345
 msgid "OR"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:6
+#: dist/blocks/posts-grid/editor.js:1346
 msgid "AND"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:63
 #: library/blocks/shared/SelectCompare.js:9
+#: dist/blocks/posts-grid/editor.js:1349
 msgid "Compare terms"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
+#: dist/blocks/posts-grid/editor.js:1381
 msgid "Post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
+#: dist/blocks/posts-grid/editor.js:1386
 msgid "No post type"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:8
+#: dist/blocks/posts-grid/editor.js:1742
 msgctxt "size"
 msgid "Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:9
+#: dist/blocks/posts-grid/editor.js:1743
 msgctxt "size"
 msgid "Medium"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:10
+#: dist/blocks/posts-grid/editor.js:1744
 msgctxt "size"
 msgid "Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:11
+#: dist/blocks/posts-grid/editor.js:1745
 msgctxt "size"
 msgid "Extra Large"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:12
+#: dist/blocks/posts-grid/editor.js:1746
 msgctxt "size"
 msgid "Extra Small"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:85
 #: library/blocks/shared/SelectSize.js:60
+#: dist/blocks/posts-grid/editor.js:1794
 msgid "Size"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomies.js:29
+#: dist/blocks/posts-grid/editor.js:1836
 msgid "Taxonomies"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
+#: dist/blocks/posts-grid/editor.js:1419
 msgid "Taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
+#: dist/blocks/posts-grid/editor.js:1424
 msgid "No taxonomy"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:118
 #: library/blocks/shared/SelectTerms.js:9
+#: dist/blocks/posts-grid/editor.js:1446
 msgid "Terms"
 msgstr ""
 
 #: dist/blocks/read-more/editor.js:19
 #: library/blocks/read-more/editor.js:14
+#: dist/blocks/read-more/editor.js:66
 msgid "Full text"
 msgstr ""
 
 #: dist/blocks/read-more/editor.js:19
 #: library/blocks/read-more/editor.js:34
+#: dist/blocks/read-more/editor.js:86
 msgid "Lines shown"
 msgstr ""
 
@@ -1096,6 +1179,8 @@ msgstr ""
 #: dist/blocks/read-more/index.js:19
 #: library/blocks/read-more/editor.js:53
 #: library/blocks/read-more/index.js:15
+#: dist/blocks/read-more/editor.js:105
+#: dist/blocks/read-more/index.js:16
 msgid "Read less"
 msgstr ""
 
@@ -1104,27 +1189,35 @@ msgstr ""
 #: library/blocks/read-more/editor.js:53
 #: library/blocks/read-more/editor.js:71
 #: library/blocks/read-more/index.js:12
+#: dist/blocks/read-more/editor.js:105
+#: dist/blocks/read-more/editor.js:123
+#: dist/blocks/read-more/index.js:13
 msgid "Read more"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:32
+#: dist/blocks/steps-viewer/editor.js:97
 msgid "Steps"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:35
+#: dist/blocks/steps-viewer/editor.js:100
 msgid "Current step"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:45
+#: dist/blocks/steps-viewer/editor.js:110
 msgid "Last step"
 msgstr ""
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:55
 #: library/blocks/steps-viewer/editor.js:71
+#: dist/blocks/steps-viewer/editor.js:120
+#: dist/blocks/steps-viewer/editor.js:136
 msgid "Step %s of %s"
 msgstr ""
 
@@ -1134,6 +1227,7 @@ msgid "Subscription"
 msgstr ""
 
 #: dist/js/functionalities/gutenberg.js:29
+#: dist/js/functionalities/gutenberg.js:2510
 msgid "Iconify ID"
 msgstr ""
 
@@ -1197,6 +1291,16 @@ msgctxt "block description"
 msgid "Render a code-driven form"
 msgstr ""
 
+#: library/blocks/my-payments/block.json
+msgctxt "block title"
+msgid "My Payments"
+msgstr ""
+
+#: library/blocks/my-payments/block.json
+msgctxt "block description"
+msgid "Details about my plan's finances"
+msgstr ""
+
 #: library/blocks/my-plan/block.json
 msgctxt "block title"
 msgid "My Plan"
@@ -1205,16 +1309,6 @@ msgstr ""
 #: library/blocks/my-plan/block.json
 msgctxt "block description"
 msgid "Description of the plan I subscribe"
-msgstr ""
-
-#: library/blocks/payments-history/block.json
-msgctxt "block title"
-msgid "Payments history"
-msgstr ""
-
-#: library/blocks/payments-history/block.json
-msgctxt "block description"
-msgid "Payments history on the CRM"
 msgstr ""
 
 #: library/blocks/posts-grid/block.json
