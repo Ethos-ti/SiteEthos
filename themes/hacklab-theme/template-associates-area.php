@@ -2,31 +2,34 @@
 /**
  * Template Name: Membership area
  */
-function show_associated_page($page) {
-    // Defina as páginas administrativas
+function show_associated_page() {
+    // Obtemos a página atual
+    global $post;
+
+    if (!$post) {
+        return;
+    }
+
     $admin_pages = [
+        'perfil-da-empresa',
         'meu-plano',
         'minhas-solicitacoes',
         'pagamentos',
-        'perfil-da-empresa',
     ];
 
-    if (in_array($page->post_name, $admin_pages)) {
-        // Obtenha o ID do usuário atual
+    // Verifica se a página atual está na lista de páginas administrativas
+    if (in_array($post->post_name, $admin_pages)) {
         $user_id = get_current_user_id();
-        $is_admin = (bool) get_user_meta($user_id, '_ethos_admin', true);
-        // Se o usuário não for admin, redirecione para a página 404
-        if (!$is_admin) {
-            global $wp_query;
-            $wp_query->set_404();
-            status_header(404);
-            get_template_part(404);
+
+        // Verifica se o usuário não é administrador
+        if (!(bool) get_user_meta($user_id, '_ethos_admin', true)) {
+            // Redireciona para a página de boas vindas
+            wp_redirect(home_url('/boas-vindas/'));
             exit;
         }
-        return $is_admin;
     }
-    return true;
 }
+add_action('template_redirect', 'show_associated_page');
 get_header();
 
 $current_post_id = get_the_ID();
