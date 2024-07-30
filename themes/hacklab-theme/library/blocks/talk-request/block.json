@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/talk-request",
+    "title": "Talk request",
+    "description": "Render the form for requesting a talk",
+    "category": "theme",
+    "icon": "microphone",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/talk-request/editor.js"],
+    "style": ["file:../../../dist/blocks/talk-request/index.css"]
+}

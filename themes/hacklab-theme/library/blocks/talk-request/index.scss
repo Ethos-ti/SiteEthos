@@ -1,0 +1,19 @@
+@import '../../../assets/scss/includes';
+
+.hacklabr-talk-request-block {
+
+    & > :not(#corpoScript) {
+        display: none;
+    }
+
+    #corpoScript > :not(.tabelasDiv) {
+        display: none;
+    }
+
+    .tabelasDiv {
+
+        li:empty {
+            display: none;
+        }
+    }
+}

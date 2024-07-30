@@ -28,6 +28,9 @@ function get_blocks_list () {
             'render_callback' => 'hacklabr\\render_subscription_callback',
         ],
         'steps-viewer' => null,
+        'talk-request' => [
+            'render_callback' => 'hacklabr\\render_talk_request_callback',
+        ],
         'video-playlist' => [
            'render_callback' => 'hacklabr\\render_video_playlist_callback',
         ],
