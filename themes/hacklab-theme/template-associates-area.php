@@ -2,8 +2,8 @@
 /**
  * Template Name: Membership area
  */
-
 function show_associated_page($page) {
+    // Defina as páginas administrativas
     $admin_pages = [
         'meu-plano',
         'minhas-solicitacoes',
@@ -11,15 +11,22 @@ function show_associated_page($page) {
         'perfil-da-empresa',
     ];
 
-    if(in_array($page->post_name, $admin_pages)){
+    if (in_array($page->post_name, $admin_pages)) {
+        // Obtenha o ID do usuário atual
         $user_id = get_current_user_id();
-
-        return (bool) get_user_meta($user_id, '_ethos_admin', true);
+        $is_admin = (bool) get_user_meta($user_id, '_ethos_admin', true);
+        // Se o usuário não for admin, redirecione para a página 404
+        if (!$is_admin) {
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            get_template_part(404);
+            exit;
+        }
+        return $is_admin;
     }
-
     return true;
 }
-
 get_header();
 
 $current_post_id = get_the_ID();
