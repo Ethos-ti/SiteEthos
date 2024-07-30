@@ -35,6 +35,12 @@ function render_file_field (string $name, $value, array $definition) {
 <?php
 }
 
+function render_grecaptcha_field (string $name, $value, array $definition = []) {
+    if (class_exists('\WPCaptcha_Functions')) {
+        \WPCaptcha_Functions::captcha_fields();
+    }
+}
+
 function render_hidden_field (string $name, $value, array $definition = []) {
 ?>
     <input id="<?= $name ?>" name="_<?= $name ?>" type="hidden" value="<?= $value ?>">

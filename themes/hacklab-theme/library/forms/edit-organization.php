@@ -131,9 +131,9 @@ add_action('init', 'hacklabr\\register_edit_organization_form');
 function validate_edit_organization_form ($form_id, $form, $params) {
     $current_user = get_current_user_id();
 
-    $is_ethos_admin = get_user_meta( $current_user, '_ethos_admin', true );
+    $is_ethos_admin = get_user_meta($current_user, '_ethos_admin', true);
 
-    if ( empty( $is_ethos_admin ) ) {
+    if (empty($is_ethos_admin)) {
         return;
     }
 

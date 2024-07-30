@@ -4,6 +4,10 @@
         display: block;
     }
 
+    & > script {
+        display: none;
+    }
+
     &__error, &__hint {
         font-size: $font-size--small;
         order: 3;
