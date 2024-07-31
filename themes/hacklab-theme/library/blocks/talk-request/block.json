@@ -12,5 +12,6 @@
     "attributes": {},
     "textdomain": "hacklabr",
     "editorScript": ["file:../../../dist/blocks/talk-request/editor.js"],
+    "script": ["file:../../../dist/blocks/talk-request/index.js"],
     "style": ["file:../../../dist/blocks/talk-request/index.css"]
 }
