@@ -1,10 +1,12 @@
 .uwy{
     .userway_buttons_wrapper{
         margin-top: 5rem !important;
+        z-index: 9999 !important;
     }
 }
 .enabled{
     bottom: 7rem;
     right: 1rem;
-    z-index: 99999999 !important;
+    z-index: 0 !important;
+
 }
