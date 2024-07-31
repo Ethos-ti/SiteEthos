@@ -3,8 +3,6 @@
 namespace hacklabr;
 
 function get_request_occurrence_fields () {
-    $request_options = [];
-
     $privacy_policy_url =  get_privacy_policy_url();
 
     $fields = [
