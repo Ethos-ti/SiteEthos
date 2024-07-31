@@ -30,6 +30,7 @@ require __DIR__ . '/library/forms/custom-forms.php';
 require __DIR__ . '/library/forms/registration.php';
 require __DIR__ . '/library/forms/edit-organization.php';
 require __DIR__ . '/library/forms/my-data.php';
+require __DIR__ . '/library/forms/requests.php';
 
 
 add_action('init', function () {
