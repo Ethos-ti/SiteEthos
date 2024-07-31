@@ -2,31 +2,9 @@
 /**
  * Template Name: Membership area
  */
-function show_associated_page($page) {
-    // Defina as páginas administrativas
-    $admin_pages = [
-        'meu-plano',
-        'minhas-solicitacoes',
-        'pagamentos',
-        'perfil-da-empresa',
-    ];
 
-    // Verifique se o nome do post está nas páginas administrativas
-    if (in_array($page->post_name, $admin_pages)) {
-        $user_id = get_current_user_id();
-        $is_admin = (bool) get_user_meta($user_id, '_ethos_admin', true);
+namespace hacklabr;
 
-        // Se o usuário não for admin, redirecione para uma página de erro ou login
-        if (!$is_admin) {
-            wp_redirect(home_url('/boas-vindas'));
-            exit;
-        }
-
-        return $is_admin;
-    }
-
-    return true;
-}
 get_header();
 
 $current_post_id = get_the_ID();

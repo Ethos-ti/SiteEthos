@@ -26,12 +26,18 @@ add_filter( 'page_link', 'hacklabr\\modify_associates_permalink', 10, 2 );
 
 function redirect_associates_template() {
     if ( is_page() && get_page_template_slug() == 'template-associates-area.php' ) {
+        global $post;
 
         /**
          * Redirects non-logged-in users to the login page
          */
         if ( ! is_user_logged_in() ) {
             wp_redirect( get_login_page_url(), 301 );
+            exit;
+        }
+
+        if ( ! show_associated_page( $post ) ) {
+            wp_redirect( home_url('/associados/boas-vindas'));
             exit;
         }
 
@@ -45,6 +51,21 @@ function redirect_associates_template() {
     }
 }
 add_action( 'template_redirect', 'hacklabr\\redirect_associates_template' );
+
+function show_associated_page($page) {
+    $admin_pages = [
+        'meu-plano',
+        'minhas-solicitacoes',
+        'pagamentos',
+        'perfil-da-empresa',
+    ];
+
+    if(in_array($page->post_name, $admin_pages)){
+        $user_id = get_current_user_id();
+        return (bool) get_user_meta($user_id, '_ethos_admin', true);
+    }
+    return true;
+}
 
 function pmpro_login_redirect_url( $redirect_to, $request, $user ) {
     if ( ! \function_exists( 'pmpro_url' ) || empty( $user->ID ) ) {
