@@ -6,32 +6,34 @@
             .login-username, .login-password{
                 font-size: $font-size--x-small;
             }
+            p{
+                input[type="text"], input[type="password"]{
+                    @extend .text-input;
+                    padding: $padding--medium;
+                    margin-top: $margin--small;
+                    max-width: 100% !important;
+                    width: 27.375rem;
 
-            input[type="text"], input[type="password"]{
-                @extend .text-input;
-                padding: $padding--medium;
-                margin-top: $margin--small;
-                max-width: 100% !important;
-                width: 27.375rem;
+                    @include small{
+                        width: 21.5rem !important;
+                    }
 
-                @include small{
-                    width: 21.5rem !important;
+                    @include mobile{
+                        width: 21.5rem !important;
+                    }
                 }
+            }
+            p{
+                .login-password {
+                    position: relative;
 
-                @include mobile{
-                    width: 21.5rem !important;
+                    & > label{
+                        text-transform: uppercase;
+                    }
                 }
             }
 
-            .login-password {
-                position: relative;
-
-                & > label{
-                    text-transform: uppercase;
-                }
-            }
-
-            .login-password > .toggle-password {
+            p > .login-password > .toggle-password {
                 background-image: url( $path--assets + "/images/show-pass.png" );
                 background-position: center;
                 background-size: cover;
@@ -47,11 +49,11 @@
                 width: 1rem;
             }
 
-            .login-password > .toggle-password.show {
+            p > .login-password > .toggle-password.show {
                 background-image: url($path--assets + "/images/hide-pass.png");
             }
 
-            .login-remember{
+            p > .login-remember{
                 display: none;
             }
 
@@ -62,7 +64,7 @@
                 margin-bottom: -1rem !important;
             }
 
-            input[type="submit"]{
+            p > input[type="submit"]{
                 background-color: $color--low-pure;
                 border: $border-width--medium solid $color--low-pure;
                 border-radius: $border-radius--large;
@@ -91,7 +93,7 @@
 
     }
 
-    .pmpro_reset_password_wrap{
+    p > .pmpro_reset_password_wrap{
         max-width: 440px;
         width: 100%;
         margin-left: auto;
