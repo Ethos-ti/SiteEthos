@@ -59,6 +59,13 @@ function get_pmpro_group ($group_id) {
     return new \PMProGroupAcct_Group($group_id);
 }
 
+function get_pmpro_plan ($user_id) {
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+    $group = get_pmpro_group($group_id);
+    $level_id = $group->group_parent_level_id;
+    return Fields\get_pmpro_level_slug_by_id($level_id);
+}
+
 function update_group_level ($group_id, $level_id = 11) {
     global $wpdb;
 
