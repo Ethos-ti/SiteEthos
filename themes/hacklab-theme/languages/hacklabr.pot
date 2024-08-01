@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.79\n"
+"Project-Id-Version: Ethos 0.0.80\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-29T21:05:20+00:00\n"
+"POT-Creation-Date: 2024-08-01T21:13:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
@@ -101,6 +101,7 @@ msgid "Toggle search form visibility"
 msgstr ""
 
 #: library/blocks/my-payments/my-payments.php:71
+#: library/blocks/my-plan/my-plan.php:53
 #: library/forms/registration.php:477
 msgctxt "membership"
 msgid "Plan"
@@ -123,11 +124,18 @@ msgctxt "membership"
 msgid "Situation"
 msgstr ""
 
+#: library/blocks/my-plan-table/my-plan-table.php:22
+#: dist/blocks/my-plan-table-row/editor.js:19
+#: library/blocks/my-plan-table-row/editor.js:47
+msgid "Benefits"
+msgstr ""
+
 #: library/blocks/subscription/subscription.php:49
 msgid "Date"
 msgstr ""
 
 #: library/blocks/subscription/subscription.php:50
+#: library/forms/requests.php:12
 msgid "Title"
 msgstr ""
 
@@ -696,7 +704,27 @@ msgstr ""
 msgid "Membership to Ethos Institute"
 msgstr ""
 
-#: library/membership.php:115
+#: library/forms/requests.php:13
+msgid "Request title"
+msgstr ""
+
+#: library/forms/requests.php:19
+msgid "Describe your requirements"
+msgstr ""
+
+#: library/forms/requests.php:20
+msgid "Describe briefly your demand"
+msgstr ""
+
+#: library/forms/requests.php:26
+msgid "I have read and agreed with the <a href=\"%s\" target=\"_blank\">Privacy Policy</a>"
+msgstr ""
+
+#: library/forms/requests.php:37
+msgid "Requests"
+msgstr ""
+
+#: library/membership.php:127
 msgid "Organizations"
 msgstr ""
 
@@ -818,11 +846,11 @@ msgstr ""
 msgid "Membership area"
 msgstr ""
 
-#: template-associates-area.php:32
+#: template-associates-area.php:17
 msgid "Associeted panel"
 msgstr ""
 
-#: template-associates-area.php:48
+#: template-associates-area.php:33
 msgid "Logout"
 msgstr ""
 
@@ -969,18 +997,25 @@ msgstr ""
 
 #: dist/blocks/my-payments/editor.js:19
 #: library/blocks/my-payments/editor.js:13
+#: dist/blocks/my-payments/editor.js:63
 msgid "My Payments"
+msgstr ""
+
+#: dist/blocks/my-plan-table-row/editor.js:19
+#: library/blocks/my-plan-table-row/editor.js:11
+#: library/blocks/my-plan-table-row/editor.js:62
+msgid "Custom text"
+msgstr ""
+
+#: dist/blocks/my-plan-table/editor.js:19
+#: library/blocks/my-plan-table/editor.js:28
+msgid "My Plan - Table"
 msgstr ""
 
 #: dist/blocks/my-plan/editor.js:19
 #: library/blocks/my-plan/editor.js:22
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
-msgstr ""
-
-#: dist/blocks/payments-history/editor.js:19
-#: dist/blocks/payments-history/editor.js:63
-msgid "Payments history"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
@@ -1223,6 +1258,7 @@ msgstr ""
 
 #: dist/blocks/subscription/editor.js:19
 #: library/blocks/subscription/editor.js:13
+#: dist/blocks/subscription/editor.js:63
 msgid "Subscription"
 msgstr ""
 
@@ -1301,6 +1337,26 @@ msgctxt "block description"
 msgid "Details about my plan's finances"
 msgstr ""
 
+#: library/blocks/my-plan-table-row/block.json
+msgctxt "block title"
+msgid "My Plan - Table Row"
+msgstr ""
+
+#: library/blocks/my-plan-table-row/block.json
+msgctxt "block description"
+msgid "A row comparing plans"
+msgstr ""
+
+#: library/blocks/my-plan-table/block.json
+msgctxt "block title"
+msgid "My Plan - Table"
+msgstr ""
+
+#: library/blocks/my-plan-table/block.json
+msgctxt "block description"
+msgid "Details of the plan I subscribe"
+msgstr ""
+
 #: library/blocks/my-plan/block.json
 msgctxt "block title"
 msgid "My Plan"
@@ -1349,6 +1405,16 @@ msgstr ""
 #: library/blocks/subscription/block.json
 msgctxt "block description"
 msgid "Subscription on the CRM"
+msgstr ""
+
+#: library/blocks/talk-request/block.json
+msgctxt "block title"
+msgid "Talk request"
+msgstr ""
+
+#: library/blocks/talk-request/block.json
+msgctxt "block description"
+msgid "Render the form for requesting a talk"
 msgstr ""
 
 #: library/blocks/video-playlist/block.json
