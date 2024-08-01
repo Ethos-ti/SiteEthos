@@ -20,10 +20,22 @@ function render_my_plan_table_callback ($attributes, $content) {
             <thead>
                 <tr>
                     <th><?php _e('Benefits', 'hacklabr') ?></th>
-                    <th class="my-plan-table__conexao">Conexão</th>
-                    <th class="my-plan-table__essencial">Essencial</th>
-                    <th class="my-plan-table__vivencia">Vivência</th>
-                    <th class="my-plan-table__institucional">Institucional</th>
+                    <th class="my-plan-table__conexao">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/circle-conexao.png"  alt="">
+                        <span>Conexão</span>
+                    </th>
+                    <th class="my-plan-table__essencial">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/circle-essencial.png" alt="">
+                        <span>Essencial</span>
+                    </th>
+                    <th class="my-plan-table__vivencia">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/circle-vivencia.png" alt="">
+                        <span>Vivência</span>
+                    </th>
+                    <th class="my-plan-table__institucional">
+                        <img src="<?= get_stylesheet_directory_uri() ?>/assets/images/circle-institucional.png" alt="">
+                        <span>Institucional</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>

@@ -2,4 +2,14 @@
 
 .my-plan-table {
 
+    thead {
+
+        img {
+            filter: grayscale(1);
+        }
+    }
+
+    tbody {
+
+    }
 }

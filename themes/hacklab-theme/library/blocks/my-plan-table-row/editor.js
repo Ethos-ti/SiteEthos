@@ -35,9 +35,9 @@ function Edit ({ attributes, setAttributes }) {
     const blockProps = useBlockProps({ className: 'my-plan-table-row__editor-grid' });
 
     function changePlan (plan, property, value) {
-        setAttributes(({ plans }) => ({
+        setAttributes({
             plans: { ...plans, [plan]: { ...plans[plan], [property]: value } },
-        }));
+        });
     }
 
     return (
