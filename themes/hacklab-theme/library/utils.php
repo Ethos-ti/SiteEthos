@@ -5,8 +5,6 @@
  *
  */
 
-use function RRule\not_empty;
-
 add_action( 'init', function() {
     wp_dequeue_script( 'tainacan-google-recaptcha-script' );
 }, 150 );
@@ -599,25 +597,18 @@ function get_manager_name($post_id = null) {
     if ( empty( $post_id ) ) {
         $current_user = get_current_user_id();
 
-        if ( empty( $current_user ) ) {
-            return null;
-        }
+        $organization = hacklabr\get_organization_by_user( $current_user );
 
-        $organizations = get_posts_by_author( $current_user, [
-            'post_type'      => 'organizacao',
-            'posts_per_page' => 1
-        ] );
-
-        if ( ! empty( $organizations ) ) {
-            $post_id = $organizations[0];
+        if ( ! empty( $organization ) ) {
+            $post_id = $organization->ID;
         }
     }
 
-    $organization = get_post($post_id);
-
-    if ( ! $organization ) {
+    if ( empty( $post_id ) ) {
         return null;
     }
+
+    $organization = get_post( $post_id );
 
     $author_id = $organization->post_author;
     $author = get_user_by( 'ID', $author_id );
@@ -636,21 +627,18 @@ function get_organization_name( $post_id = null ) {
     if ( empty( $post_id ) ) {
         $current_user = get_current_user_id();
 
-        if ( empty( $current_user ) ) {
-            return null;
-        }
+        $organization = hacklabr\get_organization_by_user( $current_user );
 
-        $organizations = get_posts_by_author( $current_user, [
-            'post_type'      => 'organizacao',
-            'posts_per_page' => 1
-        ] );
-
-        if ( ! empty( $organizations ) ) {
-            $post_id = $organizations[0];
+        if ( ! empty( $organization ) ) {
+            $post_id = $organization->ID;
         }
     }
 
-    $organization = get_post($post_id);
+    if ( empty( $post_id ) ) {
+        return null;
+    }
+
+    $organization = get_post( $post_id );
 
     return $organization->post_title ?? null;
 }
