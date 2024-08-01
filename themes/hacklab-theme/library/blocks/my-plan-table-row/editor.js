@@ -72,11 +72,11 @@ function Edit ({ attributes, setAttributes }) {
 
 function saveCell({ text, type }) {
     if (type === 'no') {
-        return <iconify-icon icon="fa-solid:times"></iconify-icon>;
+        return <iconify-icon className="no" icon="fa-solid:times" aria-label={__('No')}></iconify-icon>;
     } else if (type === 'yes') {
-        return <iconify-icon icon="fa-solid:check"></iconify-icon>;
+        return <iconify-icon className="yes" icon="fa-solid:check" aria-label={__('Yes')}></iconify-icon>;
     } else {
-        return <span>{text}</span>;
+        return <span className="custom">{text}</span>;
     }
 }
 

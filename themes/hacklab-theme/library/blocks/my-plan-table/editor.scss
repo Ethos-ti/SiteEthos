@@ -1,5 +1,28 @@
 @import '../../../assets/scss/includes';
 
 .my-plan-table-row__editor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: $margin--large 0;
+    border: $border-width--small solid $color--low-light;
+    padding: $padding--medium;
+
+    .my-plan-table-row__editor-text {
+        width: 100%;
+        margin-bottom: $margin--medium;
+    }
+
+    .my-plan-table-row__editor-plan {
+        width: fit-content;
+
+        .components-base-control {
+            margin-top: $margin--small;
+
+            label.components-base-control__label {
+                @include sr-only;
+            }
+        }
+    }
 
 }
