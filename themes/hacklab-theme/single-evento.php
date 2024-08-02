@@ -71,7 +71,17 @@ if( isset($recurrence['rules']) ) {
 
 $crm_meta = hacklabr\get_crm_event_meta($post_id);
 
-$contact_id = get_user_meta( get_current_user_id(), '_ethos_crm_contact_id', true ) ?? '';
+$contact_id = -1;
+
+if(\is_user_logged_in() ) {
+    $contact_id = get_user_meta( get_current_user_id(), '_ethos_crm_contact_id', true ) ?? '';
+} else {
+    $contact_ret = \hacklabr\send_contact_to_crm();
+    if( is_array($contact_ret) && isset($contact_ret['status']) && 'success' == $contact_ret['status'] ) {
+        $contact_id = $contact_ret['entity_id'];
+    }
+}
+
 $project_id = get_post_meta( $post_id, 'entity_fut_projeto', true ) ?? '';
 
 if ( isset ( $_POST['SaveParticipant'] ) && $contact_id && $project_id ) {
