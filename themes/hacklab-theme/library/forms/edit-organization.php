@@ -192,7 +192,7 @@ function contacts_delete_user ($user_id) {
 function contacts_remove_admin ($user_id) {
     delete_user_meta($user_id, '_ethos_admin', '1');
 
-    notify_admin_addition($user_id);
+    notify_admin_removal($user_id);
 }
 
 function contacts_remove_approver ($user_id) {
