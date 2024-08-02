@@ -230,7 +230,16 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         }
 
         if ($action === 'addAdmin') {
-            update_user_meta($user_id, '_ethos_admin', '1');
+            $ethos_admins = get_users([
+                'meta_query' => [
+                    [ 'key' => '_pmpro_group', 'value' => $group_id ],
+                    [ 'key' => '_ethos_admin', 'value' => '1' ],
+                ],
+            ]);
+
+            if (count($ethos_admins) < 3) {
+                update_user_meta($user_id, '_ethos_admin', '1');
+            }
         } elseif ($action === 'addApprover') {
             $group_id = get_user_meta($user_id, '_pmpro_group', true);
 
