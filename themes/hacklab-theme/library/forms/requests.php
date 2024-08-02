@@ -18,7 +18,7 @@ function get_request_occurrence_fields () {
             'class' => '-colspan-12',
             'label' => __('Describe your requirements', 'hacklabr'),
             'placeholder' => __("Describe briefly your demand", 'hacklabr'),
-            'required' => false,
+            'required' => true,
         ],
         'politica_privacidade' => [
             'type' => 'checkbox',
@@ -53,11 +53,11 @@ function validate_request_occurrence_form ($form_id, $form, $params) {
         $contact_id = get_user_meta($current_user, '_ethos_crm_contact_id', true);
 
         $attributes = [
-            'caseorigincode' => 3 /* website */,
-            // 'contactid'      => create_crm_reference('contact', $contact_id),
-            'customerid'     => create_crm_reference('account', $account_id),
-            'description'    => $params['descricao'] ?? '',
-            'title'          => $params['titulo'],
+            'caseorigincode'   => 3 /* website */,
+         // '_contactid_value' => create_crm_reference('contact', $contact_id),
+            'customerid'       => create_crm_reference('account', $account_id),
+            'description'      => $params['descricao'],
+            'title'            => $params['titulo'],
         ];
 
         try {

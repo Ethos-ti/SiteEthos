@@ -128,6 +128,62 @@ function register_edit_organization_form () {
 }
 add_action('init', 'hacklabr\\register_edit_organization_form');
 
+function contacts_add_admin ($user_id) {
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+
+    $ethos_admins = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_admin', 'value' => '1' ],
+        ],
+    ]);
+
+    if (count($ethos_admins) < 3) {
+        update_user_meta($user_id, '_ethos_admin', '1');
+    }
+}
+
+function contacts_add_approver ($user_id) {
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+
+    $current_approvers = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+        ],
+    ]);
+    foreach ($current_approvers as $approver) {
+        delete_user_meta($approver->ID, '_ethos_approver', '1');
+    }
+
+    update_user_meta($user_id, '_ethos_approver', '1');
+
+    notify_approver_change($user_id);
+}
+
+function contacts_delete_user ($user_id) {
+    // Required for using `wp_delete_user` function
+    require_once(ABSPATH . 'wp-admin/includes/user.php');
+
+    wp_delete_user($user_id, null);
+}
+
+function contacts_remove_admin ($user_id) {
+    delete_user_meta($user_id, '_ethos_admin', '1');
+}
+
+function contacts_remove_approver ($user_id) {
+    delete_user_meta($user_id, '_ethos_approver', '1');
+}
+
+function notify_approver_change ($user_id) {
+    $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    update_crm_entity('account', $account_id, [
+        'i4d_aprovador_cortesia' => create_crm_reference('contact', $contact_id),
+    ]);
+}
+
 function validate_edit_organization_form ($form_id, $form, $params) {
     $current_user = get_current_user_id();
 
@@ -230,38 +286,15 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         }
 
         if ($action === 'addAdmin') {
-            $ethos_admins = get_users([
-                'meta_query' => [
-                    [ 'key' => '_pmpro_group', 'value' => $group_id ],
-                    [ 'key' => '_ethos_admin', 'value' => '1' ],
-                ],
-            ]);
-
-            if (count($ethos_admins) < 3) {
-                update_user_meta($user_id, '_ethos_admin', '1');
-            }
+            contacts_add_admin($user_id);
         } elseif ($action === 'addApprover') {
-            $group_id = get_user_meta($user_id, '_pmpro_group', true);
-
-            $current_approvers = get_users([
-                'meta_query' => [
-                    [ 'key' => '_pmpro_group', 'value' => $group_id ],
-                ],
-            ]);
-            foreach ($current_approvers as $approver) {
-                delete_user_meta($approver->ID, '_ethos_approver', '1');
-            }
-
-            update_user_meta($user_id, '_ethos_approver', '1');
+            contacts_add_approver($user_id);
         } elseif ($action === 'deleteUser') {
-            // Required for using `wp_delete_user` function
-	        require_once(ABSPATH . 'wp-admin/includes/user.php');
-
-            wp_delete_user($user_id, null);
+            contacts_delete_user($user_id);
         } elseif ($action === 'removeAdmin') {
-            delete_user_meta($user_id, '_ethos_admin', '1');
+            contacts_remove_admin($user_id);
         } elseif ($action === 'removeApprover') {
-            delete_user_meta($user_id, '_ethos_approver', '1');
+            contacts_remove_approver($user_id);
         }
 
         $current_url = untrailingslashit( $_SERVER['REQUEST_URI'] );

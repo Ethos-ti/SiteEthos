@@ -308,6 +308,10 @@ function wrap_edit_contacts_form ($form_html, $form) {
                 </thead>
                 <tbody>
                 <?php foreach ($contacts as $contact): ?>
+                    <?php
+                        $is_admin = !empty(get_user_meta($current_user, '_ethos_admin', true));
+                        $is_approver = !empty(get_user_meta($current_user, '_ethos_approver', true));
+                    ?>
                     <tr x-data="{ user: <?= esc_attr(json_encode(get_user_fields($contact, $fields))) ?> }">
                         <td><?= $contact->display_name ?></td>
                         <td><?= $contact->user_email ?></td>
@@ -323,7 +327,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="<?php _e('Delete', 'hacklabr') ?>" @click="deleteUser(<?= $contact->ID ?>)">
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $is_admin || $is_approver) ? ' disabled' : '' ?> title="<?php _e('Delete', 'hacklabr') ?>" @click="deleteUser(<?= $contact->ID ?>)">
                                 <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
                             </button>
                         </td>
