@@ -128,6 +128,15 @@ function register_edit_organization_form () {
 }
 add_action('init', 'hacklabr\\register_edit_organization_form');
 
+function notify_approver_change ($user_id) {
+    $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    update_crm_entity('account', $account_id, [
+        'i4d_aprovador_cortesia' => create_crm_reference('contact', $contact_id),
+    ]);
+}
+
 function validate_edit_organization_form ($form_id, $form, $params) {
     $current_user = get_current_user_id();
 
@@ -241,7 +250,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
                 update_user_meta($user_id, '_ethos_admin', '1');
             }
         } elseif ($action === 'addApprover') {
-            $group_id = get_user_meta($user_id, '_pmpro_group', true);
+            $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
             $current_approvers = get_users([
                 'meta_query' => [
@@ -253,6 +262,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
             }
 
             update_user_meta($user_id, '_ethos_approver', '1');
+            notify_approver_change($user_id);
         } elseif ($action === 'deleteUser') {
             // Required for using `wp_delete_user` function
 	        require_once(ABSPATH . 'wp-admin/includes/user.php');
