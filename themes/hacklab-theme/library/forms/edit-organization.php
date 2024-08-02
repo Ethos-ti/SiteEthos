@@ -128,8 +128,24 @@ function register_edit_organization_form () {
 }
 add_action('init', 'hacklabr\\register_edit_organization_form');
 
+function get_account_admin_contacts ($account_id) {
+    $account = get_crm_entity_by_id('account', $account_id);
+
+    $attributes = $account->Attributes;
+
+    $contact_ids = [
+        $attributes['primarycontactid']?->Id ?? null,
+        $attributes['fut_lk_contato_alternativo']?->Id ?? null,
+        $attributes['fut_lk_contato_alternativo2']?->Id ?? null,
+    ];
+
+    return array_filter($contact_ids);
+}
+
 function contacts_add_admin ($user_id) {
     $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+
+    $group = get_pmpro_group($group_id);
 
     $ethos_admins = get_users([
         'meta_query' => [
@@ -141,6 +157,12 @@ function contacts_add_admin ($user_id) {
     if (count($ethos_admins) < 3) {
         update_user_meta($user_id, '_ethos_admin', '1');
     }
+
+    if ($user_id == $group->group_parent_user_id) {
+        update_group_parent($group_id, (int) $user_id);
+    }
+
+    notify_admin_addition($user_id);
 }
 
 function contacts_add_approver ($user_id) {
@@ -169,10 +191,47 @@ function contacts_delete_user ($user_id) {
 
 function contacts_remove_admin ($user_id) {
     delete_user_meta($user_id, '_ethos_admin', '1');
+
+    notify_admin_addition($user_id);
 }
 
 function contacts_remove_approver ($user_id) {
     delete_user_meta($user_id, '_ethos_approver', '1');
+}
+
+function notify_admin_addition ($user_id) {
+    $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    $contact_ids = get_account_admin_contacts($account_id);
+
+    $contact_ids[] = $contact_id;
+    $contact_ids = array_unique($contact_ids);
+
+    notify_admins_change($account_id, $contact_ids);
+}
+
+function notify_admin_removal ($user_id) {
+    $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    $contact_ids = get_account_admin_contacts($account_id);
+
+    $contact_ids = array_filter($contact_ids, fn($id) => $id != $contact_id);
+
+    notify_admins_change($account_id, $contact_ids);
+}
+
+function notify_admins_change ($account_id, $contact_ids) {
+    $primary_contact = $contact_ids[0];
+    $secondary_contact_1 = $contact_ids[1] ?? null;
+    $secondary_contact_2 = $contact_ids[2] ?? null;
+
+    update_crm_entity('account', $account_id, [
+        'primarycontactid' => create_crm_reference('contact', $primary_contact),
+        'fut_lk_contato_alternativo' => $secondary_contact_1 ? create_crm_reference('contact', $secondary_contact_1) : null,
+        'fut_lk_contato_alternativo2' => $secondary_contact_2 ? create_crm_reference('contact', $secondary_contact_2) : null,
+    ]);
 }
 
 function notify_approver_change ($user_id) {
