@@ -10,7 +10,7 @@ add_action( 'init', function() {
     if(isset($_GET['crm_sync_events']) && is_user_admin()) {
         ini_set('max_execution_time', 0);
         echo "IMPORTANDO EVENTOS <pre>";
-        $number = intval($_GET['crm_sync_all_events']) ?: 5;
+        $number = intval($_GET['crm_sync_events']) ?: 5;
         hacklabr\do_get_crm_events($number);
         die;
     }
