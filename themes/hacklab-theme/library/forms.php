@@ -124,6 +124,19 @@ function render_field (string $name, array $definition, array $context = [], $sk
 <?php
 }
 
+function should_skip_form_validation ($form, $params) {
+    if (empty($params)) {
+        return true;
+    }
+    if (!empty($form['options']['disabled'])) {
+        return true;
+    }
+    if (!empty($params['_hacklabr_form']) && $params['_hacklabr_form'] !== $form['id']) {
+        return true;
+    }
+    return false;
+}
+
 function render_form (array $form, array $params = [], string $class = 'form') {
     $form_options = $form['options'];
 
@@ -131,7 +144,7 @@ function render_form (array $form, array $params = [], string $class = 'form') {
     $skip_url = $form_options['skip_url'] ?? null;
     $submit_label = $form_options['submit_label'] ?? __('Submit', 'hacklabr');
 
-    $skip_validation = empty($params) || (!empty($params['_hacklabr_form']) && $params['_hacklabr_form'] !== $form['id']);
+    $skip_validation = should_skip_form_validation($form, $params);
 ?>
     <form class="<?= $class ?>" id="form_<?= $form['id'] ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="__hacklabr_form" value="<?= $form['id'] ?>">
