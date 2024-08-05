@@ -2,7 +2,12 @@
 #pmpro_login{
     margin-bottom: 0px !important;
     .pmpro_lost_password_wrap{
-
+        max-width: $grid--narrow;
+        .pmpro_card_actions{
+            .pmpro_actions_nav{
+                display: none !important;
+            }
+        }
     }
 }
 .pmpro-login{
@@ -29,9 +34,6 @@
         margin-bottom: 0;
 
         .pmpro_card_content{
-            .pmpro_card_actions{
-
-            }
             & > form{
                 .login-username{
                     width: 470px !important;
