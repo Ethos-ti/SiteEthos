@@ -3,8 +3,10 @@
     margin-bottom: 0px !important;
     .pmpro_lost_password_wrap{
         max-width: $grid--narrow;
-        &.pmpro_card_actions{
-            background-color: red !important;
+        .pmpro_card_actions{
+            .pmpro_actions_nav{
+                display: none !important;
+            }
         }
     }
 }
