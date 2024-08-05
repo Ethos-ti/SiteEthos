@@ -669,3 +669,13 @@ function my_custom_recaptcha_verify() {
 }
 add_action('login_form_resetpass', 'my_custom_recaptcha_verify');
 add_action('login_form_rp', 'my_custom_recaptcha_verify');
+
+function custom_logout_redirect() {
+    if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+        wp_logout();
+        wp_redirect( home_url());
+        exit;
+    }
+}
+
+add_action('init', 'custom_logout_redirect');
