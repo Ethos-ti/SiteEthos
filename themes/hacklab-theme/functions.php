@@ -34,3 +34,12 @@ require __DIR__ . '/library/forms/edit-organization.php';
 require __DIR__ . '/library/forms/my-data.php';
 require __DIR__ . '/library/forms/requests.php';
 
+add_action( 'init', function() {
+    if(isset($_GET['crm_sync_events']) && current_user_can('manage_options')) {
+        ini_set('max_execution_time', 0);
+        echo "IMPORTANDO EVENTOS <pre>";
+        $number = intval($_GET['crm_sync_events']) ?: 5;
+        do_get_crm_events($number);
+        die;
+    }
+}, 150 );
