@@ -4,6 +4,8 @@ namespace hacklabr;
 
 load_theme_textdomain('hacklabr');
 
+require __DIR__ . '/library/ethos-associados-redirects.php';
+
 require __DIR__ . '/library/layout-parts/layout-parts.php';
 require __DIR__ . '/library/supports.php';
 require __DIR__ . '/library/sidebars.php';
@@ -32,12 +34,12 @@ require __DIR__ . '/library/forms/edit-organization.php';
 require __DIR__ . '/library/forms/my-data.php';
 require __DIR__ . '/library/forms/requests.php';
 
-
-add_action('init', function () {
-    if(isset($_GET['crm_sync'])) {
+add_action( 'init', function() {
+    if(isset($_GET['crm_sync_events']) && current_user_can('manage_options')) {
+        ini_set('max_execution_time', 0);
         echo "IMPORTANDO EVENTOS <pre>";
-        do_get_crm_events();
-
+        $number = intval($_GET['crm_sync_events']) ?: 5;
+        do_get_crm_events($number);
         die;
     }
-});
+}, 150 );
