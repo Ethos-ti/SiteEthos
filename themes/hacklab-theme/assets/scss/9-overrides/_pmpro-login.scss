@@ -1,15 +1,46 @@
+
+#pmpro_login{
+    margin-bottom: 0px !important;
+    .pmpro_lost_password_wrap{
+
+    }
+}
 .pmpro-login{
+    margin-top: 0;
+    position: relative;
+    top: -3rem;
+
+    .pmpro_card {
+        border: none ;
+        box-shadow: none;
+
+        .pmpro_card_actions{
+            border: none;
+            background-color: white !important;
+            .pmpro_actions_nav{
+                top: -16rem;
+                & > a{
+                    font-weight: $font-weight--bold !important;
+                }
+            }
+        }
+    }
     .pmpro_login_wrap{
         margin-bottom: 0;
 
         .pmpro_card_content{
+            .pmpro_card_actions{
+
+            }
             & > form{
-                .login-username, .login-password{
-                    font-size: $font-size--x-small;
-                }
                 .login-username{
-                    width: 470px;
+                    width: 470px !important;
+                    width: 100%;
                     max-width: 100%;
+                    @include mobile{
+                        width: 100% !important;
+                        max-width: 100%;
+                    }
                     input[type="text"], input[type="password"]{
                         @extend .text-input;
                         padding: $padding--medium;
@@ -20,16 +51,17 @@
                 }
 
                 .login-password {
-                    position: relative;
+                    position: relative !important;
 
                     & > label{
-                        text-transform: uppercase;
+                        text-transform: uppercase!important;
+                        font-family: "Open Sans", sans-serif!important;
                         }
                     }
                 .login-password > .toggle-password {
                     background-image: url( $path--assets + "/images/show-pass.png" );
-                    background-position: center;
-                    background-size: cover;
+                    background-position: center!important;
+                    background-size: cover!important;
                     background-repeat: no-repeat;
                     content: " ";
                     cursor: pointer;
@@ -47,7 +79,8 @@
                 }
 
                 .login-remember{
-                    display: none;
+                    font-weight: $font-weight--bold !important;
+
                 }
 
                 .login-submit{
@@ -90,49 +123,49 @@
     }
 
     .pmpro_reset_password_wrap{
-        max-width: 440px;
-        width: 100%;
+        max-width: 440px!important;
+        width: 100%!important;
         margin-left: auto;
         margin-right: auto;
         & > form{
             .pmpro_reset_password-fields{
-                font-size: $font-size--x-small;
+                font-size: $font-size--x-small!important;
                 label{
-                    text-transform: uppercase;
+                    text-transform: uppercase!important;
                 }
                 input[type="password"]{
                     @extend .text-input;
-                    padding: $padding--medium;
-                    margin-top: $margin--small;
+                    padding: $padding--medium!important;
+                    margin-top: $margin--small!important;
                     max-width: 100% !important;
-                    width: 27.375rem;
+                    width: 27.375rem!important;
                 }
                 .lite{
-                    font-size: $font-size--x-small;
-                    margin-bottom: $margin--large;
-                    color: $color--low-pure;
+                    font-size: $font-size--x-small!important;
+                    margin-bottom: $margin--large!important;
+                    color: $color--low-pure!important;
 
                 }
 
             }
             .pmpro_submit{
-                text-align: center;
+                text-align: center!important;
                 @include small{
-                    display: flex;
-                    justify-content: center;
+                    display: flex!important;
+                    justify-content: center!important;
                 }
                 input[type="submit"]{
-                    background-color: $color--low-pure;
-                    border: $border-width--medium solid $color--low-pure;
-                    border-radius: $border-radius--large;
-                    color: $color--high-pure;
-                    font-size: $font-size--small;
-                    font-weight: $font-weight--bold;
-                    height: 2.713rem;
-                    margin-top: $margin--small;
-                    margin-bottom: $margin--large;
-                    padding: $padding--small $padding--large $padding--medium;
-                    text-transform: uppercase;
+                    background-color: $color--low-pure!important;
+                    border: $border-width--medium solid $color--low-pure!important;
+                    border-radius: $border-radius--large!important;
+                    color: $color--high-pure!important;
+                    font-size: $font-size--small!important;
+                    font-weight: $font-weight--bold!important;
+                    height: 2.713rem!important;
+                    margin-top: $margin--small!important;
+                    margin-bottom: $margin--large!important;
+                    padding: $padding--small $padding--large $padding--medium!important;
+                    text-transform: uppercase!important;
 
                     @include small{
                         width: inherit !important;
