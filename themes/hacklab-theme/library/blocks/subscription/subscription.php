@@ -48,7 +48,6 @@ function render_subscription_callback ($attributes) {
             <tr>
                 <th><?php _e('Date', 'hacklabr') ?></th>
                 <th><?php _e('Title', 'hacklabr') ?></th>
-                <th><?php _e('Status', 'hacklabr') ?></th>
             </tr>
         </thead>
 
@@ -58,7 +57,6 @@ function render_subscription_callback ($attributes) {
             <tr>
                 <td><?= $subscription->FormattedValues['fut_dt_iniciodaparticipao'] ?? '' ?></td>
                 <td><a href="<?= $event ? get_permalink( $event->ID ) : '#' ?>"><?= $subscription->FormattedValues['fut_lk_projeto'] ?></a></td>
-                <td class="status status--pendente"><span>Pendente</span></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
