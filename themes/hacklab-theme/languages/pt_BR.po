@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-07-29T21:05:20+00:00\n"
-"PO-Revision-Date: 2024-07-29 18:07-0300\n"
+"POT-Creation-Date: 2024-08-01T21:13:22+00:00\n"
+"PO-Revision-Date: 2024-08-01 18:16-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: hacklabr\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: hacklabr\n"
 "X-Poedit-Basepath: .\n"
 
@@ -101,7 +101,7 @@ msgid "Toggle search form visibility"
 msgstr "Alternar a visibilidade do formulário de pesquisa"
 
 #: library/blocks/my-payments/my-payments.php:71
-#: library/forms/registration.php:477
+#: library/blocks/my-plan/my-plan.php:53 library/forms/registration.php:477
 msgctxt "membership"
 msgid "Plan"
 msgstr "Plano"
@@ -123,11 +123,18 @@ msgctxt "membership"
 msgid "Situation"
 msgstr "Situação"
 
+#: library/blocks/my-plan-table/my-plan-table.php:22
+#: dist/blocks/my-plan-table-row/editor.js:19
+#: library/blocks/my-plan-table-row/editor.js:47
+msgid "Benefits"
+msgstr "Benefícios"
+
 #: library/blocks/subscription/subscription.php:49
 msgid "Date"
 msgstr "Data"
 
 #: library/blocks/subscription/subscription.php:50
+#: library/forms/requests.php:12
 msgid "Title"
 msgstr "Título"
 
@@ -695,7 +702,31 @@ msgstr "Registro de membro - Etapa 5"
 msgid "Membership to Ethos Institute"
 msgstr "Inscrição no Instituto Ethos"
 
-#: library/membership.php:115
+#: library/forms/requests.php:13
+msgid "Request title"
+msgstr "Título da solicitação"
+
+#: library/forms/requests.php:19
+msgid "Describe your requirements"
+msgstr "Descreva suas necessidades"
+
+#: library/forms/requests.php:20
+msgid "Describe briefly your demand"
+msgstr "Descreva brevemente sua demanda"
+
+#: library/forms/requests.php:26
+msgid ""
+"I have read and agreed with the <a href=\"%s\" target=\"_blank\">Privacy "
+"Policy</a>"
+msgstr ""
+"Li e concordo com a <a href=\"%s\" target=\"_blank\">Política de "
+"Privacidade</a>"
+
+#: library/forms/requests.php:37
+msgid "Requests"
+msgstr "Solicitações"
+
+#: library/membership.php:127
 msgid "Organizations"
 msgstr "Organizações"
 
@@ -816,11 +847,11 @@ msgstr "Publicado por "
 msgid "Membership area"
 msgstr "Área do associado"
 
-#: template-associates-area.php:32
+#: template-associates-area.php:17
 msgid "Associeted panel"
 msgstr "Painel do associado"
 
-#: template-associates-area.php:48
+#: template-associates-area.php:33
 msgid "Logout"
 msgstr "Sair"
 
@@ -954,18 +985,25 @@ msgid "Form"
 msgstr "Formulário"
 
 #: dist/blocks/my-payments/editor.js:19 library/blocks/my-payments/editor.js:13
+#: dist/blocks/my-payments/editor.js:63
 msgid "My Payments"
 msgstr "Meus pagamentos"
+
+#: dist/blocks/my-plan-table-row/editor.js:19
+#: library/blocks/my-plan-table-row/editor.js:11
+#: library/blocks/my-plan-table-row/editor.js:62
+msgid "Custom text"
+msgstr "Texto customizado"
+
+#: dist/blocks/my-plan-table/editor.js:19
+#: library/blocks/my-plan-table/editor.js:28
+msgid "My Plan - Table"
+msgstr "Meu Plano - Tabela"
 
 #: dist/blocks/my-plan/editor.js:19 library/blocks/my-plan/editor.js:22
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
 msgstr "Meu Plano"
-
-#: dist/blocks/payments-history/editor.js:19
-#: dist/blocks/payments-history/editor.js:63
-msgid "Payments history"
-msgstr "Histórico de pagamentos"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
 #: dist/blocks/posts-grid/editor.js:1931
@@ -1177,6 +1215,7 @@ msgstr "Etapa %s de %s"
 
 #: dist/blocks/subscription/editor.js:19
 #: library/blocks/subscription/editor.js:13
+#: dist/blocks/subscription/editor.js:63
 msgid "Subscription"
 msgstr "Inscrição"
 
@@ -1255,6 +1294,26 @@ msgctxt "block description"
 msgid "Details about my plan's finances"
 msgstr "Detalhes sobre as finanças do meu plano"
 
+#: library/blocks/my-plan-table-row/block.json
+msgctxt "block title"
+msgid "My Plan - Table Row"
+msgstr "Meu Plano - Linha da Tabela"
+
+#: library/blocks/my-plan-table-row/block.json
+msgctxt "block description"
+msgid "A row comparing plans"
+msgstr "Uma linha comparando planos"
+
+#: library/blocks/my-plan-table/block.json
+msgctxt "block title"
+msgid "My Plan - Table"
+msgstr "Meu Plano - Tabela"
+
+#: library/blocks/my-plan-table/block.json
+msgctxt "block description"
+msgid "Details of the plan I subscribe"
+msgstr "Detalhes do plano em que sou inscrito"
+
 #: library/blocks/my-plan/block.json
 msgctxt "block title"
 msgid "My Plan"
@@ -1304,6 +1363,16 @@ msgstr "Tabela de inscrição"
 msgctxt "block description"
 msgid "Subscription on the CRM"
 msgstr "Inscrição no CRM"
+
+#: library/blocks/talk-request/block.json
+msgctxt "block title"
+msgid "Talk request"
+msgstr "Solicitação de palestra"
+
+#: library/blocks/talk-request/block.json
+msgctxt "block description"
+msgid "Render the form for requesting a talk"
+msgstr "Renderiza o formulário de solicitação de palestra"
 
 #: library/blocks/video-playlist/block.json
 msgctxt "block title"
@@ -1549,6 +1618,9 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Payments history"
+#~ msgstr "Histórico de pagamentos"
 
 #~ msgid "Invoice area"
 #~ msgstr "Área de comprovante"

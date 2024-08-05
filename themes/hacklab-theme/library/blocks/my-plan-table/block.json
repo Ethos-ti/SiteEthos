@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/my-plan-table",
+    "title": "My Plan - Table",
+    "description": "Details of the plan I subscribe",
+    "category": "theme",
+    "icon": "admin-settings",
+    "supports": {
+        "html": false
+    },
+    "attributes": {},
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/my-plan-table/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/my-plan-table/editor.css"],
+    "style": ["file:../../../dist/blocks/my-plan-table/index.css"]
+}

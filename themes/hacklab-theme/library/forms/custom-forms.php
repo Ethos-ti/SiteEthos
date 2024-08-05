@@ -168,10 +168,21 @@ function wrap_edit_contacts_form ($form_html, $form) {
         return $form_html;
     }
 
+    $ethos_admins = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_admin', 'value' => '1' ],
+        ],
+    ]);
+
     $add_contact_str = esc_attr(__('Add contact', 'hacklabr'));
+    $cannot_add_admin_str = esc_attr(__('You can only add up to three administrators.', 'hacklabr'));
+    $change_admin_str = esc_attr(__('You can have up to three administrators, do you want to confirm the change?', 'hacklabr'));
     $confirm_removal_str = esc_attr(__('Are you sure you want to delete the user?', 'hacklabr'));
     $edit_contact_str = esc_attr(__('Edit contact', 'hacklabr'));
     $replace_approver_str = esc_attr(__('You can only have one approver by team, do you want to replace the approver?', 'hacklabr'));
+
+    $can_add_admin = count($ethos_admins) >= 3 ? 'false' : 'true';
 
     $script = <<<SCRIPT
     {
@@ -211,9 +222,28 @@ function wrap_edit_contacts_form ($form_html, $form) {
             this.\$refs.formModal.showModal();
         },
         toggleAdmin (el, user) {
-            this.action = el.checked ? 'addAdmin' : 'removeAdmin';
-            this.userId = user.ID;
-            \$nextTick(() => this.\$refs.implicitForm.submit());
+            if (el.checked) {
+                if ($can_add_admin) {
+                    if (confirm("$change_admin_str")) {
+                        this.action = 'addAdmin';
+                        this.userId = user.ID;
+                        \$nextTick(() => this.\$refs.implicitForm.submit());
+                    } else {
+                        el.checked = false;
+                    }
+                } else {
+                    alert("$cannot_add_admin_str");
+                    el.checked = false;
+                }
+            } else {
+                if (confirm("$change_admin_str")) {
+                    this.action = 'removeAdmin';
+                    this.userId = user.ID;
+                    \$nextTick(() => this.\$refs.implicitForm.submit());
+                } else {
+                    el.checked = true;
+                }
+            }
         },
         toggleApprover (el, user) {
             if (el.checked) {
@@ -278,6 +308,10 @@ function wrap_edit_contacts_form ($form_html, $form) {
                 </thead>
                 <tbody>
                 <?php foreach ($contacts as $contact): ?>
+                    <?php
+                        $is_admin = !empty(get_user_meta($current_user, '_ethos_admin', true));
+                        $is_approver = !empty(get_user_meta($current_user, '_ethos_approver', true));
+                    ?>
                     <tr x-data="{ user: <?= esc_attr(json_encode(get_user_fields($contact, $fields))) ?> }">
                         <td><?= $contact->display_name ?></td>
                         <td><?= $contact->user_email ?></td>
@@ -285,7 +319,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_approver', true)) ?> @click="toggleApprover($el, user)">
                         </td>
                         <td>
-                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> @click="toggleAdmin($el, user)">
+                            <input type="checkbox"<?php checked('1', get_user_meta($contact->ID, '_ethos_admin', true)) ?> <?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> @click="toggleAdmin($el, user)">
                         </td>
                         <td>
                             <button type="button" class="contacts-list__edit" title="<?php _e('Edit', 'hacklabr') ?>" @click="editUser(user)">
@@ -293,7 +327,7 @@ function wrap_edit_contacts_form ($form_html, $form) {
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $contact->ID === $original_user) ? ' disabled' : '' ?> title="<?php _e('Delete', 'hacklabr') ?>" @click="deleteUser(<?= $contact->ID ?>)">
+                            <button type="button" class="contacts-list__remove"<?= ($contact->ID === $current_user || $is_admin || $is_approver) ? ' disabled' : '' ?> title="<?php _e('Delete', 'hacklabr') ?>" @click="deleteUser(<?= $contact->ID ?>)">
                                 <iconify-icon icon="material-symbols:delete-outline"></iconify-icon>
                             </button>
                         </td>

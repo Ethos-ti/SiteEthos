@@ -1,10 +1,11 @@
-.wp-block-table {
+.wp-block-table,
+.my-plan-table {
     td {
         border: 0 !important;
     }
 
     table {
-        @extend .table;
+        @extend .table !optional;
         background-color: transparent;
 
         & thead {

@@ -7,9 +7,10 @@ import ServerSideRender from '@wordpress/server-side-render';
 import metadata from './block.json';
 
 function Icon ({ size }) {
+    // https://icon-sets.iconify.design/entypo/modern-mic/
     return (
-        <SVG height={size} width={size} viewBox="0 0 24 24">
-            <Path fill="currentColor" d="M8 4a2 2 0 1 1-4 0a2 2 0 0 1 4 0M5 16v6H3V10a3 3 0 0 1 5.106-2.137l2.374 2.243l2.313-2.313l1.414 1.414l-3.687 3.687L9 11.46V22H7v-6zm5-11h9v9h-9v2h4.365l2.824 6h2.21l-2.823-6H20a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H10z"/>
+        <SVG height={size} width={size} viewBox="0 0 20 20">
+            <Path fill="currentColor" d="M1.228 10.891a.528.528 0 0 0-.159.69l1.296 2.244c.133.23.438.325.677.208L7 12.116V19h2v-7.854l4.071-1.973l-2.62-4.54zm17.229-7.854a4.061 4.061 0 0 0-5.546-1.484c-.91.525-1.508 1.359-1.801 2.289l2.976 5.156c.951.212 1.973.11 2.885-.415a4.06 4.06 0 0 0 1.486-5.546"/>
         </SVG>
     )
 }

@@ -5,16 +5,11 @@ namespace hacklabr;
 function get_my_plan_data () {
     $user_id = get_current_user_id();
 
-    $organization = get_organization_by_user($user_id);
+    $plan_slug = get_pmpro_plan($user_id);
 
-    if (empty($organization)) {
-        return [null, null];
+    if (empty($plan_slug)) {
+        return null;
     }
-
-    $group_id = get_post_meta($organization->ID, '_pmpro_group', true);
-    $group = get_pmpro_group($group_id);
-
-    $plan_slug = Fields\get_pmpro_level_slug_by_id($group->group_parent_level_id);
 
     if ($plan_slug === 'conexao') {
         $plan = (object) [
@@ -42,23 +37,20 @@ function get_my_plan_data () {
         ];
     }
 
-    return [$organization, $plan];
+    return $plan;
 }
 
 function render_my_plan_callback ($attributes) {
-    [$organization, $plan] = get_my_plan_data();
+    $plan = get_my_plan_data();
 
-    if (empty($organization)) {
+    if (empty($plan)) {
         return '';
     }
 
     ob_start();
 ?>
     <div class="my-plan">
-        <p class="my-plan__summary">
-            <?= get_the_title($organization) ?> tem o plano <b><?= $plan->label ?></b>.
-        </p>
-        <p>Plano <?= $plan->label ?>:</p>
+        <p><?php _ex('Plan', 'membership', 'hacklabr') ?> <?= $plan->label ?>:</p>
         <div class="my-plan__advantages">
             <?php foreach ($plan->contains as $slug): ?>
                 <?php dynamic_sidebar('vantagens_' . $slug); ?>

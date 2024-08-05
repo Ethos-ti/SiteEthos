@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "hacklabr/my-plan-table-row",
+    "title": "My Plan - Table Row",
+    "description": "A row comparing plans",
+    "category": "theme",
+    "icon": "admin-settings",
+    "parent": ["hacklabr/my-plan-table"],
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "plans": {
+            "type": "object",
+            "default": {
+                "conexao": {
+                    "type": "no",
+                    "text": ""
+                },
+                "essencial": {
+                    "type": "no",
+                    "text": ""
+                },
+                "institucional": {
+                    "type": "no",
+                    "text": ""
+                },
+                "vivencia": {
+                    "type": "no",
+                    "text": ""
+                }
+            }
+        },
+        "text": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "hacklabr",
+    "editorScript": ["file:../../../dist/blocks/my-plan-table-row/editor.js"]
+}

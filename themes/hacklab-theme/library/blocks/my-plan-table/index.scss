@@ -1,0 +1,178 @@
+@import '../../../assets/scss/includes';
+
+.my-plan-table {
+    &--conexao {
+
+        th.my-plan-table__essencial,
+        th.my-plan-table__vivencia,
+        th.my-plan-table__institucional {
+            img {
+                filter: grayscale(1);
+                margin: auto;
+                width: 29px;
+            }
+
+            span {
+                @include sr-only;
+            }
+        }
+
+        tbody tr td.my-plan-table__conexao {
+
+            .yes,
+            .custom {
+                color: $color--primary-pure;
+            }
+
+            .no {
+                color: $color--warning-pure;
+            }
+        }
+    }
+
+    &--essencial {
+
+        th.my-plan-table__conexao,
+        th.my-plan-table__vivencia,
+        th.my-plan-table__institucional {
+            img {
+                filter: grayscale(1);
+                margin: auto;
+                width: 29px;
+            }
+
+            span {
+                @include sr-only;
+            }
+        }
+
+        tbody tr td.my-plan-table__essencial {
+
+            .yes,
+            .custom {
+                color: $color--primary-pure;
+            }
+
+            .no {
+                color: $color--warning-pure;
+            }
+        }
+    }
+
+    &--vivencia {
+
+        th.my-plan-table__conexao,
+        th.my-plan-table__essencial,
+        th.my-plan-table__institucional {
+            img {
+                filter: grayscale(1);
+                margin: auto;
+                width: 29px;
+            }
+
+            span {
+                @include sr-only;
+            }
+        }
+
+        tbody tr td.my-plan-table__vivencia {
+
+            .yes,
+            .custom {
+                color: $color--primary-pure;
+            }
+
+            .no {
+                color: $color--warning-pure;
+            }
+        }
+    }
+
+    &--institucional {
+
+        th.my-plan-table__conexao,
+        th.my-plan-table__vivencia,
+        th.my-plan-table__essencial {
+            img {
+                filter: grayscale(1);
+                margin: auto;
+                width: 29px;
+            }
+
+            span {
+                @include sr-only;
+            }
+        }
+
+        tbody tr td.my-plan-table__institucional {
+
+            .yes,
+            .custom {
+                color: $color--primary-pure;
+            }
+
+            .no {
+                color: $color--warning-pure;
+            }
+        }
+    }
+
+    table {
+        border-radius: $border-radius--small;
+
+        thead {
+
+            tr th:first-child {
+                border-top-left-radius: $border-radius--small;
+
+            }
+
+            tr th:last-child {
+                border-top-right-radius: $border-radius--small;
+
+            }
+
+            tr th {
+                color: $color--primary-pure;
+                border: none;
+                border-bottom: $border-width--small solid $color--high-pure;
+
+                img {
+                    width: 18px;
+                    height: 18px;
+                }
+
+                span {
+                    margin-left: $margin--small;
+                    margin-right: -$margin--medium;
+                }
+            }
+        }
+
+        tbody {
+            background-color: #F2F3F4;
+
+            tr td {
+                color: $color--low-light;
+                border: none !important;
+                border-bottom: 1px solid var(--wp--preset--color--primary-pure) !important;
+                padding: $padding--medium $padding--small;
+                text-align: center;
+                font-size: $font-size--large;
+                font-weight: $font-weight--bold;
+
+            }
+
+            tr:last-child td {
+                border-bottom: 0 !important;
+            }
+
+            .my-plan-table-row__benefits {
+                color: $color--secondary-dark;
+                text-align: left;
+                font-size: $font-size--small;
+                font-weight: $font-weight--medium;
+            }
+        }
+    }
+}
