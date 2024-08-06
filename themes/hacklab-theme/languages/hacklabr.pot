@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.80\n"
+"Project-Id-Version: Ethos 0.0.90\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-01T21:13:22+00:00\n"
+"POT-Creation-Date: 2024-08-06T19:24:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
@@ -127,19 +127,20 @@ msgstr ""
 #: library/blocks/my-plan-table/my-plan-table.php:22
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:47
+#: dist/blocks/my-plan-table-row/editor.js:97
 msgid "Benefits"
 msgstr ""
 
-#: library/blocks/subscription/subscription.php:49
+#: library/blocks/subscription/subscription.php:45
 msgid "Date"
 msgstr ""
 
-#: library/blocks/subscription/subscription.php:50
+#: library/blocks/subscription/subscription.php:46
 #: library/forms/requests.php:12
 msgid "Title"
 msgstr ""
 
-#: library/blocks/subscription/subscription.php:51
+#: library/blocks/subscription/subscription.php:47
 msgid "Status"
 msgstr ""
 
@@ -151,15 +152,15 @@ msgstr ""
 msgid "Select an option"
 msgstr ""
 
-#: library/forms.php:132
+#: library/forms.php:145
 msgid "Submit"
 msgstr ""
 
-#: library/forms.php:141
+#: library/forms.php:154
 msgid "Skip step"
 msgstr ""
 
-#: library/forms.php:167
+#: library/forms.php:180
 msgid "Required field"
 msgstr ""
 
@@ -186,7 +187,7 @@ msgstr ""
 #: library/forms/custom-forms.php:99
 #: library/forms/custom-forms.php:129
 #: library/forms/custom-forms.php:144
-#: library/forms/custom-forms.php:171
+#: library/forms/custom-forms.php:178
 #: library/forms/registration.php:700
 msgid "Add contact"
 msgstr ""
@@ -203,46 +204,54 @@ msgstr ""
 msgid "Finish"
 msgstr ""
 
-#: library/forms/custom-forms.php:172
+#: library/forms/custom-forms.php:179
+msgid "You can only add up to three administrators."
+msgstr ""
+
+#: library/forms/custom-forms.php:180
+msgid "You can have up to three administrators, do you want to confirm the change?"
+msgstr ""
+
+#: library/forms/custom-forms.php:181
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: library/forms/custom-forms.php:173
+#: library/forms/custom-forms.php:182
 msgid "Edit contact"
 msgstr ""
 
-#: library/forms/custom-forms.php:174
+#: library/forms/custom-forms.php:183
 msgid "You can only have one approver by team, do you want to replace the approver?"
 msgstr ""
 
-#: library/forms/custom-forms.php:263
+#: library/forms/custom-forms.php:293
 msgid "Add one more contact"
 msgstr ""
 
-#: library/forms/custom-forms.php:271
+#: library/forms/custom-forms.php:301
 msgid "Name"
 msgstr ""
 
-#: library/forms/custom-forms.php:272
+#: library/forms/custom-forms.php:302
 #: library/forms/registration.php:373
 msgid "Email"
 msgstr ""
 
-#: library/forms/custom-forms.php:273
+#: library/forms/custom-forms.php:303
 msgid "Approver"
 msgstr ""
 
-#: library/forms/custom-forms.php:274
+#: library/forms/custom-forms.php:304
 msgid "Administrator"
 msgstr ""
 
-#: library/forms/custom-forms.php:275
-#: library/forms/custom-forms.php:291
+#: library/forms/custom-forms.php:305
+#: library/forms/custom-forms.php:325
 msgid "Edit"
 msgstr ""
 
-#: library/forms/custom-forms.php:276
-#: library/forms/custom-forms.php:296
+#: library/forms/custom-forms.php:306
+#: library/forms/custom-forms.php:330
 msgid "Delete"
 msgstr ""
 
@@ -256,20 +265,20 @@ msgstr ""
 msgid "Email is already in use"
 msgstr ""
 
-#: library/forms/edit-organization.php:107
+#: library/forms/edit-organization.php:117
 msgid "Edit organization"
 msgstr ""
 
-#: library/forms/edit-organization.php:113
-#: library/forms/edit-organization.php:118
+#: library/forms/edit-organization.php:122
+#: library/forms/edit-organization.php:128
 msgid "Edit contacts"
 msgstr ""
 
-#: library/forms/edit-organization.php:118
+#: library/forms/edit-organization.php:128
 msgid "(hidden)"
 msgstr ""
 
-#: library/forms/edit-organization.php:123
+#: library/forms/edit-organization.php:133
 msgid "Edit organization finances"
 msgstr ""
 
@@ -724,7 +733,7 @@ msgstr ""
 msgid "Requests"
 msgstr ""
 
-#: library/membership.php:127
+#: library/membership.php:146
 msgid "Organizations"
 msgstr ""
 
@@ -788,41 +797,41 @@ msgstr ""
 msgid "New search"
 msgstr ""
 
-#: single-evento.php:121
+#: single-evento.php:86
 #: single.php:49
 #: template-parts/post-card.php:81
 msgid "Published in "
 msgstr ""
 
-#: single-evento.php:135
+#: single-evento.php:100
 msgid "Start"
 msgstr ""
 
-#: single-evento.php:144
+#: single-evento.php:109
 msgid "End"
 msgstr ""
 
-#: single-evento.php:150
+#: single-evento.php:115
 msgid "Workload"
 msgstr ""
 
-#: single-evento.php:156
+#: single-evento.php:121
 msgid "Investment"
 msgstr ""
 
-#: single-evento.php:167
+#: single-evento.php:132
 msgid "Event type"
 msgstr ""
 
-#: single-evento.php:174
+#: single-evento.php:139
 msgid "Number of events"
 msgstr ""
 
-#: single-evento.php:182
+#: single-evento.php:147
 msgid "Weekday"
 msgstr ""
 
-#: single-evento.php:198
+#: single-evento.php:163
 msgid "Local"
 msgstr ""
 
@@ -1004,11 +1013,14 @@ msgstr ""
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:11
 #: library/blocks/my-plan-table-row/editor.js:62
+#: dist/blocks/my-plan-table-row/editor.js:61
+#: dist/blocks/my-plan-table-row/editor.js:112
 msgid "Custom text"
 msgstr ""
 
 #: dist/blocks/my-plan-table/editor.js:19
 #: library/blocks/my-plan-table/editor.js:28
+#: dist/blocks/my-plan-table/editor.js:78
 msgid "My Plan - Table"
 msgstr ""
 
@@ -1016,6 +1028,11 @@ msgstr ""
 #: library/blocks/my-plan/editor.js:22
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
+msgstr ""
+
+#: dist/blocks/payments-history/editor.js:19
+#: dist/blocks/payments-history/editor.js:63
+msgid "Payments history"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
