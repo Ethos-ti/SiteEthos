@@ -2,7 +2,7 @@
 
 namespace hacklabr;
 
-function get_edit_contact_fields () {
+function get_edit_contact_fields() {
     $fields = get_registration_step5_fields();
 
     $fields['email']['validate'] = function ($value, $context) {
@@ -23,27 +23,43 @@ function get_edit_contact_fields () {
     return $fields;
 }
 
-function get_edit_organization_fields () {
+function get_edit_organization_fields() {
     $fields = get_registration_step1_fields();
 
     unset($fields['termos_de_uso']);
     unset($fields['codigo_de_conduta']);
+    unset($fields['logomarca']);
+
+    $editable_fields = [
+        'nome_fantasia', 'segmento', 'website', 'end_logradouro',
+        'end_numero', 'end_complemento', 'end_bairro', 'end_cidade',
+        'end_estado', 'end_cep'
+    ];
+
+    $non_editable_fields = [
+        'cnpj', 'razao_social', 'cnae', 'faturamento_anual',
+        'inscricao_municipal', 'inscricao_estadual', 'porte', 'num_funcionarios'
+    ];
 
     foreach ($fields as $key => $field) {
-        $fields[$key]['disabled'] = true;
+        if (in_array($key, $non_editable_fields)) {
+            $fields[$key]['disabled'] = true;
+        } elseif (in_array($key, $editable_fields)) {
+            $fields[$key]['disabled'] = false;
+        }
     }
 
     return $fields;
 }
 
-function get_edit_organization_finance_fields () {
+function get_edit_organization_finance_fields() {
     $fields = get_registration_step4_fields();
 
     $current_user = get_current_user_id();
 
     if (class_exists('PMProGroupAcct_Group') && !empty($current_user)) {
 
-        $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
+        $group_id = (int)get_user_meta($current_user, '_pmpro_group', true);
 
         $membership_price = calculate_membership_price($group_id);
 
@@ -58,7 +74,7 @@ function get_edit_organization_finance_fields () {
     return $fields;
 }
 
-function get_organization_params ($form_id, $fields) {
+function get_organization_params($form_id, $fields) {
     return function () use ($form_id, $fields) {
         $user_id = get_current_user_id();
 
@@ -71,7 +87,7 @@ function get_organization_params ($form_id, $fields) {
         if (!empty($organizations)) {
             $organization = $organizations[0];
 
-            add_action('hacklabr\\form_output', function ($form_html, $form) use($form_id, $organization) {
+            add_action('hacklabr\\form_output', function ($form_html, $form) use ($form_id, $organization) {
                 if ($form['id'] !== $form_id) {
                     return $form_html;
                 }
@@ -99,7 +115,7 @@ function get_organization_params ($form_id, $fields) {
     };
 }
 
-function register_edit_organization_form () {
+function register_edit_organization_form() {
     $fields_contacts = get_edit_contact_fields();
     $fields_finance = get_edit_organization_finance_fields();
     $fields_organization = get_edit_organization_fields();
@@ -130,7 +146,7 @@ function register_edit_organization_form () {
 }
 add_action('init', 'hacklabr\\register_edit_organization_form');
 
-function get_account_admin_contacts ($account_id) {
+function get_account_admin_contacts($account_id) {
     $account = get_crm_entity_by_id('account', $account_id);
 
     $attributes = $account->Attributes;
@@ -144,15 +160,15 @@ function get_account_admin_contacts ($account_id) {
     return array_filter($contact_ids);
 }
 
-function contacts_add_admin ($user_id) {
-    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+function contacts_add_admin($user_id) {
+    $group_id = (int)get_user_meta($user_id, '_pmpro_group', true);
 
     $group = get_pmpro_group($group_id);
 
     $ethos_admins = get_users([
         'meta_query' => [
-            [ 'key' => '_pmpro_group', 'value' => $group_id ],
-            [ 'key' => '_ethos_admin', 'value' => '1' ],
+            ['key' => '_pmpro_group', 'value' => $group_id],
+            ['key' => '_ethos_admin', 'value' => '1'],
         ],
     ]);
 
@@ -161,18 +177,18 @@ function contacts_add_admin ($user_id) {
     }
 
     if ($user_id == $group->group_parent_user_id) {
-        update_group_parent($group_id, (int) $user_id);
+        update_group_parent($group_id, (int)$user_id);
     }
 
     notify_admin_addition($user_id);
 }
 
-function contacts_add_approver ($user_id) {
-    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+function contacts_add_approver($user_id) {
+    $group_id = (int)get_user_meta($user_id, '_pmpro_group', true);
 
     $current_approvers = get_users([
         'meta_query' => [
-            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            ['key' => '_pmpro_group', 'value' => $group_id],
         ],
     ]);
     foreach ($current_approvers as $approver) {
@@ -184,24 +200,24 @@ function contacts_add_approver ($user_id) {
     notify_approver_change($user_id);
 }
 
-function contacts_delete_user ($user_id) {
+function contacts_delete_user($user_id) {
     // Required for using `wp_delete_user` function
     require_once(ABSPATH . 'wp-admin/includes/user.php');
 
     wp_delete_user($user_id, null);
 }
 
-function contacts_remove_admin ($user_id) {
+function contacts_remove_admin($user_id) {
     delete_user_meta($user_id, '_ethos_admin', '1');
 
     notify_admin_removal($user_id);
 }
 
-function contacts_remove_approver ($user_id) {
+function contacts_remove_approver($user_id) {
     delete_user_meta($user_id, '_ethos_approver', '1');
 }
 
-function notify_admin_addition ($user_id) {
+function notify_admin_addition($user_id) {
     $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
     $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
 
@@ -213,7 +229,7 @@ function notify_admin_addition ($user_id) {
     notify_admins_change($account_id, $contact_ids);
 }
 
-function notify_admin_removal ($user_id) {
+function notify_admin_removal($user_id) {
     $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
     $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
 
@@ -224,7 +240,7 @@ function notify_admin_removal ($user_id) {
     notify_admins_change($account_id, $contact_ids);
 }
 
-function notify_admins_change ($account_id, $contact_ids) {
+function notify_admins_change($account_id, $contact_ids) {
     $primary_contact = $contact_ids[0];
     $secondary_contact_1 = $contact_ids[1] ?? null;
     $secondary_contact_2 = $contact_ids[2] ?? null;
@@ -236,7 +252,7 @@ function notify_admins_change ($account_id, $contact_ids) {
     ]);
 }
 
-function notify_approver_change ($user_id) {
+function notify_approver_change($user_id) {
     $account_id = get_user_meta($user_id, '_ethos_crm_account_id', true);
     $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
 
@@ -245,12 +261,12 @@ function notify_approver_change ($user_id) {
     ]);
 }
 
-function validate_edit_organization_form ($form_id, $form, $params) {
+function validate_edit_organization_form($form_id, $form, $params) {
     $current_user = get_current_user_id();
 
-    $is_ethos_admin = get_user_meta( $current_user, '_ethos_admin', true );
+    $is_ethos_admin = get_user_meta($current_user, '_ethos_admin', true);
 
-    if ( empty( $is_ethos_admin ) ) {
+    if (empty($is_ethos_admin)) {
         return;
     }
 
@@ -299,7 +315,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
             return;
         }
 
-        $user_id = (int) $params['_user_id'];
+        $user_id = (int)$params['_user_id'];
         $post_meta = $params;
 
         unset($post_meta['_action']);
@@ -307,7 +323,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
         unset($post_meta['_user_id']);
 
         if (empty($user_id)) {
-            $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
+            $group_id = (int)get_user_meta($current_user, '_pmpro_group', true);
 
             $user_meta = array_merge($params, [
                 '_pmpro_group' => $group_id,
@@ -340,7 +356,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
 
     if ($form_id === 'edit-organization-contacts__hidden') {
         $action = $params['_action'];
-        $user_id = (int) $params['_user_id'];
+        $user_id = (int)$params['_user_id'];
 
         if (empty($action) || empty($user_id)) {
             return;
@@ -358,7 +374,7 @@ function validate_edit_organization_form ($form_id, $form, $params) {
             contacts_remove_approver($user_id);
         }
 
-        $current_url = untrailingslashit( $_SERVER['REQUEST_URI'] );
+        $current_url = untrailingslashit($_SERVER['REQUEST_URI']);
         wp_safe_redirect(add_query_arg(['tab' => 2], $current_url));
         exit;
     }
