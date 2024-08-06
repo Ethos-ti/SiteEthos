@@ -79,7 +79,7 @@ $show_taxonomies = (array) ($args['show_taxonomies'] ?? []);
             <?php if (!$hide_date): ?>
             <time class="post-card__date">
             <?php _e('Published in ', 'hacklabr') ?></a>
-                <?php echo get_the_date(); ?>
+                <?php echo get_the_date('d/m/Y'); ?>
             </time>
             <?php endif; ?>
         </div>
