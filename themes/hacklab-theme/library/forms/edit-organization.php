@@ -121,9 +121,7 @@ function register_edit_organization_form() {
     $fields_organization = get_edit_organization_fields();
 
     register_form('edit-organization', __('Edit organization', 'hacklabr'), [
-        'disabled' => true,
         'fields' => $fields_organization,
-        'submit_label' => false,
         'get_params' => get_organization_params('edit-organization', $fields_organization),
     ]);
 
