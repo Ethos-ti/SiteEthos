@@ -577,18 +577,6 @@ function list_registered_blocks() {
 // add_action('admin_notices', 'list_registered_blocks');
 
 /**
- * Retrieves a list of posts written by the specified author.
- *
- * @param int   $user_id The ID of the author to retrieve posts for.
- * @param array $args    Optional. An array of arguments to modify the query. See get_posts() for available options.
- * @return array An array of post objects.
- */
-function get_posts_by_author( $user_id, $args = [] ) {
-    $args['author'] = $user_id;
-    return get_posts( $args );
-}
-
-/**
  * Retrieves the name of the manager associated with an organization.
  * @param int|null $post_id The organization ID (default to current user's organization).
  * @return string|null The display name of the manager, or null if no manager is found.
