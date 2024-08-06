@@ -91,3 +91,9 @@ function pmpro_login_redirect_url( $redirect_to, $request, $user ) {
     return $redirect_to;
 }
 add_filter( 'pmpro_login_redirect_url', 'hacklabr\\pmpro_login_redirect_url', 20, 3 );
+
+function add_recaptcha_to_password_recovery(){
+    pmpro_init_recaptcha();
+    pmpro_recaptcha_get_html();
+}
+add_action( 'pmpro_lost_password_before_submit_button', 'hacklabr\\add_recaptcha_to_password_recovery' );
