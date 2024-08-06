@@ -18,6 +18,9 @@
 }
 .-margin-top-large {
     margin-top: $margin--large !important;
+    @include small{
+        margin-top: 0 !important;
+    }
 }
 
 .-margin-bottom-small {
