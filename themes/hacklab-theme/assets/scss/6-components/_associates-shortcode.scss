@@ -1,0 +1,110 @@
+.tableAssociadasPorEstado {
+    h2 {
+        color: $color--primary-dark;
+        font-size: $font-size--x-large;
+        font-weight: $font-weight--regular;
+        line-height: $line-height--none;
+        text-align: center;
+    }
+
+    .tableDivBorder {
+        border-bottom: $border-width--small solid $color--high-dark;
+        margin: $margin--medium 0;
+    }
+
+    ul {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: $gap--small;
+
+        li {
+            max-width: 100px !important;
+            max-height: 100px !important;
+            width: 100% !important;
+            height: auto !important;
+            list-style: none;
+
+            img {
+                max-width: 100px !important;
+                max-height: 100px !important;
+                width: 100%;
+                height: auto;
+            }
+
+        }
+    }
+}
+
+.tabelasDiv .tableAssociadasPorEstado:nth-child(2) {
+
+    margin-top: $margin--large;
+
+    ul {
+        display: block !important;
+    }
+
+    .tablePorteAssociadas {
+        h2 {
+            font-weight: $font-weight--bold;
+            margin-bottom: $margin--medium;
+        }
+
+        .tableDivBorder {
+            display: none;
+        }
+    }
+
+    .tableAssociadasPorEstado {
+        h2:nth-child(1n+2) {
+            font-weight: $font-weight--bold;
+            font-size: $font-size--medium;
+        }
+
+        .tableDivBorder:has(+ .tableAssociadasPorEstadoDiv) {
+            display: none;
+        }
+
+        .tableAssociadasPorEstadoDiv {
+            display: flex;
+            justify-content: center;
+            border-bottom: $border-width--small solid $color--high-dark;
+            margin: $margin--medium 0;
+
+            ul {
+                width: 50%;
+                text-align: left;
+
+                li {
+                    max-width: 100% !important;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    line-height: 1.5;
+                }
+            }
+        }
+
+    }
+
+    table {
+        width: 50%;
+        margin: auto;
+        font-size: $font-size--small;
+
+        tbody tr {
+
+            th:nth-child(1),
+            td:nth-child(1) {
+                min-width: 60%;
+            }
+
+            th,
+            td {
+                min-width: 15%
+            }
+
+            th {
+                font-size: $font-size--medium;
+            }
+        }
+    }
+}
