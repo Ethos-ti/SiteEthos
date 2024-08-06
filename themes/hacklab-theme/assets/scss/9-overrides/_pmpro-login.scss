@@ -3,6 +3,7 @@
         margin-bottom: 0px !important;
         .pmpro_lost_password_wrap{
             max-width: $grid--narrow;
+            margin-top: 0;
             .pmpro_card_actions{
                 .pmpro_actions_nav{
                     display: none !important;
@@ -37,6 +38,7 @@
             margin-bottom: 0;
 
             .pmpro_card_content{
+                padding-bottom: 0px;
                 & > form{
                     .login-username{
                         width: 470px !important;
