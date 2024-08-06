@@ -219,6 +219,9 @@
         .card {
             &__header {
                 border-radius: 0;
+                .wp-block-heading{
+                    font-size: 1.7rem;
+                }
             }
 
             &__body {
