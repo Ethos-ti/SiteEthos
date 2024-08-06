@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-08-01T21:13:22+00:00\n"
-"PO-Revision-Date: 2024-08-01 18:16-0300\n"
+"POT-Creation-Date: 2024-08-06T19:24:26+00:00\n"
+"PO-Revision-Date: 2024-08-06 16:28-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: hacklabr\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Domain: hacklabr\n"
 "X-Poedit-Basepath: .\n"
 
@@ -126,19 +126,20 @@ msgstr "Situação"
 #: library/blocks/my-plan-table/my-plan-table.php:22
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:47
+#: dist/blocks/my-plan-table-row/editor.js:97
 msgid "Benefits"
 msgstr "Benefícios"
 
-#: library/blocks/subscription/subscription.php:49
+#: library/blocks/subscription/subscription.php:45
 msgid "Date"
 msgstr "Data"
 
-#: library/blocks/subscription/subscription.php:50
+#: library/blocks/subscription/subscription.php:46
 #: library/forms/requests.php:12
 msgid "Title"
 msgstr "Título"
 
-#: library/blocks/subscription/subscription.php:51
+#: library/blocks/subscription/subscription.php:47
 msgid "Status"
 msgstr "Status"
 
@@ -150,15 +151,15 @@ msgstr "De hora em hora"
 msgid "Select an option"
 msgstr "Selecione uma opção"
 
-#: library/forms.php:132
+#: library/forms.php:145
 msgid "Submit"
 msgstr "Enviar"
 
-#: library/forms.php:141
+#: library/forms.php:154
 msgid "Skip step"
 msgstr "Próxima etapa"
 
-#: library/forms.php:167
+#: library/forms.php:180
 msgid "Required field"
 msgstr "Campo obrigatório"
 
@@ -183,7 +184,7 @@ msgid "It's possible to have more than one main contact."
 msgstr "É possível ter mais de um contato principal."
 
 #: library/forms/custom-forms.php:99 library/forms/custom-forms.php:129
-#: library/forms/custom-forms.php:144 library/forms/custom-forms.php:171
+#: library/forms/custom-forms.php:144 library/forms/custom-forms.php:178
 #: library/forms/registration.php:700
 msgid "Add contact"
 msgstr "Adicionar contato"
@@ -204,45 +205,54 @@ msgstr ""
 msgid "Finish"
 msgstr "Finalizar"
 
-#: library/forms/custom-forms.php:172
+#: library/forms/custom-forms.php:179
+msgid "You can only add up to three administrators."
+msgstr "Você só pode adicionar até três administradores."
+
+#: library/forms/custom-forms.php:180
+msgid ""
+"You can have up to three administrators, do you want to confirm the change?"
+msgstr "Você pode ter até três administradores. Quer confirmar a alteração?"
+
+#: library/forms/custom-forms.php:181
 msgid "Are you sure you want to delete the user?"
 msgstr "Deseja remover este usuário?"
 
-#: library/forms/custom-forms.php:173
+#: library/forms/custom-forms.php:182
 msgid "Edit contact"
 msgstr "Editar contato"
 
-#: library/forms/custom-forms.php:174
+#: library/forms/custom-forms.php:183
 msgid ""
 "You can only have one approver by team, do you want to replace the approver?"
 msgstr ""
 "Você pode ter apenas um aprovador por equipe, deseja substituir o aprovador?"
 
-#: library/forms/custom-forms.php:263
+#: library/forms/custom-forms.php:293
 msgid "Add one more contact"
 msgstr "Adicionar mais um contato"
 
-#: library/forms/custom-forms.php:271
+#: library/forms/custom-forms.php:301
 msgid "Name"
 msgstr "Nome"
 
-#: library/forms/custom-forms.php:272 library/forms/registration.php:373
+#: library/forms/custom-forms.php:302 library/forms/registration.php:373
 msgid "Email"
 msgstr "Email"
 
-#: library/forms/custom-forms.php:273
+#: library/forms/custom-forms.php:303
 msgid "Approver"
 msgstr "Aprovador"
 
-#: library/forms/custom-forms.php:274
+#: library/forms/custom-forms.php:304
 msgid "Administrator"
 msgstr "Administrador"
 
-#: library/forms/custom-forms.php:275 library/forms/custom-forms.php:291
+#: library/forms/custom-forms.php:305 library/forms/custom-forms.php:325
 msgid "Edit"
 msgstr "Editar"
 
-#: library/forms/custom-forms.php:276 library/forms/custom-forms.php:296
+#: library/forms/custom-forms.php:306 library/forms/custom-forms.php:330
 msgid "Delete"
 msgstr "Remover"
 
@@ -254,20 +264,20 @@ msgstr "Email inválido"
 msgid "Email is already in use"
 msgstr "Email já está em uso"
 
-#: library/forms/edit-organization.php:107
+#: library/forms/edit-organization.php:117
 msgid "Edit organization"
 msgstr "Editar organização"
 
-#: library/forms/edit-organization.php:113
-#: library/forms/edit-organization.php:118
+#: library/forms/edit-organization.php:122
+#: library/forms/edit-organization.php:128
 msgid "Edit contacts"
 msgstr "Editar contatos"
 
-#: library/forms/edit-organization.php:118
+#: library/forms/edit-organization.php:128
 msgid "(hidden)"
 msgstr "(oculto)"
 
-#: library/forms/edit-organization.php:123
+#: library/forms/edit-organization.php:133
 msgid "Edit organization finances"
 msgstr "Editar finanças da organização"
 
@@ -726,7 +736,7 @@ msgstr ""
 msgid "Requests"
 msgstr "Solicitações"
 
-#: library/membership.php:127
+#: library/membership.php:146
 msgid "Organizations"
 msgstr "Organizações"
 
@@ -791,39 +801,39 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
-#: single-evento.php:121 single.php:49 template-parts/post-card.php:81
+#: single-evento.php:86 single.php:49 template-parts/post-card.php:81
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:135
+#: single-evento.php:100
 msgid "Start"
 msgstr "Início"
 
-#: single-evento.php:144
+#: single-evento.php:109
 msgid "End"
 msgstr "Fim"
 
-#: single-evento.php:150
+#: single-evento.php:115
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:156
+#: single-evento.php:121
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:167
+#: single-evento.php:132
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: single-evento.php:174
+#: single-evento.php:139
 msgid "Number of events"
 msgstr "Quantidade de eventos"
 
-#: single-evento.php:182
+#: single-evento.php:147
 msgid "Weekday"
 msgstr "Dia da semana"
 
-#: single-evento.php:198
+#: single-evento.php:163
 msgid "Local"
 msgstr "Local"
 
@@ -992,11 +1002,14 @@ msgstr "Meus pagamentos"
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:11
 #: library/blocks/my-plan-table-row/editor.js:62
+#: dist/blocks/my-plan-table-row/editor.js:61
+#: dist/blocks/my-plan-table-row/editor.js:112
 msgid "Custom text"
 msgstr "Texto customizado"
 
 #: dist/blocks/my-plan-table/editor.js:19
 #: library/blocks/my-plan-table/editor.js:28
+#: dist/blocks/my-plan-table/editor.js:78
 msgid "My Plan - Table"
 msgstr "Meu Plano - Tabela"
 
@@ -1004,6 +1017,11 @@ msgstr "Meu Plano - Tabela"
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
 msgstr "Meu Plano"
+
+#: dist/blocks/payments-history/editor.js:19
+#: dist/blocks/payments-history/editor.js:63
+msgid "Payments history"
+msgstr "Histórico de pagamentos"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
 #: dist/blocks/posts-grid/editor.js:1931
@@ -1618,9 +1636,6 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
-
-#~ msgid "Payments history"
-#~ msgstr "Histórico de pagamentos"
 
 #~ msgid "Invoice area"
 #~ msgstr "Área de comprovante"
