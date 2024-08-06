@@ -3,6 +3,7 @@
         margin-bottom: 0px !important;
         .pmpro_lost_password_wrap{
             max-width: $grid--narrow;
+            margin-top: 0;
             .pmpro_card_actions{
                 .pmpro_actions_nav{
                     display: none !important;
@@ -26,7 +27,7 @@
                 border: none;
                 background-color: white !important;
                 .pmpro_actions_nav{
-                    top: -16rem;
+                    top: -18rem !important;
                     & > a{
                         font-weight: $font-weight--bold !important;
                     }
@@ -37,6 +38,7 @@
             margin-bottom: 0;
 
             .pmpro_card_content{
+                padding-bottom: 0px;
                 & > form{
                     .login-username{
                         width: 470px !important;
@@ -52,6 +54,13 @@
                             margin-top: $margin--small;
                             max-width: 100% !important;
                             width: 100%;
+                        }
+                    }
+                    .login-remember{
+                        label{
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
                         }
                     }
 
