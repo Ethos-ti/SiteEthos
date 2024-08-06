@@ -85,10 +85,27 @@ function map_account_attributes( int $post_id ) {
 }
 
 function map_contact_attributes( int $user_id, int|null $post_id = null ) {
-    // @TODO
     $user_meta = get_user_meta( $user_id );
 
+    $full_name = get_meta( $user_meta, 'nome_completo' );
+
+    $name_parts = explode( ' ', $full_name );
+    $first_name = $name_parts[0];
+    unset( $name_parts[0] );
+    $last_name = implode( ' ', $name_parts );
+
     $attributes = [
+        'emailaddress1' => get_meta( $user_meta, 'email' ),
+        'firstname'     => $first_name,
+        'fullname'      => $full_name,
+        'fut_st_cpf'    => get_meta( $user_meta, 'cpf' ),
+        'jobtitle'      => get_meta( $user_meta, 'cargo' ),
+        'lastname'      => $last_name,
+        'mobilephone'   => get_meta( $user_meta, 'celular' ),
+        'telephone1'    => get_meta( $user_meta, 'telefone' ),
+        'yomifirstname' => $first_name,
+        'yomifullname'  => $full_name,
+        'yomilastname'  => $last_name,
     ];
 
     if ( ! empty( $post_id ) ) {
