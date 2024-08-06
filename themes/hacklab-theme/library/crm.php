@@ -2,6 +2,10 @@
 
 namespace ethos\crm;
 
+function get_meta( $meta, $key, $fallback = '' ) {
+    return $meta[ $key ][0] ?? $fallback;
+}
+
 function map_pl_estado( string $uf ) {
     $ufs = [
         'AC' => 7,
@@ -52,28 +56,28 @@ function map_account_attributes( int $post_id ) {
 
     $post_meta = get_post_meta( $post_id );
 
-    $company_name = $post_meta['nome_fantasia'][0];
+    $company_name = get_meta( $post_meta, 'nome_fantasia' );
 
     $attributes = [
         'ownerid'                   => \hacklabr\create_crm_reference( 'systemuser', $systemuser ),
-        'address1_city'             => $post_meta['end_cidade'][0] ?? '',
-        'address1_postalcode'       => $post_meta['end_cep'][0] ?? '',
-        'entityimage_url'           => \get_the_post_thumbnail_url( $post_id ),
-        'fut_address1_line2'        => $post_meta['end_complemento'][0] ?? '',
-        'fut_address1_line3'        => $post_meta['end_bairro'][0] ?? '',
-        'fut_address1_logradouro'   => $post_meta['end_logradouro'][0] ?? '',
-        'fut_address1_nro'          => $post_meta['end_numero'][0] ?? '',
-        'fut_lk_cnaename'           => $post_meta['cnae'][0] ?? '',
-        'fut_st_cnpj'               => $$post_meta['cnpj'][0],
-        'fut_st_complementoorigem'  => $post_meta['segmento'][0] ?? '',
-        'fut_st_inscricaoestadual'  => $post_meta['inscricao_estadual'][0] ?? '',
-        'fut_st_inscricaomunicipal' => $post_meta['inscricao_municipal'][0] ?? '',
-        'fut_st_razaosocial'        => $post_meta['razao_social'][0] ?? '',
-        'fut_pl_estado'             => map_pl_estado( $post_meta['end_estado'][0] ?? '' ),
-        'fut_pl_porte'              => map_pl_porte( $post_meta['porte'][0] ?? '' ),
+        'address1_city'             => get_meta( $post_meta, 'end_cidade' ),
+        'address1_postalcode'       => get_meta( $post_meta, 'end_cep' ),
+        'entityimage_url'           => get_the_post_thumbnail_url( $post_id ),
+        'fut_address1_line2'        => get_meta( $post_meta, 'end_complemento' ),
+        'fut_address1_line3'        => get_meta( $post_meta, 'end_bairro' ),
+        'fut_address1_logradouro'   => get_meta( $post_meta, 'end_logradouro' ),
+        'fut_address1_nro'          => get_meta( $post_meta, 'end_numero' ),
+        'fut_lk_cnaename'           => get_meta( $post_meta, 'cnae' ),
+        'fut_st_cnpj'               => get_meta( $post_meta, 'cnpj' ),
+        'fut_st_complementoorigem'  => get_meta( $post_meta, 'segmento' ),
+        'fut_st_inscricaoestadual'  => get_meta( $post_meta, 'inscricao_estadual' ),
+        'fut_st_inscricaomunicipal' => get_meta( $post_meta, 'inscricao_municipal' ),
+        'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
+        'fut_pl_estado'             => map_pl_estado( get_meta( $post_meta, 'end_estado' ) ),
+        'fut_pl_porte'              => map_pl_porte( get_meta( $post_meta, 'porte' ) ),
         'name'                      => $company_name,
-        'numberofemployees'         => $post_meta['num_funcionarios'][0] ?? 0,
-        'websiteurl'                => $post_meta['website'][0] ?? '',
+        'numberofemployees'         => get_meta( $post_meta, 'num_funcionarios', 0 ),
+        'websiteurl'                => get_meta( $post_meta, 'website' ),
         'yominame'                  => $company_name,
     ];
 
@@ -109,28 +113,28 @@ function map_lead_attributes( int $post_id ) {
 
     $post_meta = get_post_meta( $post_id );
 
-    $company_name = $post_meta['nome_fantasia'][0];
+    $company_name = get_meta( $post_meta, 'nome_fantasia' );
 
     $attributes = [
         'ownerid'                    => \hacklabr\create_crm_reference( 'systemuser', $systemuser ),
-        'address1_city'              => $post_meta['end_cidade'][0] ?? '',
-        'address1_postalcode'        => $post_meta['end_cep'][0] ?? '',
+        'address1_city'              => get_meta( $post_meta, 'end_cidade' ),
+        'address1_postalcode'        => get_meta( $post_meta, 'end_cep' ),
         'companyname'                => $company_name,
-        'entityimage_url'            => \get_the_post_thumbnail_url( $post_id ),
+        'entityimage_url'            => get_the_post_thumbnail_url( $post_id ),
         'firstname'                  => $company_name,
         'fullname'                   => $company_name,
-        'fut_address1_logradouro'    => $post_meta['end_logradouro'][0] ?? '',
-        'fut_address1_nro'           => $post_meta['end_numero'][0] ?? '',
-        'fut_st_cnpj'                => $$post_meta['cnpj'][0],
-        'fut_st_complementoorigem'   => $post_meta['segmento'][0] ?? '',
-        'fut_st_inscricaoestadual'   => $post_meta['inscricao_estadual'][0] ?? '',
-        'fut_st_inscricaomunicipal'  => $post_meta['inscricao_municipal'][0] ?? '',
+        'fut_address1_logradouro'    => get_meta( $post_meta, 'end_logradouro' ),
+        'fut_address1_nro'           => get_meta( $post_meta, 'end_numero' ),
+        'fut_st_cnpj'                => get_meta( $post_meta, 'cnpj' ),
+        'fut_st_complementoorigem'   => get_meta( $post_meta, 'segmento' ),
+        'fut_st_inscricaoestadual'   => get_meta( $post_meta, 'inscricao_estadual' ),
+        'fut_st_inscricaomunicipal'  => get_meta( $post_meta, 'inscricao_municipal' ),
         'fut_st_nome'                => $first_name,
         'fut_st_nomecompleto'        => $author_name,
         'fut_st_nomefantasiaempresa' => $company_name,
         'fut_st_sobrenome'           => $last_name,
         'leadsourcecode'             => 4, // Outros
-        'websiteurl'                 => $post_meta['website'][0] ?? '',
+        'websiteurl'                 => get_meta( $post_meta, 'website' ),
         'yomifirstname'              => $first_name,
         'yomifullname'               => $company_name,
         'yomilastname'               => $last_name,
