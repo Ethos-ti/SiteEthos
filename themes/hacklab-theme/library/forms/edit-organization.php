@@ -78,7 +78,7 @@ function get_organization_params($form_id, $fields) {
     return function () use ($form_id, $fields) {
         $user_id = get_current_user_id();
 
-        get_organization_by_user($user_id);
+        $organization = get_organization_by_user($user_id);
 
         if (!empty($organization)) {
             add_action('hacklabr\\form_output', function ($form_html, $form) use ($form_id, $organization) {
