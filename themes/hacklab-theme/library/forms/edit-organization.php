@@ -280,6 +280,8 @@ function validate_edit_organization_form($form_id, $form, $params) {
             'post_title' => $post_meta['nome_fantasia'],
             'meta_input' => $post_meta,
         ]);
+
+        \ethos\crm\update_account((int) $post_id);
     }
 
     if ($form_id === 'edit-organization-finances') {

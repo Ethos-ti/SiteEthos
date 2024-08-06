@@ -61,13 +61,12 @@ function map_account_attributes( int $post_id ) {
     $attributes = [
         'ownerid'                   => \hacklabr\create_crm_reference( 'systemuser', $systemuser ),
         'address1_city'             => get_meta( $post_meta, 'end_cidade' ),
+        'address1_line2'            => get_meta( $post_meta, 'end_complemento' ),
+        'address1_line3'            => get_meta( $post_meta, 'end_bairro' ),
         'address1_postalcode'       => get_meta( $post_meta, 'end_cep' ),
         'entityimage_url'           => get_the_post_thumbnail_url( $post_id ),
-        'fut_address1_line2'        => get_meta( $post_meta, 'end_complemento' ),
-        'fut_address1_line3'        => get_meta( $post_meta, 'end_bairro' ),
         'fut_address1_logradouro'   => get_meta( $post_meta, 'end_logradouro' ),
         'fut_address1_nro'          => get_meta( $post_meta, 'end_numero' ),
-        'fut_lk_cnaename'           => get_meta( $post_meta, 'cnae' ),
         'fut_st_cnpj'               => get_meta( $post_meta, 'cnpj' ),
         'fut_st_complementoorigem'  => get_meta( $post_meta, 'segmento' ),
         'fut_st_inscricaoestadual'  => get_meta( $post_meta, 'inscricao_estadual' ),
@@ -218,6 +217,7 @@ function update_account( int $post_id ) {
         try {
             $attributes = map_account_attributes( $post_id );
 
+            unset( $attributes['fut_pl_porte'] );
             unset( $attributes['ownerid'] );
 
             \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
