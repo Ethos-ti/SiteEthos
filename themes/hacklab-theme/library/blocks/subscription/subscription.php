@@ -50,10 +50,10 @@ function render_subscription_callback ($attributes) {
 
         <tbody>
         <?php foreach ($subscriptions as $subscription): ?>
-            <?php $event = event_exists_on_wp($subscription->Attributes['fut_lk_projeto']->Id); ?>
+            <?php $event_id = event_exists_on_wp($subscription->Attributes['fut_lk_projeto']->Id); ?>
             <tr>
                 <td><?= $subscription->FormattedValues['fut_dt_iniciodaparticipao'] ?? '' ?></td>
-                <td><a href="<?= $event ? get_permalink( $event->ID ) : '#' ?>"><?= $subscription->FormattedValues['fut_lk_projeto'] ?></a></td>
+                <td><a href="<?= $event_id ? get_permalink( $event_id ) : '#' ?>"><?= $subscription->FormattedValues['fut_lk_projeto'] ?></a></td>
                 <td class="status status--pendente"><span><?= $subscription->FormattedValues['fut_set_statusoperacao'] ?></span></td>
             </tr>
         <?php endforeach; ?>
