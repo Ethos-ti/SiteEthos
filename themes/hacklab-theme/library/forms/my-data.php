@@ -60,6 +60,8 @@ function validate_my_data_form ($form_id, $form, $params) {
             'user_email' => $params['email'],
             'meta_input' => $user_meta,
         ]);
+
+        \ethos\crm\update_contact($user_id);
     }
 }
 add_action('hacklabr\\form_action', 'hacklabr\\validate_my_data_form', 10, 3);
