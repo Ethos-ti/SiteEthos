@@ -231,12 +231,12 @@ function update_account( int $post_id ) {
     }
 }
 
-function update_contact( int $user_id, int|null $post_id = null ) {
+function update_contact( int $user_id ) {
     $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
 
     if ( ! empty( $contact_id ) ) {
         try {
-            $attributes = map_contact_attributes( $user_id, $post_id );
+            $attributes = map_contact_attributes( $user_id );
 
             unset( $attributes['accountid'] );
             unset( $attributes['ownerid'] );

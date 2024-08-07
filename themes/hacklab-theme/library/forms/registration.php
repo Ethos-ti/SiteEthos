@@ -811,6 +811,8 @@ function validate_registration_form ($form_id, $form, $params) {
                 'user_email' => $params['email'],
                 'meta_input' => $user_meta,
             ]);
+
+            \ethos\crm\update_contact($user->ID);
         }
 
         $next_page = build_registration_step_link('member-registration-3', $kit, $transaction);
