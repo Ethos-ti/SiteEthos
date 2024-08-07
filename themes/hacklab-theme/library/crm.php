@@ -94,7 +94,6 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     $last_name = implode( ' ', $name_parts );
 
     $attributes = [
-        'emailaddress1' => get_meta( $user_meta, 'email' ),
         'firstname'     => $first_name,
         'fullname'      => $full_name,
         'fut_st_cpf'    => get_meta( $user_meta, 'cpf' ),
@@ -106,6 +105,11 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
         'yomifullname'  => $full_name,
         'yomilastname'  => $last_name,
     ];
+
+    $email = get_meta( $user_meta, 'email' );
+    if ( ! str_contains( $email, '+' ) ) {
+        $attributes['emailaddress1'] = $email;
+    }
 
     if ( ! empty( $post_id ) ) {
         $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
@@ -227,12 +231,12 @@ function update_account( int $post_id ) {
     }
 }
 
-function update_contact( int $user_id, int|null $post_id = null ) {
+function update_contact( int $user_id ) {
     $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
 
     if ( ! empty( $contact_id ) ) {
         try {
-            $attributes = map_contact_attributes( $user_id, $post_id );
+            $attributes = map_contact_attributes( $user_id );
 
             unset( $attributes['accountid'] );
             unset( $attributes['ownerid'] );
