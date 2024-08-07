@@ -59,7 +59,7 @@ function get_edit_organization_finance_fields() {
 
     if (class_exists('PMProGroupAcct_Group') && !empty($current_user)) {
 
-        $group_id = (int)get_user_meta($current_user, '_pmpro_group', true);
+        $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
         $membership_price = calculate_membership_price($group_id);
 
@@ -153,34 +153,28 @@ function get_account_admin_contacts($account_id) {
 }
 
 function contacts_add_admin($user_id) {
-    $group_id = (int)get_user_meta($user_id, '_pmpro_group', true);
-
-    $group = get_pmpro_group($group_id);
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
     $ethos_admins = get_users([
         'meta_query' => [
-            ['key' => '_pmpro_group', 'value' => $group_id],
-            ['key' => '_ethos_admin', 'value' => '1'],
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_admin', 'value' => '1' ],
         ],
     ]);
 
     if (count($ethos_admins) < 3) {
         update_user_meta($user_id, '_ethos_admin', '1');
-    }
 
-    if ($user_id == $group->group_parent_user_id) {
-        update_group_parent($group_id, (int)$user_id);
+        notify_admin_addition($user_id);
     }
-
-    notify_admin_addition($user_id);
 }
 
 function contacts_add_approver($user_id) {
-    $group_id = (int)get_user_meta($user_id, '_pmpro_group', true);
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
     $current_approvers = get_users([
         'meta_query' => [
-            ['key' => '_pmpro_group', 'value' => $group_id],
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
         ],
     ]);
     foreach ($current_approvers as $approver) {
@@ -200,9 +194,20 @@ function contacts_delete_user($user_id) {
 }
 
 function contacts_remove_admin($user_id) {
-    delete_user_meta($user_id, '_ethos_admin', '1');
+    $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
-    notify_admin_removal($user_id);
+    $ethos_admins = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_admin', 'value' => '1' ],
+        ],
+    ]);
+
+    if (count($ethos_admins) > 1) {
+        delete_user_meta($user_id, '_ethos_admin', '1');
+
+        notify_admin_removal($user_id);
+    }
 }
 
 function contacts_remove_approver($user_id) {
@@ -226,6 +231,20 @@ function notify_admin_removal($user_id) {
     $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
 
     $contact_ids = get_account_admin_contacts($account_id);
+
+    if ($contact_ids[0] == $contact_id) {
+        $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
+
+        $next_group_parent = get_single_user([
+            'meta_query' => [
+                [ 'key' => '_ethos_crm_contact_id', 'value' => $contact_ids[1] ],
+            ]
+        ]);
+
+        if (!empty($next_group_parent)) {
+            update_group_parent($group_id, $next_group_parent->ID);
+        }
+    }
 
     $contact_ids = array_filter($contact_ids, fn($id) => $id != $contact_id);
 
@@ -309,7 +328,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
             return;
         }
 
-        $user_id = (int)$params['_user_id'];
+        $user_id = (int) $params['_user_id'];
         $post_meta = $params;
 
         unset($post_meta['_action']);
@@ -317,7 +336,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
         unset($post_meta['_user_id']);
 
         if (empty($user_id)) {
-            $group_id = (int)get_user_meta($current_user, '_pmpro_group', true);
+            $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
             $user_meta = array_merge($params, [
                 '_pmpro_group' => $group_id,
@@ -350,7 +369,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
     if ($form_id === 'edit-organization-contacts__hidden') {
         $action = $params['_action'];
-        $user_id = (int)$params['_user_id'];
+        $user_id = (int) $params['_user_id'];
 
         if (empty($action) || empty($user_id)) {
             return;
