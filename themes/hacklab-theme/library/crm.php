@@ -113,8 +113,15 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
 
     if ( ! empty( $post_id ) ) {
         $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
-        $attributes['accountid'] = \hacklabr\create_crm_reference( 'account', $account_id );
-        $attributes['parentcustomerid'] = \hacklabr\create_crm_reference( 'account', $account_id );
+        if ( ! empty( $account_id ) ) {
+            $attributes['accountid'] = \hacklabr\create_crm_reference( 'account', $account_id );
+            $attributes['parentcustomerid'] = \hacklabr\create_crm_reference( 'account', $account_id );
+        }
+        
+        $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true );
+        if ( ! empty( $lead_id ) ) {
+            $attributes['originatingleadid'] = \hacklabr\create_crm_reference( 'lead', $lead_id );
+        }
     }
 
     return $attributes;
@@ -179,19 +186,21 @@ function add_contact_to_account( int $user_id, int $post_id ) {
 }
 
 function create_contact( int $user_id, int|null $post_id = null ) {
-    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
+    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
+    $lead_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
 
     if ( ! empty( $account_id ) ) {
         try {
             $attributes = map_contact_attributes( $user_id, $post_id );
 
             $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
-
+            
             wp_update_user( [
                 'ID' => $user_id,
                 'meta_input' => [
                     '_ethos_crm_account_id' => $account_id,
                     '_ethos_crm_contact_id' => $contact_id,
+                    '_ethos_crm_lead_id' => $lead_id,
                 ],
             ] );
 

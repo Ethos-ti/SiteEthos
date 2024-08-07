@@ -14,18 +14,29 @@
         grid-template-columns: 1fr;
     }
 
-    .post-card--vertical-thumbnail{
+    .post-card--vertical-thumbnail {
         grid-template-columns: 0.7fr 1fr;
-        img{
+
+        img {
             border-radius: 0;
         }
 
     }
-    &.-gap-small{
-        .post-card--vertical-thumbnail{
-            .post-card__term{
+
+    &.-gap-small {
+        .post-card--vertical-thumbnail {
+            .post-card__term {
                 display: none;
             }
+        }
+    }
+}
+
+.home .hacklabr-posts-grid-block {
+    @include mobile {
+
+        .post-card__excerpt {
+            display: none;
         }
     }
 }

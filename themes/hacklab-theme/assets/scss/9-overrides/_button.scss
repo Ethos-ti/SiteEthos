@@ -8,10 +8,13 @@
         font-size: $font-size--medium;
         font-style: normal;
         font-weight: $font-weight--bold;
-        padding: $padding--small $padding--large;
+        padding: $padding--small $padding--large !important;
         border: $border-width--medium solid $color--low-pure;
+        border-radius: $border-radius--medium;
+
         &:hover {
-            color: $color--high-pure;;
+            color: $color--high-pure;
+            ;
             border-radius: $border-radius--medium;
             background: $color--low-pure;
             border: $border-width--medium solid $color--low-pure;
@@ -20,6 +23,7 @@
         }
 
     }
+
     &.is-style-outline {
         a {
             @extend .button--outline;
