@@ -701,3 +701,24 @@ function custom_logout_redirect() {
 }
 
 add_action('init', 'custom_logout_redirect');
+
+function custom_rewrite_rules() {
+    add_rewrite_rule(
+        '^tipo-post/([^/]+)/post_type/([^/]+)/?category/([^/]+)/',
+        'index.php?tipo_post=$matches[1]&category=$matches[2]&post_type=$matches[3]',
+        'top'
+    );
+    add_rewrite_rule(
+        '^tipo-post/([^/]+)/post_type/([^/]+)/?',
+        'index.php?tipo_post=$matches[1]&post_type=$matches[2]',
+        'top'
+    );
+}
+add_action('init', 'custom_rewrite_rules');
+
+function add_custom_query_vars($vars) {
+    $vars[] = 'tipo_post';
+    $vars[] = 'category';
+    return $vars;
+}
+add_filter('query_vars', 'add_custom_query_vars');
