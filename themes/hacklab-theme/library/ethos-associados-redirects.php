@@ -1,6 +1,9 @@
 <?php
 add_action('init', function (){
-    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/inscricao-evento')) {
+    if(
+        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/inscricao-evento') ||
+        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/inscricao-conferencia')
+     ) {
         global $wpdb;
         if(isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
@@ -34,5 +37,13 @@ add_action('init', function (){
             }
 
         }
+    }
+
+    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/acesso-a-pagamento')) {
+        if($query_vars = http_build_query($_GET)){
+            $query_vars = "?{$query_vars}";
+        }
+        wp_redirect( '/acesso-a-pagamento'. "{$query_vars}", 301 );
+        die;
     }
 });
