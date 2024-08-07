@@ -40,7 +40,7 @@ function get_post_by_transaction ($post_type, $transaction = null) {
         }
     }
 
-    $posts = get_posts([
+    $post = get_single_post([
         'post_type' => $post_type,
         'post_status' => ['draft', 'ethos_under_progress', 'publish'],
         'meta_query' => [
@@ -48,10 +48,9 @@ function get_post_by_transaction ($post_type, $transaction = null) {
         ],
     ]);
 
-    if (empty($posts)) {
+    if (empty($post)) {
         return null;
     } else {
-        $post = $posts[0];
         assert($post instanceof \WP_Post);
         return $post;
     }
@@ -711,17 +710,16 @@ function get_user_by_transaction ($transaction = null) {
         }
     }
 
-    $users = get_users([
+    $user = get_single_user([
         'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
     ]);
 
-    if (empty($users)) {
+    if (empty($user)) {
         return null;
     } else {
-        $user = $users[0];
         assert($user instanceof \WP_User);
         return $user;
     }

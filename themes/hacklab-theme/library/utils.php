@@ -523,6 +523,34 @@ function get_primary_category($terms, $post_id, $taxonomy){
 }
 add_filter('get_the_terms', 'get_primary_category', 10, 3);
 
+/**
+ * Return the first result from `get_posts`, or null if empty
+ * @param array $args The args for `get_posts`
+ */
+function get_single_post (array $args) {
+    $posts = get_posts($args);
+
+    if (empty($posts)) {
+        return null;
+    } else {
+        return $posts[0];
+    }
+}
+
+/**
+ * Return the first result from `get_users`, or null if empty
+ * @param array $args The args for `get_users`
+ */
+function get_single_user (array $args) {
+    $users = get_users($args);
+
+    if (empty($users)) {
+        return null;
+    } else {
+        return $users[0];
+    }
+}
+
 //remove blocos do Events Calendar do Gutenberg
 function filter_allowed_block_types($allowed_block_types, $editor_context)
 {
