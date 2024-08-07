@@ -61,13 +61,12 @@ function map_account_attributes( int $post_id ) {
     $attributes = [
         'ownerid'                   => \hacklabr\create_crm_reference( 'systemuser', $systemuser ),
         'address1_city'             => get_meta( $post_meta, 'end_cidade' ),
+        'address1_line2'            => get_meta( $post_meta, 'end_complemento' ),
+        'address1_line3'            => get_meta( $post_meta, 'end_bairro' ),
         'address1_postalcode'       => get_meta( $post_meta, 'end_cep' ),
         'entityimage_url'           => get_the_post_thumbnail_url( $post_id ),
-        'fut_address1_line2'        => get_meta( $post_meta, 'end_complemento' ),
-        'fut_address1_line3'        => get_meta( $post_meta, 'end_bairro' ),
         'fut_address1_logradouro'   => get_meta( $post_meta, 'end_logradouro' ),
         'fut_address1_nro'          => get_meta( $post_meta, 'end_numero' ),
-        'fut_lk_cnaename'           => get_meta( $post_meta, 'cnae' ),
         'fut_st_cnpj'               => get_meta( $post_meta, 'cnpj' ),
         'fut_st_complementoorigem'  => get_meta( $post_meta, 'segmento' ),
         'fut_st_inscricaoestadual'  => get_meta( $post_meta, 'inscricao_estadual' ),
@@ -85,11 +84,32 @@ function map_account_attributes( int $post_id ) {
 }
 
 function map_contact_attributes( int $user_id, int|null $post_id = null ) {
-    // @TODO
     $user_meta = get_user_meta( $user_id );
 
+    $full_name = get_meta( $user_meta, 'nome_completo' );
+
+    $name_parts = explode( ' ', $full_name );
+    $first_name = $name_parts[0];
+    unset( $name_parts[0] );
+    $last_name = implode( ' ', $name_parts );
+
     $attributes = [
+        'firstname'     => $first_name,
+        'fullname'      => $full_name,
+        'fut_st_cpf'    => get_meta( $user_meta, 'cpf' ),
+        'jobtitle'      => get_meta( $user_meta, 'cargo' ),
+        'lastname'      => $last_name,
+        'mobilephone'   => get_meta( $user_meta, 'celular' ),
+        'telephone1'    => get_meta( $user_meta, 'telefone' ),
+        'yomifirstname' => $first_name,
+        'yomifullname'  => $full_name,
+        'yomilastname'  => $last_name,
     ];
+
+    $email = get_meta( $user_meta, 'email' );
+    if ( ! str_contains( $email, '+' ) ) {
+        $attributes['emailaddress1'] = $email;
+    }
 
     if ( ! empty( $post_id ) ) {
         $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
@@ -201,6 +221,7 @@ function update_account( int $post_id ) {
         try {
             $attributes = map_account_attributes( $post_id );
 
+            unset( $attributes['fut_pl_porte'] );
             unset( $attributes['ownerid'] );
 
             \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
@@ -210,12 +231,12 @@ function update_account( int $post_id ) {
     }
 }
 
-function update_contact( int $user_id, int|null $post_id = null ) {
+function update_contact( int $user_id ) {
     $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
 
     if ( ! empty( $contact_id ) ) {
         try {
-            $attributes = map_contact_attributes( $user_id, $post_id );
+            $attributes = map_contact_attributes( $user_id );
 
             unset( $attributes['accountid'] );
             unset( $attributes['ownerid'] );

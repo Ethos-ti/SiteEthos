@@ -40,21 +40,13 @@ function get_post_by_transaction ($post_type, $transaction = null) {
         }
     }
 
-    $posts = get_posts([
+    return get_single_post([
         'post_type' => $post_type,
         'post_status' => ['draft', 'ethos_under_progress', 'publish'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
     ]);
-
-    if (empty($posts)) {
-        return null;
-    } else {
-        $post = $posts[0];
-        assert($post instanceof \WP_Post);
-        return $post;
-    }
 }
 
 function get_registration_step1_fields () {
@@ -711,20 +703,12 @@ function get_user_by_transaction ($transaction = null) {
         }
     }
 
-    $users = get_users([
+    return get_single_user([
         'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
     ]);
-
-    if (empty($users)) {
-        return null;
-    } else {
-        $user = $users[0];
-        assert($user instanceof \WP_User);
-        return $user;
-    }
 }
 
 function set_post_featured_image ($post_id, $file_key) {
@@ -827,6 +811,8 @@ function validate_registration_form ($form_id, $form, $params) {
                 'user_email' => $params['email'],
                 'meta_input' => $user_meta,
             ]);
+
+            \ethos\crm\update_contact($user->ID);
         }
 
         $next_page = build_registration_step_link('member-registration-3', $kit, $transaction);
