@@ -40,20 +40,13 @@ function get_post_by_transaction ($post_type, $transaction = null) {
         }
     }
 
-    $post = get_single_post([
+    return get_single_post([
         'post_type' => $post_type,
         'post_status' => ['draft', 'ethos_under_progress', 'publish'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
     ]);
-
-    if (empty($post)) {
-        return null;
-    } else {
-        assert($post instanceof \WP_Post);
-        return $post;
-    }
 }
 
 function get_registration_step1_fields () {
@@ -710,19 +703,12 @@ function get_user_by_transaction ($transaction = null) {
         }
     }
 
-    $user = get_single_user([
+    return get_single_user([
         'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],
     ]);
-
-    if (empty($user)) {
-        return null;
-    } else {
-        assert($user instanceof \WP_User);
-        return $user;
-    }
 }
 
 function set_post_featured_image ($post_id, $file_key) {

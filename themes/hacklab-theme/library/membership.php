@@ -163,17 +163,10 @@ function get_organization_by_user ($user_id = null) {
         return null;
     }
 
-    $post = get_single_post([
+    return get_single_post([
         'post_type' => 'organizacao',
         'meta_query' => [
             [ 'key' => '_pmpro_group', 'value' => $group_id ],
         ],
     ]);
-
-    if (empty($post)) {
-        return null;
-    } else {
-        assert($post instanceof \WP_Post);
-        return $post;
-    }
 }

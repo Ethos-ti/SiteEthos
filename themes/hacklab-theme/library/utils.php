@@ -528,12 +528,15 @@ add_filter('get_the_terms', 'get_primary_category', 10, 3);
  * @param array $args The args for `get_posts`
  */
 function get_single_post (array $args) {
+    unset($args['fields']);
     $posts = get_posts($args);
 
     if (empty($posts)) {
         return null;
     } else {
-        return $posts[0];
+        $post = $posts[0];
+        assert($post instanceof \WP_Post);
+        return $post;
     }
 }
 
@@ -542,12 +545,15 @@ function get_single_post (array $args) {
  * @param array $args The args for `get_users`
  */
 function get_single_user (array $args) {
+    unset($args['fields']);
     $users = get_users($args);
 
     if (empty($users)) {
         return null;
     } else {
-        return $users[0];
+        $user = $users[0];
+        assert($user instanceof \WP_User);
+        return $user;
     }
 }
 
