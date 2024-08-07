@@ -32,7 +32,7 @@ function redirect_associates_template() {
          * Redirects non-logged-in users to the login page
          */
         if ( ! is_user_logged_in() ) {
-            wp_redirect( get_login_page_url(), 301 );
+            wp_safe_redirect( get_login_page_url() );
             exit;
         }
 
@@ -45,7 +45,7 @@ function redirect_associates_template() {
         $new_url = home_url( '/associados/' . get_post_field( 'post_name', get_queried_object_id() ) );
 
         if ( strpos( $current_url, '/associados/' ) === false ) {
-            wp_redirect( $new_url, 301 );
+            wp_safe_redirect( $new_url );
             exit;
         }
     }
