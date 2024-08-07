@@ -27,7 +27,7 @@
                 border: none;
                 background-color: white !important;
                 .pmpro_actions_nav{
-                    top: -18rem !important;
+                    top: -15rem !important;
                     & > a{
                         font-weight: $font-weight--bold !important;
                     }
@@ -102,6 +102,7 @@
                         justify-content: center !important;
                         margin-top: calc($margin--large*3) !important;
                         margin-bottom: -1rem !important;
+                        margin-top: $margin--medium;
                     }
 
                     input[type="submit"]{
