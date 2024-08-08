@@ -27,7 +27,8 @@
                 border: none;
                 background-color: white !important;
                 .pmpro_actions_nav{
-                    top: -15rem !important;
+                    top: -17rem !important;
+                    margin-top: 5px;
                     & > a{
                         font-weight: $font-weight--bold !important;
                     }
