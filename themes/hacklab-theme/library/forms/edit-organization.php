@@ -369,6 +369,10 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
             \ethos\crm\update_contact($user_id);
         }
+
+        $current_url = untrailingslashit($_SERVER['REQUEST_URI']);
+        wp_safe_redirect(add_query_arg(['tab' => 2], $current_url));
+        exit;
     }
 
     if ($form_id === 'edit-organization-contacts__hidden') {
