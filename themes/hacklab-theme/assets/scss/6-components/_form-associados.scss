@@ -1,0 +1,42 @@
+#doifdForm2{
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.formCadastroEmail{
+    .formCadastroEmail>h5 {
+        text-align: left;
+    }
+    #doifd_form{
+        text-align: left;
+        border-radius: $border-radius--large;
+        max-width: 400px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background: #F2F3F4;
+        #doifd_form>ul{
+            padding-inline-start: 0 !important;
+            li{
+                display: flex;
+                flex-direction: column;
+                label{
+                    font-family: $font-family--primary;
+                    font-size: $font-size--x-small;
+                    font-weight: $font-weight--bold;
+                    text-transform: uppercase;
+                    text-align: left;
+                    color: $color--low-dark;
+                }
+
+            }
+        }
+        .doifdCheckboxClass{
+            max-width: 400px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
