@@ -921,6 +921,8 @@ function validate_registration_form ($form_id, $form, $params) {
 
         add_user_to_pmpro_group($user_id, $group_id);
 
+        \ethos\crm\create_contact($user_id, $post->ID);
+
         $next_page = build_registration_step_link('member-registration-5', $kit, $transaction);
         wp_safe_redirect($next_page);
         exit;

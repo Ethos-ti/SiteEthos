@@ -355,6 +355,8 @@ function validate_edit_organization_form($form_id, $form, $params) {
             ]);
 
             add_user_to_pmpro_group($user_id, $group_id);
+
+            \ethos\crm\create_contact($user_id);
         } else {
             $user_meta = $params;
 
