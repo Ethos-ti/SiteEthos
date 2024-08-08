@@ -5,7 +5,7 @@
 }
 
 .formCadastroEmail{
-    >h5 {
+    h5 {
         text-align: left;
     }
     #doifd_form{
@@ -13,7 +13,7 @@
         border-radius: $border-radius--large;
         background-color: $color--high-light;
         padding: $padding-large $padding--xxx-large;
-        >ul{
+        ul{
             padding-inline-start: 0 !important;
             li{
                 display: flex;
