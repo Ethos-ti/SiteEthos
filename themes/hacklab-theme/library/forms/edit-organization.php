@@ -340,7 +340,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
             $user_meta = array_merge($params, [
                 '_pmpro_group' => $group_id,
-                '_pmpro_role' => 'primary',
+                '_pmpro_role' => 'secondary',
             ]);
 
             $password = wp_generate_password(16);
