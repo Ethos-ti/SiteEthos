@@ -34,7 +34,7 @@
             </div>
         <?php endif; ?>
         <div class="post-header post-header__title post-header--title-start">
-            <h1><?php the_title() ?></h1>
+            <h2><?php the_title() ?></h2>
         </div>
 
         <div class="post-header__meta ">
