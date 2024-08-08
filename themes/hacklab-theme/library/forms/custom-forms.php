@@ -309,8 +309,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
                 <tbody>
                 <?php foreach ($contacts as $contact): ?>
                     <?php
-                        $is_admin = !empty(get_user_meta($current_user, '_ethos_admin', true));
-                        $is_approver = !empty(get_user_meta($current_user, '_ethos_approver', true));
+                        $is_admin = !empty(get_user_meta($contact->ID, '_ethos_admin', true));
+                        $is_approver = !empty(get_user_meta($contact->ID, '_ethos_approver', true));
                     ?>
                     <tr x-data="{ user: <?= esc_attr(json_encode(get_user_fields($contact, $fields))) ?> }">
                         <td><?= $contact->display_name ?></td>
