@@ -114,6 +114,33 @@ function build_posts_query ($attributes, $post__not_in = []) {
     return $args;
 }
 
+function clean_block_transients ( $post_id, $post ) {
+    if (!current_user_can('edit_post', $post_id)) {
+        return $post_id;
+    }
+
+    $query_blocks = [
+        'hacklabr/posts-grids',
+    ];
+
+    foreach ($query_blocks as $block) {
+        if (has_block($block, $post)) {
+            global $wpdb;
+
+            $option_names = $wpdb->get_col("SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_hacklabr/posts_%'");
+
+            foreach ($option_names as $option_name) {
+                $transient_key = str_replace('_transient_', '', $option_name);
+                delete_transient($transient_key);
+            }
+
+            break;
+        }
+    }
+}
+add_action('save_post', 'hacklabr\\clean_block_transients', 10, 2);
+add_action('delete_post', 'hacklabr\\clean_block_transients', 10, 2);
+
 function compute_block_transient_key ( string $namespace, array $attributes = [] ) {
     return $namespace . '_' . md5( serialize( $attributes ) );
 }
