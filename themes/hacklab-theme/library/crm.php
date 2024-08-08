@@ -223,53 +223,58 @@ function create_lead( int $post_id ) {
     }
 }
 
-function update_account( int $post_id ) {
-    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
+function update_account( int $post_id, string $account_id ) {
+    try {
+        $attributes = map_account_attributes( $post_id );
 
-    if ( ! empty( $account_id ) ) {
-        try {
-            $attributes = map_account_attributes( $post_id );
+        unset( $attributes['fut_pl_porte'] );
+        unset( $attributes['ownerid'] );
 
-            unset( $attributes['fut_pl_porte'] );
-            unset( $attributes['ownerid'] );
-
-            \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 }
 
 function update_contact( int $user_id ) {
-    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
+    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true ) ?? null;
 
-    if ( ! empty( $contact_id ) ) {
-        try {
-            $attributes = map_contact_attributes( $user_id );
+    if ( empty( $contact_id ) ) {
+        return;
+    }
 
-            unset( $attributes['accountid'] );
-            unset( $attributes['ownerid'] );
-            unset( $attributes['parentcustomerid'] );
+    try {
+        $attributes = map_contact_attributes( $user_id );
 
-            \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        unset( $attributes['accountid'] );
+        unset( $attributes['ownerid'] );
+        unset( $attributes['parentcustomerid'] );
+
+        \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 }
 
-function update_lead( int $post_id ) {
-    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true );
+function update_lead( int $post_id, string $lead_id ) {
+    try {
+        $attributes = map_lead_attributes( $post_id );
 
-    if ( ! empty( $lead_id ) ) {
-        try {
-            $attributes = map_lead_attributes( $post_id );
+        unset( $attributes['ownerid'] );
 
-            unset( $attributes['ownerid'] );
+        \hacklabr\update_crm_entity( 'lead', $lead_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
+    }
+}
 
-            \hacklabr\update_crm_entity( 'lead', $lead_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+function update_organization( int $post_id ) {
+    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
+    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true ) ?? null;
+
+    if ( ! empty( $account_id ) ) {
+        update_account( $post_id, $account_id );
+    } else if ( ! empty( $lead_id ) ) {
+        update_lead( $post_id, $lead_id );
     }
 }
