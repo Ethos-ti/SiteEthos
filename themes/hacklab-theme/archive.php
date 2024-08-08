@@ -43,7 +43,7 @@ usort($terms, 'custom_sort');
         <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
             <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
                 <div class="tabs__header" role="tablist">
-                    <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( get_post_type_archive_link( $post_type ) ); ?>"><?php _e('All the areas', 'hacklabr') ?></a>
+                    <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url( get_post_type_archive_link( $post_type ) ); ?>"><?php _e('All the themes', 'hacklabr') ?></a>
                     <?php foreach ( $terms as $term ) : ?>
                         <a class="tab" x-bind="TabButton('<?= esc_attr( $term->slug ); ?>', $data)" href="<?= esc_url( get_term_link( $term->term_id, 'category' ) ); ?>?post_type=<?= $post_type; ?>">
                             <?= esc_attr( $term->name ); ?>
