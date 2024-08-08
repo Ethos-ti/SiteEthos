@@ -764,6 +764,8 @@ function validate_registration_form ($form_id, $form, $params) {
             if (!empty($_FILES['_logomarca'])) {
                 set_post_featured_image($post->ID, '_logomarca');
             }
+
+            \ethos\crm\update_organization($post->ID);
         }
 
         $next_page = build_registration_step_link('member-registration-2', $kit, $transaction);
@@ -854,6 +856,8 @@ function validate_registration_form ($form_id, $form, $params) {
                     '_pmpro_group' => $group->id,
                 ],
             ]);
+
+            // @see add_post_to_sync_waiting_list
         } else {
             update_group_level($group_id, $level_id);
         }
