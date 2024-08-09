@@ -16,6 +16,7 @@
             font-family: $font-family--primary;
             font-size: $font-size--x-small;
             font-weight: $font-weight--regular;
+            padding: 2rem 7rem;
             @media(max-width: 992px){
                 padding: 0 1.6rem;
             }
@@ -52,8 +53,8 @@
                     padding: 11px 5px;
                     font-family: $font-family--primary;
                     color: $color--low-light;
+                    border-radius: $border-radius--small;
                 }
-
             }
         }
         .doifdCheckboxClass{
