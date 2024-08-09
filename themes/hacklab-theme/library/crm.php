@@ -181,24 +181,9 @@ function map_lead_attributes( int $post_id ) {
     return $attributes;
 }
 
-function add_contact_to_account( int $user_id, int $post_id ) {
-    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
-    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
-
-    if ( ! empty( $account_id ) && ! empty( $contact_id ) ) {
-        try {
-            \hacklabr\update_crm_entity( 'contact', $contact_id, [
-                'parentcustomerid' => \hacklabr\create_crm_entity( 'account', $account_id ),
-            ] );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
-    }
-}
-
 function create_contact( int $user_id, int|null $post_id = null ) {
     $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
-    $lead_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
+    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true ) ?? null;
 
     if ( ! empty( $account_id ) ) {
         try {
@@ -214,6 +199,8 @@ function create_contact( int $user_id, int|null $post_id = null ) {
                     '_ethos_crm_lead_id' => $lead_id,
                 ],
             ] );
+
+            do_action( 'logger', 'New contact: ' . $contact_id );
 
             return $contact_id;
         } catch ( \Throwable $err ) {

@@ -329,16 +329,16 @@ function validate_edit_organization_form($form_id, $form, $params) {
         }
 
         $user_id = (int) $params['_user_id'];
-        $post_meta = $params;
+        $user_meta = $params;
 
-        unset($post_meta['_action']);
-        unset($post_meta['_hacklabr_form']);
-        unset($post_meta['_user_id']);
+        unset($user_meta['_action']);
+        unset($user_meta['_hacklabr_form']);
+        unset($user_meta['_user_id']);
 
         if (empty($user_id)) {
             $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
 
-            $user_meta = array_merge($params, [
+            $user_meta = array_merge($user_meta, [
                 '_pmpro_group' => $group_id,
                 '_pmpro_role' => 'secondary',
             ]);
@@ -346,9 +346,9 @@ function validate_edit_organization_form($form_id, $form, $params) {
             $password = wp_generate_password(16);
 
             $user_id = wp_insert_user([
-                'display_name' => $params['nome_completo'],
-                'user_email' => $params['email'],
-                'user_login' => sanitize_title($params['nome_completo']),
+                'display_name' => $user_meta['nome_completo'],
+                'user_email' => $user_meta['email'],
+                'user_login' => sanitize_title($user_meta['nome_completo']),
                 'user_pass' => $password,
                 'role' => 'subscriber',
                 'meta_input' => $user_meta,
@@ -358,12 +358,10 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
             \ethos\crm\create_contact($user_id);
         } else {
-            $user_meta = $params;
-
             wp_update_user([
                 'ID' => $user_id,
-                'display_name' => $params['nome_completo'],
-                'user_email' => $params['email'],
+                'display_name' => $user_meta['nome_completo'],
+                'user_email' => $user_meta['email'],
                 'meta_input' => $user_meta,
             ]);
 
