@@ -91,6 +91,13 @@
             margin: $margin--medium 0;
         }
 
+        .wp-block-atbs-tab>.single-tab>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-image>img{
+            border-radius: 50%;
+            height: 135px !important;
+            object-fit: cover;
+            width: 135px !important;
+        }
+
         .wp-block-columns>.wp-block-column>h2 {
 
             @include mobile {
