@@ -40,17 +40,6 @@ function map_pl_estado( string $uf ) {
     return $ufs[ $uf ] ?? $uf;
 }
 
-function map_pl_porte( string $size ) {
-    $sizes = [
-        'micro'  => 969830000,
-        'small'  => 969830001,
-        'medium' => 969830002,
-        'large'  => 969830004,
-    ];
-
-    return $sizes[ $size ] ?? $size;
-}
-
 function map_account_attributes( int $post_id ) {
     $systemuser = get_option( 'systemuser' );
 
@@ -81,7 +70,7 @@ function map_account_attributes( int $post_id ) {
     ];
 
     if ( ! $is_imported ) {
-        $attributes['fut_pl_porte'] = map_pl_porte( get_meta( $post_meta, 'porte' ) );
+        $attributes['fut_pl_porte'] = CompanySize::fromSlug( get_meta( $post_meta, 'porte' ) );
     }
 
     return $attributes;

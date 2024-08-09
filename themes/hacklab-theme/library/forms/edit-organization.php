@@ -278,7 +278,7 @@ function notify_user_deactivation($user_id) {
     $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
 
     update_crm_entity('contact', $contact_id, [
-        'statecode' => 1 /* Inactive */,
+        'statecode' => \ethos\crm\ContactStatus::Inactive->value,
     ]);
 }
 
