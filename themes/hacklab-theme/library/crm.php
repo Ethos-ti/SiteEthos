@@ -240,7 +240,7 @@ function update_contact( int $user_id ) {
     }
 
     try {
-        $attributes = map_contact_attributes( $user_id );
+        $attributes = map_contact_attributes( $user_id, null );
 
         unset( $attributes['accountid'] );
         unset( $attributes['ownerid'] );
