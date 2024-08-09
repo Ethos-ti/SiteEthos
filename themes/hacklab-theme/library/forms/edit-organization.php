@@ -190,6 +190,8 @@ function contacts_delete_user($user_id) {
     // Required for using `wp_delete_user` function
     require_once(ABSPATH . 'wp-admin/includes/user.php');
 
+    notify_user_deactivation($user_id);
+
     wp_delete_user($user_id, null);
 }
 
@@ -269,6 +271,14 @@ function notify_approver_change($user_id) {
 
     update_crm_entity('account', $account_id, [
         'i4d_aprovador_cortesia' => create_crm_reference('contact', $contact_id),
+    ]);
+}
+
+function notify_user_deactivation($user_id) {
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    update_crm_entity('contact', $contact_id, [
+        'statecode' => 1 /* Inactive */,
     ]);
 }
 
