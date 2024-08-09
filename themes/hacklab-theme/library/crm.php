@@ -199,8 +199,6 @@ function create_contact( int $user_id, int $post_id ) {
             ],
         ] );
 
-        do_action( 'logger', 'New contact: ' . $contact_id );
-
         return $contact_id;
     } catch ( \Throwable $err ) {
         do_action( 'logger', $err->getMessage() );
