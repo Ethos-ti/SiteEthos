@@ -14,9 +14,9 @@
         .doifd_error_msg{
             text-align: right !important;
             font-family: $font-family--primary;
-            font-size: $font-size--x-small;
+            font-size: $font-size--small;
             font-weight: $font-weight--regular !important;
-            padding: 2rem 7rem;
+            padding: 0 7rem;
             position: relative;
             top: 209px;
             @media(max-width: 992px){
