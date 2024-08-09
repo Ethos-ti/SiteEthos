@@ -337,6 +337,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
         if (empty($user_id)) {
             $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
+            $organization = get_organization_by_user();
 
             $user_meta = array_merge($user_meta, [
                 '_pmpro_group' => $group_id,
@@ -356,7 +357,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
 
             add_user_to_pmpro_group($user_id, $group_id);
 
-            \ethos\crm\create_contact($user_id);
+            \ethos\crm\create_contact($user_id, $organization->ID);
         } else {
             wp_update_user([
                 'ID' => $user_id,

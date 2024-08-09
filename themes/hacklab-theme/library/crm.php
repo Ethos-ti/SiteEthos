@@ -181,31 +181,29 @@ function map_lead_attributes( int $post_id ) {
     return $attributes;
 }
 
-function create_contact( int $user_id, int|null $post_id = null ) {
+function create_contact( int $user_id, int $post_id ) {
     $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
     $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true ) ?? null;
 
-    if ( ! empty( $account_id ) ) {
-        try {
-            $attributes = map_contact_attributes( $user_id, $post_id );
+    try {
+        $attributes = map_contact_attributes( $user_id, $post_id );
 
-            $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
-            
-            wp_update_user( [
-                'ID' => $user_id,
-                'meta_input' => [
-                    '_ethos_crm_account_id' => $account_id,
-                    '_ethos_crm_contact_id' => $contact_id,
-                    '_ethos_crm_lead_id' => $lead_id,
-                ],
-            ] );
+        $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
+        
+        wp_update_user( [
+            'ID' => $user_id,
+            'meta_input' => [
+                '_ethos_crm_account_id' => $account_id,
+                '_ethos_crm_contact_id' => $contact_id,
+                '_ethos_crm_lead_id' => $lead_id,
+            ],
+        ] );
 
-            do_action( 'logger', 'New contact: ' . $contact_id );
+        do_action( 'logger', 'New contact: ' . $contact_id );
 
-            return $contact_id;
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        return $contact_id;
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 
     return null;
