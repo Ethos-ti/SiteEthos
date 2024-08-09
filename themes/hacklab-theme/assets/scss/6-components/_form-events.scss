@@ -1,6 +1,19 @@
 .single-tribe{
  &_events{
     #corpoScriptPre, #corpoScript{
+
+        #iPayData{
+            h5{
+                color: $color--secondary-dark !important;
+                font-size: $font-size--medium;
+            }
+        }
+
+        #aAgree, #iAgree{
+            position: relative;
+            top: 135px;
+        }
+
         .tabelasDiv{
             h2{
                 color: $color--primary-dark;
@@ -105,7 +118,7 @@
             #frmDadosEmpresa{
                 display: flex;
                 justify-content: center;
-                margin-top: $margin--large;
+                margin-top: $margin--large*4;
 
                 input[type="submit"]{
                     border: 2px solid $color--low-pure;
@@ -149,7 +162,9 @@
 
             .post-content{
                 h1{
+                    display: flex;
                     font-size: $font-size--xx-large;
+                    justify-content: center;
                     text-align: center;
                 }
             }
