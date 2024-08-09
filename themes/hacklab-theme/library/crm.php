@@ -85,6 +85,7 @@ function map_account_attributes( int $post_id ) {
 
 function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     $user_meta = get_user_meta( $user_id );
+    $is_imported = get_meta( $user_meta, '_ethos_from_crm' ) ?? false;
 
     $full_name = get_meta( $user_meta, 'nome_completo' );
 
@@ -93,7 +94,10 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     unset( $name_parts[0] );
     $last_name = implode( ' ', $name_parts );
 
+    $email = get_meta( $user_meta, 'email' );
+
     $attributes = [
+        'emailaddress1' => $email,
         'firstname'     => $first_name,
         'fullname'      => $full_name,
         'fut_st_cpf'    => get_meta( $user_meta, 'cpf' ),
@@ -106,9 +110,16 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
         'yomilastname'  => $last_name,
     ];
 
-    $email = get_meta( $user_meta, 'email' );
-    if ( ! str_contains( $email, '+' ) ) {
-        $attributes['emailaddress1'] = $email;
+    if ( $is_imported ) {
+        // Contact was originally imported from CRM
+        if ( str_contains( $email, '+' ) ) {
+            unset( $attributes['emailaddress1'] );
+        }
+    } else {
+        // Contact was originally created in WordPress
+        $role = get_meta( $user_meta, '_pmpro_role' );
+        $attributes['fut_bt_principal'] = $role === 'primary';
+        $attributes['fut_bt_financeiro'] = $role === 'financial';
     }
 
     if ( ! empty( $post_id ) ) {
