@@ -55,6 +55,7 @@ function map_account_attributes( int $post_id ) {
     $systemuser = get_option( 'systemuser' );
 
     $post_meta = get_post_meta( $post_id );
+    $is_imported = get_meta( $post_meta, '_ethos_from_crm' ) ?? false;
 
     $company_name = get_meta( $post_meta, 'nome_fantasia' );
 
@@ -73,12 +74,15 @@ function map_account_attributes( int $post_id ) {
         'fut_st_inscricaomunicipal' => get_meta( $post_meta, 'inscricao_municipal' ),
         'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
         'fut_pl_estado'             => map_pl_estado( get_meta( $post_meta, 'end_estado' ) ),
-        'fut_pl_porte'              => map_pl_porte( get_meta( $post_meta, 'porte' ) ),
         'name'                      => $company_name,
         'numberofemployees'         => get_meta( $post_meta, 'num_funcionarios', 0 ),
         'websiteurl'                => get_meta( $post_meta, 'website' ),
         'yominame'                  => $company_name,
     ];
+
+    if ( ! $is_imported ) {
+        $attributes['fut_pl_porte'] = map_pl_porte( get_meta( $post_meta, 'porte' ) );
+    }
 
     return $attributes;
 }
