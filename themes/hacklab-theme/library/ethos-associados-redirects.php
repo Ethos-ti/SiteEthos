@@ -23,7 +23,10 @@ add_action('init', function (){
         }
     }
 
-    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/certificado-evento')) {
+    if(
+        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/certificado-evento') ||
+        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/certificado-conferencia')
+    ) {
         global $wpdb;
         if(isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
