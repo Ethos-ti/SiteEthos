@@ -49,6 +49,7 @@
                         width: 100%;
                         max-width: 100%;
                         text-transform: math-auto;
+                        font-size: 16px;
                         @include mobile{
                             width: 100% !important;
                             max-width: 100%;
@@ -66,15 +67,29 @@
                             display: flex;
                             align-items: center;
                             gap: 5px;
+                            font-size: 16px;
                         }
                     }
 
                     .login-password {
                         position: relative !important;
-
+                        .pmpro_form_field-password-toggle > button > span{
+                            & svg {
+                                stroke: #333;
+                            }
+                            & .pmpro_form_field-password-toggle-state{
+                                color: #222;
+                                /* font-family: 'Open Sans'; */
+                                font-family: Open Sans, sans-serif !important;
+                                text-transform: math-auto;
+                                font-weight: 500;
+                                font-size: 16px;
+                            }
+                        }
                         & > label{
                             text-transform: math-auto;
                             font-family: "Open Sans", sans-serif!important;
+                            font-size: 16px;
                             }
                         }
                     .login-password > .toggle-password {
