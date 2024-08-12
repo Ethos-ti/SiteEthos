@@ -78,7 +78,7 @@
                             /* font-family: 'Open Sans'; */
                             font-family: Open Sans, sans-serif !important;
                             text-transform: math-auto;
-                            font-weight: 500;
+                            font-weight: $font-weight--bold;
                             font-size: 16px;
                             & svg {
                                 stroke: #333;
