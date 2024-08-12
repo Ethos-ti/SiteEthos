@@ -29,11 +29,11 @@
                 .pmpro_actions_nav{
                     font-size: 16px !important;
                     margin-top: 7px;
-                    text-transform: uppercase;
                     top: -18rem !important;
                     & > a{
                         font-weight: $font-weight--bold !important;
-                        font-size: 16px;
+                        font-size: 12px;
+                        text-transform: math-auto;
                     }
                 }
             }
@@ -73,7 +73,7 @@
                         position: relative !important;
 
                         & > label{
-                            text-transform: uppercase!important;
+                            text-transform: math-auto;
                             font-family: "Open Sans", sans-serif!important;
                             }
                         }
@@ -99,6 +99,7 @@
 
                     .login-remember{
                         font-weight: $font-weight--bold !important;
+                        text-transform: math-auto;
 
                     }
 
