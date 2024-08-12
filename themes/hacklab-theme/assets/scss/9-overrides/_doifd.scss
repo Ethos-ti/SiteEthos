@@ -1,0 +1,102 @@
+#doifdForm2{
+    padding: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.formCadastroEmail{
+    h5 {
+        text-align: left !important;
+    }
+
+    #doifd_statusmsg{
+        text-align: right;
+        .doifd_error_msg{
+            text-align: right !important;
+            font-family: $font-family--primary;
+            font-size: $font-size--small;
+            font-weight: $font-weight--regular !important;
+            padding: 0 7rem;
+            position: relative;
+            top: 209px;
+            @media(max-width: 992px){
+                padding: 0 1.6rem;
+            }
+        }
+    }
+
+    #doifd_form{
+        text-align: left;
+        border-radius: $border-radius--large;
+        background-color: $color--high-light;
+        padding: 2rem 7rem;
+        @media(max-width: 992px){
+            padding: 1rem 2rem;
+        }
+        margin-top: $margin--large;
+        :nth-child(4){
+            padding-inline-start: 0 !important;
+            li{
+                display: flex;
+                flex-direction: column;
+                label{
+                    font-family: $font-family--primary;
+                    font-size: $font-size--x-small;
+                    font-weight: $font-weight--bold;
+                    text-transform: uppercase;
+                    text-align: left;
+                    color: $color--low-dark;
+
+                }
+                input[type=text]{
+                    width: 100%;
+                    background-color: transparent;
+                    border: $border-width--small solid $color--high-dark;
+                    padding: 11px 5px;
+                    font-family: $font-family--primary;
+                    color: $color--low-light;
+                    border-radius: $border-radius--small;
+                    margin-bottom: 1.3rem;
+                }
+            }
+        }
+        .doifdCheckboxClass{
+            width: 100%;
+            label{
+                font-family: $font-family--primary;
+                font-size: $font-size--medium;
+                color: $color--low-pure;
+            }
+        }
+        .doifdPrivacyClass{
+            padding-inline-start: 0 !important;
+            text-align: center;
+            li{
+                a{
+                    font-size: $font-size--x-small;
+                    font-style: normal;
+                    color: $color--low-pure;
+                    font-weight: $font-weight--regular;
+                    font-family: $font-family--primary;
+                }
+            }
+        }
+        .doifdDefaultButtonHolder{
+            #doifd_download_form{
+                background: #fff;
+                border: $border-width--medium solid $color--low-pure;
+                border-radius: $border-radius--medium;
+                width: 100%;
+                max-width: 100px;
+                color: $color--low-pure;
+                font-family: $font-family--primary;
+                font-size: $font-size--small;
+                text-transform: uppercase;
+                font-weight: $font-weight--bold;
+            }
+        }
+    }
+    .doifd_privacy_link{
+        display: none !important;
+    }
+}

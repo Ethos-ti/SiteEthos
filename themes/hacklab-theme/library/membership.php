@@ -115,6 +115,10 @@ function update_group_parent (int $group_id, int $user_id) {
         'id' => $group_id,
     ], ['%d'], ['%d']);
 
+    $wpdb->delete($wpdb->prefix . 'pmprogroupacct_group_members', [
+        'group_child_user_id' => $user_id,
+    ], ['%d']);
+
     return $group;
 }
 

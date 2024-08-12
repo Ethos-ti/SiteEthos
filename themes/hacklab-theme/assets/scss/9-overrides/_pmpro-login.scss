@@ -27,9 +27,13 @@
                 border: none;
                 background-color: white !important;
                 .pmpro_actions_nav{
-                    top: -15rem !important;
+                    font-size: 16px !important;
+                    margin-top: 7px;
+                    text-transform: uppercase;
+                    top: -18rem !important;
                     & > a{
                         font-weight: $font-weight--bold !important;
+                        font-size: 16px;
                     }
                 }
             }
@@ -40,6 +44,7 @@
             .pmpro_card_content{
                 padding-bottom: 0px;
                 & > form{
+                    text-transform: uppercase;
                     .login-username{
                         width: 470px !important;
                         width: 100%;

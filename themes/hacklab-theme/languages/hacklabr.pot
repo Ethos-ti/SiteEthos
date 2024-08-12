@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.90\n"
+"Project-Id-Version: Ethos 0.0.98\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-06T19:24:26+00:00\n"
+"POT-Creation-Date: 2024-08-08T20:03:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
@@ -57,9 +57,8 @@ msgstr ""
 
 #: archive-publicacao.php:46
 #: archive.php:46
-#: search.php:83
-#: taxonomy-tipo_post-posicionamento-institucional.php:46
-msgid "All the areas"
+#: taxonomy.php:49
+msgid "All the themes"
 msgstr ""
 
 #. translators: %s: Post title.
@@ -102,7 +101,7 @@ msgstr ""
 
 #: library/blocks/my-payments/my-payments.php:71
 #: library/blocks/my-plan/my-plan.php:53
-#: library/forms/registration.php:477
+#: library/forms/registration.php:469
 msgctxt "membership"
 msgid "Plan"
 msgstr ""
@@ -188,7 +187,7 @@ msgstr ""
 #: library/forms/custom-forms.php:129
 #: library/forms/custom-forms.php:144
 #: library/forms/custom-forms.php:178
-#: library/forms/registration.php:700
+#: library/forms/registration.php:692
 msgid "Add contact"
 msgstr ""
 
@@ -233,7 +232,7 @@ msgid "Name"
 msgstr ""
 
 #: library/forms/custom-forms.php:302
-#: library/forms/registration.php:373
+#: library/forms/registration.php:365
 msgid "Email"
 msgstr ""
 
@@ -256,12 +255,12 @@ msgid "Delete"
 msgstr ""
 
 #: library/forms/edit-organization.php:10
-#: library/forms/registration.php:378
+#: library/forms/registration.php:370
 msgid "Invalid email"
 msgstr ""
 
 #: library/forms/edit-organization.php:16
-#: library/forms/registration.php:384
+#: library/forms/registration.php:376
 msgid "Email is already in use"
 msgstr ""
 
@@ -295,421 +294,421 @@ msgstr ""
 msgid "Registration under progress"
 msgstr ""
 
-#: library/forms/registration.php:62
+#: library/forms/registration.php:54
 msgid "Micro and small (up to R$ 16 million)"
 msgstr ""
 
-#: library/forms/registration.php:63
+#: library/forms/registration.php:55
 msgid "Medium (R$ 16 to 300 million)"
 msgstr ""
 
-#: library/forms/registration.php:64
+#: library/forms/registration.php:56
 msgid "Large (over R$ 300 million)"
 msgstr ""
 
-#: library/forms/registration.php:68
+#: library/forms/registration.php:60
 msgid "Micro-enterprise"
 msgstr ""
 
-#: library/forms/registration.php:69
+#: library/forms/registration.php:61
 msgid "Small business"
 msgstr ""
 
-#: library/forms/registration.php:70
+#: library/forms/registration.php:62
 msgid "Medium business"
 msgstr ""
 
-#: library/forms/registration.php:71
+#: library/forms/registration.php:63
 msgid "Large business"
 msgstr ""
 
-#: library/forms/registration.php:111
+#: library/forms/registration.php:103
 msgid "CNPJ number"
 msgstr ""
 
-#: library/forms/registration.php:113
+#: library/forms/registration.php:105
 msgid "Enter the company' CNPJ number"
 msgstr ""
 
-#: library/forms/registration.php:117
+#: library/forms/registration.php:109
 msgid "Invalid CNPJ number"
 msgstr ""
 
-#: library/forms/registration.php:125
+#: library/forms/registration.php:117
 msgid "Legal name"
 msgstr ""
 
-#: library/forms/registration.php:126
+#: library/forms/registration.php:118
 msgid "Enter the legal name"
 msgstr ""
 
-#: library/forms/registration.php:132
+#: library/forms/registration.php:124
 msgid "Trade name"
 msgstr ""
 
-#: library/forms/registration.php:133
+#: library/forms/registration.php:125
 msgid "Enter the trade name"
 msgstr ""
 
-#: library/forms/registration.php:139
+#: library/forms/registration.php:131
 msgid "Sector / segment"
 msgstr ""
 
-#: library/forms/registration.php:140
+#: library/forms/registration.php:132
 msgid "Enter the company's sector / segment"
 msgstr ""
 
-#: library/forms/registration.php:146
+#: library/forms/registration.php:138
 msgid "CNAE number"
 msgstr ""
 
-#: library/forms/registration.php:148
+#: library/forms/registration.php:140
 msgid "Enter the company's CNAE number"
 msgstr ""
 
-#: library/forms/registration.php:154
+#: library/forms/registration.php:146
 msgid "Invalid CNAE number"
 msgstr ""
 
-#: library/forms/registration.php:162
+#: library/forms/registration.php:154
 msgid "Revenue from the previous year (R$)"
 msgstr ""
 
-#: library/forms/registration.php:167
+#: library/forms/registration.php:159
 msgid "Invalid revenue"
 msgstr ""
 
-#: library/forms/registration.php:175
+#: library/forms/registration.php:167
 msgid "State registration"
 msgstr ""
 
-#: library/forms/registration.php:176
+#: library/forms/registration.php:168
 msgid "Enter the state registration"
 msgstr ""
 
-#: library/forms/registration.php:182
+#: library/forms/registration.php:174
 msgid "Municipal registration"
 msgstr ""
 
-#: library/forms/registration.php:183
+#: library/forms/registration.php:175
 msgid "Enter the municipal registration"
 msgstr ""
 
-#: library/forms/registration.php:189
+#: library/forms/registration.php:181
 msgid "Company logo"
 msgstr ""
 
-#: library/forms/registration.php:191
+#: library/forms/registration.php:183
 msgid "Picture should be 164 x 164 pixels"
 msgstr ""
 
-#: library/forms/registration.php:197
+#: library/forms/registration.php:189
 msgid "Website"
 msgstr ""
 
-#: library/forms/registration.php:198
+#: library/forms/registration.php:190
 msgid "https://www.companysite.com"
 msgstr ""
 
-#: library/forms/registration.php:204
+#: library/forms/registration.php:196
 msgid "Invalid URL"
 msgstr ""
 
-#: library/forms/registration.php:212
+#: library/forms/registration.php:204
 msgid "Number of employees"
 msgstr ""
 
-#: library/forms/registration.php:213
+#: library/forms/registration.php:205
 msgid "Enter the number of company employees"
 msgstr ""
 
-#: library/forms/registration.php:217
+#: library/forms/registration.php:209
 msgid "Invalid number"
 msgstr ""
 
-#: library/forms/registration.php:225
+#: library/forms/registration.php:217
 msgctxt "company size"
 msgid "Size"
 msgstr ""
 
-#: library/forms/registration.php:232
+#: library/forms/registration.php:224
 msgctxt "company size"
 msgid "Invalid size"
 msgstr ""
 
-#: library/forms/registration.php:240
+#: library/forms/registration.php:232
 msgid "Address (street)"
 msgstr ""
 
-#: library/forms/registration.php:241
+#: library/forms/registration.php:233
 msgid "Enter the address street"
 msgstr ""
 
-#: library/forms/registration.php:247
+#: library/forms/registration.php:239
 msgctxt "address"
 msgid "Number"
 msgstr ""
 
-#: library/forms/registration.php:253
+#: library/forms/registration.php:245
 msgctxt "address"
 msgid "Complement"
 msgstr ""
 
-#: library/forms/registration.php:254
+#: library/forms/registration.php:246
 msgid "Enter the address complement"
 msgstr ""
 
-#: library/forms/registration.php:260
+#: library/forms/registration.php:252
 msgid "Neighborhood"
 msgstr ""
 
-#: library/forms/registration.php:261
+#: library/forms/registration.php:253
 msgid "Enter the neighborhood"
 msgstr ""
 
-#: library/forms/registration.php:267
+#: library/forms/registration.php:259
 msgid "City"
 msgstr ""
 
-#: library/forms/registration.php:268
+#: library/forms/registration.php:260
 msgid "Enter the city"
 msgstr ""
 
-#: library/forms/registration.php:274
+#: library/forms/registration.php:266
 msgctxt "address"
 msgid "State"
 msgstr ""
 
-#: library/forms/registration.php:279
+#: library/forms/registration.php:271
 msgctxt "address"
 msgid "Invalid state"
 msgstr ""
 
-#: library/forms/registration.php:287
+#: library/forms/registration.php:279
 msgid "CEP code"
 msgstr ""
 
-#: library/forms/registration.php:289
+#: library/forms/registration.php:281
 msgid "Enter the CEP code"
 msgstr ""
 
-#: library/forms/registration.php:293
+#: library/forms/registration.php:285
 msgid "Invalid CEP code"
 msgstr ""
 
-#: library/forms/registration.php:301
+#: library/forms/registration.php:293
 msgid "I have read and agreed with the <a href=\"%s\" target=\"_blank\">Terms of Use and Privacy Policy</a>"
 msgstr ""
 
-#: library/forms/registration.php:307
+#: library/forms/registration.php:299
 msgid "I have read and agreed with the <a href=\"%s\" target=\"_blank\">Code of Conduct</a>"
 msgstr ""
 
-#: library/forms/registration.php:338
+#: library/forms/registration.php:330
 msgid "Full name"
 msgstr ""
 
-#: library/forms/registration.php:339
+#: library/forms/registration.php:331
 msgid "Enter the full name"
 msgstr ""
 
-#: library/forms/registration.php:345
+#: library/forms/registration.php:337
 msgid "CPF number"
 msgstr ""
 
-#: library/forms/registration.php:347
+#: library/forms/registration.php:339
 msgid "Enter the CPF number"
 msgstr ""
 
-#: library/forms/registration.php:351
+#: library/forms/registration.php:343
 msgid "Invalid CPF number"
 msgstr ""
 
-#: library/forms/registration.php:359
+#: library/forms/registration.php:351
 msgid "Role"
 msgstr ""
 
-#: library/forms/registration.php:360
+#: library/forms/registration.php:352
 msgid "Enter the role in company"
 msgstr ""
 
-#: library/forms/registration.php:366
+#: library/forms/registration.php:358
 msgctxt "company"
 msgid "Area"
 msgstr ""
 
-#: library/forms/registration.php:367
+#: library/forms/registration.php:359
 msgid "Enter the area in company"
 msgstr ""
 
-#: library/forms/registration.php:374
+#: library/forms/registration.php:366
 msgid "Enter the email"
 msgstr ""
 
-#: library/forms/registration.php:394
+#: library/forms/registration.php:386
 msgid "Password"
 msgstr ""
 
-#: library/forms/registration.php:395
+#: library/forms/registration.php:387
 msgid "Enter the password"
 msgstr ""
 
-#: library/forms/registration.php:399
+#: library/forms/registration.php:391
 msgid "Password should be at least 8 characters long"
 msgstr ""
 
-#: library/forms/registration.php:407
+#: library/forms/registration.php:399
 msgid "Cell phone number"
 msgstr ""
 
-#: library/forms/registration.php:409
+#: library/forms/registration.php:401
 msgid "Enter the cell phone number"
 msgstr ""
 
-#: library/forms/registration.php:413
-#: library/forms/registration.php:435
+#: library/forms/registration.php:405
+#: library/forms/registration.php:427
 msgid "Invalid phone number"
 msgstr ""
 
-#: library/forms/registration.php:421
+#: library/forms/registration.php:413
 msgid "This is also a WhatsApp number"
 msgstr ""
 
-#: library/forms/registration.php:427
+#: library/forms/registration.php:419
 msgid "Phone number"
 msgstr ""
 
-#: library/forms/registration.php:429
+#: library/forms/registration.php:421
 msgid "Enter the phone number"
 msgstr ""
 
-#: library/forms/registration.php:482
+#: library/forms/registration.php:474
 msgctxt "membership"
 msgid "Invalid plan"
 msgstr ""
 
-#: library/forms/registration.php:511
+#: library/forms/registration.php:503
 msgctxt "payment"
 msgid "In advance"
 msgstr ""
 
-#: library/forms/registration.php:512
+#: library/forms/registration.php:504
 msgctxt "payment"
 msgid "In stallments"
 msgstr ""
 
-#: library/forms/registration.php:516
+#: library/forms/registration.php:508
 msgid "Monthly"
 msgstr ""
 
-#: library/forms/registration.php:517
+#: library/forms/registration.php:509
 msgid "Semianually"
 msgstr ""
 
-#: library/forms/registration.php:518
+#: library/forms/registration.php:510
 msgid "Yearly"
 msgstr ""
 
-#: library/forms/registration.php:522
-#: library/forms/registration.php:527
+#: library/forms/registration.php:514
+#: library/forms/registration.php:519
 msgctxt "medium"
 msgid "Email"
 msgstr ""
 
-#: library/forms/registration.php:523
-#: library/forms/registration.php:528
+#: library/forms/registration.php:515
+#: library/forms/registration.php:520
 msgctxt "medium"
 msgid "Post mail"
 msgstr ""
 
-#: library/forms/registration.php:529
+#: library/forms/registration.php:521
 msgctxt "medium"
 msgid "Electronic signature"
 msgstr ""
 
-#: library/forms/registration.php:536
+#: library/forms/registration.php:528
 msgid "Calculated payment value"
 msgstr ""
 
-#: library/forms/registration.php:544
+#: library/forms/registration.php:536
 msgid "Expected date of first payment"
 msgstr ""
 
-#: library/forms/registration.php:545
+#: library/forms/registration.php:537
 msgid "Select a date"
 msgstr ""
 
-#: library/forms/registration.php:551
+#: library/forms/registration.php:543
 msgid "Payment terms"
 msgstr ""
 
-#: library/forms/registration.php:558
+#: library/forms/registration.php:550
 msgid "Invalid payment term"
 msgstr ""
 
-#: library/forms/registration.php:566
+#: library/forms/registration.php:558
 msgid "Payment frequency"
 msgstr ""
 
-#: library/forms/registration.php:573
+#: library/forms/registration.php:565
 msgid "Invalid payment frequency"
 msgstr ""
 
-#: library/forms/registration.php:581
+#: library/forms/registration.php:573
 msgid "Observations about payment terms"
 msgstr ""
 
-#: library/forms/registration.php:582
+#: library/forms/registration.php:574
 msgid "Describe here your observations"
 msgstr ""
 
-#: library/forms/registration.php:588
+#: library/forms/registration.php:580
 msgid "Means of receiving the association agreement"
 msgstr ""
 
-#: library/forms/registration.php:595
-#: library/forms/registration.php:610
-#: library/forms/registration.php:625
+#: library/forms/registration.php:587
+#: library/forms/registration.php:602
+#: library/forms/registration.php:617
 msgctxt "medium"
 msgid "Invalid mean"
 msgstr ""
 
-#: library/forms/registration.php:603
+#: library/forms/registration.php:595
 msgid "Means of receiving the banking slips"
 msgstr ""
 
-#: library/forms/registration.php:618
+#: library/forms/registration.php:610
 msgid "Means of receiving the receipts"
 msgstr ""
 
-#: library/forms/registration.php:670
+#: library/forms/registration.php:662
 msgid "Member registration - step 1"
 msgstr ""
 
-#: library/forms/registration.php:673
-#: library/forms/registration.php:680
+#: library/forms/registration.php:665
+#: library/forms/registration.php:672
+#: library/forms/registration.php:679
 #: library/forms/registration.php:687
-#: library/forms/registration.php:695
 msgid "Continue"
 msgstr ""
 
-#: library/forms/registration.php:676
+#: library/forms/registration.php:668
 msgid "Member registration - step 2"
 msgstr ""
 
-#: library/forms/registration.php:683
+#: library/forms/registration.php:675
 msgid "Member registration - step 3"
 msgstr ""
 
-#: library/forms/registration.php:690
+#: library/forms/registration.php:682
 msgid "Member registration - step 4"
 msgstr ""
 
-#: library/forms/registration.php:698
+#: library/forms/registration.php:690
 msgid "Member registration - step 5"
 msgstr ""
 
-#: library/forms/registration.php:946
+#: library/forms/registration.php:936
 msgid "Membership to Ethos Institute"
 msgstr ""
 
@@ -733,7 +732,7 @@ msgstr ""
 msgid "Requests"
 msgstr ""
 
-#: library/membership.php:146
+#: library/membership.php:150
 msgid "Organizations"
 msgstr ""
 
@@ -771,6 +770,10 @@ msgstr ""
 
 #: page-anchor.php:12
 msgid "Sections"
+msgstr ""
+
+#: search.php:83
+msgid "All the areas"
 msgstr ""
 
 #: search.php:92

@@ -190,6 +190,8 @@ function contacts_delete_user($user_id) {
     // Required for using `wp_delete_user` function
     require_once(ABSPATH . 'wp-admin/includes/user.php');
 
+    notify_user_deactivation($user_id);
+
     wp_delete_user($user_id, null);
 }
 
@@ -272,6 +274,14 @@ function notify_approver_change($user_id) {
     ]);
 }
 
+function notify_user_deactivation($user_id) {
+    $contact_id = get_user_meta($user_id, '_ethos_crm_contact_id', true);
+
+    update_crm_entity('contact', $contact_id, [
+        'statecode' => 1 /* Inactive */,
+    ]);
+}
+
 function validate_edit_organization_form($form_id, $form, $params) {
     $current_user = get_current_user_id();
 
@@ -300,7 +310,7 @@ function validate_edit_organization_form($form_id, $form, $params) {
             'meta_input' => $post_meta,
         ]);
 
-        \ethos\crm\update_account((int) $post_id);
+        \ethos\crm\update_organization((int) $post_id);
     }
 
     if ($form_id === 'edit-organization-finances') {
@@ -329,44 +339,49 @@ function validate_edit_organization_form($form_id, $form, $params) {
         }
 
         $user_id = (int) $params['_user_id'];
-        $post_meta = $params;
+        $user_meta = $params;
 
-        unset($post_meta['_action']);
-        unset($post_meta['_hacklabr_form']);
-        unset($post_meta['_user_id']);
+        unset($user_meta['_action']);
+        unset($user_meta['_hacklabr_form']);
+        unset($user_meta['_user_id']);
 
         if (empty($user_id)) {
             $group_id = (int) get_user_meta($current_user, '_pmpro_group', true);
+            $organization = get_organization_by_user();
 
-            $user_meta = array_merge($params, [
+            $user_meta = array_merge($user_meta, [
                 '_pmpro_group' => $group_id,
-                '_pmpro_role' => 'primary',
+                '_pmpro_role' => 'secondary',
             ]);
 
             $password = wp_generate_password(16);
 
             $user_id = wp_insert_user([
-                'display_name' => $params['nome_completo'],
-                'user_email' => $params['email'],
-                'user_login' => sanitize_title($params['nome_completo']),
+                'display_name' => $user_meta['nome_completo'],
+                'user_email' => $user_meta['email'],
+                'user_login' => sanitize_title($user_meta['nome_completo']),
                 'user_pass' => $password,
                 'role' => 'subscriber',
                 'meta_input' => $user_meta,
             ]);
 
             add_user_to_pmpro_group($user_id, $group_id);
-        } else {
-            $user_meta = $params;
 
+            \ethos\crm\create_contact($user_id, $organization->ID);
+        } else {
             wp_update_user([
                 'ID' => $user_id,
-                'display_name' => $params['nome_completo'],
-                'user_email' => $params['email'],
+                'display_name' => $user_meta['nome_completo'],
+                'user_email' => $user_meta['email'],
                 'meta_input' => $user_meta,
             ]);
 
             \ethos\crm\update_contact($user_id);
         }
+
+        $current_url = untrailingslashit($_SERVER['REQUEST_URI']);
+        wp_safe_redirect(add_query_arg(['tab' => 2], $current_url));
+        exit;
     }
 
     if ($form_id === 'edit-organization-contacts__hidden') {

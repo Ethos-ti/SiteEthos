@@ -1,6 +1,19 @@
 .single-tribe{
  &_events{
     #corpoScriptPre, #corpoScript{
+
+        #iPayData{
+            h5{
+                color: $color--secondary-dark !important;
+                font-size: $font-size--medium;
+            }
+        }
+
+        #aAgree, #iAgree{
+            position: relative;
+            top: 135px;
+        }
+
         .tabelasDiv{
             h2{
                 color: $color--primary-dark;
@@ -105,6 +118,7 @@
             #frmDadosEmpresa{
                 display: flex;
                 justify-content: center;
+                margin-top: $margin--large*4;
 
                 input[type="submit"]{
                     border: 2px solid $color--low-pure;
@@ -116,7 +130,7 @@
                     font-weight: $font-weight--bold;
                     text-align: center;
                     text-transform: uppercase;
-                    width: 10rem !important;
+                    width: 21rem !important;
                 }
             }
 
@@ -135,4 +149,25 @@
         }
     }
  }
+}
+
+.page-acesso-a-pagamento{
+    #app{
+        .container{
+            .post-header{
+                &__excerpt{
+                    display: none;
+                }
+            }
+
+            .post-content{
+                h1{
+                    display: flex;
+                    font-size: $font-size--xx-large;
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@
         margin: $margin--medium 0;
 
         @include mobile {
-            padding-left: 15px;
+            padding-left: 25px;
 
         }
 
@@ -219,7 +219,8 @@
         .card {
             &__header {
                 border-radius: 0;
-                .wp-block-heading{
+
+                .wp-block-heading {
                     font-size: 1.7rem;
                 }
             }
@@ -250,19 +251,27 @@
             }
         }
     }
+
     .wp-block-coblocks-accordion-item__content {
         display: flex;
         justify-content: center;
         flex-direction: column;
 
-        thead > tr > th{
+        thead>tr>th {
             text-align: center;
-            color:$color--primary-dark;
+            color: $color--primary-dark;
         }
     }
-    @include mobile{
-        .hide-mobile{
+
+    @include mobile {
+        .hide-mobile {
             display: none;
         }
+    }
+}
+
+.term-guias-tematicos {
+    .tabs {
+        margin-top: calc($margin--large * 2);
     }
 }

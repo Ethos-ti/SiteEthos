@@ -55,6 +55,7 @@ function map_account_attributes( int $post_id ) {
     $systemuser = get_option( 'systemuser' );
 
     $post_meta = get_post_meta( $post_id );
+    $is_imported = get_meta( $post_meta, '_ethos_from_crm' ) ?? false;
 
     $company_name = get_meta( $post_meta, 'nome_fantasia' );
 
@@ -73,18 +74,22 @@ function map_account_attributes( int $post_id ) {
         'fut_st_inscricaomunicipal' => get_meta( $post_meta, 'inscricao_municipal' ),
         'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
         'fut_pl_estado'             => map_pl_estado( get_meta( $post_meta, 'end_estado' ) ),
-        'fut_pl_porte'              => map_pl_porte( get_meta( $post_meta, 'porte' ) ),
         'name'                      => $company_name,
         'numberofemployees'         => get_meta( $post_meta, 'num_funcionarios', 0 ),
         'websiteurl'                => get_meta( $post_meta, 'website' ),
         'yominame'                  => $company_name,
     ];
 
+    if ( ! $is_imported ) {
+        $attributes['fut_pl_porte'] = map_pl_porte( get_meta( $post_meta, 'porte' ) );
+    }
+
     return $attributes;
 }
 
 function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     $user_meta = get_user_meta( $user_id );
+    $is_imported = get_meta( $user_meta, '_ethos_from_crm' ) ?? false;
 
     $full_name = get_meta( $user_meta, 'nome_completo' );
 
@@ -93,7 +98,10 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     unset( $name_parts[0] );
     $last_name = implode( ' ', $name_parts );
 
+    $email = get_meta( $user_meta, 'email' );
+
     $attributes = [
+        'emailaddress1' => $email,
         'firstname'     => $first_name,
         'fullname'      => $full_name,
         'fut_st_cpf'    => get_meta( $user_meta, 'cpf' ),
@@ -106,9 +114,16 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
         'yomilastname'  => $last_name,
     ];
 
-    $email = get_meta( $user_meta, 'email' );
-    if ( ! str_contains( $email, '+' ) ) {
-        $attributes['emailaddress1'] = $email;
+    if ( $is_imported ) {
+        // Contact was originally imported from CRM
+        if ( str_contains( $email, '+' ) ) {
+            unset( $attributes['emailaddress1'] );
+        }
+    } else {
+        // Contact was originally created in WordPress
+        $role = get_meta( $user_meta, '_pmpro_role' );
+        $attributes['fut_bt_principal'] = $role === 'primary';
+        $attributes['fut_bt_financeiro'] = $role === 'financial';
     }
 
     if ( ! empty( $post_id ) ) {
@@ -170,44 +185,27 @@ function map_lead_attributes( int $post_id ) {
     return $attributes;
 }
 
-function add_contact_to_account( int $user_id, int $post_id ) {
-    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
-    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
-
-    if ( ! empty( $account_id ) && ! empty( $contact_id ) ) {
-        try {
-            \hacklabr\update_crm_entity( 'contact', $contact_id, [
-                'parentcustomerid' => \hacklabr\create_crm_entity( 'account', $account_id ),
-            ] );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
-    }
-}
-
-function create_contact( int $user_id, int|null $post_id = null ) {
+function create_contact( int $user_id, int $post_id ) {
     $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
-    $lead_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
+    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true ) ?? null;
 
-    if ( ! empty( $account_id ) ) {
-        try {
-            $attributes = map_contact_attributes( $user_id, $post_id );
+    try {
+        $attributes = map_contact_attributes( $user_id, $post_id );
 
-            $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
-            
-            wp_update_user( [
-                'ID' => $user_id,
-                'meta_input' => [
-                    '_ethos_crm_account_id' => $account_id,
-                    '_ethos_crm_contact_id' => $contact_id,
-                    '_ethos_crm_lead_id' => $lead_id,
-                ],
-            ] );
+        $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
+        
+        wp_update_user( [
+            'ID' => $user_id,
+            'meta_input' => [
+                '_ethos_crm_account_id' => $account_id,
+                '_ethos_crm_contact_id' => $contact_id,
+                '_ethos_crm_lead_id' => $lead_id,
+            ],
+        ] );
 
-            return $contact_id;
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        return $contact_id;
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 
     return null;
@@ -223,53 +221,58 @@ function create_lead( int $post_id ) {
     }
 }
 
-function update_account( int $post_id ) {
-    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
+function update_account( int $post_id, string $account_id ) {
+    try {
+        $attributes = map_account_attributes( $post_id );
 
-    if ( ! empty( $account_id ) ) {
-        try {
-            $attributes = map_account_attributes( $post_id );
+        unset( $attributes['fut_pl_porte'] );
+        unset( $attributes['ownerid'] );
 
-            unset( $attributes['fut_pl_porte'] );
-            unset( $attributes['ownerid'] );
-
-            \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 }
 
 function update_contact( int $user_id ) {
-    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true );
+    $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true ) ?? null;
 
-    if ( ! empty( $contact_id ) ) {
-        try {
-            $attributes = map_contact_attributes( $user_id );
+    if ( empty( $contact_id ) ) {
+        return;
+    }
 
-            unset( $attributes['accountid'] );
-            unset( $attributes['ownerid'] );
-            unset( $attributes['parentcustomerid'] );
+    try {
+        $attributes = map_contact_attributes( $user_id, null );
 
-            \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+        unset( $attributes['accountid'] );
+        unset( $attributes['ownerid'] );
+        unset( $attributes['parentcustomerid'] );
+
+        \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
     }
 }
 
-function update_lead( int $post_id ) {
-    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true );
+function update_lead( int $post_id, string $lead_id ) {
+    try {
+        $attributes = map_lead_attributes( $post_id );
 
-    if ( ! empty( $lead_id ) ) {
-        try {
-            $attributes = map_lead_attributes( $post_id );
+        unset( $attributes['ownerid'] );
 
-            unset( $attributes['ownerid'] );
+        \hacklabr\update_crm_entity( 'lead', $lead_id, $attributes );
+    } catch ( \Throwable $err ) {
+        do_action( 'logger', $err->getMessage() );
+    }
+}
 
-            \hacklabr\update_crm_entity( 'lead', $lead_id, $attributes );
-        } catch ( \Throwable $err ) {
-            do_action( 'logger', $err->getMessage() );
-        }
+function update_organization( int $post_id ) {
+    $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true ) ?? null;
+    $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true ) ?? null;
+
+    if ( ! empty( $account_id ) ) {
+        update_account( $post_id, $account_id );
+    } else if ( ! empty( $lead_id ) ) {
+        update_lead( $post_id, $lead_id );
     }
 }

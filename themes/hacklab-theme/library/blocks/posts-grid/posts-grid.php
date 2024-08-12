@@ -3,17 +3,10 @@
 namespace hacklabr;
 
 function get_posts_grid_data ($attributes): \WP_Query {
-    $cached_query = get_block_transient('hacklabr/posts', $attributes);
-    if ($cached_query !== false) {
-        return $cached_query;
-    }
-
     $post__not_in = get_used_post_ids();
 
     $query_args = build_posts_query($attributes, $post__not_in);
     $query = new \WP_Query($query_args);
-
-    set_block_transient('hacklabr/posts', $attributes, $query);
 
     return $query;
 }
