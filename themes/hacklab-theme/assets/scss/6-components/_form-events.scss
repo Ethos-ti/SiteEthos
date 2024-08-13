@@ -140,6 +140,26 @@
                 flex-direction: column;
             }
 
+            #frmDadosInscrito{
+                display: flex;
+                flex-direction: column;
+                gap: $gap--medium;
+                align-items: center;
+
+                input[type="submit"]{
+                    border: 2px solid $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    background-color: $color--low-pure;
+                    color: $color--high-pure;
+                    cursor: pointer;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 8rem !important;
+                }
+            }
+
             #iDadosEmpresa{
                 h3{
                     color: $color--primary-dark;

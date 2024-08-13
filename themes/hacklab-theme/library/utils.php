@@ -356,7 +356,7 @@ function pmpro_add_placeholder_to_login() {
             }
 
             if( loginLabel){
-                loginLabel.innerHTML = 'E-MAIL';
+                loginLabel.innerHTML = 'E-mail';
             }
 
             if ( actionNav ) {
