@@ -713,12 +713,66 @@ function custom_rewrite_rules() {
         'index.php?tipo_post=$matches[1]&post_type=$matches[2]',
         'top'
     );
+    add_rewrite_rule(
+        '^tipo-publicacao/([^/]+)/post_type/([^/]+)/?category/([^/]+)/',
+        'index.php?tipo_publicacao=$matches[1]&category=$matches[2]&post_type=$matches[3]',
+        'top'
+    );
+    add_rewrite_rule(
+        '^tipo-publicacao/([^/]+)/post_type/([^/]+)/?',
+        'index.php?tipo_publicacao=$matches[1]&post_type=$matches[2]',
+        'top'
+    );
 }
 add_action('init', 'custom_rewrite_rules');
 
 function add_custom_query_vars($vars) {
     $vars[] = 'tipo_post';
     $vars[] = 'category';
+    $vars[] = 'tipo_publicacao';
     return $vars;
 }
 add_filter('query_vars', 'add_custom_query_vars');
+
+function custom_pre_get_posts( $query ) {
+    // Verifica se estamos no front-end e na consulta principal
+    if ( !is_admin() && $query->is_main_query() ) {
+
+        // Verifica se uma categoria foi passada
+        if ( isset( $_GET['category'] ) && !empty( $_GET['category'] ) ) {
+            $query->set( 'category_name', sanitize_text_field( $_GET['category'] ) );
+        }
+
+        // Verifica se o termo da taxonomia tipo_post foi passado
+        if ( isset( $_GET['tipo_post'] ) && !empty( $_GET['tipo_post'] ) ) {
+            $tax_query = $query->get( 'tax_query' );
+
+            if ( !is_array( $tax_query ) ) {
+                $tax_query = [];
+            }
+
+            $tax_query[] = [
+                'taxonomy' => 'tipo_post',
+                'field'    => 'slug',
+                'terms'    => sanitize_text_field( $_GET['tipo_post'] ),
+            ];
+
+            $query->set( 'tax_query', $tax_query );
+        }
+
+        // Verifica se publicacao foi passado como um tipo de post
+        if ( isset( $_GET['publicacao'] ) && !empty( $_GET['publicacao'] ) ) {
+            $post_types = $query->get( 'post_type' );
+
+            if ( !is_array( $post_types ) ) {
+                $post_types = ['post']; // Garante que o tipo de post padrão seja 'post'
+            }
+
+            $post_types[] = 'publicacao'; // Adiciona 'publicacao' ao array de tipos de post
+
+            $query->set( 'post_type', $post_types );
+        }
+    }
+}
+add_action( 'pre_get_posts', 'custom_pre_get_posts' );
+
