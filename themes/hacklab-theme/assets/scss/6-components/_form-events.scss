@@ -1,5 +1,20 @@
 .single-tribe{
  &_events{
+    h3:not(.tabelasDiv h3){
+        background-image: url( $path--assets + "/images/logo-ethos.png" );
+        background-position: top;
+        background-size: auto;
+        background-repeat: no-repeat;
+        border-radius: $border-radius--medium;
+        color: $color--primary-dark;
+        font-size: $font-size--x-large;
+        font-weight: $font-weight--medium !important;
+        margin: 0 !important;
+        padding: $padding--large !important;
+        padding-top: 7.313rem !important;
+        width: 100% !important;
+    }
+
     #corpoScriptPre, #corpoScript{
 
         #iPayData{
