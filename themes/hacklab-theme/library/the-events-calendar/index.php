@@ -34,3 +34,24 @@ function ethos_events_add_metabox() {
     );
 }
 
+function get_event_url( $subscription ) {
+    $event_id = $subscription->Attributes['fut_lk_projeto']?->Id ?? null;
+
+    if ( ! empty( $event_id ) ) {
+        $post_id = event_exists_on_wp( $event_id ) ?: null;
+
+        if ( $post_id ) {
+            return get_permalink( $post_id );
+        }
+    }
+
+    $inscription_id = $subscription->Attributes['fut_txt_nro_inscricao'] ?? '';
+
+    $matches = [];
+
+    if ( preg_match( '/^[A-Z]+(\d+)/', $inscription_id, $matches ) && ! empty( $matches[1] ) ) {
+        return get_home_url( null, '/conteudo/inscricao-evento?id=' . $matches[1] );
+    }
+
+    return '#';
+}
