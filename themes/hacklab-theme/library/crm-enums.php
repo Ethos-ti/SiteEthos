@@ -12,7 +12,7 @@ enum ContactStatus: int {
     }
 }
 
-enum CompanySize: string {
+enum CompanySize: int {
     case Micro = 969830000;
     case Pequena = 969830001;
     case Media = 969830002;
@@ -30,7 +30,11 @@ enum CompanySize: string {
         };
     }
 
-    public static function toSlug (int $pl_porte): string {
+    public static function toSlug (int|null $pl_porte): string {
+        if (empty($pl_porte)) {
+            return 'micro';
+        }
+
         $size = self::from($pl_porte);
         return match ($size) {
             self::Micro => 'micro',
