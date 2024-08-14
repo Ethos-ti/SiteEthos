@@ -6,40 +6,6 @@ function get_meta( $meta, $key, $fallback = '' ) {
     return $meta[ $key ][0] ?? $fallback;
 }
 
-function map_pl_estado( string $uf ) {
-    $ufs = [
-        'AC' => 7,
-        'AL' => 15,
-        'AM' => 1,
-        'AP' => 3,
-        'BA' => 16,
-        'CE' => 10,
-        'DF' => 20,
-        'ES' => 23,
-        'GO' => 19,
-        'MA' => 8,
-        'MG' => 24,
-        'MS' => 18,
-        'MT' => 17,
-        'PA' => 4,
-        'PB' => 13,
-        'PE' => 12,
-        'PI' => 9,
-        'PR' => 25,
-        'RJ' => 22,
-        'RN' => 11,
-        'RO' => 6,
-        'RR' => 2,
-        'RS' => 26,
-        'SC' => 27,
-        'SE' => 14,
-        'SP' => 21,
-        'TO' => 5,
-    ];
-
-    return $ufs[ $uf ] ?? $uf;
-}
-
 function map_account_attributes( int $post_id ) {
     $systemuser = get_option( 'systemuser' );
 
@@ -62,7 +28,7 @@ function map_account_attributes( int $post_id ) {
         'fut_st_inscricaoestadual'  => get_meta( $post_meta, 'inscricao_estadual' ),
         'fut_st_inscricaomunicipal' => get_meta( $post_meta, 'inscricao_municipal' ),
         'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
-        'fut_pl_estado'             => map_pl_estado( get_meta( $post_meta, 'end_estado' ) ),
+        'fut_pl_estado'             => BrazilianUF::fromCode( get_meta( $post_meta, 'end_estado' ) ),
         'name'                      => $company_name,
         'numberofemployees'         => get_meta( $post_meta, 'num_funcionarios', 0 ),
         'websiteurl'                => get_meta( $post_meta, 'website' ),
@@ -121,7 +87,7 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
             $attributes['accountid'] = \hacklabr\create_crm_reference( 'account', $account_id );
             $attributes['parentcustomerid'] = \hacklabr\create_crm_reference( 'account', $account_id );
         }
-        
+
         $lead_id = get_post_meta( $post_id, '_ethos_crm_lead_id', true );
         if ( ! empty( $lead_id ) ) {
             $attributes['originatingleadid'] = \hacklabr\create_crm_reference( 'lead', $lead_id );
@@ -182,7 +148,7 @@ function create_contact( int $user_id, int $post_id ) {
         $attributes = map_contact_attributes( $user_id, $post_id );
 
         $contact_id = \hacklabr\create_crm_entity( 'contact', $attributes );
-        
+
         wp_update_user( [
             'ID' => $user_id,
             'meta_input' => [

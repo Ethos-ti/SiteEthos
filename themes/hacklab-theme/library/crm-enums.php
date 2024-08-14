@@ -2,6 +2,68 @@
 
 namespace ethos\crm;
 
+enum BrazilianUF: int {
+    case AC = 7;
+    case AL = 15;
+    case AM = 1;
+    case AP = 3;
+    case BA = 16;
+    case CE = 10;
+    case DF = 20;
+    case ES = 23;
+    case GO = 19;
+    case MA = 8;
+    case MG = 24;
+    case MS = 18;
+    case MT = 17;
+    case PA = 4;
+    case PB = 13;
+    case PE = 12;
+    case PI = 9;
+    case PR = 25;
+    case RJ = 22;
+    case RN = 11;
+    case RO = 6;
+    case RR = 2;
+    case RS = 26;
+    case SC = 27;
+    case SE = 14;
+    case SP = 21;
+    case TO = 5;
+
+    public static function fromCode (string $uf): int {
+        return match ($uf) {
+            'AC' => self::AC->value,
+            'AL' => self::AL->value,
+            'AM' => self::AM->value,
+            'AP' => self::AP->value,
+            'BA' => self::BA->value,
+            'CE' => self::CE->value,
+            'DF' => self::DF->value,
+            'ES' => self::ES->value,
+            'GO' => self::GO->value,
+            'MA' => self::MA->value,
+            'MG' => self::MG->value,
+            'MS' => self::MS->value,
+            'MT' => self::MT->value,
+            'PA' => self::PA->value,
+            'PB' => self::PB->value,
+            'PE' => self::PE->value,
+            'PI' => self::PI->value,
+            'PR' => self::PR->value,
+            'RJ' => self::RJ->value,
+            'RN' => self::RN->value,
+            'RO' => self::RO->value,
+            'RR' => self::RR->value,
+            'RS' => self::RS->value,
+            'SC' => self::SC->value,
+            'SE' => self::SE->value,
+            'SP' => self::SP->value,
+            'TO' => self::TO->value,
+        };
+    }
+}
+
 enum ContactStatus: int {
     case Active = 0;
     case Inactive = 1;
