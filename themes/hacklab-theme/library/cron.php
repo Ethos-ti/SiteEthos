@@ -4,7 +4,7 @@ namespace hacklabr;
 
 function add_cron_schedules (array $schedules) {
     $schedules['hacklabr_hourly'] = [
-        'interval' => 3600,
+        'interval' => HOUR_IN_SECONDS,
         'display' => __('Hourly', 'hacklabr'),
     ];
 
