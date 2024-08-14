@@ -6,7 +6,7 @@ function add_user_to_pmpro_group (int $user_id, int $group_id) {
     $group = get_pmpro_group($group_id);
 
     $parent_level_id = $group->group_parent_level_id;
-    $child_level_id = Fields\get_pmpro_child_level($parent_level_id);
+    $child_level_id = get_pmpro_child_level($parent_level_id);
 
     $membership = \PMProGroupAcct_Group_Member::create($user_id, $child_level_id, $group->id);
 
@@ -35,7 +35,7 @@ function calculate_membership_price (int $group_id) {
         $total += $level->initial_payment ?: 0;
 
         if (count($users) > 1){
-            $child_level_id = Fields\get_pmpro_child_level($group->group_parent_level_id);
+            $child_level_id = get_pmpro_child_level($group->group_parent_level_id);
             $child_level = \pmpro_getLevel($child_level_id);
 
             $total += (count($users) - 1) * ($child_level->initial_payment ?: 0);
@@ -59,6 +59,54 @@ function get_pmpro_group (int $group_id) {
     return new \PMProGroupAcct_Group($group_id);
 }
 
+function get_pmpro_child_level ($level) {
+    if ($level === 8 || $level === 9) {
+        return $level + 12;
+    } else {
+        return $level;
+    }
+}
+
+function get_pmpro_level_options ($organization_id, $for_manager = true) {
+    $revenue = get_post_meta($organization_id, 'faturamento_anual', true) ?: 'small';
+
+    if ($revenue === 'small') {
+        return [
+            'conexao' => $for_manager ? 8 : 20,
+            'essencial' => $for_manager ? 9 : 21,
+            'vivencia' => 10,
+            'institucional' => 11,
+        ];
+    } else if ($revenue === 'medium') {
+        return [
+            'conexao' => 12,
+            'essencial' => 13,
+            'vivencia' => 14,
+            'institucional' => 15,
+        ];
+    } else if ($revenue === 'large') {
+        return [
+            'conexao' => 16,
+            'essencial' => 17,
+            'vivencia' => 18,
+            'institucional' => 19,
+        ];
+    }
+}
+
+function get_pmpro_level_slug_by_id ($level_id) {
+    switch (((int) $level_id) % 4) {
+        case 0: // 8, 12, 16, 20
+            return 'conexao';
+        case 1: // 9, 13, 17, 21
+            return 'essencial';
+        case 2: // 10, 14, 18
+            return 'vivencia';
+        case 3: // 11, 15, 19
+            return 'institucional';
+    }
+}
+
 function get_pmpro_plan ($user_id) {
     $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
@@ -68,7 +116,7 @@ function get_pmpro_plan ($user_id) {
 
     $group = get_pmpro_group($group_id);
     $level_id = $group->group_parent_level_id;
-    return Fields\get_pmpro_level_slug_by_id($level_id);
+    return get_pmpro_level_slug_by_id($level_id);
 }
 
 function update_group_level (int $group_id, int $level_id = 11) {
@@ -81,7 +129,7 @@ function update_group_level (int $group_id, int $level_id = 11) {
     }
 
     $child_members = $group->get_active_members(false);
-    $child_level_id = Fields\get_pmpro_child_level($level_id);
+    $child_level_id = get_pmpro_child_level($level_id);
 
     $wpdb->update($wpdb->prefix . 'pmprogroupacct_groups',
     [
@@ -134,7 +182,7 @@ function require_approval_for_login ($user) {
     if (!empty($group_id)) {
         $group = get_pmpro_group($group_id);
         $level_id = $group->group_parent_level_id;
-        $child_level_id = Fields\get_pmpro_child_level($level_id);
+        $child_level_id = get_pmpro_child_level($level_id);
 
         if (!\PMPro_Approvals::isApproved($user->ID, $level_id) && !\PMPro_Approvals::isApproved($user->ID, $child_level_id)) {
             return new \WP_Error('failed', 'Associação ainda não foi aprovada.');
