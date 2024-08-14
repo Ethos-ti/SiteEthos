@@ -59,15 +59,15 @@ function get_pmpro_group (int $group_id) {
     return new \PMProGroupAcct_Group($group_id);
 }
 
-function get_pmpro_child_level ($level) {
-    if ($level === 8 || $level === 9) {
-        return $level + 12;
+function get_pmpro_child_level (int $level_id) {
+    if ($level_id === 8 || $level_id === 9) {
+        return $level_id + 12;
     } else {
-        return $level;
+        return $level_id;
     }
 }
 
-function get_pmpro_level_options ($organization_id, $for_manager = true) {
+function get_pmpro_level_options (int $organization_id, bool $for_manager = true) {
     $revenue = get_post_meta($organization_id, 'faturamento_anual', true) ?: 'small';
 
     if ($revenue === 'small') {
@@ -94,7 +94,7 @@ function get_pmpro_level_options ($organization_id, $for_manager = true) {
     }
 }
 
-function get_pmpro_level_slug_by_id ($level_id) {
+function get_pmpro_level_slug_by_id (int $level_id) {
     switch (((int) $level_id) % 4) {
         case 0: // 8, 12, 16, 20
             return 'conexao';
@@ -107,7 +107,7 @@ function get_pmpro_level_slug_by_id ($level_id) {
     }
 }
 
-function get_pmpro_plan ($user_id) {
+function get_pmpro_plan (int $user_id) {
     $group_id = (int) get_user_meta($user_id, '_pmpro_group', true);
 
     if (empty($group_id)) {
