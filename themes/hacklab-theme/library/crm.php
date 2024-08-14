@@ -199,10 +199,6 @@ function update_contact( int $user_id ) {
     try {
         $attributes = map_contact_attributes( $user_id, null );
 
-        unset( $attributes['accountid'] );
-        unset( $attributes['ownerid'] );
-        unset( $attributes['parentcustomerid'] );
-
         \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
     } catch ( \Throwable $err ) {
         do_action( 'logger', $err->getMessage() );
