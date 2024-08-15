@@ -46,7 +46,7 @@ function schedule_job (string $name, mixed $payload) {
     return !empty($result);
 }
 
-function enqueue_last_created_items (string $entity_name, string $last_sync) {
+function enqueue_last_created_items (string $entity_name, string|null $last_sync) {
     $entities = \hacklabr\get_crm_entities($entity_name, [
         'cache' => false,
         'orderby' => 'modifiedon',
@@ -55,13 +55,13 @@ function enqueue_last_created_items (string $entity_name, string $last_sync) {
     ]);
 
     foreach( $entities->Entities as $entity ) {
-        if (strcmp($entity->Attributes['createdon'], $last_sync) > 0) {
+        if (empty($last_sync) || strcmp($entity->Attributes['createdon'], $last_sync) > 0) {
             schedule_job('sync_entity', [$entity_name, $entity->Id]);
         }
     }
 }
 
-function enqueue_last_modified_items (string $entity_name, string $last_sync) {
+function enqueue_last_modified_items (string $entity_name, string|null $last_sync) {
     $entities = \hacklabr\get_crm_entities($entity_name, [
         'cache' => false,
         'orderby' => 'modifiedon',
@@ -70,7 +70,7 @@ function enqueue_last_modified_items (string $entity_name, string $last_sync) {
     ]);
 
     foreach( $entities->Entities as $entity ) {
-        if (strcmp($entity->Attributes['modifiedon'], $last_sync) > 0) {
+        if (empty($last_sync) || strcmp($entity->Attributes['modifiedon'], $last_sync) > 0) {
             schedule_job('sync_entity', [$entity_name, $entity->Id]);
         }
     }
@@ -95,25 +95,8 @@ function sync_next_entity ($args) {
 }
 add_action('ethos_job:sync_entity', 'ethos\\crm\\sync_next_entity');
 
-function set_initial_last_crm_sync () {
-    global $wpdb;
-
-    // Query largest modified date on database
-    $query = "SELECT meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_ethos_crm:modifiedon' ORDER BY meta_value DESC LIMIT 1";
-
-    $datetime = $wpdb->get_var($query) ?? null;
-
-    return update_last_crm_sync($datetime);
-}
-
-function get_last_crm_sync () {
-    $option = get_option('_ethos_last_crm_sync', null);
-
-    if (empty($option)) {
-        return set_initial_last_crm_sync();
-    } else {
-        return $option;
-    }
+function get_last_crm_sync (): string|null {
+    return get_option('_ethos_last_crm_sync', null);
 }
 
 function update_last_crm_sync (string|null $datetime = null) {
