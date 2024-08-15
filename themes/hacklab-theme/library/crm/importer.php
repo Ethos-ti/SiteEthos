@@ -53,6 +53,55 @@ function compute_contact_role( Entity $contact ) {
     }
 }
 
+function get_account_by_contact( Entity $contact ) {
+    $account_id = $contact->Attributes['parentcustomerid']?->Id ?? null;
+    if ( empty( $account_id ) ) {
+        return null;
+    }
+    return \hacklabr\get_crm_entity_by_id( 'account', $account_id ) ?? null;
+}
+
+function is_active_account( Entity $account ) {
+    $account_status = $account->FormattedValues['fut_pl_associacao'] ?? '';
+    return in_array( $account_status, ['Associado', 'Grupo Econômico'] );
+}
+
+function is_active_contact( Entity $contact, Entity|null $account = null ) {
+    if ( ! ContactStatus::isActive( $contact->Attributes['statecode'] ) ) {
+        return false;
+    }
+
+    if ( empty( $account ) ) {
+        $account = get_account_by_contact( $contact );
+
+        if ( empty( $account ) ) {
+            return false;
+        }
+    }
+    return is_active_account( $account );
+}
+
+function get_post_id_by_account( string $account_id ) {
+    $existing_post = get_single_post( [
+        'post_type' => 'organizacao',
+        'meta_query' => [
+            [ 'key' => '_ethos_crm_account_id', 'value' => $account_id ],
+        ],
+    ] );
+
+    if ( empty( $existing_post ) ) {
+        $account = \hacklabr\get_crm_entity_by_id( 'account', $account_id );
+
+        if ( ! empty( $account ) ) {
+            return \ethos\migration\import_account( $account, false );
+        }
+
+        return null;
+    }
+
+    return $existing_post->ID;
+}
+
 function parse_account_into_post_meta( Entity $account ) {
     $account_id = $account->Id;
     $attributes = $account->Attributes;
