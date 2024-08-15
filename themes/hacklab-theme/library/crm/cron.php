@@ -5,7 +5,7 @@ namespace ethos\crm;
 function ensure_jobs_table () {
     global $wpdb;
 
-    $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}_ethos_jobs (
+    $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}ethos_jobs (
         job_id bigint(20) unsigned NOT NULL auto_increment,
         job_name varchar(255) NOT NULL,
         job_payload longtext NOT NULL,
@@ -17,15 +17,17 @@ function ensure_jobs_table () {
 function call_next_job (string $name) {
     global $wpdb;
 
-    ensure_jobs_table();
-
-    $query = $wpdb->prepare("SELECT * FROM {$wpdb->prefix}_ethos_jobs WHERE job_name = %s LIMIT 1", $name);
+    $query = $wpdb->prepare("SELECT * FROM {$wpdb->prefix}ethos_jobs WHERE job_name = %s LIMIT 1", $name);
     $row = $wpdb->get_row($query, \OBJECT);
+
+    if (empty($row)) {
+        return false;
+    }
 
     try {
         do_action('ethos_job:' . $row->job_name, json_decode($row->job_payload));
 
-        $result = $wpdb->delete($wpdb->prefix . '_ethos_jobs', [ 'job_id' => $row->job_id ], ['%d']);
+        $result = $wpdb->delete($wpdb->prefix . 'ethos_jobs', [ 'job_id' => $row->job_id ], ['%d']);
         return !empty($result);
     } catch (\Throwable $err) {
         do_action('logger', $err->getMessage());
@@ -37,9 +39,7 @@ add_action('hacklabr\\run_every_5_minutes', 'ethos\\crm\\call_next_job');
 function schedule_job (string $name, mixed $payload) {
     global $wpdb;
 
-    ensure_jobs_table();
-
-    $result = $wpdb->insert($wpdb->prefix . '_ethos_jobs', [
+    $result = $wpdb->insert($wpdb->prefix . 'ethos_jobs', [
         'job_name' => $name,
         'job_payload' => json_encode($payload),
     ], ['%s', '%s']);
@@ -131,6 +131,8 @@ function run_syncs () {
     $last_sync = get_last_crm_sync();
 
     update_last_crm_sync();
+
+    ensure_jobs_table();
 
     enqueue_last_created_items('account', $last_sync);
     enqueue_last_modified_items('account', $last_sync);
