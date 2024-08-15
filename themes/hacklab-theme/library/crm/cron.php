@@ -14,19 +14,16 @@ function ensure_jobs_table () {
     )");
 }
 
-function call_next_job (string $name) {
+function call_next_job () {
     global $wpdb;
 
-    $query = $wpdb->prepare("SELECT * FROM {$wpdb->prefix}ethos_jobs WHERE job_name = %s LIMIT 1", $name);
-    $row = $wpdb->get_row($query, \OBJECT);
-
+    $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}ethos_jobs LIMIT 1", \OBJECT);
     if (empty($row)) {
         return false;
     }
 
     try {
         do_action('ethos_job:' . $row->job_name, json_decode($row->job_payload));
-
         $result = $wpdb->delete($wpdb->prefix . 'ethos_jobs', [ 'job_id' => $row->job_id ], ['%d']);
         return !empty($result);
     } catch (\Throwable $err) {
@@ -69,10 +66,10 @@ function sync_next_entity ($args) {
 
     switch ($entity_name) {
         case 'account':
-            \ethos\import_account($entity, true);
+            \ethos\migration\import_account($entity, true);
             break;
         case 'contact':
-            \ethos\import_contact($entity, null, true);
+            \ethos\migration\import_contact($entity, null, true);
             break;
         case 'fut_projeto':
             break;
@@ -104,6 +101,6 @@ function run_syncs () {
 
     enqueue_last_modified_items('account', $last_sync);
     enqueue_last_modified_items('contact', $last_sync);
-    enqueue_last_modified_items('fut_projeto', $last_sync);
+    // enqueue_last_modified_items('fut_projeto', $last_sync);
 }
 add_action('hacklabr\\run_every_hour', 'ethos\\crm\\run_syncs');
