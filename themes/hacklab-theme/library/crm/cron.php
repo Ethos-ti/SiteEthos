@@ -46,21 +46,6 @@ function schedule_job (string $name, mixed $payload) {
     return !empty($result);
 }
 
-function enqueue_last_created_items (string $entity_name, string|null $last_sync) {
-    $entities = \hacklabr\get_crm_entities($entity_name, [
-        'cache' => false,
-        'orderby' => 'modifiedon',
-        'order' => 'DESC',
-        'per_page' => 100,
-    ]);
-
-    foreach( $entities->Entities as $entity ) {
-        if (empty($last_sync) || strcmp($entity->Attributes['createdon'], $last_sync) > 0) {
-            schedule_job('sync_entity', [$entity_name, $entity->Id]);
-        }
-    }
-}
-
 function enqueue_last_modified_items (string $entity_name, string|null $last_sync) {
     $entities = \hacklabr\get_crm_entities($entity_name, [
         'cache' => false,
@@ -117,13 +102,8 @@ function run_syncs () {
 
     ensure_jobs_table();
 
-    enqueue_last_created_items('account', $last_sync);
     enqueue_last_modified_items('account', $last_sync);
-
-    enqueue_last_created_items('contact', $last_sync);
     enqueue_last_modified_items('contact', $last_sync);
-
-    enqueue_last_created_items('fut_projeto', $last_sync);
     enqueue_last_modified_items('fut_projeto', $last_sync);
 }
 add_action('hacklabr\\run_every_hour', 'ethos\\crm\\run_syncs');
