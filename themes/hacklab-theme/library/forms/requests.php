@@ -64,8 +64,8 @@ function validate_request_occurrence_form ($form_id, $form, $params) {
             $incident_id = create_crm_entity('incident', $attributes);
             do_action('logger', 'Created request (incident) with ID = ' . $incident_id);
 
-            $welcome_page = get_page_by_path('boas-vindas');
-            wp_safe_redirect(get_permalink($welcome_page));
+            $success_page = get_page_by_path('solicitacao-enviada') ?: get_page_by_path('boas-vindas');
+            wp_safe_redirect(get_permalink($success_page));
             exit;
         } catch (\Exception $err) {
             do_action('logger', $err->getMessage());
