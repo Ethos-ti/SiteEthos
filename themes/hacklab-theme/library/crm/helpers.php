@@ -23,22 +23,22 @@ function generate_unique_user_login( string $user_name ) {
 }
 
 function get_contact( string $contact_id, string $account_id ) {
-    $existing_users = get_users( [
+    $existing_user = get_single_user( [
         'meta_query' => [
             [ 'key' => '_ethos_crm_account_id', 'value' => $account_id ],
             [ 'key' => '_ethos_crm_contact_id', 'value' => $contact_id ],
         ],
     ] );
 
-    if ( empty( $existing_users ) ) {
+    if ( empty( $existing_user ) ) {
         $account = \hacklabr\get_crm_entity_by_id( 'account', $account_id );
         $contact = \hacklabr\get_crm_entity_by_id( 'contact', $contact_id );
 
         if ( ! empty( $contact ) ) {
-            return import_contact( $contact, $account, false );
+            return create_from_contact( $contact, $account, false );
         }
     } else {
-        return $existing_users[0]->ID;
+        return $existing_user->ID;
     }
 
     return null;
