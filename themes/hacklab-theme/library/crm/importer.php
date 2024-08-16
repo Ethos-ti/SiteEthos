@@ -279,7 +279,7 @@ function create_primary_contact( int $post_id, Entity $account ) {
     $account_id = $account->Id;
     $attributes = $account->Attributes;
 
-    $user_id = get_contact( $attributes['primarycontactid'], $account_id ) ?? 0;
+    $user_id = get_contact( $attributes['primarycontactid']->Id, $account_id ) ?? 0;
 
     $level_id = \hacklabr\get_pmpro_level_id( $post_id, Plan::toSlug( $attributes['fut_pl_tipo_associacao'] ) );
 
@@ -312,13 +312,13 @@ function create_secondary_contacts( Entity $account, int $group_id ) {
     $attributes = $account->Attributes;
 
     if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) ) {
-        $user_id = get_contact( $attributes['fut_lk_contato_alternativo'], $account_id ) ?? 0;
+        $user_id = get_contact( $attributes['fut_lk_contato_alternativo']->Id, $account_id ) ?? 0;
         add_user_to_group( $user_id, $group_id );
         update_user_meta( $user_id, '_ethos_admin', 1 );
     }
 
     if ( ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
-        $user_id = get_contact( $attributes['fut_lk_contato_alternativo2'], $account_id ) ?? 0;
+        $user_id = get_contact( $attributes['fut_lk_contato_alternativo2']->Id, $account_id ) ?? 0;
         add_user_to_group( $user_id, $group_id );
         update_user_meta( $user_id, '_ethos_admin', 1 );
     }
@@ -328,7 +328,7 @@ function create_approver( Entity $account, int $group_id ) {
     $account_id = $account->Id;
     $attributes = $account->Attributes;
 
-    $user_id = get_contact( $attributes['i4d_aprovador_cortesia'], $account_id ) ?? 0;
+    $user_id = get_contact( $attributes['i4d_aprovador_cortesia']->Id, $account_id ) ?? 0;
     add_user_to_group( $user_id, $group_id );
     update_user_meta( $user_id, '_ethos_approver', 1 );
 }
@@ -366,7 +366,7 @@ function replace_primary_contact( Entity $account, \PMProGroupAcct_Group $group 
 
     $current_parent = $group->group_parent_user_id;
 
-    $user_id = get_contact( $attributes['primarycontactid'], $account_id ) ?? 0;
+    $user_id = get_contact( $attributes['primarycontactid']->Id, $account_id ) ?? 0;
     update_user_meta( $user_id, '_ethos_admin', 1 );
 
     if ( $current_parent !== $user_id ) {
@@ -383,8 +383,8 @@ function replace_secondary_contacts( Entity $account, \PMProGroupAcct_Group $gro
     $current_parent_contact = get_user_meta( $current_parent, '_ethos_crm_contact_id', true );
 
     $new_contacts = [
-        $attributes['fut_lk_contato_alternativo'] ?? null,
-        $attributes['fut_lk_contato_alternativo2'] ?? null,
+        $attributes['fut_lk_contato_alternativo']?->Id ?? null,
+        $attributes['fut_lk_contato_alternativo2']?->Id ?? null,
     ];
     $new_contacts = array_unique_values( $new_contacts );
 
@@ -422,7 +422,7 @@ function replace_approver( Entity $account, \PMProGroupAcct_Group $group ) {
         ],
     ]);
 
-    $new_approver = get_contact( $attributes['i4d_aprovador_cortesia'], $account_id );
+    $new_approver = get_contact( $attributes['i4d_aprovador_cortesia']->Id, $account_id );
 
     if ( $old_approver?->ID != $new_approver ) {
         if ( ! empty( $old_approver ) ) {
