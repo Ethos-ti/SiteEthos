@@ -114,7 +114,8 @@ enum Plan: int {
     case Institucional = 969830003;
 
     public static function toSlug (int $pl_tipo_associacao): string {
-        return match ($pl_tipo_associacao) {
+        $plan = self::tryFrom($pl_tipo_associacao);
+        return match ($plan) {
             self::Conexao => 'conexao',
             self::Essencial => 'essencial',
             self::Institucional => 'institucional',
