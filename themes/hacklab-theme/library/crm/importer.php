@@ -172,7 +172,6 @@ function parse_contact_into_user_meta( Entity $contact, Entity|null $account ) {
     }
 
     $user_meta = [
-        '_ethos_from_crm' => 1,
         '_ethos_crm_account_id' => $attributes['parentcustomerid']?->Id ?? '',
         '_ethos_crm_contact_id' => $contact_id,
         '_pmpro_role' => compute_contact_role( $contact ),
@@ -414,14 +413,14 @@ function replace_approver( Entity $account, \PMProGroupAcct_Group $group ) {
 function import_account( Entity $account, bool $force_update = false ) {
     $account_id = $account->Id;
 
+    $account_name = $account->Attributes['name'] ?? '';
+
     $existing_post = get_single_post( [
         'post_type' => 'organizacao',
         'meta_query' => [
             [ 'key' => '_ethos_crm_account_id', 'value' => $account_id ],
         ],
     ] );
-
-    $account_name = $account->Attributes['name'] ?? '';
 
     if ( empty( $existing_post ) ) {
         if ( is_active_account( $account ) ) {
@@ -441,6 +440,113 @@ function import_account( Entity $account, bool $force_update = false ) {
         } else {
             do_action( 'ethos_crm:log', "Deleting account $account_name — $account_id", 'debug' );
             delete_from_account( $account, $existing_post );
+        }
+    }
+}
+
+function delete_from_contact( Entity $contact, \WP_User $user ) {
+    // @TODO delete contact
+}
+
+function create_from_contact( Entity $contact, Entity $account ) {
+    $user_meta = parse_contact_into_user_meta( $contact, $account );
+    $user_meta['_ethos_from_crm'] = 1;
+
+    $existing_user_by_email = get_user_by( 'email', $user_meta['email'] );
+
+    if ( empty( $existing_user_by_email ) ) {
+        $password = wp_generate_password( 16 );
+
+        $user_id = wp_insert_user( [
+            'display_name' => $user_meta['nome_completo'],
+            'user_email' => $user_meta['email'],
+            'user_login' => generate_unique_user_login( $user_meta['nome_completo'] ),
+            'user_pass' => $password,
+            'role' => 'subscriber',
+            'meta_input' => $user_meta,
+        ] );
+
+        if ( ! is_wp_error( $user_id ) ) {
+            do_action( 'ethos_crm:create_user', $user_id, $account );
+        }
+    } else {
+        $user_id = wp_update_user( [
+            'ID' => $existing_user_by_email->ID,
+            'meta_input' => $user_meta,
+        ] );
+    }
+
+    if ( is_wp_error( $user_id ) ) {
+        do_action( 'ethos_crm:log', $user_id->get_error_message(), 'error' );
+        return null;
+    }
+
+    $post_id = get_post_id_by_account( $account->Id );
+    $group_id = (int) get_post_meta( $post_id, '_pmpro_group', true );
+    add_user_to_group( $user_id, $group_id );
+
+    if ( empty( $existing_user_by_email ) ) {
+        do_action( 'ethos_crm:log', "Created user with ID = $user_id", 'debug' );
+    } else {
+        do_action( 'ethos_crm:log', "Upgraded user with ID = $user_id", 'debug' );
+    }
+
+    return $user_id;
+}
+
+function update_from_contact( Entity $contact, Entity $account, \WP_User $user ) {
+    $user_meta = parse_contact_into_user_meta( $contact, $account );
+
+    $user_id = wp_update_user( [
+        'ID' => $user->ID,
+        'display_name' => $user_meta['nome_completo'],
+        'user_email' => $user_meta['email'],
+        'mets_input' => $user_meta,
+    ] );
+
+    return $user_id;
+}
+
+function import_contact( Entity $contact, Entity|null $account = null, bool $force_update = false ) {
+    $contact_id = $contact->Id;
+    $attributes = $contact->Attributes;
+
+    $contact_name = $attributes['fullname'] ?? '';
+
+    if ( empty( $account ) ) {
+        if ( is_active_contact( $contact, null ) ) {
+            $account = get_account_by_contact( $contact );
+        } else {
+            do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+            return null;
+        }
+    }
+
+    $existing_user = get_single_user( [
+        'meta_query' => [
+            [ 'key' => '_ethos_crm_account_id', 'value' => $account->Id ],
+            [ 'key' => '_ethos_crm_contact_id', 'value' => $contact_id ],
+        ],
+    ] );
+
+    if ( empty( $existing_user ) ) {
+        if ( is_active_contact( $contact ) ) {
+            do_action( 'ethos_crm:log', "Creating contact $contact_name — $contact_id", 'debug' );
+            create_from_contact( $contact, $account );
+        } else {
+            do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+        }
+    } else {
+        if ( is_active_contact( $contact ) ) {
+            if ( $force_update ) {
+                do_action( 'ethos_crm:log', "Updating contact $contact_name — $contact_id", 'debug' );
+                update_from_contact( $contact, $account, $existing_user );
+            } else {
+                do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+            }
+        } else {
+            do_action( 'ethos_crm:log', "Deleting contact $contact_name — $contact_id", 'debug' );
+            delete_from_contact( $contact, $existing_user );
         }
     }
 }

@@ -69,7 +69,7 @@ function sync_next_entity ($args) {
             import_account($entity, true);
             break;
         case 'contact':
-            \ethos\migration\import_contact($entity, null, true);
+            import_contact($entity, null, true);
             break;
     }
 }

@@ -2,6 +2,26 @@
 
 namespace ethos\crm;
 
+function generate_unique_user_login( string $user_name ) {
+	$login_base = substr( sanitize_title( $user_name ), 0, 60 );
+
+    if ( empty( get_user_by( 'login', $login_base ) ) ) {
+        return $login_base;
+    }
+
+    $i = 2;
+
+    while ( true ) {
+        $login = $login_base . '-' . $i;
+
+        if ( empty( get_user_by( 'login', $login ) ) ) {
+            return $login;
+        }
+
+        $i++;
+    }
+}
+
 function get_contact( string $contact_id, string $account_id ) {
     $existing_users = get_users( [
         'meta_query' => [
@@ -15,7 +35,7 @@ function get_contact( string $contact_id, string $account_id ) {
         $contact = \hacklabr\get_crm_entity_by_id( 'contact', $contact_id );
 
         if ( ! empty( $contact ) ) {
-            return \ethos\migration\import_contact( $contact, $account, false );
+            return import_contact( $contact, $account, false );
         }
     } else {
         return $existing_users[0]->ID;
