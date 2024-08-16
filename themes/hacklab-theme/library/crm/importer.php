@@ -197,8 +197,31 @@ function parse_contact_into_user_meta( Entity $contact, Entity|null $account ) {
     return $user_meta;
 }
 
-function delete_from_account( Entity $account, \WP_Post $post ) {
-    // @TODO delete account
+function delete_from_account( \WP_Post $post ) {
+    // Required for using `wp_delete_user` function
+    require_once( ABSPATH . 'wp-admin/includes/user.php' );
+
+    global $wpdb;
+
+    $group_id = (int) get_post_meta( $post->ID, '_pmpro_group', true );
+
+    $wpdb->delete( $wpdb->prefix . 'pmprogroupacct_group_members', [
+        'group_id' => $group_id,
+    ], [ '%d' ] );
+
+    $wpdb->delete( $wpdb->prefix . 'pmprogroupacct_group', [
+        'id' => $group_id,
+    ], [ '%d' ] );
+
+    $users = get_users( [
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+        ],
+    ] );
+
+    foreach ( $users as $user ) {
+        wp_delete_user( $user->ID, null );
+    }
 }
 
 function create_from_account( Entity $account ) {
@@ -439,13 +462,22 @@ function import_account( Entity $account, bool $force_update = false ) {
             }
         } else {
             do_action( 'ethos_crm:log', "Deleting account $account_name — $account_id", 'debug' );
-            delete_from_account( $account, $existing_post );
+            delete_from_account( $existing_post );
         }
     }
 }
 
-function delete_from_contact( Entity $contact, \WP_User $user ) {
-    // @TODO delete contact
+function delete_from_contact( \WP_User $user ) {
+    // Required for using `wp_delete_user` function
+    require_once( ABSPATH . 'wp-admin/includes/user.php' );
+
+    global $wpdb;
+
+    $wpdb->delete( $wpdb->prefix . 'pmprogroupacct_group_members', [
+        'group_child_user_id' => $user->ID,
+    ], ['%d'] );
+
+    wp_delete_user( $user->ID, null );
 }
 
 function create_from_contact( Entity $contact, Entity $account ) {
@@ -546,7 +578,7 @@ function import_contact( Entity $contact, Entity|null $account = null, bool $for
             }
         } else {
             do_action( 'ethos_crm:log', "Deleting contact $contact_name — $contact_id", 'debug' );
-            delete_from_contact( $contact, $existing_user );
+            delete_from_contact( $existing_user );
         }
     }
 }
