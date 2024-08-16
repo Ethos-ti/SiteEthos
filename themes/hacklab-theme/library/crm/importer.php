@@ -242,11 +242,13 @@ function create_from_account( Entity $account ) {
 }
 
 function add_user_to_group( int $user_id, int $group_id ) {
-    $membership = \hacklabr\add_user_to_pmpro_group( $user_id, $group_id );
+    try {
+        $membership = \hacklabr\add_user_to_pmpro_group( $user_id, $group_id );
 
-    update_user_meta( $user_id, '_pmpro_group', $group_id );
+        update_user_meta( $user_id, '_pmpro_group', $group_id );
 
-    \hacklabr\approve_user( $user_id, $membership->group_child_level_id );
+        \hacklabr\approve_user( $user_id, $membership->group_child_level_id );
+    } catch ( \Throwable $err ) {}
 
     return $group_id;
 }
@@ -300,10 +302,6 @@ function create_secondary_contacts( Entity $account, int $group_id ) {
     }
 }
 
-function replace_secondary_contacts( Entity $account, int $group_id ) {
-
-}
-
 function create_approver( Entity $account, int $group_id ) {
     $account_id = $account->Id;
     $attributes = $account->Attributes;
@@ -311,10 +309,6 @@ function create_approver( Entity $account, int $group_id ) {
     $user_id = get_contact( $attributes['i4d_aprovador_cortesia'], $account_id ) ?? 0;
     add_user_to_group( $user_id, $group_id );
     update_user_meta( $user_id, '_ethos_approver', 1 );
-}
-
-function replace_approver( ) {
-
 }
 
 function update_from_account( Entity $account, \WP_Post $post ) {
@@ -334,11 +328,11 @@ function update_from_account( Entity $account, \WP_Post $post ) {
     }
 
     if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) || ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
-        replace_secondary_contacts( $account, $group_id );
+        replace_secondary_contacts( $account, $group );
     }
 
     if ( ! empty( $attributes['i4d_aprovador_cortesia'] ) ) {
-        replace_approver( $account, $group_id );
+        replace_approver( $account, $group );
     }
 
     return $post_id;
@@ -348,12 +342,72 @@ function replace_primary_contact( Entity $account, \PMProGroupAcct_Group $group 
     $account_id = $account->Id;
     $attributes = $account->Attributes;
 
-    $current_leader = $group->group_parent_user_id;
+    $current_parent = $group->group_parent_user_id;
 
     $user_id = get_contact( $attributes['primarycontactid'], $account_id ) ?? 0;
+    update_user_meta( $user_id, '_ethos_admin', 1 );
 
-    if ( $current_leader !== $user_id ) {
+    if ( $current_parent !== $user_id ) {
         \hacklabr\update_group_parent( $group->id, $user_id );
+    }
+}
+
+function replace_secondary_contacts( Entity $account, \PMProGroupAcct_Group $group ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    $group_id = $group->id;
+    $current_parent = $group->group_parent_user_id;
+    $current_parent_contact = get_user_meta( $current_parent, '_ethos_crm_contact_id', true );
+
+    $new_contacts = [
+        $attributes['fut_lk_contato_alternativo'] ?? null,
+        $attributes['fut_lk_contato_alternativo2'] ?? null,
+    ];
+    $new_contacts = array_unique_values( $new_contacts );
+
+    foreach ( $new_contacts as $new_contact ) {
+        $user_id = get_contact( $new_contact, $account_id );
+        add_user_to_group( $user_id, $group_id );
+        update_user_meta( $user_id, '_ethos_admin', 1 );
+    }
+
+    $new_contacts[] = $current_parent_contact;
+
+    $old_users = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_admin', 'value' => 1 ],
+            [ 'key' => '_ethos_crm_contact_id', 'compare' => 'NOT IN', 'value' => $new_contacts ],
+        ],
+    ]);
+
+    foreach ( $old_users as $old_user ) {
+        delete_user_meta( $old_user->ID, '_ethos_admin' );
+    }
+}
+
+function replace_approver( Entity $account, \PMProGroupAcct_Group $group ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    $group_id = $group->id;
+
+    $old_approver = get_single_user([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_approver', 'value' => 1 ],
+        ],
+    ]);
+
+    $new_approver = get_contact( $attributes['i4d_aprovador_cortesia'], $account_id );
+
+    if ( $old_approver?->ID != $new_approver ) {
+        if ( ! empty( $old_approver ) ) {
+            delete_user_meta( $old_approver->ID, '_ethos_approver' );
+        }
+
+        update_user_meta( $new_approver, '_ethos_approver', 1 );
     }
 }
 
