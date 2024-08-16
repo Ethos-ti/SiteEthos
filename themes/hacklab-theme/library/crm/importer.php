@@ -81,27 +81,6 @@ function is_active_contact( Entity $contact, Entity|null $account = null ) {
     return is_active_account( $account );
 }
 
-function get_post_id_by_account( string $account_id ) {
-    $existing_post = get_single_post( [
-        'post_type' => 'organizacao',
-        'meta_query' => [
-            [ 'key' => '_ethos_crm_account_id', 'value' => $account_id ],
-        ],
-    ] );
-
-    if ( empty( $existing_post ) ) {
-        $account = \hacklabr\get_crm_entity_by_id( 'account', $account_id );
-
-        if ( ! empty( $account ) ) {
-            return \ethos\migration\import_account( $account, false );
-        }
-
-        return null;
-    }
-
-    return $existing_post->ID;
-}
-
 function parse_account_into_post_meta( Entity $account ) {
     $account_id = $account->Id;
     $attributes = $account->Attributes;
@@ -140,7 +119,6 @@ function parse_account_into_post_meta( Entity $account ) {
     }
 
     $post_meta = [
-        '_ethos_from_crm' => 1,
         '_ethos_crm_account_id' => $account_id,
         '_ethos_crm_lead_id' => $lead_id,
 
@@ -218,4 +196,197 @@ function parse_contact_into_user_meta( Entity $contact, Entity|null $account ) {
     }
 
     return $user_meta;
+}
+
+function delete_from_account( Entity $account, \WP_Post $post ) {
+    // @TODO delete account
+}
+
+function create_from_account( Entity $account ) {
+    $attributes = $account->Attributes;
+
+    $post_meta = parse_account_into_post_meta( $account );
+    $post_meta['_ethos_from_crm'] = 1;
+
+    $post_parent = 0;
+    if ( is_subsidiary_company( $account ) ) {
+        $post_parent = get_post_id_by_account( $attributes['parentaccountid']->Id ) ?? 0;
+    }
+
+    $post_id = wp_insert_post( [
+        'post_type' => 'organizacao',
+        'post_title' => $post_meta['nome_fantasia'],
+        'post_content' => '',
+        'post_status' => 'publish',
+        'post_parent' => $post_parent,
+        'meta_input' => $post_meta,
+    ] );
+
+    // @TODO Set featured image
+
+    if ( ! empty( $attributes['primarycontactid'] ) && ! empty( $attributes['fut_pl_tipo_associacao'] ) ) {
+        $group_id = create_primary_contact( $post_id, $account );
+
+        if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) || ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
+            create_secondary_contacts( $account, $group_id );
+        }
+
+        if ( ! empty( $attributes['i4d_aprovador_cortesia'] ) ) {
+            create_approver( $account, $group_id );
+        }
+    }
+
+    do_action( 'ethos_crm:log', "Created post with ID = $post_id", 'debug' );
+
+    return $post_id;
+}
+
+function add_user_to_group( int $user_id, int $group_id ) {
+    $membership = \hacklabr\add_user_to_pmpro_group( $user_id, $group_id );
+
+    update_user_meta( $user_id, '_pmpro_group', $group_id );
+
+    \hacklabr\approve_user( $user_id, $membership->group_child_level_id );
+
+    return $group_id;
+}
+
+function create_primary_contact( int $post_id, Entity $account ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    $user_id = get_contact( $attributes['primarycontactid'], $account_id ) ?? 0;
+
+    $level_id = \hacklabr\get_pmpro_level_id( $post_id, Plan::toSlug( $attributes['fut_pl_tipo_associacao'] ) );
+
+    $group = \hacklabr\create_pmpro_group( $user_id, $level_id );
+
+    wp_update_user([
+        'ID' => $user_id,
+        'meta_input' => [
+            '_ethos_admin' => '1',
+            '_pmpro_group' => $group->id,
+            '_pmpro_role' => 'primary',
+        ],
+    ]);
+
+    wp_update_post([
+        'ID' => $post_id,
+        'post_author' => $user_id,
+        'meta_input' => [
+            '_pmpro_group' => $group->id,
+        ],
+    ]);
+
+    \hacklabr\approve_user( $user_id, $level_id );
+
+    return (int) $group->id;
+}
+
+function create_secondary_contacts( Entity $account, int $group_id ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) ) {
+        $user_id = get_contact( $attributes['fut_lk_contato_alternativo'], $account_id ) ?? 0;
+        add_user_to_group( $user_id, $group_id );
+        update_user_meta( $user_id, '_ethos_admin', 1 );
+    }
+
+    if ( ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
+        $user_id = get_contact( $attributes['fut_lk_contato_alternativo2'], $account_id ) ?? 0;
+        add_user_to_group( $user_id, $group_id );
+        update_user_meta( $user_id, '_ethos_admin', 1 );
+    }
+}
+
+function replace_secondary_contacts( Entity $account, int $group_id ) {
+
+}
+
+function create_approver( Entity $account, int $group_id ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    $user_id = get_contact( $attributes['i4d_aprovador_cortesia'], $account_id ) ?? 0;
+    add_user_to_group( $user_id, $group_id );
+    update_user_meta( $user_id, '_ethos_approver', 1 );
+}
+
+function replace_approver( ) {
+
+}
+
+function update_from_account( Entity $account, \WP_Post $post ) {
+    $post_meta = parse_account_into_post_meta( $account );
+
+    $post_id = wp_update_post( [
+        'ID' => $post->ID,
+        'post_title' => $post_meta['nome_fantasia'],
+        'meta_input' => $post_meta,
+    ] );
+
+    $group_id = (int) get_post_meta( $post_id, '_pmpro_group', true );
+    $group = \hacklabr\get_pmpro_group( $group_id );
+
+    if ( ! empty( $attributes['primarycontactid'] ) ) {
+        replace_primary_contact( $account, $group );
+    }
+
+    if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) || ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
+        replace_secondary_contacts( $account, $group_id );
+    }
+
+    if ( ! empty( $attributes['i4d_aprovador_cortesia'] ) ) {
+        replace_approver( $account, $group_id );
+    }
+
+    return $post_id;
+}
+
+function replace_primary_contact( Entity $account, \PMProGroupAcct_Group $group ) {
+    $account_id = $account->Id;
+    $attributes = $account->Attributes;
+
+    $current_leader = $group->group_parent_user_id;
+
+    $user_id = get_contact( $attributes['primarycontactid'], $account_id ) ?? 0;
+
+    if ( $current_leader !== $user_id ) {
+        \hacklabr\update_group_parent( $group->id, $user_id );
+    }
+}
+
+function import_account( Entity $account, bool $force_update = false ) {
+    $account_id = $account->Id;
+
+    $existing_post = get_single_post( [
+        'post_type' => 'organizacao',
+        'meta_query' => [
+            [ 'key' => '_ethos_crm_account_id', 'value' => $account_id ],
+        ],
+    ] );
+
+    $account_name = $account->Attributes['name'] ?? '';
+
+    if ( empty( $existing_post ) ) {
+        if ( is_active_account( $account ) ) {
+            do_action( 'ethos_crm:log', "Creating account $account_name — $account_id", 'debug' );
+            create_from_account( $account );
+        } else {
+            do_action( 'ethos_crm:log', "Skipping account $account_name — $account_id", 'debug' );
+        }
+    } else {
+        if ( is_active_account( $account ) ) {
+            if ( $force_update ) {
+                do_action( 'ethos_crm:log', "Updating account $account_name — $account_id", 'debug' );
+                update_from_account( $account, $existing_post );
+            } else {
+                do_action( 'ethos_crm:log', "Skipping account $account_name — $account_id", 'debug' );
+            }
+        } else {
+            do_action( 'ethos_crm:log', "Deleting account $account_name — $account_id", 'debug' );
+            delete_from_account( $account, $existing_post );
+        }
+    }
 }

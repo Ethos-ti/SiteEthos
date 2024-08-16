@@ -17,6 +17,10 @@ function add_user_to_pmpro_group (int $user_id, int $group_id) {
     return $membership;
 }
 
+function approve_user( int $user_id, int $level_id ) {
+    return \PMPro_Approvals::approveMember( $user_id, $level_id, true );
+}
+
 function calculate_membership_price (int $group_id) {
     $group = get_pmpro_group($group_id);
 
@@ -92,6 +96,10 @@ function get_pmpro_level_options (int $organization_id, bool $for_manager = true
             'institucional' => 19,
         ];
     }
+}
+
+function get_pmpro_level_id( int $post_id, string $level_slug ) {
+    return get_pmpro_level_options( $post_id )[ $level_slug ] ?? null;
 }
 
 function get_pmpro_level_slug_by_id (int $level_id) {

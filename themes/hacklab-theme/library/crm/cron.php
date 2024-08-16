@@ -66,12 +66,10 @@ function sync_next_entity ($args) {
 
     switch ($entity_name) {
         case 'account':
-            \ethos\migration\import_account($entity, true);
+            import_account($entity, true);
             break;
         case 'contact':
             \ethos\migration\import_contact($entity, null, true);
-            break;
-        case 'fut_projeto':
             break;
     }
 }
