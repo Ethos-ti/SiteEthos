@@ -222,6 +222,8 @@ function delete_from_account( \WP_Post $post ) {
     foreach ( $users as $user ) {
         wp_delete_user( $user->ID, null );
     }
+
+    wp_delete_post( $post->ID, true );
 }
 
 function create_from_account( Entity $account ) {
