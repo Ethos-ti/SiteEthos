@@ -3,6 +3,11 @@
 namespace hacklabr;
 
 function add_cron_schedules (array $schedules) {
+    $schedules['hacklabr_every_5_minutes'] = [
+        'interval' => 5 * MINUTE_IN_SECONDS,
+        'display' => sprintf(__('Every %s minutes', 'hacklabr'), 5),
+    ];
+
     $schedules['hacklabr_hourly'] = [
         'interval' => HOUR_IN_SECONDS,
         'display' => __('Hourly', 'hacklabr'),
@@ -49,6 +54,10 @@ function clean_transactions () {
 add_action('hacklabr\\run_every_hour', 'hacklabr\\clean_transactions');
 
 function schedule_recurring_tasks () {
+    if (!wp_next_scheduled('hacklabr\\run_every_5_minutes')) {
+		wp_schedule_event(time(), 'hacklabr_every_5_minutes', 'hacklabr\\run_every_5_minutes');
+	}
+
     if (!wp_next_scheduled('hacklabr\\run_every_hour')) {
 		wp_schedule_event(time(), 'hacklabr_hourly', 'hacklabr\\run_every_hour');
 	}

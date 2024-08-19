@@ -2,47 +2,81 @@
 
 namespace ethos\crm;
 
-function fetch_lastest_created_items (string $entity_name) {
-    $entities = \hacklabr\get_crm_entities($entity_name, [
-        'cache' => false,
-        'orderby' => 'modifiedon',
-        'order' => 'DESC',
-        'per_page' => 100,
-    ]);
-
-    return $entities->Entities;
-}
-
-function fetch_lastest_modified_items (string $entity_name) {
-    $entities = \hacklabr\get_crm_entities($entity_name, [
-        'cache' => false,
-        'orderby' => 'modifiedon',
-        'order' => 'DESC',
-        'per_page' => 100,
-    ]);
-
-    return $entities->Entities;
-}
-
-function set_initial_last_crm_sync () {
+function ensure_jobs_table () {
     global $wpdb;
 
-    // Query largest modified date on database
-    $query = "SELECT meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_ethos_crm:modifiedon' ORDER BY meta_value DESC LIMIT 1";
-
-    $datetime = $wpdb->get_var($query) ?? null;
-
-    return update_last_crm_sync($datetime);
+    $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}ethos_jobs (
+        job_id bigint(20) unsigned NOT NULL auto_increment,
+        job_name varchar(255) NOT NULL,
+        job_payload longtext NOT NULL,
+        PRIMARY KEY (job_id),
+        UNIQUE KEY action_payload (job_name, job_payload)
+    )");
 }
 
-function get_last_crm_sync () {
-    $option = get_option('_ethos_last_crm_sync', null);
+function call_next_job () {
+    global $wpdb;
 
-    if (empty($option)) {
-        return set_initial_last_crm_sync();
-    } else {
-        return $option;
+    $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}ethos_jobs LIMIT 1", \OBJECT);
+    if (empty($row)) {
+        return false;
     }
+
+    try {
+        do_action('ethos_job:' . $row->job_name, json_decode($row->job_payload));
+        $result = $wpdb->delete($wpdb->prefix . 'ethos_jobs', [ 'job_id' => $row->job_id ], ['%d']);
+        return !empty($result);
+    } catch (\Throwable $err) {
+        do_action('logger', $err->getMessage());
+        return false;
+    }
+}
+add_action('hacklabr\\run_every_5_minutes', 'ethos\\crm\\call_next_job');
+
+function schedule_job (string $name, mixed $payload) {
+    global $wpdb;
+
+    $result = $wpdb->insert($wpdb->prefix . 'ethos_jobs', [
+        'job_name' => $name,
+        'job_payload' => json_encode($payload),
+    ], ['%s', '%s']);
+    return !empty($result);
+}
+
+function enqueue_last_modified_items (string $entity_name, string|null $last_sync) {
+    $entities = \hacklabr\get_crm_entities($entity_name, [
+        'cache' => false,
+        'orderby' => 'modifiedon',
+        'order' => 'DESC',
+        'per_page' => 100,
+    ]);
+
+    foreach( $entities->Entities as $entity ) {
+        if (empty($last_sync) || strcmp($entity->Attributes['modifiedon'], $last_sync) > 0) {
+            schedule_job('sync_entity', [$entity_name, $entity->Id]);
+        }
+    }
+}
+
+function sync_next_entity ($args) {
+    [$entity_name, $entity_id] = $args;
+
+    \hacklabr\forget_cached_crm_entity($entity_name, $entity_id);
+    $entity = \hacklabr\get_crm_entity_by_id($entity_name, $entity_id);
+
+    switch ($entity_name) {
+        case 'account':
+            import_account($entity, true);
+            break;
+        case 'contact':
+            import_contact($entity, null, true);
+            break;
+    }
+}
+add_action('ethos_job:sync_entity', 'ethos\\crm\\sync_next_entity');
+
+function get_last_crm_sync (): string|null {
+    return get_option('_ethos_last_crm_sync', null);
 }
 
 function update_last_crm_sync (string|null $datetime = null) {
@@ -55,3 +89,16 @@ function update_last_crm_sync (string|null $datetime = null) {
 
     return $datetime;
 }
+
+function run_syncs () {
+    $last_sync = get_last_crm_sync();
+
+    update_last_crm_sync();
+
+    ensure_jobs_table();
+
+    enqueue_last_modified_items('account', $last_sync);
+    enqueue_last_modified_items('contact', $last_sync);
+    // enqueue_last_modified_items('fut_projeto', $last_sync);
+}
+add_action('hacklabr\\run_every_hour', 'ethos\\crm\\run_syncs');

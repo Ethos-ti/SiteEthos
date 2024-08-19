@@ -106,3 +106,21 @@ enum CompanySize: int {
         };
     }
 }
+
+enum Plan: int {
+    case Conexao = 969830000;
+    case Essencial = 969830001;
+    case Vivencia = 969830002;
+    case Institucional = 969830003;
+
+    public static function toSlug (int $pl_tipo_associacao): string {
+        $plan = self::tryFrom($pl_tipo_associacao);
+        return match ($plan) {
+            self::Conexao => 'conexao',
+            self::Essencial => 'essencial',
+            self::Institucional => 'institucional',
+            self::Vivencia => 'vivencia',
+            default => 'conexao',
+        };
+    }
+}
