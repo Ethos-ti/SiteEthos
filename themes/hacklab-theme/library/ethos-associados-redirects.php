@@ -43,10 +43,14 @@ add_action('init', function (){
     }
 
     if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/acesso-a-pagamento')) {
-        if($query_vars = http_build_query($_GET)){
-            $query_vars = "?{$query_vars}";
-        }
         wp_redirect( '/acesso-a-pagamento'. "{$query_vars}", 301 );
         die;
     }
+
+    // Redirect of old pages
+    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/')) {
+        wp_redirect( str_replace('/conteudo/', '/', $_SERVER['REQUEST_URI']), 301 );
+        exit();
+    }
+
 });
