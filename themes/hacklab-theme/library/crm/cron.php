@@ -71,6 +71,9 @@ function sync_next_entity ($args) {
         case 'contact':
             import_contact($entity, null, true);
             break;
+        case 'fut_projeto':
+            import_fut_projeto($entity);
+            break;
     }
 }
 add_action('ethos_job:sync_entity', 'ethos\\crm\\sync_next_entity');
@@ -99,6 +102,6 @@ function run_syncs () {
 
     enqueue_last_modified_items('account', $last_sync);
     enqueue_last_modified_items('contact', $last_sync);
-    // enqueue_last_modified_items('fut_projeto', $last_sync);
+    enqueue_last_modified_items('fut_projeto', $last_sync);
 }
 add_action('hacklabr\\run_every_hour', 'ethos\\crm\\run_syncs');

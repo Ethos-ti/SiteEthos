@@ -584,3 +584,13 @@ function import_contact( Entity $contact, Entity|null $account = null, bool $for
         }
     }
 }
+
+function import_fut_projeto (Entity $entity) {
+    $post_id = \hacklabr\event_exists_on_wp( $entity->Id );
+
+    if ( empty( $post_id ) ) {
+        \hacklabr\create_event_on_wp( $entity );
+    } else {
+        \hacklabr\update_event_on_wp( $post_id, $entity );
+    }
+}
