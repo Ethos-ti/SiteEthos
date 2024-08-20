@@ -175,14 +175,23 @@ function wrap_edit_contacts_form ($form_html, $form) {
         ],
     ]);
 
+    $ethos_approvers = get_users([
+        'meta_query' => [
+            [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_approver', 'value' => '1' ],
+        ],
+    ]);
+
     $add_contact_str = esc_attr(__('Add contact', 'hacklabr'));
     $cannot_add_admin_str = esc_attr(__('You can only add up to three administrators.', 'hacklabr'));
+    $cannot_remove_approver_str = esc_attr(__('Your team must have one approver.', 'hacklabr'));
     $change_admin_str = esc_attr(__('You can have up to three administrators, do you want to confirm the change?', 'hacklabr'));
     $confirm_removal_str = esc_attr(__('Are you sure you want to delete the user?', 'hacklabr'));
     $edit_contact_str = esc_attr(__('Edit contact', 'hacklabr'));
     $replace_approver_str = esc_attr(__('You can only have one approver by team, do you want to replace the approver?', 'hacklabr'));
 
     $can_add_admin = count($ethos_admins) >= 3 ? 'false' : 'true';
+    $can_remove_approver = count($ethos_approvers) > 1 ? 'true' : 'false';
 
     $script = <<<SCRIPT
     {
@@ -232,8 +241,8 @@ function wrap_edit_contacts_form ($form_html, $form) {
                         el.checked = false;
                     }
                 } else {
-                    alert("$cannot_add_admin_str");
                     el.checked = false;
+                    alert("$cannot_add_admin_str");
                 }
             } else {
                 if (confirm("$change_admin_str")) {
@@ -255,9 +264,14 @@ function wrap_edit_contacts_form ($form_html, $form) {
                     el.checked = false;
                 }
             } else {
-                this.action = 'removeApprover';
-                this.userId = user.ID;
-                \$nextTick(() => this.\$refs.implicitForm.submit());
+                if ($can_remove_approver) {
+                    this.action = 'removeApprover';
+                    this.userId = user.ID;
+                    \$nextTick(() => this.\$refs.implicitForm.submit());
+                } else {
+                    el.checked = true;
+                    alert("$cannot_remove_approver_str");
+                }
             }
         }
     }
