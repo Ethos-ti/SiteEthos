@@ -73,17 +73,17 @@
 
                     .login-password {
                         position: relative !important;
+
                         .pmpro_form_field-password-toggle > button > span{
-                            color: #222;
-                            /* font-family: 'Open Sans'; */
-                            font-family: Open Sans, sans-serif !important;
-                            text-transform: math-auto;
-                            font-weight: $font-weight--bold;
-                            font-size: 16px;
+                            color: transparent;
+
                             & svg {
                                 stroke: #333;
+                                position: relative;
+                                left: 7.813rem;
                             }
                         }
+
                         & > label{
                             text-transform: math-auto;
                             font-family: "Open Sans", sans-serif!important;
