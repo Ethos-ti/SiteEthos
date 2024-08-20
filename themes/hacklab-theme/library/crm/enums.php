@@ -113,9 +113,42 @@ enum Plan: int {
     case Vivencia = 969830002;
     case Institucional = 969830003;
 
-    public static function toSlug (int $pl_tipo_associacao): string {
-        $plan = self::tryFrom($pl_tipo_associacao);
-        return match ($plan) {
+    public static function fromLevel (int $level_id) {
+        return match ($level_id) {
+            8, 12, 16, 20 => self::Conexao,
+            9, 13, 17, 21 => self::Essencial,
+            10, 14, 18 => self::Vivencia,
+            11, 15, 19 => self::Institucional,
+        };
+    }
+
+    public function toLevel (string $company_size, bool $for_manager = true): int {
+        if ($company_size === 'large') {
+            return match ($this) {
+                self::Conexao => 16,
+                self::Essencial => 17,
+                self::Vivencia => 18,
+                self::Institucional => 19,
+            };
+        } elseif ($company_size === 'medium') {
+            return match ($this) {
+                self::Conexao => 12,
+                self::Essencial => 13,
+                self::Vivencia => 14,
+                self::Institucional => 15,
+            };
+        } else {
+            return match ($this) {
+                self::Conexao => $for_manager ? 8 : 20,
+                self::Essencial => $for_manager ? 9 : 21,
+                self::Vivencia => 10,
+                self::Institucional => 11,
+            };
+        }
+    }
+
+    public function toSlug (): string {
+        return match ($this) {
             self::Conexao => 'conexao',
             self::Essencial => 'essencial',
             self::Institucional => 'institucional',

@@ -283,7 +283,8 @@ function create_primary_contact( int $post_id, Entity $account ) {
 
     $user_id = get_contact( $attributes['primarycontactid']->Id, $account_id ) ?? 0;
 
-    $level_id = \hacklabr\get_pmpro_level_id( $post_id, Plan::toSlug( $attributes['fut_pl_tipo_associacao'] ) );
+    $revenue = get_post_meta( $post_id, 'faturamento_anual', true ) ?: 'small';
+    $level_id = Plan::from( $attributes['fut_pl_tipo_associacao'] )->toLevel( $revenue, true );
 
     $group = \hacklabr\create_pmpro_group( $user_id, $level_id );
 

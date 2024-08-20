@@ -2,6 +2,8 @@
 
 namespace hacklabr;
 
+use \ethos\crm\Plan;
+
 function add_user_to_pmpro_group (int $user_id, int $group_id) {
     $group = get_pmpro_group($group_id);
 
@@ -74,45 +76,12 @@ function get_pmpro_child_level (int $level_id) {
 function get_pmpro_level_options (int $organization_id, bool $for_manager = true) {
     $revenue = get_post_meta($organization_id, 'faturamento_anual', true) ?: 'small';
 
-    if ($revenue === 'small') {
-        return [
-            'conexao' => $for_manager ? 8 : 20,
-            'essencial' => $for_manager ? 9 : 21,
-            'vivencia' => 10,
-            'institucional' => 11,
-        ];
-    } else if ($revenue === 'medium') {
-        return [
-            'conexao' => 12,
-            'essencial' => 13,
-            'vivencia' => 14,
-            'institucional' => 15,
-        ];
-    } else if ($revenue === 'large') {
-        return [
-            'conexao' => 16,
-            'essencial' => 17,
-            'vivencia' => 18,
-            'institucional' => 19,
-        ];
-    }
-}
-
-function get_pmpro_level_id( int $post_id, string $level_slug ) {
-    return get_pmpro_level_options( $post_id )[ $level_slug ] ?? null;
-}
-
-function get_pmpro_level_slug_by_id (int $level_id) {
-    switch (((int) $level_id) % 4) {
-        case 0: // 8, 12, 16, 20
-            return 'conexao';
-        case 1: // 9, 13, 17, 21
-            return 'essencial';
-        case 2: // 10, 14, 18
-            return 'vivencia';
-        case 3: // 11, 15, 19
-            return 'institucional';
-    }
+    return [
+        'conexao' => Plan::Conexao->toLevel($revenue, $for_manager),
+        'essencial' => Plan::Essencial->toLevel($revenue, $for_manager),
+        'vivencia' => Plan::Vivencia->toLevel($revenue, $for_manager),
+        'institucional' => Plan::Institucional->toLevel($revenue, $for_manager),
+    ];
 }
 
 function get_pmpro_plan (int $user_id) {
@@ -124,7 +93,7 @@ function get_pmpro_plan (int $user_id) {
 
     $group = get_pmpro_group($group_id);
     $level_id = $group->group_parent_level_id;
-    return get_pmpro_level_slug_by_id($level_id);
+    return Plan::fromLevel($level_id)->toSlug();
 }
 
 function update_group_level (int $group_id, int $level_id = 11) {
