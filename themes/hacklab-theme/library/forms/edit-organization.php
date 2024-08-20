@@ -175,10 +175,11 @@ function contacts_add_approver($user_id) {
     $current_approvers = get_users([
         'meta_query' => [
             [ 'key' => '_pmpro_group', 'value' => $group_id ],
+            [ 'key' => '_ethos_approver', 'value' => 1 ],
         ],
     ]);
     foreach ($current_approvers as $approver) {
-        delete_user_meta($approver->ID, '_ethos_approver', '1');
+        delete_user_meta($approver->ID, '_ethos_approver');
     }
 
     update_user_meta($user_id, '_ethos_approver', '1');
