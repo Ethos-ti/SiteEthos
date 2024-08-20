@@ -8,11 +8,13 @@
     padding: $padding--small $padding--medium;
 
     &--disabled,
-    &--readonly {
+    &--readonly,
+    &:disabled {
         background-color: $color--high-light;
     }
 
-    &--disabled {
+    &--disabled,
+    &:disabled {
         cursor: not-allowed;
     }
 
