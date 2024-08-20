@@ -35,6 +35,14 @@ function map_account_attributes( int $post_id ) {
         'yominame'                  => $company_name,
     ];
 
+    $group_id = get_meta( $post_meta, '_pmpro_group', null );
+    if ( ! empty( $group_id ) ) {
+        $group = \hacklabr\get_pmpro_group( $group_id );
+        if ( ! empty( $group ) ) {
+            $attributes['fut_pl_tipo_associacao'] = Plan::fromLevel( $group->group_parent_level_id )->value;
+        }
+    }
+
     if ( ! $is_imported ) {
         $attributes['fut_pl_porte'] = CompanySize::fromSlug( get_meta( $post_meta, 'porte' ) );
     }
