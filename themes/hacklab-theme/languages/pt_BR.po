@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-08-08T20:03:13+00:00\n"
-"PO-Revision-Date: 2024-08-08 17:04-0300\n"
+"POT-Creation-Date: 2024-08-20T19:56:36+00:00\n"
+"PO-Revision-Date: 2024-08-20 17:00-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: hacklabr\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: hacklabr\n"
 "X-Poedit-Basepath: .\n"
 
@@ -57,7 +57,8 @@ msgstr "Vá para a página principal"
 msgid "Contact"
 msgstr "Contato"
 
-#: archive-publicacao.php:46 archive.php:46 taxonomy.php:49
+#: archive-publicacao.php:46 archive.php:46
+#: taxonomy-tipo_publicacao-guias-tematicos.php:48 taxonomy.php:49
 msgid "All the themes"
 msgstr "Todos os temas"
 
@@ -143,6 +144,10 @@ msgid "Status"
 msgstr "Status"
 
 #: library/cron.php:8
+msgid "Every %s minutes"
+msgstr "A cada %s minutos"
+
+#: library/cron.php:13
 msgid "Hourly"
 msgstr "De hora em hora"
 
@@ -162,11 +167,11 @@ msgstr "Próxima etapa"
 msgid "Required field"
 msgstr "Campo obrigatório"
 
-#: library/forms/custom-fields.php:63
+#: library/forms/custom-fields.php:13
 msgid "Select plan"
 msgstr "Selecionar plano"
 
-#: library/forms/custom-fields.php:64
+#: library/forms/custom-fields.php:14
 msgid "Selected plan"
 msgstr "Plano selecionado"
 
@@ -183,7 +188,7 @@ msgid "It's possible to have more than one main contact."
 msgstr "É possível ter mais de um contato principal."
 
 #: library/forms/custom-forms.php:99 library/forms/custom-forms.php:129
-#: library/forms/custom-forms.php:144 library/forms/custom-forms.php:178
+#: library/forms/custom-forms.php:144 library/forms/custom-forms.php:185
 #: library/forms/registration.php:692
 msgid "Add contact"
 msgstr "Adicionar contato"
@@ -204,54 +209,58 @@ msgstr ""
 msgid "Finish"
 msgstr "Finalizar"
 
-#: library/forms/custom-forms.php:179
+#: library/forms/custom-forms.php:186
 msgid "You can only add up to three administrators."
 msgstr "Você só pode adicionar até três administradores."
 
-#: library/forms/custom-forms.php:180
+#: library/forms/custom-forms.php:187
+msgid "Your team must have one approver."
+msgstr "Sua equipe deve ter um aprovador."
+
+#: library/forms/custom-forms.php:188
 msgid ""
 "You can have up to three administrators, do you want to confirm the change?"
 msgstr "Você pode ter até três administradores. Quer confirmar a alteração?"
 
-#: library/forms/custom-forms.php:181
+#: library/forms/custom-forms.php:189
 msgid "Are you sure you want to delete the user?"
 msgstr "Deseja remover este usuário?"
 
-#: library/forms/custom-forms.php:182
+#: library/forms/custom-forms.php:190
 msgid "Edit contact"
 msgstr "Editar contato"
 
-#: library/forms/custom-forms.php:183
+#: library/forms/custom-forms.php:191
 msgid ""
 "You can only have one approver by team, do you want to replace the approver?"
 msgstr ""
 "Você pode ter apenas um aprovador por equipe, deseja substituir o aprovador?"
 
-#: library/forms/custom-forms.php:293
+#: library/forms/custom-forms.php:307
 msgid "Add one more contact"
 msgstr "Adicionar mais um contato"
 
-#: library/forms/custom-forms.php:301
+#: library/forms/custom-forms.php:315
 msgid "Name"
 msgstr "Nome"
 
-#: library/forms/custom-forms.php:302 library/forms/registration.php:365
+#: library/forms/custom-forms.php:316 library/forms/registration.php:365
 msgid "Email"
 msgstr "Email"
 
-#: library/forms/custom-forms.php:303
+#: library/forms/custom-forms.php:317
 msgid "Approver"
 msgstr "Aprovador"
 
-#: library/forms/custom-forms.php:304
+#: library/forms/custom-forms.php:318
 msgid "Administrator"
 msgstr "Administrador"
 
-#: library/forms/custom-forms.php:305 library/forms/custom-forms.php:325
+#: library/forms/custom-forms.php:319 library/forms/custom-forms.php:339
 msgid "Edit"
 msgstr "Editar"
 
-#: library/forms/custom-forms.php:306 library/forms/custom-forms.php:330
+#: library/forms/custom-forms.php:320 library/forms/custom-forms.php:344
 msgid "Delete"
 msgstr "Remover"
 
@@ -707,7 +716,7 @@ msgstr "Registro de membro - Etapa 4"
 msgid "Member registration - step 5"
 msgstr "Registro de membro - Etapa 5"
 
-#: library/forms/registration.php:936
+#: library/forms/registration.php:938
 msgid "Membership to Ethos Institute"
 msgstr "Inscrição no Instituto Ethos"
 
@@ -735,7 +744,7 @@ msgstr ""
 msgid "Requests"
 msgstr "Solicitações"
 
-#: library/membership.php:150
+#: library/membership.php:206
 msgid "Organizations"
 msgstr "Organizações"
 
@@ -1020,11 +1029,6 @@ msgstr "Meu Plano - Tabela"
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
 msgstr "Meu Plano"
-
-#: dist/blocks/payments-history/editor.js:19
-#: dist/blocks/payments-history/editor.js:63
-msgid "Payments history"
-msgstr "Histórico de pagamentos"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
 #: dist/blocks/posts-grid/editor.js:1931
@@ -1639,6 +1643,9 @@ msgstr "Sistema"
 msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Payments history"
+#~ msgstr "Histórico de pagamentos"
 
 #~ msgid "Invoice area"
 #~ msgstr "Área de comprovante"

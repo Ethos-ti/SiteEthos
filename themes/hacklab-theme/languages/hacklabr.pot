@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ethos 0.0.98\n"
+"Project-Id-Version: Ethos 0.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-08T20:03:13+00:00\n"
+"POT-Creation-Date: 2024-08-20T19:56:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: hacklabr\n"
@@ -57,6 +57,7 @@ msgstr ""
 
 #: archive-publicacao.php:46
 #: archive.php:46
+#: taxonomy-tipo_publicacao-guias-tematicos.php:48
 #: taxonomy.php:49
 msgid "All the themes"
 msgstr ""
@@ -144,6 +145,10 @@ msgid "Status"
 msgstr ""
 
 #: library/cron.php:8
+msgid "Every %s minutes"
+msgstr ""
+
+#: library/cron.php:13
 msgid "Hourly"
 msgstr ""
 
@@ -163,11 +168,11 @@ msgstr ""
 msgid "Required field"
 msgstr ""
 
-#: library/forms/custom-fields.php:63
+#: library/forms/custom-fields.php:13
 msgid "Select plan"
 msgstr ""
 
-#: library/forms/custom-fields.php:64
+#: library/forms/custom-fields.php:14
 msgid "Selected plan"
 msgstr ""
 
@@ -186,7 +191,7 @@ msgstr ""
 #: library/forms/custom-forms.php:99
 #: library/forms/custom-forms.php:129
 #: library/forms/custom-forms.php:144
-#: library/forms/custom-forms.php:178
+#: library/forms/custom-forms.php:185
 #: library/forms/registration.php:692
 msgid "Add contact"
 msgstr ""
@@ -203,54 +208,58 @@ msgstr ""
 msgid "Finish"
 msgstr ""
 
-#: library/forms/custom-forms.php:179
+#: library/forms/custom-forms.php:186
 msgid "You can only add up to three administrators."
 msgstr ""
 
-#: library/forms/custom-forms.php:180
+#: library/forms/custom-forms.php:187
+msgid "Your team must have one approver."
+msgstr ""
+
+#: library/forms/custom-forms.php:188
 msgid "You can have up to three administrators, do you want to confirm the change?"
 msgstr ""
 
-#: library/forms/custom-forms.php:181
+#: library/forms/custom-forms.php:189
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: library/forms/custom-forms.php:182
+#: library/forms/custom-forms.php:190
 msgid "Edit contact"
 msgstr ""
 
-#: library/forms/custom-forms.php:183
+#: library/forms/custom-forms.php:191
 msgid "You can only have one approver by team, do you want to replace the approver?"
 msgstr ""
 
-#: library/forms/custom-forms.php:293
+#: library/forms/custom-forms.php:307
 msgid "Add one more contact"
 msgstr ""
 
-#: library/forms/custom-forms.php:301
+#: library/forms/custom-forms.php:315
 msgid "Name"
 msgstr ""
 
-#: library/forms/custom-forms.php:302
+#: library/forms/custom-forms.php:316
 #: library/forms/registration.php:365
 msgid "Email"
 msgstr ""
 
-#: library/forms/custom-forms.php:303
+#: library/forms/custom-forms.php:317
 msgid "Approver"
 msgstr ""
 
-#: library/forms/custom-forms.php:304
+#: library/forms/custom-forms.php:318
 msgid "Administrator"
 msgstr ""
 
-#: library/forms/custom-forms.php:305
-#: library/forms/custom-forms.php:325
+#: library/forms/custom-forms.php:319
+#: library/forms/custom-forms.php:339
 msgid "Edit"
 msgstr ""
 
-#: library/forms/custom-forms.php:306
-#: library/forms/custom-forms.php:330
+#: library/forms/custom-forms.php:320
+#: library/forms/custom-forms.php:344
 msgid "Delete"
 msgstr ""
 
@@ -708,7 +717,7 @@ msgstr ""
 msgid "Member registration - step 5"
 msgstr ""
 
-#: library/forms/registration.php:936
+#: library/forms/registration.php:938
 msgid "Membership to Ethos Institute"
 msgstr ""
 
@@ -732,7 +741,7 @@ msgstr ""
 msgid "Requests"
 msgstr ""
 
-#: library/membership.php:150
+#: library/membership.php:206
 msgid "Organizations"
 msgstr ""
 
@@ -1031,11 +1040,6 @@ msgstr ""
 #: library/blocks/my-plan/editor.js:22
 #: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
-msgstr ""
-
-#: dist/blocks/payments-history/editor.js:19
-#: dist/blocks/payments-history/editor.js:63
-msgid "Payments history"
 msgstr ""
 
 #: dist/blocks/posts-grid/editor.js:19
