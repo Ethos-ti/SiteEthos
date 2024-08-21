@@ -1,0 +1,173 @@
+.page-adesao-pacto-empresarial-pela-integridade{
+    #corpoScriptPre, #corpoScript{
+
+        #iPayData{
+            h5{
+                color: $color--secondary-dark !important;
+                font-size: $font-size--medium;
+            }
+        }
+
+        #aAgree, #iAgree{
+            position: relative;
+            top: 135px;
+        }
+
+        .tabelasDiv{
+            h2{
+                color: $color--primary-dark;
+                font-size: $font-size--x-large;
+                text-align: center;
+            }
+
+            h3:not(li h3){
+                color: $color--primary-dark;
+            }
+
+            h4{
+                font-size: $font-size--medium;
+            }
+
+            input[name="iSpecialNeeds"]{
+                border: 1px solid $color--high-dark;
+                border-radius: $border-radius--small;
+                margin-top: $margin--small;
+                max-width: 29.375rem;
+                padding: $padding--small;
+                width: 100% !important;
+            }
+
+            .ulForm{
+                gap: $gap--small;
+
+                form{
+                    .tableInternoC1{
+                        border: 2px solid $color--low-pure;
+                        border-radius: $border-radius--medium;
+                        background-color: $color--low-pure !important;
+                        color: $color--high-pure;
+                        cursor: pointer;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+
+                li{
+                    display: flex;
+                    gap: $gap--small;
+                    justify-content: center;
+                    width: 100%;
+
+
+                    h3{
+                        font-size: $font-size--x-small;
+                        padding-bottom: $padding--small !important;
+                    }
+
+                    h4{
+                        font-weight: $font-weight--bold;
+                        font-size: $font-size--small;
+                    }
+
+                    h5{
+                        color: $color--direitos-humanos !important;
+                    }
+
+                    input[type="text"]{
+                        border: 1px solid $color--high-dark;
+                        border-radius: $border-radius--small;
+                        height: 2rem;
+                        max-width: 29.375rem;
+                        padding: $padding--small;
+                        width: 100% !important;
+                    }
+
+                    input[type="submit"]{
+                        border: 2px solid $color--low-pure;
+                        border-radius: $border-radius--medium;
+                        background-color: $color--low-pure;
+                        color: $color--high-pure;
+                        cursor: pointer;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                        width: 10rem !important;
+                    }
+
+                    #lbliTelURamal1{
+                        display: flex;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+
+                        input[name="iTelURamal1"]{
+                            width: 3rem !important;
+                        }
+                    }
+
+                }
+            }
+
+            #frmDadosEmpresa{
+                display: flex;
+                justify-content: center;
+                margin-top: $margin--large*4;
+
+                input[type="submit"]{
+                    border: 2px solid $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    background-color: $color--low-pure;
+                    color: $color--high-pure;
+                    cursor: pointer;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 21rem !important;
+                }
+            }
+
+            #frmDadosPre{
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #frmDadosInscrito{
+                display: flex;
+                flex-direction: column;
+                gap: $gap--medium;
+                align-items: center;
+
+                input[type="submit"]{
+                    border: 2px solid $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    background-color: $color--low-pure;
+                    color: $color--high-pure;
+                    cursor: pointer;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 8rem !important;
+                }
+            }
+
+            #iDadosEmpresa{
+                h3{
+                    color: $color--primary-dark;
+                    margin-top: $margin--large;
+                }
+            }
+        }
+    }
+ }
+
+
