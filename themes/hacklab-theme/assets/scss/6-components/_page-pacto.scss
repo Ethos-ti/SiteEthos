@@ -170,4 +170,59 @@
     }
  }
 
+ .page-signatarios-do-pacto-empresarial-pela-integridade-e-contra-corrupcao{
+    #corpoScript{
+
+        h2{
+            color: $color--primary-dark;
+            font-size: $font-size--x-large;
+            margin: $margin--medium;
+            text-align: center;
+        }
+
+        .tabelasDiv{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tableQttSignatariasPorEstado{
+
+            .tableAlignCol{
+                color: $color--primary-dark;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 30.5rem;
+                width: 100%;
+            }
+
+            .tableQttSignatariasPorEstadoDiv{
+                display: flex;
+                justify-content: center;
+
+                table{
+                    width: 76%;
+                }
+            }
+        }
+
+        .tableSignatariasPorEstado{
+            text-align: center;
+
+            h3{
+                color: $color--primary-dark;
+            }
+
+            ul{
+                list-style: none;
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 400px;
+                text-align: justify;
+                width: 100%;
+            }
+        }
+    }
+ }
+
 
