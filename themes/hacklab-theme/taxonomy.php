@@ -61,6 +61,8 @@ usort($terms, 'custom_sort');
                         $current_category = get_query_var('category');
                         $current_tipo_post = get_query_var('tipo_post');
 
+                        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
                         $args = array(
                             'post_type' => 'post',
                             'tax_query' => array(
@@ -71,6 +73,7 @@ usort($terms, 'custom_sort');
                                     'terms' => $current_tipo_post,
                                 ),
                             ),
+                            'paged' => $paged,
                         );
 
                         // Adicionar filtro de categoria se estiver presente
@@ -98,6 +101,7 @@ usort($terms, 'custom_sort');
                         endif;
                         ?>
                     </main>
+
                     <?php
                     the_posts_pagination([
                         'prev_text' => '<iconify-icon icon="fa-solid:angle-left" aria-label="' . __('Previous page') . '"></iconify-icon>',
