@@ -15,7 +15,24 @@
         width: 100% !important;
     }
 
+    @media print {
+        @page {
+            size: landscape;
+        }
+
+        header, footer{
+            display: none;
+        }
+    }
+
     #corpoScriptPre, #corpoScript{
+
+        @media print {
+            header, footer, nav, .no-print {
+                display: none;
+            }
+        }
+
 
         #iPayData{
             h5{
