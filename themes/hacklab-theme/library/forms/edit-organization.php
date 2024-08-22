@@ -192,6 +192,13 @@ function contacts_delete_user($user_id) {
     // Required for using `wp_delete_user` function
     require_once(ABSPATH . 'wp-admin/includes/user.php');
 
+    $is_ethos_admin = !empty(get_user_meta($user_id, '_ethos_admin', true));
+    $is_ethos_approver = !empty(get_user_meta($user_id, '_ethos_approver', true));
+    $is_current_user = get_current_user_id() == $user_id;
+    if ($is_ethos_admin || $is_ethos_approver || $is_current_user) {
+        return;
+    }
+
     notify_user_deactivation($user_id);
 
     wp_delete_user($user_id, null);
