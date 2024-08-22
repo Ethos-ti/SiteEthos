@@ -549,9 +549,9 @@ function import_contact( Entity $contact, Entity|null $account = null, bool $for
     $contact_name = $attributes['fullname'] ?? '';
 
     if ( empty( $account ) ) {
-        if ( is_active_contact( $contact, null ) ) {
-            $account = get_account_by_contact( $contact );
-        } else {
+        $account = get_account_by_contact( $contact );
+
+        if ( empty( $account ) ) {
             do_action( 'ethos_crm:log', "Skipping contact $contact_name - $contact_id", 'debug' );
             return null;
         }
