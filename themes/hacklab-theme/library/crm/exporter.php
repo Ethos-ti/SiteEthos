@@ -30,7 +30,8 @@ function map_account_attributes( int $post_id ) {
         'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
         'fut_pl_estado'             => BrazilianUF::fromCode( get_meta( $post_meta, 'end_estado' ) ),
         'name'                      => $company_name,
-        'numberofemployees'         => get_meta( $post_meta, 'num_funcionarios', 0 ),
+        'numberofemployees'         => floatval( get_meta( $post_meta, 'num_funcionarios', 0 ) ),
+        'revenue_base'              => floatval( get_meta( $post_meta, 'faturamento_anual', 0 ) ),
         'websiteurl'                => get_meta( $post_meta, 'website' ),
         'yominame'                  => $company_name,
     ];
