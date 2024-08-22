@@ -879,7 +879,7 @@ function validate_registration_form ($form_id, $form, $params) {
         $post_meta = $params;
         unset($post_meta['_hacklabr_form']);
 
-        foreach ($params as $meta_key => $meta_value) {
+        foreach ($post_meta as $meta_key => $meta_value) {
             update_post_meta($post->ID, $meta_key, $meta_value);
         }
 
