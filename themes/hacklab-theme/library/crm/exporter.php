@@ -93,7 +93,6 @@ function map_contact_attributes( int $user_id, int|null $post_id = null ) {
     if ( ! empty( $post_id ) ) {
         $account_id = get_post_meta( $post_id, '_ethos_crm_account_id', true );
         if ( ! empty( $account_id ) ) {
-            $attributes['accountid'] = \hacklabr\create_crm_reference( 'account', $account_id );
             $attributes['parentcustomerid'] = \hacklabr\create_crm_reference( 'account', $account_id );
         }
 
