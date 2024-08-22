@@ -1,5 +1,6 @@
 .single-tribe{
  &_events{
+
     h3:not(.tabelasDiv h3){
         background-image: url( $path--assets + "/images/logo-ethos.png" );
         background-position: top;
@@ -20,19 +21,48 @@
             size: landscape;
         }
 
-        header, footer{
-            display: none;
+        .enabled {
+            display: none !important;
         }
-    }
 
-    #corpoScriptPre, #corpoScript{
+        iframe {
+            display: none !important;
 
-        @media print {
-            header, footer, nav, .no-print {
-                display: none;
+            .ms-Stack css-109{
+                display: none !important;
+
+                .ms-Stack{
+                    display: none !important;
+                }
             }
         }
 
+        header, footer {
+            display: none;
+        }
+
+        main {
+            width: 90rem !important;
+            margin-right: auto;
+            margin-left: auto;
+            size: landscape;
+        }
+
+        h3:not(.tabelasDiv h3) {
+            background: none;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        h3:not(.tabelasDiv h3):before {
+            content: url($path--assets + "/images/logo-ethos.png");
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
+
+
+    #corpoScriptPre, #corpoScript{
 
         #iPayData{
             h5{

@@ -44,6 +44,7 @@ function get_edit_organization_fields() {
     foreach ($fields as $key => $field) {
         if (in_array($key, $non_editable_fields)) {
             $fields[$key]['disabled'] = true;
+            $fields[$key]['required'] = false;
         } elseif (in_array($key, $editable_fields)) {
             $fields[$key]['disabled'] = false;
         }
@@ -190,6 +191,13 @@ function contacts_add_approver($user_id) {
 function contacts_delete_user($user_id) {
     // Required for using `wp_delete_user` function
     require_once(ABSPATH . 'wp-admin/includes/user.php');
+
+    $is_ethos_admin = !empty(get_user_meta($user_id, '_ethos_admin', true));
+    $is_ethos_approver = !empty(get_user_meta($user_id, '_ethos_approver', true));
+    $is_current_user = get_current_user_id() == $user_id;
+    if ($is_ethos_admin || $is_ethos_approver || $is_current_user) {
+        return;
+    }
 
     notify_user_deactivation($user_id);
 
