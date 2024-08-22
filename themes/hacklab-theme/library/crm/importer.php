@@ -450,21 +450,21 @@ function import_account( Entity $account, bool $force_update = false ) {
 
     if ( empty( $existing_post ) ) {
         if ( is_active_account( $account ) ) {
-            do_action( 'ethos_crm:log', "Creating account $account_name — $account_id", 'debug' );
+            do_action( 'ethos_crm:log', "Creating account $account_name - $account_id", 'debug' );
             create_from_account( $account );
         } else {
-            do_action( 'ethos_crm:log', "Skipping account $account_name — $account_id", 'debug' );
+            do_action( 'ethos_crm:log', "Skipping account $account_name - $account_id", 'debug' );
         }
     } else {
         if ( is_active_account( $account ) ) {
             if ( $force_update ) {
-                do_action( 'ethos_crm:log', "Updating account $account_name — $account_id", 'debug' );
+                do_action( 'ethos_crm:log', "Updating account $account_name - $account_id", 'debug' );
                 update_from_account( $account, $existing_post );
             } else {
-                do_action( 'ethos_crm:log', "Skipping account $account_name — $account_id", 'debug' );
+                do_action( 'ethos_crm:log', "Skipping account $account_name - $account_id", 'debug' );
             }
         } else {
-            do_action( 'ethos_crm:log', "Deleting account $account_name — $account_id", 'debug' );
+            do_action( 'ethos_crm:log', "Deleting account $account_name - $account_id", 'debug' );
             delete_from_account( $existing_post );
         }
     }
@@ -552,7 +552,7 @@ function import_contact( Entity $contact, Entity|null $account = null, bool $for
         if ( is_active_contact( $contact, null ) ) {
             $account = get_account_by_contact( $contact );
         } else {
-            do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+            do_action( 'ethos_crm:log', "Skipping contact $contact_name - $contact_id", 'debug' );
             return null;
         }
     }
@@ -566,21 +566,21 @@ function import_contact( Entity $contact, Entity|null $account = null, bool $for
 
     if ( empty( $existing_user ) ) {
         if ( is_active_contact( $contact ) ) {
-            do_action( 'ethos_crm:log', "Creating contact $contact_name — $contact_id", 'debug' );
+            do_action( 'ethos_crm:log', "Creating contact $contact_name - $contact_id", 'debug' );
             create_from_contact( $contact, $account );
         } else {
-            do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+            do_action( 'ethos_crm:log', "Skipping contact $contact_name - $contact_id", 'debug' );
         }
     } else {
         if ( is_active_contact( $contact ) ) {
             if ( $force_update ) {
-                do_action( 'ethos_crm:log', "Updating contact $contact_name — $contact_id", 'debug' );
+                do_action( 'ethos_crm:log', "Updating contact $contact_name - $contact_id", 'debug' );
                 update_from_contact( $contact, $account, $existing_user );
             } else {
-                do_action( 'ethos_crm:log', "Skipping contact $contact_name — $contact_id", 'debug' );
+                do_action( 'ethos_crm:log', "Skipping contact $contact_name - $contact_id", 'debug' );
             }
         } else {
-            do_action( 'ethos_crm:log', "Deleting contact $contact_name — $contact_id", 'debug' );
+            do_action( 'ethos_crm:log', "Deleting contact $contact_name - $contact_id", 'debug' );
             delete_from_contact( $existing_user );
         }
     }
