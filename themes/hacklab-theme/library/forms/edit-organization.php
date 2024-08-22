@@ -44,6 +44,7 @@ function get_edit_organization_fields() {
     foreach ($fields as $key => $field) {
         if (in_array($key, $non_editable_fields)) {
             $fields[$key]['disabled'] = true;
+            $fields[$key]['required'] = false;
         } elseif (in_array($key, $editable_fields)) {
             $fields[$key]['disabled'] = false;
         }
