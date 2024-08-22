@@ -1,3 +1,9 @@
+:root{
+    --wp--preset--font-size--medium: 1rem !important;
+    --wp--preset--font-size--x-large: 1.5rem !important;
+    --wp--preset--font-size--large: 1.25rem !important;
+}
+
 html, body {
     font-size: $font-size--medium;
 
