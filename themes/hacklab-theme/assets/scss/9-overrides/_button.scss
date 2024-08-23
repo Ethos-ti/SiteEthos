@@ -12,6 +12,10 @@
         border: $border-width--medium solid $color--low-pure;
         border-radius: $border-radius--medium;
 
+        @include mobile {
+            width: max-content;
+        }
+
         &:hover {
             color: $color--high-pure;
             ;

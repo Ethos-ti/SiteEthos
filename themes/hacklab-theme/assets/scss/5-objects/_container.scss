@@ -6,6 +6,10 @@
     padding-inline: $padding--medium;
     width: 100%;
 
+    @include tablet {
+        padding-inline: $padding--small;
+    }
+
     &--wide {
         max-width: $grid--wide;
     }

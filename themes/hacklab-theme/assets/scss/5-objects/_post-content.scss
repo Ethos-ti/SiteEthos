@@ -41,6 +41,12 @@
         line-height: $line-height--normal;
     }
 
+    .wp-block-heading {
+        @include tablet {
+            letter-spacing: -1.92px;
+        }
+    }
+
     & .wp-block-buttons {
         margin: calc($margin--small * 3) 0;
         font-size: $font-size--small;

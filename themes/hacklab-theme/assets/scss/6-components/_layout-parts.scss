@@ -13,6 +13,7 @@
             @media(max-width:$break--tablet) {
                 font-size: $font-size--xx-large;
                 margin-top: calc($margin--large + $margin--medium);
+                letter-spacing: -1.92px;
             }
         }
 

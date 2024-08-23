@@ -9,3 +9,10 @@
 .-text-center {
     text-align: center !important;
 }
+
+.-text-center-on-mobile {
+    @include tablet {
+        text-align: center !important;
+    }
+
+}
