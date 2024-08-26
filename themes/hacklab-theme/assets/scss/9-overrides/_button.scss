@@ -7,6 +7,7 @@
         font-family: $font-family--primary;
         font-size: $font-size--medium;
         font-style: normal;
+        text-transform: uppercase;
         font-weight: $font-weight--bold;
         padding: $padding--small $padding--large !important;
         border: $border-width--medium solid $color--low-pure;
@@ -14,11 +15,12 @@
 
         @include mobile {
             width: max-content;
+            padding: $padding--small $padding--medium !important;
+            font-size: $font-size--small;
         }
 
         &:hover {
             color: $color--high-pure;
-            ;
             border-radius: $border-radius--medium;
             background: $color--low-pure;
             border: $border-width--medium solid $color--low-pure;

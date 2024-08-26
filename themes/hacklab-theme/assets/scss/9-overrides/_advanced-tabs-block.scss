@@ -91,17 +91,26 @@
             margin: $margin--medium 0;
         }
 
-        .wp-block-atbs-tab>.single-tab>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-image>img{
+        .wp-block-atbs-tab>.single-tab>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-image>img {
             border-radius: 50%;
-            height: 135px !important;
+            height: auto;
             object-fit: cover;
-            width: 135px !important;
+            max-width: 135px;
+        }
+
+        .wp-block-atbs-tab>.single-tab>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-heading {
+            @include mobile {
+                font-size: 24px !important;
+                letter-spacing: -0.72px;
+            }
         }
 
         .wp-block-columns>.wp-block-column>h2 {
 
             @include mobile {
                 font-size: $font-size--small !important;
+                letter-spacing: -0.42px;
+                text-transform: uppercase;
             }
 
             @include small {

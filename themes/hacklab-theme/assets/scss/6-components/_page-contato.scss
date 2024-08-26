@@ -1,47 +1,55 @@
-.page-contato{
-    .container{
+.page-contato {
+    .container {
         max-width: $grid--wide;
-        .post-header{
+
+        .post-header {
             border-bottom: none;
         }
-        .post-content{
-            .wp-block-group{
+
+        .post-content {
+            .wp-block-group {
                 width: $grid--wide;
                 display: flex;
                 justify-content: center;
                 text-align: center;
                 width: 100%;
 
-                & p{
+                & p {
                     max-width: 48.75rem;
                     font-size: $font-size--large;
-                    color:$color--low-pure;
+                    color: $color--low-pure;
                     font-family: $font-family--primary;
-                    padding-bottom:$margin--large;
+                    padding-bottom: $margin--large;
                     border-bottom: 1px solid #ddd;
                 }
             }
-            .wp-block-columns{
 
-                .wp-block-column:first-child{
+            .wp-block-columns {
+
+                .wp-block-column:first-child {
                     margin-top: size(72);
-                    @include mobile{
-                        margin-top:$margin--medium
+
+                    @include mobile {
+                        margin-top: $margin--medium
                     }
-                    p{
+
+                    p {
                         max-width: 370px;
                     }
                 }
-                .wp-block-column:last-child{
-                    margin-top: size(50);
-                    @include mobile{
-                        margin-top:$margin--medium
-                    }
-                    .wpcf7{
-                        form{
 
-                            label > span > input,
-                            label > span > textarea {
+                .wp-block-column:last-child {
+                    margin-top: size(50);
+
+                    @include mobile {
+                        margin-top: $margin--medium
+                    }
+
+                    .wpcf7 {
+                        form {
+
+                            label>span>input,
+                            label>span>textarea {
                                 width: 100%;
                                 max-width: size(470);
                                 height: size(48);
@@ -49,28 +57,31 @@
                                 border: 1px solid #DDD;
                                 padding-left: size(16);
                             }
-                            label > span > textarea {
+
+                            label>span>textarea {
                                 height: size(147);
                                 padding-top: size(13);
                             }
-                            .btn-enviar{
+
+                            .btn-enviar {
                                 width: 100%;
                                 max-width: size(470);
                                 display: flex;
-                                justify-content: flex-end;
+                                justify-content: flex-start;
 
-                                p{
+                                p {
                                     display: flex;
-                                    flex-direction: column ;
-                                    & input{
+                                    flex-direction: column;
+
+                                    & input {
                                         padding: $padding--small $padding--large;
-                                        border:$border-width--medium solid #222;
+                                        border: $border-width--medium solid #222;
                                         border-radius: $border-radius--large;
-                                        color:#222;
+                                        color: #222;
                                         font-weight: $font-weight--bold;
                                         background-color: unset;
                                         width: size(180);
-                                        margin-top:$margin--medium;
+                                        margin-top: $margin--medium;
                                         text-transform: uppercase;
                                         cursor: pointer;
                                     }
@@ -78,12 +89,20 @@
                                 }
 
                             }
-                            .acept{
-                                p{
+
+                            .recaptcha {
+                                width: fit-content;
+                                margin-top: 2rem;
+                                margin-bottom: 1rem;
+                            }
+
+                            .acept {
+                                p {
                                     display: flex;
                                     max-width: 100%;
                                     justify-content: flex-start;
-                                    & span{
+
+                                    & span {
                                         margin-right: size(2);
                                     }
                                 }
