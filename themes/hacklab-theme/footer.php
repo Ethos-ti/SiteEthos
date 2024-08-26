@@ -6,6 +6,13 @@
         <div class="main-footer__widgets container">
             <?php dynamic_sidebar('footer_widgets') ?>
         </div>
+
+        <div class="main-footer__credit">
+            <div class="content">
+                <img loading="lazy" src="<?= get_template_directory_uri() ?>/assets/images/site-por-hacklab.png" alt="site por hacklab" height="15" width="103">
+            </div>
+
+        </div>
     </footer>
 <?php endif; ?>
 <?php wp_footer() ?>
