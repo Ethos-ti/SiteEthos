@@ -1,10 +1,11 @@
-:root{
+:root {
     --wp--preset--font-size--medium: 1rem !important;
     --wp--preset--font-size--x-large: 1.5rem !important;
     --wp--preset--font-size--large: 1.25rem !important;
 }
 
-html, body {
+html,
+body {
     font-size: $font-size--medium;
 
     @include mobile {
@@ -12,15 +13,24 @@ html, body {
     }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: $font-weight--bold;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
     font-weight: $font-weight--regular;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: $font-family--heading;
     line-height: $line-height--tight;
     text-wrap: balance;
@@ -91,4 +101,20 @@ hr {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+ol {
+    li {
+        font-family: $font-family--primary;
+        font-size: $font-size--medium;
+        font-weight: $font-weight--regular;
+        line-height: 1.5;
+
+        &::marker {
+            font-family: $font-family--heading;
+            font-size: calc($font-size--medium * 1.5);
+            font-weight: $font-weight--bold;
+            line-height: 1.2;
+        }
+    }
 }
