@@ -31,8 +31,9 @@
 
         &:active,
         &:hover {
-            color: $color--low-light;
-            border-color: $color--low-light !important;
+            color: $color--low-light !important;
+            border-color: $color--low-light;
+            background-color: $color--high-pure;
         }
     }
 
