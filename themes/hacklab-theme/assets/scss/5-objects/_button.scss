@@ -32,7 +32,7 @@
         &:active,
         &:hover {
             color: $color--low-light;
-            border-color: $color--low-light;
+            border-color: $color--low-light !important;
         }
     }
 
