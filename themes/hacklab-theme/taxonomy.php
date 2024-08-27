@@ -12,6 +12,9 @@ $tipo_post_slug = $tipo_post_term->slug;
 // Obter termos da taxonomia 'category'
 $terms = get_terms_by_use_menu('category', get_post_type());
 
+$active_tab = isset($wp_query->query['category']) ? $wp_query->query['category'] : 'all';
+
+
 if($wp_query->get('category')){
     $active_tab = $wp_query->get('category');
 } else {
@@ -44,7 +47,7 @@ usort($terms, 'custom_sort');
     <?php echo hacklabr\get_layout_part_header(); ?>
 
     <?php if ( $terms && ! is_wp_error( $terms ) ) : ?>
-        <div class="tabs" x-data="{ currentTab: '<?php echo $active_tab?>' }" x-bind="Tabs($data)">
+        <div class="tabs" x-data="{ currentTab: '<?php echo esc_attr($active_tab); ?>' }" x-bind="Tabs($data)">
             <div class="tabs__header" role="tablist">
                 <a class="tab" x-bind="TabButton('all', $data)" href="<?= esc_url(add_query_arg(array('post_type' => $post_type, 'tipo_post' => $tipo_post_slug), get_post_type_archive_link($post_type))); ?>"><?php _e('All the themes', 'hacklabr') ?></a>
                 <?php foreach ( $terms as $term ) : ?>
@@ -54,7 +57,7 @@ usort($terms, 'custom_sort');
                 <?php endforeach; ?>
             </div>
             <div class="tabs__panels">
-                <div class="tabs__panel" x-bind="TabPanel('<?php echo $active_tab?>', $data)">
+                <div class="tabs__panel" x-bind="TabPanel('<?php echo esc_attr($active_tab); ?>', $data)">
                     <main class="posts-grid__content">
                         <?php
                         // Verificação dos parâmetros

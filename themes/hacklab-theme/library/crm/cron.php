@@ -64,6 +64,11 @@ function sync_next_entity ($args) {
     \hacklabr\forget_cached_crm_entity($entity_name, $entity_id);
     $entity = \hacklabr\get_crm_entity_by_id($entity_name, $entity_id);
 
+    if (empty($entity)) {
+        do_action( 'ethos_crm:log', "Entity $entity_name - $entity_id not found", 'debug' );
+        return;
+    }
+
     switch ($entity_name) {
         case 'account':
             import_account($entity, true);

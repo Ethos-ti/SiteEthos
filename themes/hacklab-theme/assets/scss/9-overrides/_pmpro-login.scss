@@ -33,6 +33,10 @@
                         font-weight: $font-weight--bold !important;
                         font-size: 16px;
                         text-transform: math-auto;
+                        position: relative;
+                        left: -322px;
+                        top: 19px;
+                        text-decoration: underline;
                     }
                 }
             }
