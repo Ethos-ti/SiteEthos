@@ -115,6 +115,10 @@ ol {
             font-size: calc($font-size--medium * 1.5);
             font-weight: $font-weight--bold;
             line-height: 1.2;
+
+            @include mobile {
+                font-weight: $font-weight--regular;
+            }
         }
     }
 }
