@@ -6,6 +6,10 @@ on:
       - main
     tags:
       - '*'
+env:
+  THEME_NAME: hacklab-theme
+  CURL_URL: https://www.ethos.org.br/
+  DEPLOY: 1
 
 jobs:
   build_assets:
@@ -13,29 +17,27 @@ jobs:
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
     container:
       image: node:20
-    env:
-      THEME_NAME: hacklab-theme
     steps:
       - uses: actions/checkout@v2
       - name: Remove dist directory
-        run: rm -rf themes/hacklab-theme/dist/*
+        run: rm -rf themes/${{ env.THEME_NAME }}/dist/*
       - name: Remove lock
-        run: rm -rf themes/hacklab-theme/package-lock.json
+        run: rm -rf themes/${{ env.THEME_NAME }}/package-lock.json
       - name: Remove node_modules
-        run: rm -rf themes/hacklab-theme/node_modules
+        run: rm -rf themes/${{ env.THEME_NAME }}/node_modules
       - name: Install npm packages
-        run: npm --prefix themes/hacklab-theme/ install
+        run: npm --prefix themes/${{ env.THEME_NAME }}/ install
       - name: Run production build
-        run: npm --prefix themes/hacklab-theme/ run production
-      - name: check files
-        run:   ls -lhtra themes/hacklab-theme
+        run: npm --prefix themes/${{ env.THEME_NAME }}/ run production
+      - name: Check files
+        run: ls -lhtra themes/${{ env.THEME_NAME }}
       - name: Remove node_modules directory
-        run: rm -rf themes/hacklab-theme/node_modules
+        run: rm -rf themes/${{ env.THEME_NAME }}/node_modules
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: hacklab-theme
-          path: themes/hacklab-theme
+          name: ${{ env.THEME_NAME }}
+          path: themes/${{ env.THEME_NAME }}
 
   create_release:
     if: startsWith(github.ref, 'refs/tags/')
@@ -53,13 +55,10 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: hacklab-theme
-          path: ./hacklab-theme/
+          name: ${{ env.THEME_NAME }}
+          path: ./${{ env.THEME_NAME }}/
       - name: Zip artifact
-        run: |
-          cd ./hacklab-theme
-          ls
-          zip -r hacklab-theme.zip .
+        run: zip -r ${{ env.THEME_NAME }}.zip ./${{ env.THEME_NAME }}
       - name: Create GitHub Release
         id: create_release_develop
         uses: actions/create-release@v1
@@ -76,6 +75,42 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release_develop.outputs.upload_url }}
-          asset_path: ./hacklab-theme/hacklab-theme.zip
-          asset_name: hacklab-theme.zip
+          asset_path: ./${{ env.THEME_NAME }}.zip
+          asset_name: ${{ env.THEME_NAME }}-${{ env.tag }}.zip
           asset_content_type: application/zip
+      - name: Wait for asset to be available
+        id: check_asset_availability
+        run: |
+          ASSET_NAME="${{ env.THEME_NAME }}-${{ env.tag }}.zip"
+          REPO="https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.tag }}"
+          ATTEMPTS=0
+          MAX_ATTEMPTS=3
+          SUCCESS=false
+
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            echo "Checking for asset availability, attempt $((ATTEMPTS+1))..."
+            ASSET_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $REPO | jq -r ".assets[] | select(.name==\"$ASSET_NAME\") | .id")
+            if [ -n "$ASSET_ID" ]; then
+              echo "Asset found. Asset ID: $ASSET_ID"
+              SUCCESS=true
+              break
+            else
+              echo "Asset not found. Retrying in 30 seconds..."
+              ATTEMPTS=$((ATTEMPTS+1))
+              sleep 30
+            fi
+          done
+
+          echo "::set-output name=success::$SUCCESS"
+
+          if [ "$SUCCESS" = false ]; then
+            echo "Failed to find asset after $MAX_ATTEMPTS attempts."
+            exit 1
+          fi
+        continue-on-error: false
+
+      - name: Execute CURL after release
+        if: steps.check_asset_availability.outputs.success == 'true' && env.DEPLOY != 0
+        run: |
+          curl "${{ env.CURL_URL }}wp-json/git-updater/v1/reset-branch/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}"
+          curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}&tag=${{ env.tag }}&override"
