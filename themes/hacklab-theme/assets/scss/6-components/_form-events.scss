@@ -155,8 +155,9 @@
                             border: 1px solid $color--high-dark;
                             border-radius: $border-radius--small;
                             height: 2rem;
-                            max-width: 29.375rem;
-                            padding: $padding--small;
+                            max-width: size(470);
+                            padding: 0 $padding--small;
+                            flex: 2;
                         }
 
                         input[alt="DDD"] {
