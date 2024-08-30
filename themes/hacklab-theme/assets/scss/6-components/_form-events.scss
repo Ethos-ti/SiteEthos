@@ -144,18 +144,23 @@
                         h4 {
                             font-weight: $font-weight--bold;
                             font-size: $font-size--small;
+                            flex: 1;
                         }
 
                         h5 {
                             color: $color--direitos-humanos !important;
                         }
 
-                        input[type="text"] {
+                        input[type="text"], select {
                             border: 1px solid $color--high-dark;
                             border-radius: $border-radius--small;
                             height: 2rem;
                             max-width: 29.375rem;
                             padding: $padding--small;
+                        }
+
+                        input[alt="DDD"] {
+                            max-width: size(50) !important;
                         }
 
                         input[type="submit"] {
