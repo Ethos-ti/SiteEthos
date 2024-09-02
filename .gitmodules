@@ -10,6 +10,6 @@
 	url = git@github.com:Ethos-ti/EthosDynamics365IntegrationPlugin.git
 	branch = main
 [submodule "plugins/EthosDynamics365IntegrationSOAPLegacyPlugin"]
-	path = plugins/EthosDynamics365IntegrationSOAPLegacyPlugin
+	path = plugins/ethos-associados
 	url = git@github.com:Ethos-ti/EthosDynamics365IntegrationSOAPLegacyPlugin
 	branch = main
