@@ -704,7 +704,6 @@ function get_user_by_transaction ($transaction = null) {
     }
 
     return get_single_user([
-        'role__in' => ['ethos_under_progress', 'subscriber'],
         'meta_query' => [
             [ 'key' => '_ethos_transaction', 'value' => $transaction ],
         ],

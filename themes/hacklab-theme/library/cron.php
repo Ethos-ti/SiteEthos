@@ -37,7 +37,6 @@ function clean_transactions () {
     }
 
     $users = get_users([
-        'role__in' => ['ethos_under_progress', 'subscriber'],
         'date_query' => [
             [ 'before' => '1 day ago', 'inclusive' => true ],
         ],
