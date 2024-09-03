@@ -16,6 +16,36 @@ function redirect_single_layout_archive() {
 add_action( 'template_redirect', 'hacklabr\\redirect_single_layout_archive' );
 
 /**
+ * Get the layout part by post name
+ *
+ * @param array $stack An array of post names
+ * @param string $position The layout part position ('footer', 'header', 'sidebar', etc.)
+ *
+ */
+function get_layout_part_by_name( array $stack, string $position = 'wildcard' ) {
+    $layout_part = get_single_post( [
+        'post_type'      => 'layout-part',
+        'post_name__in'  => $stack,
+        'order'          => 'post_name__in',
+        'posts_per_page' => 1
+    ] );
+
+	if ( $layout_part ) {
+
+        $html = '<div class="layout-part layout-part--' . $layout_part->post_name . ' layout-part--position-' . $position . '">';
+		$html .= apply_filters( 'the_content', $layout_part->post_content );
+		$html .=  '</div>';
+
+	} else {
+
+        $html = '';
+
+    }
+
+    return $html;
+}
+
+/**
  * Get the layout part
  */
 function get_layout_part( $position ) {
@@ -158,29 +188,7 @@ function get_layout_part( $position ) {
 
     $stack = array_reverse( $stack );
 
-    $layout_part = get_posts( [
-        'post_type'      => 'layout-part',
-        'post_name__in'  => $stack,
-        'order'          => 'post_name__in',
-        'posts_per_page' => 1
-    ] );
-        
-	if ( $layout_part ) {
-
-        /**
-         * @var \WP_Post $layout_part
-         */
-        $layout_part = $layout_part[0];
-
-        $html = '<div class="layout-part layout-part--' . $layout_part->post_name . ' layout-part--position-' . $position . '">';
-		$html .= apply_filters( 'the_content', $layout_part->post_content );
-		$html .=  '</div>';
-
-	} else {
-
-        $html = '';
-
-    }
+    $html = get_layout_part_by_name( $stack, $position );
 
 	wp_reset_postdata();
 
