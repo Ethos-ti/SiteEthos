@@ -238,6 +238,11 @@ class Assets
                 }
 
                 wp_enqueue_script($handle, $src, $deps, $version, true);
+
+                if (!empty($data['localize_callback'])) {
+                    $object_name = 'hl_' . str_replace('-', '_', $handle) . '_data';
+                    wp_localize_script($handle, $object_name, $data['localize_callback']());
+                }
             }
         }
     }
@@ -268,6 +273,11 @@ class Assets
                 }
 
                 wp_enqueue_script($handle, $src, $deps, $version, true);
+
+                if (!empty($data['localize_callback'])) {
+                    $object_name = 'hl_' . str_replace('-', '_', $handle) . '_data';
+                    wp_localize_script($handle, $object_name, $data['localize_callback']());
+                }
             }
         }
     }
@@ -440,6 +450,38 @@ class Assets
                 'pre-load' => true,
                 'admin'  => true,
                 'global' => true,
+            ],
+
+            'sync-crm' => [
+                'file' => 'sync-crm.js',
+                'pre-load' => false,
+                'admin' => true,
+                'preload_callback' => function () {
+                    $screen = get_current_screen();
+                    if ($screen && $screen->is_block_editor()) {
+                        return $screen->base === 'post' && $screen->post_type === 'tribe_events';
+                    }
+                    return false;
+                },
+                'localize_callback' => function () {
+                    $screen = get_current_screen();
+
+                    if ($screen->post_type === 'tribe_events') {
+                        $project_id = get_post_meta(get_the_ID(), 'entity_fut_projeto', true);
+
+                        if (!empty($project_id)) {
+                            return [
+                                'entityName' => 'fut_projeto',
+                                'entityId' => $project_id,
+                            ];
+                        }
+                    }
+
+                    return [
+                        'entityName' => null,
+                        'entityId' => null,
+                    ];
+                }
             ],
 
             'scroll-behavior'     => [
