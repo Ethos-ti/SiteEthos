@@ -18,6 +18,8 @@ add_action( 'template_redirect', 'hacklabr\\redirect_single_layout_archive' );
 /**
  * Get the layout part by post name
  *
+ * It's a low-level utility, for edge cases. Prefer calling `get_layout_part` if possible
+ *
  * @param array $stack An array of post names
  * @param string $position The layout part position ('footer', 'header', 'sidebar', etc.)
  *
