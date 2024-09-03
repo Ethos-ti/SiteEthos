@@ -17,10 +17,6 @@
         }
 
         @media print {
-            @page {
-                size: landscape;
-            }
-
             .enabled {
                 display: none !important;
             }

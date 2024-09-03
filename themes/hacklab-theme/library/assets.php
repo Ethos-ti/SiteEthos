@@ -145,6 +145,7 @@ class Assets
     public function enqueue_styles()
     {
         add_action('wp_head', [$this, 'enqueue_inline_styles'], 99);
+        add_action('wp_head', [$this, 'add_print_style'], 99);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_generic_styles']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
     }
@@ -155,6 +156,12 @@ class Assets
             return true;
         }
         return is_callable($asset['preload_callback']) && call_user_func($asset['preload_callback']);
+    }
+
+    public function add_print_style() {
+        if (is_singular('tribe_events')) {
+            echo '<style>@media print { @page { size: landscape } }</style>';
+        }
     }
 
     public function enqueue_inline_styles()
