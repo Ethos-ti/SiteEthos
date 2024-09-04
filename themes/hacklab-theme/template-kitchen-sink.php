@@ -159,21 +159,21 @@ get_header();
     <hr/>
 
     <code>object: hamburger, open, toggle</code>
-    <svg class="hamburger" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg class="hamburger" role="img" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <title>Exibir menu</title>
         <rect width="16" height="2" x="0" y="2"/>
         <rect width="16" height="2" x="0" y="7"/>
         <rect width="16" height="2" x="0" y="12"/>
     </svg>
 
-    <svg class="hamburger hamburger--open" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg class="hamburger hamburger--open" role="img" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <title>Ocultar menu</title>
         <rect width="16" height="2" x="0" y="2"/>
         <rect width="16" height="2" x="0" y="7"/>
         <rect width="16" height="2" x="0" y="12"/>
     </svg>
 
-    <svg x-data="{ open: false }" class="hamburger" :class="{ 'hamburger--open': open }" role="image" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" @click="open = !open">
+    <svg x-data="{ open: false }" class="hamburger" :class="{ 'hamburger--open': open }" role="img" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" @click="open = !open">
         <rect width="16" height="2" x="0" y="2"/>
         <rect width="16" height="2" x="0" y="7"/>
         <rect width="16" height="2" x="0" y="12"/>

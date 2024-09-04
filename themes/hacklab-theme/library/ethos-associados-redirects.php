@@ -16,7 +16,7 @@ add_action('init', function (){
                 if($query_vars = http_build_query($_GET)){
                     $query_vars = "?{$query_vars}";
                 }
-                wp_safe_redirect(get_permalink($post_id) . "{$query_vars}");
+                wp_safe_redirect(get_permalink($post_id) . $query_vars);
                 die;
             }
 

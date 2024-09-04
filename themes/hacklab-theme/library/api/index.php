@@ -64,6 +64,20 @@ class API {
             ],
             'permission_callback' => '__return_true',
         ]);
+
+        register_rest_route('hacklabr/v2', '/crm/entity', [
+            'methods' => 'PUT',
+            'callback' => 'hacklabr\API::rest_crm_entity_callback',
+            'args' => [
+                'entityId' => [
+                    'required' => true,
+                ],
+                'entityName' => [
+                    'required' => true,
+                ]
+            ],
+            'permission_callback' => 'hacklabr\API::rest_permission_to_edit_posts',
+        ]);
     }
 
     static function send_html ($html) {
@@ -88,6 +102,15 @@ class API {
         ];
 
         return new \WP_REST_Response($response, 200);
+    }
+
+    static function rest_crm_entity_callback (\WP_REST_Request $request) {
+        $entity_id = sanitize_text_field($request->get_param('entityId'));
+        $entity_name = sanitize_text_field($request->get_param('entityName'));
+
+        \ethos\crm\sync_next_entity([$entity_name, $entity_id]);
+
+        return new \WP_REST_Response($request->get_params(), 200);
     }
 
     static function rest_forms_callback () {
