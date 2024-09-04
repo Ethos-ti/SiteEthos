@@ -557,6 +557,45 @@ function get_single_user (array $args) {
     }
 }
 
+/**
+ * Return event posts, suppressing TEC filters
+ * @param array $args The args for `get_posts`
+ * @return \WP_Post[]
+ */
+function get_tribe_events (array $args) {
+    unset($args['fields']);
+
+    $parsed_args = wp_parse_args($args, [
+        'post_type' => 'tribe_events',
+
+        // The Events Calendar can add filters that may cause a false mismatch
+        'suppress_filters' => true,
+        'tribe_remove_date_filters' => true,
+        'tribe_suppress_query_filters' => true,
+    ]);
+
+    return get_posts($parsed_args);
+}
+
+/**
+ * Return the first event from `get_posts`, suppressing TEC filters, or null if empty
+ * @param array $args The args for `get_posts`
+ */
+function get_single_tribe_event (array $args) {
+    unset($args['fields']);
+
+    $parsed_args = wp_parse_args($args, [
+        'post_type' => 'tribe_events',
+
+        // The Events Calendar can add filters that may cause a false mismatch
+        'suppress_filters' => true,
+        'tribe_remove_date_filters' => true,
+        'tribe_suppress_query_filters' => true,
+    ]);
+
+    return get_single_post($parsed_args);
+}
+
 //remove blocos do Events Calendar do Gutenberg
 function filter_allowed_block_types($allowed_block_types, $editor_context)
 {

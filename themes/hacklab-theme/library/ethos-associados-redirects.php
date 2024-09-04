@@ -9,12 +9,10 @@ function is_conteudo_url ($prefix) {
 }
 
 function build_event_url ($base_url, $args) {
-    $query_args = http_build_query($args);
-
-    if (empty($query_args)) {
-        return $base_url;
-    } else {
+    if ($query_args = http_build_query($args)) {
         return $base_url . '?' . $query_args;
+    } else {
+        return $base_url;
     }
 }
 
@@ -25,11 +23,11 @@ function redirect_legacy_event_urls () {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
 
-            $post = get_single_post([
-                'post_type' => 'tribe_events',
+            $post = get_single_tribe_event([
                 'meta_query' => [
                     [ 'key' => '_ethos_crm:fut_pf_id', 'value' => $event_id ],
                 ],
+                'order' => 'DESC',
             ]);
 
             if ($post) {
@@ -44,11 +42,11 @@ function redirect_legacy_event_urls () {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
 
-            $post = get_single_post([
-                'post_type' => 'tribe_events',
+            $post = get_single_tribe_event([
                 'meta_query' => [
                     [ 'key' => '_ethos_crm:fut_pf_id', 'value' => $event_id ],
                 ],
+                'order' => 'DESC',
             ]);
 
             if ($post) {
