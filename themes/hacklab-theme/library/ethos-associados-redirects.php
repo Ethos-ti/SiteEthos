@@ -1,59 +1,76 @@
 <?php
-add_action('init', function (){
-    if(
-        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/inscricao-evento') ||
-        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/inscricao-conferencia')
-     ) {
-        global $wpdb;
-        if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+
+namespace hacklabr;
+
+function is_conteudo_url ($prefix) {
+    $url = $_SERVER['REQUEST_URI'];
+
+    return str_starts_with($url, $prefix) || str_starts_with($url, '/conteudo' . $prefix);
+}
+
+function build_event_url ($base_url, $args) {
+    $query_args = http_build_query($args);
+
+    if (empty($query_args)) {
+        return $base_url;
+    } else {
+        return $base_url . '?' . $query_args;
+    }
+}
+
+function redirect_legacy_event_urls () {
+    $request_url = $_SERVER['REQUEST_URI'];
+
+    if (is_conteudo_url('/inscricao-evento') || is_conteudo_url('/inscricao-conferencia')) {
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
 
-            $sql = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_ethos_crm:fut_pf_id' AND meta_value = %d";
+            $post = get_single_post([
+                'post_type' => 'tribe_events',
+                'meta_query' => [
+                    [ 'key' => '_ethos_crm:fut_pf_id', 'value' => $event_id ],
+                ],
+            ]);
 
-            // procura no banco de dados o post pelo id do evento que está no metadado _ethos_crm:fut_pf_id
-            if($post_id = $wpdb->get_var($wpdb->prepare($sql, $event_id))){
+            if ($post) {
                 unset($_GET['id']);
-                if($query_vars = http_build_query($_GET)){
-                    $query_vars = "?{$query_vars}";
-                }
-                wp_safe_redirect(get_permalink($post_id) . $query_vars);
+                wp_safe_redirect(build_event_url(get_permalink($post->ID), $_GET));
                 die;
             }
-
         }
     }
 
-    if(
-        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/certificado-evento') ||
-        str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/certificado-conferencia')
-    ) {
-        global $wpdb;
-        if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+    if (is_conteudo_url('/certificado-evento') || is_conteudo_url('/certificado-conferencia')) {
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $event_id = (int) $_GET['id'];
 
-            $sql = "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_ethos_crm:fut_pf_id' AND meta_value = %d";
+            $post = get_single_post([
+                'post_type' => 'tribe_events',
+                'meta_query' => [
+                    [ 'key' => '_ethos_crm:fut_pf_id', 'value' => $event_id ],
+                ],
+            ]);
 
-            // procura no banco de dados o post pelo id do evento que está no metadado _ethos_crm:fut_pf_id
-            if($post_id = $wpdb->get_var($wpdb->prepare($sql, $event_id))){
-                wp_safe_redirect(get_permalink($post_id) . "?certificado");
+            if ($post) {
+                wp_safe_redirect(get_permalink($post->ID) . "?certificado");
                 die;
             }
 
         }
     }
 
-    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/acesso-a-pagamento')) {
-        if($query_vars = http_build_query($_GET)){
-            $query_vars = "?{$query_vars}";
+    if (str_starts_with($request_url, '/conteudo/acesso-a-pagamento')) {
+        if ($query_vars = http_build_query($_GET)) {
+            $query_vars = '?' . $query_vars;
         }
-        wp_redirect( '/acesso-a-pagamento'. "{$query_vars}", 301 );
+        wp_redirect( '/acesso-a-pagamento'. $query_vars, 301 );
         die;
     }
 
     // Redirect of old pages
-    if(str_starts_with($_SERVER['REQUEST_URI'], '/conteudo/')) {
-        wp_redirect( str_replace('/conteudo/', '/', $_SERVER['REQUEST_URI']), 301 );
-        exit();
+    if (str_starts_with($request_url, '/conteudo/')) {
+        wp_redirect(str_replace('/conteudo/', '/', $request_url), 301);
+        die;
     }
-
-});
+};
+add_action('template_redirect', 'hacklabr\\redirect_legacy_event_urls');
