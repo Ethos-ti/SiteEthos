@@ -147,3 +147,18 @@
         }
     }
 }
+
+.page-equipe{
+    background-color: red;
+    .wp-block-atbs-tabs{
+        .tabs-content{
+           .wp-block-atbs-tab>.single-tab>.wp-block-group>.wp-block-group>.wp-block-group>.wp-block-image>img {
+               border-radius: 50%;
+               height: 135px !important;
+               object-fit: cover;
+               width: 135px !important;
+               border: 1px solid red;
+           }
+        }
+    }
+}
