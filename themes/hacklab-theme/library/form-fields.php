@@ -71,6 +71,7 @@ function render_masked_field (string $name, $value, array $definition) {
         aria-errormessage="<?= $name ?>__error"
         data-mask="<?= $definition['mask'] ?>"
         <?= (!empty($definition['disabled'])) ? 'disabled' : '' ?>
+        <?= (!empty($definition['save_mask'])) ? 'data-save-mask' : '' ?>
     >
     <input
         id="<?= $name ?>"

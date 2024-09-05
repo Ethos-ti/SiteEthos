@@ -102,10 +102,12 @@ function get_registration_step1_fields () {
             'class' => '-colspan-12',
             'label' => __('CNPJ number', 'hacklabr'),
             'mask' => '00.000.000/0000-00',
+            'save_mask' => true,
             'placeholder' => __("Enter the company' CNPJ number", 'hacklabr'),
             'required' => true,
             'validate' => function ($value, $context) {
-                if (!is_numeric($value) || strlen($value) !== 14) {
+                $value = preg_replace('/[^0-9]/', '', $value);
+                if (!validate_cnpj($value)) {
                     return __('Invalid CNPJ number', 'hacklabr');
                 }
                 return true;
