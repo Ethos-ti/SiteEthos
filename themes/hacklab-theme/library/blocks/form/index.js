@@ -35,18 +35,13 @@ document.querySelectorAll('input[data-mask]').forEach((maskedEl) => {
     const unmaskedEl = document.querySelector(`input#${maskedEl.id.replace('__mask', '')}`)
 
     const maskPattern = parseMask(maskedEl.dataset.mask)
-    const saveMask = maskedEl.hasAttribute('data-save-mask')
 
     const mask = IMask(maskedEl, maskPattern)
     unmaskedEl._mask = mask
     mask.unmaskedValue = unmaskedEl.value
 
     maskedEl.addEventListener('change', () => {
-        if (saveMask) {
-            unmaskedEl.value = mask._value
-        } else {
-            unmaskedEl.value = mask.unmaskedValue
-        }
+        unmaskedEl.value = mask.unmaskedValue
     })
 })
 
