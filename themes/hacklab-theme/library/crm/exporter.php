@@ -28,7 +28,7 @@ function map_account_attributes( int $post_id ) {
         'fut_st_inscricaoestadual'  => get_meta( $post_meta, 'inscricao_estadual' ),
         'fut_st_inscricaomunicipal' => get_meta( $post_meta, 'inscricao_municipal' ),
         'fut_st_razaosocial'        => get_meta( $post_meta, 'razao_social' ),
-        'fut_pl_estado'             => BrazilianUF::fromCode( get_meta( $post_meta, 'end_estado' ) ),
+        'fut_pl_estado'             => BrazilianUF::fromCode( get_meta( $post_meta, 'end_estado', null ) ),
         'name'                      => $company_name,
         'numberofemployees'         => floatval( get_meta( $post_meta, 'num_funcionarios', 0 ) ),
         'revenue_base'              => floatval( get_meta( $post_meta, 'faturamento_anual', 0 ) ),
@@ -45,7 +45,9 @@ function map_account_attributes( int $post_id ) {
     }
 
     if ( ! $is_imported ) {
-        $attributes['fut_pl_porte'] = CompanySize::fromSlug( get_meta( $post_meta, 'porte' ) );
+        if ( $porte = get_meta( $post_meta, 'porte' ) ) {
+            $attributes['fut_pl_porte'] = CompanySize::fromSlug( $porte );
+        }
     }
 
     return $attributes;
@@ -194,7 +196,12 @@ function update_account( int $post_id, string $account_id ) {
 
         \hacklabr\update_crm_entity( 'account', $account_id, $attributes );
     } catch ( \Throwable $err ) {
-        do_action( 'logger', $err->getMessage() );
+        do_action( 'logger', [
+            'message' => $err->getMessage(),
+            'file'    => $err->getFile(),
+            'line'    => $err->getLine(),
+            'post_id' => $post_id,
+        ] );
     }
 }
 

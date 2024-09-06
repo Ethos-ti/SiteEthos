@@ -31,7 +31,11 @@ enum BrazilianUF: int {
     case SP = 21;
     case TO = 5;
 
-    public static function fromCode (string $uf): int {
+    public static function fromCode (string|null $uf): int|null {
+        if (empty($uf)) {
+            return null;
+        }
+
         return match ($uf) {
             'AC' => self::AC->value,
             'AL' => self::AL->value,
@@ -60,6 +64,7 @@ enum BrazilianUF: int {
             'SE' => self::SE->value,
             'SP' => self::SP->value,
             'TO' => self::TO->value,
+            default => null
         };
     }
 }
