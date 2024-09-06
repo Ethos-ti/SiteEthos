@@ -159,8 +159,13 @@ class Assets
     }
 
     public function add_print_style() {
-        if (is_singular('tribe_events')) {
-            echo '<style>@media print { @page { size: landscape } }</style>';
+        if (is_singular()) {
+            global $post;
+            $raw_content = $post->post_content;
+
+            if (has_shortcode($raw_content, 'ethosGeraCertificado') || has_shortcode($raw_content, 'ethosGeraCertificado2')) {
+                echo '<style>@media print { @page { size: landscape } }</style>';
+            }
         }
     }
 

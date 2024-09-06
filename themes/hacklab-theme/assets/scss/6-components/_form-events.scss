@@ -1,294 +1,254 @@
-.single-tribe {
-    &_events {
+.single-tribe_events {
+
+    #geraCertificado > h3 {
+
+        &::before {
+            content: url($path--assets + "/images/logo-ethos.png");
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+body:has(#geraCertificado) {
+
+    @media print {
+        .enabled {
+            display: none !important;
+        }
+
+        iframe {
+            display: none !important;
+
+            .ms-Stack css-109 {
+                display: none !important;
+
+                .ms-Stack {
+                    display: none !important;
+                }
+            }
+        }
+
+        header, footer, .post-header, .partners-list {
+            display: none;
+        }
+
+        main {
+            margin-right: auto;
+            margin-left: auto;
+            size: landscape;
+        }
+
+        .post-content {
+            max-width: 25cm !important;
+        }
 
         h3:not(.tabelasDiv h3) {
-            background-image: url($path--assets + "/images/logo-ethos.png" );
-            background-position: top;
-            background-size: auto;
-            background-repeat: no-repeat;
-            border-radius: $border-radius--medium;
-            color: $color--primary-dark;
-            font-size: $font-size--x-large;
-            font-weight: $font-weight--medium !important;
-            margin: 0 !important;
-            padding: $padding--large !important;
-            padding-top: 7.313rem !important;
-            width: 100% !important;
+            background: none;
+            margin-inline: auto !important;
+            padding-top: 2rem !important;
+            text-align: center;
+        }
+    }
+
+
+    #corpoScriptPre,
+    #corpoScript {
+
+        #iPayData {
+            h5 {
+                color: $color--secondary-dark !important;
+                font-size: $font-size--medium;
+            }
         }
 
-        .layout-part--footer-single {
-            display: grid;
-            grid-template-columns: auto auto;
+        #aAgree,
+        #iAgree {
+            position: relative;
+            top: 135px;
+        }
 
-            @media screen {
-                display: none;
-            }
-
+        .tabelasDiv {
             h2 {
                 color: $color--primary-dark;
-                font-size: $font-size--large;
-                font-weight: $font-weight--medium;
+                font-size: $font-size--x-large;
                 text-align: center;
             }
 
-            & > h2:nth-of-type(1) {
-                grid-row: 1;
-                grid-column: 1 / span 2;
+            h3:not(li h3) {
+                color: $color--primary-dark;
             }
 
-            & > h2:nth-of-type(2) {
-                grid-row: 3;
-                grid-column: 1;
+            h4 {
+                font-size: $font-size--medium;
             }
 
-            & > h2:nth-of-type(3) {
-                grid-row: 3;
-                grid-column: 2;
+            input[name="iSpecialNeeds"] {
+                border: 1px solid $color--high-dark;
+                border-radius: $border-radius--small;
+                margin-top: $margin--small;
+                max-width: 29.375rem;
+                padding: $padding--small;
+                width: 100% !important;
             }
 
-            & > .wp-block-group:nth-of-type(1) {
-                grid-row: 2;
-                grid-column: 1 / span 2;
-            }
+            .ulForm {
+                gap: $gap--small;
 
-            & > .wp-block-group:nth-of-type(2) {
-                grid-row: 4;
-                grid-column: 1;
-            }
-
-            & > .wp-block-group:nth-of-type(3) {
-                grid-row: 4;
-                grid-column: 2;
-            }
-        }
-
-        @media print {
-            .enabled {
-                display: none !important;
-            }
-
-            iframe {
-                display: none !important;
-
-                .ms-Stack css-109 {
-                    display: none !important;
-
-                    .ms-Stack {
-                        display: none !important;
+                form {
+                    .tableInternoC1 {
+                        border: 2px solid $color--low-pure;
+                        border-radius: $border-radius--medium;
+                        background-color: $color--low-pure !important;
+                        color: $color--high-pure;
+                        cursor: pointer;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+                        text-align: center;
+                        text-transform: uppercase;
                     }
                 }
             }
 
-            header,
-            footer {
-                display: none;
-            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
 
-            main {
-                margin-right: auto;
-                margin-left: auto;
-                size: landscape;
-            }
-
-            .post-content {
-                max-width: 25cm !important;
-            }
-
-            h3:not(.tabelasDiv h3) {
-                background: none;
-                margin-inline: auto !important;
-                padding-top: 2rem !important;
-                text-align: center;
-            }
-
-            h3:not(.tabelasDiv h3):before {
-                content: url($path--assets + "/images/logo-ethos.png");
-                display: block;
-                margin-bottom: 1rem;
-            }
-        }
-
-
-        #corpoScriptPre,
-        #corpoScript {
-
-            #iPayData {
-                h5 {
-                    color: $color--secondary-dark !important;
-                    font-size: $font-size--medium;
-                }
-            }
-
-            #aAgree,
-            #iAgree {
-                position: relative;
-                top: 135px;
-            }
-
-            .tabelasDiv {
-                h2 {
-                    color: $color--primary-dark;
-                    font-size: $font-size--x-large;
-                    text-align: center;
+                @include mobile {
+                    padding: 0;
                 }
 
-                h3:not(li h3) {
-                    color: $color--primary-dark;
-                }
-
-                h4 {
-                    font-size: $font-size--medium;
-                }
-
-                input[name="iSpecialNeeds"] {
-                    border: 1px solid $color--high-dark;
-                    border-radius: $border-radius--small;
-                    margin-top: $margin--small;
-                    max-width: 29.375rem;
-                    padding: $padding--small;
-                    width: 100% !important;
-                }
-
-                .ulForm {
-                    gap: $gap--small;
-
-                    form {
-                        .tableInternoC1 {
-                            border: 2px solid $color--low-pure;
-                            border-radius: $border-radius--medium;
-                            background-color: $color--low-pure !important;
-                            color: $color--high-pure;
-                            cursor: pointer;
-                            font-size: $font-size--small;
-                            font-weight: $font-weight--bold;
-                            text-align: center;
-                            text-transform: uppercase;
-                        }
-                    }
-                }
-
-                ul {
+                li {
                     display: flex;
-                    flex-direction: column;
+                    gap: $gap--small;
                     width: 100%;
 
-                    @include mobile {
-                        padding: 0;
-                    }
 
-                    li {
-                        display: flex;
-                        gap: $gap--small;
-                        width: 100%;
-
-
-                        h3 {
-                            font-size: $font-size--x-small;
-                            padding-bottom: $padding--small !important;
-                        }
-
-                        h4 {
-                            font-weight: $font-weight--bold;
-                            font-size: $font-size--small;
-                        }
-
-                        h5 {
-                            color: $color--direitos-humanos !important;
-                            flex: 1;
-                        }
-
-                        input[type="text"], select {
-                            border: 1px solid $color--high-dark;
-                            border-radius: $border-radius--small;
-                            height: 2rem;
-                            max-width: size(470);
-                            padding: 0 $padding--small;
-                            flex: 2;
-                        }
-
-                        input[alt="DDD"] {
-                            max-width: size(50) !important;
-                        }
-
-                        input[type="submit"] {
-                            border: 2px solid $color--low-pure;
-                            border-radius: $border-radius--medium;
-                            background-color: $color--low-pure;
-                            color: $color--high-pure;
-                            cursor: pointer;
-                            font-size: $font-size--small;
-                            font-weight: $font-weight--bold;
-                            text-align: center;
-                            text-transform: uppercase;
-                            width: 10rem !important;
-                        }
-
-                        #lbliTelURamal1 {
-                            display: flex;
-                            font-size: $font-size--small;
-                            font-weight: $font-weight--bold;
-
-                            input[name="iTelURamal1"] {
-                                width: 3rem !important;
-                            }
-                        }
-
-                    }
-                }
-
-                #frmDadosEmpresa {
-                    display: flex;
-                    justify-content: center;
-                    margin-top: $margin--large*4;
-
-                    input[type="submit"] {
-                        border: 2px solid $color--low-pure;
-                        border-radius: $border-radius--medium;
-                        background-color: $color--low-pure;
-                        color: $color--high-pure;
-                        cursor: pointer;
-                        font-size: $font-size--small;
-                        font-weight: $font-weight--bold;
-                        text-align: center;
-                        text-transform: uppercase;
-                        width: 21rem !important;
-                    }
-                }
-
-                #frmDadosPre {
-                    align-items: center;
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                #frmDadosInscrito {
-                    display: flex;
-                    flex-direction: column;
-                    gap: $gap--medium;
-                    align-items: center;
-
-                    input[type="submit"] {
-                        border: 2px solid $color--low-pure;
-                        border-radius: $border-radius--medium;
-                        background-color: $color--low-pure;
-                        color: $color--high-pure;
-                        cursor: pointer;
-                        font-size: $font-size--small;
-                        font-weight: $font-weight--bold;
-                        text-align: center;
-                        text-transform: uppercase;
-                        width: 8rem !important;
-                    }
-                }
-
-                #iDadosEmpresa {
                     h3 {
-                        color: $color--primary-dark;
-                        margin-top: $margin--large;
+                        font-size: $font-size--x-small;
+                        padding-bottom: $padding--small !important;
                     }
+
+                    h4 {
+                        font-weight: $font-weight--bold;
+                        font-size: $font-size--small;
+                    }
+
+                    h5 {
+                        color: $color--direitos-humanos !important;
+                        flex: 1;
+                    }
+
+                    input[type="text"], select {
+                        border: 1px solid $color--high-dark;
+                        border-radius: $border-radius--small;
+                        height: 2rem;
+                        max-width: size(470);
+                        padding: 0 $padding--small;
+                        flex: 2;
+                    }
+
+                    input[alt="DDD"] {
+                        max-width: size(50) !important;
+                    }
+
+                    input[type="submit"] {
+                        border: 2px solid $color--low-pure;
+                        border-radius: $border-radius--medium;
+                        background-color: $color--low-pure;
+                        color: $color--high-pure;
+                        cursor: pointer;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+                        text-align: center;
+                        text-transform: uppercase;
+                        width: 10rem !important;
+                    }
+
+                    #lbliTelURamal1 {
+                        display: flex;
+                        font-size: $font-size--small;
+                        font-weight: $font-weight--bold;
+
+                        input[name="iTelURamal1"] {
+                            width: 3rem !important;
+                        }
+                    }
+
+                }
+            }
+
+            #frmDadosEmpresa {
+                display: flex;
+                justify-content: center;
+                margin-top: $margin--large*4;
+
+                input[type="submit"] {
+                    border: 2px solid $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    background-color: $color--low-pure;
+                    color: $color--high-pure;
+                    cursor: pointer;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 21rem !important;
+                }
+            }
+
+            #frmDadosPre {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #frmDadosInscrito {
+                display: flex;
+                flex-direction: column;
+                gap: $gap--medium;
+                align-items: center;
+
+                input[type="submit"] {
+                    border: 2px solid $color--low-pure;
+                    border-radius: $border-radius--medium;
+                    background-color: $color--low-pure;
+                    color: $color--high-pure;
+                    cursor: pointer;
+                    font-size: $font-size--small;
+                    font-weight: $font-weight--bold;
+                    text-align: center;
+                    text-transform: uppercase;
+                    width: 8rem !important;
+                }
+            }
+
+            #iDadosEmpresa {
+                h3 {
+                    color: $color--primary-dark;
+                    margin-top: $margin--large;
                 }
             }
         }
+    }
+}
+
+#geraCertificado {
+
+    & > h3 {
+        background-image: url($path--assets + "/images/logo-ethos.png" );
+        background-position: top;
+        background-size: auto;
+        background-repeat: no-repeat;
+        border-radius: $border-radius--medium;
+        color: $color--primary-dark;
+        font-size: $font-size--x-large;
+        font-weight: $font-weight--medium !important;
+        margin: 0 !important;
+        padding: $padding--large !important;
+        padding-top: 7.313rem !important;
+        width: 100% !important;
     }
 }
 
