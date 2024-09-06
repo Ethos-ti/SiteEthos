@@ -140,7 +140,7 @@ function map_lead_attributes( int $post_id ) {
         'fut_st_nomecompleto'        => $author_name,
         'fut_st_nomefantasiaempresa' => $company_name,
         'fut_st_sobrenome'           => $last_name,
-        'leadsourcecode'             => 4, // Outros
+        'leadsourcecode'             => 6, // Outros
         'websiteurl'                 => get_meta( $post_meta, 'website' ),
         'yomifirstname'              => $first_name,
         'yomifullname'               => $company_name,
