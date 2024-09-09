@@ -35,19 +35,17 @@ if( isset($recurrence['rules']) ) {
 
             if($days) {
                 $week_days = array(
-                    '1' => 'Seguda-feira',
-                    '2' => 'Terca-feira',
-                    '3' => 'Quarta-feira',
-                    '4' => 'Quinta-feira',
-                    '5' => 'Sexta-feira',
-                    '6' => 'Sábado',
-                    '7' => 'Domingo',
+                    '1' => __('Monday', 'hacklabr'),
+                    '2' => __('Tuesday', 'hacklabr'),
+                    '3' => __('Wednesday', 'hacklabr'),
+                    '4' => __('Thursday', 'hacklabr'),
+                    '5' => __('Friday', 'hacklabr'),
+                    '6' => __('Saturday', 'hacklabr'),
+                    '7' => __('Sunday', 'hacklabr')
                 );
 
                 $day_names = array_map(function($day) use ($week_days) {
-
                     return isset($week_days[$day]) ? $week_days[$day] : '';
-
                 }, $days);
 
                 foreach ($day_names as $day_name) {
@@ -129,7 +127,7 @@ if( isset($recurrence['rules']) ) {
 
                     <?php if ($recurrence_type) : ?>
                         <div class="event-metadada__recurrence__type">
-                            <p class="-bold"><?php _e('Event type', 'hacklabr') ?></p>
+                            <p class="-bold"><?php _e('Recurrence', 'hacklabr') ?></p>
                             <?php echo apply_filters('the_content', $recurrence_type); ?>
                         </div>
                     <?php endif; ?>
