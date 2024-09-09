@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2024-08-20T19:56:36+00:00\n"
-"PO-Revision-Date: 2024-08-20 17:00-0300\n"
+"POT-Creation-Date: 2024-09-09T19:48:24+00:00\n"
+"PO-Revision-Date: 2024-09-09 17:13-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Domain: hacklabr\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Domain: hacklabr\n"
 "X-Poedit-Basepath: .\n"
 
@@ -58,7 +58,7 @@ msgid "Contact"
 msgstr "Contato"
 
 #: archive-publicacao.php:46 archive.php:46
-#: taxonomy-tipo_publicacao-guias-tematicos.php:48 taxonomy.php:49
+#: taxonomy-tipo_publicacao-guias-tematicos.php:48 taxonomy.php:52
 msgid "All the themes"
 msgstr "Todos os temas"
 
@@ -126,7 +126,6 @@ msgstr "Situação"
 #: library/blocks/my-plan-table/my-plan-table.php:22
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:47
-#: dist/blocks/my-plan-table-row/editor.js:97
 msgid "Benefits"
 msgstr "Benefícios"
 
@@ -175,29 +174,29 @@ msgstr "Selecionar plano"
 msgid "Selected plan"
 msgstr "Plano selecionado"
 
-#: library/forms/custom-forms.php:76
+#: library/forms/custom-forms.php:74
 msgid "Main contacts"
 msgstr "Contatos principais"
 
-#: library/forms/custom-forms.php:77
+#: library/forms/custom-forms.php:75
 msgid "This contact will receive all communications by Ethos."
 msgstr "Este contato vai receber todas as comunicações do Ethos."
 
-#: library/forms/custom-forms.php:78
+#: library/forms/custom-forms.php:76
 msgid "It's possible to have more than one main contact."
 msgstr "É possível ter mais de um contato principal."
 
-#: library/forms/custom-forms.php:99 library/forms/custom-forms.php:129
-#: library/forms/custom-forms.php:144 library/forms/custom-forms.php:185
+#: library/forms/custom-forms.php:97 library/forms/custom-forms.php:127
+#: library/forms/custom-forms.php:142 library/forms/custom-forms.php:183
 #: library/forms/registration.php:692
 msgid "Add contact"
 msgstr "Adicionar contato"
 
-#: library/forms/custom-forms.php:107
+#: library/forms/custom-forms.php:105
 msgid "Financial contact"
 msgstr "Contato financeiro"
 
-#: library/forms/custom-forms.php:108
+#: library/forms/custom-forms.php:106
 msgid ""
 "This contact will receive documents and communications related to the "
 "membership payments."
@@ -205,62 +204,62 @@ msgstr ""
 "Este contato receberá documentos e comunicações referentes à contribuição "
 "associativa."
 
-#: library/forms/custom-forms.php:138
+#: library/forms/custom-forms.php:136
 msgid "Finish"
 msgstr "Finalizar"
 
-#: library/forms/custom-forms.php:186
+#: library/forms/custom-forms.php:184
 msgid "You can only add up to three administrators."
 msgstr "Você só pode adicionar até três administradores."
 
-#: library/forms/custom-forms.php:187
+#: library/forms/custom-forms.php:185
 msgid "Your team must have one approver."
 msgstr "Sua equipe deve ter um aprovador."
 
-#: library/forms/custom-forms.php:188
+#: library/forms/custom-forms.php:186
 msgid ""
 "You can have up to three administrators, do you want to confirm the change?"
 msgstr "Você pode ter até três administradores. Quer confirmar a alteração?"
 
-#: library/forms/custom-forms.php:189
+#: library/forms/custom-forms.php:187
 msgid "Are you sure you want to delete the user?"
 msgstr "Deseja remover este usuário?"
 
-#: library/forms/custom-forms.php:190
+#: library/forms/custom-forms.php:188
 msgid "Edit contact"
 msgstr "Editar contato"
 
-#: library/forms/custom-forms.php:191
+#: library/forms/custom-forms.php:189
 msgid ""
 "You can only have one approver by team, do you want to replace the approver?"
 msgstr ""
 "Você pode ter apenas um aprovador por equipe, deseja substituir o aprovador?"
 
-#: library/forms/custom-forms.php:307
+#: library/forms/custom-forms.php:304
 msgid "Add one more contact"
 msgstr "Adicionar mais um contato"
 
-#: library/forms/custom-forms.php:315
+#: library/forms/custom-forms.php:312
 msgid "Name"
 msgstr "Nome"
 
-#: library/forms/custom-forms.php:316 library/forms/registration.php:365
+#: library/forms/custom-forms.php:313 library/forms/registration.php:365
 msgid "Email"
 msgstr "Email"
 
-#: library/forms/custom-forms.php:317
+#: library/forms/custom-forms.php:314
 msgid "Approver"
 msgstr "Aprovador"
 
-#: library/forms/custom-forms.php:318
+#: library/forms/custom-forms.php:315
 msgid "Administrator"
 msgstr "Administrador"
 
-#: library/forms/custom-forms.php:319 library/forms/custom-forms.php:339
+#: library/forms/custom-forms.php:316 library/forms/custom-forms.php:336
 msgid "Edit"
 msgstr "Editar"
 
-#: library/forms/custom-forms.php:320 library/forms/custom-forms.php:344
+#: library/forms/custom-forms.php:317 library/forms/custom-forms.php:341
 msgid "Delete"
 msgstr "Remover"
 
@@ -272,20 +271,20 @@ msgstr "Email inválido"
 msgid "Email is already in use"
 msgstr "Email já está em uso"
 
-#: library/forms/edit-organization.php:117
+#: library/forms/edit-organization.php:118
 msgid "Edit organization"
 msgstr "Editar organização"
 
-#: library/forms/edit-organization.php:122
-#: library/forms/edit-organization.php:128
+#: library/forms/edit-organization.php:123
+#: library/forms/edit-organization.php:129
 msgid "Edit contacts"
 msgstr "Editar contatos"
 
-#: library/forms/edit-organization.php:128
+#: library/forms/edit-organization.php:129
 msgid "(hidden)"
 msgstr "(oculto)"
 
-#: library/forms/edit-organization.php:133
+#: library/forms/edit-organization.php:134
 msgid "Edit organization finances"
 msgstr "Editar finanças da organização"
 
@@ -716,7 +715,7 @@ msgstr "Registro de membro - Etapa 4"
 msgid "Member registration - step 5"
 msgstr "Registro de membro - Etapa 5"
 
-#: library/forms/registration.php:938
+#: library/forms/registration.php:937
 msgid "Membership to Ethos Institute"
 msgstr "Inscrição no Instituto Ethos"
 
@@ -744,7 +743,7 @@ msgstr ""
 msgid "Requests"
 msgstr "Solicitações"
 
-#: library/membership.php:206
+#: library/membership.php:175
 msgid "Organizations"
 msgstr "Organizações"
 
@@ -813,39 +812,67 @@ msgstr "buscar"
 msgid "New search"
 msgstr "Nova busca"
 
-#: single-evento.php:86 single.php:49 template-parts/post-card.php:81
+#: single-evento.php:38
+msgid "Monday"
+msgstr "Segunda-feira"
+
+#: single-evento.php:39
+msgid "Tuesday"
+msgstr "Terça-feira"
+
+#: single-evento.php:40
+msgid "Wednesday"
+msgstr "Quarta-feira"
+
+#: single-evento.php:41
+msgid "Thursday"
+msgstr "Quinta-feira"
+
+#: single-evento.php:42
+msgid "Friday"
+msgstr "Sexta-feira"
+
+#: single-evento.php:43
+msgid "Saturday"
+msgstr "Sábado"
+
+#: single-evento.php:44
+msgid "Sunday"
+msgstr "Domingo"
+
+#: single-evento.php:84 single.php:49 template-parts/post-card.php:81
 msgid "Published in "
 msgstr "Publicado em "
 
-#: single-evento.php:100
+#: single-evento.php:98
 msgid "Start"
 msgstr "Início"
 
-#: single-evento.php:109
+#: single-evento.php:107
 msgid "End"
 msgstr "Fim"
 
-#: single-evento.php:115
+#: single-evento.php:113
 msgid "Workload"
 msgstr "Carga horária total"
 
-#: single-evento.php:121
+#: single-evento.php:119
 msgid "Investment"
 msgstr "Investimento"
 
-#: single-evento.php:132
-msgid "Event type"
-msgstr "Tipo de evento"
+#: single-evento.php:130
+msgid "Recurrence"
+msgstr "Recorrência"
 
-#: single-evento.php:139
+#: single-evento.php:137
 msgid "Number of events"
 msgstr "Quantidade de eventos"
 
-#: single-evento.php:147
+#: single-evento.php:145
 msgid "Weekday"
 msgstr "Dia da semana"
 
-#: single-evento.php:163
+#: single-evento.php:161
 msgid "Local"
 msgstr "Local"
 
@@ -929,6 +956,18 @@ msgstr "Autor:%s"
 msgid "Membership registration finished"
 msgstr "Cadastro de membro finalizado"
 
+#: assets/javascript/functionalities/gutenberg/icon.js:64
+#: dist/js/functionalities/gutenberg.js:29
+#: dist/js/functionalities/gutenberg.js:2510
+msgid "Iconify ID"
+msgstr "ID do Iconify"
+
+#: assets/javascript/functionalities/sync-crm.js:36
+#: assets/javascript/functionalities/sync-crm.js:39
+#: dist/js/functionalities/sync-crm.js:29
+msgid "Sync with CRM"
+msgstr "Sincronizar com o CRM"
+
 #: dist/blocks/banner-with-image/editor.js:29
 #: dist/blocks/card-header/editor.js:19 dist/blocks/download-image/editor.js:29
 #: library/blocks/banner-with-image/editor.js:11
@@ -945,8 +984,6 @@ msgstr "Conteúdo do cabeçalho"
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:23
-#: dist/blocks/banner-with-image/editor.js:142
-#: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr "Layout"
 
@@ -955,33 +992,24 @@ msgstr "Layout"
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/banner-with-image/editor.js:28
 #: library/blocks/shared/SelectImage.js:32
-#: dist/blocks/banner-with-image/editor.js:96
-#: dist/blocks/banner-with-image/editor.js:145
-#: dist/blocks/card-header/editor.js:83 dist/blocks/download-image/editor.js:96
 msgid "Image"
 msgstr "Imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:15
-#: dist/blocks/banner-with-image/editor.js:79
-#: dist/blocks/card-header/editor.js:66 dist/blocks/download-image/editor.js:79
 msgid "Change image"
 msgstr "Alterar imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:18
-#: dist/blocks/banner-with-image/editor.js:82
-#: dist/blocks/card-header/editor.js:69 dist/blocks/download-image/editor.js:82
 msgid "Remove image"
 msgstr "Remover imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:24
-#: dist/blocks/banner-with-image/editor.js:88
-#: dist/blocks/card-header/editor.js:75 dist/blocks/download-image/editor.js:88
 msgid "Select image"
 msgstr "Selecionar imagem"
 
@@ -991,201 +1019,182 @@ msgid "Body content"
 msgstr "Conteúdo do corpo"
 
 #: dist/blocks/card-header/editor.js:19 library/blocks/card-header/editor.js:41
-#: dist/blocks/card-header/editor.js:145
 msgid "Background image"
 msgstr "Imagem de fundo"
 
 #: dist/blocks/form/editor.js:19 library/blocks/form/editor.js:43
-#: dist/blocks/form/editor.js:1383
 msgid "Select option"
 msgstr "Selecione a opção"
 
 #: dist/blocks/form/editor.js:19 library/blocks/form/editor.js:48
-#: library/blocks/form/editor.js:50 dist/blocks/form/editor.js:1388
-#: dist/blocks/form/editor.js:1390
+#: library/blocks/form/editor.js:50
 msgid "Form"
 msgstr "Formulário"
 
 #: dist/blocks/my-payments/editor.js:19 library/blocks/my-payments/editor.js:13
-#: dist/blocks/my-payments/editor.js:63
 msgid "My Payments"
 msgstr "Meus pagamentos"
 
 #: dist/blocks/my-plan-table-row/editor.js:19
 #: library/blocks/my-plan-table-row/editor.js:11
 #: library/blocks/my-plan-table-row/editor.js:62
-#: dist/blocks/my-plan-table-row/editor.js:61
-#: dist/blocks/my-plan-table-row/editor.js:112
 msgid "Custom text"
 msgstr "Texto customizado"
 
 #: dist/blocks/my-plan-table/editor.js:19
 #: library/blocks/my-plan-table/editor.js:28
-#: dist/blocks/my-plan-table/editor.js:78
 msgid "My Plan - Table"
 msgstr "Meu Plano - Tabela"
 
 #: dist/blocks/my-plan/editor.js:19 library/blocks/my-plan/editor.js:22
-#: dist/blocks/my-plan/editor.js:72
 msgid "My Plan"
 msgstr "Meu Plano"
 
+#: dist/blocks/payments-history/editor.js:19
+msgid "Payments history"
+msgstr "Histórico de pagamentos"
+
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:40
-#: dist/blocks/posts-grid/editor.js:1931
 msgid "Grid columns"
 msgstr "Colunas do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:49
-#: dist/blocks/posts-grid/editor.js:1940
 msgid "Grid rows"
 msgstr "Linhas do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:58
-#: dist/blocks/posts-grid/editor.js:1949
 msgid "Grid gap"
 msgstr "Espaçamento do grid"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:66
-#: dist/blocks/posts-grid/editor.js:1957
+#: dist/blocks/posts-grid/editor.js:1693
 msgid "Hide author"
 msgstr "Ocultar autor"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:74
-#: dist/blocks/posts-grid/editor.js:1965
+#: dist/blocks/posts-grid/editor.js:1701
 msgid "Hide categories"
 msgstr "Ocultar categorias"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:82
-#: dist/blocks/posts-grid/editor.js:1973
+#: dist/blocks/posts-grid/editor.js:1709
 msgid "Hide date"
 msgstr "Ocultar data"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:90
-#: dist/blocks/posts-grid/editor.js:1981
+#: dist/blocks/posts-grid/editor.js:1717
 msgid "Hide excerpt"
 msgstr "Ocultar resumo"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:98
-#: dist/blocks/posts-grid/editor.js:1989
 msgid "Show taxonomies"
 msgstr "Mostrar taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:11
-#: dist/blocks/posts-grid/editor.js:1502
+#: dist/blocks/posts-grid/editor.js:1498
 msgid "Query"
 msgstr "Consulta"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:35
-#: dist/blocks/posts-grid/editor.js:1526
+#: dist/blocks/posts-grid/editor.js:1522
 msgid "Show children posts?"
 msgstr "Mostar posts filhos?"
 
 #: dist/blocks/posts-grid/editor.js:30 library/blocks/shared/QueryPanel.js:79
-#: dist/blocks/posts-grid/editor.js:1570
+#: dist/blocks/posts-grid/editor.js:1566
 msgid "Filter posts to not display"
 msgstr "Filtre as postagens para não serem exibidas"
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:21
-#: dist/blocks/posts-grid/editor.js:1632
+#: dist/blocks/posts-grid/editor.js:1628
 msgid "Card model"
 msgstr "Modelo de card"
 
 #: dist/blocks/posts-grid/editor.js:41
 #: library/blocks/shared/SelectCardModel.js:26
-#: dist/blocks/posts-grid/editor.js:1637
+#: dist/blocks/posts-grid/editor.js:1633
 msgctxt "card"
 msgid "Default model"
 msgstr "Modelo padrão"
 
 #: dist/blocks/posts-grid/editor.js:52
 #: library/blocks/shared/SelectCardModifier.js:29
-#: dist/blocks/posts-grid/editor.js:1678
 msgid "Card modifier"
 msgstr "Modificador do card"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:5
-#: dist/blocks/posts-grid/editor.js:1345
+#: dist/blocks/posts-grid/editor.js:1341
 msgid "OR"
 msgstr "OU"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:6
-#: dist/blocks/posts-grid/editor.js:1346
+#: dist/blocks/posts-grid/editor.js:1342
 msgid "AND"
 msgstr "E"
 
 #: dist/blocks/posts-grid/editor.js:63 library/blocks/shared/SelectCompare.js:9
-#: dist/blocks/posts-grid/editor.js:1349
+#: dist/blocks/posts-grid/editor.js:1345
 msgid "Compare terms"
 msgstr "Comparar termos"
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:21
-#: dist/blocks/posts-grid/editor.js:1381
 msgid "Post type"
 msgstr "Tipo de post"
 
 #: dist/blocks/posts-grid/editor.js:74
 #: library/blocks/shared/SelectPostType.js:26
-#: dist/blocks/posts-grid/editor.js:1386
+#: dist/blocks/posts-grid/editor.js:1382
 msgid "No post type"
 msgstr "Nenhum tipo de postagem"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:8
-#: dist/blocks/posts-grid/editor.js:1742
 msgctxt "size"
 msgid "Large"
 msgstr "Grande"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:9
-#: dist/blocks/posts-grid/editor.js:1743
 msgctxt "size"
 msgid "Medium"
 msgstr "Médio"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:10
-#: dist/blocks/posts-grid/editor.js:1744
 msgctxt "size"
 msgid "Small"
 msgstr "Pequeno"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:11
-#: dist/blocks/posts-grid/editor.js:1745
 msgctxt "size"
 msgid "Extra Large"
 msgstr "Muito Grande"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:12
-#: dist/blocks/posts-grid/editor.js:1746
 msgctxt "size"
 msgid "Extra Small"
 msgstr "Muito Pequeno"
 
 #: dist/blocks/posts-grid/editor.js:85 library/blocks/shared/SelectSize.js:60
-#: dist/blocks/posts-grid/editor.js:1794
 msgid "Size"
 msgstr "Tamanho"
 
 #: dist/blocks/posts-grid/editor.js:96
 #: library/blocks/shared/SelectTaxonomies.js:29
-#: dist/blocks/posts-grid/editor.js:1836
 msgid "Taxonomies"
 msgstr "Taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:21
-#: dist/blocks/posts-grid/editor.js:1419
 msgid "Taxonomy"
 msgstr "Taxonomia"
 
 #: dist/blocks/posts-grid/editor.js:107
 #: library/blocks/shared/SelectTaxonomy.js:26
-#: dist/blocks/posts-grid/editor.js:1424
+#: dist/blocks/posts-grid/editor.js:1420
 msgid "No taxonomy"
 msgstr "Sem taxonomia"
 
 #: dist/blocks/posts-grid/editor.js:118 library/blocks/shared/SelectTerms.js:9
-#: dist/blocks/posts-grid/editor.js:1446
 msgid "Terms"
 msgstr "Termos"
 
@@ -1214,40 +1223,37 @@ msgstr "Leia mais"
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:32
-#: dist/blocks/steps-viewer/editor.js:97
 msgid "Steps"
 msgstr "Etapas"
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:35
-#: dist/blocks/steps-viewer/editor.js:100
 msgid "Current step"
 msgstr "Etapa atual"
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:45
-#: dist/blocks/steps-viewer/editor.js:110
 msgid "Last step"
 msgstr "Última etapa"
 
 #: dist/blocks/steps-viewer/editor.js:29
 #: library/blocks/steps-viewer/editor.js:55
 #: library/blocks/steps-viewer/editor.js:71
-#: dist/blocks/steps-viewer/editor.js:120
-#: dist/blocks/steps-viewer/editor.js:136
 msgid "Step %s of %s"
 msgstr "Etapa %s de %s"
 
 #: dist/blocks/subscription/editor.js:19
 #: library/blocks/subscription/editor.js:13
-#: dist/blocks/subscription/editor.js:63
 msgid "Subscription"
 msgstr "Inscrição"
 
-#: dist/js/functionalities/gutenberg.js:29
-#: dist/js/functionalities/gutenberg.js:2510
-msgid "Iconify ID"
-msgstr "ID do Iconify"
+#: dist/blocks/posts-grid/editor.js:1675
+msgid "Cards per row"
+msgstr "Cards por linha"
+
+#: dist/blocks/posts-grid/editor.js:1684
+msgid "Cards rows"
+msgstr "Linhas do grid"
 
 #: library/blocks/banner-with-image/block.json
 msgctxt "block title"
@@ -1644,8 +1650,8 @@ msgctxt "Font family name"
 msgid "Title"
 msgstr "Título"
 
-#~ msgid "Payments history"
-#~ msgstr "Histórico de pagamentos"
+#~ msgid "Event type"
+#~ msgstr "Tipo de evento"
 
 #~ msgid "Invoice area"
 #~ msgstr "Área de comprovante"
