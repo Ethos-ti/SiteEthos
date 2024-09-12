@@ -1,57 +1,5 @@
 .single-tribe_events {
 
-    #geraCertificado > h3 {
-
-        &::before {
-            content: url($path--assets + "/images/logo-ethos.png");
-            display: block;
-            margin-bottom: 1rem;
-        }
-    }
-}
-
-body:has(#geraCertificado) {
-
-    @media print {
-        .enabled {
-            display: none !important;
-        }
-
-        iframe {
-            display: none !important;
-
-            .ms-Stack css-109 {
-                display: none !important;
-
-                .ms-Stack {
-                    display: none !important;
-                }
-            }
-        }
-
-        header, footer, .post-header, .partners-list {
-            display: none;
-        }
-
-        main {
-            margin-right: auto;
-            margin-left: auto;
-            size: landscape;
-        }
-
-        .post-content {
-            max-width: 25cm !important;
-        }
-
-        h3:not(.tabelasDiv h3) {
-            background: none;
-            margin-inline: auto !important;
-            padding-top: 2rem !important;
-            text-align: center;
-        }
-    }
-
-
     #corpoScriptPre,
     #corpoScript {
 
@@ -230,6 +178,57 @@ body:has(#geraCertificado) {
                     margin-top: $margin--large;
                 }
             }
+        }
+    }
+
+    #geraCertificado > h3 {
+
+        &::before {
+            content: url($path--assets + "/images/logo-ethos.png");
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+body:has(#geraCertificado) {
+
+    @media print {
+        .enabled {
+            display: none !important;
+        }
+
+        iframe {
+            display: none !important;
+
+            .ms-Stack css-109 {
+                display: none !important;
+
+                .ms-Stack {
+                    display: none !important;
+                }
+            }
+        }
+
+        header, footer, .post-header, .partners-list {
+            display: none;
+        }
+
+        main {
+            margin-right: auto;
+            margin-left: auto;
+            size: landscape;
+        }
+
+        .post-content {
+            max-width: 25cm !important;
+        }
+
+        h3:not(.tabelasDiv h3) {
+            background: none;
+            margin-inline: auto !important;
+            padding-top: 2rem !important;
+            text-align: center;
         }
     }
 }
