@@ -171,6 +171,9 @@
                         .tribe-events-calendar-list__event-featured-image-link{
                             .tribe-events-calendar-list__event-featured-image{
                                 aspect-ratio: 12 / 12;
+                                object-fit: cover;
+                                position: relative;
+                                top: 30px;
                             }
                         }
                     }
@@ -253,6 +256,7 @@
                 .tribe-events-calendar-latest-past__event-featured-image-link{
                     .tribe-events-calendar-latest-past__event-featured-image{
                         aspect-ratio: 12 / 12;
+                        object-fit: cover;
                     }
                 }
             }
