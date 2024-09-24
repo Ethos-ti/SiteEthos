@@ -224,6 +224,7 @@ body:has(#geraCertificado) {
 
         .post-content {
             max-width: 25cm !important;
+            margin-bottom: 0 !important;
         }
 
         h3:not(.tabelasDiv h3) {
@@ -249,8 +250,6 @@ body:has(#geraCertificado) {
         padding: $padding--large !important;
         padding-top: 7.313rem !important;
         width: 100% !important;
-        display: flex;
-        justify-content: center;
     }
 }
 
