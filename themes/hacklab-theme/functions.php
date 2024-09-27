@@ -45,3 +45,24 @@ add_action( 'init', function() {
         die;
     }
 }, 150 );
+
+/**
+ * Updates the term counts for the specified terms and taxonomy.
+ * This function calls the `wp_update_term_count_now()` function to update the term counts.
+ *
+ * @example https://domain.com/?update_terms_count=1&terms=5,10&taxonomy=category
+ */
+add_action( 'init', function() {
+
+    if ( ! current_user_can( 'manage_options' ) )
+        return;
+
+    if ( isset( $_GET['update_terms_count'] ) && isset( $_GET['terms'] ) && isset( $_GET['taxonomy'] ) ) {
+        $terms = array_map( 'intval', explode( ',', $_GET['terms'] ) );
+        $taxonomy = sanitize_text_field( $_GET['taxonomy'] );
+        echo "<pre>";
+        wp_update_term_count_now( $terms, $taxonomy );
+        echo "Termos atualizados com sucesso.";
+        die;
+    }
+}, 150 );
