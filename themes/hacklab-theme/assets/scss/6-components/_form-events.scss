@@ -28,6 +28,9 @@
         }
 
         .tabelasDiv {
+            position: relative;
+            top: -100px;
+
             h2 {
                 color: $color--primary-dark;
                 font-size: $font-size--x-large;
@@ -200,7 +203,6 @@ body:has(#geraCertificado) {
             display: none;
         }
     }
-
 
     @media print {
         .enabled {
