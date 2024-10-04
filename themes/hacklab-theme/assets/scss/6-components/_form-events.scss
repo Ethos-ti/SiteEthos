@@ -195,6 +195,13 @@
 
 body:has(#geraCertificado) {
 
+    #app{
+        .post-header__excerpt{
+            display: none;
+        }
+    }
+
+
     @media print {
         .enabled {
             display: none !important;
