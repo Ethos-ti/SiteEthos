@@ -10,6 +10,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 - Adiciona função para atualizar contagem de termos de uma taxonomia
 
+- Pagina de associados - Inclusão de logos e tabelas, via blocos ( Replicados do shortcode CRM )
+
 ### Changed
 
 ### Fixed

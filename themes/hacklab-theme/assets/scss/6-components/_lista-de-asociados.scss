@@ -1,0 +1,24 @@
+.page-lista-de-associadas, .page-associados{
+    .post-content > h2{
+        margin-bottom: 1rem;
+        color: $color--primary-dark;
+        font-size: $font-size--x-large;
+        font-weight: $font-weight--medium;
+        line-height: 1;
+        text-align: center;
+    }
+    .wp-block-gallery {
+        &.has-nested-images{
+            figure{
+                max-width: 100%;
+                &.wp-block-image{
+                    align-items: center;
+                    img{
+                        max-width: 96px !important;
+                    }
+                }
+
+            }
+        }
+    }
+}
