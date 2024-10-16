@@ -8,15 +8,23 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Added
 
-- Adiciona função para atualizar contagem de termos de uma taxonomia
-
-- Pagina de associados - Inclusão de logos e tabelas, via blocos ( Replicados do shortcode CRM )
-
 ### Changed
 
 ### Fixed
 
 ### Removed
+
+## [v1.1.7] - 2024-10-16
+
+### Added
+
+- Adiciona função para atualizar contagem de termos de uma taxonomia
+
+- Pagina de associados - Inclusão de logos e tabelas, via blocos ( Replicados do shortcode CRM )
+
+### Fixed
+
+- Fix: Remove a margem superior de elementos vazios para garantir espaçamento consistente
 
 ## [v1.1.3] - 2024-09-13
 
