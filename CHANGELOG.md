@@ -12,6 +12,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Fixed
 
+- Correção de bug na sincronização dos contatos adicionasi da organização
+
 ### Removed
 
 ## [v1.1.7] - 2024-10-16
