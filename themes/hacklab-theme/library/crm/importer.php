@@ -536,7 +536,7 @@ function update_from_contact( Entity $contact, Entity $account, \WP_User $user )
         'ID' => $user->ID,
         'display_name' => $user_meta['nome_completo'],
         'user_email' => $user_meta['email'],
-        'mets_input' => $user_meta,
+        'meta_input' => $user_meta,
     ] );
 
     return $user_id;

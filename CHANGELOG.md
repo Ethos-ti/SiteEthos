@@ -12,6 +12,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Fixed
 
+- Correção dos metadados ao atualizar um usuário a partir de um contato
+
 - Correção de bug na sincronização dos contatos adicionasi da organização
 
 ### Removed
