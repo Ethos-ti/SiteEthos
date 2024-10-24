@@ -348,6 +348,8 @@ function update_from_account( Entity $account, \WP_Post $post ) {
     $group_id = (int) get_post_meta( $post_id, '_pmpro_group', true );
     $group = \hacklabr\get_pmpro_group( $group_id );
 
+    $attributes = $account->Attributes;
+
     if ( ! empty( $attributes['primarycontactid'] ) ) {
         replace_primary_contact( $account, $group );
     }
