@@ -350,16 +350,27 @@ function update_from_account( Entity $account, \WP_Post $post ) {
 
     $attributes = $account->Attributes;
 
-    if ( ! empty( $attributes['primarycontactid'] ) ) {
-        replace_primary_contact( $account, $group );
-    }
+    /**
+     * Updates the primary contact, secondary contacts, and approver for a PMPro group based on the provided account information.
+     *
+     * This function is responsible for managing the user associations for a PMPro group based on the data from the provided account entity.
+     * It will update the primary contact, add or remove secondary contacts, and update the approver for the group as necessary.
+     *
+     * @param Entity $account The account entity containing the updated contact information.
+     * @param \PMProGroupAcct_Group $group The PMPro group to update.
+     */
+    if ( ! empty( $group ) ) {
+        if ( ! empty( $attributes['primarycontactid'] ) ) {
+            replace_primary_contact( $account, $group );
+        }
 
-    if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) || ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
-        replace_secondary_contacts( $account, $group );
-    }
+        if ( ! empty( $attributes['fut_lk_contato_alternativo'] ) || ! empty( $attributes['fut_lk_contato_alternativo2'] ) ) {
+            replace_secondary_contacts( $account, $group );
+        }
 
-    if ( ! empty( $attributes['i4d_aprovador_cortesia'] ) ) {
-        replace_approver( $account, $group );
+        if ( ! empty( $attributes['i4d_aprovador_cortesia'] ) ) {
+            replace_approver( $account, $group );
+        }
     }
 
     return $post_id;
