@@ -381,24 +381,22 @@ add_action('wp_footer', 'pmpro_add_placeholder_to_login');
 
 if ( class_exists( 'WPCaptcha_Functions' ) ) {
     function wprecaptcha_login_print_scripts() {
-        add_filter( 'login_form_bottom', ['WPCaptcha_Functions', 'login_print_scripts'] );
-        add_filter( 'login_form_bottom', 'captcha_fields');
-
         remove_action( 'lostpassword_post', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 1 );
         remove_action( 'validate_password_reset', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 2 );
     }
 
     add_action( 'init', 'wprecaptcha_login_print_scripts' );
+
+    add_action( 'doifd_display_recaptcha', 'open_captcha_container_div' );
+    add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'captcha_fields_print'] );
+    add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'login_scripts_print'] );
+    add_action( 'doifd_display_recaptcha', 'close_captcha_container_div' );
 }
 
 /**
  * Adds actions to display the reCAPTCHA fields on the DOIFD download form.
  * This allows the reCAPTCHA fields to be displayed on the DOIFD download form.
  */
-add_action( 'doifd_display_recaptcha', 'open_captcha_container_div' );
-add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'captcha_fields_print'] );
-add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'login_scripts_print'] );
-add_action( 'doifd_display_recaptcha', 'close_captcha_container_div' );
 
 function open_captcha_container_div() {
     echo "<div class='captcha-container'>";
