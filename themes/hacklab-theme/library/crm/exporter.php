@@ -205,7 +205,7 @@ function update_account( int $post_id, string $account_id ) {
     }
 }
 
-function update_contact( int $user_id ) {
+function update_contact( int $user_id, int|null $post_id = null ) {
     $contact_id = get_user_meta( $user_id, '_ethos_crm_contact_id', true ) ?? null;
 
     if ( empty( $contact_id ) ) {
@@ -213,7 +213,7 @@ function update_contact( int $user_id ) {
     }
 
     try {
-        $attributes = map_contact_attributes( $user_id, null );
+        $attributes = map_contact_attributes( $user_id, $post_id );
 
         \hacklabr\update_crm_entity( 'contact', $contact_id, $attributes );
     } catch ( \Throwable $err ) {

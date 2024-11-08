@@ -381,14 +381,102 @@ add_action('wp_footer', 'pmpro_add_placeholder_to_login');
 
 if ( class_exists( 'WPCaptcha_Functions' ) ) {
     function wprecaptcha_login_print_scripts() {
-        add_filter( 'login_form_bottom', ['WPCaptcha_Functions', 'login_print_scripts'] );
-        add_filter( 'login_form_bottom', 'captcha_fields');
-
         remove_action( 'lostpassword_post', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 1 );
         remove_action( 'validate_password_reset', array('WPCaptcha_Functions', 'process_lost_password_form'), 10, 2 );
     }
 
     add_action( 'init', 'wprecaptcha_login_print_scripts' );
+
+    add_action( 'doifd_display_recaptcha', 'open_captcha_container_div' );
+    add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'captcha_fields_print'] );
+    add_action( 'doifd_display_recaptcha', ['WPCaptcha_Functions', 'login_scripts_print'] );
+    add_action( 'doifd_display_recaptcha', 'close_captcha_container_div' );
+}
+
+/**
+ * Adds actions to display the reCAPTCHA fields on the DOIFD download form.
+ * This allows the reCAPTCHA fields to be displayed on the DOIFD download form.
+ */
+
+function open_captcha_container_div() {
+    echo "<div class='captcha-container'>";
+}
+
+function close_captcha_container_div() {
+    echo "</div>";
+}
+
+/**
+ * Handles the submission of a DOIFD download form and verifies the reCAPTCHA response.
+ *
+ * This function is hooked to the 'doifd_registration_form_shortcode' action and is responsible for
+ * validating the reCAPTCHA response submitted with the DOIFD download form. If the reCAPTCHA
+ * verification fails, the function sets the form's valid download flag to false and sets an error
+ * message. If the verification is successful, the function sets a success message on the form.
+ *
+ * @param object $get_form The DOIFD form object.
+ * @return void
+ */
+function get_doifd_form_submit( object $get_form ) {
+
+    if ( ! class_exists( 'WPCaptcha_Setup') ) {
+        return;
+    }
+
+    if ( ! empty( $_POST['doifd_download_form'] ) ) {
+        if ( ! empty( $_POST['g-recaptcha-response'] ) ) {
+            $check_recaptcha = doifd_check_recaptcha( $_POST['g-recaptcha-response'] );
+
+            if ( ! $check_recaptcha ) {
+                $get_form->setValidDownload( false );
+                $get_form->setErrorMessage( __( 'A verificação do reCAPTCHA falhou. Tente novamente!', 'hacklabr' ) );
+                return;
+            } else {
+                $get_form->setMessage( 'doifd_success_msg:recaptcha verification successful' );
+                return;
+            }
+        } else {
+            $get_form->setValidDownload( false );
+            $get_form->setErrorMessage( __( 'A verificação do reCAPTCHA falhou. Tente novamente!', 'hacklabr' ) );
+            return;
+        }
+    }
+}
+
+add_action( 'doifd_registration_form_shortcode', 'get_doifd_form_submit' );
+
+/**
+ * Checks the reCAPTCHA response from the client-side.
+ *
+ * This function sends a request to the Google reCAPTCHA API to verify the reCAPTCHA response
+ * submitted by the client. If the verification is successful, the function returns true,
+ * otherwise it returns false.
+ *
+ * @param string $response The reCAPTCHA response from the client.
+ * @return bool True if the reCAPTCHA verification is successful, false otherwise.
+ */
+function doifd_check_recaptcha( $response ) {
+    if ( ! class_exists( 'WPCaptcha_Setup') ) {
+        return;
+    }
+
+    $options = WPCaptcha_Setup::get_options();
+    $secret_key = $options['captcha_secret_key'];
+
+    $response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', [
+        'body' => [
+            'secret'   => $secret_key,
+            'response' => $response
+        ]
+    ] );
+
+    if ( is_wp_error( $response ) ) {
+        return false;
+    }
+
+    $decoded_response = json_decode( $response['body'], true );
+
+    return isset( $decoded_response['success'] ) && $decoded_response['success'];
 }
 
 function captcha_fields() {

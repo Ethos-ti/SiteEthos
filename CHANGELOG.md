@@ -8,15 +8,33 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Added
 
-- Adiciona função para atualizar contagem de termos de uma taxonomia
-
-- Pagina de associados - Inclusão de logos e tabelas, via blocos ( Replicados do shortcode CRM )
+- Adiciona Google ReCaptcha no formulário de download do plugin DOIFD
 
 ### Changed
 
 ### Fixed
 
+- Corrige recuperação dos atributos da conta na função update_from_account
+
+- Correção dos metadados ao atualizar um usuário a partir de um contato
+
+- Correção de bug na sincronização dos contatos adicionasi da organização
+
 ### Removed
+
+- Remove do código a exibição do Google ReCaptcha duplicado do formulário de login
+
+## [v1.1.7] - 2024-10-16
+
+### Added
+
+- Adiciona função para atualizar contagem de termos de uma taxonomia
+
+- Pagina de associados - Inclusão de logos e tabelas, via blocos ( Replicados do shortcode CRM )
+
+### Fixed
+
+- Fix: Remove a margem superior de elementos vazios para garantir espaçamento consistente
 
 ## [v1.1.3] - 2024-09-13
 
