@@ -8,6 +8,16 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v1.1.8] - 2024-11-08
+
+### Added
+
 - Adiciona Google ReCaptcha no formulário de download do plugin DOIFD
 
 ### Changed
