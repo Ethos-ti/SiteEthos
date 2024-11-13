@@ -26,17 +26,21 @@
             .pmpro_card_actions{
                 border: none;
                 background-color: white !important;
-                .pmpro_actions_nav{
+                margin-bottom: var(--hl--padding--large);
+                text-align: center;
+
+                .pmpro_actions_nav {
                     font-size: 16px !important;
-                    top: -16rem !important;
-                    & > a{
-                        font-weight: $font-weight--bold !important;
-                        font-size: 16px;
+
+                    & > a {
+                        font-size: var(--wp--preset--font-size--small);
                         text-transform: math-auto;
                         position: relative;
-                        left: -322px;
-                        top: 19px;
-                        text-decoration: underline;
+                        text-decoration: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
                     }
                 }
             }
@@ -78,13 +82,23 @@
                     .login-password {
                         position: relative !important;
 
-                        .pmpro_form_field-password-toggle > button > span{
-                            color: transparent;
+                        .pmpro_form_field-password-toggle {
+                            > button {
+                                flex-direction: row-reverse;
 
-                            & svg {
-                                stroke: #333;
-                                position: relative;
-                                left: 7.813rem;
+                                &:active {
+                                    box-shadow: none;
+                                    outline: 0;
+                                }
+
+                                > span {
+                                    color: transparent;
+
+                                    & svg {
+                                        stroke: #333;
+                                        position: relative;
+                                    }
+                                }
                             }
                         }
 
@@ -117,15 +131,18 @@
                     .login-remember{
                         font-weight: $font-weight--bold !important;
                         text-transform: math-auto;
-
+                        justify-content: center;
                     }
 
-                    .login-submit{
-                        display: flex;
-                        justify-content: center !important;
-                        margin-top: calc($margin--large*3) !important;
-                        margin-bottom: -1rem !important;
-                        margin-top: $margin--medium;
+                    &#loginform {
+                        .login-submit{
+                            display: flex;
+                            justify-content: center !important;
+
+                            input[type="submit"] {
+                                margin-top: 0;
+                            }
+                        }
                     }
 
                     input[type="submit"]{

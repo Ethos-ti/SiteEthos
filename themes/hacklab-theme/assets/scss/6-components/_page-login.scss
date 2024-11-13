@@ -70,9 +70,13 @@
     .pmpro_login_wrap{
         position: relative;
 
-       .g-recaptcha{
+       .g-recaptcha {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--hl--padding--small);
             position: relative;
-            bottom: 7rem;
+            transform: scale(1) !important;
+            -webkit-transform: scale(1) !important;
         }
     }
 
@@ -82,9 +86,7 @@
     }
 
     .pmpro_actions_nav{
-        text-align: right;
         position: relative;
-        top: -14rem;
     }
 
     .pmpro_actions_nav > a{
