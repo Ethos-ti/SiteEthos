@@ -8,11 +8,19 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ### Added
 
+### Changed
+
+### Fixed
+
+### Removed
+
+## [v1.1.9] - 2024-11-13
+
+### Added
+
 - Adiciona Google ReCaptcha no formulário de download do plugin DOIFD
 
 - Corrige CSS do formulário de login
-
-### Changed
 
 ### Fixed
 
