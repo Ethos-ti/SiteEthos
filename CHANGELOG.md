@@ -34,6 +34,8 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 - Remove do código a exibição do Google ReCaptcha duplicado do formulário de login
 
+## [v1.1.8] - 2024-11-08
+
 ## [v1.1.7] - 2024-10-16
 
 ### Added
