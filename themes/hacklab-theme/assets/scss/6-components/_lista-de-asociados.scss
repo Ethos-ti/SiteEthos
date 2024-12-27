@@ -8,14 +8,13 @@
         text-align: center;
     }
     .wp-block-gallery {
-        gap: 30px !important;
         &.has-nested-images{
             figure{
                 max-width: 100%;
                 &.wp-block-image{
                     align-items: center;
                     img{
-                        max-width: 204px !important;
+                        max-width: 150px !important;
 /*                         max-width: 96px !important;
  */                    }
                 }
