@@ -8,6 +8,7 @@
         text-align: center;
     }
     .wp-block-gallery {
+        gap: 30px;
         &.has-nested-images{
             figure{
                 max-width: 100%;
