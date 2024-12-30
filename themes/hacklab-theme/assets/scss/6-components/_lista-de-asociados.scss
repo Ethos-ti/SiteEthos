@@ -11,6 +11,7 @@
         &.has-nested-images{
             figure{
                 max-width: 100%;
+                margin-bottom: inherit !important;
                 &.wp-block-image{
                     align-items: center;
                     img{
