@@ -79,6 +79,10 @@
             "type": "number",
             "default": 1
         },
+        "preventRepeatPosts": {
+            "type": "boolean",
+            "default": true
+        },
         "queryTerms": {
             "type": "array",
             "default": []

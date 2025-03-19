@@ -14,7 +14,7 @@ import { SelectTaxonomies } from '../shared/SelectTaxonomies';
 import metadata from './block.json';
 
 function Edit ({ attributes, setAttributes }) {
-    const { cardModel, cardModifiers, gridGap, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow, postType, showTaxonomies } = attributes;
+    const { cardModel, cardModifiers, gridGap, hideAuthor, hideCategories, hideDate, hideExcerpt, postsPerColumn, postsPerRow, postType, preventRepeatPosts, showTaxonomies } = attributes;
 
     const blockProps = useBlockProps();
 
@@ -101,6 +101,14 @@ function Edit ({ attributes, setAttributes }) {
                         onChange={(showTaxonomies) => setAttributes({ showTaxonomies })}
                     />
                 </PanelRow>
+                <PanelRow>
+                    <ToggleControl
+                        label={__('Prevent repeat posts', 'hacklabr')}
+                        checked={preventRepeatPosts}
+                        onChange={(preventRepeatPosts) => setAttributes({ preventRepeatPosts })}
+                    />
+                </PanelRow>
+
             </PanelBody>
 
             <QueryPanel
