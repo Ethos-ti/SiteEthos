@@ -2,8 +2,12 @@
 
 namespace hacklabr;
 
-function get_posts_grid_data ($attributes): \WP_Query {
-    $post__not_in = get_used_post_ids();
+function get_posts_grid_data($attributes): \WP_Query {
+    $post__not_in = [];
+
+    if (!empty($attributes['preventRepeatPosts'])) {
+        $post__not_in = get_used_post_ids();
+    }
 
     $query_args = build_posts_query($attributes, $post__not_in);
     $query = new \WP_Query($query_args);

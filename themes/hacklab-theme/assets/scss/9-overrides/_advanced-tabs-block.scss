@@ -35,7 +35,9 @@
             }
 
             &-text {
-
+                strong{
+                    white-space: nowrap;
+                }
                 @include small {
                     text-wrap: wrap;
                 }
@@ -62,7 +64,6 @@
                 @include small {
                     font-size: $font-size--x-small !important;
                     line-height: 13.2px !important;
-                    white-space: wrap;
                 }
             }
 
@@ -140,10 +141,8 @@
     }
 
     .hacklabr-posts-grid-block {
-        &.-gap-small {
-            .post-card__term {
-                display: none;
-            }
+        .post-card__term {
+            display: none;
         }
     }
 }
