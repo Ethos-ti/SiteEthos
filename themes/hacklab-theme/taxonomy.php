@@ -58,52 +58,54 @@ usort($terms, 'custom_sort');
             </div>
             <div class="tabs__panels">
                 <div class="tabs__panel" x-bind="TabPanel('<?php echo esc_attr($active_tab); ?>', $data)">
-                    <main class="posts-grid__content">
-                        <?php
-                        // Verificação dos parâmetros
-                        $current_category = get_query_var('category');
-                        $current_tipo_post = get_query_var('tipo_post');
+                <main class="posts-grid__content">
+                    <?php
+                    // Verificação dos parâmetros
+                    $current_category = get_query_var('category');
+                    $current_tipo_post = get_query_var('tipo_post');
 
-                        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-                        $args = array(
-                            'post_type' => 'post',
-                            'tax_query' => array(
-                                'relation' => 'AND',
-                                array(
-                                    'taxonomy' => 'tipo_post',
-                                    'field' => 'slug',
-                                    'terms' => $current_tipo_post,
-                                ),
-                            ),
-                            'paged' => $paged,
-                        );
-
-                        // Adicionar filtro de categoria se estiver presente
-                        if ($current_category) {
-                            $args['tax_query'][] = array(
-                                'taxonomy' => 'category',
+                    $args = array(
+                        'post_type' => 'post',
+                        'tax_query' => array(
+                            'relation' => 'AND',
+                            array(
+                                'taxonomy' => 'tipo_post',
                                 'field' => 'slug',
-                                'terms' => $current_category,
-                            );
-                        }
+                                'terms' => $current_tipo_post,
+                            ),
+                        ),
+                        'paged' => $paged,
+                    );
 
-                        $query = new WP_Query($args);
+                    if ($current_category) {
+                        $args['tax_query'][] = array(
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => $current_category,
+                        );
+                    }
 
-                        if ($query->have_posts()) :
-                            while ($query->have_posts()) : $query->the_post();
-                                get_template_part('template-parts/post-card', null, [
-                                    'hide_author' => true,
-                                    'hide_date' => true,
-                                    'hide_excerpt' => true,
-                                    'show_taxonomies' => ['tipo_iniciativa'],
-                                ]);
-                            endwhile;
-                            wp_reset_postdata();
+                    $query = new WP_Query($args);
 
-                        endif;
+                    if ($query->have_posts()) :
+                        while ($query->have_posts()) : $query->the_post();
+                            get_template_part('template-parts/post-card', null, [
+                                'hide_author' => true,
+                                'hide_date' => true,
+                                'hide_excerpt' => true,
+                                'show_taxonomies' => ['tipo_iniciativa'],
+                            ]);
+                        endwhile;
+                        wp_reset_postdata();
+                    else :
                         ?>
-                    </main>
+                        <p class="no-results"><?php _e('No results found.', 'hacklabr') ?></p>
+                        <?php
+                    endif;
+                    ?>
+                </main>
 
                     <?php
                     the_posts_pagination([

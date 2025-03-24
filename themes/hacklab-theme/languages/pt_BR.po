@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hacklab-theme\n"
-"POT-Creation-Date: 2025-03-19T20:45:25+00:00\n"
-"PO-Revision-Date: 2025-03-19 17:48-0300\n"
+"POT-Creation-Date: 2025-03-24T18:00:53+00:00\n"
+"PO-Revision-Date: 2025-03-24 15:02-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -897,6 +897,10 @@ msgstr "Publicado em"
 msgid "Published by "
 msgstr "Publicado por "
 
+#: taxonomy.php:104
+msgid "No results found."
+msgstr "Nenhum resultado encontrado."
+
 #. Template Name of the theme
 msgid "Membership area"
 msgstr "Área do associado"
@@ -966,9 +970,9 @@ msgstr "Cadastro de membro finalizado"
 #: library/blocks/banner-with-image/editor.js:11
 #: library/blocks/card-header/editor.js:11
 #: library/blocks/download-image/editor.js:11
-#: dist/blocks/banner-with-image/editor.js:128
+#: dist/blocks/banner-with-image/editor.js:129
 #: dist/blocks/card-header/editor.js:115
-#: dist/blocks/download-image/editor.js:128
+#: dist/blocks/download-image/editor.js:129
 msgid "Header content"
 msgstr "Conteúdo do cabeçalho"
 
@@ -977,7 +981,7 @@ msgstr "Conteúdo do cabeçalho"
 #: library/blocks/banner-with-image/editor.js:25
 #: library/blocks/card-header/editor.js:38
 #: library/blocks/posts-grid/editor.js:23
-#: dist/blocks/banner-with-image/editor.js:142
+#: dist/blocks/banner-with-image/editor.js:143
 #: dist/blocks/card-header/editor.js:142 dist/blocks/posts-grid/editor.js:1914
 msgid "Layout"
 msgstr "Layout"
@@ -987,33 +991,33 @@ msgstr "Layout"
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/banner-with-image/editor.js:28
 #: library/blocks/shared/SelectImage.js:32
-#: dist/blocks/banner-with-image/editor.js:96
-#: dist/blocks/banner-with-image/editor.js:145
-#: dist/blocks/card-header/editor.js:83 dist/blocks/download-image/editor.js:96
+#: dist/blocks/banner-with-image/editor.js:97
+#: dist/blocks/banner-with-image/editor.js:146
+#: dist/blocks/card-header/editor.js:83 dist/blocks/download-image/editor.js:97
 msgid "Image"
 msgstr "Imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:15
-#: dist/blocks/banner-with-image/editor.js:79
-#: dist/blocks/card-header/editor.js:66 dist/blocks/download-image/editor.js:79
+#: dist/blocks/banner-with-image/editor.js:80
+#: dist/blocks/card-header/editor.js:66 dist/blocks/download-image/editor.js:80
 msgid "Change image"
 msgstr "Alterar imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:18
-#: dist/blocks/banner-with-image/editor.js:82
-#: dist/blocks/card-header/editor.js:69 dist/blocks/download-image/editor.js:82
+#: dist/blocks/banner-with-image/editor.js:83
+#: dist/blocks/card-header/editor.js:69 dist/blocks/download-image/editor.js:83
 msgid "Remove image"
 msgstr "Remover imagem"
 
 #: dist/blocks/banner-with-image/editor.js:39
 #: dist/blocks/card-header/editor.js:29 dist/blocks/download-image/editor.js:39
 #: library/blocks/shared/SelectImage.js:24
-#: dist/blocks/banner-with-image/editor.js:88
-#: dist/blocks/card-header/editor.js:75 dist/blocks/download-image/editor.js:88
+#: dist/blocks/banner-with-image/editor.js:89
+#: dist/blocks/card-header/editor.js:75 dist/blocks/download-image/editor.js:89
 msgid "Select image"
 msgstr "Selecionar imagem"
 
@@ -1108,6 +1112,7 @@ msgid "Show taxonomies"
 msgstr "Mostrar taxonomias"
 
 #: dist/blocks/posts-grid/editor.js:19 library/blocks/posts-grid/editor.js:106
+#: dist/blocks/posts-grid/editor.js:1997
 msgid "Prevent repeat posts"
 msgstr "Evitar repetição de posts"
 
@@ -1291,6 +1296,8 @@ msgid "Iconify ID"
 msgstr "ID do Iconify"
 
 #: dist/js/functionalities/sync-crm.js:29
+#: dist/js/functionalities/sync-crm.js:119
+#: dist/js/functionalities/sync-crm.js:122
 msgid "Sync with CRM"
 msgstr "Sincronizar com o CRM"
 
