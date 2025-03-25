@@ -46,6 +46,26 @@ add_action( 'init', function() {
     }
 }, 150 );
 
+add_action( 'init', function() {
+    if( isset( $_GET['crm_sync_event'] ) && current_user_can( 'manage_options' ) ) {
+        if ( \function_exists( 'do_get_crm_event' ) ) {
+            $crm_sync_event = sanitize_text_field( $_GET['crm_sync_event'] );
+            ini_set( 'max_execution_time', 0 );
+            echo "IMPORTANDO EVENTO: " . $crm_sync_event . "<pre>";
+
+            $result = do_get_crm_event( $crm_sync_event );
+
+            if ( $result ) {
+                echo "Evento importado com sucesso. ID: $result";
+            } else {
+                echo "Erro ao importar evento.";
+            }
+
+            die;
+        }
+    }
+}, 150 );
+
 /**
  * Adds a custom filter to the WordPress search query in admin to include meta fields in the search.
  *
